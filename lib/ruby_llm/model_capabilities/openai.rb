@@ -102,7 +102,7 @@ module RubyLLM
         name = model_id.tr('-', ' ')
 
         # Capitalize each word
-        name = name.split(' ').map { |word| word.capitalize }.join(' ')
+        name = name.split(' ').map(&:capitalize).join(' ')
 
         # Apply specific formatting rules
         name.gsub(/(\d{4}) (\d{2}) (\d{2})/, '\1\2\3') # Convert dates to YYYYMMDD

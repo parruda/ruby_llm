@@ -13,7 +13,7 @@ module ApiHelpers
         status: status,
         headers: { 'Content-Type' => 'application/json' },
         body: {
-          id: 'msg_' + SecureRandom.hex(12),
+          id: "msg_#{SecureRandom.hex(12)}",
           type: 'message',
           role: 'assistant',
           model: 'claude-3-opus-20240229',
@@ -44,7 +44,7 @@ module ApiHelpers
         status: status,
         headers: { 'Content-Type' => 'application/json' },
         body: {
-          id: 'chatcmpl-' + SecureRandom.hex(12),
+          id: "chatcmpl-#{SecureRandom.hex(12)}",
           object: 'chat.completion',
           created: Time.now.to_i,
           model: 'gpt-3.5-turbo',

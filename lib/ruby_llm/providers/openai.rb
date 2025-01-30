@@ -22,7 +22,7 @@ module RubyLLM
         if stream && block_given?
           stream_chat_completion(payload, tools, &block)
         else
-          create_chat_completion(payload, tools)
+          create_chat_completion(payload, tools, &block)
         end
       rescue Faraday::TimeoutError
         raise RubyLLM::Error, 'Request timed out'
@@ -80,7 +80,7 @@ module RubyLLM
         }
       end
 
-      def create_chat_completion(payload, tools = nil)
+      def create_chat_completion(payload, tools = nil, &block)
         response = connection.post('/v1/chat/completions') do |req|
           req.headers['Authorization'] = "Bearer #{RubyLLM.configuration.openai_api_key}"
           req.headers['Content-Type'] = 'application/json'
@@ -90,47 +90,74 @@ module RubyLLM
         puts 'Response from OpenAI:' if ENV['RUBY_LLM_DEBUG']
         puts JSON.pretty_generate(response.body) if ENV['RUBY_LLM_DEBUG']
 
+        # Check for API errors
+        check_for_api_error(response)
+
+        # Check for HTTP errors
         if response.status >= 400
           error_msg = response.body['error']&.fetch('message', nil) || "HTTP #{response.status}"
           raise RubyLLM::Error, "API error: #{error_msg}"
         end
 
-        handle_response(response, tools, payload)
+        handle_response(response, tools, payload, &block)
       end
 
-      def handle_response(response, tools, payload)
+      def handle_response(response, tools, payload, &block)
         data = response.body
         message_data = data.dig('choices', 0, 'message')
-        return Message.new(role: :assistant, content: '') unless message_data
+        return [] unless message_data
 
         if message_data['function_call'] && tools
-          result = handle_function_call(message_data['function_call'], tools)
-          puts "Function result: #{result}" if ENV['RUBY_LLM_DEBUG']
+          # Create function call message
+          function_message = Message.new(
+            role: :assistant,
+            content: message_data['content'],
+            tool_calls: [message_data['function_call']]
+          )
+          yield function_message if block_given?
 
-          # Create a new chat completion with the function results
+          # Execute function and create result message
+          result = handle_function_call(message_data['function_call'], tools)
+          result_message = Message.new(
+            role: :tool,
+            content: result,
+            tool_results: {
+              name: message_data['function_call']['name'],
+              content: result
+            }
+          )
+          yield result_message if block_given?
+
+          # Get final response with function results
           new_messages = payload[:messages] + [
             { role: 'assistant', content: message_data['content'], function_call: message_data['function_call'] },
             { role: 'function', name: message_data['function_call']['name'], content: result }
           ]
 
-          return create_chat_completion(payload.merge(messages: new_messages), tools)
+          final_response = create_chat_completion(
+            payload.merge(messages: new_messages),
+            tools,
+            &block
+          )
+
+          # Return all messages in sequence
+          [function_message, result_message] + final_response
+        else
+          token_usage = if data['usage']
+                          {
+                            input_tokens: data['usage']['prompt_tokens'],
+                            output_tokens: data['usage']['completion_tokens'],
+                            total_tokens: data['usage']['total_tokens']
+                          }
+                        end
+
+          [Message.new(
+            role: :assistant,
+            content: message_data['content'],
+            token_usage: token_usage,
+            model_id: data['model']
+          )]
         end
-
-        # Extract token usage from response
-        token_usage = if data['usage']
-                        {
-                          input_tokens: data['usage']['prompt_tokens'],
-                          output_tokens: data['usage']['completion_tokens'],
-                          total_tokens: data['usage']['total_tokens']
-                        }
-                      end
-
-        Message.new(
-          role: :assistant,
-          content: message_data['content'],
-          token_usage: token_usage,
-          model_id: data['model']
-        )
       end
 
       def handle_function_call(function_call, tools)

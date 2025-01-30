@@ -18,10 +18,11 @@ RSpec.describe RubyLLM::Client do
         )
       end
 
-      it 'sends request to OpenAI and returns response' do
+      it 'sends request to OpenAI and returns array of responses' do
         response = client.chat(messages)
-        expect(response).to be_a(RubyLLM::Message)
-        expect(response.content).to eq('Hi there!')
+        expect(response).to be_an(Array)
+        expect(response.first).to be_a(RubyLLM::Message)
+        expect(response.first.content).to eq('Hi there!')
       end
     end
 
@@ -38,10 +39,11 @@ RSpec.describe RubyLLM::Client do
         )
       end
 
-      it 'sends request to Anthropic and returns response' do
+      it 'sends request to Anthropic and returns array of responses' do
         response = client.chat(messages)
-        expect(response).to be_a(RubyLLM::Message)
-        expect(response.content).to eq('Hello! How can I help you today?')
+        expect(response).to be_an(Array)
+        expect(response.first).to be_a(RubyLLM::Message)
+        expect(response.first.content).to eq('Hello! How can I help you today?')
       end
     end
   end

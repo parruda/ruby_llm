@@ -62,13 +62,24 @@ module RubyLLM
       private
 
       def tool_to_anthropic(tool)
+        # Get required fields and clean properties
+        required_fields = []
+        cleaned_properties = {}
+
+        tool.parameters.each do |name, props|
+          required_fields << name.to_s if props[:required]
+          cleaned_props = props.dup
+          cleaned_props.delete(:required)
+          cleaned_properties[name] = cleaned_props
+        end
+
         {
           name: tool.name,
           description: tool.description,
           input_schema: {
             type: 'object',
-            properties: tool.parameters,
-            required: tool.parameters.select { |_, v| v[:required] }.keys
+            properties: cleaned_properties,
+            required: required_fields
           }
         }
       end
@@ -94,7 +105,7 @@ module RubyLLM
         end
       end
 
-      def create_chat_completion(payload, tools = nil)
+      def create_chat_completion(payload, tools = nil, &block)
         response = @connection.post('/v1/messages') do |req|
           req.headers['x-api-key'] = RubyLLM.configuration.anthropic_api_key
           req.headers['anthropic-version'] = '2023-06-01'
@@ -105,7 +116,10 @@ module RubyLLM
         puts 'Response from Anthropic:' if ENV['RUBY_LLM_DEBUG']
         puts JSON.pretty_generate(response.body) if ENV['RUBY_LLM_DEBUG']
 
-        handle_response(response, tools, payload)
+        # Check for API errors first
+        check_for_api_error(response)
+
+        handle_response(response, tools, payload, &block)
       rescue Faraday::Error => e
         handle_error(e)
       end
@@ -117,6 +131,7 @@ module RubyLLM
           req.body = payload
         end
 
+        messages = []
         response.body.each_line do |line|
           next if line.strip.empty?
           next if line == 'data: [DONE]'
@@ -124,32 +139,48 @@ module RubyLLM
           begin
             data = JSON.parse(line.sub(/^data: /, ''))
 
-            if data['type'] == 'content_block_delta'
-              content = data['delta']['text']
-              yield Message.new(role: :assistant, content: content) if content
-            elsif data['type'] == 'tool_call'
-              handle_tool_calls(data['tool_calls'], tools) do |result|
-                yield Message.new(role: :assistant, content: result)
-              end
+            message = case data['type']
+                      when 'content_block_delta'
+                        Message.new(role: :assistant, content: data['delta']['text']) if data['delta']['text']
+                      when 'tool_call'
+                        handle_tool_calls(data['tool_calls'], tools) do |result|
+                          Message.new(role: :assistant, content: result)
+                        end
+                      end
+
+            if message
+              messages << message
+              yield message if block_given?
             end
           rescue JSON::ParserError
             next
           end
         end
+
+        messages
       rescue Faraday::Error => e
         handle_error(e)
       end
 
-      def handle_response(response, tools, payload)
+      def handle_response(response, tools, payload, &block)
         data = response.body
-        return Message.new(role: :assistant, content: '') if data['type'] == 'error'
 
-        # Extract text content and tool use from response
         content_parts = data['content'] || []
         text_content = content_parts.find { |c| c['type'] == 'text' }&.fetch('text', '')
         tool_use = content_parts.find { |c| c['type'] == 'tool_use' }
 
         if tool_use && tools
+          # Tool call handling code...
+          tool_message = Message.new(
+            role: :assistant,
+            content: text_content,
+            tool_calls: [{
+              name: tool_use['name'],
+              arguments: JSON.generate(tool_use['input'] || {})
+            }]
+          )
+          yield tool_message if block_given?
+
           tool = tools.find { |t| t.name == tool_use['name'] }
           result = if tool
                      begin
@@ -167,7 +198,13 @@ module RubyLLM
                      end
                    end
 
-          # Create a new message with the tool result
+          result_message = Message.new(
+            role: :tool,
+            content: result[:content],
+            tool_results: result
+          )
+          yield result_message if block_given?
+
           new_messages = payload[:messages] + [
             { role: 'assistant', content: data['content'] },
             {
@@ -183,24 +220,29 @@ module RubyLLM
             }
           ]
 
-          return create_chat_completion(payload.merge(messages: new_messages), tools)
+          final_response = create_chat_completion(
+            payload.merge(messages: new_messages),
+            tools,
+            &block
+          )
+
+          [tool_message, result_message] + final_response
+        else
+          token_usage = if data['usage']
+                          {
+                            input_tokens: data['usage']['input_tokens'],
+                            output_tokens: data['usage']['output_tokens'],
+                            total_tokens: data['usage']['input_tokens'] + data['usage']['output_tokens']
+                          }
+                        end
+
+          [Message.new(
+            role: :assistant,
+            content: text_content,
+            token_usage: token_usage,
+            model_id: data['model']
+          )]
         end
-
-        # Extract token usage from response
-        token_usage = if data['usage']
-                        {
-                          input_tokens: data['usage']['input_tokens'],
-                          output_tokens: data['usage']['output_tokens'],
-                          total_tokens: data['usage']['input_tokens'] + data['usage']['output_tokens']
-                        }
-                      end
-
-        Message.new(
-          role: :assistant,
-          content: text_content,
-          token_usage: token_usage,
-          model_id: data['model']
-        )
       end
 
       def handle_tool_calls(tool_calls, tools)
@@ -239,10 +281,23 @@ module RubyLLM
           rescue JSON::ParserError
             raise RubyLLM::Error, "API error: #{error.response[:status]}"
           end
-        elsif response_body.dig('error', 'type') == 'invalid_request_error'
+        elsif response_body['error']
           raise RubyLLM::Error, "API error: #{response_body['error']['message']}"
         else
           raise RubyLLM::Error, "API error: #{error.response[:status]}"
+        end
+      end
+
+      def handle_error(error)
+        case error
+        when Faraday::TimeoutError
+          raise RubyLLM::Error, 'Request timed out'
+        when Faraday::ConnectionFailed
+          raise RubyLLM::Error, 'Connection failed'
+        when Faraday::ClientError
+          handle_api_error(error)
+        else
+          raise error
         end
       end
 

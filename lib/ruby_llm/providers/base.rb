@@ -16,6 +16,13 @@ module RubyLLM
 
       protected
 
+      def check_for_api_error(response)
+        return unless response.body.is_a?(Hash) && response.body['type'] == 'error'
+
+        error_msg = response.body.dig('error', 'message') || 'Unknown API error'
+        raise RubyLLM::Error, "API error: #{error_msg}"
+      end
+
       def build_connection
         Faraday.new(url: api_base) do |f|
           f.options.timeout = RubyLLM.configuration.request_timeout

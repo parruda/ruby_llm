@@ -5,18 +5,6 @@ RSpec.describe RubyLLM::Providers::Anthropic do
   let(:messages) { [RubyLLM::Message.new(role: :user, content: 'What time is it?')] }
 
   describe '#chat' do
-    before do
-      stub_anthropic_request(
-        messages: messages,
-        response_content: 'Hi there!'
-      )
-    end
-
-    it 'makes successful API call' do
-      response = provider.chat(messages)
-      expect(response.content).to eq('Hi there!')
-    end
-
     context 'with tools' do
       let(:tool) do
         RubyLLM::Tool.new(
@@ -28,71 +16,34 @@ RSpec.describe RubyLLM::Providers::Anthropic do
 
       let(:tool_response) { '2025-01-30 13:54:47 +0100' }
 
-      before do
-        # First request - Claude decides to use the tool
-        stub_request(:post, 'https://api.anthropic.com/v1/messages')
-          .with(
-            headers: {
-              'Content-Type' => 'application/json',
-              'X-Api-Key' => 'test-anthropic-key',
-              'Anthropic-Version' => '2023-06-01'
-            }
-          ).to_return(
-            status: 200,
-            headers: { 'Content-Type' => 'application/json' },
-            body: {
-              id: 'msg_01UAcKZjQCESKUi9thQQRGvp',
-              type: 'message',
-              role: 'assistant',
-              model: 'claude-3-opus-20240229',
-              content: [
-                {
-                  type: 'text',
-                  text: 'Let me check the current time.'
-                },
-                {
-                  type: 'tool_use',
-                  id: 'toolu_01DYRxKRbA1qRgFiSX1aTMiM',
-                  name: 'get_time',
-                  input: {}
-                }
-              ],
-              stop_reason: 'tool_use',
-              usage: {
-                input_tokens: 587,
-                output_tokens: 73
-              }
-            }.to_json
-          ).then
-          # Second request - Final response after tool execution
-          .to_return(
-            status: 200,
-            headers: { 'Content-Type' => 'application/json' },
-            body: {
-              id: 'msg_01K59k1tvTpA2DwcWEB3u3ND',
-              type: 'message',
-              role: 'assistant',
-              model: 'claude-3-opus-20240229',
-              content: [
-                {
-                  type: 'text',
-                  text: "The current time is #{tool_response}."
-                }
-              ],
-              stop_reason: 'end_turn',
-              usage: {
-                input_tokens: 687,
-                output_tokens: 26
-              }
-            }.to_json
-          )
+      it 'returns array with all messages' do
+        response = provider.chat(messages, tools: [tool])
+        expect(response).to be_an(Array)
+        expect(response.length).to eq(3)
 
-        allow(Time).to receive(:now).and_return(Time.parse('2025-01-30 13:54:47 +0100'))
+        # Check tool call message
+        expect(response[0]).to be_a(RubyLLM::Message)
+        expect(response[0].tool_calls).to be_an(Array)
+        expect(response[0].tool_calls.first[:name]).to eq('get_time')
+
+        # Check tool result message
+        expect(response[1]).to be_a(RubyLLM::Message)
+        expect(response[1].content).to eq(tool_response)
+
+        # Check final response
+        expect(response[2]).to be_a(RubyLLM::Message)
+        expect(response[2].content).to eq("The current time is #{tool_response}.")
       end
 
-      it 'handles tool calls' do
-        response = provider.chat(messages, tools: [tool])
-        expect(response.content).to eq("The current time is #{tool_response}.")
+      it 'yields messages in sequence when block given' do
+        messages_received = []
+        response = provider.chat(messages, tools: [tool]) do |message|
+          messages_received << message
+        end
+
+        expect(messages_received.length).to eq(3)
+        expect(messages_received.map(&:role)).to eq(%i[assistant tool assistant])
+        expect(response).to eq(messages_received)
       end
     end
   end

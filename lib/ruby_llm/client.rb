@@ -14,7 +14,7 @@ module RubyLLM
       end
 
       provider = provider_for(model)
-      provider.chat(
+      response_messages = provider.chat(
         formatted_messages,
         model: model,
         temperature: temperature,
@@ -22,6 +22,9 @@ module RubyLLM
         tools: tools,
         &block
       )
+
+      # Always return an array of messages, even for single responses
+      response_messages.is_a?(Array) ? response_messages : [response_messages]
     end
 
     def list_models(provider = nil)

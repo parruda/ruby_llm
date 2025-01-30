@@ -30,12 +30,10 @@ module RubyLLM
     private
 
     def validate!
-      unless VALID_ROLES.include?(role)
-        raise ArgumentError,
-              "Invalid role: #{role}. Must be one of: #{VALID_ROLES.join(', ')}"
-      end
-      raise ArgumentError, 'Content cannot be nil' if content.nil?
-      raise ArgumentError, 'Content cannot be empty' if content.empty?
+      return if VALID_ROLES.include?(role)
+
+      raise ArgumentError,
+            "Invalid role: #{role}. Must be one of: #{VALID_ROLES.join(', ')}"
     end
   end
 end

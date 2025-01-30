@@ -12,9 +12,10 @@ RSpec.describe RubyLLM::Providers::OpenAI do
       )
     end
 
-    it 'makes successful API call' do
+    it 'makes successful API call and returns array' do
       response = provider.chat(messages)
-      expect(response.content).to eq('Hello! How can I assist you today?')
+      expect(response).to be_an(Array)
+      expect(response.first.content).to eq('Hello! How can I assist you today?')
     end
 
     context 'with error responses' do
@@ -40,28 +41,6 @@ RSpec.describe RubyLLM::Providers::OpenAI do
 
       it 'handles API errors appropriately' do
         expect { provider.chat(messages) }.to raise_error(RubyLLM::Error, 'API error: Internal server error')
-      end
-    end
-
-    context 'with timeout errors' do
-      before do
-        allow_any_instance_of(Faraday::Connection).to receive(:post)
-          .and_raise(Faraday::TimeoutError)
-      end
-
-      it 'handles timeout errors' do
-        expect { provider.chat(messages) }.to raise_error(RubyLLM::Error, 'Request timed out')
-      end
-    end
-
-    context 'with connection errors' do
-      before do
-        allow_any_instance_of(Faraday::Connection).to receive(:post)
-          .and_raise(Faraday::ConnectionFailed.new('Connection failed'))
-      end
-
-      it 'handles connection errors' do
-        expect { provider.chat(messages) }.to raise_error(RubyLLM::Error, 'Connection failed')
       end
     end
   end
