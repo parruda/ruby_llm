@@ -4,6 +4,7 @@ require 'time'
 
 module RubyLLM
   module Providers
+    # Implementation of the Anthropic API provider
     class Anthropic < Base
       def chat(messages, model: nil, temperature: 0.7, stream: false, tools: nil, &block)
         payload = {

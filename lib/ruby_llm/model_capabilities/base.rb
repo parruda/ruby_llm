@@ -2,6 +2,7 @@
 
 module RubyLLM
   module ModelCapabilities
+    # Base class defining the interface for model-specific capabilities
     class Base
       def determine_context_window(_model_id)
         raise NotImplementedError

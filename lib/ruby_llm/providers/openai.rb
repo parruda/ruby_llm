@@ -2,6 +2,7 @@
 
 module RubyLLM
   module Providers
+    # Implementation of the OpenAI API provider
     class OpenAI < Base
       def chat(messages, model: nil, temperature: 0.7, stream: false, tools: nil, &block)
         payload = {

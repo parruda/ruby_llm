@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module RubyLLM
+  # Represents a message in a conversation with an LLM, including role, content and optional tool interactions
   class Message
     VALID_ROLES = %i[system user assistant tool].freeze
 

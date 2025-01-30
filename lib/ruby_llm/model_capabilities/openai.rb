@@ -2,6 +2,7 @@
 
 module RubyLLM
   module ModelCapabilities
+    # Implements model capabilities for OpenAI's GPT models
     class OpenAI < Base
       def determine_context_window(model_id)
         case model_id
