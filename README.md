@@ -10,7 +10,7 @@ RubyLLM provides a unified interface for interacting with various LLM providers 
 ## Features
 
 - 🤝 Unified interface for multiple LLM providers (OpenAI, Anthropic, etc.)
-- 🛠️ Tool/Function calling support
+- 🛠️ Simple and flexible tool/function calling
 - 📊 Automatic token counting and tracking
 - 🔄 Streaming support
 - 🚂 Seamless Rails integration
@@ -60,22 +60,15 @@ response = client.chat([
 puts response.content
 ```
 
-### Streaming
+### Tools (Function Calling)
+
+RubyLLM supports tools/functions with a simple, flexible interface. You can create tools using blocks or wrap existing methods:
 
 ```ruby
-client.chat([
-  { role: :user, content: "Count to 10 slowly" }
-], stream: true) do |chunk|
-  print chunk.content
-end
-```
-
-### Tool Usage
-
-```ruby
+# Using a block
 calculator = RubyLLM::Tool.new(
   name: "calculator",
-  description: "Perform mathematical calculations",
+  description: "Performs mathematical calculations",
   parameters: {
     expression: {
       type: "string",
@@ -87,9 +80,46 @@ calculator = RubyLLM::Tool.new(
   eval(args[:expression]).to_s
 end
 
+# Using an existing method
+class MathUtils
+  def arithmetic(x, y, operation)
+    case operation
+    when 'add' then x + y
+    when 'subtract' then x - y
+    when 'multiply' then x * y
+    when 'divide' then x.to_f / y
+    else
+      raise ArgumentError, "Unknown operation: #{operation}"
+    end
+  end
+end
+
+math_tool = RubyLLM::Tool.from_method(
+  MathUtils.instance_method(:arithmetic),
+  description: "Performs basic arithmetic operations",
+  parameter_descriptions: {
+    x: "First number in the operation",
+    y: "Second number in the operation",
+    operation: "Operation to perform (add, subtract, multiply, divide)"
+  }
+)
+
+# Use tools in conversations
 response = client.chat([
   { role: :user, content: "What is 123 * 456?" }
 ], tools: [calculator])
+
+puts response.content
+```
+
+### Streaming
+
+```ruby
+client.chat([
+  { role: :user, content: "Count to 10 slowly" }
+], stream: true) do |chunk|
+  print chunk.content
+end
 ```
 
 ## Rails Integration

@@ -4,6 +4,8 @@ module RubyLLM
   module Providers
     # Base provider class for LLM interactions
     class Base
+      attr_reader :connection
+
       def initialize
         @connection = build_connection
       end

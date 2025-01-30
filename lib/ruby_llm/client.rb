@@ -5,24 +5,23 @@ module RubyLLM
   class Client
     def initialize
       @providers = {}
-      @conversations = {}
     end
 
-    def chat(messages, model: nil, temperature: 0.7, stream: false, &block)
+    def chat(messages, model: nil, temperature: 0.7, stream: false, tools: nil, &block)
+      # Convert any hash messages to Message objects
+      formatted_messages = messages.map do |msg|
+        msg.is_a?(Message) ? msg : Message.new(**msg)
+      end
+
       provider = provider_for(model)
       provider.chat(
-        messages,
+        formatted_messages,
         model: model,
         temperature: temperature,
         stream: stream,
+        tools: tools,
         &block
       )
-    end
-
-    def create_conversation(tools: [])
-      conversation = Conversation.new(tools: tools)
-      @conversations[conversation.id] = conversation
-      conversation
     end
 
     private

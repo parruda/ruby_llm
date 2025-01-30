@@ -49,8 +49,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '>= 13.0'
   spec.add_development_dependency 'rdoc'
   spec.add_development_dependency 'reline'
+  spec.add_development_dependency 'rspec', '~> 3.12'
   spec.add_development_dependency 'rubocop', '>= 1.0'
   spec.add_development_dependency 'rubocop-rake', '>= 0.6'
   spec.add_development_dependency 'simplecov', '>= 0.21'
+  spec.add_development_dependency 'webmock', '~> 3.18'
   spec.add_development_dependency 'yard', '>= 0.9'
 end
