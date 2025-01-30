@@ -35,6 +35,37 @@ module RubyLLM
         raise RubyLLM::Error, "API error: #{error_msg}"
       end
 
+      def list_models
+        response = @connection.get('/v1/models') do |req|
+          req.headers['Authorization'] = "Bearer #{RubyLLM.configuration.openai_api_key}"
+        end
+
+        raise RubyLLM::Error, "API error: #{parse_error_message(response)}" if response.status >= 400
+
+        capabilities = RubyLLM::ModelCapabilities::OpenAI.new
+        (response.body['data'] || []).map do |model|
+          ModelInfo.new(
+            id: model['id'],
+            created_at: Time.at(model['created']),
+            display_name: capabilities.format_display_name(model['id']),
+            provider: 'openai',
+            metadata: {
+              object: model['object'],
+              owned_by: model['owned_by']
+            },
+            context_window: capabilities.determine_context_window(model['id']),
+            max_tokens: capabilities.determine_max_tokens(model['id']),
+            supports_vision: capabilities.supports_vision?(model['id']),
+            supports_functions: capabilities.supports_functions?(model['id']),
+            supports_json_mode: capabilities.supports_json_mode?(model['id']),
+            input_price_per_million: capabilities.get_input_price(model['id']),
+            output_price_per_million: capabilities.get_output_price(model['id'])
+          )
+        end
+      rescue Faraday::Error => e
+        handle_error(e)
+      end
+
       private
 
       def tool_to_function(tool)

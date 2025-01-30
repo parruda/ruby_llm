@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'time'
+
 module RubyLLM
   module Providers
     class Anthropic < Base
@@ -22,6 +24,39 @@ module RubyLLM
         else
           create_chat_completion(payload, tools)
         end
+      end
+
+      def list_models
+        response = @connection.get('/v1/models') do |req|
+          req.headers['x-api-key'] = RubyLLM.configuration.anthropic_api_key
+          req.headers['anthropic-version'] = '2023-06-01'
+        end
+
+        raise RubyLLM::Error, "API error: #{parse_error_message(response)}" if response.status >= 400
+
+        capabilities = RubyLLM::ModelCapabilities::Anthropic.new
+        models_data = response.body['data'] || []
+
+        models_data.map do |model|
+          ModelInfo.new(
+            id: model['id'],
+            created_at: Time.parse(model['created_at']),
+            display_name: model['display_name'],
+            provider: 'anthropic',
+            metadata: {
+              type: model['type']
+            },
+            context_window: capabilities.determine_context_window(model['id']),
+            max_tokens: capabilities.determine_max_tokens(model['id']),
+            supports_vision: capabilities.supports_vision?(model['id']),
+            supports_functions: capabilities.supports_functions?(model['id']),
+            supports_json_mode: capabilities.supports_json_mode?(model['id']),
+            input_price_per_million: capabilities.get_input_price(model['id']),
+            output_price_per_million: capabilities.get_output_price(model['id'])
+          )
+        end
+      rescue Faraday::Error => e
+        handle_error(e)
       end
 
       private

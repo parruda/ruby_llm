@@ -11,10 +11,13 @@ module RubyLLM
   class Error < StandardError; end
 
   class << self
-    attr_accessor :configuration
+    attr_writer :configuration
+
+    def configuration
+      @configuration ||= Configuration.new
+    end
 
     def configure
-      self.configuration ||= Configuration.new
       yield(configuration) if block_given?
     end
 
@@ -25,34 +28,41 @@ module RubyLLM
     def loader
       @loader ||= begin
         loader = Zeitwerk::Loader.for_gem
+
+        # Add lib directory to the load path
         loader.push_dir(File.expand_path('..', __dir__))
+
+        # Configure custom inflections
         loader.inflector.inflect(
+          'ruby_llm' => 'RubyLLM',
           'llm' => 'LLM',
           'openai' => 'OpenAI',
           'api' => 'API'
         )
 
-        # Log the paths being loaded in development
+        # Ignore Rails-specific files and specs
+        loader.ignore("#{__dir__}/ruby_llm/railtie.rb")
+        loader.ignore("#{__dir__}/ruby_llm/active_record")
+        loader.ignore(File.expand_path('../spec', __dir__).to_s)
+
+        # Log autoloading in debug mode
         loader.logger = Logger.new($stdout) if ENV['RUBY_LLM_DEBUG']
+        loader.enable_reloading if ENV['RUBY_LLM_DEBUG']
 
         loader.setup
+        loader.eager_load
         loader
       end
     end
   end
 end
 
-# Setup Zeitwerk loader first
+# Initialize loader
 RubyLLM.loader
 
-# Then require core files explicitly
-require_relative 'ruby_llm/configuration'
-require_relative 'ruby_llm/message'
-require_relative 'ruby_llm/tool'
-require_relative 'ruby_llm/providers/base'
-require_relative 'ruby_llm/client'
-require_relative 'ruby_llm/conversation'
-
-# Load providers
-require_relative 'ruby_llm/providers/openai'
-require_relative 'ruby_llm/providers/anthropic'
+# Load Rails integration if Rails is defined
+if defined?(Rails)
+  require 'active_support'
+  require 'ruby_llm/railtie'
+  require 'ruby_llm/active_record/acts_as'
+end

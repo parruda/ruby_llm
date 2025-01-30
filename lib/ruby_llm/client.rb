@@ -24,10 +24,25 @@ module RubyLLM
       )
     end
 
+    def list_models(provider = nil)
+      if provider
+        provider_for(nil, provider).list_models
+      else
+        all_providers.flat_map(&:list_models)
+      end
+    end
+
     private
 
-    def provider_for(model)
-      provider_name = detect_provider(model)
+    def all_providers
+      [
+        provider_for(nil, :openai),
+        provider_for(nil, :anthropic)
+      ]
+    end
+
+    def provider_for(model, specific_provider = nil)
+      provider_name = specific_provider || detect_provider(model)
       @providers[provider_name] ||= case provider_name
                                     when :openai then Providers::OpenAI.new
                                     when :anthropic then Providers::Anthropic.new

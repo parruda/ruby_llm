@@ -28,7 +28,7 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
   config.warnings = true
 
-  config.before(:each) do
+  config.before do
     RubyLLM.configuration = RubyLLM::Configuration.new
     RubyLLM.configuration.openai_api_key = 'test-openai-key'
     RubyLLM.configuration.anthropic_api_key = 'test-anthropic-key'

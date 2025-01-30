@@ -10,6 +10,7 @@ RubyLLM provides a unified interface for interacting with various LLM providers 
 ## Features
 
 - 🤝 Unified interface for multiple LLM providers (OpenAI, Anthropic, etc.)
+- 📋 Comprehensive model listing and capabilities detection
 - 🛠️ Simple and flexible tool/function calling
 - 📊 Automatic token counting and tracking
 - 🔄 Streaming support
@@ -44,8 +45,32 @@ require 'ruby_llm'
 RubyLLM.configure do |config|
   config.openai_api_key = ENV['OPENAI_API_KEY']
   config.anthropic_api_key = ENV['ANTHROPIC_API_KEY']
-  config.default_model = 'gpt-4'
+  config.default_model = 'gpt-4o-mini'
 end
+```
+
+### Listing Available Models
+
+```ruby
+client = RubyLLM.client
+
+# List models from all providers
+all_models = client.list_models
+
+# List models from a specific provider
+openai_models = client.list_models(:openai)
+anthropic_models = client.list_models(:anthropic)
+
+# Access model information
+model = openai_models.first
+puts model.display_name
+puts "Context window: #{model.context_window}"
+puts "Maximum tokens: #{model.max_tokens}"
+puts "Input price per million tokens: $#{model.input_price_per_million}"
+puts "Output price per million tokens: $#{model.output_price_per_million}"
+puts "Supports vision: #{model.supports_vision}"
+puts "Supports function calling: #{model.supports_functions}"
+puts "Supports JSON mode: #{model.supports_json_mode}"
 ```
 
 ### Simple Chat

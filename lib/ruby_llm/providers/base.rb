@@ -41,6 +41,20 @@ module RubyLLM
       def handle_api_error(error)
         raise RubyLLM::Error, "API error: #{error.response[:status]}"
       end
+
+      def parse_error_message(response)
+        return "HTTP #{response.status}" unless response.body
+
+        if response.body.is_a?(String)
+          begin
+            JSON.parse(response.body).dig('error', 'message')
+          rescue StandardError
+            "HTTP #{response.status}"
+          end
+        else
+          response.body.dig('error', 'message') || "HTTP #{response.status}"
+        end
+      end
     end
   end
 end
