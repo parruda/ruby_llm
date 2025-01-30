@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require 'zeitwerk'
 require 'faraday'
 require 'json'
 
+# Main module for RubyLLM functionality
 module RubyLLM
   class Error < StandardError; end
 
@@ -32,5 +35,4 @@ module RubyLLM
   end
 end
 
-# Register inflections
 RubyLLM.loader

@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module RubyLLM
+  # Represents a conversation with an LLM
   class Conversation
     attr_reader :id, :messages, :tools
 

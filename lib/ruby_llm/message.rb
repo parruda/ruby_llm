@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module RubyLLM
+  # Represents a message in an LLM conversation
   class Message
     VALID_ROLES = %i[system user assistant tool].freeze
 
@@ -24,9 +27,9 @@ module RubyLLM
     private
 
     def validate!
-      unless VALID_ROLES.include?(role)
-        raise ArgumentError, "Invalid role: #{role}. Must be one of: #{VALID_ROLES.join(', ')}"
-      end
+      return if VALID_ROLES.include?(role)
+
+      raise ArgumentError, "Invalid role: #{role}. Must be one of: #{VALID_ROLES.join(', ')}"
     end
   end
 end

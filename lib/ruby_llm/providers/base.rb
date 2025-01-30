@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module RubyLLM
   module Providers
+    # Base provider class for LLM interactions
     class Base
       def initialize
         @connection = build_connection
@@ -23,9 +26,9 @@ module RubyLLM
       def handle_error(error)
         case error
         when Faraday::TimeoutError
-          raise RubyLLM::Error, "Request timed out"
+          raise RubyLLM::Error, 'Request timed out'
         when Faraday::ConnectionFailed
-          raise RubyLLM::Error, "Connection failed"
+          raise RubyLLM::Error, 'Connection failed'
         when Faraday::ClientError
           handle_api_error(error)
         else

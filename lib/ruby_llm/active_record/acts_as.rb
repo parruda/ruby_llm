@@ -1,21 +1,25 @@
+# frozen_string_literal: true
+
 module RubyLLM
   module ActiveRecord
+    # Provides ActsAs functionality for LLM-related models
     module ActsAs
-      def acts_as_llm_model(options = {})
+      def acts_as_llm_model(_options = {})
         include ModelMethods
       end
 
-      def acts_as_llm_conversation(options = {})
+      def acts_as_llm_conversation(_options = {})
         include ConversationMethods
         has_many :messages, -> { order(created_at: :asc) }
       end
 
-      def acts_as_llm_message(options = {})
+      def acts_as_llm_message(_options = {})
         include MessageMethods
         belongs_to :conversation
       end
     end
 
+    # Methods for LLM model functionality
     module ModelMethods
       extend ActiveSupport::Concern
 
@@ -31,6 +35,7 @@ module RubyLLM
       end
     end
 
+    # Methods for LLM conversation handling
     module ConversationMethods
       extend ActiveSupport::Concern
 
@@ -40,25 +45,32 @@ module RubyLLM
 
       def send_message(content, model: nil)
         transaction do
-          message = messages.create!(
-            role: :user,
-            content: content
-          )
-
-          response = RubyLLM.client.chat(
-            conversation_messages,
-            model: model || current_model
-          )
-
-          messages.create!(
-            role: :assistant,
-            content: response.content,
-            token_count: response.token_count
-          )
+          create_user_message(content)
+          create_assistant_response(model)
         end
       end
 
       private
+
+      def create_user_message(content)
+        messages.create!(
+          role: :user,
+          content: content
+        )
+      end
+
+      def create_assistant_response(model)
+        response = RubyLLM.client.chat(
+          conversation_messages,
+          model: model || current_model
+        )
+
+        messages.create!(
+          role: :assistant,
+          content: response.content,
+          token_count: response.token_count
+        )
+      end
 
       def conversation_messages
         messages.map(&:to_llm_format)
@@ -69,6 +81,7 @@ module RubyLLM
       end
     end
 
+    # Methods for LLM message handling
     module MessageMethods
       extend ActiveSupport::Concern
 

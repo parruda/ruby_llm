@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module RubyLLM
+  # Client class for handling LLM provider interactions
   class Client
     def initialize
       @providers = {}
@@ -7,14 +10,13 @@ module RubyLLM
 
     def chat(messages, model: nil, temperature: 1.0, stream: false, &block)
       provider = provider_for(model)
-      response = provider.chat(
+      provider.chat(
         messages,
         model: model,
         temperature: temperature,
         stream: stream,
         &block
       )
-      response
     end
 
     def create_conversation(tools: [])
@@ -28,11 +30,11 @@ module RubyLLM
     def provider_for(model)
       provider_name = detect_provider(model)
       @providers[provider_name] ||= case provider_name
-      when :openai then Providers::OpenAI.new
-      when :anthropic then Providers::Anthropic.new
-      else
-        raise Error, "Unsupported provider: #{provider_name}"
-      end
+                                    when :openai then Providers::OpenAI.new
+                                    when :anthropic then Providers::Anthropic.new
+                                    else
+                                      raise Error, "Unsupported provider: #{provider_name}"
+                                    end
     end
 
     def detect_provider(model)

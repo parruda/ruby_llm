@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 module RubyLLM
+  # Configuration class for RubyLLM settings
   class Configuration
-    attr_accessor :openai_api_key, :anthropic_api_key
-    attr_accessor :default_provider, :default_model
-    attr_accessor :request_timeout
+    attr_accessor :openai_api_key, :anthropic_api_key, :default_provider, :default_model, :request_timeout
 
     def initialize
       @request_timeout = 30
@@ -18,6 +19,7 @@ module RubyLLM
     end
   end
 
+  # Settings specific to individual LLM providers
   class ProviderSettings
     attr_accessor :api_key, :api_version, :default_model, :base_url
   end

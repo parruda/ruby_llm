@@ -1,6 +1,8 @@
-#!/usr/bin/env ruby
-require "bundler/setup"
-require "ruby_llm"
+# frozen_string_literal: true
 
-require "irb"
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require 'ruby_llm'
+
+require 'irb'
 IRB.start(__FILE__)
