@@ -8,7 +8,7 @@ module RubyLLM
       @conversations = {}
     end
 
-    def chat(messages, model: nil, temperature: 1.0, stream: false, &block)
+    def chat(messages, model: nil, temperature: 0.7, stream: false, &block)
       provider = provider_for(model)
       provider.chat(
         messages,

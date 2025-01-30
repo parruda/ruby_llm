@@ -42,9 +42,13 @@ Gem::Specification.new do |spec|
 
   # Development dependencies
   spec.add_development_dependency 'bundler', '>= 2.0'
+  spec.add_development_dependency 'dotenv'
+  spec.add_development_dependency 'irb'
   spec.add_development_dependency 'overcommit', '>= 0.66'
   spec.add_development_dependency 'pry', '>= 0.14'
   spec.add_development_dependency 'rake', '>= 13.0'
+  spec.add_development_dependency 'rdoc'
+  spec.add_development_dependency 'reline'
   spec.add_development_dependency 'rubocop', '>= 1.0'
   spec.add_development_dependency 'rubocop-rake', '>= 0.6'
   spec.add_development_dependency 'simplecov', '>= 0.21'
