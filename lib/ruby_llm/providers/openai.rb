@@ -116,9 +116,20 @@ module RubyLLM
           return create_chat_completion(payload.merge(messages: new_messages), tools)
         end
 
+        # Extract token usage from response
+        token_usage = if data['usage']
+                        {
+                          input_tokens: data['usage']['prompt_tokens'],
+                          output_tokens: data['usage']['completion_tokens'],
+                          total_tokens: data['usage']['total_tokens']
+                        }
+                      end
+
         Message.new(
           role: :assistant,
-          content: message_data['content']
+          content: message_data['content'],
+          token_usage: token_usage,
+          model_id: data['model']
         )
       end
 
@@ -150,6 +161,23 @@ module RubyLLM
 
         else
           raise error
+        end
+      end
+
+      def handle_api_error(error)
+        response_body = error.response[:body]
+        if response_body.is_a?(String)
+          begin
+            error_data = JSON.parse(response_body)
+            message = error_data.dig('error', 'message')
+            raise RubyLLM::Error, "API error: #{message}" if message
+          rescue JSON::ParserError
+            raise RubyLLM::Error, "API error: #{error.response[:status]}"
+          end
+        elsif response_body['error']
+          raise RubyLLM::Error, "API error: #{response_body['error']['message']}"
+        else
+          raise RubyLLM::Error, "API error: #{error.response[:status]}"
         end
       end
 
