@@ -1,4 +1,3 @@
-# ruby_llm.gemspec
 require_relative 'lib/ruby_llm/version'
 
 Gem::Specification.new do |spec|
@@ -34,9 +33,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "faraday-multipart", ">= 1.0"
   spec.add_dependency "zeitwerk", ">= 2.6"
 
-  # Optional Rails dependencies
-  spec.add_dependency "activesupport", ">= 6.0", "< 9.0", optional: true
-  spec.add_dependency "activerecord", ">= 6.0", "< 9.0", optional: true
+  # Rails integration dependencies
+  spec.add_development_dependency "activesupport", ">= 6.0", "< 9.0"
+  spec.add_development_dependency "activerecord", ">= 6.0", "< 9.0"
 
   # Development dependencies
   spec.add_development_dependency "bundler", ">= 2.0"
@@ -45,5 +44,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "yard", ">= 0.9"
   spec.add_development_dependency "simplecov", ">= 0.21"
   spec.add_development_dependency "pry", ">= 0.14"
-  spec.add_development_dependency "overcommit"
+  spec.add_development_dependency "overcommit", ">= 0.66"
 end
