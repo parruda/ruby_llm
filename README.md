@@ -30,13 +30,11 @@ require 'ruby_llm'
 RubyLLM.configure do |config|
   config.openai_api_key = ENV['OPENAI_API_KEY']
   config.anthropic_api_key = ENV['ANTHROPIC_API_KEY']
-  config.default_model = 'gpt-4o-mini' # OpenAI's efficient model
 end
 
 # Start a conversation
 chat = RubyLLM.chat
-response = chat.ask "What's the best way to learn Ruby?"
-puts response.content
+chat.ask "What's the best way to learn Ruby?"
 ```
 
 ## Available Models
@@ -45,12 +43,7 @@ RubyLLM gives you access to the latest models from multiple providers. Check wha
 
 ```ruby
 # List all available models
-RubyLLM.models.all.each do |model|
-  puts "#{model.display_name} (#{model.provider})"
-  puts "  Context window: #{model.context_window}"
-  puts "  Price: $#{model.input_price_per_million}/M tokens (input)"
-  puts "        $#{model.output_price_per_million}/M tokens (output)"
-end
+RubyLLM.models.all
 
 # Get models by type
 chat_models = RubyLLM.models.chat_models
@@ -64,7 +57,7 @@ image_models = RubyLLM.models.image_models
 Conversations are simple and natural, with automatic token counting built right in:
 
 ```ruby
-chat = RubyLLM.chat model: 'claude-3-opus-20240229'
+chat = RubyLLM.chat model: 'claude-3-5-sonnet-20241022'
 
 # Single messages with token tracking
 response = chat.ask "What's your favorite Ruby feature?"
@@ -89,12 +82,12 @@ puts "Conversation used #{last_message.input_tokens} input tokens and #{last_mes
 RubyLLM gives you easy access to model capabilities:
 
 ```ruby
-model = RubyLLM.models.find 'claude-3-opus-20240229'
+model = RubyLLM.models.find 'claude-3-5-sonnet-20241022'
 
-model.context_window     # => 200000
-model.max_tokens        # => 4096
-model.supports_vision?  # => true
-model.supports_json_mode? # => true
+model.context_window      # => 200000
+model.max_tokens          # => 8192
+model.supports_vision     # => true
+model.supports_json_mode  # => true
 ```
 
 ## Coming Soon
