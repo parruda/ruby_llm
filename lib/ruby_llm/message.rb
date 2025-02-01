@@ -1,20 +1,29 @@
 # frozen_string_literal: true
 
 module RubyLLM
-  # Represents a message in a conversation with an LLM, including role, content and optional tool interactions
   class Message
-    VALID_ROLES = %i[system user assistant tool].freeze
+    ROLES = %i[system user assistant tool].freeze
 
-    attr_reader :role, :content, :tool_calls, :tool_results, :token_usage, :model_id
+    attr_reader :role, :content, :tool_calls, :tool_results, :input_tokens, :output_tokens, :model_id
 
-    def initialize(role:, content: nil, tool_calls: nil, tool_results: nil, token_usage: nil, model_id: nil)
-      @role = role.to_sym
-      @content = content
-      @tool_calls = tool_calls
-      @tool_results = tool_results
-      @token_usage = token_usage
-      @model_id = model_id
-      validate!
+    def initialize(options = {})
+      @role = options[:role].to_sym
+      @content = options[:content]
+      @tool_calls = options[:tool_calls]
+      @tool_results = options[:tool_results]
+      @input_tokens = options[:input_tokens]
+      @output_tokens = options[:output_tokens]
+      @model_id = options[:model_id]
+
+      ensure_valid_role
+    end
+
+    def tool_call?
+      !tool_calls.nil? && !tool_calls.empty?
+    end
+
+    def tool_result?
+      !tool_results.nil? && !tool_results.empty?
     end
 
     def to_h
@@ -23,18 +32,16 @@ module RubyLLM
         content: content,
         tool_calls: tool_calls,
         tool_results: tool_results,
-        token_usage: token_usage,
+        input_tokens: input_tokens,
+        output_tokens: output_tokens,
         model_id: model_id
       }.compact
     end
 
     private
 
-    def validate!
-      return if VALID_ROLES.include?(role)
-
-      raise ArgumentError,
-            "Invalid role: #{role}. Must be one of: #{VALID_ROLES.join(', ')}"
+    def ensure_valid_role
+      raise Error, "Expected role to be one of: #{ROLES.join(', ')}" unless ROLES.include?(role)
     end
   end
 end

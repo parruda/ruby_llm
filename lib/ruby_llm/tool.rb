@@ -1,75 +1,96 @@
 # frozen_string_literal: true
 
 module RubyLLM
-  # Represents a tool/function that can be called by an LLM
   class Tool
-    attr_reader :name, :description, :parameters, :handler
+    class Parameter
+      attr_reader :name, :type, :description, :required
 
-    def self.from_method(method_object, description: nil, parameter_descriptions: {})
-      method_params = {}
-      method_object.parameters.each do |param_type, param_name|
-        next unless %i[req opt key keyreq].include?(param_type)
-
-        method_params[param_name] = {
-          type: 'string',
-          description: parameter_descriptions[param_name] || param_name.to_s.tr('_', ' '),
-          required: %i[req keyreq].include?(param_type)
-        }
+      def initialize(name, type: 'string', description: nil, required: true)
+        @name = name
+        @type = type
+        @description = description
+        @required = required
       end
 
-      new(
-        name: method_object.name.to_s,
-        description: description || "Executes the #{method_object.name} operation",
-        parameters: method_params
-      ) do |args|
-        # Create an instance if it's an instance method
-        instance = if method_object.owner.instance_methods.include?(method_object.name)
-                     method_object.owner.new
-                   else
-                     method_object.owner
-                   end
+      def to_h
+        {
+          type: type,
+          description: description,
+          required: required
+        }.compact
+      end
+    end
 
-        # Call the method with the arguments
-        if args.is_a?(Hash)
-          instance.method(method_object.name).call(**args)
-        else
-          instance.method(method_object.name).call(args)
+    class Builder
+      def initialize(tool)
+        @tool = tool
+      end
+
+      def description(text)
+        @tool.instance_variable_set(:@description, text)
+        self
+      end
+
+      def param(name, type: 'string', description: nil, required: true)
+        @tool.parameters[name] = Parameter.new(name, type: type, description: description, required: required)
+        self
+      end
+
+      def handler(&block)
+        @tool.instance_variable_set(:@handler, block)
+        @tool
+      end
+    end
+
+    attr_reader :name, :description, :parameters, :handler
+
+    def self.define(name, &block)
+      tool = new(name)
+      builder = Builder.new(tool)
+      builder.instance_eval(&block)
+      tool
+    end
+
+    def initialize(name)
+      @name = name
+      @parameters = {}
+    end
+
+    def call(args)
+      raise Error, "No handler defined for tool #{name}" unless @handler
+
+      begin
+        args = symbolize_keys(args)
+        @handler.call(args)
+      rescue StandardError => e
+        { error: e.message }
+      end
+    end
+
+    class << self
+      def from_method(method, description: nil)
+        define(method.name.to_s) do
+          description description if description
+
+          method.parameters.each do |type, name|
+            param name, required: (type == :req)
+          end
+
+          handler do |args|
+            method.owner.new.public_send(method.name, **args)
+          end
         end
       end
     end
 
-    def initialize(name:, description:, parameters: {}, &block)
-      @name = name
-      @description = description
-      @parameters = parameters
-      @handler = block
-
-      validate!
-    end
-
-    def call(args)
-      validated_args = validate_args!(args)
-      handler.call(validated_args)
-    end
-
     private
 
-    def validate!
-      raise ArgumentError, 'Name must be a string' unless name.is_a?(String)
-      raise ArgumentError, 'Description must be a string' unless description.is_a?(String)
-      raise ArgumentError, 'Parameters must be a hash' unless parameters.is_a?(Hash)
-      raise ArgumentError, 'Block must be provided' unless handler.respond_to?(:call)
-    end
-
-    def validate_args!(args)
-      args = args.transform_keys(&:to_sym)
-      required_params = parameters.select { |_, v| v[:required] }.keys
-
-      required_params.each do |param|
-        raise ArgumentError, "Missing required parameter: #{param}" unless args.key?(param.to_sym)
+    def symbolize_keys(hash)
+      hash.transform_keys do |key|
+        key.to_sym
+      rescue StandardError
+        key
       end
-
-      args
     end
   end
 end

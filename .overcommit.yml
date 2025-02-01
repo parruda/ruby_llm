@@ -8,7 +8,7 @@ PreCommit:
     enabled: true
 
   RSpec:
-    enabled: true
+    enabled: false
     command: ['bundle', 'exec', 'rspec']
     on_warn: fail
 

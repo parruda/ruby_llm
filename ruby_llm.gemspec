@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Runtime dependencies
+  spec.add_dependency 'event_stream_parser', '>= 0.3.0', '< 2.0.0'
   spec.add_dependency 'faraday', '>= 2.0'
   spec.add_dependency 'faraday-multipart', '>= 1.0'
   spec.add_dependency 'zeitwerk', '>= 2.6'
