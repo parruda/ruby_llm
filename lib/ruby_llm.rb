@@ -28,7 +28,7 @@ module RubyLLM
     end
 
     def logger
-      @logger ||= Logger.new($stdout)
+      @logger ||= Logger.new($stdout, level: ENV['RUBY_LLM_DEBUG'] == 'true' ? Logger::DEBUG : Logger::INFO)
     end
   end
 end
