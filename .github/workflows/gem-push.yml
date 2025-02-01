@@ -11,7 +11,7 @@ jobs:
     uses: ./.github/workflows/test.yml
 
   build:
-    # needs: test # This ensures tests must pass before building/publishing
+    needs: test # This ensures tests must pass before building/publishing
     name: Build + Publish
     runs-on: ubuntu-latest
     permissions:

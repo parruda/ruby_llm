@@ -8,18 +8,19 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Carmine Paolino']
   spec.email         = ['carmine@paolino.me']
 
-  spec.summary       = 'The Ruby LLM client library - unified interface for OpenAI, Anthropic, and other LLM providers'
-  spec.description   = 'Complete Ruby library for working with Large Language Models (LLMs). ' \
-                       'Supports OpenAI, Anthropic, and others with a consistent interface. ' \
-                       'Features include tool usage, token tracking, and seamless Rails integration.'
+  spec.summary       = 'Clean Ruby interface to modern AI language models'
+  spec.description   = 'A delightful Ruby way to work with AI language models. Provides a unified interface to OpenAI' \
+                       ' and Anthropic models with automatic token counting, proper streaming support, and a focus on' \
+                       ' developer happiness. No wrapping your head around multiple APIs - just clean Ruby code that' \
+                       ' works.'
   spec.homepage      = 'https://github.com/crmne/ruby_llm'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.7.0')
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage
-  spec.metadata['changelog_uri'] = "#{spec.homepage}/blob/main/CHANGELOG.md"
-  spec.metadata['documentation_uri'] = 'https://rubydoc.info/gems/ruby_llm'
+  spec.metadata['changelog_uri'] = "#{spec.homepage}/commits/main"
+  spec.metadata['documentation_uri'] = spec.homepage
   spec.metadata['bug_tracker_uri'] = "#{spec.homepage}/issues"
 
   # Specify which files should be added to the gem when it is released.
