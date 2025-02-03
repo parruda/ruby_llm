@@ -60,9 +60,13 @@ module RubyLLM
       raise Error, "No handler defined for tool #{name}" unless @handler
 
       begin
+        RubyLLM.logger.debug "Calling tool #{name}(#{args.inspect})"
         args = symbolize_keys(args)
-        @handler.call(args)
+        result = @handler.call(args)
+        RubyLLM.logger.debug "Tool #{name}(#{args.inspect}) returned: #{result.inspect}"
+        result
       rescue StandardError => e
+        RubyLLM.logger.error "Tool #{name}(#{args.inspect}) failed with error #{e.message}"
         { error: e.message }
       end
     end
