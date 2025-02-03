@@ -77,6 +77,38 @@ last_message = chat.messages.last
 puts "Conversation used #{last_message.input_tokens} input tokens and #{last_message.output_tokens} output tokens"
 ```
 
+## Using Tools
+
+Give your AI superpowers by letting it use Ruby tools. This opens up a world of possibilities - from performing calculations to fetching data:
+
+```ruby
+# Define a calculator tool
+calculator = RubyLLM::Tool.define "calculate" do
+  description "Performs basic arithmetic calculations"
+  param :expression, type: "string"
+  handler do |args|
+    eval(args[:expression]).to_s
+  rescue => e
+    { error: "Invalid expression: #{e.message}" }
+  end
+end
+
+# Use the tool in a conversation
+chat = RubyLLM.chat.with_tool calculator
+
+# The model will automatically use the tool when needed
+chat.ask "What's 2+2?"
+# => "The result of 2 + 2 is 4."
+
+chat.ask "and what's 2+100000000000?"
+# => "The result of 2 + 100,000,000,000 is 100,000,000,002."
+
+# Add multiple tools
+chat.with_tools calculator, other_tool, another_tool
+```
+
+Tools let you seamlessly integrate Ruby code with AI capabilities. Define tools for anything - database queries, API calls, custom business logic - and let the AI use them naturally in conversation.
+
 ## Choosing the Right Model
 
 RubyLLM gives you easy access to model capabilities:
@@ -93,7 +125,6 @@ model.supports_json_mode  # => true
 ## Coming Soon
 
 - Rails integration for seamless database and Active Record support
-- Function calling / tool use capabilities
 - Automatic retries and error handling
 - Much more!
 
