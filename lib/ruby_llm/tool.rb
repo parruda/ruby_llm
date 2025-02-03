@@ -53,15 +53,14 @@ module RubyLLM
 
     def call(args)
       RubyLLM.logger.debug "Tool #{name} called with: #{args.inspect}"
-      result = execute(args.transform_keys(&:to_sym))
+      symbolized_args = args.transform_keys(&:to_sym)
+      result = execute(**symbolized_args)
       RubyLLM.logger.debug "Tool #{name} returned: #{result.inspect}"
       result
     rescue StandardError => e
       RubyLLM.logger.error "Tool #{name} failed with error: #{e.message}"
       { error: e.message }
     end
-
-    private
 
     def execute(args)
       raise NotImplementedError, 'Subclasses must implement #execute'

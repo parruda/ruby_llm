@@ -90,10 +90,8 @@ class CalculatorTool < RubyLLM::Tool
     required: true,
     desc: "A mathematical expression to evaluate (e.g. '2 + 2')"
 
-  private
-
-  def execute(args)
-    eval(args[:expression]).to_s
+  def execute(expression:)
+    eval(expression).to_s
   end
 end
 ```
