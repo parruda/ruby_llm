@@ -26,6 +26,10 @@ module RubyLLM
       !tool_call_id.nil? && !tool_call_id.empty?
     end
 
+    def tool_result
+      content if tool_result?
+    end
+
     def to_h
       {
         role: role,

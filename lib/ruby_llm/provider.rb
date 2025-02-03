@@ -8,48 +8,49 @@ module RubyLLM
 
     module InstanceMethods
       def complete(messages, tools: [], model: nil, &block)
-        # TODO: refactor
-        payload = build_payload(messages, tools, model: model, stream: block_given?)
-
-        content = String.new
-        model_id = nil
-        input_tokens = 0
-        output_tokens = 0
-        response = connection.post(completion_url, payload) do |req|
-          req.headers.merge! headers
-          if block_given?
-            req.options.on_data = handle_stream do |chunk|
-              model_id ||= chunk.model_id
-              content << (chunk.content || '')
-              input_tokens += chunk.input_tokens if chunk.input_tokens
-              output_tokens += chunk.output_tokens if chunk.output_tokens
-              block.call(chunk)
-            end
-          end
-        end
+        payload = build_payload messages, tools, model: model, stream: block_given?
 
         if block_given?
-          Message.new(
-            role: :assistant,
-            content: content,
-            model_id: model_id,
-            input_tokens: input_tokens.positive? ? input_tokens : nil,
-            output_tokens: output_tokens.positive? ? output_tokens : nil
-          )
+          stream_response payload, &block
         else
-          parse_completion_response(response)
+          sync_response payload
         end
       end
 
       def list_models
         response = connection.get(models_url) do |req|
-          req.headers.merge!(headers)
+          req.headers.merge! headers
         end
 
-        parse_list_models_response(response)
+        parse_list_models_response response
       end
 
       private
+
+      def sync_response(payload)
+        response = post payload
+        parse_completion_response response
+      end
+
+      def stream_response(payload, &block)
+        accumulator = StreamAccumulator.new
+
+        post payload do |req|
+          req.options.on_data = handle_stream do |chunk|
+            accumulator.add chunk
+            block.call chunk
+          end
+        end
+
+        accumulator.to_message
+      end
+
+      def post(payload)
+        connection.post completion_url, payload do |req|
+          req.headers.merge! headers
+          yield req if block_given?
+        end
+      end
 
       def connection
         @connection ||= Faraday.new(api_base) do |f|

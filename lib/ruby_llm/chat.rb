@@ -8,10 +8,12 @@ module RubyLLM
 
     def initialize(model: nil)
       model_id = model || RubyLLM.config.default_model
-      @model = Models.find(model_id)
-      @provider = Models.provider_for(model_id)
+      @model = Models.find model_id
+      @provider = Models.provider_for model_id
       @messages = []
-      @tools = []
+      @tools = {}
+
+      ensure_valid_tools
     end
 
     def ask(message, &block)
@@ -19,21 +21,19 @@ module RubyLLM
       complete(&block)
     end
 
-    def tool(tool)
+    alias say ask
+
+    def with_tool(tool)
       raise Error, "Model #{@model.id} doesn't support function calling" unless @model.supports_functions
 
-      @tools << tool
+      @tools[tool.name] = tool
       self
     end
 
-    alias with_tool tool
-
-    def tools(*tools)
-      tools.each { |tool| self.tool(tool) }
+    def with_tools(*tools)
+      tools.each { |tool| with_tool tool }
       self
     end
-
-    alias with_tools tools
 
     def each(&block)
       messages.each(&block)
@@ -45,30 +45,27 @@ module RubyLLM
       response = @provider.complete(messages, tools: @tools, model: @model.id, &block)
 
       if response.tool_call?
-        handle_tool_calls(response)
+        handle_tool_calls response
       else
-        add_message(response)
+        add_message response
         response
       end
     end
 
     def handle_tool_calls(response)
-      add_message(response)
+      add_message response
 
-      response.tool_calls.each do |tool_call|
-        result = execute_tool(tool_call)
-        add_tool_result(tool_call[:id], result) if result
+      response.tool_calls.each_value do |tool_call|
+        result = execute_tool tool_call
+        add_tool_result tool_call.id, result if result
       end
 
-      # Get final response after tool calls
       complete
     end
 
     def execute_tool(tool_call)
-      tool = @tools.find { |t| t.name == tool_call[:name] }
-      return unless tool
-
-      args = JSON.parse(tool_call[:arguments], symbolize_names: true)
+      tool = tools[tool_call.name]
+      args = tool_call.arguments
       tool.call(args)
     end
 
@@ -84,6 +81,14 @@ module RubyLLM
         content: result.is_a?(Hash) && result[:error] ? result[:error] : result.to_s,
         tool_call_id: tool_use_id
       )
+    end
+
+    def ensure_valid_tools
+      tools.each_key do |name|
+        unless name.is_a?(String) && tools[name].is_a?(RubyLLM::Tool)
+          raise Error, 'Tools should be of the format {<name>: <RubyLLM::Tool>}'
+        end
+      end
     end
   end
 end

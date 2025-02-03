@@ -33,7 +33,7 @@ module RubyLLM
           stream: stream
         }.tap do |payload|
           if tools.any?
-            payload[:tools] = tools.map { |t| tool_for(t) }
+            payload[:tools] = tools.map { |_, tool| tool_for(tool) }
             payload[:tool_choice] = 'auto'
           end
         end
@@ -51,15 +51,15 @@ module RubyLLM
       end
 
       def format_tool_calls(tool_calls)
-        return nil unless tool_calls
+        return nil unless tool_calls&.any?
 
-        tool_calls.map do |tc|
+        tool_calls.map do |_, tc|
           {
-            id: tc[:id],
+            id: tc.id,
             type: 'function',
             function: {
-              name: tc[:name],
-              arguments: tc[:arguments]
+              name: tc.name,
+              arguments: JSON.generate(tc.arguments)
             }
           }
         end
@@ -104,15 +104,18 @@ module RubyLLM
         )
       end
 
-      def parse_tool_calls(tool_calls)
+      def parse_tool_calls(tool_calls, parse_arguments: true)
         return nil unless tool_calls&.any?
 
-        tool_calls.map do |tc|
-          {
-            id: tc['id'],
-            name: tc.dig('function', 'name'),
-            arguments: tc.dig('function', 'arguments')
-          }
+        tool_calls.to_h do |tc|
+          [
+            tc['id'],
+            ToolCall.new(
+              id: tc['id'],
+              name: tc.dig('function', 'name'),
+              arguments: parse_arguments ? JSON.parse(tc.dig('function', 'arguments')) : tc.dig('function', 'arguments')
+            )
+          ]
         end
       end
 
@@ -140,7 +143,8 @@ module RubyLLM
             Chunk.new(
               role: :assistant,
               model_id: data['model'],
-              content: data.dig('choices', 0, 'delta', 'content')
+              content: data.dig('choices', 0, 'delta', 'content'),
+              tool_calls: parse_tool_calls(data.dig('choices', 0, 'delta', 'tool_calls'), parse_arguments: false)
             )
           )
         end
