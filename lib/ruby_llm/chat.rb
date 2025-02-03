@@ -45,14 +45,14 @@ module RubyLLM
       response = @provider.complete(messages, tools: @tools, model: @model.id, &block)
 
       if response.tool_call?
-        handle_tool_calls response
+        handle_tool_calls response, &block
       else
         add_message response
         response
       end
     end
 
-    def handle_tool_calls(response)
+    def handle_tool_calls(response, &block)
       add_message response
 
       response.tool_calls.each_value do |tool_call|
@@ -60,7 +60,7 @@ module RubyLLM
         add_tool_result tool_call.id, result if result
       end
 
-      complete
+      complete(&block)
     end
 
     def execute_tool(tool_call)
