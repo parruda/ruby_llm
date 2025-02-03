@@ -26,7 +26,7 @@ module RubyLLM
       !tool_call_id.nil? && !tool_call_id.empty?
     end
 
-    def tool_result
+    def tool_results
       content if tool_result?
     end
 

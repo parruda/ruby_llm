@@ -34,7 +34,7 @@ module RubyLLM
           stream: stream,
           max_tokens: RubyLLM.models.find(model).max_tokens
         }.tap do |payload|
-          payload[:tools] = tools.map { |t| function_for(t) } if tools.any?
+          payload[:tools] = tools.values.map { |t| function_for(t) } if tools.any?
         end
       end
 
@@ -42,26 +42,32 @@ module RubyLLM
         data = response.body
         content_blocks = data['content'] || []
 
-        text_content = content_blocks.find { |c| c['type'] == 'text' }&.fetch('text', '')
+        text_blocks = content_blocks.select { |c| c['type'] == 'text' }
+        text_content = text_blocks.map { |c| c['text'] }.join('')
+
         tool_use = content_blocks.find { |c| c['type'] == 'tool_use' }
 
         if tool_use
           Message.new(
             role: :assistant,
             content: text_content,
-            tool_calls: [
-              {
+            tool_calls: {
+              tool_use['id'] => ToolCall.new(
+                id: tool_use['id'],
                 name: tool_use['name'],
-                arguments: JSON.generate(tool_use['input'] || {})
-              }
-            ]
+                arguments: tool_use['input']
+              )
+            },
+            input_tokens: data.dig('usage', 'input_tokens'),
+            output_tokens: data.dig('usage', 'output_tokens'),
+            model_id: data['model']
           )
         else
           Message.new(
             role: :assistant,
             content: text_content,
-            input_tokens: data['usage']['input_tokens'],
-            output_tokens: data['usage']['output_tokens'],
+            input_tokens: data.dig('usage', 'input_tokens'),
+            output_tokens: data.dig('usage', 'output_tokens'),
             model_id: data['model']
           )
         end
@@ -116,16 +122,31 @@ module RubyLLM
 
       def format_messages(messages)
         messages.map do |msg|
-          if msg.tool_results
+          if msg.tool_call?
             {
-              role: convert_role(msg.role),
+              role: 'assistant',
+              content: [
+                {
+                  type: 'text',
+                  text: msg.content
+                },
+                {
+                  type: 'tool_use',
+                  id: msg.tool_calls.values.first.id,
+                  name: msg.tool_calls.values.first.name,
+                  input: msg.tool_calls.values.first.arguments
+                }
+              ]
+            }
+          elsif msg.tool_result?
+            {
+              role: 'user',
               content: [
                 {
                   type: 'tool_result',
-                  tool_use_id: msg.tool_results[:tool_use_id],
-                  content: msg.tool_results[:content],
-                  is_error: msg.tool_results[:is_error]
-                }.compact
+                  tool_use_id: msg.tool_call_id,
+                  content: msg.content
+                }
               ]
             }
           else
@@ -139,19 +160,23 @@ module RubyLLM
 
       def convert_role(role)
         case role
+        when :tool then 'user'
         when :user then 'user'
         else 'assistant'
         end
       end
 
       def clean_parameters(parameters)
-        parameters.transform_values do |props|
-          props.except(:required)
+        parameters.transform_values do |param|
+          {
+            type: param.type,
+            description: param.description
+          }.compact
         end
       end
 
       def required_parameters(parameters)
-        parameters.select { |_, props| props[:required] }.keys
+        parameters.select { |_, param| param.required }.keys
       end
     end
   end

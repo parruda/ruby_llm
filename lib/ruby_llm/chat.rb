@@ -57,17 +57,15 @@ module RubyLLM
     def complete(&block)
       response = @provider.complete messages, tools: @tools, temperature: @temperature, model: @model.id, &block
 
+      add_message response
       if response.tool_call?
         handle_tool_calls response, &block
       else
-        add_message response
         response
       end
     end
 
     def handle_tool_calls(response, &block)
-      add_message response
-
       response.tool_calls.each_value do |tool_call|
         result = execute_tool tool_call
         add_tool_result tool_call.id, result if result
