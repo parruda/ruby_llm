@@ -79,7 +79,7 @@ puts "Conversation used #{last_message.input_tokens} input tokens and #{last_mes
 
 ## Using Tools
 
-Give Claude some Ruby superpowers by letting it call your code. Simply create a tool class:
+Give Claude some Ruby superpowers by letting it call your code. Simply create tool classes that do one thing well:
 
 ```ruby
 class CalculatorTool < RubyLLM::Tool
@@ -94,22 +94,44 @@ class CalculatorTool < RubyLLM::Tool
     eval(expression).to_s
   end
 end
+
+class DocumentSearchTool < RubyLLM::Tool
+  description "Searches documents by similarity"
+
+  param :query,
+    type: :string,
+    desc: "The search query"
+
+  param :limit,
+    type: :integer,
+    desc: "Number of results to return",
+    required: false
+
+  def initialize(document_class:)
+    @document_class = document_class
+  end
+
+  def execute(query:, limit: 5)
+    @document_class.similarity_search(query:, k: limit)
+  end
+end
 ```
 
-Then use it in your conversations:
+Then use them in your conversations:
 
 ```ruby
-chat = RubyLLM.chat.with_tool(CalculatorTool)
+# Simple tools just work
+chat = RubyLLM.chat.with_tool(CalculatorTool.new)
 
-# Claude will automatically use the calculator when appropriate
+# Tools with dependencies are just regular Ruby objects
+search = DocumentSearchTool.new(document_class: Document)
+chat.with_tools(search, CalculatorTool.new)
+
 chat.ask "What's 2+2?"
 # => "Let me calculate that for you. The result is 4."
 
-chat.ask "If I have 3 apples and multiply them by 5, how many do I have?"
-# => "Let me help you calculate that. 3 × 5 = 15, so you would have 15 apples."
-
-# Add multiple tools
-chat.with_tools(CalculatorTool, WeatherTool, DatabaseTool)
+chat.ask "Find documents about Ruby performance"
+# => "I found these relevant documents about Ruby performance..."
 ```
 
 Tools let you seamlessly integrate your Ruby code with AI capabilities. The model will automatically decide when to use your tools and handle the results appropriately.
