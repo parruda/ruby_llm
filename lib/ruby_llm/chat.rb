@@ -48,9 +48,8 @@ module RubyLLM
         handle_tool_calls(response)
       else
         add_message(response)
+        response
       end
-
-      response
     end
 
     def handle_tool_calls(response)
@@ -62,9 +61,7 @@ module RubyLLM
       end
 
       # Get final response after tool calls
-      final_response = complete
-      add_message(final_response)
-      final_response
+      complete
     end
 
     def execute_tool(tool_call)
@@ -83,12 +80,9 @@ module RubyLLM
 
     def add_tool_result(tool_use_id, result)
       add_message(
-        role: :user,
-        tool_results: {
-          tool_use_id: tool_use_id,
-          content: result.is_a?(Hash) && result[:error] ? result[:error] : result.to_s,
-          is_error: result.is_a?(Hash) && result[:error]
-        }
+        role: :tool,
+        content: result.is_a?(Hash) && result[:error] ? result[:error] : result.to_s,
+        tool_call_id: tool_use_id
       )
     end
   end

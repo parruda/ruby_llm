@@ -44,7 +44,8 @@ module RubyLLM
           {
             role: msg.role.to_s,
             content: msg.content,
-            tool_calls: format_tool_calls(msg.tool_calls)
+            tool_calls: format_tool_calls(msg.tool_calls),
+            tool_call_id: msg.tool_call_id
           }.compact
         end
       end
