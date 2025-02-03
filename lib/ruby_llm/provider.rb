@@ -7,8 +7,8 @@ module RubyLLM
     end
 
     module InstanceMethods
-      def complete(messages, tools: [], model: nil, &block)
-        payload = build_payload messages, tools, model: model, stream: block_given?
+      def complete(messages, tools:, temperature:, model:, &block)
+        payload = build_payload messages, tools: tools, temperature: temperature, model: model, stream: block_given?
 
         if block_given?
           stream_response payload, &block

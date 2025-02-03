@@ -25,7 +25,7 @@ module RubyLLM
         '/v1/models'
       end
 
-      def build_payload(messages, tools, model:, temperature: 0.7, stream: false)
+      def build_payload(messages, tools:, temperature:, model:, stream: false)
         {
           model: model,
           messages: format_messages(messages),

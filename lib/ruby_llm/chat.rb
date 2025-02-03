@@ -10,6 +10,7 @@ module RubyLLM
       model_id = model || RubyLLM.config.default_model
       @model = Models.find model_id
       @provider = Models.provider_for model_id
+      @temperature = 0.7
       @messages = []
       @tools = {}
 
@@ -26,13 +27,24 @@ module RubyLLM
     def with_tool(tool)
       raise Error, "Model #{@model.id} doesn't support function calling" unless @model.supports_functions
 
-      tool_instance = tool.is_a?(Class) ? tool.to_tool : tool
+      tool_instance = tool.is_a?(Class) ? tool.new : tool
       @tools[tool_instance.name.to_sym] = tool_instance
       self
     end
 
     def with_tools(*tools)
       tools.each { |tool| with_tool tool }
+      self
+    end
+
+    def with_model(model_id)
+      @model = Models.find model_id
+      @provider = Models.provider_for model_id
+      self
+    end
+
+    def with_temperature(temperature)
+      @temperature = temperature
       self
     end
 
@@ -43,7 +55,7 @@ module RubyLLM
     private
 
     def complete(&block)
-      response = @provider.complete(messages, tools: @tools, model: @model.id, &block)
+      response = @provider.complete messages, tools: @tools, temperature: @temperature, model: @model.id, &block
 
       if response.tool_call?
         handle_tool_calls response, &block

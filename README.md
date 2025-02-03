@@ -121,11 +121,11 @@ Then use them in your conversations:
 
 ```ruby
 # Simple tools just work
-chat = RubyLLM.chat.with_tool(CalculatorTool.new)
+chat = RubyLLM.chat.with_tool(CalculatorTool)
 
 # Tools with dependencies are just regular Ruby objects
 search = DocumentSearchTool.new(document_class: Document)
-chat.with_tools(search, CalculatorTool.new)
+chat.with_tools(search, CalculatorTool)
 
 chat.ask "What's 2+2?"
 # => "Let me calculate that for you. The result is 4."
