@@ -1,100 +1,90 @@
 # frozen_string_literal: true
 
+# lib/ruby_llm/tool.rb
 module RubyLLM
   class Tool
-    class Parameter
-      attr_reader :name, :type, :description, :required
+    class << self
+      def description(text = nil)
+        return @description unless text
 
-      def initialize(name, type: 'string', description: nil, required: true)
-        @name = name
-        @type = type
-        @description = description
-        @required = required
+        @description = text
       end
 
-      def to_h
-        {
-          type: type,
-          description: description,
+      def param(name, type:, desc: nil, required: true)
+        param = Parameter.new(
+          name,
+          type: type.to_s,
+          description: desc,
           required: required
-        }.compact
-      end
-    end
-
-    class Builder
-      def initialize(tool)
-        @tool = tool
+        )
+        parameters[name] = param
       end
 
-      def description(text)
-        @tool.instance_variable_set(:@description, text)
-        self
+      def parameters
+        @parameters ||= {}
       end
 
-      def param(name, type: 'string', description: nil, required: true)
-        @tool.parameters[name] = Parameter.new(name, type: type, description: description, required: required)
-        self
+      def name
+        super
+          .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+          .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+          .downcase
+          .delete_suffix('_tool')
       end
 
-      def handler(&block)
-        @tool.instance_variable_set(:@handler, block)
-        @tool
+      def to_tool
+        tool_instance = new
+
+        def tool_instance.name
+          self.class.name
+        end
+
+        def tool_instance.description
+          self.class.description
+        end
+
+        def tool_instance.parameters
+          self.class.parameters
+        end
+
+        tool_instance
       end
-    end
-
-    attr_reader :name, :description, :parameters, :handler
-
-    def self.define(name, &block)
-      tool = new(name)
-      builder = Builder.new(tool)
-      builder.instance_eval(&block)
-      tool
-    end
-
-    def initialize(name)
-      @name = name
-      @parameters = {}
     end
 
     def call(args)
-      raise Error, "No handler defined for tool #{name}" unless @handler
-
-      begin
-        RubyLLM.logger.debug "Calling tool #{name}(#{args.inspect})"
-        args = symbolize_keys(args)
-        result = @handler.call(args)
-        RubyLLM.logger.debug "Tool #{name}(#{args.inspect}) returned: #{result.inspect}"
-        result
-      rescue StandardError => e
-        RubyLLM.logger.error "Tool #{name}(#{args.inspect}) failed with error #{e.message}"
-        { error: e.message }
-      end
-    end
-
-    class << self
-      def from_method(method, description: nil)
-        define(method.name.to_s) do
-          description description if description
-
-          method.parameters.each do |type, name|
-            param name, required: (type == :req)
-          end
-
-          handler do |args|
-            method.owner.new.public_send(method.name, **args)
-          end
-        end
-      end
+      RubyLLM.logger.debug "Tool #{name} called with: #{args.inspect}"
+      result = execute(args.transform_keys(&:to_sym))
+      RubyLLM.logger.debug "Tool #{name} returned: #{result.inspect}"
+      result
+    rescue StandardError => e
+      RubyLLM.logger.error "Tool #{name} failed with error: #{e.message}"
+      { error: e.message }
     end
 
     private
 
-    def symbolize_keys(hash)
-      hash.transform_keys do |key|
-        key.to_sym
-      rescue StandardError
-        key
-      end
+    def execute(args)
+      raise NotImplementedError, 'Subclasses must implement #execute'
+    end
+  end
+
+  # Using the existing Parameter class from Tool.rb
+  class Parameter
+    attr_reader :name, :type, :description, :required
+
+    def initialize(name, type: 'string', description: nil, required: true)
+      @name = name
+      @type = type
+      @description = description
+      @required = required
+    end
+
+    def to_h
+      {
+        type: type,
+        description: description,
+        required: required
+      }.compact
     end
   end
 end

@@ -26,7 +26,8 @@ module RubyLLM
     def with_tool(tool)
       raise Error, "Model #{@model.id} doesn't support function calling" unless @model.supports_functions
 
-      @tools[tool.name] = tool
+      tool_instance = tool.is_a?(Class) ? tool.to_tool : tool
+      @tools[tool_instance.name.to_sym] = tool_instance
       self
     end
 
@@ -64,7 +65,7 @@ module RubyLLM
     end
 
     def execute_tool(tool_call)
-      tool = tools[tool_call.name]
+      tool = tools[tool_call.name.to_sym]
       args = tool_call.arguments
       tool.call(args)
     end
@@ -85,8 +86,8 @@ module RubyLLM
 
     def ensure_valid_tools
       tools.each_key do |name|
-        unless name.is_a?(String) && tools[name].is_a?(RubyLLM::Tool)
-          raise Error, 'Tools should be of the format {<name>: <RubyLLM::Tool>}'
+        unless name.is_a?(Symbol) && tools[name].is_a?(RubyLLM::Tool)
+          raise Error, 'Tools should be of the format {<name.to_sym>: <RubyLLM::Tool>}'
         end
       end
     end
