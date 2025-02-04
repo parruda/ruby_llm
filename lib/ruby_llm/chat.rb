@@ -87,6 +87,12 @@ module RubyLLM
       end
     end
 
+    def add_message(message_or_attributes)
+      message = message_or_attributes.is_a?(Message) ? message_or_attributes : Message.new(message_or_attributes)
+      messages << message
+      message
+    end
+
     private
 
     def handle_tool_calls(response, &block)
@@ -102,13 +108,6 @@ module RubyLLM
       tool = tools[tool_call.name.to_sym]
       args = tool_call.arguments
       tool.call(args)
-    end
-
-    def add_message(message_or_attributes)
-      message = message_or_attributes.is_a?(Message) ? message_or_attributes : Message.new(message_or_attributes)
-      # TODO: callback
-      messages << message
-      message
     end
 
     def add_tool_result(tool_use_id, result)

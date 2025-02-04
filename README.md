@@ -167,7 +167,7 @@ class CreateMessages < ActiveRecord::Migration[8.0]
       t.references :chat
       t.string :role
       t.text :content
-      t.json :tool_calls
+      t.json :tool_calls, default: {}
       t.string :tool_call_id
       t.integer :input_tokens
       t.integer :output_tokens
@@ -182,14 +182,14 @@ Then in your models:
 
 ```ruby
 class Chat < ApplicationRecord
-  acts_as_chat message_class: "Message"
+  acts_as_chat
 
   # Optional: Add Turbo Streams support
   broadcasts_to ->(chat) { "chat_#{chat.id}" }
 end
 
 class Message < ApplicationRecord
-  acts_as_message chat_class: "Chat"
+  acts_as_message
 end
 ```
 

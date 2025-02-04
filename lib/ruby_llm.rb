@@ -7,6 +7,15 @@ require 'logger'
 require 'event_stream_parser'
 require 'securerandom'
 
+loader = Zeitwerk::Loader.for_gem
+loader.inflector.inflect(
+  'ruby_llm' => 'RubyLLM',
+  'llm' => 'LLM',
+  'openai' => 'OpenAI',
+  'api' => 'API'
+)
+loader.setup
+
 # A delightful Ruby interface to modern AI language models.
 # Provides a unified way to interact with models from OpenAI, Anthropic and others
 # with a focus on developer happiness and convention over configuration.
@@ -34,40 +43,16 @@ module RubyLLM
       @logger ||= Logger.new(
         $stdout,
         progname: 'RubyLLM',
-        level: ENV['RUBY_LLM_DEBUG'] == 'true' ? Logger::DEBUG : Logger::INFO
+        level: ENV['RUBY_LLM_DEBUG'] ? Logger::DEBUG : Logger::INFO
       )
     end
   end
 end
 
-loader = Zeitwerk::Loader.for_gem
-
-# Add lib directory to the load path
-loader.push_dir(File.expand_path('..', __dir__))
-
-# Configure custom inflections
-loader.inflector.inflect(
-  'ruby_llm' => 'RubyLLM',
-  'llm' => 'LLM',
-  'openai' => 'OpenAI',
-  'api' => 'API'
-)
-
-# Ignore Rails-specific files and specs
-loader.ignore("#{__dir__}/ruby_llm/railtie.rb")
-loader.ignore("#{__dir__}/ruby_llm/active_record")
-loader.ignore(File.expand_path('../spec', __dir__).to_s)
-
-loader.enable_reloading if ENV['RUBY_LLM_DEBUG']
-
-loader.setup
-loader.eager_load if ENV['RUBY_LLM_DEBUG']
-
 RubyLLM::Provider.register :openai, RubyLLM::Providers::OpenAI
 RubyLLM::Provider.register :anthropic, RubyLLM::Providers::Anthropic
 
-# Load Rails integration if Rails is defined
-if defined?(Rails)
+if defined?(Rails::Railtie)
   require 'ruby_llm/railtie'
   require 'ruby_llm/active_record/acts_as'
 end

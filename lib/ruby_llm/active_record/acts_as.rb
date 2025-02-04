@@ -9,7 +9,7 @@ module RubyLLM
       extend ActiveSupport::Concern
 
       class_methods do
-        def acts_as_chat(message_class:)
+        def acts_as_chat(message_class: 'Message')
           include ChatMethods
 
           has_many :messages,
@@ -17,16 +17,13 @@ module RubyLLM
                    class_name: message_class.to_s,
                    dependent: :destroy
 
-          # No more callback config - just expose the core chat functionality
-          delegate :ask, :say, :complete, to: :chat
+          delegate :complete, to: :chat
         end
 
-        def acts_as_message(chat_class:)
+        def acts_as_message(chat_class: 'Chat')
           include MessageMethods
 
           belongs_to :chat, class_name: chat_class.to_s
-
-          serialize :tool_calls, coder: JSON
         end
       end
     end
@@ -37,42 +34,43 @@ module RubyLLM
       extend ActiveSupport::Concern
 
       def chat
-        @chat ||= begin
-          chat = RubyLLM.chat(model: model_id)
+        chat = RubyLLM.chat(model: model_id)
 
-          # Load existing messages into chat
-          messages.each do |msg|
-            chat.add_message(msg.to_llm)
-          end
-
-          # Set up message persistence
-          chat.on_new_message { |msg| persist_new_message(msg) }
-              .on_end_message { |msg| persist_message_completion(msg) }
-
-          chat
+        # Load existing messages into chat
+        messages.each do |msg|
+          chat.add_message(msg.to_llm)
         end
+
+        # Set up message persistence
+        chat.on_new_message { persist_new_message }
+            .on_end_message { |msg| persist_message_completion(msg) }
+
+        chat
       end
+
+      def ask(message, &block)
+        message = { role: :user, content: message }
+        messages.create!(**message)
+        chat.complete(&block)
+      end
+
+      alias say ask
 
       private
 
-      def persist_new_message(message)
-        return unless message
-
-        messages.create!(
-          role: message.role,
-          content: message.content,
-          tool_calls: message.tool_calls,
-          tool_call_id: message.tool_call_id,
-          model_id: message.model_id
-        )
+      def persist_new_message
+        messages.create!
       end
 
       def persist_message_completion(message)
         return unless message
 
         messages.last.update!(
+          role: message.role,
           content: message.content,
+          model_id: message.model_id,
           tool_calls: message.tool_calls,
+          tool_call_id: message.tool_call_id,
           input_tokens: message.input_tokens,
           output_tokens: message.output_tokens
         )
