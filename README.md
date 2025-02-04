@@ -79,15 +79,14 @@ puts "Conversation used #{last_message.input_tokens} input tokens and #{last_mes
 
 ## Using Tools
 
-Give Claude some Ruby superpowers by letting it call your code. Simply create tool classes that do one thing well:
+Give your AI assistants access to your Ruby code by creating tool classes that do one thing well:
 
 ```ruby
-class CalculatorTool < RubyLLM::Tool
+class Calculator < RubyLLM::Tool
   description "Performs arithmetic calculations"
 
   param :expression,
     type: :string,
-    required: true,
     desc: "A mathematical expression to evaluate (e.g. '2 + 2')"
 
   def execute(expression:)
@@ -95,11 +94,10 @@ class CalculatorTool < RubyLLM::Tool
   end
 end
 
-class DocumentSearchTool < RubyLLM::Tool
+class Search < RubyLLM::Tool
   description "Searches documents by similarity"
 
   param :query,
-    type: :string,
     desc: "The search query"
 
   param :limit,
@@ -107,12 +105,12 @@ class DocumentSearchTool < RubyLLM::Tool
     desc: "Number of results to return",
     required: false
 
-  def initialize(document_class:)
-    @document_class = document_class
+  def initialize(repo:)
+    @repo = repo
   end
 
   def execute(query:, limit: 5)
-    @document_class.similarity_search(query:, k: limit)
+    @repo.similarity_search(query, limit:)
   end
 end
 ```
@@ -121,11 +119,15 @@ Then use them in your conversations:
 
 ```ruby
 # Simple tools just work
-chat = RubyLLM.chat.with_tool(CalculatorTool)
+chat = RubyLLM.chat.with_tool Calculator
 
 # Tools with dependencies are just regular Ruby objects
-search = DocumentSearchTool.new(document_class: Document)
-chat.with_tools(search, CalculatorTool)
+search = Search.new repo: Document
+chat.with_tools search, CalculatorTool
+
+# Need more control? Configure as needed
+chat.with_model('claude-3-5-sonnet-20241022')
+    .with_temperature(0.9)
 
 chat.ask "What's 2+2?"
 # => "Let me calculate that for you. The result is 4."
