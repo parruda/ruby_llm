@@ -1,6 +1,6 @@
 PreCommit:
   RuboCop:
-    enabled: false
+    enabled: true
     auto_correct: true
     on_warn: fail # Treat all warnings as failures
 
