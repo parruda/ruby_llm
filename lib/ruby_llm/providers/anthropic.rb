@@ -51,13 +51,7 @@ module RubyLLM
           Message.new(
             role: :assistant,
             content: text_content,
-            tool_calls: {
-              tool_use['id'] => ToolCall.new(
-                id: tool_use['id'],
-                name: tool_use['name'],
-                arguments: tool_use['input']
-              )
-            },
+            tool_calls: parse_tool_calls(tool_use),
             input_tokens: data.dig('usage', 'input_tokens'),
             output_tokens: data.dig('usage', 'output_tokens'),
             model_id: data['model']
@@ -96,16 +90,42 @@ module RubyLLM
 
       def handle_stream(&block)
         to_json_stream do |data|
-          block.call(
-            Chunk.new(
-              role: :assistant,
-              model_id: data.dig('message', 'model'),
-              content: data.dig('delta', 'text'),
-              input_tokens: data.dig('message', 'usage', 'input_tokens'),
-              output_tokens: data.dig('message', 'usage', 'output_tokens') || data.dig('usage', 'output_tokens')
+          if data['type'] == 'content_block_delta' && data.dig('delta', 'type') == 'input_json_delta'
+            block.call(
+              Chunk.new(
+                role: :assistant,
+                model_id: data.dig('message', 'model'),
+                content: data.dig('delta', 'text'),
+                input_tokens: data.dig('message', 'usage', 'input_tokens'),
+                output_tokens: data.dig('message', 'usage', 'output_tokens') || data.dig('usage', 'output_tokens'),
+                tool_calls: { nil => ToolCall.new(id: nil, name: nil, arguments: data.dig('delta', 'partial_json')) }
+              )
             )
-          )
+          else
+            block.call(
+              Chunk.new(
+                role: :assistant,
+                model_id: data.dig('message', 'model'),
+                content: data.dig('delta', 'text'),
+                input_tokens: data.dig('message', 'usage', 'input_tokens'),
+                output_tokens: data.dig('message', 'usage', 'output_tokens') || data.dig('usage', 'output_tokens'),
+                tool_calls: parse_tool_calls(data['content_block'])
+              )
+            )
+          end
         end
+      end
+
+      def parse_tool_calls(content_block)
+        return nil unless content_block && content_block['type'] == 'tool_use'
+
+        {
+          content_block['id'] => ToolCall.new(
+            id: content_block['id'],
+            name: content_block['name'],
+            arguments: content_block['input']
+          )
+        }
       end
 
       def function_for(tool)
