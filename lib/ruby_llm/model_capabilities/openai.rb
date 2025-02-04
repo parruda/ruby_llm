@@ -2,6 +2,7 @@
 
 module RubyLLM
   module ModelCapabilities
+    # Determines capabilities and pricing for OpenAI models
     module OpenAI
       extend self
 
@@ -56,16 +57,15 @@ module RubyLLM
 
       private
 
-      def model_family(model_id)
+      def model_family(model_id) # rubocop:disable Metrics/CyclomaticComplexity
         case model_id
-        when /o1-2024/                   then :o1
-        when /o1-mini/                   then :o1_mini
-        when /gpt-4o-realtime-preview/   then :gpt4o_realtime
-        when /gpt-4o-mini-realtime/      then :gpt4o_mini_realtime
-        when /gpt-4o-mini/               then :gpt4o_mini
-        when /gpt-4o/                    then :gpt4o
-        when /gpt-4-turbo/               then :gpt4_turbo
-        when /gpt-3.5/                   then :gpt35
+        when /o1-2024/                then :o1
+        when /o1-mini/                then :o1_mini
+        when /gpt-4o-realtime/        then :gpt4o_realtime
+        when /gpt-4o-mini-realtime/   then :gpt4o_mini_realtime
+        when /gpt-4o-mini/            then :gpt4o_mini
+        when /gpt-4o/                 then :gpt4o
+        when /gpt-4-turbo/            then :gpt4_turbo
         else :gpt35
         end
       end
@@ -96,7 +96,7 @@ module RubyLLM
           .join(' ')
       end
 
-      def apply_special_formatting(name)
+      def apply_special_formatting(name) # rubocop:disable Metrics/MethodLength
         name
           .gsub(/(\d{4}) (\d{2}) (\d{2})/, '\1\2\3')
           .gsub(/^Gpt /, 'GPT-')

@@ -54,14 +54,13 @@ image_models = RubyLLM.models.image_models
 
 ## Having a Conversation
 
-Conversations are simple and natural, with automatic token counting built right in:
+Conversations are simple and natural:
 
 ```ruby
 chat = RubyLLM.chat model: 'claude-3-5-sonnet-20241022'
 
-# Single messages with token tracking
+# Ask questions
 response = chat.ask "What's your favorite Ruby feature?"
-puts "Response used #{response.input_tokens} input tokens and #{response.output_tokens} output tokens"
 
 # Multi-turn conversations just work
 chat.ask "Can you elaborate on that?"
@@ -72,7 +71,7 @@ chat.ask "Tell me a story about a Ruby programmer" do |chunk|
   print chunk.content
 end
 
-# Get token usage for the whole conversation from the last message
+# Check token usage
 last_message = chat.messages.last
 puts "Conversation used #{last_message.input_tokens} input tokens and #{last_message.output_tokens} output tokens"
 ```
@@ -123,9 +122,9 @@ chat = RubyLLM.chat.with_tool Calculator
 
 # Tools with dependencies are just regular Ruby objects
 search = Search.new repo: Document
-chat.with_tools search, CalculatorTool
+chat.with_tools search, Calculator
 
-# Need more control? Configure as needed
+# Configure as needed
 chat.with_model('claude-3-5-sonnet-20241022')
     .with_temperature(0.9)
 
@@ -136,9 +135,7 @@ chat.ask "Find documents about Ruby performance"
 # => "I found these relevant documents about Ruby performance..."
 ```
 
-Tools let you seamlessly integrate your Ruby code with AI capabilities. The model will automatically decide when to use your tools and handle the results appropriately.
-
-Need to debug a tool? RubyLLM automatically logs all tool calls and their results when debug logging is enabled:
+Need to debug a tool? RubyLLM automatically logs all tool calls:
 
 ```ruby
 ENV['RUBY_LLM_DEBUG'] = 'true'
@@ -148,13 +145,169 @@ chat.ask "What's 123 * 456?"
 # D, -- RubyLLM: Tool calculator returned: "56088"
 ```
 
-Create tools for anything - database queries, API calls, custom business logic - and let Claude use them naturally in conversation.
+## Rails Integration
 
-## Coming Soon
+RubyLLM comes with built-in Rails support that makes it dead simple to persist your chats and messages. Just create your tables and hook it up:
 
-- Rails integration for seamless database and Active Record support
-- Automatic retries and error handling
-- Much more!
+```ruby
+# db/migrate/YYYYMMDDHHMMSS_create_chats.rb
+class CreateChats < ActiveRecord::Migration[8.0]
+  def change
+    create_table :chats do |t|
+      t.string :model_id
+      t.timestamps
+    end
+  end
+end
+
+# db/migrate/YYYYMMDDHHMMSS_create_messages.rb
+class CreateMessages < ActiveRecord::Migration[8.0]
+  def change
+    create_table :messages do |t|
+      t.references :chat
+      t.string :role
+      t.text :content
+      t.json :tool_calls
+      t.string :tool_call_id
+      t.integer :input_tokens
+      t.integer :output_tokens
+      t.string :model_id
+      t.timestamps
+    end
+  end
+end
+```
+
+Then in your models:
+
+```ruby
+class Chat < ApplicationRecord
+  acts_as_chat message_class: "Message"
+
+  # Optional: Add Turbo Streams support
+  broadcasts_to ->(chat) { "chat_#{chat.id}" }
+end
+
+class Message < ApplicationRecord
+  acts_as_message chat_class: "Chat"
+end
+```
+
+That's it! Now you can use chats straight from your models:
+
+```ruby
+# Create a new chat
+chat = Chat.create!(model_id: "gpt-4")
+
+# Ask questions - messages are automatically saved
+chat.ask "What's the weather in Paris?"
+
+# Stream responses in real-time
+chat.ask "Tell me a story" do |chunk|
+  broadcast_chunk(chunk)
+end
+
+# Everything is persisted automatically
+chat.messages.each do |message|
+  case message.role
+  when :user
+    puts "User: #{message.content}"
+  when :assistant
+    puts "Assistant: #{message.content}"
+  end
+end
+```
+
+### Real-time Updates with Hotwire
+
+The Rails integration works great with Hotwire out of the box:
+
+```ruby
+# app/controllers/chats_controller.rb
+class ChatsController < ApplicationController
+  def show
+    @chat = Chat.find(params[:id])
+  end
+
+  def ask
+    @chat = Chat.find(params[:id])
+    @chat.ask(params[:message]) do |chunk|
+      Turbo::StreamsChannel.broadcast_append_to(
+        @chat,
+        target: "messages",
+        partial: "messages/chunk",
+        locals: { chunk: chunk }
+      )
+    end
+  end
+end
+
+# app/views/chats/show.html.erb
+<%= turbo_stream_from @chat %>
+
+<div id="messages">
+  <%= render @chat.messages %>
+</div>
+
+<%= form_with(url: ask_chat_path(@chat), local: false) do |f| %>
+  <%= f.text_area :message %>
+  <%= f.submit "Send" %>
+<% end %>
+```
+
+### Background Jobs
+
+The persistence works seamlessly with background jobs:
+
+```ruby
+class ChatJob < ApplicationJob
+  def perform(chat_id, message)
+    chat = Chat.find(chat_id)
+
+    chat.ask(message) do |chunk|
+      # Optional: Broadcast chunks for real-time updates
+      Turbo::StreamsChannel.broadcast_append_to(
+        chat,
+        target: "messages",
+        partial: "messages/chunk",
+        locals: { chunk: chunk }
+      )
+    end
+  end
+end
+```
+
+### Using Tools
+
+Tools work just like they do in regular RubyLLM chats:
+
+```ruby
+class WeatherTool < RubyLLM::Tool
+  description "Gets current weather for a location"
+
+  param :location,
+    type: :string,
+    desc: "City name or coordinates"
+
+  def execute(location:)
+    # Fetch weather data...
+    { temperature: 22, conditions: "Sunny" }
+  end
+end
+
+# Use tools with your persisted chats
+chat = Chat.create!(model_id: "gpt-4")
+chat.chat.with_tool(WeatherTool.new)
+
+# Ask about weather - tool usage is automatically saved
+chat.ask "What's the weather in Paris?"
+
+# Tool calls and results are persisted as messages
+pp chat.messages.map(&:role)
+#=> [:user, :assistant, :tool, :assistant]
+```
+
+Looking for more examples? Check out the [example Rails app](https://github.com/example/ruby_llm_rails) showing these patterns in action!
 
 ## Development
 

@@ -2,7 +2,9 @@
 
 module RubyLLM
   module Providers
-    class Anthropic
+    # Anthropic Claude API integration. Handles the complexities of
+    # Claude's unique message format and tool calling conventions.
+    class Anthropic # rubocop:disable Metrics/ClassLength
       include Provider
 
       private
@@ -42,32 +44,33 @@ module RubyLLM
         data = response.body
         content_blocks = data['content'] || []
 
-        text_blocks = content_blocks.select { |c| c['type'] == 'text' }
-        text_content = text_blocks.map { |c| c['text'] }.join('')
+        text_content = extract_text_content(content_blocks)
+        tool_use = find_tool_use(content_blocks)
 
-        tool_use = content_blocks.find { |c| c['type'] == 'tool_use' }
-
-        if tool_use
-          Message.new(
-            role: :assistant,
-            content: text_content,
-            tool_calls: parse_tool_calls(tool_use),
-            input_tokens: data.dig('usage', 'input_tokens'),
-            output_tokens: data.dig('usage', 'output_tokens'),
-            model_id: data['model']
-          )
-        else
-          Message.new(
-            role: :assistant,
-            content: text_content,
-            input_tokens: data.dig('usage', 'input_tokens'),
-            output_tokens: data.dig('usage', 'output_tokens'),
-            model_id: data['model']
-          )
-        end
+        build_message(data, text_content, tool_use)
       end
 
-      def parse_models_response(response)
+      def extract_text_content(blocks)
+        text_blocks = blocks.select { |c| c['type'] == 'text' }
+        text_blocks.map { |c| c['text'] }.join('')
+      end
+
+      def find_tool_use(blocks)
+        blocks.find { |c| c['type'] == 'tool_use' }
+      end
+
+      def build_message(data, content, tool_use)
+        Message.new(
+          role: :assistant,
+          content: content,
+          tool_calls: parse_tool_calls(tool_use),
+          input_tokens: data.dig('usage', 'input_tokens'),
+          output_tokens: data.dig('usage', 'output_tokens'),
+          model_id: data['model']
+        )
+      end
+
+      def parse_models_response(response) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
         capabilities = ModelCapabilities::Anthropic.new
 
         (response.body['data'] || []).map do |model|
@@ -90,30 +93,43 @@ module RubyLLM
 
       def handle_stream(&block)
         to_json_stream do |data|
-          if data['type'] == 'content_block_delta' && data.dig('delta', 'type') == 'input_json_delta'
-            block.call(
-              Chunk.new(
-                role: :assistant,
-                model_id: data.dig('message', 'model'),
-                content: data.dig('delta', 'text'),
-                input_tokens: data.dig('message', 'usage', 'input_tokens'),
-                output_tokens: data.dig('message', 'usage', 'output_tokens') || data.dig('usage', 'output_tokens'),
-                tool_calls: { nil => ToolCall.new(id: nil, name: nil, arguments: data.dig('delta', 'partial_json')) }
-              )
-            )
-          else
-            block.call(
-              Chunk.new(
-                role: :assistant,
-                model_id: data.dig('message', 'model'),
-                content: data.dig('delta', 'text'),
-                input_tokens: data.dig('message', 'usage', 'input_tokens'),
-                output_tokens: data.dig('message', 'usage', 'output_tokens') || data.dig('usage', 'output_tokens'),
-                tool_calls: parse_tool_calls(data['content_block'])
-              )
-            )
-          end
+          block.call(build_chunk(data))
         end
+      end
+
+      def build_chunk(data)
+        Chunk.new(
+          role: :assistant,
+          model_id: extract_model_id(data),
+          content: data.dig('delta', 'text'),
+          input_tokens: extract_input_tokens(data),
+          output_tokens: extract_output_tokens(data),
+          tool_calls: extract_tool_calls(data)
+        )
+      end
+
+      def extract_model_id(data)
+        data.dig('message', 'model')
+      end
+
+      def extract_input_tokens(data)
+        data.dig('message', 'usage', 'input_tokens')
+      end
+
+      def extract_output_tokens(data)
+        data.dig('message', 'usage', 'output_tokens') || data.dig('usage', 'output_tokens')
+      end
+
+      def extract_tool_calls(data)
+        if json_delta?(data)
+          { nil => ToolCall.new(id: nil, name: nil, arguments: data.dig('delta', 'partial_json')) }
+        else
+          parse_tool_calls(data['content_block'])
+        end
+      end
+
+      def json_delta?(data)
+        data['type'] == 'content_block_delta' && data.dig('delta', 'type') == 'input_json_delta'
       end
 
       def parse_tool_calls(content_block)
@@ -141,41 +157,67 @@ module RubyLLM
       end
 
       def format_messages(messages)
-        messages.map do |msg|
-          if msg.tool_call?
-            {
-              role: 'assistant',
-              content: [
-                {
-                  type: 'text',
-                  text: msg.content
-                },
-                {
-                  type: 'tool_use',
-                  id: msg.tool_calls.values.first.id,
-                  name: msg.tool_calls.values.first.name,
-                  input: msg.tool_calls.values.first.arguments
-                }
-              ]
-            }
-          elsif msg.tool_result?
-            {
-              role: 'user',
-              content: [
-                {
-                  type: 'tool_result',
-                  tool_use_id: msg.tool_call_id,
-                  content: msg.content
-                }
-              ]
-            }
-          else
-            {
-              role: convert_role(msg.role),
-              content: msg.content
-            }
-          end
+        messages.map { |msg| format_message(msg) }
+      end
+
+      def format_message(msg)
+        if msg.tool_call?
+          format_tool_call(msg)
+        elsif msg.tool_result?
+          format_tool_result(msg)
+        else
+          format_basic_message(msg)
         end
+      end
+
+      def format_tool_call(msg)
+        tool_call = msg.tool_calls.values.first
+
+        {
+          role: 'assistant',
+          content: [
+            format_text_block(msg.content),
+            format_tool_use_block(tool_call)
+          ]
+        }
+      end
+
+      def format_tool_result(msg)
+        {
+          role: 'user',
+          content: [format_tool_result_block(msg)]
+        }
+      end
+
+      def format_basic_message(msg)
+        {
+          role: convert_role(msg.role),
+          content: msg.content
+        }
+      end
+
+      def format_text_block(content)
+        {
+          type: 'text',
+          text: content
+        }
+      end
+
+      def format_tool_use_block(tool_call)
+        {
+          type: 'tool_use',
+          id: tool_call.id,
+          name: tool_call.name,
+          input: tool_call.arguments
+        }
+      end
+
+      def format_tool_result_block(msg)
+        {
+          type: 'tool_result',
+          tool_use_id: msg.tool_call_id,
+          content: msg.content
+        }
       end
 
       def convert_role(role)

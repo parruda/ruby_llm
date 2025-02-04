@@ -1,11 +1,16 @@
 # frozen_string_literal: true
 
 module RubyLLM
+  # Base interface for LLM providers like OpenAI and Anthropic.
+  # Handles the complexities of API communication, streaming responses,
+  # and error handling so individual providers can focus on their unique features.
   module Provider
     def self.included(base)
       base.include(InstanceMethods)
     end
 
+    # Common functionality for all LLM providers. Implements the core provider
+    # interface so specific providers only need to implement a few key methods.
     module InstanceMethods
       def complete(messages, tools:, temperature:, model:, &block)
         payload = build_payload messages, tools: tools, temperature: temperature, model: model, stream: block_given?

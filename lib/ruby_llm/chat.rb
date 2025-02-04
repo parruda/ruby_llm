@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 module RubyLLM
+  # Represents a conversation with an AI model. Handles message history,
+  # streaming responses, and tool integration with a simple, conversational API.
+  #
+  # Example:
+  #   chat = RubyLLM.chat
+  #   chat.ask "What's the best way to learn Ruby?"
+  #   chat.ask "Can you elaborate on that?"
   class Chat
     include Enumerable
 
@@ -8,13 +15,14 @@ module RubyLLM
 
     def initialize(model: nil)
       model_id = model || RubyLLM.config.default_model
-      @model = Models.find model_id
-      @provider = Models.provider_for model_id
+      self.model = model_id
       @temperature = 0.7
       @messages = []
       @tools = {}
-
-      ensure_valid_tools
+      @on = {
+        new_message: nil,
+        end_message: nil
+      }
     end
 
     def ask(message, &block)
@@ -37,9 +45,13 @@ module RubyLLM
       self
     end
 
-    def with_model(model_id)
+    def model=(model_id)
       @model = Models.find model_id
       @provider = Models.provider_for model_id
+    end
+
+    def with_model(model_id)
+      self.model = model_id
       self
     end
 
@@ -48,14 +60,24 @@ module RubyLLM
       self
     end
 
+    def on_new_message(&block)
+      @on[:new_message] = block
+      self
+    end
+
+    def on_end_message(&block)
+      @on[:end_message] = block
+      self
+    end
+
     def each(&block)
       messages.each(&block)
     end
 
-    private
-
     def complete(&block)
-      response = @provider.complete messages, tools: @tools, temperature: @temperature, model: @model.id, &block
+      @on[:new_message]&.call
+      response = @provider.complete(messages, tools: @tools, temperature: @temperature, model: @model.id, &block)
+      @on[:end_message]&.call(response)
 
       add_message response
       if response.tool_call?
@@ -64,6 +86,8 @@ module RubyLLM
         response
       end
     end
+
+    private
 
     def handle_tool_calls(response, &block)
       response.tool_calls.each_value do |tool_call|
@@ -82,6 +106,7 @@ module RubyLLM
 
     def add_message(message_or_attributes)
       message = message_or_attributes.is_a?(Message) ? message_or_attributes : Message.new(message_or_attributes)
+      # TODO: callback
       messages << message
       message
     end
@@ -92,14 +117,6 @@ module RubyLLM
         content: result.is_a?(Hash) && result[:error] ? result[:error] : result.to_s,
         tool_call_id: tool_use_id
       )
-    end
-
-    def ensure_valid_tools
-      tools.each_key do |name|
-        unless name.is_a?(Symbol) && tools[name].is_a?(RubyLLM::Tool)
-          raise Error, 'Tools should be of the format {<name.to_sym>: <RubyLLM::Tool>}'
-        end
-      end
     end
   end
 end

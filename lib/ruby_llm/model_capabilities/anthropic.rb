@@ -2,6 +2,7 @@
 
 module RubyLLM
   module ModelCapabilities
+    # Determines capabilities and pricing for Anthropic models
     module Anthropic
       extend self
 

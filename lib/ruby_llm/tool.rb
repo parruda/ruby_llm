@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module RubyLLM
+  # Parameter definition for Tool methods. Specifies type constraints,
+  # descriptions, and whether parameters are required.
   class Parameter
     attr_reader :name, :type, :description, :required
 
@@ -12,6 +14,18 @@ module RubyLLM
     end
   end
 
+  # Base class for creating tools that AI models can use. Provides a simple
+  # interface for defining parameters and implementing tool behavior.
+  #
+  # Example:
+  #   class Calculator < RubyLLM::Tool
+  #     description "Performs arithmetic calculations"
+  #     param :expression, type: :string, desc: "Math expression to evaluate"
+  #
+  #     def execute(expression:)
+  #       eval(expression).to_s
+  #     end
+  #   end
   class Tool
     class << self
       def description(text = nil)

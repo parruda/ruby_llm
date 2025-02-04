@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module RubyLLM
+  # Assembles streaming responses from LLMs into complete messages.
+  # Handles the complexities of accumulating content and tool calls
+  # from partial chunks while tracking token usage.
   class StreamAccumulator
     attr_reader :content, :model_id, :tool_calls
 
@@ -49,7 +52,7 @@ module RubyLLM
       end
     end
 
-    def accumulate_tool_calls(new_tool_calls)
+    def accumulate_tool_calls(new_tool_calls) # rubocop:disable Metrics/MethodLength
       new_tool_calls.each_value do |tool_call|
         if tool_call.id
           @tool_calls[tool_call.id] = ToolCall.new(

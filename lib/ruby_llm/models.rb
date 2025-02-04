@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 module RubyLLM
+  # Registry of available AI models and their capabilities. Provides a clean interface
+  # to discover and work with models from different providers.
+  #
+  # Example:
+  #   RubyLLM.models.all                  # All available models
+  #   RubyLLM.models.chat_models          # Models that support chat
+  #   RubyLLM.models.find('claude-3')     # Get info about a specific model
   module Models
     module_function
 

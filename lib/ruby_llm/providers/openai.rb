@@ -2,7 +2,10 @@
 
 module RubyLLM
   module Providers
-    class OpenAI
+    # OpenAI API integration. Handles chat completion, function calling,
+    # and OpenAI's unique streaming format. Supports GPT-4, GPT-3.5,
+    # and other OpenAI models.
+    class OpenAI # rubocop:disable Metrics/ClassLength
       include Provider
 
       private
@@ -25,7 +28,7 @@ module RubyLLM
         '/v1/models'
       end
 
-      def build_payload(messages, tools:, temperature:, model:, stream: false)
+      def build_payload(messages, tools:, temperature:, model:, stream: false) # rubocop:disable Metrics/MethodLength
         {
           model: model,
           messages: format_messages(messages),
@@ -50,7 +53,7 @@ module RubyLLM
         end
       end
 
-      def format_tool_calls(tool_calls)
+      def format_tool_calls(tool_calls) # rubocop:disable Metrics/MethodLength
         return nil unless tool_calls&.any?
 
         tool_calls.map do |_, tc|
@@ -65,7 +68,7 @@ module RubyLLM
         end
       end
 
-      def tool_for(tool)
+      def tool_for(tool) # rubocop:disable Metrics/MethodLength
         {
           type: 'function',
           function: {
@@ -87,7 +90,7 @@ module RubyLLM
         }.compact
       end
 
-      def parse_completion_response(response)
+      def parse_completion_response(response) # rubocop:disable Metrics/MethodLength
         data = response.body
         return if data.empty?
 
@@ -104,7 +107,7 @@ module RubyLLM
         )
       end
 
-      def parse_tool_calls(tool_calls, parse_arguments: true)
+      def parse_tool_calls(tool_calls, parse_arguments: true) # rubocop:disable Metrics/MethodLength
         return nil unless tool_calls&.any?
 
         tool_calls.to_h do |tc|
@@ -119,7 +122,7 @@ module RubyLLM
         end
       end
 
-      def parse_models_response(response)
+      def parse_models_response(response) # rubocop:disable Metrics/MethodLength
         (response.body['data'] || []).map do |model|
           model_info = begin
             Models.find(model['id'])
@@ -150,7 +153,7 @@ module RubyLLM
         end
       end
 
-      def parse_list_models_response(response)
+      def parse_list_models_response(response) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
         capabilities = ModelCapabilities::OpenAI
         (response.body['data'] || []).map do |model|
           ModelInfo.new(
