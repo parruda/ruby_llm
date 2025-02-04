@@ -9,7 +9,7 @@ module RubyLLM
       extend ActiveSupport::Concern
 
       class_methods do
-        def acts_as_chat(message_class: 'Message')
+        def acts_as_chat(message_class: 'Message') # rubocop:disable Metrics/MethodLength
           include ChatMethods
 
           has_many :messages,
@@ -17,13 +17,23 @@ module RubyLLM
                    class_name: message_class.to_s,
                    dependent: :destroy
 
-          delegate :complete, to: :chat
+          delegate :complete,
+                   :with_tool,
+                   :with_tools,
+                   :with_model,
+                   :with_temperature,
+                   :on_new_message,
+                   :on_end_message,
+                   :add_message,
+                   to: :to_llm
         end
 
         def acts_as_message(chat_class: 'Chat')
           include MessageMethods
 
           belongs_to :chat, class_name: chat_class.to_s
+
+          delegate :tool_call?, :tool_result?, :tool_results, to: :to_llm
         end
       end
     end
@@ -33,7 +43,7 @@ module RubyLLM
     module ChatMethods
       extend ActiveSupport::Concern
 
-      def chat
+      def to_llm
         chat = RubyLLM.chat(model: model_id)
 
         # Load existing messages into chat
@@ -44,8 +54,6 @@ module RubyLLM
         # Set up message persistence
         chat.on_new_message { persist_new_message }
             .on_end_message { |msg| persist_message_completion(msg) }
-
-        chat
       end
 
       def ask(message, &block)
@@ -59,7 +67,10 @@ module RubyLLM
       private
 
       def persist_new_message
-        messages.create!
+        messages.create!(
+          role: :assistant,
+          content: String.new
+        )
       end
 
       def persist_message_completion(message)
