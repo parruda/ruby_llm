@@ -82,7 +82,7 @@ Need vector embeddings for your text? RubyLLM makes it simple:
 
 ```ruby
 # Get embeddings with the default model
-vector = RubyLLM.embed(text: "Hello, world!")
+vector = RubyLLM.embed "Hello, world!"
 
 # Use a specific model
 vector = RubyLLM.embed(
