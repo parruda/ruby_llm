@@ -82,16 +82,13 @@ Need vector embeddings for your text? RubyLLM makes it simple:
 
 ```ruby
 # Get embeddings with the default model
-vector = RubyLLM.embed "Hello, world!"
+RubyLLM.embed "Hello, world!"
 
 # Use a specific model
-vector = RubyLLM.embed(
-  "Ruby is awesome!",
-  model: "text-embedding-3-large"
-)
+RubyLLM.embed "Ruby is awesome!", model: "text-embedding-3-large"
 
 # Process multiple texts at once
-vectors = RubyLLM.embed([
+RubyLLM.embed([
   "First document",
   "Second document",
   "Third document"
@@ -242,14 +239,14 @@ That's it! Now you can use chats straight from your models:
 
 ```ruby
 # Create a new chat
-chat = Chat.create!(model_id: "gpt-4")
+chat = Chat.create! model_id: "gpt-4o-mini"
 
 # Ask questions - messages are automatically saved
 chat.ask "What's the weather in Paris?"
 
 # Stream responses in real-time
 chat.ask "Tell me a story" do |chunk|
-  broadcast_chunk(chunk)
+  broadcast_chunk chunk
 end
 
 # Everything is persisted automatically
@@ -307,7 +304,7 @@ The persistence works seamlessly with background jobs:
 ```ruby
 class ChatJob < ApplicationJob
   def perform(chat_id, message)
-    chat = Chat.find(chat_id)
+    chat = Chat.find chat_id
 
     chat.ask(message) do |chunk|
       # Optional: Broadcast chunks for real-time updates
@@ -341,8 +338,8 @@ class WeatherTool < RubyLLM::Tool
 end
 
 # Use tools with your persisted chats
-chat = Chat.create!(model_id: "gpt-4")
-chat.chat.with_tool(WeatherTool.new)
+chat = Chat.create! model_id: "gpt-4"
+chat.chat.with_tool WeatherTool.new
 
 # Ask about weather - tool usage is automatically saved
 chat.ask "What's the weather in Paris?"
@@ -351,8 +348,6 @@ chat.ask "What's the weather in Paris?"
 pp chat.messages.map(&:role)
 #=> [:user, :assistant, :tool, :assistant]
 ```
-
-Looking for more examples? Check out the [example Rails app](https://github.com/example/ruby_llm_rails) showing these patterns in action!
 
 ## Development
 
@@ -364,4 +359,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/crmne/
 
 ## License
 
-Released under the MIT License. See LICENSE.txt for details.
+Released under the MIT License. See [LICENSE](LICENSE) for details.
