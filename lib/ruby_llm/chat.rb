@@ -97,8 +97,10 @@ module RubyLLM
 
     def handle_tool_calls(response, &block)
       response.tool_calls.each_value do |tool_call|
+        @on[:new_message]&.call
         result = execute_tool tool_call
-        add_tool_result tool_call.id, result if result
+        message = add_tool_result tool_call.id, result
+        @on[:end_message]&.call(message)
       end
 
       complete(&block)
