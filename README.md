@@ -191,16 +191,30 @@ end
 class CreateMessages < ActiveRecord::Migration[8.0]
   def change
     create_table :messages do |t|
-      t.references :chat
+      t.references :chat, null: false
       t.string :role
       t.text :content
-      t.json :tool_calls, default: {}
-      t.string :tool_call_id
+      t.string :model_id
       t.integer :input_tokens
       t.integer :output_tokens
-      t.string :model_id
+      t.references :tool_call
       t.timestamps
     end
+  end
+end
+
+# db/migrate/YYYYMMDDHHMMSS_create_tool_calls.rb
+class CreateToolCalls < ActiveRecord::Migration[8.0]
+  def change
+    create_table :tool_calls do |t|
+      t.references :message, null: false
+      t.string :tool_call_id, null: false
+      t.string :name, null: false
+      t.jsonb :arguments, default: {}
+      t.timestamps
+    end
+
+    add_index :tool_calls, :tool_call_id
   end
 end
 ```
@@ -217,6 +231,10 @@ end
 
 class Message < ApplicationRecord
   acts_as_message
+end
+
+class ToolCall < ApplicationRecord
+  acts_as_tool_call
 end
 ```
 

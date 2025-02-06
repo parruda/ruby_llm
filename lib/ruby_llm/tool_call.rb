@@ -19,5 +19,13 @@ module RubyLLM
       @name = name
       @arguments = arguments
     end
+
+    def to_h
+      {
+        id: @id,
+        name: @name,
+        arguments: @arguments
+      }
+    end
   end
 end
