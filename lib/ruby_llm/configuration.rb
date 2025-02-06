@@ -10,11 +10,16 @@ module RubyLLM
   #     config.anthropic_api_key = ENV['ANTHROPIC_API_KEY']
   #   end
   class Configuration
-    attr_accessor :openai_api_key, :anthropic_api_key, :default_model, :request_timeout
+    attr_accessor :openai_api_key,
+                  :anthropic_api_key,
+                  :default_model,
+                  :default_embedding_model,
+                  :request_timeout
 
     def initialize
       @request_timeout = 30
       @default_model = 'gpt-4o-mini'
+      @default_embedding_model = 'text-embedding-3-small'
     end
   end
 end

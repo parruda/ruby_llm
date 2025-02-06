@@ -30,17 +30,23 @@ module RubyLLM
         parse_list_models_response response
       end
 
+      def embed(text, model:)
+        payload = build_embedding_payload text, model: model
+        response = post embedding_url, payload
+        parse_embedding_response response
+      end
+
       private
 
       def sync_response(payload)
-        response = post payload
+        response = post completion_url, payload
         parse_completion_response response
       end
 
       def stream_response(payload, &block)
         accumulator = StreamAccumulator.new
 
-        post payload do |req|
+        post completion_url, payload do |req|
           req.options.on_data = handle_stream do |chunk|
             accumulator.add chunk
             block.call chunk
@@ -50,8 +56,8 @@ module RubyLLM
         accumulator.to_message
       end
 
-      def post(payload)
-        connection.post completion_url, payload do |req|
+      def post(url, payload)
+        connection.post url, payload do |req|
           req.headers.merge! headers
           yield req if block_given?
         end

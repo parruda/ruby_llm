@@ -27,6 +27,10 @@ module RubyLLM
       Chat.new(model: model)
     end
 
+    def embed(...)
+      Embedding.embed(...)
+    end
+
     def models
       Models
     end

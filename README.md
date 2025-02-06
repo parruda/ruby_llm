@@ -76,6 +76,33 @@ last_message = chat.messages.last
 puts "Conversation used #{last_message.input_tokens} input tokens and #{last_message.output_tokens} output tokens"
 ```
 
+## Text Embeddings
+
+Need vector embeddings for your text? RubyLLM makes it simple:
+
+```ruby
+# Get embeddings with the default model
+vector = RubyLLM.embed(text: "Hello, world!")
+
+# Use a specific model
+vector = RubyLLM.embed(
+  "Ruby is awesome!",
+  model: "text-embedding-3-large"
+)
+
+# Process multiple texts at once
+vectors = RubyLLM.embed([
+  "First document",
+  "Second document",
+  "Third document"
+])
+
+# Configure the default model
+RubyLLM.configure do |config|
+  config.default_embedding_model = 'text-embedding-3-large'
+end
+```
+
 ## Using Tools
 
 Give your AI assistants access to your Ruby code by creating tool classes that do one thing well:

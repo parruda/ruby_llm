@@ -28,6 +28,10 @@ module RubyLLM
         '/v1/models'
       end
 
+      def embedding_url
+        '/v1/embeddings'
+      end
+
       def build_payload(messages, tools:, temperature:, model:, stream: false) # rubocop:disable Metrics/MethodLength
         {
           model: model,
@@ -51,6 +55,18 @@ module RubyLLM
             tool_call_id: msg.tool_call_id
           }.compact
         end
+      end
+
+      def build_embedding_payload(text, model:)
+        {
+          model: model,
+          input: text
+        }
+      end
+
+      def parse_embedding_response(response)
+        embeddings = response.body['data'].map { |d| d['embedding'] }
+        embeddings.size == 1 ? embeddings.first : embeddings
       end
 
       def format_tool_calls(tool_calls) # rubocop:disable Metrics/MethodLength
