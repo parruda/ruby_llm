@@ -49,11 +49,20 @@ module RubyLLM
       def format_messages(messages)
         messages.map do |msg|
           {
-            role: msg.role.to_s,
+            role: format_role(msg.role),
             content: msg.content,
             tool_calls: format_tool_calls(msg.tool_calls),
             tool_call_id: msg.tool_call_id
           }.compact
+        end
+      end
+
+      def format_role(role)
+        case role
+        when :system
+          'developer'
+        else
+          role.to_s
         end
       end
 
