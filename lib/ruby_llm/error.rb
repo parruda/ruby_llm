@@ -32,19 +32,19 @@ module RubyLLM
       @provider = provider
     end
 
-    def call(env) # rubocop:disable Metrics/MethodLength
+    def call(env) # rubocop:disable Metrics/MethodLength,Metrics/CyclomaticComplexity
       @app.call(env).on_complete do |response|
         message = @provider&.parse_error(response)
 
         case response.status
         when 400
-          raise BadRequestError.new(response, message)
+          raise BadRequestError.new(response, message || 'Invalid request - please check your input')
         when 401
-          raise UnauthorizedError.new(response, 'Invalid API key - check your credentials')
+          raise UnauthorizedError.new(response, message || 'Invalid API key - check your credentials')
         when 429
-          raise RateLimitError.new(response, 'Rate limit exceeded - please wait a moment')
+          raise RateLimitError.new(response, message || 'Rate limit exceeded - please wait a moment')
         when 500..599
-          raise ServerError.new(response, 'API server error - please try again')
+          raise ServerError.new(response, message || 'API server error - please try again')
         end
       end
     end
