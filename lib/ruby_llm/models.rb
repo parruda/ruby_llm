@@ -25,7 +25,7 @@ module RubyLLM
     end
 
     def find(model_id)
-      all.find { |m| m.id == model_id } or raise Error, "Unknown model: #{model_id}"
+      all.find { |m| m.id == model_id } or raise ModelNotFoundError, "Unknown model: #{model_id}"
     end
 
     def chat_models

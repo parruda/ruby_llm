@@ -74,18 +74,41 @@ module RubyLLM
         end
       end
 
-      def to_json_stream(&block)
+      def to_json_stream(&block) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+        buffer = String.new
         parser = EventStreamParser::Parser.new
-        proc do |chunk, _bytes, _|
-          parser.feed(chunk) do |_type, data|
-            unless data == '[DONE]'
-              parsed_data = JSON.parse(data)
-              RubyLLM.logger.debug "chunk: #{parsed_data}"
-              block.call(parsed_data)
+
+        proc do |chunk, _bytes, env|
+          if env && env.status != 200
+            # Accumulate error chunks
+            buffer << chunk
+            begin
+              error_data = JSON.parse(buffer)
+              error_response = env.merge(body: error_data)
+              ErrorMiddleware.parse_error(provider: self, response: error_response)
+            rescue JSON::ParserError
+              # Keep accumulating if we don't have complete JSON yet
+              RubyLLM.logger.debug "Accumulating error chunk: #{chunk}"
+            end
+          else
+            parser.feed(chunk) do |_type, data|
+              unless data == '[DONE]'
+                parsed_data = JSON.parse(data)
+                RubyLLM.logger.debug "chunk: #{parsed_data}"
+                block.call(parsed_data)
+              end
             end
           end
         end
       end
+    end
+
+    def try_parse_json(maybe_json)
+      return maybe_json if maybe_json.is_a?(Hash)
+
+      JSON.parse(maybe_json)
+    rescue JSON::ParserError
+      maybe_json
     end
 
     class << self
@@ -95,8 +118,7 @@ module RubyLLM
 
       def for(model)
         model_info = Models.find(model)
-        provider_class = providers[model_info.provider.to_sym] or
-          raise Error, "No provider registered for #{model_info.provider}"
+        provider_class = providers[model_info.provider.to_sym]
 
         provider_class.new
       end

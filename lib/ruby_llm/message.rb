@@ -48,7 +48,7 @@ module RubyLLM
     private
 
     def ensure_valid_role
-      raise Error, "Expected role to be one of: #{ROLES.join(', ')}" unless ROLES.include?(role)
+      raise InvalidRoleError, "Expected role to be one of: #{ROLES.join(', ')}" unless ROLES.include?(role)
     end
   end
 end

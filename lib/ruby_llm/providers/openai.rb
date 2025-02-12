@@ -11,7 +11,8 @@ module RubyLLM
       def parse_error(response)
         return if response.body.empty?
 
-        JSON.parse(response.body).dig('error', 'message')
+        body = try_parse_json(response.body)
+        body.is_a?(Hash) ? body.dig('error', 'message') : body
       end
 
       private

@@ -19,6 +19,9 @@ module RubyLLM
     end
   end
 
+  class ModelNotFoundError < StandardError; end
+  class InvalidRoleError < StandardError; end
+  class UnsupportedFunctionsError < StandardError; end
   class UnauthorizedError < Error; end
   class BadRequestError < Error; end
   class RateLimitError < Error; end
@@ -27,14 +30,20 @@ module RubyLLM
   # Faraday middleware that maps provider-specific API errors to RubyLLM errors.
   # Uses provider's parse_error method to extract meaningful error messages.
   class ErrorMiddleware < Faraday::Middleware
-    def initialize(app, provider: nil)
+    def initialize(app, provider:)
       super(app)
       @provider = provider
     end
 
-    def call(env) # rubocop:disable Metrics/MethodLength,Metrics/CyclomaticComplexity
+    def call(env)
       @app.call(env).on_complete do |response|
-        message = @provider&.parse_error(response)
+        self.class.parse_error(provider: @provider, response: response)
+      end
+    end
+
+    class << self
+      def parse_error(provider:, response:) # rubocop:disable Metrics/CyclomaticComplexity,Metrics/MethodLength
+        message = provider&.parse_error(response)
 
         case response.status
         when 400

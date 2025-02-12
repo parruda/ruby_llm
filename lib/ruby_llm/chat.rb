@@ -33,7 +33,9 @@ module RubyLLM
     alias say ask
 
     def with_tool(tool)
-      raise Error, "Model #{@model.id} doesn't support function calling" unless @model.supports_functions
+      unless @model.supports_functions
+        raise UnsupportedFunctionsError, "Model #{@model.id} doesn't support function calling"
+      end
 
       tool_instance = tool.is_a?(Class) ? tool.new : tool
       @tools[tool_instance.name.to_sym] = tool_instance
