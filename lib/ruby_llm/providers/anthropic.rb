@@ -8,6 +8,8 @@ module RubyLLM
       include Provider
 
       def parse_error(response)
+        return if response.body.empty?
+
         JSON.parse(response.body).dig('error', 'message')
       end
 

@@ -15,7 +15,7 @@ module RubyLLM
 
     def initialize(response = nil, message = nil)
       @response = response
-      super(message || response&.body.to_s)
+      super(message || response&.body)
     end
   end
 
