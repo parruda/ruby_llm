@@ -69,7 +69,7 @@ module RubyLLM
           f.request :json
           f.response :json
           f.adapter Faraday.default_adapter
-          f.use Faraday::Response::RaiseError
+          f.use :llm_errors, provider: self
           f.response :logger, RubyLLM.logger, { headers: false, bodies: true, errors: true, log_level: :debug }
         end
       end

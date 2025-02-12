@@ -19,9 +19,7 @@ Or install it yourself:
 gem install ruby_llm
 ```
 
-## Quick Start
-
-RubyLLM makes it dead simple to start chatting with AI models:
+## Configuration
 
 ```ruby
 require 'ruby_llm'
@@ -31,7 +29,13 @@ RubyLLM.configure do |config|
   config.openai_api_key = ENV['OPENAI_API_KEY']
   config.anthropic_api_key = ENV['ANTHROPIC_API_KEY']
 end
+```
 
+## Quick Start
+
+RubyLLM makes it dead simple to start chatting with AI models:
+
+```ruby
 # Start a conversation
 chat = RubyLLM.chat
 chat.ask "What's the best way to learn Ruby?"
@@ -167,6 +171,21 @@ ENV['RUBY_LLM_DEBUG'] = 'true'
 chat.ask "What's 123 * 456?"
 # D, -- RubyLLM: Tool calculator called with: {"expression" => "123 * 456"}
 # D, -- RubyLLM: Tool calculator returned: "56088"
+```
+
+## Error Handling
+
+RubyLLM wraps provider errors in clear Ruby exceptions:
+
+```ruby
+begin
+  chat = RubyLLM.chat
+  chat.ask "Hello world!"
+rescue RubyLLM::UnauthorizedError
+  puts "Check your API credentials"
+rescue RubyLLM::BadRequestError => e
+  puts "Something went wrong: #{e.message}"
+end
 ```
 
 ## Rails Integration

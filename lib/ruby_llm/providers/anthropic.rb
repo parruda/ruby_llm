@@ -7,6 +7,10 @@ module RubyLLM
     class Anthropic # rubocop:disable Metrics/ClassLength
       include Provider
 
+      def parse_error(response)
+        JSON.parse(response.body).dig('error', 'message')
+      end
+
       private
 
       def api_base
