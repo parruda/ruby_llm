@@ -139,7 +139,7 @@ module RubyLLM
       def to_llm
         RubyLLM::Message.new(
           role: role.to_sym,
-          content: content,
+          content: extract_content,
           tool_calls: extract_tool_calls,
           tool_call_id: extract_tool_call_id,
           input_tokens: input_tokens,
@@ -163,6 +163,10 @@ module RubyLLM
 
       def extract_tool_call_id
         parent_tool_call&.tool_call_id
+      end
+
+      def extract_content
+        content
       end
     end
   end
