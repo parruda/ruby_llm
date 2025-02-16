@@ -18,7 +18,7 @@ module RubyLLM
     def all
       @all ||= begin
         data = JSON.parse(File.read(File.expand_path('models.json', __dir__)))
-        data['models'].map { |model| ModelInfo.new(model.transform_keys(&:to_sym)) }
+        data.map { |model| ModelInfo.new(model.transform_keys(&:to_sym)) }
       end
     rescue Errno::ENOENT
       [] # Return empty array if file doesn't exist yet
@@ -53,7 +53,9 @@ module RubyLLM
     end
 
     def refresh!
-      @all = nil
+      @all = RubyLLM.providers.flat_map do |provider|
+        provider.new.list_models
+      end
     end
   end
 end

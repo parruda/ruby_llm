@@ -15,7 +15,7 @@ module RubyLLM
   class ModelInfo
     attr_reader :id, :created_at, :display_name, :provider, :metadata,
                 :context_window, :max_tokens, :supports_vision, :supports_functions,
-                :supports_json_mode, :input_price_per_million, :output_price_per_million
+                :supports_json_mode, :input_price_per_million, :output_price_per_million, :type, :family
 
     def initialize(data) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
       @id = data[:id]
@@ -24,6 +24,8 @@ module RubyLLM
       @provider = data[:provider]
       @context_window = data[:context_window]
       @max_tokens = data[:max_tokens]
+      @type = data[:type]
+      @family = data[:family]
       @supports_vision = data[:supports_vision]
       @supports_functions = data[:supports_functions]
       @supports_json_mode = data[:supports_json_mode]
@@ -35,11 +37,13 @@ module RubyLLM
     def to_h # rubocop:disable Metrics/MethodLength
       {
         id: id,
-        created_at: created_at.iso8601,
+        created_at: created_at&.iso8601,
         display_name: display_name,
         provider: provider,
         context_window: context_window,
         max_tokens: max_tokens,
+        type: type,
+        family: family,
         supports_vision: supports_vision,
         supports_functions: supports_functions,
         supports_json_mode: supports_json_mode,
@@ -47,14 +51,6 @@ module RubyLLM
         output_price_per_million: output_price_per_million,
         metadata: metadata
       }
-    end
-
-    def type
-      metadata['type']
-    end
-
-    def family
-      metadata['family']
     end
   end
 end

@@ -23,6 +23,8 @@ module RubyLLM
   class InvalidRoleError < StandardError; end
   class UnsupportedFunctionsError < StandardError; end
   class UnauthorizedError < Error; end
+  class PaymentRequiredError < Error; end
+  class ServiceUnavailableError < Error; end
   class BadRequestError < Error; end
   class RateLimitError < Error; end
   class ServerError < Error; end
@@ -42,18 +44,26 @@ module RubyLLM
     end
 
     class << self
-      def parse_error(provider:, response:) # rubocop:disable Metrics/CyclomaticComplexity,Metrics/MethodLength
+      def parse_error(provider:, response:) # rubocop:disable Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/AbcSize,Metrics/PerceivedComplexity
         message = provider&.parse_error(response)
 
         case response.status
+        when 200..399
+          message
         when 400
           raise BadRequestError.new(response, message || 'Invalid request - please check your input')
         when 401
           raise UnauthorizedError.new(response, message || 'Invalid API key - check your credentials')
+        when 402
+          raise PaymentRequiredError.new(response, message || 'Payment required - please top up your account')
         when 429
           raise RateLimitError.new(response, message || 'Rate limit exceeded - please wait a moment')
-        when 500..599
+        when 500
           raise ServerError.new(response, message || 'API server error - please try again')
+        when 503
+          raise ServiceUnavailableError.new(response, message || 'API server unavailable - please try again later')
+        else
+          raise Error.new(response, message || 'An unknown error occurred')
         end
       end
     end

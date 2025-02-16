@@ -12,7 +12,8 @@ loader.inflector.inflect(
   'ruby_llm' => 'RubyLLM',
   'llm' => 'LLM',
   'openai' => 'OpenAI',
-  'api' => 'API'
+  'api' => 'API',
+  'deepseek' => 'DeepSeek'
 )
 loader.setup
 
@@ -35,6 +36,10 @@ module RubyLLM
       Models
     end
 
+    def providers
+      Provider.providers.values
+    end
+
     def configure
       yield config
     end
@@ -55,6 +60,8 @@ end
 
 RubyLLM::Provider.register :openai, RubyLLM::Providers::OpenAI
 RubyLLM::Provider.register :anthropic, RubyLLM::Providers::Anthropic
+RubyLLM::Provider.register :gemini, RubyLLM::Providers::Gemini
+RubyLLM::Provider.register :deepseek, RubyLLM::Providers::DeepSeek
 
 if defined?(Rails::Railtie)
   require 'ruby_llm/railtie'

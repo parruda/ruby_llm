@@ -1,6 +1,16 @@
 # RubyLLM
 
-A delightful Ruby interface to the latest large language models. Stop wrestling with multiple APIs and inconsistent interfaces. RubyLLM gives you a clean, unified way to work with models from OpenAI, Anthropic, and more.
+A delightful Ruby interface to the latest large language models. Stop wrestling with multiple APIs and inconsistent interfaces. RubyLLM gives you a clean, unified way to work with models from OpenAI, Anthropic, Google, and DeepSeek.
+
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI" height="40" width="120">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic" height="40" width="120">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Google" height="40" width="120">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg" alt="DeepSeek" height="40" width="120"]>
+</p>
 
 [![Gem Version](https://badge.fury.io/rb/ruby_llm.svg)](https://badge.fury.io/rb/ruby_llm)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
@@ -28,6 +38,8 @@ require 'ruby_llm'
 RubyLLM.configure do |config|
   config.openai_api_key = ENV['OPENAI_API_KEY']
   config.anthropic_api_key = ENV['ANTHROPIC_API_KEY']
+  config.gemini_api_key = ENV['GEMINI_API_KEY']
+  config.deepseek_api_key = ENV['DEEPSEEK_API_KEY']
 end
 ```
 
@@ -61,7 +73,7 @@ image_models = RubyLLM.models.image_models
 Conversations are simple and natural:
 
 ```ruby
-chat = RubyLLM.chat model: 'claude-3-5-sonnet-20241022'
+chat = RubyLLM.chat model: 'claude-3-opus-20240229'
 
 # Ask questions
 response = chat.ask "What's your favorite Ruby feature?"
@@ -153,7 +165,7 @@ search = Search.new repo: Document
 chat.with_tools search, Calculator
 
 # Configure as needed
-chat.with_model('claude-3-5-sonnet-20241022')
+chat.with_model('claude-3-opus-20240229')
     .with_temperature(0.9)
 
 chat.ask "What's 2+2?"
@@ -185,6 +197,10 @@ rescue RubyLLM::UnauthorizedError
   puts "Check your API credentials"
 rescue RubyLLM::BadRequestError => e
   puts "Something went wrong: #{e.message}"
+rescue RubyLLM::PaymentRequiredError
+  puts "Time to top up your API credits"
+rescue RubyLLM::ServiceUnavailableError
+  puts "API service is temporarily down"
 end
 ```
 

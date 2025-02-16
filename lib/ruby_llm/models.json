@@ -1,686 +1,2068 @@
-{
-  "models": [
-    {
-      "id": "gpt-4o-mini-audio-preview",
-      "created_at": "2024-12-16T22:17:04.000Z",
-      "display_name": "GPT-4o-Mini Audio Preview",
-      "provider": "openai",
-      "context_window": 128000,
-      "max_tokens": 16384,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.15,
-      "output_price_per_million": 0.6,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4o"
-      }
-    },
-    {
-      "id": "gpt-4o-mini-realtime-preview",
-      "created_at": "2024-12-16T22:16:20.000Z",
-      "display_name": "GPT-4o-Mini Realtime Preview",
-      "provider": "openai",
-      "context_window": 128000,
-      "max_tokens": 16384,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.6,
-      "output_price_per_million": 2.4,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4o"
-      }
-    },
-    {
-      "id": "claude-3-5-sonnet-20241022",
-      "created_at": "2024-10-22T00:00:00.000Z",
-      "display_name": "Claude 3.5 Sonnet (New)",
-      "provider": "anthropic",
-      "context_window": 200000,
-      "max_tokens": 8192,
-      "supports_vision": true,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 3.0,
-      "output_price_per_million": 15.0,
-      "metadata": {
-        "type": "chat",
-        "family": "claude3"
-      }
-    },
-    {
-      "id": "claude-3-5-haiku-20241022",
-      "created_at": "2024-10-22T00:00:00.000Z",
-      "display_name": "Claude 3.5 Haiku",
-      "provider": "anthropic",
-      "context_window": 200000,
-      "max_tokens": 8192,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 0.8,
-      "output_price_per_million": 4.0,
-      "metadata": {
-        "type": "chat",
-        "family": "claude3"
-      }
-    },
-    {
-      "id": "gpt-4o-realtime-preview",
-      "created_at": "2024-09-30T01:33:18.000Z",
-      "display_name": "GPT-4o Realtime Preview",
-      "provider": "openai",
-      "context_window": 128000,
-      "max_tokens": 16384,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 5.0,
-      "output_price_per_million": 20.0,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4o"
-      }
-    },
-    {
-      "id": "gpt-4o-audio-preview",
-      "created_at": "2024-09-27T18:07:23.000Z",
-      "display_name": "GPT-4o Audio Preview",
-      "provider": "openai",
-      "context_window": 128000,
-      "max_tokens": 16384,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 2.5,
-      "output_price_per_million": 10.0,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4o"
-      }
-    },
-    {
-      "id": "o1-mini",
-      "created_at": "2024-09-06T18:56:48.000Z",
-      "display_name": "O1-Mini",
-      "provider": "openai",
-      "context_window": 128000,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 3.0,
-      "output_price_per_million": 12.0,
-      "metadata": {
-        "type": "chat",
-        "family": "o1"
-      }
-    },
-    {
-      "id": "o1-preview",
-      "created_at": "2024-09-06T18:54:57.000Z",
-      "display_name": "O1-Preview",
-      "provider": "openai",
-      "context_window": 128000,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "o1"
-      }
-    },
-    {
-      "id": "gpt-4o-mini",
-      "created_at": "2024-07-16T23:32:21.000Z",
-      "display_name": "GPT-4o-Mini",
-      "provider": "openai",
-      "context_window": 128000,
-      "max_tokens": 16384,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.15,
-      "output_price_per_million": 0.6,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4o"
-      }
-    },
-    {
-      "id": "claude-3-5-sonnet-20240620",
-      "created_at": "2024-06-20T00:00:00.000Z",
-      "display_name": "Claude 3.5 Sonnet (Old)",
-      "provider": "anthropic",
-      "context_window": 200000,
-      "max_tokens": 8192,
-      "supports_vision": true,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 3.0,
-      "output_price_per_million": 15.0,
-      "metadata": {
-        "type": "chat",
-        "family": "claude3"
-      }
-    },
-    {
-      "id": "gpt-4o",
-      "created_at": "2024-05-10T18:50:49.000Z",
-      "display_name": "GPT-4o",
-      "provider": "openai",
-      "context_window": 128000,
-      "max_tokens": 16384,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 2.5,
-      "output_price_per_million": 10.0,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4o"
-      }
-    },
-    {
-      "id": "gpt-4-turbo",
-      "created_at": "2024-04-05T23:57:21.000Z",
-      "display_name": "GPT-4-Turbo",
-      "provider": "openai",
-      "context_window": 128000,
-      "max_tokens": 16384,
-      "supports_vision": true,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 10.0,
-      "output_price_per_million": 30.0,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4"
-      }
-    },
-    {
-      "id": "claude-3-haiku-20240307",
-      "created_at": "2024-03-07T00:00:00.000Z",
-      "display_name": "Claude 3 Haiku",
-      "provider": "anthropic",
-      "context_window": 200000,
-      "max_tokens": 4096,
-      "supports_vision": true,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 0.25,
-      "output_price_per_million": 1.25,
-      "metadata": {
-        "type": "chat",
-        "family": "claude3"
-      }
-    },
-    {
-      "id": "claude-3-sonnet-20240229",
-      "created_at": "2024-02-29T00:00:00.000Z",
-      "display_name": "Claude 3 Sonnet",
-      "provider": "anthropic",
-      "context_window": 200000,
-      "max_tokens": 4096,
-      "supports_vision": true,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 3.0,
-      "output_price_per_million": 15.0,
-      "metadata": {
-        "type": "chat",
-        "family": "claude3"
-      }
-    },
-    {
-      "id": "claude-3-opus-20240229",
-      "created_at": "2024-02-29T00:00:00.000Z",
-      "display_name": "Claude 3 Opus",
-      "provider": "anthropic",
-      "context_window": 200000,
-      "max_tokens": 4096,
-      "supports_vision": true,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 15.0,
-      "output_price_per_million": 75.0,
-      "metadata": {
-        "type": "chat",
-        "family": "claude3"
-      }
-    },
-    {
-      "id": "gpt-3.5-turbo-0125",
-      "created_at": "2024-01-23T22:19:18.000Z",
-      "display_name": "GPT-3.5-Turbo 0125",
-      "provider": "openai",
-      "context_window": 16385,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt35"
-      }
-    },
-    {
-      "id": "gpt-4-turbo-preview",
-      "created_at": "2024-01-23T19:22:57.000Z",
-      "display_name": "GPT-4-Turbo Preview",
-      "provider": "openai",
-      "context_window": 128000,
-      "max_tokens": 16384,
-      "supports_vision": true,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 10.0,
-      "output_price_per_million": 30.0,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4"
-      }
-    },
-    {
-      "id": "gpt-4-0125-preview",
-      "created_at": "2024-01-23T19:20:12.000Z",
-      "display_name": "GPT-4-0125 Preview",
-      "provider": "openai",
-      "context_window": 8192,
-      "max_tokens": 8192,
-      "supports_vision": true,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4"
-      }
-    },
-    {
-      "id": "text-embedding-3-large",
-      "created_at": "2024-01-22T19:53:00.000Z",
-      "display_name": "Text Embedding 3 Large",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "embedding",
-        "family": "embedding3"
-      }
-    },
-    {
-      "id": "text-embedding-3-small",
-      "created_at": "2024-01-22T18:43:17.000Z",
-      "display_name": "Text Embedding 3 Small",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "embedding",
-        "family": "embedding3"
-      }
-    },
-    {
-      "id": "claude-2.1",
-      "created_at": "2023-11-21T00:00:00.000Z",
-      "display_name": "Claude 2.1",
-      "provider": "anthropic",
-      "context_window": 100000,
-      "max_tokens": 4096,
-      "supports_vision": true,
-      "supports_functions": false,
-      "supports_json_mode": false,
-      "input_price_per_million": 3.0,
-      "output_price_per_million": 15.0,
-      "metadata": {
-        "type": "chat",
-        "family": "claude2"
-      }
-    },
-    {
-      "id": "tts-1-hd-1106",
-      "created_at": "2023-11-03T23:18:53.000Z",
-      "display_name": "TTS-1 HD 1106",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "audio",
-        "family": "tts"
-      }
-    },
-    {
-      "id": "tts-1-1106",
-      "created_at": "2023-11-03T23:14:01.000Z",
-      "display_name": "TTS-1 1106",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "audio",
-        "family": "tts"
-      }
-    },
-    {
-      "id": "tts-1-hd",
-      "created_at": "2023-11-03T21:13:35.000Z",
-      "display_name": "TTS-1 HD",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "audio",
-        "family": "tts"
-      }
-    },
-    {
-      "id": "gpt-3.5-turbo-1106",
-      "created_at": "2023-11-02T21:15:48.000Z",
-      "display_name": "GPT-3.5-Turbo 1106",
-      "provider": "openai",
-      "context_window": 16385,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt35"
-      }
-    },
-    {
-      "id": "gpt-4-1106-preview",
-      "created_at": "2023-11-02T20:33:26.000Z",
-      "display_name": "GPT-4-1106 Preview",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": true,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4"
-      }
-    },
-    {
-      "id": "dall-e-2",
-      "created_at": "2023-11-01T00:22:57.000Z",
-      "display_name": "DALL-E-2",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "image",
-        "family": "dalle"
-      }
-    },
-    {
-      "id": "dall-e-3",
-      "created_at": "2023-10-31T20:46:29.000Z",
-      "display_name": "DALL-E-3",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "image",
-        "family": "dalle"
-      }
-    },
-    {
-      "id": "gpt-3.5-turbo-instruct-0914",
-      "created_at": "2023-09-07T21:34:32.000Z",
-      "display_name": "GPT-3.5-Turbo Instruct 0914",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": false,
-      "supports_json_mode": true,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt35"
-      }
-    },
-    {
-      "id": "gpt-3.5-turbo-instruct",
-      "created_at": "2023-08-24T18:23:47.000Z",
-      "display_name": "GPT-3.5-Turbo Instruct",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": false,
-      "supports_json_mode": true,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt35"
-      }
-    },
-    {
-      "id": "babbage-002",
-      "created_at": "2023-08-21T16:16:55.000Z",
-      "display_name": "Babbage 002",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "other",
-        "family": "other"
-      }
-    },
-    {
-      "id": "davinci-002",
-      "created_at": "2023-08-21T16:11:41.000Z",
-      "display_name": "Davinci 002",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "other",
-        "family": "other"
-      }
-    },
-    {
-      "id": "claude-2.0",
-      "created_at": "2023-07-11T00:00:00.000Z",
-      "display_name": "Claude 2.0",
-      "provider": "anthropic",
-      "context_window": 100000,
-      "max_tokens": 4096,
-      "supports_vision": true,
-      "supports_functions": false,
-      "supports_json_mode": false,
-      "input_price_per_million": 3.0,
-      "output_price_per_million": 15.0,
-      "metadata": {
-        "type": "chat",
-        "family": "claude2"
-      }
-    },
-    {
-      "id": "gpt-4",
-      "created_at": "2023-06-27T16:13:31.000Z",
-      "display_name": "GPT-4",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4"
-      }
-    },
-    {
-      "id": "gpt-4-0613",
-      "created_at": "2023-06-12T16:54:56.000Z",
-      "display_name": "GPT-4-0613",
-      "provider": "openai",
-      "context_window": 8192,
-      "max_tokens": 8192,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt4"
-      }
-    },
-    {
-      "id": "gpt-3.5-turbo-16k",
-      "created_at": "2023-05-10T22:35:02.000Z",
-      "display_name": "GPT-3.5-Turbo 16k",
-      "provider": "openai",
-      "context_window": 16385,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt35"
-      }
-    },
-    {
-      "id": "tts-1",
-      "created_at": "2023-04-19T21:49:11.000Z",
-      "display_name": "TTS-1",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "audio",
-        "family": "tts"
-      }
-    },
-    {
-      "id": "gpt-3.5-turbo",
-      "created_at": "2023-02-28T18:56:42.000Z",
-      "display_name": "GPT-3.5-Turbo",
-      "provider": "openai",
-      "context_window": 16385,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": true,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "chat",
-        "family": "gpt35"
-      }
-    },
-    {
-      "id": "whisper-1",
-      "created_at": "2023-02-27T21:13:04.000Z",
-      "display_name": "Whisper 1",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "audio",
-        "family": "whisper"
-      }
-    },
-    {
-      "id": "text-embedding-ada-002",
-      "created_at": "2022-12-16T19:01:39.000Z",
-      "display_name": "Text Embedding Ada 002",
-      "provider": "openai",
-      "context_window": 4096,
-      "max_tokens": 4096,
-      "supports_vision": false,
-      "supports_functions": true,
-      "supports_json_mode": false,
-      "input_price_per_million": 0.5,
-      "output_price_per_million": 1.5,
-      "metadata": {
-        "type": "embedding",
-        "family": "embedding2"
-      }
+[
+  {
+    "id": "gpt-4o-mini-audio-preview-2024-12-17",
+    "created_at": "2024-12-13T19:52:00+01:00",
+    "display_name": "GPT-4o-Mini Audio Preview 20241217",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o_mini",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
     }
-  ],
-  "last_updated": "2025-01-31T10:48:33Z",
-  "version": "1.0.0"
-}
+  },
+  {
+    "id": "dall-e-3",
+    "created_at": "2023-10-31T21:46:29+01:00",
+    "display_name": "DALL-E-3",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "image",
+    "family": "dalle3",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "dall-e-2",
+    "created_at": "2023-11-01T01:22:57+01:00",
+    "display_name": "DALL-E-2",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "image",
+    "family": "dalle2",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-2024-11-20",
+    "created_at": "2025-02-12T04:39:03+01:00",
+    "display_name": "GPT-4o 20241120",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-audio-preview-2024-10-01",
+    "created_at": "2024-09-27T00:17:22+02:00",
+    "display_name": "GPT-4o Audio Preview 20241001",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-audio-preview",
+    "created_at": "2024-09-27T20:07:23+02:00",
+    "display_name": "GPT-4o Audio Preview",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "o1-mini-2024-09-12",
+    "created_at": "2024-09-06T20:56:19+02:00",
+    "display_name": "O1-Mini 20240912",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 65536,
+    "type": "chat",
+    "family": "o1",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-mini-realtime-preview-2024-12-17",
+    "created_at": "2024-12-13T18:56:41+01:00",
+    "display_name": "GPT-4o-Mini Realtime Preview 20241217",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o_mini_realtime",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "o1-preview-2024-09-12",
+    "created_at": "2024-09-06T20:54:25+02:00",
+    "display_name": "O1-Preview 20240912",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 32768,
+    "type": "chat",
+    "family": "o1",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "o1-mini",
+    "created_at": "2024-09-06T20:56:48+02:00",
+    "display_name": "O1-Mini",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "o1_mini",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "o1-preview",
+    "created_at": "2024-09-06T20:54:57+02:00",
+    "display_name": "O1-Preview",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "o1",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-mini-realtime-preview",
+    "created_at": "2024-12-16T23:16:20+01:00",
+    "display_name": "GPT-4o-Mini Realtime Preview",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o_mini_realtime",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "whisper-1",
+    "created_at": "2023-02-27T22:13:04+01:00",
+    "display_name": "Whisper 1",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "audio",
+    "family": "whisper1",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "openai-internal"
+    }
+  },
+  {
+    "id": "gpt-4-turbo",
+    "created_at": "2024-04-06T01:57:21+02:00",
+    "display_name": "GPT-4-Turbo",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4_turbo",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-mini-audio-preview",
+    "created_at": "2024-12-16T23:17:04+01:00",
+    "display_name": "GPT-4o-Mini Audio Preview",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o_mini",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-realtime-preview-2024-10-01",
+    "created_at": "2024-09-24T00:49:26+02:00",
+    "display_name": "GPT-4o Realtime Preview 20241001",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o_realtime",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "babbage-002",
+    "created_at": "2023-08-21T18:16:55+02:00",
+    "display_name": "Babbage 002",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "babbage",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "tts-1-hd-1106",
+    "created_at": "2023-11-04T00:18:53+01:00",
+    "display_name": "TTS-1 HD 1106",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "audio",
+    "family": "tts1_hd",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-audio-preview-2024-12-17",
+    "created_at": "2024-12-12T21:10:39+01:00",
+    "display_name": "GPT-4o Audio Preview 20241217",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "tts-1-hd",
+    "created_at": "2023-11-03T22:13:35+01:00",
+    "display_name": "TTS-1 HD",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "audio",
+    "family": "tts1_hd",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-2024-08-06",
+    "created_at": "2024-08-05T01:38:39+02:00",
+    "display_name": "GPT-4o 20240806",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o",
+    "created_at": "2024-05-10T20:50:49+02:00",
+    "display_name": "GPT-4o",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "chatgpt-4o-latest",
+    "created_at": "2024-08-13T04:12:11+02:00",
+    "display_name": "ChatGPT-4o Latest",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "text-embedding-3-large",
+    "created_at": "2024-01-22T20:53:00+01:00",
+    "display_name": "Text Embedding 3 Large",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "embedding",
+    "family": "embedding3_large",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4-turbo-2024-04-09",
+    "created_at": "2024-04-08T20:41:17+02:00",
+    "display_name": "GPT-4-Turbo 20240409",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4_turbo",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "tts-1",
+    "created_at": "2023-04-19T23:49:11+02:00",
+    "display_name": "TTS-1",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "audio",
+    "family": "tts1",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "openai-internal"
+    }
+  },
+  {
+    "id": "tts-1-1106",
+    "created_at": "2023-11-04T00:14:01+01:00",
+    "display_name": "TTS-1 1106",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "audio",
+    "family": "tts1",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-mini-2024-07-18",
+    "created_at": "2024-07-17T01:31:57+02:00",
+    "display_name": "GPT-4o-Mini 20240718",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o_mini",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-mini",
+    "created_at": "2024-07-17T01:32:21+02:00",
+    "display_name": "GPT-4o-Mini",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o_mini",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "davinci-002",
+    "created_at": "2023-08-21T18:11:41+02:00",
+    "display_name": "Davinci 002",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "davinci",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-3.5-turbo-1106",
+    "created_at": "2023-11-02T22:15:48+01:00",
+    "display_name": "GPT-3.5-Turbo 1106",
+    "provider": "openai",
+    "context_window": 16385,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "gpt35",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "omni-moderation-2024-09-26",
+    "created_at": "2024-11-27T20:07:46+01:00",
+    "display_name": "Omni Moderation 20240926",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "moderation",
+    "family": "moderation",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-3.5-turbo-instruct",
+    "created_at": "2023-08-24T20:23:47+02:00",
+    "display_name": "GPT-3.5-Turbo Instruct",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "gpt35",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-3.5-turbo-instruct-0914",
+    "created_at": "2023-09-07T23:34:32+02:00",
+    "display_name": "GPT-3.5-Turbo Instruct 0914",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "gpt35",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-3.5-turbo-0125",
+    "created_at": "2024-01-23T23:19:18+01:00",
+    "display_name": "GPT-3.5-Turbo 0125",
+    "provider": "openai",
+    "context_window": 16385,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "gpt35",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-realtime-preview-2024-12-17",
+    "created_at": "2024-12-11T20:30:30+01:00",
+    "display_name": "GPT-4o Realtime Preview 20241217",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o_realtime",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-3.5-turbo",
+    "created_at": "2023-02-28T19:56:42+01:00",
+    "display_name": "GPT-3.5-Turbo",
+    "provider": "openai",
+    "context_window": 16385,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "gpt35",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "openai"
+    }
+  },
+  {
+    "id": "gpt-4o-realtime-preview",
+    "created_at": "2024-09-30T03:33:18+02:00",
+    "display_name": "GPT-4o Realtime Preview",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o_realtime",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-3.5-turbo-16k",
+    "created_at": "2023-05-11T00:35:02+02:00",
+    "display_name": "GPT-3.5-Turbo 16k",
+    "provider": "openai",
+    "context_window": 16385,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "gpt35",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "openai-internal"
+    }
+  },
+  {
+    "id": "text-embedding-3-small",
+    "created_at": "2024-01-22T19:43:17+01:00",
+    "display_name": "Text Embedding 3 Small",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "embedding",
+    "family": "embedding3_small",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4",
+    "created_at": "2023-06-27T18:13:31+02:00",
+    "display_name": "GPT-4",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "gpt4",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "openai"
+    }
+  },
+  {
+    "id": "gpt-4o-2024-05-13",
+    "created_at": "2024-05-10T21:08:52+02:00",
+    "display_name": "GPT-4o 20240513",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4o",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4-1106-preview",
+    "created_at": "2023-11-02T21:33:26+01:00",
+    "display_name": "GPT-4-1106 Preview",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "gpt4",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "text-embedding-ada-002",
+    "created_at": "2022-12-16T20:01:39+01:00",
+    "display_name": "Text Embedding Ada 002",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "embedding",
+    "family": "embedding2",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "openai-internal"
+    }
+  },
+  {
+    "id": "omni-moderation-latest",
+    "created_at": "2024-11-15T17:47:45+01:00",
+    "display_name": "Omni Moderation Latest",
+    "provider": "openai",
+    "context_window": 4096,
+    "max_tokens": 4096,
+    "type": "moderation",
+    "family": "moderation",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4-0613",
+    "created_at": "2023-06-12T18:54:56+02:00",
+    "display_name": "GPT-4-0613",
+    "provider": "openai",
+    "context_window": 8192,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gpt4",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "openai"
+    }
+  },
+  {
+    "id": "gpt-4-turbo-preview",
+    "created_at": "2024-01-23T20:22:57+01:00",
+    "display_name": "GPT-4-Turbo Preview",
+    "provider": "openai",
+    "context_window": 128000,
+    "max_tokens": 16384,
+    "type": "chat",
+    "family": "gpt4_turbo",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4-0125-preview",
+    "created_at": "2024-01-23T20:20:12+01:00",
+    "display_name": "GPT-4-0125 Preview",
+    "provider": "openai",
+    "context_window": 8192,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gpt4",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.5,
+    "output_price_per_million": 1.5,
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "claude-3-5-sonnet-20241022",
+    "created_at": "2024-10-22T00:00:00Z",
+    "display_name": "Claude 3.5 Sonnet (New)",
+    "provider": "anthropic",
+    "context_window": 200000,
+    "max_tokens": 8192,
+    "type": "model",
+    "family": "claude35_sonnet",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 3.0,
+    "output_price_per_million": 15.0,
+    "metadata": {}
+  },
+  {
+    "id": "claude-3-5-haiku-20241022",
+    "created_at": "2024-10-22T00:00:00Z",
+    "display_name": "Claude 3.5 Haiku",
+    "provider": "anthropic",
+    "context_window": 200000,
+    "max_tokens": 8192,
+    "type": "model",
+    "family": "claude35_haiku",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.8,
+    "output_price_per_million": 4.0,
+    "metadata": {}
+  },
+  {
+    "id": "claude-3-5-sonnet-20240620",
+    "created_at": "2024-06-20T00:00:00Z",
+    "display_name": "Claude 3.5 Sonnet (Old)",
+    "provider": "anthropic",
+    "context_window": 200000,
+    "max_tokens": 8192,
+    "type": "model",
+    "family": "claude35_sonnet",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 3.0,
+    "output_price_per_million": 15.0,
+    "metadata": {}
+  },
+  {
+    "id": "claude-3-haiku-20240307",
+    "created_at": "2024-03-07T00:00:00Z",
+    "display_name": "Claude 3 Haiku",
+    "provider": "anthropic",
+    "context_window": 200000,
+    "max_tokens": 4096,
+    "type": "model",
+    "family": "claude3_haiku",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.25,
+    "output_price_per_million": 1.25,
+    "metadata": {}
+  },
+  {
+    "id": "claude-3-opus-20240229",
+    "created_at": "2024-02-29T00:00:00Z",
+    "display_name": "Claude 3 Opus",
+    "provider": "anthropic",
+    "context_window": 200000,
+    "max_tokens": 4096,
+    "type": "model",
+    "family": "claude3_opus",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 15.0,
+    "output_price_per_million": 75.0,
+    "metadata": {}
+  },
+  {
+    "id": "claude-3-sonnet-20240229",
+    "created_at": "2024-02-29T00:00:00Z",
+    "display_name": "Claude 3 Sonnet",
+    "provider": "anthropic",
+    "context_window": 200000,
+    "max_tokens": 4096,
+    "type": "model",
+    "family": "claude3_sonnet",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 3.0,
+    "output_price_per_million": 15.0,
+    "metadata": {}
+  },
+  {
+    "id": "claude-2.1",
+    "created_at": "2023-11-21T00:00:00Z",
+    "display_name": "Claude 2.1",
+    "provider": "anthropic",
+    "context_window": 100000,
+    "max_tokens": 4096,
+    "type": "model",
+    "family": "claude2",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 3.0,
+    "output_price_per_million": 15.0,
+    "metadata": {}
+  },
+  {
+    "id": "claude-2.0",
+    "created_at": "2023-07-11T00:00:00Z",
+    "display_name": "Claude 2.0",
+    "provider": "anthropic",
+    "context_window": 100000,
+    "max_tokens": 4096,
+    "type": "model",
+    "family": "claude2",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 3.0,
+    "output_price_per_million": 15.0,
+    "metadata": {}
+  },
+  {
+    "id": "chat-bison-001",
+    "created_at": null,
+    "display_name": "chat-bison-001",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "legacy",
+    "family": "bison",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "text-bison-001",
+    "created_at": null,
+    "display_name": "text-bison-001",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "legacy",
+    "family": "bison",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "text-bison-safety-recitation-off",
+    "created_at": null,
+    "display_name": "text-bison-safety-recitation-off",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "legacy",
+    "family": "bison",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "text-bison-safety-off",
+    "created_at": null,
+    "display_name": "text-bison-safety-off",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "legacy",
+    "family": "bison",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "text-bison-recitation-off",
+    "created_at": null,
+    "display_name": "text-bison-recitation-off",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "legacy",
+    "family": "bison",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "embedding-gecko-001",
+    "created_at": null,
+    "display_name": "embedding-gecko-001",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "embedding",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.0,
+    "output_price_per_million": 0.0,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "evergreen-custom",
+    "created_at": null,
+    "display_name": "evergreen-custom",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.0-pro-latest",
+    "created_at": null,
+    "display_name": "gemini-1.0-pro-latest",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.0-pro",
+    "created_at": null,
+    "display_name": "gemini-1.0-pro",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-pro",
+    "created_at": null,
+    "display_name": "gemini-pro",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.0-pro-001",
+    "created_at": null,
+    "display_name": "gemini-1.0-pro-001",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.0-pro-vision-latest",
+    "created_at": null,
+    "display_name": "gemini-1.0-pro-vision-latest",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-pro-vision",
+    "created_at": null,
+    "display_name": "gemini-pro-vision",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-pro-latest",
+    "created_at": null,
+    "display_name": "gemini-1.5-pro-latest",
+    "provider": "gemini",
+    "context_window": 2097152,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_pro",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 1.25,
+    "output_price_per_million": 5.0,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-pro-001",
+    "created_at": null,
+    "display_name": "gemini-1.5-pro-001",
+    "provider": "gemini",
+    "context_window": 2097152,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_pro",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 1.25,
+    "output_price_per_million": 5.0,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-pro-002",
+    "created_at": null,
+    "display_name": "gemini-1.5-pro-002",
+    "provider": "gemini",
+    "context_window": 2097152,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_pro",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 1.25,
+    "output_price_per_million": 5.0,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-pro",
+    "created_at": null,
+    "display_name": "gemini-1.5-pro",
+    "provider": "gemini",
+    "context_window": 2097152,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_pro",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 1.25,
+    "output_price_per_million": 5.0,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash-latest",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash-latest",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash-001",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash-001",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash-001-tuning",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash-001-tuning",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash-002",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash-002",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash-dark-launch",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash-dark-launch",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-test-23",
+    "created_at": null,
+    "display_name": "gemini-test-23",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash-8b",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash-8b",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash_8b",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.0375,
+    "output_price_per_million": 0.15,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash-8b-001",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash-8b-001",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash_8b",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.0375,
+    "output_price_per_million": 0.15,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash-8b-latest",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash-8b-latest",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash_8b",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.0375,
+    "output_price_per_million": 0.15,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash-8b-exp-0827",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash-8b-exp-0827",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash_8b",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.0375,
+    "output_price_per_million": 0.15,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-1.5-flash-8b-exp-0924",
+    "created_at": null,
+    "display_name": "gemini-1.5-flash-8b-exp-0924",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini15_flash_8b",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.0375,
+    "output_price_per_million": 0.15,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-exp",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-exp",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.1,
+    "output_price_per_million": 0.4,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.1,
+    "output_price_per_million": 0.4,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-001",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-001",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.1,
+    "output_price_per_million": 0.4,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-lite-preview",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-lite-preview",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash_lite",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-lite-preview-02-05",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-lite-preview-02-05",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash_lite",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-pro-exp",
+    "created_at": null,
+    "display_name": "gemini-2.0-pro-exp",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-pro-exp-02-05",
+    "created_at": null,
+    "display_name": "gemini-2.0-pro-exp-02-05",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-exp-1206",
+    "created_at": null,
+    "display_name": "gemini-exp-1206",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-tool-test",
+    "created_at": null,
+    "display_name": "gemini-tool-test",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-thinking-exp-01-21",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-thinking-exp-01-21",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.1,
+    "output_price_per_million": 0.4,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-thinking-exp",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-thinking-exp",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.1,
+    "output_price_per_million": 0.4,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-thinking-exp-1219",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-thinking-exp-1219",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.1,
+    "output_price_per_million": 0.4,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-thinking-exp-no-thoughts",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-thinking-exp-no-thoughts",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.1,
+    "output_price_per_million": 0.4,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-001-bidi-test",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-001-bidi-test",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.1,
+    "output_price_per_million": 0.4,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-audiogen-rev17",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-audiogen-rev17",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.1,
+    "output_price_per_million": 0.4,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "gemini-2.0-flash-jarvis",
+    "created_at": null,
+    "display_name": "gemini-2.0-flash-jarvis",
+    "provider": "gemini",
+    "context_window": 1048576,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "gemini20_flash",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.1,
+    "output_price_per_million": 0.4,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "learnlm-1.5-pro-experimental",
+    "created_at": null,
+    "display_name": "learnlm-1.5-pro-experimental",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "embedding-001",
+    "created_at": null,
+    "display_name": "embedding-001",
+    "provider": "gemini",
+    "context_window": 2048,
+    "max_tokens": 768,
+    "type": "embedding",
+    "family": "embedding1",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.0,
+    "output_price_per_million": 0.0,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "text-embedding-004",
+    "created_at": null,
+    "display_name": "text-embedding-004",
+    "provider": "gemini",
+    "context_window": 2048,
+    "max_tokens": 768,
+    "type": "embedding",
+    "family": "embedding4",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.0,
+    "output_price_per_million": 0.0,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "aqa",
+    "created_at": null,
+    "display_name": "aqa",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 1024,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "imagen-3.0-generate-002",
+    "created_at": null,
+    "display_name": "imagen-3.0-generate-002",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "image",
+    "family": "imagen3",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "imagen-3.0-generate-002-exp",
+    "created_at": null,
+    "display_name": "imagen-3.0-generate-002-exp",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "image",
+    "family": "imagen3",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "image-verification-001",
+    "created_at": null,
+    "display_name": "image-verification-001",
+    "provider": "gemini",
+    "context_window": 32768,
+    "max_tokens": 4096,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": false,
+    "supports_json_mode": false,
+    "input_price_per_million": 0.075,
+    "output_price_per_million": 0.3,
+    "metadata": {
+      "object": "model",
+      "owned_by": "google"
+    }
+  },
+  {
+    "id": "deepseek-chat",
+    "created_at": null,
+    "display_name": "DeepSeek V3",
+    "provider": "deepseek",
+    "context_window": 64000,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "deepseek",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.27,
+    "output_price_per_million": 1.1,
+    "metadata": {
+      "object": "model",
+      "owned_by": "deepseek"
+    }
+  },
+  {
+    "id": "deepseek-reasoner",
+    "created_at": null,
+    "display_name": "DeepSeek R1",
+    "provider": "deepseek",
+    "context_window": 64000,
+    "max_tokens": 8192,
+    "type": "chat",
+    "family": "deepseek_reasoner",
+    "supports_vision": true,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.27,
+    "output_price_per_million": 1.1,
+    "metadata": {
+      "object": "model",
+      "owned_by": "deepseek"
+    }
+  }
+]

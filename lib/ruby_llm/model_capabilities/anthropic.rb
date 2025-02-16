@@ -4,7 +4,7 @@ module RubyLLM
   module ModelCapabilities
     # Determines capabilities and pricing for Anthropic models
     module Anthropic
-      extend self
+      module_function
 
       def determine_context_window(model_id)
         case model_id
@@ -42,8 +42,6 @@ module RubyLLM
       def supports_json_mode?(model_id)
         model_id.include?('claude-3')
       end
-
-      private
 
       def model_family(model_id)
         case model_id

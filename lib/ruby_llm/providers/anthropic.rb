@@ -31,6 +31,10 @@ module RubyLLM
         '/v1/messages'
       end
 
+      def stream_url
+        completion_url
+      end
+
       def models_url
         '/v1/models'
       end
@@ -77,16 +81,15 @@ module RubyLLM
         )
       end
 
-      def parse_models_response(response) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
-        capabilities = ModelCapabilities::Anthropic.new
-
+      def parse_list_models_response(response) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
         (response.body['data'] || []).map do |model|
           ModelInfo.new(
             id: model['id'],
             created_at: Time.parse(model['created_at']),
             display_name: model['display_name'],
-            provider: 'anthropic',
-            metadata: { type: model['type'] },
+            provider: slug,
+            type: model['type'],
+            family: capabilities.model_family(model['id']),
             context_window: capabilities.determine_context_window(model['id']),
             max_tokens: capabilities.determine_max_tokens(model['id']),
             supports_vision: capabilities.supports_vision?(model['id']),

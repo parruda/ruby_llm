@@ -18,7 +18,7 @@ module RubyLLM
       private
 
       def api_base
-        'https://api.openai.com'
+        'https://api.openai.com/v1'
       end
 
       def headers
@@ -28,15 +28,19 @@ module RubyLLM
       end
 
       def completion_url
-        '/v1/chat/completions'
+        'chat/completions'
+      end
+
+      def stream_url
+        completion_url
       end
 
       def models_url
-        '/v1/models'
+        'models'
       end
 
       def embedding_url
-        '/v1/embeddings'
+        'embeddings'
       end
 
       def build_payload(messages, tools:, temperature:, model:, stream: false) # rubocop:disable Metrics/MethodLength
@@ -189,13 +193,14 @@ module RubyLLM
       end
 
       def parse_list_models_response(response) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
-        capabilities = ModelCapabilities::OpenAI
         (response.body['data'] || []).map do |model|
           ModelInfo.new(
             id: model['id'],
-            created_at: Time.at(model['created']),
+            created_at: model['created'] ? Time.at(model['created']) : nil,
             display_name: capabilities.format_display_name(model['id']),
-            provider: 'openai',
+            provider: slug,
+            type: capabilities.model_type(model['id']),
+            family: capabilities.model_family(model['id']),
             metadata: {
               object: model['object'],
               owned_by: model['owned_by']

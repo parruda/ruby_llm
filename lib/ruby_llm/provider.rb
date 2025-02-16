@@ -46,7 +46,7 @@ module RubyLLM
       def stream_response(payload, &block)
         accumulator = StreamAccumulator.new
 
-        post completion_url, payload do |req|
+        post stream_url, payload do |req|
           req.options.on_data = handle_stream do |chunk|
             accumulator.add chunk
             block.call chunk
@@ -104,11 +104,20 @@ module RubyLLM
     end
 
     def try_parse_json(maybe_json)
-      return maybe_json if maybe_json.is_a?(Hash)
+      return maybe_json unless maybe_json.is_a?(String)
 
       JSON.parse(maybe_json)
     rescue JSON::ParserError
       maybe_json
+    end
+
+    def capabilities
+      provider_name = self.class.name.split('::').last
+      RubyLLM.const_get "ModelCapabilities::#{provider_name}"
+    end
+
+    def slug
+      self.class.name.split('::').last.downcase
     end
 
     class << self
@@ -122,8 +131,6 @@ module RubyLLM
 
         provider_class.new
       end
-
-      private
 
       def providers
         @providers ||= {}

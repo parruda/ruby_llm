@@ -32,7 +32,7 @@ module RubyLLM
     def to_message
       Message.new(
         role: :assistant,
-        content: content,
+        content: content.empty? ? nil : content,
         model_id: model_id,
         tool_calls: tool_calls_from_stream,
         input_tokens: @input_tokens.positive? ? @input_tokens : nil,
@@ -52,13 +52,16 @@ module RubyLLM
       end
     end
 
-    def accumulate_tool_calls(new_tool_calls) # rubocop:disable Metrics/MethodLength
+    def accumulate_tool_calls(new_tool_calls) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
+      RubyLLM.logger.debug "Accumulating tool calls: #{new_tool_calls}"
       new_tool_calls.each_value do |tool_call|
         if tool_call.id
+          tool_call_id = tool_call.id.empty? ? SecureRandom.uuid : tool_call.id
+          tool_call_arguments = tool_call.arguments.empty? ? String.new : tool_call.arguments
           @tool_calls[tool_call.id] = ToolCall.new(
-            id: tool_call.id,
+            id: tool_call_id,
             name: tool_call.name,
-            arguments: String.new
+            arguments: tool_call_arguments
           )
           @latest_tool_call_id = tool_call.id
         else

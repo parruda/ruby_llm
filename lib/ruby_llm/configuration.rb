@@ -12,6 +12,8 @@ module RubyLLM
   class Configuration
     attr_accessor :openai_api_key,
                   :anthropic_api_key,
+                  :gemini_api_key,
+                  :deepseek_api_key,
                   :default_model,
                   :default_embedding_model,
                   :request_timeout

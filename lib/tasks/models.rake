@@ -9,17 +9,21 @@ namespace :ruby_llm do
     RubyLLM.configure do |config|
       config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
       config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
+      config.gemini_api_key = ENV['GEMINI_API_KEY']
+      config.deepseek_api_key = ENV['DEEPSEEK_API_KEY']
     end
 
     # Get all models
-    models = RubyLLM.models.refresh
+    models = RubyLLM.models.refresh!
 
     # Write to models.json
     models_file = File.expand_path('../../lib/ruby_llm/models.json', __dir__)
     File.write(models_file, JSON.pretty_generate(models.map(&:to_h)))
 
     puts "Updated models.json with #{models.size} models:"
-    puts "OpenAI models: #{models.count { |m| m.provider == 'openai' }}"
-    puts "Anthropic models: #{models.count { |m| m.provider == 'anthropic' }}"
+    RubyLLM::Provider.providers.each do |provider_sym, provider_module|
+      provider_name = provider_module.to_s.split('::').last
+      puts "#{provider_name} models: #{models.count { |m| m.provider == provider_sym.to_s }}"
+    end
   end
 end

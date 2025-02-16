@@ -3,7 +3,7 @@
 module RubyLLM
   module ModelCapabilities
     # Determines capabilities and pricing for OpenAI models
-    module OpenAI
+    module OpenAI # rubocop:disable Metrics/ModuleLength
       extend self
 
       def context_window_for(model_id)
@@ -55,20 +55,44 @@ module RubyLLM
                 .then { |name| apply_special_formatting(name) }
       end
 
-      private
-
-      def model_family(model_id) # rubocop:disable Metrics/CyclomaticComplexity
+      def model_type(model_id)
         case model_id
-        when /o1-2024/                then :o1
-        when /o1-mini/                then :o1_mini
-        when /gpt-4o-realtime/        then :gpt4o_realtime
-        when /gpt-4o-mini-realtime/   then :gpt4o_mini_realtime
-        when /gpt-4o-mini/            then :gpt4o_mini
-        when /gpt-4o/                 then :gpt4o
-        when /gpt-4-turbo/            then :gpt4_turbo
-        else :gpt35
+        when /text-embedding|embedding/ then 'embedding'
+        when /dall-e/ then 'image'
+        when /tts|whisper/ then 'audio'
+        when /omni-moderation/ then 'moderation'
+        else 'chat'
         end
       end
+
+      def model_family(model_id) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength
+        case model_id
+        when /o1-2024|o1-mini-2024/ then 'o1'
+        when /o1-mini/ then 'o1_mini'
+        when /o1/ then 'o1'
+        when /gpt-4o-realtime/ then 'gpt4o_realtime'
+        when /gpt-4o-mini-realtime/ then 'gpt4o_mini_realtime'
+        when /gpt-4o-mini/ then 'gpt4o_mini'
+        when /gpt-4o/ then 'gpt4o'
+        when /gpt-4-turbo/ then 'gpt4_turbo'
+        when /gpt-4/ then 'gpt4'
+        when /gpt-3.5/ then 'gpt35'
+        when /dall-e-3/ then 'dalle3'
+        when /dall-e-2/ then 'dalle2'
+        when /text-embedding-3-large/ then 'embedding3_large'
+        when /text-embedding-3-small/ then 'embedding3_small'
+        when /text-embedding-ada/ then 'embedding2'
+        when /tts-1-hd/ then 'tts1_hd'
+        when /tts-1/ then 'tts1'
+        when /whisper/ then 'whisper1'
+        when /omni-moderation/ then 'moderation'
+        when /babbage/ then 'babbage'
+        when /davinci/ then 'davinci'
+        else 'other'
+        end
+      end
+
+      private
 
       PRICES = {
         o1: { input: 15.0, output: 60.0 },
