@@ -1,6 +1,6 @@
 # RubyLLM
 
-A delightful Ruby interface to the latest large language models. Stop wrestling with multiple APIs and inconsistent interfaces. RubyLLM gives you a clean, unified way to work with models from OpenAI, Anthropic, Google, and DeepSeek.
+A delightful Ruby way to work with AI language models. Provides a unified interface to OpenAI, Anthropic, Google, and DeepSeek models with automatic token counting, proper streaming support, and a focus on developer happiness. No wrapping your head around multiple APIs - just clean Ruby code that works.
 
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI" height="40" width="120">

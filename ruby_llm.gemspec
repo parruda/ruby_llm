@@ -10,9 +10,9 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Clean Ruby interface to modern AI language models'
   spec.description   = 'A delightful Ruby way to work with AI language models. Provides a unified interface to OpenAI' \
-                       ' and Anthropic models with automatic token counting, proper streaming support, and a focus on' \
-                       ' developer happiness. No wrapping your head around multiple APIs - just clean Ruby code that' \
-                       ' works.'
+                       ', Anthropic, Google, and DeepSeek models with automatic token counting, proper streaming' \
+                       ' support, and a focus on developer happiness. No wrapping your head around multiple APIs' \
+                       ' - just clean Ruby code that works.'
   spec.homepage      = 'https://github.com/crmne/ruby_llm'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 3.1.0')
