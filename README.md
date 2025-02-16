@@ -73,7 +73,7 @@ image_models = RubyLLM.models.image_models
 Conversations are simple and natural:
 
 ```ruby
-chat = RubyLLM.chat model: 'claude-3-opus-20240229'
+chat = RubyLLM.chat model: 'gemini-2.0-flash'
 
 # Ask questions
 response = chat.ask "What's your favorite Ruby feature?"
@@ -101,7 +101,7 @@ Need vector embeddings for your text? RubyLLM makes it simple:
 RubyLLM.embed "Hello, world!"
 
 # Use a specific model
-RubyLLM.embed "Ruby is awesome!", model: "text-embedding-3-large"
+RubyLLM.embed "Ruby is awesome!", model: "text-embedding-004"
 
 # Process multiple texts at once
 RubyLLM.embed([
@@ -165,7 +165,7 @@ search = Search.new repo: Document
 chat.with_tools search, Calculator
 
 # Configure as needed
-chat.with_model('claude-3-opus-20240229')
+chat.with_model('claude-3-5-sonnet-20241022')
     .with_temperature(0.9)
 
 chat.ask "What's 2+2?"
@@ -373,7 +373,7 @@ class WeatherTool < RubyLLM::Tool
 end
 
 # Use tools with your persisted chats
-chat = Chat.create! model_id: "gpt-4"
+chat = Chat.create! model_id: "deepseek-reasoner"
 chat.chat.with_tool WeatherTool.new
 
 # Ask about weather - tool usage is automatically saved
