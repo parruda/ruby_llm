@@ -175,7 +175,7 @@ module RubyLLM
         name
           .gsub(/(\d{4}) (\d{2}) (\d{2})/, '\1\2\3')
           .gsub(/^Gpt /, 'GPT-')
-          .gsub(/^O[13] /, 'O\1-')
+          .gsub(/^O([13]) /, 'O\1-')
           .gsub(/^Chatgpt /, 'ChatGPT-')
           .gsub(/^Tts /, 'TTS-')
           .gsub(/^Dall E /, 'DALL-E-')
