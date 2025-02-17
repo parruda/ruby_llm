@@ -54,6 +54,10 @@ module RubyLLM
         end
       end
 
+      def model_type(_)
+        'chat'
+      end
+
       PRICES = {
         claude35_sonnet: { input: 3.0, output: 15.0 }, # $3.00/$15.00 per million tokens
         claude35_haiku: { input: 0.80, output: 4.0 }, # $0.80/$4.00 per million tokens

@@ -88,7 +88,7 @@ module RubyLLM
             created_at: Time.parse(model['created_at']),
             display_name: model['display_name'],
             provider: slug,
-            type: model['type'],
+            type: capabilities.model_type(model['id']),
             family: capabilities.model_family(model['id']),
             context_window: capabilities.determine_context_window(model['id']),
             max_tokens: capabilities.determine_max_tokens(model['id']),
