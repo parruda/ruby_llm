@@ -1,8 +1,66 @@
 # frozen_string_literal: true
 
-namespace :ruby_llm do
+require 'English'
+require 'faraday'
+require 'nokogiri'
+
+# URLs to process
+PROVIDER_DOCS = {
+  openai: {
+    models: 'https://platform.openai.com/docs/models',
+    pricing: 'https://platform.openai.com/docs/pricing'
+  },
+  gemini: {
+    models: 'https://ai.google.dev/gemini-api/docs/models/gemini',
+    pricing: 'https://ai.google.dev/pricing'
+  },
+  deepseek: {
+    models: 'https://api-docs.deepseek.com/quick_start/pricing/'
+  }
+}.freeze
+
+def fetch_page(url) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+  if url.include?('openai.com')
+    puts "Please visit #{url} and paste the content below (type 'END' on a new line when done):"
+    original_separator = $INPUT_RECORD_SEPARATOR
+    $/ = 'END'
+    content = $stdin.gets&.chomp
+    $/ = original_separator
+
+    raise "No content provided for #{url}" unless content
+
+    content
+  else
+    response = http_client.get(url)
+    html = Nokogiri::HTML(response.body)
+
+    # Remove script tags and comments
+    html.css('script').remove
+    html.xpath('//comment()').remove
+
+    # Extract text content
+    text = html.css('body').text
+
+    # Clean up whitespace
+    text.gsub!(/\s+/, ' ')
+    text.strip!
+
+    text
+  end
+rescue StandardError => e
+  raise "Failed to fetch #{url}: #{e.message}"
+end
+
+def http_client
+  @http_client ||= Faraday.new do |f|
+    f.response :raise_error
+    f.response :logger, RubyLLM.logger, { headers: false, bodies: true }
+  end
+end
+
+namespace :models do # rubocop:disable Metrics/BlockLength
   desc 'Update available models from providers'
-  task :update_models do
+  task :update do
     require 'ruby_llm'
 
     # Configure API keys
@@ -25,5 +83,109 @@ namespace :ruby_llm do
       provider_name = provider_module.to_s.split('::').last
       puts "#{provider_name} models: #{models.count { |m| m.provider == provider_sym.to_s }}"
     end
+  end
+
+  desc 'Update model capabilities modules by scraping provider documentation'
+  task :update_capabilities do # rubocop:disable Metrics/BlockLength
+    require 'ruby_llm'
+    require 'fileutils'
+
+    # Configure API keys
+    RubyLLM.configure do |config|
+      config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
+      config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
+      config.gemini_api_key = ENV.fetch('GEMINI_API_KEY')
+    end
+
+    # Process each provider
+    PROVIDER_DOCS.each do |provider, urls| # rubocop:disable Metrics/BlockLength
+      puts "Processing #{provider}..."
+
+      # Initialize our AI assistants
+      gemini = RubyLLM.chat(model: 'gemini-2.0-flash').with_temperature(0)
+      claude = RubyLLM.chat(model: 'claude-3-5-sonnet-20241022').with_temperature(0)
+
+      # Read existing capabilities file if present
+      existing_file = "lib/ruby_llm/model_capabilities/#{provider}.rb"
+      existing_code = File.read(existing_file) if File.exist?(existing_file)
+
+      begin
+        # Download documentation
+        docs = urls.map do |type, url|
+          puts "  Getting #{type} documentation..."
+          content = fetch_page(url)
+
+          puts "\nHere's what I got:\n\n"
+          puts "#{content.slice(0, 500)}...\n\n"
+
+          loop do
+            print 'Does this content look correct? (y/n): '
+            answer = $stdin.gets&.chomp&.downcase
+            break if answer == 'y'
+            raise "Content verification failed for #{url}" if answer == 'n'
+          end
+
+          "#{type.to_s.upcase} DOCUMENTATION:\n\n#{content}"
+        end.join("\n\n")
+
+        # Extract relevant information with Gemini
+        puts '  Extracting model information...'
+        extraction_prompt = <<~PROMPT
+          Extract relevant model capabilities information from this documentation:
+
+          #{docs}
+
+          Focus on:
+          1. Available models and their IDs
+          2. Context window sizes
+          3. Maximum output tokens
+          4. Pricing information
+          5. Model capabilities (vision, function calling, etc)
+
+          Format the information clearly and concisely, focusing only on facts about the models.
+        PROMPT
+
+        model_info = gemini.ask(extraction_prompt).content
+
+        # Generate Ruby code with Claude
+        puts '  Generating Ruby code...'
+        code_prompt = <<~PROMPT
+          I need you to generate a Ruby module for #{provider}'s model capabilities.
+          Use this extracted model information:
+
+          #{model_info}
+
+          The module should go in lib/ruby_llm/model_capabilities/#{provider}.rb and follow these conventions:
+
+          1. Module name should be RubyLLM::ModelCapabilities::#{provider.to_s.capitalize}
+          2. Include methods for determining context windows, token limits, pricing, and capabilities
+          3. Use consistent naming with other providers
+          4. Include detailed pricing information in a PRICES constant
+          5. Follow the existing structure in the codebase
+          6. Use Ruby idioms and clean code practices
+          7. Include module_function to make methods callable at module level
+          8. Include all necessary method documentation
+
+          Here's the existing implementation for reference (maintain similar structure):
+
+          #{existing_code}
+
+          Focus on accuracy and maintaining consistency with the existing codebase structure.
+        PROMPT
+
+        response = claude.ask(code_prompt)
+
+        # Save the file
+        file_path = "lib/ruby_llm/model_capabilities/#{provider}.rb"
+        puts "  Writing #{file_path}..."
+
+        FileUtils.mkdir_p(File.dirname(file_path))
+        File.write(file_path, response.content)
+      rescue StandardError => e
+        raise "Failed to process #{provider}: #{e.message}"
+      end
+    end
+
+    puts "Done! Don't forget to review the generated code and run the tests."
   end
 end

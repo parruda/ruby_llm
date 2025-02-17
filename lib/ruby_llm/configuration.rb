@@ -19,7 +19,7 @@ module RubyLLM
                   :request_timeout
 
     def initialize
-      @request_timeout = 30
+      @request_timeout = 120
       @default_model = 'gpt-4o-mini'
       @default_embedding_model = 'text-embedding-3-small'
     end
