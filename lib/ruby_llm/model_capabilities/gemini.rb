@@ -58,10 +58,9 @@ module RubyLLM
 
       def supports_json_mode?(model_id)
         return false if model_id.match?(/text-embedding|embedding-001|aqa/)
-        return false if model_id.match?(/flash-lite/)
         return false if model_id.match?(/gemini-1\.0/)
 
-        model_id.match?(/gemini-1\.5/)
+        model_id.match?(/gemini-\d/)
       end
 
       def format_display_name(model_id)

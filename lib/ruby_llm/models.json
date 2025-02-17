@@ -727,7 +727,7 @@
     "family": "gemini20_flash",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
@@ -746,7 +746,7 @@
     "family": "gemini20_flash",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
@@ -765,7 +765,7 @@
     "family": "gemini20_flash",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
@@ -784,7 +784,7 @@
     "family": "gemini20_flash",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
@@ -803,7 +803,7 @@
     "family": "gemini20_flash",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
@@ -822,7 +822,7 @@
     "family": "gemini20_flash",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
@@ -841,7 +841,7 @@
     "family": "gemini20_flash_lite",
     "supports_vision": true,
     "supports_functions": false,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
@@ -860,7 +860,7 @@
     "family": "gemini20_flash_lite",
     "supports_vision": true,
     "supports_functions": false,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
@@ -879,7 +879,7 @@
     "family": "gemini20_flash",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
@@ -898,7 +898,7 @@
     "family": "gemini20_flash",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
@@ -917,7 +917,7 @@
     "family": "gemini20_flash",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
@@ -936,7 +936,7 @@
     "family": "gemini20_flash",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
@@ -955,7 +955,7 @@
     "family": "other",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
@@ -974,7 +974,7 @@
     "family": "other",
     "supports_vision": true,
     "supports_functions": true,
-    "supports_json_mode": false,
+    "supports_json_mode": true,
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
