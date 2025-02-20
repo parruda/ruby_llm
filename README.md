@@ -114,7 +114,7 @@ last_message = chat.messages.last
 puts "Conversation used #{last_message.input_tokens} input tokens and #{last_message.output_tokens} output tokens"
 ```
 
-You can provide content as local files or URLs - RubyLLM handles the rest. Vision and audio capabilities are available with compatible models (Claude 3, GPT-4V, Gemini Pro Vision). The API stays clean and consistent whether you're working with text, images, or audio.
+You can provide content as local files or URLs - RubyLLM handles the rest. Vision and audio capabilities are available with compatible models. The API stays clean and consistent whether you're working with text, images, or audio.
 
 ## Image Generation
 
