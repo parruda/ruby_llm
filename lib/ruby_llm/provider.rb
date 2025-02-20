@@ -7,7 +7,7 @@ module RubyLLM
   module Provider
     # Common functionality for all LLM providers. Implements the core provider
     # interface so specific providers only need to implement a few key methods.
-    module Methods
+    module Methods # rubocop:disable Metrics/ModuleLength
       def complete(messages, tools:, temperature:, model:, &block)
         payload = render_payload messages, tools: tools, temperature: temperature, model: model, stream: block_given?
 
@@ -66,11 +66,21 @@ module RubyLLM
         end
       end
 
-      def connection # rubocop:disable Metrics/MethodLength
-        @connection ||= Faraday.new(api_base) do |f|
+      def connection # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
+        @connection ||= Faraday.new(api_base) do |f| # rubocop:disable Metrics/BlockLength
           f.options.timeout = RubyLLM.config.request_timeout
 
-          # Add retry middleware before request/response handling
+          f.response :logger,
+                     RubyLLM.logger,
+                     bodies: true,
+                     response: true,
+                     errors: true,
+                     headers: false,
+                     log_level: :debug do |logger|
+            logger.filter(%r{"[A-Za-z0-9+/=]{100,}"}, 'data":"[BASE64 DATA]"')
+            logger.filter(/[-\d.e,\s]{100,}/, '[EMBEDDINGS ARRAY]')
+          end
+
           f.request :retry, {
             max: RubyLLM.config.max_retries,
             interval: 0.05,
@@ -93,7 +103,6 @@ module RubyLLM
           f.response :json
           f.adapter Faraday.default_adapter
           f.use :llm_errors, provider: self
-          f.response :logger, RubyLLM.logger, { headers: false, bodies: true, errors: true, log_level: :debug }
         end
       end
 
