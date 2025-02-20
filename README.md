@@ -1,6 +1,6 @@
 # RubyLLM
 
-A delightful Ruby way to work with AI language models. Provides a unified interface to OpenAI, Anthropic, Google, and DeepSeek models with automatic token counting, proper streaming support, and a focus on developer happiness. No wrapping your head around multiple APIs - just clean Ruby code that works.
+A delightful Ruby way to work with AI. Chat in text, analyze and generate images, understand audio, and use tools through a unified interface to OpenAI, Anthropic, Google, and DeepSeek. Built for developer happiness with automatic token counting, proper streaming, and Rails integration. No wrapping your head around multiple APIs - just clean Ruby code that works.
 
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI" height="40" width="120">
@@ -17,14 +17,16 @@ A delightful Ruby way to work with AI language models. Provides a unified interf
 
 ## Features
 
-- 💬 **Natural Chat Interface** - Converse with AI models as easily as `RubyLLM.chat.ask "teach me Ruby"`
-- 🎨 **Paint with AI** - Create images with DALL-E as easily as `RubyLLM.paint "a sunset over mountains"`
+- 💬 **Beautiful Chat Interface** - Converse with AI models as easily as `RubyLLM.chat.ask "teach me Ruby"`
+- 🎵 **Audio Analysis** - Get audio transcription and understanding with `chat.ask "what's said here?", with: { audio: "clip.wav" }`
+- 👁️ **Vision Understanding** - Let AIs analyze images with a simple `chat.ask "what's in this?", with: { image: "photo.jpg" }`
+- 🌊 **Streaming** - Real-time responses with proper Ruby streaming with `chat.ask "hello" do |chunk| puts chunk.content end`
+- 🚂 **Rails Integration** - Persist chats and messages with ActiveRecord with `acts_as_{chat|message|tool_call}`
+🛠️ **Tool Support** - Give AIs access to your Ruby code with `chat.with_tool(Calculator).ask "what's 2+2?"`
+- 🎨 **Paint with AI** - Create images as easily as `RubyLLM.paint "a sunset over mountains"`
+- 📊 **Embeddings** - Generate vector embeddings for your text with `RubyLLM.embed "hello"`
 - 🔄 **Multi-Provider Support** - Works with OpenAI, Anthropic, Google, and DeepSeek
-- 🚂 **Rails Integration** - Persist chats and messages with ActiveRecord
 - 🎯 **Token Tracking** - Automatic usage tracking across providers
-- 🌊 **Streaming** - Real-time responses with proper Ruby streaming
-- 📊 **Embeddings** - Generate vector embeddings for your text
-- 🛠️ **Tool Support** - Give AIs access to your Ruby code
 
 ## Installation
 
@@ -98,10 +100,21 @@ chat.ask "Tell me a story about a Ruby programmer" do |chunk|
   print chunk.content
 end
 
+# Ask about images
+chat.ask "What do you see in this image?", with: { image: "ruby_logo.png" }
+
+# Get analysis of audio content
+chat.ask "What's being said in this recording?", with: { audio: "meeting.wav" }
+
+# Combine multiple pieces of content
+chat.ask "Compare these diagrams", with: { image: ["diagram1.png", "diagram2.png"] }
+
 # Check token usage
 last_message = chat.messages.last
 puts "Conversation used #{last_message.input_tokens} input tokens and #{last_message.output_tokens} output tokens"
 ```
+
+You can provide content as local files or URLs - RubyLLM handles the rest. Vision and audio capabilities are available with compatible models (Claude 3, GPT-4V, Gemini Pro Vision). The API stays clean and consistent whether you're working with text, images, or audio.
 
 ## Image Generation
 

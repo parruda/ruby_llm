@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module RubyLLM
-  # Represents the content received from the LLM
+  # Represents the content sent to or received from an LLM.
+  # Stores data in a standard internal format, letting providers
+  # handle their own formatting needs.
   class Content
     def initialize(text = nil, attachments = {})
       @parts = []
@@ -33,7 +35,7 @@ module RubyLLM
     def attach_image(source) # rubocop:disable Metrics/MethodLength
       source = File.expand_path(source) unless source.start_with?('http')
 
-      return { type: 'image_url', image_url: { url: source } } if source.start_with?('http')
+      return { type: 'image', source: { url: source } } if source.start_with?('http')
 
       data = Base64.strict_encode64(File.read(source))
       mime_type = mime_type_for(source)
