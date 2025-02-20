@@ -7,13 +7,24 @@ A delightful Ruby way to work with AI language models. Provides a unified interf
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic" height="40" width="120">
   &nbsp;&nbsp;&nbsp;&nbsp;
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Google" height="40" width="120">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Google" height="40" width="120">
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg" alt="DeepSeek" height="40" width="120"]>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg" alt="DeepSeek" height="40" width="120">
 </p>
 
 [![Gem Version](https://badge.fury.io/rb/ruby_llm.svg)](https://badge.fury.io/rb/ruby_llm)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
+
+## Features
+
+- 💬 **Natural Chat Interface** - Converse with AI models as easily as `RubyLLM.chat.ask "teach me Ruby"`
+- 🎨 **Paint with AI** - Create images with DALL-E as easily as `RubyLLM.paint "a sunset over mountains"`
+- 🔄 **Multi-Provider Support** - Works with OpenAI, Anthropic, Google, and DeepSeek
+- 🚂 **Rails Integration** - Persist chats and messages with ActiveRecord
+- 🎯 **Token Tracking** - Automatic usage tracking across providers
+- 🌊 **Streaming** - Real-time responses with proper Ruby streaming
+- 📊 **Embeddings** - Generate vector embeddings for your text
+- 🛠️ **Tool Support** - Give AIs access to your Ruby code
 
 ## Installation
 
@@ -91,6 +102,31 @@ end
 last_message = chat.messages.last
 puts "Conversation used #{last_message.input_tokens} input tokens and #{last_message.output_tokens} output tokens"
 ```
+
+## Image Generation
+
+Want to create AI-generated images? RubyLLM makes it super simple:
+
+```ruby
+# Paint a picture!
+image = RubyLLM.paint "a starry night over San Francisco in Van Gogh's style"
+image.url         # => "https://..."
+image.revised_prompt  # Shows how DALL-E interpreted your prompt
+
+# Choose size and model
+image = RubyLLM.paint(
+  "a cyberpunk cityscape at sunset",
+  model: "dall-e-3",
+  size: "1792x1024"
+)
+
+# Set your default model
+RubyLLM.configure do |config|
+  config.default_image_model = "dall-e-3"
+end
+```
+
+RubyLLM automatically handles all the complexities of the DALL-E API, token/credit management, and error handling, so you can focus on being creative.
 
 ## Text Embeddings
 

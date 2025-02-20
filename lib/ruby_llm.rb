@@ -34,6 +34,10 @@ module RubyLLM
       Embedding.embed(...)
     end
 
+    def paint(...)
+      Image.paint(...)
+    end
+
     def models
       Models
     end

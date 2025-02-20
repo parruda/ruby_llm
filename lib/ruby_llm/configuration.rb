@@ -16,6 +16,7 @@ module RubyLLM
                   :deepseek_api_key,
                   :default_model,
                   :default_embedding_model,
+                  :default_image_model,
                   :request_timeout,
                   :max_retries
 
@@ -24,6 +25,7 @@ module RubyLLM
       @max_retries = 3
       @default_model = 'gpt-4o-mini'
       @default_embedding_model = 'text-embedding-3-small'
+      @default_image_model = 'dall-e-3'
     end
   end
 end

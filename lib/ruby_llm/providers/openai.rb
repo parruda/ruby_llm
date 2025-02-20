@@ -12,6 +12,7 @@ module RubyLLM
       extend OpenAI::Models
       extend OpenAI::Streaming
       extend OpenAI::Tools
+      extend OpenAI::Images
 
       def self.extended(base)
         base.extend(Provider)
@@ -20,6 +21,7 @@ module RubyLLM
         base.extend(OpenAI::Models)
         base.extend(OpenAI::Streaming)
         base.extend(OpenAI::Tools)
+        base.extend(OpenAI::Images)
       end
 
       module_function

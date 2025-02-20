@@ -32,6 +32,13 @@ module RubyLLM
         parse_embedding_response response
       end
 
+      def paint(prompt, model:, size:)
+        payload = render_image_payload(prompt, model:, size:)
+
+        response = post(images_url, payload)
+        parse_image_response(response)
+      end
+
       private
 
       def sync_response(payload)
