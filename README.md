@@ -22,7 +22,7 @@ A delightful Ruby way to work with AI. Chat in text, analyze and generate images
 - 👁️ **Vision Understanding** - Let AIs analyze images with a simple `chat.ask "what's in this?", with: { image: "photo.jpg" }`
 - 🌊 **Streaming** - Real-time responses with proper Ruby streaming with `chat.ask "hello" do |chunk| puts chunk.content end`
 - 🚂 **Rails Integration** - Persist chats and messages with ActiveRecord with `acts_as_{chat|message|tool_call}`
-🛠️ **Tool Support** - Give AIs access to your Ruby code with `chat.with_tool(Calculator).ask "what's 2+2?"`
+- 🛠️ **Tool Support** - Give AIs access to your Ruby code with `chat.with_tool(Calculator).ask "what's 2+2?"`
 - 🎨 **Paint with AI** - Create images as easily as `RubyLLM.paint "a sunset over mountains"`
 - 📊 **Embeddings** - Generate vector embeddings for your text with `RubyLLM.embed "hello"`
 - 🔄 **Multi-Provider Support** - Works with OpenAI, Anthropic, Google, and DeepSeek
