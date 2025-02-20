@@ -3,10 +3,16 @@
 module RubyLLM
   # Core embedding interface. Provides a clean way to generate embeddings
   # from text using various provider models.
-  module Embedding
-    module_function
+  class Embedding
+    attr_reader :vectors, :model, :input_tokens
 
-    def embed(text, model: nil)
+    def initialize(vectors:, model:, input_tokens: 0)
+      @vectors = vectors
+      @model = model
+      @input_tokens = input_tokens
+    end
+
+    def self.embed(text, model: nil)
       model_id = model || RubyLLM.config.default_embedding_model
       Models.find(model_id)
 

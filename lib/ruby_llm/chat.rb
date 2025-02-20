@@ -25,8 +25,8 @@ module RubyLLM
       }
     end
 
-    def ask(message, &block)
-      add_message role: :user, content: message
+    def ask(message = nil, with: {}, &block)
+      add_message role: :user, content: Content.new(message, with)
       complete(&block)
     end
 

@@ -73,22 +73,22 @@ module RubyLLM
       end
 
       def to_llm
-        chat = RubyLLM.chat(model: model_id)
+        @chat ||= RubyLLM.chat(model: model_id)
 
         # Load existing messages into chat
         messages.each do |msg|
-          chat.add_message(msg.to_llm)
+          @chat.add_message(msg.to_llm)
         end
 
         # Set up message persistence
-        chat.on_new_message { persist_new_message }
-            .on_end_message { |msg| persist_message_completion(msg) }
+        @chat.on_new_message { persist_new_message }
+             .on_end_message { |msg| persist_message_completion(msg) }
       end
 
       def ask(message, &block)
         message = { role: :user, content: message }
         messages.create!(**message)
-        chat.complete(&block)
+        to_llm.complete(&block)
       end
 
       alias say ask

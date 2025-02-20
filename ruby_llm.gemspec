@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'event_stream_parser', '>= 0.3.0', '< 2.0.0'
   spec.add_dependency 'faraday', '>= 2.0'
   spec.add_dependency 'faraday-multipart', '>= 1.0'
+  spec.add_dependency 'faraday-retry', '>= 2.0'
   spec.add_dependency 'zeitwerk', '>= 2.6'
 
   # Rails integration dependencies
@@ -56,6 +57,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '>= 1.0'
   spec.add_development_dependency 'rubocop-rake', '>= 0.6'
   spec.add_development_dependency 'simplecov', '>= 0.21'
+  spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency 'webmock', '~> 3.18'
   spec.add_development_dependency 'yard', '>= 0.9'
 end

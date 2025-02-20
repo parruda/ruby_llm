@@ -3,8 +3,10 @@
 module RubyLLM
   module Providers
     # DeepSeek API integration.
-    class DeepSeek < OpenAI
-      private
+    module DeepSeek
+      extend OpenAI
+
+      module_function
 
       def api_base
         'https://api.deepseek.com'

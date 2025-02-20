@@ -16,10 +16,12 @@ module RubyLLM
                   :deepseek_api_key,
                   :default_model,
                   :default_embedding_model,
-                  :request_timeout
+                  :request_timeout,
+                  :max_retries
 
     def initialize
       @request_timeout = 120
+      @max_retries = 3
       @default_model = 'gpt-4o-mini'
       @default_embedding_model = 'text-embedding-3-small'
     end

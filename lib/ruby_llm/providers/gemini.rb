@@ -3,8 +3,11 @@
 module RubyLLM
   module Providers
     # Gemini API integration.
-    class Gemini < OpenAI
-      private
+    module Gemini
+      extend OpenAI
+      extend Gemini::Models
+
+      module_function
 
       def api_base
         'https://generativelanguage.googleapis.com/v1beta/openai'
@@ -14,14 +17,6 @@ module RubyLLM
         {
           'Authorization' => "Bearer #{RubyLLM.config.gemini_api_key}"
         }
-      end
-
-      def parse_list_models_response(response)
-        response.body['data']&.each do |model|
-          model['id'] = model['id'].delete_prefix('models/')
-        end
-
-        super(response)
       end
     end
   end

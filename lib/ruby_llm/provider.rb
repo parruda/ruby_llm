@@ -5,15 +5,11 @@ module RubyLLM
   # Handles the complexities of API communication, streaming responses,
   # and error handling so individual providers can focus on their unique features.
   module Provider
-    def self.included(base)
-      base.include(InstanceMethods)
-    end
-
     # Common functionality for all LLM providers. Implements the core provider
     # interface so specific providers only need to implement a few key methods.
-    module InstanceMethods
+    module Methods
       def complete(messages, tools:, temperature:, model:, &block)
-        payload = build_payload messages, tools: tools, temperature: temperature, model: model, stream: block_given?
+        payload = render_payload messages, tools: tools, temperature: temperature, model: model, stream: block_given?
 
         if block_given?
           stream_response payload, &block
@@ -31,7 +27,7 @@ module RubyLLM
       end
 
       def embed(text, model:)
-        payload = build_embedding_payload text, model: model
+        payload = render_embedding_payload text, model: model
         response = post embedding_url, payload
         parse_embedding_response response
       end
@@ -63,9 +59,29 @@ module RubyLLM
         end
       end
 
-      def connection
+      def connection # rubocop:disable Metrics/MethodLength
         @connection ||= Faraday.new(api_base) do |f|
           f.options.timeout = RubyLLM.config.request_timeout
+
+          # Add retry middleware before request/response handling
+          f.request :retry, {
+            max: RubyLLM.config.max_retries,
+            interval: 0.05,
+            interval_randomness: 0.5,
+            backoff_factor: 2,
+            exceptions: [
+              Errno::ETIMEDOUT,
+              Timeout::Error,
+              Faraday::TimeoutError,
+              Faraday::ConnectionFailed,
+              Faraday::RetriableResponse,
+              RubyLLM::RateLimitError,
+              RubyLLM::ServerError,
+              RubyLLM::ServiceUnavailableError
+            ],
+            retry_statuses: [429, 500, 502, 503, 504]
+          }
+
           f.request :json
           f.response :json
           f.adapter Faraday.default_adapter
@@ -111,9 +127,16 @@ module RubyLLM
       maybe_json
     end
 
+    def parse_error(response)
+      return if response.body.empty?
+
+      body = try_parse_json(response.body)
+      body.is_a?(Hash) ? body.dig('error', 'message') : body
+    end
+
     def capabilities
       provider_name = self.class.name.split('::').last
-      RubyLLM.const_get "ModelCapabilities::#{provider_name}"
+      provider_name::Capabilities
     end
 
     def slug
@@ -121,15 +144,17 @@ module RubyLLM
     end
 
     class << self
-      def register(name, provider_class)
-        providers[name.to_sym] = provider_class
+      def extended(base)
+        base.extend(Methods)
+      end
+
+      def register(name, provider_module)
+        providers[name.to_sym] = provider_module
       end
 
       def for(model)
         model_info = Models.find(model)
-        provider_class = providers[model_info.provider.to_sym]
-
-        provider_class.new
+        providers[model_info.provider.to_sym]
       end
 
       def providers

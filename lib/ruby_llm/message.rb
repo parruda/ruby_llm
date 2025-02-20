@@ -11,7 +11,7 @@ module RubyLLM
 
     def initialize(options = {})
       @role = options[:role].to_sym
-      @content = options[:content]
+      @content = normalize_content(options[:content])
       @tool_calls = options[:tool_calls]
       @input_tokens = options[:input_tokens]
       @output_tokens = options[:output_tokens]
@@ -46,6 +46,14 @@ module RubyLLM
     end
 
     private
+
+    def normalize_content(content)
+      case content
+      when Content then content.format
+      when String then Content.new(content).format
+      else content
+      end
+    end
 
     def ensure_valid_role
       raise InvalidRoleError, "Expected role to be one of: #{ROLES.join(', ')}" unless ROLES.include?(role)

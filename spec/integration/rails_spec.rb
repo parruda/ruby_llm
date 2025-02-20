@@ -1,0 +1,98 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+require 'dotenv/load'
+require 'active_record'
+require 'ruby_llm/active_record/acts_as'
+
+RSpec.describe 'Rails Integration' do # rubocop:disable Metrics/BlockLength
+  before(:all) do # rubocop:disable Metrics/BlockLength
+    RubyLLM.configure do |config|
+      config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
+      config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
+      config.gemini_api_key = ENV.fetch('GEMINI_API_KEY')
+    end
+
+    ActiveRecord::Base.establish_connection(
+      adapter: 'sqlite3',
+      database: ':memory:'
+    )
+
+    ActiveRecord::Schema.define do
+      create_table :chats do |t|
+        t.string :model_id
+        t.timestamps
+      end
+
+      create_table :messages do |t|
+        t.references :chat
+        t.string :role
+        t.text :content
+        t.string :model_id
+        t.integer :input_tokens
+        t.integer :output_tokens
+        t.references :tool_call
+        t.timestamps
+      end
+
+      create_table :tool_calls do |t|
+        t.references :message
+        t.string :tool_call_id
+        t.string :name
+        t.json :arguments
+        t.timestamps
+      end
+    end
+  end
+
+  class Chat < ActiveRecord::Base # rubocop:disable Lint/ConstantDefinitionInBlock
+    include RubyLLM::ActiveRecord::ActsAs
+    acts_as_chat
+  end
+
+  class Message < ActiveRecord::Base # rubocop:disable Lint/ConstantDefinitionInBlock
+    include RubyLLM::ActiveRecord::ActsAs
+    acts_as_message
+  end
+
+  class ToolCall < ActiveRecord::Base # rubocop:disable Lint/ConstantDefinitionInBlock
+    include RubyLLM::ActiveRecord::ActsAs
+    acts_as_tool_call
+  end
+
+  class Calculator < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock
+    description 'Performs basic arithmetic'
+
+    param :expression,
+          type: :string,
+          desc: 'Math expression to evaluate'
+
+    def execute(expression:)
+      eval(expression).to_s # rubocop:disable Security/Eval
+    rescue StandardError => e
+      "Error: #{e.message}"
+    end
+  end
+
+  it 'persists chat history' do
+    chat = Chat.create!(model_id: 'gpt-4o-mini')
+    chat.ask("What's your favorite Ruby feature?")
+
+    expect(chat.messages.count).to eq(2)
+    expect(chat.messages.first.role).to eq('user')
+    expect(chat.messages.last.role).to eq('assistant')
+    expect(chat.messages.last.content).to be_present
+    expect(chat.messages.last.input_tokens).to be_positive
+    expect(chat.messages.last.output_tokens).to be_positive
+  end
+
+  it 'persists tool calls' do
+    chat = Chat.create!(model_id: 'gpt-4o-mini')
+    chat.with_tool(Calculator)
+
+    chat.ask("What's 123 * 456?")
+
+    expect(chat.messages.count).to be >= 3 # User message, tool call, and final response
+    expect(chat.messages.any?(&:tool_calls)).to be true
+  end
+end
