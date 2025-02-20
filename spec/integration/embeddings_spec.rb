@@ -14,7 +14,7 @@ RSpec.describe 'Embeddings Integration' do # rubocop:disable Metrics/BlockLength
   let(:test_text) { "Ruby is a programmer's best friend" }
   let(:test_texts) { %w[Ruby Python JavaScript] }
 
-  describe do
+  describe 'basic functionality' do
     [
       'text-embedding-004', # gemini
       'text-embedding-3-small' # openai
