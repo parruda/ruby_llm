@@ -45,6 +45,7 @@ Gem::Specification.new do |spec|
 
   # Development dependencies
   spec.add_development_dependency 'bundler', '>= 2.0'
+  spec.add_development_dependency 'codecov'
   spec.add_development_dependency 'dotenv'
   spec.add_development_dependency 'irb'
   spec.add_development_dependency 'nokogiri'
@@ -57,6 +58,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '>= 1.0'
   spec.add_development_dependency 'rubocop-rake', '>= 0.6'
   spec.add_development_dependency 'simplecov', '>= 0.21'
+  spec.add_development_dependency 'simplecov-cobertura'
   spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency 'webmock', '~> 3.18'
   spec.add_development_dependency 'yard', '>= 0.9'

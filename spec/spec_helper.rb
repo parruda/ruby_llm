@@ -1,5 +1,21 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+require 'simplecov-cobertura'
+require 'codecov'
+
+SimpleCov.start do
+  enable_coverage :branch
+
+  formatter SimpleCov::Formatter::MultiFormatter.new(
+    [
+      SimpleCov::Formatter::SimpleFormatter,
+      SimpleCov::Formatter::Codecov,
+      SimpleCov::Formatter::CoberturaFormatter
+    ]
+  )
+end
+
 require 'active_record'
 require 'bundler/setup'
 require 'fileutils'
