@@ -16,8 +16,8 @@ A delightful Ruby way to work with AI. Chat in text, analyze and generate images
   <a href="https://badge.fury.io/rb/ruby_llm"><img src="https://badge.fury.io/rb/ruby_llm.svg" alt="Gem Version" /></a>
   <a href="https://github.com/testdouble/standard"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Ruby Style Guide" /></a>
   <a href="https://rubygems.org/gems/ruby_llm"><img alt="Gem Total Downloads" src="https://img.shields.io/gem/dt/ruby_llm"></a>
-  <a href="https://codecov.io/gh/crmne/ruby_llm"><img src="https://codecov.io/gh/crmne/ruby_llm/branch/main/graph/badge.svg" alt="codecov" /></a>
   <a href="https://github.com/crmne/ruby_llm/actions/workflows/cicd.yml"><img src="https://github.com/crmne/ruby_llm/actions/workflows/cicd.yml/badge.svg" alt="CI" /></a>
+  <a href="https://codecov.io/gh/crmne/ruby_llm"><img src="https://codecov.io/gh/crmne/ruby_llm/branch/main/graph/badge.svg" alt="codecov" /></a>
 </p>
 
 ## Features

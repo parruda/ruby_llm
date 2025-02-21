@@ -92,7 +92,7 @@ jobs:
         gem build *.gemspec
         output=$(gem push *.gem 2>&1) || {
           echo "$output"
-          if echo "$output" | grep -q "already been pushed"; then
+          if echo "$output" | grep -q "Repushing of gem versions is not allowed"; then
             echo "Version already exists, skipping"
             exit 0
           else
