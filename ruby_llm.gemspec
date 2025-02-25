@@ -19,9 +19,9 @@ Gem::Specification.new do |spec|
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/crmne/ruby_llm'
-  spec.metadata['changelog_uri'] = "#{spec.source_code_uri}/commits/main"
+  spec.metadata['changelog_uri'] = "#{spec.metadata['source_code_uri']}/commits/main"
   spec.metadata['documentation_uri'] = spec.homepage
-  spec.metadata['bug_tracker_uri'] = "#{spec.source_code_uri}/issues"
+  spec.metadata['bug_tracker_uri'] = "#{spec.metadata['source_code_uri']}/issues"
 
   spec.metadata['rubygems_mfa_required'] = 'true'
 
