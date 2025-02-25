@@ -13,15 +13,17 @@ Gem::Specification.new do |spec|
                        'audio, and use tools through a unified interface to OpenAI, Anthropic, Google, and DeepSeek. ' \
                        'Built for developer happiness with automatic token counting, proper streaming, and Rails ' \
                        'integration. No wrapping your head around multiple APIs - just clean Ruby code that works.'
-  spec.homepage      = 'https://github.com/crmne/ruby_llm'
+  spec.homepage      = 'https://rubyllm.com'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 3.1.0')
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = spec.homepage
-  spec.metadata['changelog_uri'] = "#{spec.homepage}/commits/main"
+  spec.metadata['source_code_uri'] = 'https://github.com/crmne/ruby_llm'
+  spec.metadata['changelog_uri'] = "#{spec.source_code_uri}/commits/main"
   spec.metadata['documentation_uri'] = spec.homepage
-  spec.metadata['bug_tracker_uri'] = "#{spec.homepage}/issues"
+  spec.metadata['bug_tracker_uri'] = "#{spec.source_code_uri}/issues"
+
+  spec.metadata['rubygems_mfa_required'] = 'true'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -38,5 +40,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'faraday-multipart', '>= 1.0'
   spec.add_dependency 'faraday-retry', '>= 2.0'
   spec.add_dependency 'zeitwerk', '>= 2.6'
-  spec.metadata['rubygems_mfa_required'] = 'true'
 end
