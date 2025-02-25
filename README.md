@@ -20,6 +20,8 @@ A delightful Ruby way to work with AI. Chat in text, analyze and generate images
   <a href="https://codecov.io/gh/crmne/ruby_llm"><img src="https://codecov.io/gh/crmne/ruby_llm/branch/main/graph/badge.svg" alt="codecov" /></a>
 </p>
 
+🤺 Battle tested at [💬  Chat with Work](https://chatwithwork.com)
+
 ## Features
 
 - 💬 **Beautiful Chat Interface** - Converse with AI models as easily as `RubyLLM.chat.ask "teach me Ruby"`

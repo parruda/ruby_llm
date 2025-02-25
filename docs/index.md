@@ -34,6 +34,8 @@ A delightful Ruby way to work with AI through a unified interface to OpenAI, Ant
   <a href="https://codecov.io/gh/crmne/ruby_llm"><img src="https://codecov.io/gh/crmne/ruby_llm/branch/main/graph/badge.svg" alt="codecov" /></a>
 </p>
 
+🤺 Battle tested at [💬  Chat with Work](https://chatwithwork.com)
+
 ---
 
 ## Overview
