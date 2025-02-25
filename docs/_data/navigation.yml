@@ -1,0 +1,25 @@
+- title: Home
+  url: /
+- title: Installation
+  url: /installation
+- title: Guides
+  url: /guides/
+  subfolderitems:
+    - title: Getting Started
+      url: /guides/getting-started
+    - title: Chat
+      url: /guides/chat
+    - title: Tools
+      url: /guides/tools
+    - title: Streaming
+      url: /guides/streaming
+    - title: Rails Integration
+      url: /guides/rails
+    - title: Image Generation
+      url: /guides/image-generation
+    - title: Embeddings
+      url: /guides/embeddings
+    - title: Error Handling
+      url: /guides/error-handling
+- title: GitHub
+  url: https://github.com/crmne/ruby_llm
