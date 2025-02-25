@@ -3,8 +3,8 @@
 require 'spec_helper'
 require 'dotenv/load'
 
-RSpec.describe 'Error Handling' do
-  it 'handles invalid API keys gracefully' do
+RSpec.describe RubyLLM::Error do
+  it 'handles invalid API keys gracefully' do # rubocop:disable RSpec/ExampleLength
     RubyLLM.configure do |config|
       config.anthropic_api_key = 'invalid-key'
     end

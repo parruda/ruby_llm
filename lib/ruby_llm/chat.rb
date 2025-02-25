@@ -72,18 +72,18 @@ module RubyLLM
       self
     end
 
-    def each(&block)
-      messages.each(&block)
+    def each(&)
+      messages.each(&)
     end
 
-    def complete(&block)
+    def complete(&)
       @on[:new_message]&.call
-      response = @provider.complete(messages, tools: @tools, temperature: @temperature, model: @model.id, &block)
+      response = @provider.complete(messages, tools: @tools, temperature: @temperature, model: @model.id, &)
       @on[:end_message]&.call(response)
 
       add_message response
       if response.tool_call?
-        handle_tool_calls response, &block
+        handle_tool_calls(response, &)
       else
         response
       end
@@ -97,7 +97,7 @@ module RubyLLM
 
     private
 
-    def handle_tool_calls(response, &block)
+    def handle_tool_calls(response, &)
       response.tool_calls.each_value do |tool_call|
         @on[:new_message]&.call
         result = execute_tool tool_call
@@ -105,7 +105,7 @@ module RubyLLM
         @on[:end_message]&.call(message)
       end
 
-      complete(&block)
+      complete(&)
     end
 
     def execute_tool(tool_call)

@@ -5,8 +5,8 @@ require 'dotenv/load'
 require 'active_record'
 require 'ruby_llm/active_record/acts_as'
 
-RSpec.describe 'Rails Integration' do # rubocop:disable Metrics/BlockLength
-  before(:all) do # rubocop:disable Metrics/BlockLength
+RSpec.describe RubyLLM::ActiveRecord::ActsAs do
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
     RubyLLM.configure do |config|
       config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
       config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
@@ -45,22 +45,22 @@ RSpec.describe 'Rails Integration' do # rubocop:disable Metrics/BlockLength
     end
   end
 
-  class Chat < ActiveRecord::Base # rubocop:disable Lint/ConstantDefinitionInBlock
+  class Chat < ActiveRecord::Base # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
     include RubyLLM::ActiveRecord::ActsAs
     acts_as_chat
   end
 
-  class Message < ActiveRecord::Base # rubocop:disable Lint/ConstantDefinitionInBlock
+  class Message < ActiveRecord::Base # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
     include RubyLLM::ActiveRecord::ActsAs
     acts_as_message
   end
 
-  class ToolCall < ActiveRecord::Base # rubocop:disable Lint/ConstantDefinitionInBlock
+  class ToolCall < ActiveRecord::Base # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
     include RubyLLM::ActiveRecord::ActsAs
     acts_as_tool_call
   end
 
-  class Calculator < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock
+  class Calculator < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
     description 'Performs basic arithmetic'
 
     param :expression,
@@ -74,7 +74,7 @@ RSpec.describe 'Rails Integration' do # rubocop:disable Metrics/BlockLength
     end
   end
 
-  it 'persists chat history' do
+  it 'persists chat history' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
     chat = Chat.create!(model_id: 'gpt-4o-mini')
     chat.ask("What's your favorite Ruby feature?")
 
@@ -86,7 +86,7 @@ RSpec.describe 'Rails Integration' do # rubocop:disable Metrics/BlockLength
     expect(chat.messages.last.output_tokens).to be_positive
   end
 
-  it 'persists tool calls' do
+  it 'persists tool calls' do # rubocop:disable RSpec/MultipleExpectations
     chat = Chat.create!(model_id: 'gpt-4o-mini')
     chat.with_tool(Calculator)
 

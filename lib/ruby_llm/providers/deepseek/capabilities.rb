@@ -95,7 +95,6 @@ module RubyLLM
         # @return [Symbol] the model family
         def model_family(model_id)
           case model_id
-          when /deepseek-chat/ then :chat
           when /deepseek-reasoner/ then :reasoner
           else :chat # Default to chat family
           end

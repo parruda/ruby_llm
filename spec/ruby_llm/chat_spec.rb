@@ -3,8 +3,8 @@
 require 'spec_helper'
 require 'dotenv/load'
 
-RSpec.describe 'Chat Integration' do # rubocop:disable Metrics/BlockLength
-  before(:all) do
+RSpec.describe RubyLLM::Chat do
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
     RubyLLM.configure do |config|
       config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
       config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
@@ -13,6 +13,9 @@ RSpec.describe 'Chat Integration' do # rubocop:disable Metrics/BlockLength
     end
   end
 
+  let(:image_path) { File.expand_path('../fixtures/ruby.png', __dir__) }
+  let(:audio_path) { File.expand_path('../fixtures/ruby.wav', __dir__) }
+
   describe 'basic chat functionality' do
     [
       'claude-3-5-sonnet-20241022',
@@ -20,7 +23,7 @@ RSpec.describe 'Chat Integration' do # rubocop:disable Metrics/BlockLength
       'gpt-4o-mini'
     ].each do |model|
       context "with #{model}" do
-        it 'can have a basic conversation' do
+        it 'can have a basic conversation' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
           chat = RubyLLM.chat(model: model)
           response = chat.ask("What's 2 + 2?")
 
@@ -30,7 +33,7 @@ RSpec.describe 'Chat Integration' do # rubocop:disable Metrics/BlockLength
           expect(response.output_tokens).to be_positive
         end
 
-        it 'can handle multi-turn conversations' do
+        it 'can handle multi-turn conversations' do # rubocop:disable RSpec/MultipleExpectations
           chat = RubyLLM.chat(model: model)
 
           first = chat.ask("Who was Ruby's creator?")

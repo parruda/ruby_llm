@@ -20,8 +20,7 @@ module RubyLLM
         # @return [Integer] the maximum output tokens
         def determine_max_tokens(model_id)
           case model_id
-          when /claude-3-7-sonnet/ then 8_192 # Can be increased to 64K with extended thinking
-          when /claude-3-5/ then 8_192
+          when /claude-3-(7-sonnet|5)/ then 8_192 # Can be increased to 64K with extended thinking
           else 4_096 # Claude 3 Opus and Haiku
           end
         end

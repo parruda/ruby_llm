@@ -35,7 +35,7 @@ module RubyLLM
 
         def extract_text_content(blocks)
           text_blocks = blocks.select { |c| c['type'] == 'text' }
-          text_blocks.map { |c| c['text'] }.join('')
+          text_blocks.map { |c| c['text'] }.join
         end
 
         def build_message(data, content, tool_use)
@@ -68,8 +68,7 @@ module RubyLLM
 
         def convert_role(role)
           case role
-          when :tool then 'user'
-          when :user then 'user'
+          when :tool, :user then 'user'
           else 'assistant'
           end
         end

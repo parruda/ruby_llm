@@ -25,7 +25,7 @@ module RubyLLM
           vectors = data['data'].map { |d| d['embedding'] }
 
           # If we only got one embedding, return it as a single vector
-          vectors = vectors.size == 1 ? vectors.first : vectors
+          vectors = vectors.first if vectors.size == 1
 
           Embedding.new(
             vectors: vectors,

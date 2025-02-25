@@ -3,8 +3,8 @@
 require 'spec_helper'
 require 'dotenv/load'
 
-RSpec.describe 'Image Generation' do # rubocop:disable Metrics/BlockLength
-  before(:all) do
+RSpec.describe RubyLLM::Image do
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
     RubyLLM.configure do |config|
       config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
     end
@@ -15,7 +15,7 @@ RSpec.describe 'Image Generation' do # rubocop:disable Metrics/BlockLength
       'dall-e-3'
       # 'imagen-3.0-generate-002' # Google's model doesn't support OpenAI API
     ].each do |model|
-      it 'can paint images' do
+      it 'can paint images' do # rubocop:disable RSpec/MultipleExpectations
         image = RubyLLM.paint('a white siamese cat', model: model)
 
         expect(image.url).to start_with('https://')

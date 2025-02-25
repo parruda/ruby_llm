@@ -3,17 +3,15 @@
 require 'spec_helper'
 require 'dotenv/load'
 
-RSpec.describe 'Content Integration' do # rubocop:disable Metrics/BlockLength
-  before(:all) do
+RSpec.describe RubyLLM::Chat do
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
     RubyLLM.configure do |config|
       config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
       config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
       config.gemini_api_key = ENV.fetch('GEMINI_API_KEY')
+      config.max_retries = 10
     end
   end
-
-  let(:image_path) { File.expand_path('../fixtures/ruby.png', __dir__) }
-  let(:audio_path) { File.expand_path('../fixtures/ruby.wav', __dir__) }
 
   describe 'vision models' do
     [
@@ -21,7 +19,7 @@ RSpec.describe 'Content Integration' do # rubocop:disable Metrics/BlockLength
       'gemini-2.0-flash',
       'gpt-4o-mini'
     ].each do |model|
-      it "#{model} can understand images" do
+      it "#{model} can understand images" do # rubocop:disable RSpec/MultipleExpectations
         chat = RubyLLM.chat(model: model)
         response = chat.ask('What do you see in this image?', with: { image: image_path })
 
@@ -37,7 +35,7 @@ RSpec.describe 'Content Integration' do # rubocop:disable Metrics/BlockLength
       gpt-4o-mini-audio-preview
       gpt-4o-audio-preview
     ].each do |model|
-      it "#{model} can understand audio" do
+      it "#{model} can understand audio" do # rubocop:disable RSpec/MultipleExpectations
         chat = RubyLLM.chat(model: model)
         response = chat.ask('What is being said?', with: { audio: audio_path })
 

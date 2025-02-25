@@ -3,8 +3,8 @@
 require 'spec_helper'
 require 'dotenv/load'
 
-RSpec.describe 'Tools Integration' do # rubocop:disable Metrics/BlockLength
-  before(:all) do
+RSpec.describe RubyLLM::Chat do
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
     RubyLLM.configure do |config|
       config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
       config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
@@ -12,7 +12,7 @@ RSpec.describe 'Tools Integration' do # rubocop:disable Metrics/BlockLength
     end
   end
 
-  class Calculator < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock
+  class Calculator < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
     description 'Performs basic arithmetic'
 
     param :expression,
@@ -41,7 +41,7 @@ RSpec.describe 'Tools Integration' do # rubocop:disable Metrics/BlockLength
           expect(response.content).to include(/56(,?)088/)
         end
 
-        it 'can use tools in multi-turn conversations' do
+        it 'can use tools in multi-turn conversations' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
           chat = RubyLLM.chat(model: model)
                         .with_tool(Calculator)
 

@@ -97,7 +97,7 @@ module RubyLLM
             .join(' ')
             .gsub(/(\d+\.\d+)/, ' \1') # Add space before version numbers
             .gsub(/\s+/, ' ')          # Clean up multiple spaces
-            .gsub(/Aqa/, 'AQA')        # Special case for AQA
+            .gsub('Aqa', 'AQA')        # Special case for AQA
             .strip
         end
 

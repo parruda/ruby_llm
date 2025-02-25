@@ -15,7 +15,6 @@ module RubyLLM
           when /o1-2024/, /o3-mini/, /o3-mini-2025/ then 200_000
           when /gpt-4o/, /gpt-4o-mini/, /gpt-4-turbo/, /o1-mini/ then 128_000
           when /gpt-4-0[0-9]{3}/ then 8_192
-          when /gpt-3.5-turbo-instruct/ then 4_096
           when /gpt-3.5/ then 16_385
           when /babbage-002/, /davinci-002/ then 16_384
           else 4_096
@@ -25,16 +24,12 @@ module RubyLLM
         # Returns the maximum output tokens for the given model ID
         # @param model_id [String] the model identifier
         # @return [Integer] the maximum output tokens
-        def max_tokens_for(model_id) # rubocop:disable Metrics/CyclomaticComplexity,Metrics/MethodLength
+        def max_tokens_for(model_id)
           case model_id
           when /o1-2024/, /o3-mini/, /o3-mini-2025/ then 100_000
           when /o1-mini-2024/ then 65_536
-          when /gpt-4o-2024-05-13/ then 4_096
-          when /gpt-4o-realtime/, /gpt-4o-mini-realtime/ then 4_096
-          when /gpt-4o/, /gpt-4o-mini/, /gpt-4o-audio/, /gpt-4o-mini-audio/ then 16_384
+          when /gpt-4o/, /gpt-4o-mini/, /gpt-4o-audio/, /gpt-4o-mini-audio/, /babbage-002/, /davinci-002/ then 16_384
           when /gpt-4-0[0-9]{3}/ then 8_192
-          when /gpt-4-turbo/, /gpt-3.5-turbo/ then 4_096
-          when /babbage-002/, /davinci-002/ then 16_384
           else 4_096
           end
         end
@@ -211,7 +206,7 @@ module RubyLLM
         # @return [String] the humanized model name
         def humanize(id)
           id.tr('-', ' ')
-            .split(' ')
+            .split
             .map(&:capitalize)
             .join(' ')
         end
@@ -229,12 +224,12 @@ module RubyLLM
             .gsub(/^Chatgpt /, 'ChatGPT-')
             .gsub(/^Tts /, 'TTS-')
             .gsub(/^Dall E /, 'DALL-E-')
-            .gsub(/3\.5 /, '3.5-')
-            .gsub(/4 /, '4-')
+            .gsub('3.5 ', '3.5-')
+            .gsub('4 ', '4-')
             .gsub(/4o (?=Mini|Preview|Turbo|Audio|Realtime)/, '4o-')
             .gsub(/\bHd\b/, 'HD')
-            .gsub(/Omni Moderation/, 'Omni-Moderation')
-            .gsub(/Text Moderation/, 'Text-Moderation')
+            .gsub('Omni Moderation', 'Omni-Moderation')
+            .gsub('Text Moderation', 'Text-Moderation')
         end
       end
     end

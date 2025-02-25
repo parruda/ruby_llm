@@ -85,10 +85,10 @@ module RubyLLM
              .on_end_message { |msg| persist_message_completion(msg) }
       end
 
-      def ask(message, &block)
+      def ask(message, &)
         message = { role: :user, content: message }
         messages.create!(**message)
-        to_llm.complete(&block)
+        to_llm.complete(&)
       end
 
       alias say ask
