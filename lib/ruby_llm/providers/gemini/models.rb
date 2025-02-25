@@ -7,12 +7,12 @@ module RubyLLM
       module Models
         module_function
 
-        def parse_list_models_response(response)
+        def parse_list_models_response(response, slug, capabilities)
           response.body['data']&.each do |model|
             model['id'] = model['id'].delete_prefix('models/')
           end
 
-          OpenAI::Models.parse_list_models_response(response)
+          OpenAI::Models.parse_list_models_response(response, slug, capabilities)
         end
       end
     end

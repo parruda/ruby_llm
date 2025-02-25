@@ -12,7 +12,7 @@ PROVIDER_DOCS = {
   },
   gemini: {
     models: 'https://ai.google.dev/gemini-api/docs/models/gemini',
-    pricing: 'https://ai.google.dev/pricing'
+    pricing: 'https://ai.google.dev/gemini-api/docs/pricing'
   },
   deepseek: {
     models: 'https://api-docs.deepseek.com/quick_start/pricing/'
@@ -102,11 +102,12 @@ namespace :models do # rubocop:disable Metrics/BlockLength
       puts "Processing #{provider}..."
 
       # Initialize our AI assistants
+      #
       gemini = RubyLLM.chat(model: 'gemini-2.0-flash').with_temperature(0)
-      claude = RubyLLM.chat(model: 'claude-3-5-sonnet-20241022').with_temperature(0)
+      claude = RubyLLM.chat(model: 'claude-3-7-sonnet-20250219').with_temperature(0)
 
       # Read existing capabilities file if present
-      existing_file = "lib/ruby_llm/model_capabilities/#{provider}.rb"
+      existing_file = "lib/ruby_llm/providers/#{provider}/capabilities.rb"
       existing_code = File.read(existing_file) if File.exist?(existing_file)
 
       begin
@@ -155,18 +156,17 @@ namespace :models do # rubocop:disable Metrics/BlockLength
 
           #{model_info}
 
-          The module should go in lib/ruby_llm/model_capabilities/#{provider}.rb and follow these conventions:
+          The module should go in lib/ruby_llm/providers/#{provider}/capabilities.rb and follow these conventions:
 
-          1. Module name should be RubyLLM::ModelCapabilities::#{provider.to_s.capitalize}
-          2. Include methods for determining context windows, token limits, pricing, and capabilities
-          3. Use consistent naming with other providers
-          4. Include detailed pricing information in a PRICES constant
-          5. Follow the existing structure in the codebase
-          6. Use Ruby idioms and clean code practices
-          7. Include module_function to make methods callable at module level
-          8. Include all necessary method documentation
+          1. Include methods for determining context windows, token limits, pricing, and capabilities
+          2. Use consistent naming with other providers
+          3. Include detailed pricing information in a PRICES constant
+          4. Follow the existing structure in the codebase
+          5. Use Ruby idioms and clean code practices
+          6. Include module_function to make methods callable at module level
+          7. Include all necessary method documentation
 
-          Here's the existing implementation for reference (maintain similar structure):
+          Here's the existing implementation for reference (maintain similar structure and same method names):
 
           #{existing_code}
 
@@ -176,7 +176,7 @@ namespace :models do # rubocop:disable Metrics/BlockLength
         response = claude.ask(code_prompt)
 
         # Save the file
-        file_path = "lib/ruby_llm/model_capabilities/#{provider}.rb"
+        file_path = "lib/ruby_llm/providers/#{provider}/capabilities.rb"
         puts "  Writing #{file_path}..."
 
         FileUtils.mkdir_p(File.dirname(file_path))

@@ -18,6 +18,14 @@ module RubyLLM
           'Authorization' => "Bearer #{RubyLLM.config.gemini_api_key}"
         }
       end
+
+      def capabilities
+        Gemini::Capabilities
+      end
+
+      def slug
+        'gemini'
+      end
     end
   end
 end

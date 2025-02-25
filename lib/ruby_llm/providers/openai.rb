@@ -37,6 +37,14 @@ module RubyLLM
           'Authorization' => "Bearer #{RubyLLM.config.openai_api_key}"
         }
       end
+
+      def capabilities
+        OpenAI::Capabilities
+      end
+
+      def slug
+        'openai'
+      end
     end
   end
 end

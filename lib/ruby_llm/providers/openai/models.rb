@@ -11,7 +11,7 @@ module RubyLLM
           'models'
         end
 
-        def parse_list_models_response(response) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+        def parse_list_models_response(response, slug, capabilities) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
           (response.body['data'] || []).map do |model|
             ModelInfo.new(
               id: model['id'],

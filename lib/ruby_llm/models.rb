@@ -53,9 +53,7 @@ module RubyLLM
     end
 
     def refresh!
-      @all = RubyLLM.providers.flat_map do |provider|
-        provider.new.list_models
-      end.sort_by(&:id)
+      @all = RubyLLM.providers.flat_map(&:list_models).sort_by(&:id)
     end
   end
 end

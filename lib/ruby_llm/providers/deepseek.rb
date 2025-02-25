@@ -17,6 +17,14 @@ module RubyLLM
           'Authorization' => "Bearer #{RubyLLM.config.deepseek_api_key}"
         }
       end
+
+      def capabilities
+        DeepSeek::Capabilities
+      end
+
+      def slug
+        'deepseek'
+      end
     end
   end
 end

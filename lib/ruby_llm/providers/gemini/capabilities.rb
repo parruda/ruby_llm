@@ -126,8 +126,6 @@ module RubyLLM
           end
         end
 
-        private
-
         def long_context_model?(model_id)
           model_id.match?(/gemini-1\.5-(?:pro|flash)/)
         end

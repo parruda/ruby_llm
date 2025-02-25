@@ -107,8 +107,6 @@ module RubyLLM
           end
         end
 
-        private
-
         PRICES = {
           o1: { input: 15.0, cached_input: 7.5, output: 60.0 },
           o1_mini: { input: 1.10, cached_input: 0.55, output: 4.40 },

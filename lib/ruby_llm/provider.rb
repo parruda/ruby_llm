@@ -23,7 +23,7 @@ module RubyLLM
           req.headers.merge! headers
         end
 
-        parse_list_models_response response
+        parse_list_models_response response, slug, capabilities
       end
 
       def embed(text, model:)
@@ -148,15 +148,6 @@ module RubyLLM
 
       body = try_parse_json(response.body)
       body.is_a?(Hash) ? body.dig('error', 'message') : body
-    end
-
-    def capabilities
-      provider_name = self.class.name.split('::').last
-      provider_name::Capabilities
-    end
-
-    def slug
-      self.class.name.split('::').last.downcase
     end
 
     class << self

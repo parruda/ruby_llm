@@ -24,6 +24,14 @@ module RubyLLM
           'anthropic-version' => '2023-06-01'
         }
       end
+
+      def capabilities
+        Anthropic::Capabilities
+      end
+
+      def slug
+        'anthropic'
+      end
     end
   end
 end
