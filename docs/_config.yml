@@ -1,7 +1,7 @@
 title: RubyLLM
 description: A delightful Ruby way to work with AI
-url: https://crmne.github.io/ruby_llm
-baseurl: /ruby_llm
+url: https://rubyllm.com
+baseurl: /
 remote_theme: just-the-docs/just-the-docs
 
 # Enable search
