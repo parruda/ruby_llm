@@ -7,6 +7,9 @@ module RubyLLM
       module Capabilities
         module_function
 
+        # Returns the context window size for the given model
+        # @param model_id [String] the model identifier
+        # @return [Integer] the context window size in tokens
         def context_window_for(model_id)
           case model_id
           when /deepseek-(?:chat|reasoner)/ then 64_000
@@ -14,6 +17,9 @@ module RubyLLM
           end
         end
 
+        # Returns the maximum number of tokens that can be generated
+        # @param model_id [String] the model identifier
+        # @return [Integer] the maximum number of tokens
         def max_tokens_for(model_id)
           case model_id
           when /deepseek-(?:chat|reasoner)/ then 8_192
@@ -21,30 +27,51 @@ module RubyLLM
           end
         end
 
+        # Returns the price per million tokens for input (cache miss)
+        # @param model_id [String] the model identifier
+        # @return [Float] the price per million tokens in USD
         def input_price_for(model_id)
           PRICES.dig(model_family(model_id), :input_miss) || default_input_price
         end
 
+        # Returns the price per million tokens for output
+        # @param model_id [String] the model identifier
+        # @return [Float] the price per million tokens in USD
         def output_price_for(model_id)
           PRICES.dig(model_family(model_id), :output) || default_output_price
         end
 
+        # Returns the price per million tokens for input with cache hit
+        # @param model_id [String] the model identifier
+        # @return [Float] the price per million tokens in USD
         def cache_hit_price_for(model_id)
           PRICES.dig(model_family(model_id), :input_hit) || default_cache_hit_price
         end
 
+        # Determines if the model supports vision capabilities
+        # @param model_id [String] the model identifier
+        # @return [Boolean] true if the model supports vision
         def supports_vision?(_model_id)
           false # DeepSeek models don't currently support vision
         end
 
+        # Determines if the model supports function calling
+        # @param model_id [String] the model identifier
+        # @return [Boolean] true if the model supports function calling
         def supports_functions?(model_id)
           model_id.match?(/deepseek-chat/) # Only deepseek-chat supports function calling
         end
 
+        # Determines if the model supports JSON mode
+        # @param model_id [String] the model identifier
+        # @return [Boolean] true if the model supports JSON mode
         def supports_json_mode?(model_id)
           model_id.match?(/deepseek-chat/) # Only deepseek-chat supports JSON mode
         end
 
+        # Returns a formatted display name for the model
+        # @param model_id [String] the model identifier
+        # @return [String] the formatted display name
         def format_display_name(model_id)
           case model_id
           when 'deepseek-chat' then 'DeepSeek V3'
@@ -56,10 +83,16 @@ module RubyLLM
           end
         end
 
+        # Returns the model type
+        # @param model_id [String] the model identifier
+        # @return [String] the model type (e.g., 'chat')
         def model_type(_model_id)
           'chat' # All DeepSeek models are chat models
         end
 
+        # Returns the model family
+        # @param model_id [String] the model identifier
+        # @return [Symbol] the model family
         def model_family(model_id)
           case model_id
           when /deepseek-chat/ then :chat
@@ -84,14 +117,20 @@ module RubyLLM
 
         private
 
+        # Default input price when model family can't be determined
+        # @return [Float] the default input price
         def default_input_price
           0.27 # Default to chat cache miss price
         end
 
+        # Default output price when model family can't be determined
+        # @return [Float] the default output price
         def default_output_price
           1.10 # Default to chat output price
         end
 
+        # Default cache hit price when model family can't be determined
+        # @return [Float] the default cache hit price
         def default_cache_hit_price
           0.07 # Default to chat cache hit price
         end

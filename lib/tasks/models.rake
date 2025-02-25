@@ -16,6 +16,9 @@ PROVIDER_DOCS = {
   },
   deepseek: {
     models: 'https://api-docs.deepseek.com/quick_start/pricing/'
+  },
+  anthropic: {
+    models: 'https://docs.anthropic.com/en/docs/about-claude/models/all-models'
   }
 }.freeze
 
@@ -85,8 +88,10 @@ namespace :models do # rubocop:disable Metrics/BlockLength
     end
   end
 
-  desc 'Update model capabilities modules by scraping provider documentation'
+  desc 'Update model capabilities modules by scraping provider documentation (use PROVIDER=name to update only one)'
   task :update_capabilities do # rubocop:disable Metrics/BlockLength
+    # Check if a specific provider was requested
+    target_provider = ENV['PROVIDER']&.to_sym
     require 'ruby_llm'
     require 'fileutils'
 
@@ -97,8 +102,15 @@ namespace :models do # rubocop:disable Metrics/BlockLength
       config.gemini_api_key = ENV.fetch('GEMINI_API_KEY')
     end
 
+    # Filter providers if a specific one was requested
+    providers_to_process = if target_provider && PROVIDER_DOCS.key?(target_provider)
+                             { target_provider => PROVIDER_DOCS[target_provider] }
+                           else
+                             PROVIDER_DOCS
+                           end
+
     # Process each provider
-    PROVIDER_DOCS.each do |provider, urls| # rubocop:disable Metrics/BlockLength
+    providers_to_process.each do |provider, urls| # rubocop:disable Metrics/BlockLength
       puts "Processing #{provider}..."
 
       # Initialize our AI assistants
@@ -175,12 +187,22 @@ namespace :models do # rubocop:disable Metrics/BlockLength
 
         response = claude.ask(code_prompt)
 
+        # Extract Ruby code from Claude's response
+        puts "  Extracting Ruby code from Claude's response..."
+        ruby_code = nil
+
+        # Look for Ruby code block
+        ruby_code = Regexp.last_match(1).strip if response.content =~ /```ruby\s*(.*?)```/m
+
+        # Verify we found Ruby code
+        raise "No Ruby code block found in Claude's response" if ruby_code.nil? || ruby_code.empty?
+
         # Save the file
         file_path = "lib/ruby_llm/providers/#{provider}/capabilities.rb"
         puts "  Writing #{file_path}..."
 
         FileUtils.mkdir_p(File.dirname(file_path))
-        File.write(file_path, response.content)
+        File.write(file_path, ruby_code)
       rescue StandardError => e
         raise "Failed to process #{provider}: #{e.message}"
       end
