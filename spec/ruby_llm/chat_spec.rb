@@ -15,7 +15,7 @@ RSpec.describe RubyLLM::Chat do
 
   describe 'basic chat functionality' do
     [
-      'claude-3-5-sonnet-20241022',
+      'claude-3-5-haiku-20241022',
       'gemini-2.0-flash',
       'gpt-4o-mini'
     ].each do |model|

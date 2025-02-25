@@ -9,7 +9,7 @@ RSpec.describe RubyLLM::Error do
       config.anthropic_api_key = 'invalid-key'
     end
 
-    chat = RubyLLM.chat(model: 'claude-3-5-sonnet-20241022')
+    chat = RubyLLM.chat(model: 'claude-3-5-haiku-20241022')
 
     expect do
       chat.ask('Hello')
