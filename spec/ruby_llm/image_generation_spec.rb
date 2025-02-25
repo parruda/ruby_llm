@@ -16,7 +16,7 @@ RSpec.describe RubyLLM::Image do
       # 'imagen-3.0-generate-002' # Google's model doesn't support OpenAI API
     ].each do |model|
       it 'can paint images' do # rubocop:disable RSpec/MultipleExpectations
-        image = RubyLLM.paint('a white siamese cat', model: model)
+        image = RubyLLM.paint('a siamese cat', model: model)
 
         expect(image.url).to start_with('https://')
         expect(image.revised_prompt).to include('cat')
@@ -24,7 +24,7 @@ RSpec.describe RubyLLM::Image do
 
       it 'supports custom sizes' do
         image = RubyLLM.paint(
-          'a white siamese cat',
+          'a siamese cat',
           size: '1792x1024'
         )
 

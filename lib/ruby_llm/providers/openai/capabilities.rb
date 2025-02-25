@@ -15,8 +15,7 @@ module RubyLLM
           when /o1-2024/, /o3-mini/, /o3-mini-2025/ then 200_000
           when /gpt-4o/, /gpt-4o-mini/, /gpt-4-turbo/, /o1-mini/ then 128_000
           when /gpt-4-0[0-9]{3}/ then 8_192
-          when /gpt-3.5/ then 16_385
-          when /babbage-002/, /davinci-002/ then 16_384
+          when /gpt-3.5-turbo$/, /babbage-002/, /davinci-002/, /16k/ then 16_385
           else 4_096
           end
         end

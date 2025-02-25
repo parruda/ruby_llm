@@ -65,8 +65,8 @@ module RubyLLM
         # Determines if the model supports JSON mode
         # @param model_id [String] the model identifier
         # @return [Boolean] true if the model supports JSON mode
-        def supports_json_mode?(model_id)
-          model_id.match?(/deepseek-chat/) # Only deepseek-chat supports JSON mode
+        def supports_json_mode?(_model_id)
+          false # DeepSeek function calling is unstable
         end
 
         # Returns a formatted display name for the model

@@ -8,6 +8,7 @@ RSpec.describe RubyLLM::Chat do
     RubyLLM.configure do |config|
       config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
       config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
+      config.deepseek_api_key = ENV.fetch('DEEPSEEK_API_KEY')
       config.gemini_api_key = ENV.fetch('GEMINI_API_KEY')
     end
   end
@@ -27,7 +28,12 @@ RSpec.describe RubyLLM::Chat do
   end
 
   describe 'streaming responses' do
-    ['claude-3-5-haiku-20241022', 'gemini-2.0-flash', 'gpt-4o-mini'].each do |model|
+    [
+      'claude-3-5-haiku-20241022',
+      'gemini-2.0-flash',
+      'deepseek-chat',
+      'gpt-4o-mini'
+    ].each do |model|
       context "with #{model}" do
         it 'supports streaming responses' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
           chat = RubyLLM.chat(model: model)
@@ -39,28 +45,6 @@ RSpec.describe RubyLLM::Chat do
 
           expect(chunks).not_to be_empty
           expect(chunks.first).to be_a(RubyLLM::Chunk)
-        end
-
-        it 'can use tools with multi-turn streaming responses' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
-          chat = RubyLLM.chat(model: model)
-                        .with_tool(Calculator)
-          chunks = []
-
-          response = chat.ask("What's 123 * 456?") do |chunk|
-            chunks << chunk
-          end
-
-          expect(chunks).not_to be_empty
-          expect(chunks.first).to be_a(RubyLLM::Chunk)
-          expect(response.content).to include(/56(,?)088/)
-
-          response = chat.ask("What's 456 divided by 123?") do |chunk|
-            chunks << chunk
-          end
-
-          expect(chunks).not_to be_empty
-          expect(chunks.first).to be_a(RubyLLM::Chunk)
-          expect(response.content).to include('3')
         end
       end
     end

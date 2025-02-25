@@ -8,6 +8,7 @@ RSpec.describe RubyLLM::Chat do
     RubyLLM.configure do |config|
       config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
       config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
+      config.deepseek_api_key = ENV.fetch('DEEPSEEK_API_KEY')
       config.gemini_api_key = ENV.fetch('GEMINI_API_KEY')
       config.max_retries = 10
     end
@@ -17,6 +18,7 @@ RSpec.describe RubyLLM::Chat do
     [
       'claude-3-5-haiku-20241022',
       'gemini-2.0-flash',
+      'deepseek-chat',
       'gpt-4o-mini'
     ].each do |model|
       context "with #{model}" do
