@@ -13,6 +13,9 @@ RSpec.describe RubyLLM::Chat do
     end
   end
 
+  let(:image_path) { File.expand_path('../fixtures/ruby.png', __dir__) }
+  let(:audio_path) { File.expand_path('../fixtures/ruby.wav', __dir__) }
+
   describe 'vision models' do
     [
       'claude-3-5-sonnet-20241022',
