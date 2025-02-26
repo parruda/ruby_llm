@@ -10,6 +10,7 @@ RSpec.describe RubyLLM::Chat do
       config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
       config.deepseek_api_key = ENV.fetch('DEEPSEEK_API_KEY')
       config.gemini_api_key = ENV.fetch('GEMINI_API_KEY')
+      config.max_retries = 10
     end
   end
 

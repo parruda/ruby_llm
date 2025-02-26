@@ -8,6 +8,7 @@ RSpec.describe RubyLLM::Embedding do
     RubyLLM.configure do |config|
       config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
       config.gemini_api_key = ENV.fetch('GEMINI_API_KEY')
+      config.max_retries = 10
     end
   end
 
