@@ -8,6 +8,7 @@ module RubyLLM
       extend Provider
       extend Anthropic::Chat
       extend Anthropic::Embeddings
+      extend Anthropic::Media
       extend Anthropic::Models
       extend Anthropic::Streaming
       extend Anthropic::Tools

@@ -42,7 +42,8 @@ A delightful Ruby way to work with AI through a unified interface to OpenAI, Ant
 RubyLLM provides a beautiful, unified interface to modern AI services, including:
 
 - 💬 **Chat** with OpenAI GPT, Anthropic Claude, Google Gemini, and DeepSeek models
-- 🎵 **Vision and Audio** understanding
+- 👁️ **Vision and Audio** understanding
+- 📄 **PDF Analysis** for analyzing documents with Claude models
 - 🖼️ **Image generation** with DALL-E and other providers
 - 📊 **Embeddings** for vector search and semantic analysis
 - 🔧 **Tools** that let AI use your Ruby code
@@ -56,7 +57,8 @@ require 'ruby_llm'
 
 # Configure your API keys
 RubyLLM.configure do |config|
-  config.openai_api_key = ENV['OPENAI_API_KEY']
+  config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
+  config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
 end
 
 # Start chatting
@@ -66,6 +68,10 @@ response = chat.ask "What's the best way to learn Ruby?"
 # Generate images
 image = RubyLLM.paint "a sunset over mountains"
 puts image.url
+
+# Analyze PDF documents with Claude
+claude_chat = RubyLLM.chat(model: 'claude-3-7-sonnet-20250219')
+claude_chat.ask "Summarize this document", with: { pdf: "contract.pdf" }
 ```
 
 ## Learn more

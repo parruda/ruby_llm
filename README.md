@@ -24,6 +24,7 @@ A delightful Ruby way to work with AI. Chat in text, analyze and generate images
 ## Features
 
 - 💬 **Beautiful Chat Interface** - Converse with AI models as easily as `RubyLLM.chat.ask "teach me Ruby"`
+- 📄 **PDF Analysis** - Analyze PDF documents directly with Claude models using `chat.ask "What's in this?", with: { pdf: "document.pdf" }`
 - 🎵 **Audio Analysis** - Get audio transcription and understanding with `chat.ask "what's said here?", with: { audio: "clip.wav" }`
 - 👁️ **Vision Understanding** - Let AIs analyze images with a simple `chat.ask "what's in this?", with: { image: "photo.jpg" }`
 - 🌊 **Streaming** - Real-time responses with proper Ruby streaming with `chat.ask "hello" do |chunk| puts chunk.content end`
@@ -114,6 +115,13 @@ chat.ask "What's being said in this recording?", with: { audio: "meeting.wav" }
 
 # Combine multiple pieces of content
 chat.ask "Compare these diagrams", with: { image: ["diagram1.png", "diagram2.png"] }
+
+# Ask about PDFs (currently supported with Claude models)
+chat = RubyLLM.chat(model: 'claude-3-7-sonnet-20250219')
+chat.ask "Summarize this research paper", with: { pdf: "research.pdf" }
+
+# Multiple PDFs work too
+chat.ask "Compare these contracts", with: { pdf: ["contract1.pdf", "contract2.pdf"] }
 
 # Check token usage
 last_message = chat.messages.last

@@ -1,3 +1,4 @@
+
 ---
 layout: default
 title: Chat
@@ -102,6 +103,55 @@ chat.ask "What's being said in this recording?", with: {
 # Ask follow-up questions about the audio
 chat.ask "Summarize the key points mentioned"
 ```
+
+## Working with PDFs
+
+Claude models support the analysis of PDF documents directly in conversations:
+
+```ruby
+# Create a chat with Claude
+chat = RubyLLM.chat(model: 'claude-3-7-sonnet-20250219')
+
+# Ask about a PDF document (local file)
+chat.ask "What's in this PDF?", with: { pdf: "path/to/document.pdf" }
+
+# Or use a PDF URL
+chat.ask "Summarize this document", with: { pdf: "https://example.com/document.pdf" }
+
+# Include multiple PDFs
+chat.ask "Compare these documents", with: {
+  pdf: ["doc1.pdf", "doc2.pdf"]
+}
+
+# Combine PDF and text
+chat.ask "Is the information about widgets correct?", with: { pdf: "catalog.pdf" }
+
+# Control how remote PDFs are handled
+chat.ask "Analyze this online document", with: {
+  pdf: "https://example.com/document.pdf",
+  remote_pdf_strategy: :url  # :url or :download (default)
+}
+```
+
+### Provider Compatibility
+
+Currently, PDF support is only implemented for Anthropic (Claude) models. The architecture is designed to support other providers in the future as their APIs add or improve PDF handling capabilities.
+
+| Provider | Support Status |
+|----------|---------------|
+| Anthropic | ✅ Full support for Claude 3 and newer models |
+| OpenAI | ⏳ Planned for future release |
+| Google | ⏳ Planned for future release |
+| DeepSeek | ⏳ Planned for future release |
+
+### Size Limitations
+
+When using PDFs with Claude, be aware of these limitations:
+- Maximum file size: 10MB per file
+- Token usage: PDFs consume tokens from your context window based on their content
+- Total context: All PDFs must fit within the model's context window (e.g., 200K tokens for Claude 3)
+
+For large documents, consider splitting PDFs into smaller chunks or using a document processing pipeline with embeddings.
 
 ## Streaming Responses
 

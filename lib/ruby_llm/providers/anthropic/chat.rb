@@ -62,7 +62,7 @@ module RubyLLM
         def format_basic_message(msg)
           {
             role: convert_role(msg.role),
-            content: msg.content
+            content: Media.format_content(msg.content)
           }
         end
 
