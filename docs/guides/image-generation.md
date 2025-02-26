@@ -32,16 +32,10 @@ The `paint` method handles all the complexities of connecting to the right provi
 By default, RubyLLM uses DALL-E 3, but you can specify a different model:
 
 ```ruby
-# Use a specific model
+# Use Gemini's Imagen 3 (see details below)
 image = RubyLLM.paint(
   "a cyberpunk city at night",
-  model: "dall-e-3"
-)
-
-# Alternate syntax
-image = RubyLLM.paint(
-  "a cyberpunk city at night",
-  model: "dalle-3"  # with or without hyphen
+  model: "imagen-3.0-generate-002"
 )
 ```
 
@@ -117,6 +111,29 @@ File.open("sunset.png", "wb") do |file|
   file.write(URI.open(image.url).read)
 end
 ```
+
+## Using Gemini for Image Generation
+
+You can generate images with Google's Imagen model:
+
+```ruby
+# Generate an image with Imagen
+image = RubyLLM.paint(
+  "a sunset over mountains",
+  model: "imagen-3.0-generate-002"
+)
+
+# The image is returned in base64 format
+image.url  # => "data:image/png;base64,..."
+```
+
+Imagen has different capabilities than DALL-E:
+
+1. Returns base64-encoded images directly rather than URLs
+2. Doesn't provide revised prompts
+3. Has different resolution options
+
+The API remains consistent regardless of which provider you use.
 
 ## Prompt Engineering for Images
 

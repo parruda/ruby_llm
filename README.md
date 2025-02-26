@@ -24,10 +24,10 @@ A delightful Ruby way to work with AI. Chat in text, analyze and generate images
 ## Features
 
 - 💬 **Beautiful Chat Interface** - Converse with AI models as easily as `RubyLLM.chat.ask "teach me Ruby"`
-- 📄 **PDF Analysis** - Analyze PDF documents directly with Claude models using `chat.ask "What's in this?", with: { pdf: "document.pdf" }`
 - 🎵 **Audio Analysis** - Get audio transcription and understanding with `chat.ask "what's said here?", with: { audio: "clip.wav" }`
 - 👁️ **Vision Understanding** - Let AIs analyze images with a simple `chat.ask "what's in this?", with: { image: "photo.jpg" }`
 - 🌊 **Streaming** - Real-time responses with proper Ruby streaming with `chat.ask "hello" do |chunk| puts chunk.content end`
+- 📄 **PDF Analysis** - Analyze PDF documents directly with `chat.ask "What's in this?", with: { pdf: "document.pdf" }`
 - 🚂 **Rails Integration** - Persist chats and messages with ActiveRecord with `acts_as_{chat|message|tool_call}`
 - 🛠️ **Tool Support** - Give AIs access to your Ruby code with `chat.with_tool(Calculator).ask "what's 2+2?"`
 - 🎨 **Paint with AI** - Create images as easily as `RubyLLM.paint "a sunset over mountains"`
@@ -116,7 +116,8 @@ chat.ask "What's being said in this recording?", with: { audio: "meeting.wav" }
 # Combine multiple pieces of content
 chat.ask "Compare these diagrams", with: { image: ["diagram1.png", "diagram2.png"] }
 
-# Ask about PDFs (currently supported with Claude models)
+# Ask about PDFs
+
 chat = RubyLLM.chat(model: 'claude-3-7-sonnet-20250219')
 chat.ask "Summarize this research paper", with: { pdf: "research.pdf" }
 
@@ -446,6 +447,21 @@ chat.ask "What's the weather in Paris?"
 pp chat.messages.map(&:role)
 #=> [:user, :assistant, :tool, :assistant]
 ```
+
+## Provider Comparison
+
+| Feature | OpenAI | Anthropic | Google | DeepSeek |
+|---------|--------|-----------|--------|----------|
+| Chat | ✅ GPT-4o, GPT-3.5 | ✅ Claude 3.7, 3.5, 3 | ✅ Gemini 2.0, 1.5 | ✅ DeepSeek Chat, Reasoner |
+| Vision | ✅ GPT-4o, GPT-4 | ✅ All Claude 3 models | ✅ Gemini 2.0, 1.5 | ❌ |
+| Audio | ✅ GPT-4o-audio, Whisper | ❌ | ✅ Gemini models | ❌ |
+| PDF Analysis | ❌ | ✅ All Claude 3 models | ✅ Gemini models | ❌ |
+| Function Calling | ✅ Most models | ✅ Claude 3 models | ✅ Gemini models (except Lite) | ✅ |
+| JSON Mode | ✅ Most recent models | ✅ Claude 3 models | ✅ Gemini models | ❌ |
+| Image Generation | ✅ DALL-E 3 | ❌ | ✅ Imagen | ❌ |
+| Embeddings | ✅ text-embedding-3 | ❌ | ✅ text-embedding-004 | ❌ |
+| Context Size | ⭐ Up to 200K (o1) | ⭐ 200K tokens | ⭐ Up to 2M tokens | 64K tokens |
+| Streaming | ✅ | ✅ | ✅ | ✅ |
 
 ## Development
 

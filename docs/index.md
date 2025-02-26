@@ -43,7 +43,7 @@ RubyLLM provides a beautiful, unified interface to modern AI services, including
 
 - 💬 **Chat** with OpenAI GPT, Anthropic Claude, Google Gemini, and DeepSeek models
 - 👁️ **Vision and Audio** understanding
-- 📄 **PDF Analysis** for analyzing documents with Claude models
+- 📄 **PDF Analysis** for analyzing documents
 - 🖼️ **Image generation** with DALL-E and other providers
 - 📊 **Embeddings** for vector search and semantic analysis
 - 🔧 **Tools** that let AI use your Ruby code

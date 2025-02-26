@@ -106,7 +106,7 @@ chat.ask "Summarize the key points mentioned"
 
 ## Working with PDFs
 
-Claude models support the analysis of PDF documents directly in conversations:
+Claude and Gemini models support the analysis of PDF documents directly in conversations:
 
 ```ruby
 # Create a chat with Claude
@@ -135,14 +135,14 @@ chat.ask "Analyze this online document", with: {
 
 ### Provider Compatibility
 
-Currently, PDF support is only implemented for Anthropic (Claude) models. The architecture is designed to support other providers in the future as their APIs add or improve PDF handling capabilities.
+PDF support is implemented for multiple providers:
 
 | Provider | Support Status |
 |----------|---------------|
 | Anthropic | ✅ Full support for Claude 3 and newer models |
-| OpenAI | ⏳ Planned for future release |
-| Google | ⏳ Planned for future release |
-| DeepSeek | ⏳ Planned for future release |
+| Google | ✅ Supported for Gemini models |
+| OpenAI | 🙅 Not supported by provider |
+| DeepSeek | 🙅 Not supported by provider |
 
 ### Size Limitations
 
