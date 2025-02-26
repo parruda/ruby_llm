@@ -6,10 +6,10 @@ require 'dotenv/load'
 RSpec.describe RubyLLM::Error do
   it 'handles invalid API keys gracefully' do # rubocop:disable RSpec/ExampleLength
     RubyLLM.configure do |config|
-      config.anthropic_api_key = 'invalid-key'
+      config.openai_api_key = 'invalid-key'
     end
 
-    chat = RubyLLM.chat(model: 'claude-3-5-haiku-20241022')
+    chat = RubyLLM.chat(model: 'gpt-4o-mini')
 
     expect do
       chat.ask('Hello')
