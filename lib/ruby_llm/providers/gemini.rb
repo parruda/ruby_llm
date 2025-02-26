@@ -7,6 +7,7 @@ module RubyLLM
       extend Provider
       extend Gemini::Chat
       extend Gemini::Embeddings
+      extend Gemini::Images
       extend Gemini::Models
       extend Gemini::Streaming
       extend Gemini::Tools
