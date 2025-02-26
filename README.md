@@ -73,6 +73,10 @@ chat = RubyLLM.chat
 chat.ask "What's the best way to learn Ruby?"
 ```
 
+## Full documentation
+
+Comprehensive guides are available at https://rubyllm.com/
+
 ## Available Models
 
 RubyLLM gives you access to the latest models from multiple providers:
