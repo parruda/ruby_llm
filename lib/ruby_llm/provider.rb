@@ -143,11 +143,20 @@ module RubyLLM
       maybe_json
     end
 
-    def parse_error(response)
+    def parse_error(response) # rubocop:disable Metrics/MethodLength
       return if response.body.empty?
 
       body = try_parse_json(response.body)
-      body.is_a?(Hash) ? body.dig('error', 'message') : body
+      case body
+      when Hash
+        body.dig('error', 'message')
+      when Array
+        body.map do |part|
+          part.dig('error', 'message')
+        end.join('. ')
+      else
+        body
+      end
     end
 
     class << self
