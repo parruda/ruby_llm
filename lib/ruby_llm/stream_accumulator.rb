@@ -47,7 +47,7 @@ module RubyLLM
         ToolCall.new(
           id: tc.id,
           name: tc.name,
-          arguments: JSON.parse(tc.arguments)
+          arguments: tc.arguments.is_a?(String) ? JSON.parse(tc.arguments) : tc.arguments
         )
       end
     end

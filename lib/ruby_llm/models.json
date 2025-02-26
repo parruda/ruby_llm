@@ -2,7 +2,7 @@
   {
     "id": "aqa",
     "created_at": null,
-    "display_name": "AQA",
+    "display_name": "Model that performs Attributed Question Answering.",
     "provider": "gemini",
     "context_window": 7168,
     "max_tokens": 1024,
@@ -14,8 +14,13 @@
     "input_price_per_million": 0.0,
     "output_price_per_million": 0.0,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Model trained to return answers to questions that are grounded in provided sources, along with estimating answerable probability.",
+      "input_token_limit": 7168,
+      "output_token_limit": 1024,
+      "supported_generation_methods": [
+        "generateAnswer"
+      ]
     }
   },
   {
@@ -40,10 +45,10 @@
   {
     "id": "chat-bison-001",
     "created_at": null,
-    "display_name": "Chat Bison 001",
+    "display_name": "PaLM 2 Chat (Legacy)",
     "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
+    "context_window": 4096,
+    "max_tokens": 1024,
     "type": "chat",
     "family": "other",
     "supports_vision": false,
@@ -52,8 +57,14 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "A legacy text-only model optimized for chat conversations",
+      "input_token_limit": 4096,
+      "output_token_limit": 1024,
+      "supported_generation_methods": [
+        "generateMessage",
+        "countMessageTokens"
+      ]
     }
   },
   {
@@ -320,7 +331,7 @@
     "display_name": "Embedding 001",
     "provider": "gemini",
     "context_window": 2048,
-    "max_tokens": 768,
+    "max_tokens": 1,
     "type": "embedding",
     "family": "embedding1",
     "supports_vision": false,
@@ -329,17 +340,22 @@
     "input_price_per_million": 0.0,
     "output_price_per_million": 0.0,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Obtain a distributed representation of a text.",
+      "input_token_limit": 2048,
+      "output_token_limit": 1,
+      "supported_generation_methods": [
+        "embedContent"
+      ]
     }
   },
   {
     "id": "embedding-gecko-001",
     "created_at": null,
-    "display_name": "Embedding Gecko 001",
+    "display_name": "Embedding Gecko",
     "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
+    "context_window": 1024,
+    "max_tokens": 1,
     "type": "embedding",
     "family": "other",
     "supports_vision": false,
@@ -348,35 +364,22 @@
     "input_price_per_million": 0.0,
     "output_price_per_million": 0.0,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "evergreen-custom",
-    "created_at": null,
-    "display_name": "Evergreen Custom",
-    "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": false,
-    "supports_json_mode": false,
-    "input_price_per_million": 0.075,
-    "output_price_per_million": 0.3,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Obtain a distributed representation of a text.",
+      "input_token_limit": 1024,
+      "output_token_limit": 1,
+      "supported_generation_methods": [
+        "embedText",
+        "countTextTokens"
+      ]
     }
   },
   {
     "id": "gemini-1.0-pro-vision-latest",
     "created_at": null,
-    "display_name": "Gemini 1.0 Pro Vision Latest",
+    "display_name": "Gemini 1.0 Pro Vision",
     "provider": "gemini",
-    "context_window": 32768,
+    "context_window": 12288,
     "max_tokens": 4096,
     "type": "chat",
     "family": "gemini10_pro",
@@ -386,8 +389,14 @@
     "input_price_per_million": 0.5,
     "output_price_per_million": 1.5,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "The original Gemini 1.0 Pro Vision model version which was optimized for image understanding. Gemini 1.0 Pro Vision was deprecated on July 12, 2024. Move to a newer Gemini version.",
+      "input_token_limit": 12288,
+      "output_token_limit": 4096,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
@@ -395,7 +404,7 @@
     "created_at": null,
     "display_name": "Gemini 1.5 Flash",
     "provider": "gemini",
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_flash",
@@ -405,8 +414,14 @@
     "input_price_per_million": 0.15,
     "output_price_per_million": 0.6,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Alias that points to the most recent stable version of Gemini 1.5 Flash, our fast and versatile multimodal model for scaling across diverse tasks.",
+      "input_token_limit": 1000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
@@ -414,7 +429,7 @@
     "created_at": null,
     "display_name": "Gemini 1.5 Flash 001",
     "provider": "gemini",
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_flash",
@@ -424,8 +439,15 @@
     "input_price_per_million": 0.15,
     "output_price_per_million": 0.6,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Stable version of Gemini 1.5 Flash, our fast and versatile multimodal model for scaling across diverse tasks, released in May of 2024.",
+      "input_token_limit": 1000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens",
+        "createCachedContent"
+      ]
     }
   },
   {
@@ -433,7 +455,7 @@
     "created_at": null,
     "display_name": "Gemini 1.5 Flash 001 Tuning",
     "provider": "gemini",
-    "context_window": 1048576,
+    "context_window": 16384,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_flash",
@@ -443,8 +465,15 @@
     "input_price_per_million": 0.15,
     "output_price_per_million": 0.6,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Version of Gemini 1.5 Flash that supports tuning, our fast and versatile multimodal model for scaling across diverse tasks, released in May of 2024.",
+      "input_token_limit": 16384,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens",
+        "createTunedModel"
+      ]
     }
   },
   {
@@ -452,7 +481,7 @@
     "created_at": null,
     "display_name": "Gemini 1.5 Flash 002",
     "provider": "gemini",
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_flash",
@@ -462,16 +491,23 @@
     "input_price_per_million": 0.15,
     "output_price_per_million": 0.6,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "002",
+      "description": "Stable version of Gemini 1.5 Flash, our fast and versatile multimodal model for scaling across diverse tasks, released in September of 2024.",
+      "input_token_limit": 1000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens",
+        "createCachedContent"
+      ]
     }
   },
   {
     "id": "gemini-1.5-flash-8b",
     "created_at": null,
-    "display_name": "Gemini 1.5 Flash 8b",
+    "display_name": "Gemini 1.5 Flash-8B",
     "provider": "gemini",
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_flash_8b",
@@ -481,16 +517,23 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Stable version of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model, released in October of 2024.",
+      "input_token_limit": 1000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "createCachedContent",
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-1.5-flash-8b-001",
     "created_at": null,
-    "display_name": "Gemini 1.5 Flash 8b 001",
+    "display_name": "Gemini 1.5 Flash-8B 001",
     "provider": "gemini",
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_flash_8b",
@@ -500,16 +543,23 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Stable version of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model, released in October of 2024.",
+      "input_token_limit": 1000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "createCachedContent",
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-1.5-flash-8b-exp-0827",
     "created_at": null,
-    "display_name": "Gemini 1.5 Flash 8b Exp 0827",
+    "display_name": "Gemini 1.5 Flash 8B Experimental 0827",
     "provider": "gemini",
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_flash_8b",
@@ -519,16 +569,22 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Experimental release (August 27th, 2024) of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model. Replaced by Gemini-1.5-flash-8b-001 (stable).",
+      "input_token_limit": 1000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-1.5-flash-8b-exp-0924",
     "created_at": null,
-    "display_name": "Gemini 1.5 Flash 8b Exp 0924",
+    "display_name": "Gemini 1.5 Flash 8B Experimental 0924",
     "provider": "gemini",
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_flash_8b",
@@ -538,16 +594,22 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Experimental release (September 24th, 2024) of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model. Replaced by Gemini-1.5-flash-8b-001 (stable).",
+      "input_token_limit": 1000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-1.5-flash-8b-latest",
     "created_at": null,
-    "display_name": "Gemini 1.5 Flash 8b Latest",
+    "display_name": "Gemini 1.5 Flash-8B Latest",
     "provider": "gemini",
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_flash_8b",
@@ -557,27 +619,15 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "gemini-1.5-flash-dark-launch",
-    "created_at": null,
-    "display_name": "Gemini 1.5 Flash Dark Launch",
-    "provider": "gemini",
-    "context_window": 1048576,
-    "max_tokens": 8192,
-    "type": "chat",
-    "family": "gemini15_flash",
-    "supports_vision": true,
-    "supports_functions": true,
-    "supports_json_mode": true,
-    "input_price_per_million": 0.15,
-    "output_price_per_million": 0.6,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Alias that points to the most recent production (non-experimental) release of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model, released in October of 2024.",
+      "input_token_limit": 1000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "createCachedContent",
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
@@ -585,7 +635,7 @@
     "created_at": null,
     "display_name": "Gemini 1.5 Flash Latest",
     "provider": "gemini",
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_flash",
@@ -595,8 +645,14 @@
     "input_price_per_million": 0.15,
     "output_price_per_million": 0.6,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Alias that points to the most recent production (non-experimental) release of Gemini 1.5 Flash, our fast and versatile multimodal model for scaling across diverse tasks.",
+      "input_token_limit": 1000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
@@ -604,7 +660,7 @@
     "created_at": null,
     "display_name": "Gemini 1.5 Pro",
     "provider": "gemini",
-    "context_window": 2097152,
+    "context_window": 2000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_pro",
@@ -614,8 +670,14 @@
     "input_price_per_million": 2.5,
     "output_price_per_million": 10.0,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Stable version of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens, released in May of 2024.",
+      "input_token_limit": 2000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
@@ -623,7 +685,7 @@
     "created_at": null,
     "display_name": "Gemini 1.5 Pro 001",
     "provider": "gemini",
-    "context_window": 2097152,
+    "context_window": 2000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_pro",
@@ -633,8 +695,15 @@
     "input_price_per_million": 2.5,
     "output_price_per_million": 10.0,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Stable version of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens, released in May of 2024.",
+      "input_token_limit": 2000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens",
+        "createCachedContent"
+      ]
     }
   },
   {
@@ -642,7 +711,7 @@
     "created_at": null,
     "display_name": "Gemini 1.5 Pro 002",
     "provider": "gemini",
-    "context_window": 2097152,
+    "context_window": 2000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_pro",
@@ -652,8 +721,15 @@
     "input_price_per_million": 2.5,
     "output_price_per_million": 10.0,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "002",
+      "description": "Stable version of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens, released in September of 2024.",
+      "input_token_limit": 2000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens",
+        "createCachedContent"
+      ]
     }
   },
   {
@@ -661,7 +737,7 @@
     "created_at": null,
     "display_name": "Gemini 1.5 Pro Latest",
     "provider": "gemini",
-    "context_window": 2097152,
+    "context_window": 2000000,
     "max_tokens": 8192,
     "type": "chat",
     "family": "gemini15_pro",
@@ -671,8 +747,14 @@
     "input_price_per_million": 2.5,
     "output_price_per_million": 10.0,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Alias that points to the most recent production (non-experimental) release of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens.",
+      "input_token_limit": 2000000,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
@@ -690,8 +772,14 @@
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0",
+      "description": "Gemini 2.0 Flash",
+      "input_token_limit": 1048576,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
@@ -709,52 +797,20 @@
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "gemini-2.0-flash-001-bidi-test",
-    "created_at": null,
-    "display_name": "Gemini 2.0 Flash 001 Bidi Test",
-    "provider": "gemini",
-    "context_window": 1048576,
-    "max_tokens": 8192,
-    "type": "chat",
-    "family": "gemini20_flash",
-    "supports_vision": true,
-    "supports_functions": true,
-    "supports_json_mode": true,
-    "input_price_per_million": 0.1,
-    "output_price_per_million": 0.4,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "gemini-2.0-flash-audiogen-rev17",
-    "created_at": null,
-    "display_name": "Gemini 2.0 Flash Audiogen Rev17",
-    "provider": "gemini",
-    "context_window": 1048576,
-    "max_tokens": 8192,
-    "type": "chat",
-    "family": "gemini20_flash",
-    "supports_vision": true,
-    "supports_functions": true,
-    "supports_json_mode": true,
-    "input_price_per_million": 0.1,
-    "output_price_per_million": 0.4,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0",
+      "description": "Stable version of Gemini 2.0 Flash, our fast and versatile multimodal model for scaling across diverse tasks, released in January of 2025.",
+      "input_token_limit": 1048576,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-2.0-flash-exp",
     "created_at": null,
-    "display_name": "Gemini 2.0 Flash Exp",
+    "display_name": "Gemini 2.0 Flash Experimental",
     "provider": "gemini",
     "context_window": 1048576,
     "max_tokens": 8192,
@@ -766,33 +822,21 @@
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "gemini-2.0-flash-jarvis",
-    "created_at": null,
-    "display_name": "Gemini 2.0 Flash Jarvis",
-    "provider": "gemini",
-    "context_window": 1048576,
-    "max_tokens": 8192,
-    "type": "chat",
-    "family": "gemini20_flash",
-    "supports_vision": true,
-    "supports_functions": true,
-    "supports_json_mode": true,
-    "input_price_per_million": 0.1,
-    "output_price_per_million": 0.4,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0",
+      "description": "Gemini 2.0 Flash Experimental",
+      "input_token_limit": 1048576,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens",
+        "bidiGenerateContent"
+      ]
     }
   },
   {
     "id": "gemini-2.0-flash-lite",
     "created_at": null,
-    "display_name": "Gemini 2.0 Flash Lite",
+    "display_name": "Gemini 2.0 Flash-Lite",
     "provider": "gemini",
     "context_window": 1048576,
     "max_tokens": 8192,
@@ -804,14 +848,20 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0",
+      "description": "Gemini 2.0 Flash-Lite",
+      "input_token_limit": 1048576,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-2.0-flash-lite-001",
     "created_at": null,
-    "display_name": "Gemini 2.0 Flash Lite 001",
+    "display_name": "Gemini 2.0 Flash-Lite 001",
     "provider": "gemini",
     "context_window": 1048576,
     "max_tokens": 8192,
@@ -823,55 +873,23 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "gemini-2.0-flash-mmgen-rev17",
-    "created_at": null,
-    "display_name": "Gemini 2.0 Flash Mmgen Rev17",
-    "provider": "gemini",
-    "context_window": 1048576,
-    "max_tokens": 8192,
-    "type": "chat",
-    "family": "gemini20_flash",
-    "supports_vision": true,
-    "supports_functions": true,
-    "supports_json_mode": true,
-    "input_price_per_million": 0.1,
-    "output_price_per_million": 0.4,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "gemini-2.0-flash-thinking-001",
-    "created_at": null,
-    "display_name": "Gemini 2.0 Flash Thinking 001",
-    "provider": "gemini",
-    "context_window": 1048576,
-    "max_tokens": 8192,
-    "type": "chat",
-    "family": "gemini20_flash",
-    "supports_vision": true,
-    "supports_functions": true,
-    "supports_json_mode": true,
-    "input_price_per_million": 0.1,
-    "output_price_per_million": 0.4,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0",
+      "description": "Stable version of Gemini 2.0 Flash Lite",
+      "input_token_limit": 1048576,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-2.0-flash-thinking-exp",
     "created_at": null,
-    "display_name": "Gemini 2.0 Flash Thinking Exp",
+    "display_name": "Gemini 2.0 Flash Thinking Experimental 01-21",
     "provider": "gemini",
     "context_window": 1048576,
-    "max_tokens": 8192,
+    "max_tokens": 65536,
     "type": "chat",
     "family": "gemini20_flash",
     "supports_vision": true,
@@ -880,17 +898,23 @@
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0-exp-01-21",
+      "description": "Experimental release (January 21st, 2025) of Gemini 2.0 Flash Thinking",
+      "input_token_limit": 1048576,
+      "output_token_limit": 65536,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-2.0-flash-thinking-exp-01-21",
     "created_at": null,
-    "display_name": "Gemini 2.0 Flash Thinking Exp 01 21",
+    "display_name": "Gemini 2.0 Flash Thinking Experimental 01-21",
     "provider": "gemini",
     "context_window": 1048576,
-    "max_tokens": 8192,
+    "max_tokens": 65536,
     "type": "chat",
     "family": "gemini20_flash",
     "supports_vision": true,
@@ -899,17 +923,23 @@
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0-exp-01-21",
+      "description": "Experimental release (January 21st, 2025) of Gemini 2.0 Flash Thinking",
+      "input_token_limit": 1048576,
+      "output_token_limit": 65536,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-2.0-flash-thinking-exp-1219",
     "created_at": null,
-    "display_name": "Gemini 2.0 Flash Thinking Exp 1219",
+    "display_name": "Gemini 2.0 Flash Thinking Experimental",
     "provider": "gemini",
     "context_window": 1048576,
-    "max_tokens": 8192,
+    "max_tokens": 65536,
     "type": "chat",
     "family": "gemini20_flash",
     "supports_vision": true,
@@ -918,36 +948,23 @@
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "gemini-2.0-flash-thinking-exp-no-thoughts",
-    "created_at": null,
-    "display_name": "Gemini 2.0 Flash Thinking Exp No Thoughts",
-    "provider": "gemini",
-    "context_window": 1048576,
-    "max_tokens": 8192,
-    "type": "chat",
-    "family": "gemini20_flash",
-    "supports_vision": true,
-    "supports_functions": true,
-    "supports_json_mode": true,
-    "input_price_per_million": 0.1,
-    "output_price_per_million": 0.4,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0",
+      "description": "Gemini 2.0 Flash Thinking Experimental",
+      "input_token_limit": 1048576,
+      "output_token_limit": 65536,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-2.0-pro-exp",
     "created_at": null,
-    "display_name": "Gemini 2.0 Pro Exp",
+    "display_name": "Gemini 2.0 Pro Experimental",
     "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
+    "context_window": 2097152,
+    "max_tokens": 8192,
     "type": "chat",
     "family": "other",
     "supports_vision": true,
@@ -956,17 +973,23 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0",
+      "description": "Experimental release (February 5th, 2025) of Gemini 2.0 Pro",
+      "input_token_limit": 2097152,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-2.0-pro-exp-02-05",
     "created_at": null,
-    "display_name": "Gemini 2.0 Pro Exp 02 05",
+    "display_name": "Gemini 2.0 Pro Experimental 02-05",
     "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
+    "context_window": 2097152,
+    "max_tokens": 8192,
     "type": "chat",
     "family": "other",
     "supports_vision": true,
@@ -975,17 +998,23 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0",
+      "description": "Experimental release (February 5th, 2025) of Gemini 2.0 Pro",
+      "input_token_limit": 2097152,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-exp-1206",
     "created_at": null,
-    "display_name": "Gemini Exp 1206",
+    "display_name": "Gemini Experimental 1206",
     "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
+    "context_window": 2097152,
+    "max_tokens": 8192,
     "type": "chat",
     "family": "other",
     "supports_vision": false,
@@ -994,16 +1023,22 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "2.0",
+      "description": "Experimental release (February 5th, 2025) of Gemini 2.0 Pro",
+      "input_token_limit": 2097152,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
     "id": "gemini-pro-vision",
     "created_at": null,
-    "display_name": "Gemini Pro Vision",
+    "display_name": "Gemini 1.0 Pro Vision",
     "provider": "gemini",
-    "context_window": 32768,
+    "context_window": 12288,
     "max_tokens": 4096,
     "type": "chat",
     "family": "other",
@@ -1013,65 +1048,14 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "gemini-test-23",
-    "created_at": null,
-    "display_name": "Gemini Test 23",
-    "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": false,
-    "supports_json_mode": false,
-    "input_price_per_million": 0.075,
-    "output_price_per_million": 0.3,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "gemini-tool-test",
-    "created_at": null,
-    "display_name": "Gemini Tool Test",
-    "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": false,
-    "supports_json_mode": false,
-    "input_price_per_million": 0.075,
-    "output_price_per_million": 0.3,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "gemma-3-27b-it",
-    "created_at": null,
-    "display_name": "Gemma 3 27b It",
-    "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": false,
-    "supports_json_mode": false,
-    "input_price_per_million": 0.075,
-    "output_price_per_million": 0.3,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "The original Gemini 1.0 Pro Vision model version which was optimized for image understanding. Gemini 1.0 Pro Vision was deprecated on July 12, 2024. Move to a newer Gemini version.",
+      "input_token_limit": 12288,
+      "output_token_limit": 4096,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
@@ -1626,31 +1610,12 @@
     }
   },
   {
-    "id": "image-verification-001",
-    "created_at": null,
-    "display_name": "Image Verification 001",
-    "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": false,
-    "supports_json_mode": false,
-    "input_price_per_million": 0.075,
-    "output_price_per_million": 0.3,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
     "id": "imagen-3.0-generate-002",
     "created_at": null,
-    "display_name": "Imagen 3.0 Generate 002",
+    "display_name": "Imagen 3.0 002 model",
     "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
+    "context_window": 480,
+    "max_tokens": 8192,
     "type": "image",
     "family": "other",
     "supports_vision": false,
@@ -1659,36 +1624,22 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "imagen-3.0-generate-002-exp",
-    "created_at": null,
-    "display_name": "Imagen 3.0 Generate 002 Exp",
-    "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
-    "type": "image",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": false,
-    "supports_json_mode": false,
-    "input_price_per_million": 0.075,
-    "output_price_per_million": 0.3,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "002",
+      "description": "Vertex served Imagen 3.0 002 model",
+      "input_token_limit": 480,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "predict"
+      ]
     }
   },
   {
     "id": "learnlm-1.5-pro-experimental",
     "created_at": null,
-    "display_name": "Learnlm 1.5 Pro Experimental",
+    "display_name": "LearnLM 1.5 Pro Experimental",
     "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
+    "context_window": 32767,
+    "max_tokens": 8192,
     "type": "chat",
     "family": "other",
     "supports_vision": false,
@@ -1697,8 +1648,14 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "Alias that points to the most recent stable version of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens.",
+      "input_token_limit": 32767,
+      "output_token_limit": 8192,
+      "supported_generation_methods": [
+        "generateContent",
+        "countTokens"
+      ]
     }
   },
   {
@@ -1818,10 +1775,10 @@
   {
     "id": "text-bison-001",
     "created_at": null,
-    "display_name": "Text Bison 001",
+    "display_name": "PaLM 2 (Legacy)",
     "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
+    "context_window": 8196,
+    "max_tokens": 1024,
     "type": "chat",
     "family": "other",
     "supports_vision": false,
@@ -1830,65 +1787,15 @@
     "input_price_per_million": 0.075,
     "output_price_per_million": 0.3,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "text-bison-recitation-off",
-    "created_at": null,
-    "display_name": "Text Bison Recitation Off",
-    "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": false,
-    "supports_json_mode": false,
-    "input_price_per_million": 0.075,
-    "output_price_per_million": 0.3,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "text-bison-safety-off",
-    "created_at": null,
-    "display_name": "Text Bison Safety Off",
-    "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": false,
-    "supports_json_mode": false,
-    "input_price_per_million": 0.075,
-    "output_price_per_million": 0.3,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
-    }
-  },
-  {
-    "id": "text-bison-safety-recitation-off",
-    "created_at": null,
-    "display_name": "Text Bison Safety Recitation Off",
-    "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": false,
-    "supports_json_mode": false,
-    "input_price_per_million": 0.075,
-    "output_price_per_million": 0.3,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "001",
+      "description": "A legacy model that understands text and generates text as an output",
+      "input_token_limit": 8196,
+      "output_token_limit": 1024,
+      "supported_generation_methods": [
+        "generateText",
+        "countTextTokens",
+        "createTunedTextModel"
+      ]
     }
   },
   {
@@ -1897,7 +1804,7 @@
     "display_name": "Text Embedding 004",
     "provider": "gemini",
     "context_window": 2048,
-    "max_tokens": 768,
+    "max_tokens": 1,
     "type": "embedding",
     "family": "embedding4",
     "supports_vision": false,
@@ -1906,8 +1813,13 @@
     "input_price_per_million": 0.0,
     "output_price_per_million": 0.0,
     "metadata": {
-      "object": "model",
-      "owned_by": "google"
+      "version": "004",
+      "description": "Obtain a distributed representation of a text.",
+      "input_token_limit": 2048,
+      "output_token_limit": 1,
+      "supported_generation_methods": [
+        "embedContent"
+      ]
     }
   },
   {
@@ -2041,25 +1953,6 @@
     "metadata": {
       "object": "model",
       "owned_by": "system"
-    }
-  },
-  {
-    "id": "veo-2.0-generate-001",
-    "created_at": null,
-    "display_name": "Veo 2.0 Generate 001",
-    "provider": "gemini",
-    "context_window": 32768,
-    "max_tokens": 4096,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": false,
-    "supports_json_mode": false,
-    "input_price_per_million": 0.075,
-    "output_price_per_million": 0.3,
-    "metadata": {
-      "object": "model",
-      "owned_by": "google"
     }
   },
   {

@@ -2,20 +2,25 @@
 
 module RubyLLM
   module Providers
-    # Gemini API integration.
+    # Native Gemini API implementation
     module Gemini
-      extend OpenAI
+      extend Provider
+      extend Gemini::Chat
+      extend Gemini::Embeddings
       extend Gemini::Models
+      extend Gemini::Streaming
+      extend Gemini::Tools
+      extend Gemini::Media
 
       module_function
 
       def api_base
-        'https://generativelanguage.googleapis.com/v1beta/openai'
+        'https://generativelanguage.googleapis.com/v1beta'
       end
 
       def headers
         {
-          'Authorization' => "Bearer #{RubyLLM.config.gemini_api_key}"
+          'x-goog-api-key' => RubyLLM.config.gemini_api_key
         }
       end
 

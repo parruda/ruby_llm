@@ -106,7 +106,7 @@ module RubyLLM
         end
       end
 
-      def to_json_stream(&block) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+      def to_json_stream(&block) # rubocop:disable Metrics/MethodLength
         buffer = String.new
         parser = EventStreamParser::Parser.new
 
@@ -126,7 +126,6 @@ module RubyLLM
             parser.feed(chunk) do |_type, data|
               unless data == '[DONE]'
                 parsed_data = JSON.parse(data)
-                RubyLLM.logger.debug "chunk: #{parsed_data}"
                 block.call(parsed_data)
               end
             end

@@ -4,14 +4,7 @@ require 'spec_helper'
 require 'dotenv/load'
 
 RSpec.describe RubyLLM::Chat do
-  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
-    RubyLLM.configure do |config|
-      config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
-      config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
-      config.deepseek_api_key = ENV.fetch('DEEPSEEK_API_KEY')
-      config.gemini_api_key = ENV.fetch('GEMINI_API_KEY')
-    end
-  end
+  include_context 'with configured RubyLLM'
 
   class Calculator < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
     description 'Performs basic arithmetic'
@@ -33,47 +26,45 @@ RSpec.describe RubyLLM::Chat do
       'gemini-2.0-flash',
       'gpt-4o-mini'
     ].each do |model|
-      context "with #{model}" do
-        it 'can use tools' do
-          chat = RubyLLM.chat(model: model)
-                        .with_tool(Calculator)
+      it "#{model} can use tools" do
+        chat = RubyLLM.chat(model: model)
+                      .with_tool(Calculator)
 
-          response = chat.ask("What's 123 * 456?")
-          expect(response.content).to include(/56(,?)088/)
+        response = chat.ask("What's 123 * 456?")
+        expect(response.content).to include(/56(,?)088/)
+      end
+
+      it 'can use tools in multi-turn conversations' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
+        chat = RubyLLM.chat(model: model)
+                      .with_tool(Calculator)
+
+        response = chat.ask("What's 123 times 456?")
+        expect(response.content).to include(/56(,?)088/)
+
+        response = chat.ask("What's 456 divided by 123?")
+        expect(response.content).to include('3')
+      end
+
+      it "#{model} can use tools with multi-turn streaming conversations" do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
+        chat = RubyLLM.chat(model: model)
+                      .with_tool(Calculator)
+        chunks = []
+
+        response = chat.ask("What's 123 * 456?") do |chunk|
+          chunks << chunk
         end
 
-        it 'can use tools in multi-turn conversations' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
-          chat = RubyLLM.chat(model: model)
-                        .with_tool(Calculator)
+        expect(chunks).not_to be_empty
+        expect(chunks.first).to be_a(RubyLLM::Chunk)
+        expect(response.content).to include(/56(,?)088/)
 
-          response = chat.ask("What's 123 times 456?")
-          expect(response.content).to include(/56(,?)088/)
-
-          response = chat.ask("What's 456 divided by 123?")
-          expect(response.content).to include('3')
+        response = chat.ask("What's 456 divided by 123?") do |chunk|
+          chunks << chunk
         end
 
-        it 'can use tools with multi-turn streaming responses' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
-          chat = RubyLLM.chat(model: model)
-                        .with_tool(Calculator)
-          chunks = []
-
-          response = chat.ask("What's 123 * 456?") do |chunk|
-            chunks << chunk
-          end
-
-          expect(chunks).not_to be_empty
-          expect(chunks.first).to be_a(RubyLLM::Chunk)
-          expect(response.content).to include(/56(,?)088/)
-
-          response = chat.ask("What's 456 divided by 123?") do |chunk|
-            chunks << chunk
-          end
-
-          expect(chunks).not_to be_empty
-          expect(chunks.first).to be_a(RubyLLM::Chunk)
-          expect(response.content).to include('3')
-        end
+        expect(chunks).not_to be_empty
+        expect(chunks.first).to be_a(RubyLLM::Chunk)
+        expect(response.content).to include('3')
       end
     end
   end

@@ -68,7 +68,7 @@ module RubyLLM
       }
     end
 
-    def attach_pdf(source) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+    def attach_pdf(source)
       source = File.expand_path(source) unless source.start_with?('http')
 
       pdf_data = {
@@ -80,19 +80,11 @@ module RubyLLM
       unless source.start_with?('http')
         raise Error, "PDF file not found: #{source}" unless File.exist?(source)
 
-        # Simple check for PDF file type (could be more robust)
-        unless source.downcase.end_with?('.pdf') || File.read(source, 5) == '%PDF-'
-          RubyLLM.logger.warn "File may not be a valid PDF: #{source}"
-        end
-
         # Preload file content for providers that need it
         pdf_data[:content] = File.read(source)
       end
 
       pdf_data
-    rescue StandardError => e
-      RubyLLM.logger.error "Error attaching PDF #{source}: #{e.message}"
-      raise Error, "Failed to attach PDF: #{e.message}"
     end
 
     def encode_file(source)

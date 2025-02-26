@@ -6,13 +6,9 @@ require 'active_record'
 require 'ruby_llm/active_record/acts_as'
 
 RSpec.describe RubyLLM::ActiveRecord::ActsAs do
-  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
-    RubyLLM.configure do |config|
-      config.openai_api_key = ENV.fetch('OPENAI_API_KEY')
-      config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY')
-      config.gemini_api_key = ENV.fetch('GEMINI_API_KEY')
-    end
+  include_context 'with configured RubyLLM'
 
+  before do
     ActiveRecord::Base.establish_connection(
       adapter: 'sqlite3',
       database: ':memory:'

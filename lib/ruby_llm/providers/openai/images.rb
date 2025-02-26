@@ -20,8 +20,6 @@ module RubyLLM
           }
         end
 
-        private
-
         def parse_image_response(response)
           data = response.body
           image_data = data['data'].first
