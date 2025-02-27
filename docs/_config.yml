@@ -41,3 +41,4 @@ ga_tracking_anonymize_ip: true
 plugins:
   - jekyll-remote-theme
   - jekyll-seo-tag
+  - jekyll-sitemap
