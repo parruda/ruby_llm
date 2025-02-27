@@ -19,6 +19,8 @@ A delightful Ruby way to work with AI. No configuration madness, no complex call
   <a href="https://codecov.io/gh/crmne/ruby_llm"><img src="https://codecov.io/gh/crmne/ruby_llm/branch/main/graph/badge.svg" alt="codecov" /></a>
 </p>
 
+🤺 Battle tested at [💬  Chat with Work](https://chatwithwork.com)
+
 ## The problem with AI libraries
 
 Every AI provider comes with its own client library, its own response format, its own conventions for streaming, and its own way of handling errors. Want to use multiple providers? Prepare to juggle incompatible APIs and bloated dependencies.
