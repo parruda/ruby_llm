@@ -158,6 +158,16 @@ module RubyLLM
       end
     end
 
+    def parse_data_uri(uri)
+      if uri&.start_with?('data:')
+        match = uri.match(/\Adata:([^;]+);base64,(.+)\z/)
+        return { mime_type: match[1], data: match[2] } if match
+      end
+
+      # If it's not a data URI, return nil
+      nil
+    end
+
     class << self
       def extended(base)
         base.extend(Methods)

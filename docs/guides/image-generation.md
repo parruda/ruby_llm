@@ -86,8 +86,16 @@ The `Image` object returned by `paint` contains information about the generated 
 ```ruby
 image = RubyLLM.paint("a cyberpunk cityscape")
 
-# URL to the generated image (temporary, expires after some time)
-image_url = image.url
+# For url-based images (like DALL-E)
+if image.url && !image.base64?
+  puts "Image URL: #{image.url}"
+end
+
+# For base64 images (like Gemini's Imagen)
+if image.base64?
+  puts "MIME type: #{image.mime_type}"
+  puts "Base64 data available"
+end
 
 # How the model interpreted/enhanced your prompt
 enhanced_prompt = image.revised_prompt
@@ -98,42 +106,44 @@ model_used = image.model_id
 
 ### Saving Images Locally
 
-To save the generated image to a local file:
+To save the generated image to a local file (works with both URL and base64 images):
 
 ```ruby
-require 'open-uri'
-
 # Generate an image
 image = RubyLLM.paint("a sunset over mountains")
 
-# Save to a file
-File.open("sunset.png", "wb") do |file|
-  file.write(URI.open(image.url).read)
-end
+# Save to a file - works with both URL and base64 images
+image.save("sunset.png")
 ```
 
-## Using Gemini for Image Generation
+### Rails Active Storage Integration
 
-You can generate images with Google's Imagen model:
+The `to_blob` method makes it easy to integrate with Rails' Active Storage:
 
 ```ruby
-# Generate an image with Imagen
-image = RubyLLM.paint(
-  "a sunset over mountains",
-  model: "imagen-3.0-generate-002"
-)
+# In a Rails controller or job
+def generate_image_for_product(product, prompt)
+  # Generate the image with RubyLLM
+  image = RubyLLM.paint(prompt)
 
-# The image is returned in base64 format
-image.url  # => "data:image/png;base64,..."
+  # Create a filename based on product and timestamp
+  filename = "#{product.slug}-#{Time.current.to_i}.png"
+
+  # Attach the image directly to the product using Active Storage
+  product.image.attach(
+    io: StringIO.new(image.to_blob),
+    filename: filename,
+    content_type: image.mime_type || 'image/png'
+  )
+
+  # You could also record the generation prompt, model, etc.
+  product.update(
+    image_prompt: prompt,
+    image_revised_prompt: image.revised_prompt,
+    image_model: image.model_id
+  )
+end
 ```
-
-Imagen has different capabilities than DALL-E:
-
-1. Returns base64-encoded images directly rather than URLs
-2. Doesn't provide revised prompts
-3. Has different resolution options
-
-The API remains consistent regardless of which provider you use.
 
 ## Prompt Engineering for Images
 
