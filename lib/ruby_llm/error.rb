@@ -60,7 +60,7 @@ module RubyLLM
           raise RateLimitError.new(response, message || 'Rate limit exceeded - please wait a moment')
         when 500
           raise ServerError.new(response, message || 'API server error - please try again')
-        when 503
+        when 502..503
           raise ServiceUnavailableError.new(response, message || 'API server unavailable - please try again later')
         else
           raise Error.new(response, message || 'An unknown error occurred')
