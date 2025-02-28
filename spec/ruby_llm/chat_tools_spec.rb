@@ -34,7 +34,7 @@ RSpec.describe RubyLLM::Chat do
         expect(response.content).to include(/56(,?)088/)
       end
 
-      it 'can use tools in multi-turn conversations' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
+      it "#{model} can use tools in multi-turn conversations" do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
         chat = RubyLLM.chat(model: model)
                       .with_tool(Calculator)
 
