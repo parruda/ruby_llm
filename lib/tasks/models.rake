@@ -76,6 +76,8 @@ namespace :models do # rubocop:disable Metrics/BlockLength
 
     # Refresh models (now returns self instead of models array)
     models = RubyLLM.models.refresh!.all
+    # Write to models.json
+    File.write(File.expand_path('../ruby_llm/models.json', __dir__), JSON.pretty_generate(models.map(&:to_h)))
 
     puts "Updated models.json with #{models.size} models:"
     RubyLLM::Provider.providers.each do |provider_sym, provider_module|

@@ -23,8 +23,6 @@ module RubyLLM
     # Class method to refresh model data
     def self.refresh!
       models = RubyLLM.providers.flat_map(&:list_models).sort_by(&:id)
-      # Write to models.json
-      File.write(File.expand_path('models.json', __dir__), JSON.pretty_generate(models.map(&:to_h)))
       @instance = new(models)
     end
 
