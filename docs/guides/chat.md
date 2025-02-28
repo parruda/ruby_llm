@@ -163,7 +163,6 @@ chat = RubyLLM.chat
 chat.ask "Tell me a story about a Ruby programmer" do |chunk|
   # Each chunk is a partial response
   print chunk.content
-  $stdout.flush # Ensure output is displayed immediately
 end
 
 # Useful for long responses or real-time displays

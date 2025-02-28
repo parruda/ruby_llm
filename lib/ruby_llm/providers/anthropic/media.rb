@@ -34,10 +34,13 @@ module RubyLLM
           source = part[:source]
 
           if source.start_with?('http')
-            # For URLs
+            # For URLs - add "type": "url" here
             {
               type: 'document',
-              source: { url: source }
+              source: {
+                type: 'url', # This line is missing in the current implementation
+                url: source
+              }
             }
           else
             # For local files
