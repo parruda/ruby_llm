@@ -20,7 +20,6 @@ chat = RubyLLM.chat
 chat.ask "Write a short story about a programmer" do |chunk|
   # Each chunk contains a portion of the response
   print chunk.content
-  $stdout.flush  # Ensure content is displayed immediately
 end
 ```
 
