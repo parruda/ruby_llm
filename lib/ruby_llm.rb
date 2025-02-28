@@ -39,7 +39,7 @@ module RubyLLM
     end
 
     def models
-      Models
+      Models.instance
     end
 
     def providers

@@ -21,5 +21,7 @@
       url: /guides/embeddings
     - title: Error Handling
       url: /guides/error-handling
+    - title: Models
+      url: /guides/models
 - title: GitHub
   url: https://github.com/crmne/ruby_llm
