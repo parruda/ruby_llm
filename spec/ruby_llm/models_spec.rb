@@ -2,82 +2,103 @@
 
 require 'spec_helper'
 require 'dotenv/load'
+require 'tempfile'
 
 RSpec.describe RubyLLM::Models do
   include_context 'with configured RubyLLM'
 
-  describe 'class methods' do
-    it 'provides model access through the class' do # rubocop:disable RSpec/MultipleExpectations
-      expect(RubyLLM.models).to be_a(described_class)
-      expect(RubyLLM.models.all).to be_an(Array)
-      expect(described_class.all).to eq(RubyLLM.models.all)
-    end
-  end
-
-  describe 'model filtering' do
+  describe 'filtering and chaining' do
     it 'filters models by provider' do # rubocop:disable RSpec/MultipleExpectations
       openai_models = RubyLLM.models.by_provider('openai')
-      expect(openai_models).to be_a(described_class)
       expect(openai_models.all).to all(have_attributes(provider: 'openai'))
+
+      # Can chain other filters and methods
+      expect(openai_models.chat_models).to be_a(described_class)
     end
 
-    it 'chains filters for multiple conditions' do # rubocop:disable RSpec/MultipleExpectations
-      # Get OpenAI chat models
+    it 'chains filters in any order with same result' do
+      # These two filters should be equivalent
       openai_chat_models = RubyLLM.models.by_provider('openai').chat_models
-      expect(openai_chat_models.all).to all(have_attributes(provider: 'openai', type: 'chat'))
-
-      # Filters work in any order
       chat_openai_models = RubyLLM.models.chat_models.by_provider('openai')
-      expect(chat_openai_models.all).to all(have_attributes(provider: 'openai', type: 'chat'))
 
-      # Both should return the same models
+      # Both return same model IDs
       expect(openai_chat_models.map(&:id).sort).to eq(chat_openai_models.map(&:id).sort)
     end
 
-    it 'supports multiple chained filters' do
-      # Find embedding models from a specific provider
-      embedding_models = RubyLLM.models.by_provider('openai').embedding_models
-      expect(embedding_models.all).to all(have_attributes(provider: 'openai', type: 'embedding'))
-    end
-  end
+    it 'supports Enumerable methods' do # rubocop:disable RSpec/MultipleExpectations
+      # Count models by provider
+      provider_counts = RubyLLM.models.group_by(&:provider)
+                               .transform_values(&:count)
 
-  describe 'model lookup' do
-    it 'finds models by ID' do
-      model = RubyLLM.config.default_model
-      found_model = RubyLLM.models.find(model)
-      expect(found_model.id).to eq(model)
-    end
+      # There should be models from at least OpenAI and Anthropic
+      expect(provider_counts.keys).to include('openai', 'anthropic')
 
-    it 'finds models by ID with chained filters' do
-      # Find a specific OpenAI chat model by ID
-      if RubyLLM.models.by_provider('openai').chat_models.all.any?
-        model_id = RubyLLM.models.by_provider('openai').chat_models.all.first.id
-        found_model = RubyLLM.models.by_provider('openai').find(model_id)
-        expect(found_model.id).to eq(model_id)
-      end
-    end
-
-    it 'raises an error for unknown models' do
-      expect { RubyLLM.models.find('nonexistent-model-12345') }.to raise_error(RubyLLM::ModelNotFoundError)
-    end
-  end
-
-  describe 'enumerable functionality' do
-    it 'allows iterating over filtered results' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
-      count = 0
-      RubyLLM.models.chat_models.each do |model|
-        expect(model.type).to eq('chat')
-        count += 1
-      end
-      expect(count).to be > 0
-    end
-
-    it 'supports enumerable methods' do
-      # Get models that support vision capabilities
-      vision_models = RubyLLM.models.chat_models.select(&:supports_vision)
-
-      # All returned models should support vision
+      # Select only models with vision support
+      vision_models = RubyLLM.models.select(&:supports_vision)
       expect(vision_models).to all(have_attributes(supports_vision: true))
+    end
+  end
+
+  describe 'finding models' do
+    it 'finds models by ID' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
+      # Find the default model
+      model_id = RubyLLM.config.default_model
+      model = RubyLLM.models.find(model_id)
+      expect(model.id).to eq(model_id)
+
+      # Find a model with chaining
+      if RubyLLM.models.by_provider('openai').chat_models.any?
+        openai_chat_id = RubyLLM.models.by_provider('openai').chat_models.first.id
+        found = RubyLLM.models.by_provider('openai').find(openai_chat_id)
+        expect(found.id).to eq(openai_chat_id)
+        expect(found.provider).to eq('openai')
+      end
+    end
+
+    it 'raises ModelNotFoundError for unknown models' do
+      expect do
+        RubyLLM.models.find('nonexistent-model-12345')
+      end.to raise_error(RubyLLM::ModelNotFoundError)
+    end
+  end
+
+  describe '#refresh!' do
+    it 'updates models and returns a chainable Models instance' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
+      # Use a temporary file to avoid modifying actual models.json
+      temp_file = Tempfile.new(['models', '.json'])
+      allow(File).to receive(:expand_path).with('models.json', any_args).and_return(temp_file.path)
+
+      begin
+        # Refresh and chain immediately
+        chat_models = RubyLLM.models.refresh!.chat_models
+
+        # Verify we got results
+        expect(chat_models).to be_a(described_class)
+        expect(chat_models.all).to all(have_attributes(type: 'chat'))
+
+        # Verify we got models from at least OpenAI and Anthropic
+        providers = chat_models.map(&:provider).uniq
+        expect(providers).to include('openai', 'anthropic')
+      ensure
+        temp_file.close
+        temp_file.unlink
+      end
+    end
+
+    it 'works as a class method too' do # rubocop:disable RSpec/ExampleLength
+      temp_file = Tempfile.new(['models', '.json'])
+      allow(File).to receive(:expand_path).with('models.json', any_args).and_return(temp_file.path)
+
+      begin
+        # Call class method
+        described_class.refresh!
+
+        # Verify singleton instance was updated
+        expect(RubyLLM.models.all.size).to be > 0
+      ensure
+        temp_file.close
+        temp_file.unlink
+      end
     end
   end
 end

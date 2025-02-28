@@ -20,6 +20,7 @@ module RubyLLM
       Provider.for(model)
     end
 
+    # Class method to refresh model data
     def self.refresh!
       models = RubyLLM.providers.flat_map(&:list_models).sort_by(&:id)
       # Write to models.json
@@ -99,6 +100,13 @@ module RubyLLM
     # Filter models by provider
     def by_provider(provider)
       self.class.new(all.select { |m| m.provider == provider.to_s })
+    end
+
+    # Instance method to refresh models
+    def refresh!
+      self.class.refresh!
+      # Return self for method chaining
+      self
     end
   end
 end
