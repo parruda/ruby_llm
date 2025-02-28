@@ -96,7 +96,7 @@ module RubyLLM
       private
 
       def persist_new_message
-        messages.create!(
+        @message = messages.create!(
           role: :assistant,
           content: String.new
         )
@@ -110,7 +110,7 @@ module RubyLLM
         end
 
         transaction do
-          messages.last.update!(
+          @message.update!(
             role: message.role,
             content: message.content,
             model_id: message.model_id,
@@ -126,7 +126,7 @@ module RubyLLM
         tool_calls.each_value do |tool_call|
           attributes = tool_call.to_h
           attributes[:tool_call_id] = attributes.delete(:id)
-          messages.last.tool_calls.create!(**attributes)
+          @message.tool_calls.create!(**attributes)
         end
       end
     end
