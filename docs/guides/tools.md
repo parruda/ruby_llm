@@ -165,7 +165,7 @@ Enable debugging to see tool calls in action:
 
 ```ruby
 # Enable debug logging
-ENV['RUBY_LLM_DEBUG'] = 'true'
+ENV['RUBYLLM_DEBUG'] = 'true'
 
 # Make a request
 chat.ask "What's 15329 divided by 437?"
