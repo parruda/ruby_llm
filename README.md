@@ -2,7 +2,7 @@
 
 A delightful Ruby way to work with AI. No configuration madness, no complex callbacks, no handler hell – just beautiful, expressive Ruby code.
 
-<p align="center">
+<div style="display: flex; align-items: center; flex-wrap: wrap; gap: 4px;">
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI" height="40" width="120">
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic" height="40" width="120">
@@ -10,14 +10,12 @@ A delightful Ruby way to work with AI. No configuration madness, no complex call
   <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Google" height="40" width="120">
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg" alt="DeepSeek" height="40" width="120">
-</p>
+</div>
 
-<p align="center">
-  <a href="https://badge.fury.io/rb/ruby_llm"><img src="https://badge.fury.io/rb/ruby_llm.svg" alt="Gem Version" /></a>
-  <a href="https://github.com/testdouble/standard"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Ruby Style Guide" /></a>
-  <a href="https://rubygems.org/gems/ruby_llm"><img alt="Gem Downloads" src="https://img.shields.io/gem/dt/ruby_llm"></a>
-  <a href="https://codecov.io/gh/crmne/ruby_llm"><img src="https://codecov.io/gh/crmne/ruby_llm/branch/main/graph/badge.svg" alt="codecov" /></a>
-</p>
+<a href="https://badge.fury.io/rb/ruby_llm"><img src="https://badge.fury.io/rb/ruby_llm.svg" alt="Gem Version" /></a>
+<a href="https://github.com/testdouble/standard"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Ruby Style Guide" /></a>
+<a href="https://rubygems.org/gems/ruby_llm"><img alt="Gem Downloads" src="https://img.shields.io/gem/dt/ruby_llm"></a>
+<a href="https://codecov.io/gh/crmne/ruby_llm"><img src="https://codecov.io/gh/crmne/ruby_llm/branch/main/graph/badge.svg" alt="codecov" /></a>
 
 🤺 Battle tested at [💬  Chat with Work](https://chatwithwork.com)
 
@@ -26,6 +24,17 @@ A delightful Ruby way to work with AI. No configuration madness, no complex call
 Every AI provider comes with its own client library, its own response format, its own conventions for streaming, and its own way of handling errors. Want to use multiple providers? Prepare to juggle incompatible APIs and bloated dependencies.
 
 RubyLLM fixes all that. One beautiful API for everything. One consistent format. Minimal dependencies — just Faraday and Zeitwerk. Because working with AI should be a joy, not a chore.
+
+## Features
+
+- 💬 **Chat** with OpenAI, Anthropic, Gemini, and DeepSeek models
+- 👁️ **Vision and Audio** understanding
+- 📄 **PDF Analysis** for analyzing documents
+- 🖼️ **Image generation** with DALL-E and other providers
+- 📊 **Embeddings** for vector search and semantic analysis
+- 🔧 **Tools** that let AI use your Ruby code
+- 🚂 **Rails integration** to persist chats and messages with ActiveRecord
+- 🌊 **Streaming** responses with proper Ruby patterns
 
 ## What makes it great
 
