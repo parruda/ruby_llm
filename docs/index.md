@@ -5,18 +5,20 @@ nav_order: 1
 description: "RubyLLM is a delightful Ruby way to work with AI."
 permalink: /
 ---
+<div markdown=1 style="display: flex; align-items: baseline; flex-wrap: wrap; gap: 1em;">
 
 # RubyLLM
 {: .fs-9 }
 
+  <iframe src="https://ghbtns.com/github-btn.html?user=crmne&repo=ruby_llm&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub" style="vertical-align: middle; display: inline-block;"></iframe>
+</div>
+
 A delightful Ruby way to work with AI through a unified interface to OpenAI, Anthropic, Google, and DeepSeek.
 {: .fs-6 .fw-300 }
 
-<div style="display: flex; align-items: center; flex-wrap: wrap; gap: 4px;">
+
   <a href="{% link installation.md %}" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2" style="margin: 0;">Get started</a>
   <a href="https://github.com/crmne/ruby_llm" class="btn fs-5 mb-4 mb-md-0 mr-2" style="margin: 0;">GitHub</a>
-  <iframe src="https://ghbtns.com/github-btn.html?user=crmne&repo=ruby_llm&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub" style="vertical-align: middle; display: inline-block;"></iframe>
-</div>
 
 ---
 <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 4px;">
@@ -172,17 +174,6 @@ end
 
 # That's it - chat history is automatically saved
 ```
-
-## Features Overview
-
-- 💬 **Chat** with OpenAI GPT, Anthropic Claude, Google Gemini, and DeepSeek models
-- 👁️ **Vision and Audio** understanding
-- 📄 **PDF Analysis** for analyzing documents
-- 🖼️ **Image generation** with DALL-E and other providers
-- 📊 **Embeddings** for vector search and semantic analysis
-- 🔧 **Tools** that let AI use your Ruby code
-- 🚂 **Rails integration** to persist chats and messages with ActiveRecord
-- 🌊 **Streaming** responses with proper Ruby patterns
 
 ## Learn more
 
