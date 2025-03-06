@@ -4,6 +4,9 @@ url: https://rubyllm.com
 baseurl: /
 remote_theme: just-the-docs/just-the-docs
 
+logo: "/assets/images/logotype.svg"
+favicon_ico: "/assets/images/logo.svg"
+
 # Enable search
 search_enabled: true
 search:

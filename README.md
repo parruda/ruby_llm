@@ -1,4 +1,4 @@
-# RubyLLM
+<img src="/docs/assets/images/logotype.svg" alt="RubyLLM" height="120" width="250">
 
 A delightful Ruby way to work with AI. No configuration madness, no complex callbacks, no handler hell – just beautiful, expressive Ruby code.
 
