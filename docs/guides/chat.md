@@ -43,6 +43,30 @@ claude_chat = RubyLLM.chat(model: 'claude-3-5-sonnet-20241022')
 chat.with_model('gemini-2.0-flash')
 ```
 
+## System Prompts
+
+System prompts allow you to set specific instructions or context that guide the AI's behavior throughout the conversation. These prompts are not directly visible to the user but help shape the AI's responses:
+
+```ruby
+# Create a chat instance
+chat = RubyLLM.chat
+
+# Add a system prompt to guide the AI's behavior
+chat.add_message role: :system, content: "You are a helpful Ruby programming assistant. Always include code examples in your responses and explain them line by line."
+
+# Now the AI will follow these instructions in all responses
+response = chat.ask "How do I handle file operations in Ruby?"
+
+# You can add multiple system messages or update them during the conversation
+chat.add_message role: :system, content: "Always format your code using proper Ruby style conventions and include comments."
+
+# System prompts are especially useful for:
+# - Setting the AI's persona or tone
+# - Providing domain-specific knowledge
+# - Enforcing specific response formats
+# - Creating specialized assistants
+```
+
 ## Multi-turn Conversations
 
 Chats maintain conversation history automatically:
