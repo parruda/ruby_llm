@@ -18,14 +18,19 @@ module RubyLLM
   # interface for defining parameters and implementing tool behavior.
   #
   # Example:
-  #   class Calculator < RubyLLM::Tool
-  #     description "Performs arithmetic calculations"
-  #     param :expression, type: :string, desc: "Math expression to evaluate"
+  #    require 'tzinfo'
   #
-  #     def execute(expression:)
-  #       eval(expression).to_s
-  #     end
-  #   end
+  #    class TimeInfo < RubyLLM::Tool
+  #      description 'Gets the current time in various timezones'
+  #      param :timezone, desc: "Timezone name (e.g., 'UTC', 'America/New_York')"
+  #
+  #      def execute(timezone:)
+  #        time = TZInfo::Timezone.get(timezone).now.strftime('%Y-%m-%d %H:%M:%S')
+  #        "Current time in #{timezone}: #{time}"
+  #       rescue StandardError => e
+  #          { error: e.message }
+  #       end
+  #    end
   class Tool
     class << self
       def description(text = nil)

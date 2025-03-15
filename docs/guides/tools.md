@@ -29,17 +29,18 @@ Common use cases include:
 Tools are defined as Ruby classes that inherit from `RubyLLM::Tool`:
 
 ```ruby
-class Calculator < RubyLLM::Tool
-  description "Performs arithmetic calculations"
+class Weather < RubyLLM::Tool
+  description "Gets current weather for a location"
+  param :latitude, desc: "Latitude (e.g., 52.5200)"
+  param :longitude, desc: "Longitude (e.g., 13.4050)"
 
-  param :expression,
-    type: :string,
-    desc: "A mathematical expression to evaluate (e.g. '2 + 2')"
+  def execute(latitude:, longitude:)
+    url = "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&current=temperature_2m,wind_speed_10m"
 
-  def execute(expression:)
-    eval(expression).to_s
-  rescue StandardError => e
-    "Error: #{e.message}"
+    response = Faraday.get(url)
+    data = JSON.parse(response.body)
+  rescue => e
+    { error: e.message }
   end
 end
 ```
@@ -72,11 +73,11 @@ To use a tool, attach it to a chat:
 chat = RubyLLM.chat
 
 # Add a tool
-chat.with_tool(Calculator)
+chat.with_tool(Weather)
 
-# Now you can ask questions that might require calculation
-response = chat.ask "What's 123 * 456?"
-# => "Let me calculate that for you. 123 * 456 = 56088."
+# Now you can ask questions that might require weather data
+response = chat.ask "What's the weather in Berlin? (52.5200, 13.4050)?"
+# => "The current weather in Berlin is as follows:\n- **Temperature:** 4.6°C\n- **Wind Speed:** 6.6 km/h\n\nPlease note that the weather information is up to date as of March 15, 2025, at 20:15 GMT."
 ```
 
 ### Multiple Tools
@@ -84,25 +85,28 @@ response = chat.ask "What's 123 * 456?"
 You can provide multiple tools to a single chat:
 
 ```ruby
-class Weather < RubyLLM::Tool
-  description "Gets current weather for a location"
+require 'tzinfo'
 
-  param :location,
-    desc: "City name or zip code"
+class TimeInfo < RubyLLM::Tool
+  description 'Gets the current time in various timezones'
+  param :timezone,
+        desc: "Timezone name (e.g., 'UTC', 'America/New_York')"
 
-  def execute(location:)
-    # Simulate weather lookup
-    "72°F and sunny in #{location}"
-  end
+  def execute(timezone:)
+    time = TZInfo::Timezone.get(timezone).now.strftime('%Y-%m-%d %H:%M:%S')
+    "Current time in #{timezone}: #{time}"
+   rescue StandardError => e
+      { error: e.message }
+   end
 end
 
 # Add multiple tools
 chat = RubyLLM.chat
-  .with_tools(Calculator, Weather)
+  .with_tools(Weather, TimeInfo)
 
 # Ask questions that might use either tool
-chat.ask "What's the temperature in New York City?"
-chat.ask "If it's 72°F in NYC and 54°F in Boston, what's the average?"
+chat.ask "What's the temperature in Rome?"
+chat.ask "What's the time in Tokyo?"
 ```
 
 ## Custom Initialization
@@ -150,13 +154,16 @@ Here's what happens when a tool is used:
 For example:
 
 ```ruby
-response = chat.ask "What's 123 squared plus 456?"
+response = chat.ask "What's the weather like in Paris? Coordinates are 48.8566, 2.3522. Also, what time is it there?"
 
 # Behind the scenes:
-# 1. Model decides it needs to calculate
-# 2. Model calls Calculator with expression: "123 * 123 + 456"
-# 3. Tool returns "15,585"
-# 4. Model incorporates this in its response
+# 1. Model decides it needs weather data
+# 2. Model calls Weather with coordinates for Paris
+# 3. Tool returns "Current weather: 22°C, Wind: 8 km/h"
+# 4. Model decides it needs time information
+# 5. Model calls TimeInfo with timezone "Europe/Paris"
+# 6. Tool returns "Current time in Europe/Paris: 2025-03-15 14:30:45 CET"
+# 7. Model incorporates both results in its response
 ```
 
 ## Debugging Tools
@@ -168,11 +175,11 @@ Enable debugging to see tool calls in action:
 ENV['RUBYLLM_DEBUG'] = 'true'
 
 # Make a request
-chat.ask "What's 15329 divided by 437?"
+chat.ask "What's the weather in New York? Coordinates are 40.7128, -74.0060"
 
 # Console output:
-# D, -- RubyLLM: Tool calculator called with: {"expression"=>"15329 / 437"}
-# D, -- RubyLLM: Tool calculator returned: "35.078719"
+# D, -- RubyLLM: Tool weather_api called with: {"latitude"=>"40.7128", "longitude"=>"-74.0060"}
+# D, -- RubyLLM: Tool weather_api returned: "Current weather: 18°C, Wind: 12 km/h"
 ```
 
 ## Error Handling
@@ -180,24 +187,24 @@ chat.ask "What's 15329 divided by 437?"
 Tools can handle errors gracefully:
 
 ```ruby
-class Calculator < RubyLLM::Tool
-  description "Performs arithmetic calculations"
+class Weather < RubyLLM::Tool
+  description "Gets current weather for a location"
+  param :latitude, desc: "Latitude (e.g., 52.5200)"
+  param :longitude, desc: "Longitude (e.g., 13.4050)"
 
-  param :expression,
-    type: :string,
-    desc: "Math expression to evaluate"
+  def execute(latitude:, longitude:)
+    url = "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&current=temperature_2m,wind_speed_10m"
 
-  def execute(expression:)
-    eval(expression).to_s
-  rescue StandardError => e
-    # Return error as a result
-    { error: "Error calculating #{expression}: #{e.message}" }
+    response = Faraday.get(url)
+    data = JSON.parse(response.body)
+  rescue => e
+    { error: e.message }
   end
 end
 
 # When there's an error, the model will receive and explain it
-chat.ask "What's 1/0?"
-# => "I tried to calculate 1/0, but there was an error: divided by 0"
+chat.ask "What's the weather at invalid coordinates 1000, 1000?"
+# => "The coordinates 1000, 1000 are not valid for any location on Earth, as latitude must be between -90 and 90, and longitude must be between -180 and 180. Please provide valid coordinates or a city name for weather information."
 ```
 
 ## Advanced Tool Parameters
@@ -235,6 +242,14 @@ class DataAnalysis < RubyLLM::Tool
   end
 end
 ```
+
+## Security Considerations
+
+When implementing tools that process user input (via the AI):
+
+* Avoid using `eval`, `system` or similar methods with unsanitized input
+* Remember that AI models might be tricked into producing dangerous inputs
+* Validate all inputs and use appropriate sanitization
 
 ## When to Use Tools
 

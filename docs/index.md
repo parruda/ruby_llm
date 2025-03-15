@@ -79,16 +79,22 @@ RubyLLM.paint "a sunset over mountains in watercolor style"
 RubyLLM.embed "Ruby is elegant and expressive"
 
 # Let AI use your code
-class Calculator < RubyLLM::Tool
-  description "Performs calculations"
-  param :expression, type: :string, desc: "Math expression to evaluate"
+class Weather < RubyLLM::Tool
+  description "Gets current weather for a location"
+  param :latitude, desc: "Latitude (e.g., 52.5200)"
+  param :longitude, desc: "Longitude (e.g., 13.4050)"
 
-  def execute(expression:)
-    eval(expression).to_s
+  def execute(latitude:, longitude:)
+    url = "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&current=temperature_2m,wind_speed_10m"
+
+    response = Faraday.get(url)
+    data = JSON.parse(response.body)
+  rescue => e
+    { error: e.message }
   end
 end
 
-chat.with_tool(Calculator).ask "What's 123 * 456?"
+chat.with_tool(Weather).ask "What's the weather in Berlin? (52.5200, 13.4050)"
 ```
 
 ## Quick start

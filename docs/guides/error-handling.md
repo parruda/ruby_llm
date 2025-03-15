@@ -99,18 +99,18 @@ When using tools, errors can be handled within the tool or in the calling code:
 
 ```ruby
 # Error handling within tools
-class Calculator < RubyLLM::Tool
-  description "Performs calculations"
+class Weather < RubyLLM::Tool
+  description "Gets current weather for a location"
+  param :latitude, desc: "Latitude (e.g., 52.5200)"
+  param :longitude, desc: "Longitude (e.g., 13.4050)"
 
-  param :expression,
-    type: :string,
-    desc: "Math expression to evaluate"
+  def execute(latitude:, longitude:)
+    url = "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&current=temperature_2m,wind_speed_10m"
 
-  def execute(expression:)
-    eval(expression).to_s
-  rescue StandardError => e
-    # Return error as structured data
-    { error: "Calculation error: #{e.message}" }
+    response = Faraday.get(url)
+    data = JSON.parse(response.body)
+  rescue => e
+    { error: e.message }
   end
 end
 

@@ -235,26 +235,22 @@ In your views:
 Tools work seamlessly with Rails integration:
 
 ```ruby
-class Calculator < RubyLLM::Tool
-  description "Performs arithmetic calculations"
+class Weather < RubyLLM::Tool
+  description "Gets current weather for a location"
+  param :location, desc: "City name or zip code"
 
-  param :expression,
-    type: :string,
-    desc: "Math expression to evaluate"
-
-  def execute(expression:)
-    eval(expression).to_s
-  rescue StandardError => e
-    "Error: #{e.message}"
+  def execute(location:)
+    # Simulate weather lookup
+    "15°C and sunny in #{location}"
   end
 end
 
 # Add the tool to your chat
 chat = Chat.create!(model_id: 'gpt-4o-mini')
-chat.with_tool(Calculator)
+chat.with_tool(Weather)
 
 # Ask a question that requires calculation
-chat.ask "What's 123 * 456?"
+chat.ask "What's the weather in Berlin?"
 
 # Tool calls are persisted
 tool_call = chat.messages.find_by(role: 'assistant').tool_calls.first
