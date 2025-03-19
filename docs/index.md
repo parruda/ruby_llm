@@ -95,6 +95,11 @@ class Weather < RubyLLM::Tool
 end
 
 chat.with_tool(Weather).ask "What's the weather in Berlin? (52.5200, 13.4050)"
+
+# Stream responses in real-time
+chat.ask "Tell me a story about a Ruby programmer" do |chunk|
+  print chunk.content
+end
 ```
 
 ## Quick start
