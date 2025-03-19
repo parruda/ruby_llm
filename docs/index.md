@@ -72,6 +72,11 @@ chat.ask "Describe this meeting", with: { audio: "meeting.wav" }
 # Analyze documents
 chat.ask "Summarize this document", with: { pdf: "contract.pdf" }
 
+# Stream responses in real-time
+chat.ask "Tell me a story about a Ruby programmer" do |chunk|
+  print chunk.content
+end
+
 # Generate images
 RubyLLM.paint "a sunset over mountains in watercolor style"
 
@@ -95,11 +100,6 @@ class Weather < RubyLLM::Tool
 end
 
 chat.with_tool(Weather).ask "What's the weather in Berlin? (52.5200, 13.4050)"
-
-# Stream responses in real-time
-chat.ask "Tell me a story about a Ruby programmer" do |chunk|
-  print chunk.content
-end
 ```
 
 ## Quick start
