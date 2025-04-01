@@ -16,6 +16,7 @@ RubyLLM is packaged as a Ruby gem, making it easy to install in your projects.
   * OpenAI
   * Anthropic
   * Google (Gemini)
+  * AWS Bedrock
   * DeepSeek
 
 ## Installation Methods

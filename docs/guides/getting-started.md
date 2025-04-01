@@ -15,7 +15,7 @@ This guide will help you get up and running with RubyLLM, showing you the basics
 Before starting, make sure you have:
 
 1. Installed the RubyLLM gem (see the [Installation guide]({% link installation.md %}))
-2. At least one API key from a supported provider (OpenAI, Anthropic, Google, or DeepSeek)
+2. At least one API key from a supported provider (OpenAI, Anthropic, Google, AWS Bedrock, or DeepSeek)
 
 ## Basic Configuration
 

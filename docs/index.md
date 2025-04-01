@@ -12,7 +12,7 @@ permalink: /
   <iframe src="https://ghbtns.com/github-btn.html?user=crmne&repo=ruby_llm&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub" style="vertical-align: middle; display: inline-block;"></iframe>
 </div>
 
-A delightful Ruby way to work with AI through a unified interface to OpenAI, Anthropic, Google, and DeepSeek.
+A delightful Ruby way to work with AI through a unified interface to OpenAI, Anthropic, Google, AWS Bedrock Anthropic, and DeepSeek.
 {: .fs-6 .fw-300 }
 
 
