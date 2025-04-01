@@ -25,8 +25,8 @@ A delightful Ruby way to work with AI through a unified interface to OpenAI, Ant
   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic" height="40" width="120">
   <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Google" height="40" width="120">
   <div>
-    <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/bedrock-color.svg" alt="Bedrock" height="40">
-    <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/bedrock-text.svg" alt="Bedrock" height="40" width="120">
+    <img src="https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/bedrock-color.svg" alt="Bedrock" height="40">
+    <img src="https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/bedrock-text.svg" alt="Bedrock" height="40" width="120">
   </div>
   <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg" alt="DeepSeek" height="40" width="120">
 </div>
