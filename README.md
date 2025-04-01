@@ -2,20 +2,23 @@
 
 A delightful Ruby way to work with AI. No configuration madness, no complex callbacks, no handler hell – just beautiful, expressive Ruby code.
 
-<div style="display: flex; align-items: center; flex-wrap: wrap; gap: 4px;">
+<div style="display: flex; align-items: center; flex-wrap: wrap; gap: 1em; margin-bottom: 1em">
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI" height="40" width="120">
-  &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic" height="40" width="120">
-  &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Google" height="40" width="120">
-  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div>
+    <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/bedrock-color.svg" alt="Bedrock" height="40">
+    <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/bedrock-text.svg" alt="Bedrock" height="40" width="120">
+  </div>
   <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg" alt="DeepSeek" height="40" width="120">
 </div>
 
-<a href="https://badge.fury.io/rb/ruby_llm"><img src="https://badge.fury.io/rb/ruby_llm.svg" alt="Gem Version" /></a>
-<a href="https://github.com/testdouble/standard"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Ruby Style Guide" /></a>
-<a href="https://rubygems.org/gems/ruby_llm"><img alt="Gem Downloads" src="https://img.shields.io/gem/dt/ruby_llm"></a>
-<a href="https://codecov.io/gh/crmne/ruby_llm"><img src="https://codecov.io/gh/crmne/ruby_llm/branch/main/graph/badge.svg" alt="codecov" /></a>
+<div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.2em;">
+  <a href="https://badge.fury.io/rb/ruby_llm"><img src="https://badge.fury.io/rb/ruby_llm.svg" alt="Gem Version" /></a>
+  <a href="https://github.com/testdouble/standard"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Ruby Style Guide" /></a>
+  <a href="https://rubygems.org/gems/ruby_llm"><img alt="Gem Downloads" src="https://img.shields.io/gem/dt/ruby_llm"></a>
+  <a href="https://codecov.io/gh/crmne/ruby_llm"><img src="https://codecov.io/gh/crmne/ruby_llm/branch/main/graph/badge.svg" alt="codecov" /></a>
+</div>
 
 🤺 Battle tested at [💬  Chat with Work](https://chatwithwork.com)
 
@@ -27,7 +30,7 @@ RubyLLM fixes all that. One beautiful API for everything. One consistent format.
 
 ## Features
 
-- 💬 **Chat** with OpenAI, Anthropic, Gemini, and DeepSeek models
+- 💬 **Chat** with OpenAI, Anthropic, Gemini, AWS Bedrock Anthropic, and DeepSeek models
 - 👁️ **Vision and Audio** understanding
 - 📄 **PDF Analysis** for analyzing documents
 - 🖼️ **Image generation** with DALL-E and other providers
@@ -103,6 +106,8 @@ RubyLLM.configure do |config|
   config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY', nil)
   config.gemini_api_key = ENV.fetch('GEMINI_API_KEY', nil)
   config.deepseek_api_key = ENV.fetch('DEEPSEEK_API_KEY', nil)
+
+  # Bedrock
   config.bedrock_api_key = ENV.fetch('AWS_ACCESS_KEY_ID', nil)
   config.bedrock_secret_key = ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
   config.bedrock_region = ENV.fetch('AWS_REGION', nil)
