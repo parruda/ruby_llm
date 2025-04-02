@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'dotenv/load'
 require 'active_record'
 require 'ruby_llm/active_record/acts_as'
 
@@ -144,6 +143,14 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
       chat = Chat.create!(model_id: 'gpt-4o-mini')
       chat.with_tool(Calculator).ask("What's 3 * 3?")
       expect(chat.messages.where(role: 'user').first&.content).to eq("What's 3 * 3?")
+    end
+
+    it 'persists system messages' do # rubocop:disable RSpec/MultipleExpectations
+      chat = Chat.create!(model_id: 'gpt-4o-mini')
+      chat.with_instructions('You are a Ruby expert')
+
+      expect(chat.messages.first.role).to eq('system')
+      expect(chat.messages.first.content).to eq('You are a Ruby expert')
     end
   end
 end

@@ -79,6 +79,11 @@ module RubyLLM
              .on_end_message { |msg| persist_message_completion(msg) }
       end
 
+      def with_instructions(instructions)
+        messages.create!(role: :system, content: instructions)
+        self
+      end
+
       def with_tool(tool)
         to_llm.with_tool(tool)
         self
