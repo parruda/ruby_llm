@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - 'docs/**'
-      - 'lib/**'
+      - 'lib/tasks/models_docs.rake'
       - '.github/workflows/docs.yml'
   workflow_dispatch:
 
