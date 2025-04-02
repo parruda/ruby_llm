@@ -181,7 +181,7 @@ class ToolCall < ApplicationRecord
   acts_as_tool_call
 end
 
-# In your controller
+# In a background job
 chat = Chat.create!(model_id: "gpt-4o-mini")
 chat.ask("What's your favorite Ruby gem?") do |chunk|
   Turbo::StreamsChannel.broadcast_append_to(
