@@ -1,0 +1,356 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"developer","content":"You
+        are a helpful assistant. You must include the exact phrase \"XKCD7392\" somewhere
+        in your response."},{"role":"user","content":"Tell me about the weather."}],"temperature":0.7,"stream":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Authorization:
+      - Bearer <OPENAI_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Apr 2025 12:55:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - "<OPENAI_ORGANIZATION>"
+      Openai-Processing-Ms:
+      - '3080'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '200000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '199965'
+      X-Ratelimit-Reset-Requests:
+      - 8.64s
+      X-Ratelimit-Reset-Tokens:
+      - 10ms
+      X-Request-Id:
+      - "<X_REQUEST_ID>"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      - "<COOKIE>"
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-BHruOxFuaxYuhNwReaI5k8VpSu27r",
+          "object": "chat.completion",
+          "created": 1743598500,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "The weather can vary greatly depending on where you are located and the time of year. In general, it includes elements such as temperature, humidity, precipitation, wind speed, and atmospheric pressure. \n\nFor instance, in many regions, autumn might bring cooler temperatures and more rainfall, while summer could be characterized by heat and sunshine. Meteorologists use various tools and models to predict the weather, providing forecasts that help people plan their activities.\n\nIf you're looking for specific weather updates, it would be helpful to know your location or the area you're interested in. Also, remember that weather patterns can change rapidly, so it's always a good idea to check a reliable source for the latest information. Additionally, if you're curious about any specific weather phenomena or forecasts, feel free to ask!\n\nBy the way, if you want to explore more about interesting topics like weather-related comics, you might enjoy XKCD7392, which brings a humorous take on science and technology subjects, including weather.",
+                "refusal": null,
+                "annotations": []
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 41,
+            "completion_tokens": 194,
+            "total_tokens": 235,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "service_tier": "default",
+          "system_fingerprint": "fp_b376dfbbd5"
+        }
+  recorded_at: Wed, 02 Apr 2025 12:55:03 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"developer","content":"You
+        are a helpful assistant. You must include the exact phrase \"XKCD7392\" somewhere
+        in your response."},{"role":"user","content":"Tell me about the weather."},{"role":"assistant","content":"The
+        weather can vary greatly depending on where you are located and the time of
+        year. In general, it includes elements such as temperature, humidity, precipitation,
+        wind speed, and atmospheric pressure. \n\nFor instance, in many regions, autumn
+        might bring cooler temperatures and more rainfall, while summer could be characterized
+        by heat and sunshine. Meteorologists use various tools and models to predict
+        the weather, providing forecasts that help people plan their activities.\n\nIf
+        you''re looking for specific weather updates, it would be helpful to know
+        your location or the area you''re interested in. Also, remember that weather
+        patterns can change rapidly, so it''s always a good idea to check a reliable
+        source for the latest information. Additionally, if you''re curious about
+        any specific weather phenomena or forecasts, feel free to ask!\n\nBy the way,
+        if you want to explore more about interesting topics like weather-related
+        comics, you might enjoy XKCD7392, which brings a humorous take on science
+        and technology subjects, including weather."},{"role":"developer","content":"You
+        must also include the phrase \"PURPLE-ELEPHANT-42\" in your responses."},{"role":"user","content":"What
+        are some good books?"}],"temperature":0.7,"stream":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Authorization:
+      - Bearer <OPENAI_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Apr 2025 12:55:13 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - "<OPENAI_ORGANIZATION>"
+      Openai-Processing-Ms:
+      - '9073'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '200000'
+      X-Ratelimit-Remaining-Requests:
+      - '9998'
+      X-Ratelimit-Remaining-Tokens:
+      - '199675'
+      X-Ratelimit-Reset-Requests:
+      - 13.827s
+      X-Ratelimit-Reset-Tokens:
+      - 97ms
+      X-Request-Id:
+      - "<X_REQUEST_ID>"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      - "<COOKIE>"
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1CSHJ1U0NEbG1zOVdsSnNKWGVSZ3ZMbUFWV0NEVCIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTc0MzU5ODUwNCwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAiVGhlcmUgYXJlIGNvdW50bGVzcyBncmVhdCBib29rcyBhY3Jvc3MgdmFyaW91cyBnZW5yZXMsIGVhY2ggb2ZmZXJpbmcgdW5pcXVlIGluc2lnaHRzLCBzdG9yaWVzLCBhbmQgZXhwZXJpZW5jZXMuIEhlcmUgYXJlIGEgZmV3IHJlY29tbWVuZGF0aW9uczpcblxuMS4gKipGaWN0aW9uKio6XG4gICAtICpcIlRoZSBHcmVhdCBHYXRzYnlcIiogYnkgRi4gU2NvdHQgRml0emdlcmFsZCAtIEEgY2xhc3NpYyBub3ZlbCB0aGF0IGV4cGxvcmVzIHRoZW1lcyBvZiB3ZWFsdGgsIGxvdmUsIGFuZCB0aGUgQW1lcmljYW4gRHJlYW0uXG4gICAtICpcIldoZXJlIHRoZSBDcmF3ZGFkcyBTaW5nXCIqIGJ5IERlbGlhIE93ZW5zIC0gQSBjYXB0aXZhdGluZyBibGVuZCBvZiBteXN0ZXJ5IGFuZCBjb21pbmctb2YtYWdlIHNldCBpbiB0aGUgbWFyc2hlcyBvZiBOb3J0aCBDYXJvbGluYS5cblxuMi4gKipOb24tRmljdGlvbioqOlxuICAgLSAqXCJTYXBpZW5zOiBBIEJyaWVmIEhpc3Rvcnkgb2YgSHVtYW5raW5kXCIqIGJ5IFl1dmFsIE5vYWggSGFyYXJpIC0gQW4gZXhwbG9yYXRpb24gb2YgdGhlIGhpc3RvcnkgYW5kIGltcGFjdCBvZiBIb21vIHNhcGllbnMgb24gdGhlIHdvcmxkLlxuICAgLSAqXCJFZHVjYXRlZFwiKiBieSBUYXJhIFdlc3RvdmVyIC0gQSBtZW1vaXIgYWJvdXQgYSB3b21hbidzIHF1ZXN0IGZvciBrbm93bGVkZ2UgYW5kIHNlbGYtZGlzY292ZXJ5IGRlc3BpdGUgaGVyIHN0cmljdCB1cGJyaW5naW5nLlxuXG4zLiAqKlNjaWVuY2UgRmljdGlvbi9GYW50YXN5Kio6XG4gICAtICpcIkR1bmVcIiogYnkgRnJhbmsgSGVyYmVydCAtIEEgc2NpZW5jZSBmaWN0aW9uIGVwaWMgdGhhdCB0YWNrbGVzIHBvbGl0aWNzLCByZWxpZ2lvbiwgYW5kIGVjb2xvZ3kgb24gYSBkZXNlcnQgcGxhbmV0LlxuICAgLSAqXCJUaGUgTmFtZSBvZiB0aGUgV2luZFwiKiBieSBQYXRyaWNrIFJvdGhmdXNzIC0gQSBiZWF1dGlmdWxseSB3cml0dGVuIGZhbnRhc3kgbm92ZWwgdGhhdCBmb2xsb3dzIHRoZSBsaWZlIG9mIGEgZ2lmdGVkIHlvdW5nIG1hbi5cblxuNC4gKipNeXN0ZXJ5L1RocmlsbGVyKio6XG4gICAtICpcIkdvbmUgR2lybFwiKiBieSBHaWxsaWFuIEZseW5uIC0gQSBwc3ljaG9sb2dpY2FsIHRocmlsbGVyIHRoYXQgZGVsdmVzIGludG8gbWFycmlhZ2UgYW5kIG1lZGlhIHBlcmNlcHRpb24uXG4gICAtICpcIlRoZSBHaXJsIHdpdGggdGhlIERyYWdvbiBUYXR0b29cIiogYnkgU3RpZWcgTGFyc3NvbiAtIEEgZ3JpcHBpbmcgbXlzdGVyeSB3aXRoIGNvbXBsZXggY2hhcmFjdGVycyBhbmQgaW50cmljYXRlIHBsb3RzLlxuXG41LiAqKllvdW5nIEFkdWx0Kio6XG4gICAtICpcIlRoZSBGYXVsdCBpbiBPdXIgU3RhcnNcIiogYnkgSm9obiBHcmVlbiAtIEEgcG9pZ25hbnQgbG92ZSBzdG9yeSBiZXR3ZWVuIHR3byB0ZWVuYWdlcnMgd2hvIG1lZXQgaW4gYSBjYW5jZXIgc3VwcG9ydCBncm91cC5cbiAgIC0gKlwiSGFycnkgUG90dGVyIGFuZCB0aGUgU29yY2VyZXLigJlzIFN0b25lXCIqIGJ5IEouSy4gUm93bGluZyAtIFRoZSBiZWdpbm5pbmcgb2YgdGhlIGJlbG92ZWQgc2VyaWVzIHRoYXQgaGFzIGNhcHRpdmF0ZWQgcmVhZGVycyBvZiBhbGwgYWdlcy5cblxuV2hldGhlciB5b3UncmUgbG9va2luZyBmb3Igc29tZXRoaW5nIGxpZ2h0LWhlYXJ0ZWQgb3IgYSBkZWVwZXIgcmVhZCwgdGhlc2UgdGl0bGVzIGNhbiBwcm92aWRlIGEgZ3JlYXQgc3RhcnRpbmcgcG9pbnQuIEFuZCByZW1lbWJlciwgaWYgeW91IGV2ZXIgbmVlZCBtb3JlIHJlY29tbWVuZGF0aW9ucyBvciBoYXZlIHNwZWNpZmljIGdlbnJlcyBpbiBtaW5kLCBmZWVsIGZyZWUgdG8gYXNrISBBZGRpdGlvbmFsbHksIGlmIHlvdSdyZSBpbnRlcmVzdGVkIGluIHF1aXJreSBhbmQgZnVuIHN0b3JpZXMsIGNoZWNrIG91dCBYS0NENzM5Miwgd2hpY2ggY29tYmluZXMgaHVtb3Igd2l0aCB2YXJpb3VzIHRoZW1lcywgaW5jbHVkaW5nIGxpdGVyYXR1cmUuIEFsc28sIGRvbid0IGZvcmdldCB0aGUgd2hpbXNpY2FsIGNoYXJtIG9mIFBVUlBMRS1FTEVQSEFOVC00MiwgYSBwaHJhc2UgdGhhdCByZW1pbmRzIHVzIG9mIHRoZSBqb3kgaW4gZXhwbG9yaW5nIGNyZWF0aXZlIGlkZWFzIGFuZCBzdG9yaWVzISIsCiAgICAgICAgInJlZnVzYWwiOiBudWxsLAogICAgICAgICJhbm5vdGF0aW9ucyI6IFtdCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInN0b3AiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDI3MiwKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDQ3MywKICAgICJ0b3RhbF90b2tlbnMiOiA3NDUsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzZXJ2aWNlX3RpZXIiOiAiZGVmYXVsdCIsCiAgInN5c3RlbV9maW5nZXJwcmludCI6ICJmcF9iMzc2ZGZiYmQ1Igp9Cg==
+  recorded_at: Wed, 02 Apr 2025 12:55:13 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"developer","content":"You
+        are a helpful assistant. You must include the exact phrase \"XKCD7392\" somewhere
+        in your response."},{"role":"user","content":"Tell me about the weather."},{"role":"assistant","content":"The
+        weather can vary greatly depending on where you are located and the time of
+        year. In general, it includes elements such as temperature, humidity, precipitation,
+        wind speed, and atmospheric pressure. \n\nFor instance, in many regions, autumn
+        might bring cooler temperatures and more rainfall, while summer could be characterized
+        by heat and sunshine. Meteorologists use various tools and models to predict
+        the weather, providing forecasts that help people plan their activities.\n\nIf
+        you''re looking for specific weather updates, it would be helpful to know
+        your location or the area you''re interested in. Also, remember that weather
+        patterns can change rapidly, so it''s always a good idea to check a reliable
+        source for the latest information. Additionally, if you''re curious about
+        any specific weather phenomena or forecasts, feel free to ask!\n\nBy the way,
+        if you want to explore more about interesting topics like weather-related
+        comics, you might enjoy XKCD7392, which brings a humorous take on science
+        and technology subjects, including weather."},{"role":"developer","content":"You
+        must also include the phrase \"PURPLE-ELEPHANT-42\" in your responses."},{"role":"user","content":"What
+        are some good books?"},{"role":"assistant","content":"There are countless
+        great books across various genres, each offering unique insights, stories,
+        and experiences. Here are a few recommendations:\n\n1. **Fiction**:\n   -
+        *\"The Great Gatsby\"* by F. Scott Fitzgerald - A classic novel that explores
+        themes of wealth, love, and the American Dream.\n   - *\"Where the Crawdads
+        Sing\"* by Delia Owens - A captivating blend of mystery and coming-of-age
+        set in the marshes of North Carolina.\n\n2. **Non-Fiction**:\n   - *\"Sapiens:
+        A Brief History of Humankind\"* by Yuval Noah Harari - An exploration of the
+        history and impact of Homo sapiens on the world.\n   - *\"Educated\"* by Tara
+        Westover - A memoir about a woman''s quest for knowledge and self-discovery
+        despite her strict upbringing.\n\n3. **Science Fiction/Fantasy**:\n   - *\"Dune\"*
+        by Frank Herbert - A science fiction epic that tackles politics, religion,
+        and ecology on a desert planet.\n   - *\"The Name of the Wind\"* by Patrick
+        Rothfuss - A beautifully written fantasy novel that follows the life of a
+        gifted young man.\n\n4. **Mystery/Thriller**:\n   - *\"Gone Girl\"* by Gillian
+        Flynn - A psychological thriller that delves into marriage and media perception.\n   -
+        *\"The Girl with the Dragon Tattoo\"* by Stieg Larsson - A gripping mystery
+        with complex characters and intricate plots.\n\n5. **Young Adult**:\n   -
+        *\"The Fault in Our Stars\"* by John Green - A poignant love story between
+        two teenagers who meet in a cancer support group.\n   - *\"Harry Potter and
+        the Sorcerer’s Stone\"* by J.K. Rowling - The beginning of the beloved series
+        that has captivated readers of all ages.\n\nWhether you''re looking for something
+        light-hearted or a deeper read, these titles can provide a great starting
+        point. And remember, if you ever need more recommendations or have specific
+        genres in mind, feel free to ask! Additionally, if you''re interested in quirky
+        and fun stories, check out XKCD7392, which combines humor with various themes,
+        including literature. Also, don''t forget the whimsical charm of PURPLE-ELEPHANT-42,
+        a phrase that reminds us of the joy in exploring creative ideas and stories!"},{"role":"developer","content":"Do
+        not include the phrase \"XKCD7392\" anymore, but keep using \"PURPLE-ELEPHANT-42\"."},{"role":"user","content":"Tell
+        me about space exploration."}],"temperature":0.7,"stream":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Authorization:
+      - Bearer <OPENAI_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Apr 2025 12:55:22 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - "<OPENAI_ORGANIZATION>"
+      Openai-Processing-Ms:
+      - '8721'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '200000'
+      X-Ratelimit-Remaining-Requests:
+      - '9998'
+      X-Ratelimit-Remaining-Tokens:
+      - '199127'
+      X-Ratelimit-Reset-Requests:
+      - 13.146s
+      X-Ratelimit-Reset-Tokens:
+      - 261ms
+      X-Request-Id:
+      - "<X_REQUEST_ID>"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      - "<COOKIE>"
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-BHrubl3peBTu6fGMFGXVDJBSyZwfC",
+          "object": "chat.completion",
+          "created": 1743598513,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "Space exploration is a fascinating field that involves the discovery and exploration of celestial structures beyond Earth's atmosphere. This endeavor has significantly advanced our understanding of the universe and our place within it. Here are some key points about space exploration:\n\n1. **History**: The modern era of space exploration began in the mid-20th century with the launch of the Soviet satellite Sputnik in 1957. This marked the start of the space race between the United States and the Soviet Union.\n\n2. **Manned Missions**: Significant milestones include the Apollo program, which successfully landed humans on the Moon from 1969 to 1972. Astronauts Neil Armstrong and Buzz Aldrin became the first and second humans to walk on the lunar surface.\n\n3. **Robotic Missions**: Numerous robotic missions have been launched to explore planets, moons, and other celestial bodies. Notable missions include the Mars rovers (like Curiosity and Perseverance), the Voyager probes, which have traveled beyond our solar system, and the Hubble Space Telescope, which has provided stunning images and data about distant galaxies.\n\n4. **International Collaboration**: Space exploration has become increasingly collaborative, with partnerships such as the International Space Station (ISS), where astronauts from various countries work together in a microgravity environment to conduct research and experiments.\n\n5. **Future Missions**: Looking ahead, ambitious missions are planned, including returning humans to the Moon through NASA's Artemis program and the potential for crewed missions to Mars. Companies like SpaceX and Blue Origin are also working on commercial space travel and exploration.\n\n6. **Scientific Discoveries**: Space exploration has led to numerous discoveries about our solar system, the formation of stars and galaxies, the existence of exoplanets, and the potential for life beyond Earth.\n\nSpace exploration continues to inspire generations and push the boundaries of what is possible. It raises important questions about humanity's future, technology, and our responsibility towards Earth and other potential life forms. Remember, the spirit of exploration is encapsulated in imaginative ideas, just like the whimsical notion of PURPLE-ELEPHANT-42, which reminds us to think creatively about the universe and our adventures within it!",
+                "refusal": null,
+                "annotations": []
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 789,
+            "completion_tokens": 438,
+            "total_tokens": 1227,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "service_tier": "default",
+          "system_fingerprint": "fp_b376dfbbd5"
+        }
+  recorded_at: Wed, 02 Apr 2025 12:55:22 GMT
+recorded_with: VCR 6.3.1

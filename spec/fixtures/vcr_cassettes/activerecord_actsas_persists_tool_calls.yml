@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 25 Mar 2025 17:47:53 GMT
+      - Wed, 02 Apr 2025 12:31:46 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -48,9 +48,9 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '9998'
       X-Ratelimit-Remaining-Tokens:
-      - '199992'
+      - '199993'
       X-Ratelimit-Reset-Requests:
-      - 14.919s
+      - 13.148s
       X-Ratelimit-Reset-Tokens:
       - 2ms
       X-Request-Id:
@@ -74,9 +74,9 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BF2fRpTZyCzq4cMdaBqi2xkATAwgZ",
+          "id": "chatcmpl-BHrXtADYVXOueQ5LZUhlDzrnDy9gm",
           "object": "chat.completion",
-          "created": 1742924873,
+          "created": 1743597105,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -86,7 +86,7 @@ http_interactions:
                 "content": null,
                 "tool_calls": [
                   {
-                    "id": "call_c6uO21HIZ8BVVKr7SlwXRplZ",
+                    "id": "call_sp4dCa8vqGJSn3MwpRPyVync",
                     "type": "function",
                     "function": {
                       "name": "calculator",
@@ -117,17 +117,17 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_b8bc95a0ac"
+          "system_fingerprint": "fp_b376dfbbd5"
         }
-  recorded_at: Tue, 25 Mar 2025 17:47:53 GMT
+  recorded_at: Wed, 02 Apr 2025 12:31:46 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
       string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"What''s
-        123 * 456?"},{"role":"assistant","tool_calls":[{"id":"call_c6uO21HIZ8BVVKr7SlwXRplZ","type":"function","function":{"name":"calculator","arguments":"{\"expression\":\"123
-        * 456\"}"}}]},{"role":"tool","content":"56088","tool_call_id":"call_c6uO21HIZ8BVVKr7SlwXRplZ"}],"temperature":0.7,"stream":false,"tools":[{"type":"function","function":{"name":"calculator","description":"Performs
+        123 * 456?"},{"role":"assistant","tool_calls":[{"id":"call_sp4dCa8vqGJSn3MwpRPyVync","type":"function","function":{"name":"calculator","arguments":"{\"expression\":\"123
+        * 456\"}"}}]},{"role":"tool","content":"56088","tool_call_id":"call_sp4dCa8vqGJSn3MwpRPyVync"}],"temperature":0.7,"stream":false,"tools":[{"type":"function","function":{"name":"calculator","description":"Performs
         basic arithmetic","parameters":{"type":"object","properties":{"expression":{"type":"string","description":"Math
         expression to evaluate"}},"required":["expression"]}}}],"tool_choice":"auto"}'
     headers:
@@ -147,7 +147,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 25 Mar 2025 17:47:54 GMT
+      - Wed, 02 Apr 2025 12:31:47 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -159,7 +159,7 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '659'
+      - '628'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -171,7 +171,7 @@ http_interactions:
       X-Ratelimit-Remaining-Tokens:
       - '199990'
       X-Ratelimit-Reset-Requests:
-      - 22.8s
+      - 20.985s
       X-Ratelimit-Reset-Tokens:
       - 3ms
       X-Request-Id:
@@ -195,16 +195,16 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BF2fRLtAbdJSNKKAzn0F5oU8aIENG",
+          "id": "chatcmpl-BHrXu6AtjQhgUl6M7VZJBYSe7J61h",
           "object": "chat.completion",
-          "created": 1742924873,
+          "created": 1743597106,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "The result of 123 * 456 is 56,088.",
+                "content": "The result of \\( 123 \\times 456 \\) is 56,088.",
                 "refusal": null,
                 "annotations": []
               },
@@ -214,8 +214,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 79,
-            "completion_tokens": 16,
-            "total_tokens": 95,
+            "completion_tokens": 20,
+            "total_tokens": 99,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -228,7 +228,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_b8bc95a0ac"
+          "system_fingerprint": "fp_b376dfbbd5"
         }
-  recorded_at: Tue, 25 Mar 2025 17:47:54 GMT
+  recorded_at: Wed, 02 Apr 2025 12:31:47 GMT
 recorded_with: VCR 6.3.1

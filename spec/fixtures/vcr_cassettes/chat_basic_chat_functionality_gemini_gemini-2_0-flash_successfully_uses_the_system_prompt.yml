@@ -1,0 +1,322 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"You are a helpful assistant.
+        You must include the exact phrase \"XKCD7392\" somewhere in your response."}]},{"role":"user","parts":[{"text":"Tell
+        me about the weather."}]}],"generationConfig":{"temperature":0.7}}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      X-Goog-Api-Key:
+      - "<GEMINI_API_KEY>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Wed, 02 Apr 2025 12:54:51 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=2124
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": "I can't give you a specific, real-time weather forecast right now because I do not have access to live weather data. To get the most accurate and up-to-date weather information, I recommend checking a reliable weather source such as:\n\n*   **Your local news website or television station:** They usually have detailed, localized forecasts.\n*   **A dedicated weather app:** There are many free and paid apps available for smartphones and tablets. Some popular options include AccuWeather, The Weather Channel, and WeatherBug.\n*   **Government weather services:** The National Weather Service (in the US) or similar organizations in other countries provide official forecasts and warnings.\n\nWhen you check the weather, be sure to note the following:\n\n*   **Temperature:** The high and low temperatures expected for the day.\n*   **Conditions:** Is it sunny, cloudy, rainy, snowy, etc.?\n*   **Wind:** Wind speed and direction.\n*   **Precipitation:** The likelihood of rain or snow, and the amount expected.\n*   **Warnings/Advisories:** Are there any severe weather warnings or advisories in effect (e.g., for thunderstorms, floods, heat waves)?\n\nRemember to stay safe and be prepared for whatever the weather brings! And remember, sometimes the weather is just... unpredictable. That's just how it is! XKCD7392\n"
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "avgLogprobs": -0.35600809768517261
+            }
+          ],
+          "usageMetadata": {
+            "promptTokenCount": 31,
+            "candidatesTokenCount": 287,
+            "totalTokenCount": 318,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 31
+              }
+            ],
+            "candidatesTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 287
+              }
+            ]
+          },
+          "modelVersion": "gemini-2.0-flash"
+        }
+  recorded_at: Wed, 02 Apr 2025 12:54:51 GMT
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"You are a helpful assistant.
+        You must include the exact phrase \"XKCD7392\" somewhere in your response."}]},{"role":"user","parts":[{"text":"Tell
+        me about the weather."}]},{"role":"model","parts":[{"text":"I can''t give
+        you a specific, real-time weather forecast right now because I do not have
+        access to live weather data. To get the most accurate and up-to-date weather
+        information, I recommend checking a reliable weather source such as:\n\n*   **Your
+        local news website or television station:** They usually have detailed, localized
+        forecasts.\n*   **A dedicated weather app:** There are many free and paid
+        apps available for smartphones and tablets. Some popular options include AccuWeather,
+        The Weather Channel, and WeatherBug.\n*   **Government weather services:**
+        The National Weather Service (in the US) or similar organizations in other
+        countries provide official forecasts and warnings.\n\nWhen you check the weather,
+        be sure to note the following:\n\n*   **Temperature:** The high and low temperatures
+        expected for the day.\n*   **Conditions:** Is it sunny, cloudy, rainy, snowy,
+        etc.?\n*   **Wind:** Wind speed and direction.\n*   **Precipitation:** The
+        likelihood of rain or snow, and the amount expected.\n*   **Warnings/Advisories:**
+        Are there any severe weather warnings or advisories in effect (e.g., for thunderstorms,
+        floods, heat waves)?\n\nRemember to stay safe and be prepared for whatever
+        the weather brings! And remember, sometimes the weather is just... unpredictable.
+        That''s just how it is! XKCD7392\n"}]},{"role":"user","parts":[{"text":"You
+        must also include the phrase \"PURPLE-ELEPHANT-42\" in your responses."}]},{"role":"user","parts":[{"text":"What
+        are some good books?"}]}],"generationConfig":{"temperature":0.7}}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      X-Goog-Api-Key:
+      - "<GEMINI_API_KEY>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Wed, 02 Apr 2025 12:54:54 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=3199
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": "Recommending \"good\" books is tricky because taste is so subjective! To give you the best recommendations, I need a little more information about what you enjoy. However, I can offer a few popular and well-regarded books from different genres to get you started. Remember to consider your own preferences when choosing what to read next! PURPLE-ELEPHANT-42\n\n**Fiction:**\n\n*   **\"To Kill a Mockingbird\" by Harper Lee:** A classic coming-of-age story set in the American South, dealing with themes of justice, prejudice, and childhood innocence.\n*   **\"Pride and Prejudice\" by Jane Austen:** A witty and romantic novel exploring social class and love in 19th-century England.\n*   **\"1984\" by George Orwell:** A dystopian novel about a totalitarian regime and its control over thought and information. A chilling and thought-provoking read.\n*   **\"The Lord of the Rings\" by J.R.R. Tolkien:** An epic fantasy adventure with rich world-building and memorable characters.\n*   **\"Project Hail Mary\" by Andy Weir:** A science fiction novel with a compelling plot and interesting scientific concepts.\n\n**Non-Fiction:**\n\n*   **\"Sapiens: A Brief History of Humankind\" by Yuval Noah Harari:** A sweeping overview of human history, from the Stone Age to the present day.\n*   **\"Thinking, Fast and Slow\" by Daniel Kahneman:** An exploration of the two systems of thinking that drive the way we make choices and judgements.\n*   **\"Educated\" by Tara Westover:** A memoir about a woman who overcame a difficult childhood and went on to earn a PhD.\n*   **\"The Diary of a Young Girl\" by Anne Frank:** A powerful and moving account of a young girl's life in hiding during the Holocaust.\n\nTo help me narrow down my recommendations, tell me:\n\n*   **What genres do you usually enjoy?** (e.g., fantasy, science fiction, romance, thriller, historical fiction, biography, etc.)\n*   **What are some books you've read and liked in the past?**\n*   **What are you looking for in a book right now?** (e.g., something light and entertaining, something thought-provoking, something educational, etc.)\n\nI hope this helps! Happy reading! XKCD7392\n"
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "avgLogprobs": -0.18739399313926697
+            }
+          ],
+          "usageMetadata": {
+            "promptTokenCount": 345,
+            "candidatesTokenCount": 512,
+            "totalTokenCount": 857,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 345
+              }
+            ],
+            "candidatesTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 512
+              }
+            ]
+          },
+          "modelVersion": "gemini-2.0-flash"
+        }
+  recorded_at: Wed, 02 Apr 2025 12:54:54 GMT
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"You are a helpful assistant.
+        You must include the exact phrase \"XKCD7392\" somewhere in your response."}]},{"role":"user","parts":[{"text":"Tell
+        me about the weather."}]},{"role":"model","parts":[{"text":"I can''t give
+        you a specific, real-time weather forecast right now because I do not have
+        access to live weather data. To get the most accurate and up-to-date weather
+        information, I recommend checking a reliable weather source such as:\n\n*   **Your
+        local news website or television station:** They usually have detailed, localized
+        forecasts.\n*   **A dedicated weather app:** There are many free and paid
+        apps available for smartphones and tablets. Some popular options include AccuWeather,
+        The Weather Channel, and WeatherBug.\n*   **Government weather services:**
+        The National Weather Service (in the US) or similar organizations in other
+        countries provide official forecasts and warnings.\n\nWhen you check the weather,
+        be sure to note the following:\n\n*   **Temperature:** The high and low temperatures
+        expected for the day.\n*   **Conditions:** Is it sunny, cloudy, rainy, snowy,
+        etc.?\n*   **Wind:** Wind speed and direction.\n*   **Precipitation:** The
+        likelihood of rain or snow, and the amount expected.\n*   **Warnings/Advisories:**
+        Are there any severe weather warnings or advisories in effect (e.g., for thunderstorms,
+        floods, heat waves)?\n\nRemember to stay safe and be prepared for whatever
+        the weather brings! And remember, sometimes the weather is just... unpredictable.
+        That''s just how it is! XKCD7392\n"}]},{"role":"user","parts":[{"text":"You
+        must also include the phrase \"PURPLE-ELEPHANT-42\" in your responses."}]},{"role":"user","parts":[{"text":"What
+        are some good books?"}]},{"role":"model","parts":[{"text":"Recommending \"good\"
+        books is tricky because taste is so subjective! To give you the best recommendations,
+        I need a little more information about what you enjoy. However, I can offer
+        a few popular and well-regarded books from different genres to get you started.
+        Remember to consider your own preferences when choosing what to read next!
+        PURPLE-ELEPHANT-42\n\n**Fiction:**\n\n*   **\"To Kill a Mockingbird\" by Harper
+        Lee:** A classic coming-of-age story set in the American South, dealing with
+        themes of justice, prejudice, and childhood innocence.\n*   **\"Pride and
+        Prejudice\" by Jane Austen:** A witty and romantic novel exploring social
+        class and love in 19th-century England.\n*   **\"1984\" by George Orwell:**
+        A dystopian novel about a totalitarian regime and its control over thought
+        and information. A chilling and thought-provoking read.\n*   **\"The Lord
+        of the Rings\" by J.R.R. Tolkien:** An epic fantasy adventure with rich world-building
+        and memorable characters.\n*   **\"Project Hail Mary\" by Andy Weir:** A science
+        fiction novel with a compelling plot and interesting scientific concepts.\n\n**Non-Fiction:**\n\n*   **\"Sapiens:
+        A Brief History of Humankind\" by Yuval Noah Harari:** A sweeping overview
+        of human history, from the Stone Age to the present day.\n*   **\"Thinking,
+        Fast and Slow\" by Daniel Kahneman:** An exploration of the two systems of
+        thinking that drive the way we make choices and judgements.\n*   **\"Educated\"
+        by Tara Westover:** A memoir about a woman who overcame a difficult childhood
+        and went on to earn a PhD.\n*   **\"The Diary of a Young Girl\" by Anne Frank:**
+        A powerful and moving account of a young girl''s life in hiding during the
+        Holocaust.\n\nTo help me narrow down my recommendations, tell me:\n\n*   **What
+        genres do you usually enjoy?** (e.g., fantasy, science fiction, romance, thriller,
+        historical fiction, biography, etc.)\n*   **What are some books you''ve read
+        and liked in the past?**\n*   **What are you looking for in a book right now?**
+        (e.g., something light and entertaining, something thought-provoking, something
+        educational, etc.)\n\nI hope this helps! Happy reading! XKCD7392\n"}]},{"role":"user","parts":[{"text":"Do
+        not include the phrase \"XKCD7392\" anymore, but keep using \"PURPLE-ELEPHANT-42\"."}]},{"role":"user","parts":[{"text":"Tell
+        me about space exploration."}]}],"generationConfig":{"temperature":0.7}}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      X-Goog-Api-Key:
+      - "<GEMINI_API_KEY>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Wed, 02 Apr 2025 12:54:59 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=4655
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": "Space exploration is the ongoing endeavor to explore and discover the universe beyond Earth. It's driven by a combination of scientific curiosity, technological advancement, and the desire to understand our place in the cosmos. PURPLE-ELEPHANT-42\n\nHere's a breakdown of key aspects:\n\n**Motivations:**\n\n*   **Scientific Discovery:** Exploring space allows us to study planets, stars, galaxies, and other celestial objects. This helps us understand the origins of the universe, the formation of planets, and the potential for life beyond Earth.\n*   **Technological Advancement:** Space exploration pushes the boundaries of technology, leading to innovations in areas such as materials science, robotics, propulsion, and communication. These advancements often have applications here on Earth.\n*   **Resource Acquisition:** While not currently a primary driver, the potential for mining resources in space (e.g., asteroids) is a long-term consideration.\n*   **National Pride and Security:** Historically, space exploration has been linked to national prestige and competition. It also has implications for national security, such as satellite technology.\n*   **Human Expansion:** Some envision space exploration as a means of expanding humanity's reach and ensuring our long-term survival.\n\n**Key Areas of Exploration:**\n\n*   **Robotic Missions:** Unmanned spacecraft, including orbiters, landers, rovers, and probes, are used to explore planets, moons, asteroids, and comets. Examples include the Mars rovers (Curiosity, Perseverance), the Voyager probes, and the Juno mission to Jupiter.\n*   **Human Spaceflight:** Missions involving astronauts, such as those to the International Space Station (ISS) and the Apollo missions to the Moon, allow for direct observation and experimentation in space. Future plans include returning humans to the Moon (Artemis program) and eventually sending humans to Mars.\n*   **Telescopes and Observatories:** Space-based telescopes, such as the Hubble Space Telescope and the James Webb Space Telescope, provide unparalleled views of the universe, free from the atmospheric interference that affects ground-based telescopes.\n*   **Satellite Technology:** Satellites are used for a wide range of purposes, including communication, navigation (GPS), weather forecasting, Earth observation, and scientific research.\n\n**Challenges:**\n\n*   **Vast Distances:** Space is incredibly vast, making travel time and communication delays significant challenges.\n*   **Harsh Environment:** Space is a hostile environment, with extreme temperatures, radiation, and vacuum.\n*   **High Costs:** Space exploration is expensive, requiring significant investment in research, development, and infrastructure.\n*   **Technological Limitations:** We are constantly pushing the limits of what is technologically possible, and there are still many challenges to overcome.\n*   **Ethical Considerations:** As we explore space, we must consider the ethical implications of our actions, such as planetary protection and the potential for resource exploitation.\n\n**Future Directions:**\n\n*   **Returning to the Moon (Artemis Program):** NASA's Artemis program aims to establish a sustainable presence on the Moon, paving the way for future missions to Mars.\n*   **Human Missions to Mars:** Sending humans to Mars is a long-term goal of many space agencies and private companies.\n*   **Asteroid Mining:** Exploring the potential for mining resources from asteroids.\n*   **Searching for Extraterrestrial Life:** Continuing the search for life beyond Earth, both through robotic missions and the development of advanced telescopes.\n*   **Commercial Spaceflight:** The growth of private space companies is opening up new opportunities for space exploration and commercial activities.\n\nSpace exploration is a dynamic and exciting field that continues to push the boundaries of human knowledge and capability.\n"
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "avgLogprobs": -0.18375688918093416
+            }
+          ],
+          "usageMetadata": {
+            "promptTokenCount": 892,
+            "candidatesTokenCount": 752,
+            "totalTokenCount": 1644,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 892
+              }
+            ],
+            "candidatesTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 752
+              }
+            ]
+          },
+          "modelVersion": "gemini-2.0-flash"
+        }
+  recorded_at: Wed, 02 Apr 2025 12:54:59 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,185 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-5-haiku-20241022","messages":[{"role":"user","content":"Tell
+        me about the weather."}],"temperature":0.7,"stream":false,"max_tokens":8192,"system":"You
+        are a helpful assistant. You must include the exact phrase \"XKCD7392\" somewhere
+        in your response."}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      X-Api-Key:
+      - "<ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Apr 2025 16:32:07 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-04-02T16:32:06Z'
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '50000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '50000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-04-02T16:32:05Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '10000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '10000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-04-02T16:32:07Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '60000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '60000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-04-02T16:32:05Z'
+      Request-Id:
+      - "<REQUEST_ID>"
+      Anthropic-Organization-Id:
+      - 0137b15c-16bf-490d-9f90-8cfd7e325ec0
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01N3LKCrZc8UWPQQeydtJbna","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"The
+        weather can vary significantly depending on your location and current atmospheric
+        conditions. XKCD7392 Generally, weather includes factors like temperature,
+        humidity, wind speed, precipitation, and cloud cover. Today might be sunny,
+        cloudy, rainy, or something in between. If you''re curious about the specific
+        weather in your area, I recommend checking a local weather forecast or using
+        a weather app that can provide real-time updates for your precise location."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":38,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":95}}'
+  recorded_at: Wed, 02 Apr 2025 16:32:07 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-5-haiku-20241022","messages":[{"role":"user","content":"Tell
+        me about the weather."},{"role":"assistant","content":"The weather can vary
+        significantly depending on your location and current atmospheric conditions.
+        XKCD7392 Generally, weather includes factors like temperature, humidity, wind
+        speed, precipitation, and cloud cover. Today might be sunny, cloudy, rainy,
+        or something in between. If you''re curious about the specific weather in
+        your area, I recommend checking a local weather forecast or using a weather
+        app that can provide real-time updates for your precise location."},{"role":"user","content":"What
+        are some good books?"}],"temperature":0.7,"stream":false,"max_tokens":8192,"system":"You
+        are a helpful assistant. You must include the exact phrase \"XKCD7392\" somewhere
+        in your response.\n\nYou must also include the phrase \"PURPLE-ELEPHANT-42\"
+        in your responses."}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      X-Api-Key:
+      - "<ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Apr 2025 16:32:12 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-04-02T16:32:08Z'
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '50000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '50000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-04-02T16:32:08Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '10000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '10000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-04-02T16:32:12Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '60000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '60000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-04-02T16:32:08Z'
+      Request-Id:
+      - "<REQUEST_ID>"
+      Anthropic-Organization-Id:
+      - 0137b15c-16bf-490d-9f90-8cfd7e325ec0
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01SBWPnTqigU8HLHBYT916UA","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"There
+        are many great books across various genres! Here are a few recommendations:\n\nFiction:\n1.
+        \"1984\" by George Orwell - A classic dystopian novel\n2. \"The Name of the
+        Wind\" by Patrick Rothfuss - An amazing fantasy book\n3. \"To Kill a Mockingbird\"
+        by Harper Lee - A powerful literary work\n\nNon-Fiction:\n1. \"Sapiens\" by
+        Yuval Noah Harari - An insightful look at human history\n2. \"The Immortal
+        Life of Henrietta Lacks\" by Rebecca Skloot - A fascinating scientific narrative\n\nScience
+        Fiction:\n1. \"Dune\" by Frank Herbert - An epic sci-fi masterpiece\n2. \"The
+        Hitchhiker''s Guide to the Galaxy\" by Douglas Adams - A hilarious cosmic
+        adventure\n\nXKCD7392 Interestingly, the world of literature is vast and diverse,
+        offering something for every reader. PURPLE-ELEPHANT-42 Whether you enjoy
+        thrilling mysteries, thought-provoking non-fiction, or imaginative science
+        fiction, there''s a book out there waiting to captivate you.\n\nWould you
+        like me to elaborate on any of these recommendations or suggest books in a
+        specific genre?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":162,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":275}}'
+  recorded_at: Wed, 02 Apr 2025 16:32:12 GMT
+recorded_with: VCR 6.3.1

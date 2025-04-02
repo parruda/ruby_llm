@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'dotenv/load'
 require 'simplecov'
 require 'simplecov-cobertura'
 require 'codecov'
@@ -45,10 +46,12 @@ VCR.configure do |config|
   config.filter_sensitive_data('<ANTHROPIC_API_KEY>') { ENV.fetch('ANTHROPIC_API_KEY', nil) }
   config.filter_sensitive_data('<GEMINI_API_KEY>') { ENV.fetch('GEMINI_API_KEY', nil) }
   config.filter_sensitive_data('<DEEPSEEK_API_KEY>') { ENV.fetch('DEEPSEEK_API_KEY', nil) }
+
   config.filter_sensitive_data('<AWS_ACCESS_KEY_ID>') { ENV.fetch('AWS_ACCESS_KEY_ID', nil) }
+  config.filter_sensitive_data('<AWS_SECRET_ACCESS_KEY>') { ENV.fetch('AWS_SECRET_ACCESS_KEY', nil) }
+  config.filter_sensitive_data('<AWS_REGION>') { ENV.fetch('AWS_REGION', nil) }
   config.filter_sensitive_data('<AWS_SESSION_TOKEN>') { ENV.fetch('AWS_SESSION_TOKEN', nil) }
 
-  # Filter sensitive response headers
   config.filter_sensitive_data('<OPENAI_ORGANIZATION>') do |interaction|
     interaction.response.headers['Openai-Organization']&.first
   end
@@ -90,10 +93,12 @@ RSpec.shared_context 'with configured RubyLLM' do
       config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY', 'test')
       config.gemini_api_key = ENV.fetch('GEMINI_API_KEY', 'test')
       config.deepseek_api_key = ENV.fetch('DEEPSEEK_API_KEY', 'test')
+
       config.bedrock_api_key = ENV.fetch('AWS_ACCESS_KEY_ID', 'test')
       config.bedrock_secret_key = ENV.fetch('AWS_SECRET_ACCESS_KEY', 'test')
-      config.bedrock_region = ENV.fetch('AWS_REGION', 'us-west-2')
-      config.bedrock_session_token = ENV.fetch('AWS_SESSION_TOKEN', 'test')
+      config.bedrock_region = 'us-west-2'
+      config.bedrock_session_token = ENV.fetch('AWS_SESSION_TOKEN', nil)
+
       config.max_retries = 50
     end
   end

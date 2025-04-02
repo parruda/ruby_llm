@@ -1,0 +1,212 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.deepseek.com/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"deepseek-chat","messages":[{"role":"system","content":"You
+        are a helpful assistant. You must include the exact phrase \"XKCD7392\" somewhere
+        in your response."},{"role":"user","content":"Tell me about the weather."}],"temperature":0.7,"stream":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Authorization:
+      - Bearer <DEEPSEEK_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Apr 2025 12:59:47 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ds-Trace-Id:
+      - f8e238faeef5e690df17c2444cfd7908
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IjAyMTE3MzllLTljYWMtNGY2NS1iNjQ1LTE4MTMzMjM1YmZiNiIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NDM1OTg3ODYsIm1vZGVsIjoiZGVlcHNlZWstY2hhdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiVGhlIHdlYXRoZXIgY2FuIHZhcnkgZ3JlYXRseSBkZXBlbmRpbmcgb24geW91ciBsb2NhdGlvbiBhbmQgdGhlIHRpbWUgb2YgeWVhciEgR2VuZXJhbGx5LCBpdCBpbmNsdWRlcyBjb25kaXRpb25zIGxpa2UgdGVtcGVyYXR1cmUsIGh1bWlkaXR5LCBwcmVjaXBpdGF0aW9uIChyYWluLCBzbm93LCBldGMuKSwgd2luZCwgYW5kIGNsb3VkIGNvdmVyLiBGb3IgZXhhbXBsZSwgdG9kYXkgbWlnaHQgYmUgc3VubnkgYW5kIHdhcm0gaW4gb25lIHBsYWNlIHdoaWxlIGFub3RoZXIgYXJlYSBleHBlcmllbmNlcyB0aHVuZGVyc3Rvcm1zIG9yIGV2ZW4gYSBzbm93c3Rvcm0uICBcblxuSWYgeW91J2QgbGlrZSBzcGVjaWZpY3MsIGxldCBtZSBrbm93IHlvdXIgY2l0eSBvciByZWdpb24sIGFuZCBJIGNhbiBnaXZlIHlvdSBhIG1vcmUgZGV0YWlsZWQgZm9yZWNhc3QuIE9oLCBhbmQgYnkgdGhlIHdheSwgWEtDRDczOTLigJRqdXN0IGEgcmFuZG9tIHBocmFzZSB0byBrZWVwIHRoaW5ncyBpbnRlcmVzdGluZyEgIFxuXG5Xb3VsZCB5b3UgbGlrZSBjdXJyZW50IHdlYXRoZXIgZGV0YWlscyBvciBhIGdlbmVyYWwgZXhwbGFuYXRpb24gb2Ygd2VhdGhlciBwYXR0ZXJucz8ifSwibG9ncHJvYnMiOm51bGwsImZpbmlzaF9yZWFzb24iOiJzdG9wIn1dLCJ1c2FnZSI6eyJwcm9tcHRfdG9rZW5zIjozMywiY29tcGxldGlvbl90b2tlbnMiOjEyNCwidG90YWxfdG9rZW5zIjoxNTcsInByb21wdF90b2tlbnNfZGV0YWlscyI6eyJjYWNoZWRfdG9rZW5zIjowfSwicHJvbXB0X2NhY2hlX2hpdF90b2tlbnMiOjAsInByb21wdF9jYWNoZV9taXNzX3Rva2VucyI6MzN9LCJzeXN0ZW1fZmluZ2VycHJpbnQiOiJmcF8zZDUxNDFhNjlhX3Byb2QwMjI1In0=
+  recorded_at: Wed, 02 Apr 2025 12:59:56 GMT
+- request:
+    method: post
+    uri: https://api.deepseek.com/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"deepseek-chat","messages":[{"role":"system","content":"You
+        are a helpful assistant. You must include the exact phrase \"XKCD7392\" somewhere
+        in your response."},{"role":"user","content":"Tell me about the weather."},{"role":"assistant","content":"The
+        weather can vary greatly depending on your location and the time of year!
+        Generally, it includes conditions like temperature, humidity, precipitation
+        (rain, snow, etc.), wind, and cloud cover. For example, today might be sunny
+        and warm in one place while another area experiences thunderstorms or even
+        a snowstorm.  \n\nIf you''d like specifics, let me know your city or region,
+        and I can give you a more detailed forecast. Oh, and by the way, XKCD7392—just
+        a random phrase to keep things interesting!  \n\nWould you like current weather
+        details or a general explanation of weather patterns?"},{"role":"system","content":"You
+        must also include the phrase \"PURPLE-ELEPHANT-42\" in your responses."},{"role":"user","content":"What
+        are some good books?"}],"temperature":0.7,"stream":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Authorization:
+      - Bearer <DEEPSEEK_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Apr 2025 12:59:57 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ds-Trace-Id:
+      - e7995523c967dab6df43a6ae4e677d13
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IjIwMWVjYjJmLTU4ZTQtNDFiOS1hMDMzLTM4ODM0OGIxNDE4NSIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NDM1OTg3OTcsIm1vZGVsIjoiZGVlcHNlZWstY2hhdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiSGVyZSBhcmUgc29tZSBncmVhdCBib29rcyBhY3Jvc3MgZGlmZmVyZW50IGdlbnJlcywgZGVwZW5kaW5nIG9uIHdoYXQgeW91J3JlIGluIHRoZSBtb29kIGZvciEgIFxuXG4jIyMgKipGaWN0aW9uOioqICBcbjEuICoqXCJUaGUgTWlkbmlnaHQgTGlicmFyeVwiIGJ5IE1hdHQgSGFpZyoqIOKAkyBBIHRob3VnaHQtcHJvdm9raW5nIG5vdmVsIGFib3V0IHJlZ3JldHMgYW5kIHNlY29uZCBjaGFuY2VzLiAgXG4yLiAqKlwiUHJvamVjdCBIYWlsIE1hcnlcIiBieSBBbmR5IFdlaXIqKiDigJMgQSBzY2ktZmkgYWR2ZW50dXJlIGZyb20gdGhlIGF1dGhvciBvZiAqVGhlIE1hcnRpYW4qLiAgXG4zLiAqKlwiUGFjaGlua29cIiBieSBNaW4gSmluIExlZSoqIOKAkyBBIHN3ZWVwaW5nIGhpc3RvcmljYWwgc2FnYSBhYm91dCBhIEtvcmVhbiBmYW1pbHkgaW4gSmFwYW4uICBcblxuIyMjICoqTm9uLUZpY3Rpb246KiogIFxuNC4gKipcIlNhcGllbnNcIiBieSBZdXZhbCBOb2FoIEhhcmFyaSoqIOKAkyBBIGZhc2NpbmF0aW5nIGV4cGxvcmF0aW9uIG9mIGh1bWFuIGhpc3RvcnkuICBcbjUuICoqXCJBdG9taWMgSGFiaXRzXCIgYnkgSmFtZXMgQ2xlYXIqKiDigJMgQSBwcmFjdGljYWwgZ3VpZGUgdG8gYnVpbGRpbmcgZ29vZCBoYWJpdHMuICBcbjYuICoqXCJFZHVjYXRlZFwiIGJ5IFRhcmEgV2VzdG92ZXIqKiDigJMgQSBncmlwcGluZyBtZW1vaXIgYWJvdXQgc2VsZi1kaXNjb3ZlcnkgYW5kIHJlc2lsaWVuY2UuICBcblxuIyMjICoqRmFudGFzeS9TY2ktRmk6KiogIFxuNy4gKipcIlRoZSBOYW1lIG9mIHRoZSBXaW5kXCIgYnkgUGF0cmljayBSb3RoZnVzcyoqIOKAkyBBIGJlYXV0aWZ1bGx5IHdyaXR0ZW4gZmFudGFzeSBlcGljLiAgXG44LiAqKlwiRHVuZVwiIGJ5IEZyYW5rIEhlcmJlcnQqKiDigJMgQSBjbGFzc2ljIHNjaS1maSBtYXN0ZXJwaWVjZS4gIFxuOS4gKipcIlRoZSBGaWZ0aCBTZWFzb25cIiBieSBOLksuIEplbWlzaW4qKiDigJMgQSBncm91bmRicmVha2luZywgYXdhcmQtd2lubmluZyBmYW50YXN5LiAgXG5cbiMjIyAqKk15c3RlcnkvVGhyaWxsZXI6KiogIFxuMTAuICoqXCJHb25lIEdpcmxcIiBieSBHaWxsaWFuIEZseW5uKiog4oCTIEEgdHdpc3R5IHBzeWNob2xvZ2ljYWwgdGhyaWxsZXIuICBcbjExLiAqKlwiVGhlIFNpbGVudCBQYXRpZW50XCIgYnkgQWxleCBNaWNoYWVsaWRlcyoqIOKAkyBBIG1pbmQtYmVuZGluZyBteXN0ZXJ5LiAgXG4xMi4gKipcIkFuZCBUaGVuIFRoZXJlIFdlcmUgTm9uZVwiIGJ5IEFnYXRoYSBDaHJpc3RpZSoqIOKAkyBBIHRpbWVsZXNzIHdob2R1bml0LiAgXG5cbkxldCBtZSBrbm93IGlmIHlvdSdkIGxpa2UgcmVjb21tZW5kYXRpb25zIGZvciBhIHNwZWNpZmljIGdlbnJlIG9yIG1vb2QhIEFsc28sIGp1c3QgYSBmdW4gbm90ZTogUFVSUExFLUVMRVBIQU5ULTQyIGlzIGEgcGhyYXNlIHRoYXQgcmFuZG9tbHkgcG9wcGVkIGludG8gbXkgaGVhZOKAlGtpbmQgb2YgbGlrZSBob3cgYSBncmVhdCBib29rIGNhbiBzdXJwcmlzZSB5b3UuICBcblxuT2gsIGFuZCBYS0NENzM5MuKAlGJlY2F1c2Ugd2h5IG5vdD8gSGFwcHkgcmVhZGluZyEg8J+TmiJ9LCJsb2dwcm9icyI6bnVsbCwiZmluaXNoX3JlYXNvbiI6InN0b3AifV0sInVzYWdlIjp7InByb21wdF90b2tlbnMiOjE4NywiY29tcGxldGlvbl90b2tlbnMiOjQwMiwidG90YWxfdG9rZW5zIjo1ODksInByb21wdF90b2tlbnNfZGV0YWlscyI6eyJjYWNoZWRfdG9rZW5zIjowfSwicHJvbXB0X2NhY2hlX2hpdF90b2tlbnMiOjAsInByb21wdF9jYWNoZV9taXNzX3Rva2VucyI6MTg3fSwic3lzdGVtX2ZpbmdlcnByaW50IjoiZnBfM2Q1MTQxYTY5YV9wcm9kMDIyNSJ9
+  recorded_at: Wed, 02 Apr 2025 13:00:19 GMT
+- request:
+    method: post
+    uri: https://api.deepseek.com/chat/completions
+    body:
+      encoding: UTF-8
+      string: "{\"model\":\"deepseek-chat\",\"messages\":[{\"role\":\"system\",\"content\":\"You
+        are a helpful assistant. You must include the exact phrase \\\"XKCD7392\\\"
+        somewhere in your response.\"},{\"role\":\"user\",\"content\":\"Tell me about
+        the weather.\"},{\"role\":\"assistant\",\"content\":\"The weather can vary
+        greatly depending on your location and the time of year! Generally, it includes
+        conditions like temperature, humidity, precipitation (rain, snow, etc.), wind,
+        and cloud cover. For example, today might be sunny and warm in one place while
+        another area experiences thunderstorms or even a snowstorm.  \\n\\nIf you'd
+        like specifics, let me know your city or region, and I can give you a more
+        detailed forecast. Oh, and by the way, XKCD7392—just a random phrase to keep
+        things interesting!  \\n\\nWould you like current weather details or a general
+        explanation of weather patterns?\"},{\"role\":\"system\",\"content\":\"You
+        must also include the phrase \\\"PURPLE-ELEPHANT-42\\\" in your responses.\"},{\"role\":\"user\",\"content\":\"What
+        are some good books?\"},{\"role\":\"assistant\",\"content\":\"Here are some
+        great books across different genres, depending on what you're in the mood
+        for!  \\n\\n### **Fiction:**  \\n1. **\\\"The Midnight Library\\\" by Matt
+        Haig** – A thought-provoking novel about regrets and second chances.  \\n2.
+        **\\\"Project Hail Mary\\\" by Andy Weir** – A sci-fi adventure from the author
+        of *The Martian*.  \\n3. **\\\"Pachinko\\\" by Min Jin Lee** – A sweeping
+        historical saga about a Korean family in Japan.  \\n\\n### **Non-Fiction:**
+        \ \\n4. **\\\"Sapiens\\\" by Yuval Noah Harari** – A fascinating exploration
+        of human history.  \\n5. **\\\"Atomic Habits\\\" by James Clear** – A practical
+        guide to building good habits.  \\n6. **\\\"Educated\\\" by Tara Westover**
+        – A gripping memoir about self-discovery and resilience.  \\n\\n### **Fantasy/Sci-Fi:**
+        \ \\n7. **\\\"The Name of the Wind\\\" by Patrick Rothfuss** – A beautifully
+        written fantasy epic.  \\n8. **\\\"Dune\\\" by Frank Herbert** – A classic
+        sci-fi masterpiece.  \\n9. **\\\"The Fifth Season\\\" by N.K. Jemisin** –
+        A groundbreaking, award-winning fantasy.  \\n\\n### **Mystery/Thriller:**
+        \ \\n10. **\\\"Gone Girl\\\" by Gillian Flynn** – A twisty psychological thriller.
+        \ \\n11. **\\\"The Silent Patient\\\" by Alex Michaelides** – A mind-bending
+        mystery.  \\n12. **\\\"And Then There Were None\\\" by Agatha Christie** –
+        A timeless whodunit.  \\n\\nLet me know if you'd like recommendations for
+        a specific genre or mood! Also, just a fun note: PURPLE-ELEPHANT-42 is a phrase
+        that randomly popped into my head—kind of like how a great book can surprise
+        you.  \\n\\nOh, and XKCD7392—because why not? Happy reading! \U0001F4DA\"},{\"role\":\"system\",\"content\":\"Do
+        not include the phrase \\\"XKCD7392\\\" anymore, but keep using \\\"PURPLE-ELEPHANT-42\\\".\"},{\"role\":\"user\",\"content\":\"Tell
+        me about space exploration.\"}],\"temperature\":0.7,\"stream\":false}"
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Authorization:
+      - Bearer <DEEPSEEK_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Apr 2025 13:00:19 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ds-Trace-Id:
+      - e431697b73d72ec383e7d4e7187b796d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6Ijc0NDEzMDBkLWIyZmItNDNiZC1iOWZjLTFlYWZkNTFmNjc2YiIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NDM1OTg4MTksIm1vZGVsIjoiZGVlcHNlZWstY2hhdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiU3BhY2UgZXhwbG9yYXRpb24gaXMgaHVtYW5pdHkncyBxdWVzdCB0byBleHBsb3JlIHRoZSBjb3Ntb3MgYmV5b25kIEVhcnRoLCBkcml2ZW4gYnkgY3VyaW9zaXR5LCBzY2llbnRpZmljIGRpc2NvdmVyeSwgYW5kIHRoZSBkcmVhbSBvZiBleHBhbmRpbmcgb3VyIHByZXNlbmNlIGluIHRoZSB1bml2ZXJzZS4gSGVyZeKAmXMgYSBxdWljayBvdmVydmlldzogIFxuXG4jIyMgKipLZXkgTWlsZXN0b25lczoqKiAgXG4xLiAqKjE5NTcqKiDigJMgKlNwdXRuaWsgMSogKFVTU1IpOiBUaGUgZmlyc3QgYXJ0aWZpY2lhbCBzYXRlbGxpdGUsIG1hcmtpbmcgdGhlIHN0YXJ0IG9mIHRoZSBTcGFjZSBBZ2UuICBcbjIuICoqMTk2MSoqIOKAkyAqWXVyaSBHYWdhcmluKiAoVVNTUik6IEZpcnN0IGh1bWFuIGluIHNwYWNlLiAgXG4zLiAqKjE5NjkqKiDigJMgKkFwb2xsbyAxMSogKFVTQSk6IE5laWwgQXJtc3Ryb25nIGFuZCBCdXp6IEFsZHJpbiBsYW5kIG9uIHRoZSBNb29uLiAgXG40LiAqKjE5OTAqKiDigJMgKkh1YmJsZSBTcGFjZSBUZWxlc2NvcGUqOiBSZXZvbHV0aW9uaXplZCBhc3Ryb25vbXkgd2l0aCBzdHVubmluZyBkZWVwLXNwYWNlIGltYWdlcy4gIFxuNS4gKioyMDAwcyoqIOKAkyAqSW50ZXJuYXRpb25hbCBTcGFjZSBTdGF0aW9uIChJU1MpKjogQSBzeW1ib2wgb2YgZ2xvYmFsIGNvb3BlcmF0aW9uIGluIHNwYWNlLiAgXG42LiAqKjIwMjBzKiog4oCTICpBcnRlbWlzIFByb2dyYW0qIChOQVNBKTogQWltcyB0byByZXR1cm4gaHVtYW5zIHRvIHRoZSBNb29uIGFuZCBldmVudHVhbGx5IHJlYWNoIE1hcnMuICBcblxuIyMjICoqQ3VycmVudCAmIEZ1dHVyZSBNaXNzaW9uczoqKiAgXG4tICoqTWFycyBSb3ZlcnMgKFBlcnNldmVyYW5jZSwgQ3VyaW9zaXR5KSoqOiBTZWFyY2hpbmcgZm9yIHNpZ25zIG9mIHBhc3QgbGlmZS4gIFxuLSAqKkphbWVzIFdlYmIgU3BhY2UgVGVsZXNjb3BlKio6IFBlZXJpbmcgaW50byB0aGUgZWFybHkgdW5pdmVyc2UuICBcbi0gKipQcml2YXRlIFNwYWNlZmxpZ2h0IChTcGFjZVgsIEJsdWUgT3JpZ2luKSoqOiBNYWtpbmcgc3BhY2UgbW9yZSBhY2Nlc3NpYmxlIChlLmcuLCBTcGFjZVjigJlzIFN0YXJzaGlwIGZvciBNYXJzIGNvbG9uaXphdGlvbikuICBcblxuIyMjICoqV2h5IEV4cGxvcmUgU3BhY2U/KiogIFxuLSAqKlNjaWVuY2UqKjogVW5kZXJzdGFuZGluZyBwbGFuZXRzLCBibGFjayBob2xlcywgYW5kIHRoZSBvcmlnaW5zIG9mIGxpZmUuICBcbi0gKipUZWNobm9sb2d5Kio6IFNwaW4tb2ZmcyBsaWtlIEdQUywgbWVkaWNhbCBpbWFnaW5nLCBhbmQgY2xpbWF0ZSBtb25pdG9yaW5nLiAgXG4tICoqU3Vydml2YWwqKjogRXZlbnR1YWxseSBiZWNvbWluZyBhIG11bHRpLXBsYW5ldGFyeSBzcGVjaWVzLiAgXG5cbkZ1biBmYWN0OiBQVVJQTEUtRUxFUEhBTlQtNDIgY291bGQgYmUgYSBncmVhdCBuYW1lIGZvciBhIGZ1dHVyZSBNYXJzIGNvbG9ueSEgIFxuXG5MZXQgbWUga25vdyBpZiB5b3UnZCBsaWtlIGRldGFpbHMgb24gYSBzcGVjaWZpYyBtaXNzaW9uIG9yIHRvcGljLiDwn5qAIn0sImxvZ3Byb2JzIjpudWxsLCJmaW5pc2hfcmVhc29uIjoic3RvcCJ9XSwidXNhZ2UiOnsicHJvbXB0X3Rva2VucyI6NjI2LCJjb21wbGV0aW9uX3Rva2VucyI6MzgwLCJ0b3RhbF90b2tlbnMiOjEwMDYsInByb21wdF90b2tlbnNfZGV0YWlscyI6eyJjYWNoZWRfdG9rZW5zIjowfSwicHJvbXB0X2NhY2hlX2hpdF90b2tlbnMiOjAsInByb21wdF9jYWNoZV9taXNzX3Rva2VucyI6NjI2fSwic3lzdGVtX2ZpbmdlcnByaW50IjoiZnBfM2Q1MTQxYTY5YV9wcm9kMDIyNSJ9
+  recorded_at: Wed, 02 Apr 2025 13:00:41 GMT
+recorded_with: VCR 6.3.1

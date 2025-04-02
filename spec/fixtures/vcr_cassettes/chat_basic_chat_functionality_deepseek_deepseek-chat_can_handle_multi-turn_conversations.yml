@@ -1,0 +1,128 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.deepseek.com/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"deepseek-chat","messages":[{"role":"user","content":"Who
+        was Ruby''s creator?"}],"temperature":0.7,"stream":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Authorization:
+      - Bearer <DEEPSEEK_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Apr 2025 12:59:22 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ds-Trace-Id:
+      - 91a55be5761100804120387625203410
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"7d097f8d-63ba-4c66-871a-7fdc33bebd49","object":"chat.completion","created":1743598762,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"Ruby
+        was created by **Yukihiro \"Matz\" Matsumoto** in Japan. He released the first
+        version of Ruby in **1995** with the goal of designing a language that balanced
+        functional and imperative programming while being intuitive and enjoyable
+        for developers. \n\nMatz has often said his guiding principle was **\"developer
+        happiness,\"** and he drew inspiration from languages like Perl, Smalltalk,
+        Eiffel, Ada, and Lisp. \n\nFun fact: The name \"Ruby\" was chosen as a playful
+        reference to the gemstone, following the naming tradition of Perl (another
+        gem-inspired language). \n\nWould you like details on Ruby''s design philosophy
+        or its evolution over time?"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":9,"completion_tokens":139,"total_tokens":148,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":9},"system_fingerprint":"fp_3d5141a69a_prod0225"}'
+  recorded_at: Wed, 02 Apr 2025 12:59:34 GMT
+- request:
+    method: post
+    uri: https://api.deepseek.com/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"deepseek-chat","messages":[{"role":"user","content":"Who
+        was Ruby''s creator?"},{"role":"assistant","content":"Ruby was created by
+        **Yukihiro \"Matz\" Matsumoto** in Japan. He released the first version of
+        Ruby in **1995** with the goal of designing a language that balanced functional
+        and imperative programming while being intuitive and enjoyable for developers.
+        \n\nMatz has often said his guiding principle was **\"developer happiness,\"**
+        and he drew inspiration from languages like Perl, Smalltalk, Eiffel, Ada,
+        and Lisp. \n\nFun fact: The name \"Ruby\" was chosen as a playful reference
+        to the gemstone, following the naming tradition of Perl (another gem-inspired
+        language). \n\nWould you like details on Ruby''s design philosophy or its
+        evolution over time?"},{"role":"user","content":"What year did he create Ruby?"}],"temperature":0.7,"stream":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Authorization:
+      - Bearer <DEEPSEEK_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Apr 2025 12:59:34 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ds-Trace-Id:
+      - b940b6afec59d49194b3db33cce53d83
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6ImM4OTRlNzFmLTkxM2QtNGMzMi05YTBiLWM4OTMzMjFiNjE0MCIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NDM1OTg3NzQsIm1vZGVsIjoiZGVlcHNlZWstY2hhdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiWXVraWhpcm8gXCJNYXR6XCIgTWF0c3Vtb3RvICoqY3JlYXRlZCBSdWJ5IGluIDE5OTMqKiBhbmQgcmVsZWFzZWQgaXRzIGZpcnN0IHB1YmxpYyB2ZXJzaW9uICgqKlJ1YnkgMC45NSoqKSBpbiAqKkRlY2VtYmVyIDE5OTQqKi4gSG93ZXZlciwgdGhlIHN0YWJsZSAqKjEuMCByZWxlYXNlKiogY2FtZSBsYXRlciwgaW4gKioxOTk2KiouICBcblxuIyMjIEtleSBUaW1lbGluZTogIFxuLSAqKjE5OTMqKjogTWF0eiBzdGFydHMgZGVzaWduaW5nIFJ1YnkuICBcbi0gKioxOTk0IChEZWMpKio6IEZpcnN0IHB1YmxpYyByZWxlYXNlICh2MC45NSkuICBcbi0gKioxOTk1Kio6IFJ1YnkgZ2FpbnMgZWFybHkgYWRvcHRlcnMgaW4gSmFwYW4uICBcbi0gKioxOTk2Kio6IFJ1YnkgMS4wIG9mZmljaWFsbHkgbGF1bmNoZWQuICBcblxuUnVieeKAmXMgcG9wdWxhcml0eSBncmV3IGdsb2JhbGx5IGFmdGVyIHRoZSAqKjIwMDBzKiosIGVzcGVjaWFsbHkgd2l0aCB0aGUgcmlzZSBvZiAqKlJ1Ynkgb24gUmFpbHMgKDIwMDUpKiouICBcblxuV291bGQgeW91IGxpa2UgZGV0YWlscyBvbiBob3cgTWF0eiBkZXNpZ25lZCB0aGUgbGFuZ3VhZ2Ugb3IgaXRzIGVhcmx5IGluZmx1ZW5jZXM/In0sImxvZ3Byb2JzIjpudWxsLCJmaW5pc2hfcmVhc29uIjoic3RvcCJ9XSwidXNhZ2UiOnsicHJvbXB0X3Rva2VucyI6MTU4LCJjb21wbGV0aW9uX3Rva2VucyI6MTY1LCJ0b3RhbF90b2tlbnMiOjMyMywicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjp7ImNhY2hlZF90b2tlbnMiOjEyOH0sInByb21wdF9jYWNoZV9oaXRfdG9rZW5zIjoxMjgsInByb21wdF9jYWNoZV9taXNzX3Rva2VucyI6MzB9LCJzeXN0ZW1fZmluZ2VycHJpbnQiOiJmcF8zZDUxNDFhNjlhX3Byb2QwMjI1In0=
+  recorded_at: Wed, 02 Apr 2025 12:59:46 GMT
+recorded_with: VCR 6.3.1
