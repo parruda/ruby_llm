@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:31:46 GMT
+      - Wed, 02 Apr 2025 17:47:15 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,7 +38,7 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '526'
+      - '527'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -48,9 +48,9 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '9998'
       X-Ratelimit-Remaining-Tokens:
-      - '199993'
+      - '199992'
       X-Ratelimit-Reset-Requests:
-      - 13.148s
+      - 12.799s
       X-Ratelimit-Reset-Tokens:
       - 2ms
       X-Request-Id:
@@ -74,9 +74,9 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BHrXtADYVXOueQ5LZUhlDzrnDy9gm",
+          "id": "chatcmpl-BHwTD9NunqG2UNVSwFtHW6iI5wBOV",
           "object": "chat.completion",
-          "created": 1743597105,
+          "created": 1743616035,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -86,7 +86,7 @@ http_interactions:
                 "content": null,
                 "tool_calls": [
                   {
-                    "id": "call_sp4dCa8vqGJSn3MwpRPyVync",
+                    "id": "call_Y0Cfnh2vr0ACirARBmq7rYNF",
                     "type": "function",
                     "function": {
                       "name": "calculator",
@@ -119,15 +119,15 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_b376dfbbd5"
         }
-  recorded_at: Wed, 02 Apr 2025 12:31:46 GMT
+  recorded_at: Wed, 02 Apr 2025 17:47:15 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
       string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"What''s
-        123 * 456?"},{"role":"assistant","tool_calls":[{"id":"call_sp4dCa8vqGJSn3MwpRPyVync","type":"function","function":{"name":"calculator","arguments":"{\"expression\":\"123
-        * 456\"}"}}]},{"role":"tool","content":"56088","tool_call_id":"call_sp4dCa8vqGJSn3MwpRPyVync"}],"temperature":0.7,"stream":false,"tools":[{"type":"function","function":{"name":"calculator","description":"Performs
+        123 * 456?"},{"role":"assistant","tool_calls":[{"id":"call_Y0Cfnh2vr0ACirARBmq7rYNF","type":"function","function":{"name":"calculator","arguments":"{\"expression\":\"123
+        * 456\"}"}}]},{"role":"tool","content":"56088","tool_call_id":"call_Y0Cfnh2vr0ACirARBmq7rYNF"}],"temperature":0.7,"stream":false,"tools":[{"type":"function","function":{"name":"calculator","description":"Performs
         basic arithmetic","parameters":{"type":"object","properties":{"expression":{"type":"string","description":"Math
         expression to evaluate"}},"required":["expression"]}}}],"tool_choice":"auto"}'
     headers:
@@ -147,7 +147,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:31:47 GMT
+      - Wed, 02 Apr 2025 17:47:16 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -159,7 +159,7 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '628'
+      - '608'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -171,7 +171,7 @@ http_interactions:
       X-Ratelimit-Remaining-Tokens:
       - '199990'
       X-Ratelimit-Reset-Requests:
-      - 20.985s
+      - 20.678s
       X-Ratelimit-Reset-Tokens:
       - 3ms
       X-Request-Id:
@@ -195,9 +195,9 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BHrXu6AtjQhgUl6M7VZJBYSe7J61h",
+          "id": "chatcmpl-BHwTDyRaCJZlVKANnlHS3AP8zOb8P",
           "object": "chat.completion",
-          "created": 1743597106,
+          "created": 1743616035,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -230,5 +230,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_b376dfbbd5"
         }
-  recorded_at: Wed, 02 Apr 2025 12:31:47 GMT
+  recorded_at: Wed, 02 Apr 2025 17:47:16 GMT
 recorded_with: VCR 6.3.1

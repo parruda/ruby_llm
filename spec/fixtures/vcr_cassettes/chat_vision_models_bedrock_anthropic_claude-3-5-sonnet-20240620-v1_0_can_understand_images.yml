@@ -13,12 +13,12 @@ http_interactions:
       Host:
       - bedrock-runtime.<AWS_REGION>.amazonaws.com
       X-Amz-Date:
-      - 20250402T171705Z
+      - 20250402T174722Z
       X-Amz-Content-Sha256:
       - 7bb0eaa030e32dc604d2c6a3854240f9d356e118ff66de7de7bfe69b16753eb0
       Authorization:
       - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20250402/<AWS_REGION>/bedrock/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=69f7aabdc0d48b0d891fba11312506f1c480ee5a54407bfb67acdf098008a6a6
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=96d8599cd18876625ef71a0d95532204e089cb09172e476143b3fc5bdf87ac95
       Content-Type:
       - application/json
       Accept:
@@ -31,30 +31,29 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 17:17:09 GMT
+      - Wed, 02 Apr 2025 17:47:27 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '766'
+      - '700'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 922a79e6-4dc4-45bb-b12b-896fe9a4f5cc
+      - 2f6b62e2-9e0a-47b5-a7c4-9488bd8b8377
       X-Amzn-Bedrock-Invocation-Latency:
-      - '4091'
+      - '4148'
       X-Amzn-Bedrock-Output-Token-Count:
-      - '103'
+      - '92'
       X-Amzn-Bedrock-Input-Token-Count:
       - '43'
     body:
       encoding: UTF-8
-      string: '{"id":"msg_bdrk_01QVhkyKJBpPvvnSmdiKzGR5","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"This
+      string: '{"id":"msg_bdrk_01BmbyRPzuLGN2Tc5DBfiGjT","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"This
         image shows the logo for Ruby, a popular programming language. The logo consists
         of a stylized red gemstone or ruby. It has a geometric, faceted design with
-        sharp angles and a bright highlight or reflection on one of its surfaces,
-        giving it a three-dimensional appearance. The ruby is depicted against a transparent
-        or white background, making the deep red color of the gem stand out prominently.
-        This logo is widely recognized in the software development community as the
-        symbol for the Ruby programming language."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":43,"output_tokens":103}}'
-  recorded_at: Wed, 02 Apr 2025 17:17:09 GMT
+        sharp angles and a bright highlight or sparkle on one facet, giving it a three-dimensional
+        appearance. The ruby shape is set against a transparent or white background.
+        This iconic logo is widely recognized in the software development community
+        as the symbol for the Ruby programming language."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":43,"output_tokens":92}}'
+  recorded_at: Wed, 02 Apr 2025 17:47:27 GMT
 recorded_with: VCR 6.3.1

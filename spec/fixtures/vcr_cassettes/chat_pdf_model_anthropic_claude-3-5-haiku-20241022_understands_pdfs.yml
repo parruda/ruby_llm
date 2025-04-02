@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:32:04 GMT
+      - Wed, 02 Apr 2025 17:47:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,25 +38,25 @@ http_interactions:
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-04-02T12:32:01Z'
+      - '2025-04-02T17:47:35Z'
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '50000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '48000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-04-02T12:32:03Z'
+      - '2025-04-02T17:47:38Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '10000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '10000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-04-02T12:32:04Z'
+      - '2025-04-02T17:47:39Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '60000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '58000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-04-02T12:32:03Z'
+      - '2025-04-02T17:47:38Z'
       Request-Id:
       - "<REQUEST_ID>"
       Anthropic-Organization-Id:
@@ -73,20 +73,20 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01WmvmV3WzSyw16P92qDQb6d","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"This
+      string: '{"id":"msg_016MwxSCdAVxZJVJS4XZKAia","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"This
         document is a sample PDF file containing Lorem Ipsum placeholder text. The
         document begins with the title \"Sample PDF\" and the subtitle \"This is a
         simple PDF file. Fun fun fun.\" \n\nThe text is standard Lorem Ipsum text,
-        which is commonly used as a placeholder or dummy text in design and publishing.
-        It''s a pseudo-Latin text that looks like normal running text but doesn''t
-        actually convey any meaningful information. The text is structured in paragraphs
-        and appears to be a standard filler text used to demonstrate the layout and
-        typography of a document.\n\nThe document doesn''t contain any specific content
-        or message beyond being an example of a PDF file with Lorem Ipsum text. It''s
-        typically used by designers, typesetters, and graphic designers to show how
-        text will look in a particular layout or design without being distracted by
-        meaningful content."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2712,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":178}}'
-  recorded_at: Wed, 02 Apr 2025 12:32:04 GMT
+        which is commonly used as a placeholder or dummy text in publishing and graphic
+        design. It''s a pseudo-Latin text that looks like normal prose but doesn''t
+        actually convey any meaningful information. The text is structured in several
+        paragraphs and appears to be a standard filler text used to demonstrate the
+        layout and typography of a document.\n\nThe Lorem Ipsum text fills the entire
+        page, with no specific content or message. It''s typically used to show how
+        text will look in a document design without being distracted by meaningful
+        content.\n\nThe document appears to be a basic template or example of a PDF
+        file, likely used for testing or demonstration purposes."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2712,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":184}}'
+  recorded_at: Wed, 02 Apr 2025 17:47:39 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -97,15 +97,16 @@ http_interactions:
         document is a sample PDF file containing Lorem Ipsum placeholder text. The
         document begins with the title \"Sample PDF\" and the subtitle \"This is a
         simple PDF file. Fun fun fun.\" \n\nThe text is standard Lorem Ipsum text,
-        which is commonly used as a placeholder or dummy text in design and publishing.
-        It''s a pseudo-Latin text that looks like normal running text but doesn''t
-        actually convey any meaningful information. The text is structured in paragraphs
-        and appears to be a standard filler text used to demonstrate the layout and
-        typography of a document.\n\nThe document doesn''t contain any specific content
-        or message beyond being an example of a PDF file with Lorem Ipsum text. It''s
-        typically used by designers, typesetters, and graphic designers to show how
-        text will look in a particular layout or design without being distracted by
-        meaningful content."},{"role":"user","content":"go on"}],"temperature":0.7,"stream":false,"max_tokens":8192}'
+        which is commonly used as a placeholder or dummy text in publishing and graphic
+        design. It''s a pseudo-Latin text that looks like normal prose but doesn''t
+        actually convey any meaningful information. The text is structured in several
+        paragraphs and appears to be a standard filler text used to demonstrate the
+        layout and typography of a document.\n\nThe Lorem Ipsum text fills the entire
+        page, with no specific content or message. It''s typically used to show how
+        text will look in a document design without being distracted by meaningful
+        content.\n\nThe document appears to be a basic template or example of a PDF
+        file, likely used for testing or demonstration purposes."},{"role":"user","content":"go
+        on"}],"temperature":0.7,"stream":false,"max_tokens":8192}'
     headers:
       User-Agent:
       - Faraday v2.12.2
@@ -125,7 +126,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:32:12 GMT
+      - Wed, 02 Apr 2025 17:47:46 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -137,25 +138,25 @@ http_interactions:
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-04-02T12:32:06Z'
+      - '2025-04-02T17:47:41Z'
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '50000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '48000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-04-02T12:32:08Z'
+      - '2025-04-02T17:47:43Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '10000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '10000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-04-02T12:32:12Z'
+      - '2025-04-02T17:47:46Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '60000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '58000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-04-02T12:32:08Z'
+      - '2025-04-02T17:47:43Z'
       Request-Id:
       - "<REQUEST_ID>"
       Anthropic-Organization-Id:
@@ -172,22 +173,24 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_016LsvijP4t4vsH1YgtvxKFT","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"The
-        Lorem Ipsum text continues across multiple paragraphs, maintaining a consistent
-        style of pseudo-Latin text. Each paragraph is structured similarly, with varying
-        sentence lengths and complex linguistic patterns that mimic natural text.\n\nThe
-        text includes various Latin-like words and phrases such as \"Pellentesque\",
-        \"Curabitur\", \"Suspendisse\", and \"Vivamus\", which are standard in Lorem
-        Ipsum texts. These paragraphs are designed to have a natural flow and text
-        density that resembles actual written content.\n\nSome recurring themes in
-        the text include references to:\n- Movement and action (e.g., \"Proin cursus\",
-        \"Suspendisse\")\n- Descriptive phrases about placement and positioning\n-
-        Abstract references to bodily and natural elements\n\nThe document appears
-        to be a standard template or placeholder, likely used for:\n- Demonstrating
-        font and text layout\n- Testing document formatting\n- Providing a visual
-        example of text flow in a PDF\n- Serving as a generic document template\n\nThe
-        text fills the entire page, with consistent formatting and paragraph structure,
-        making it look like a typical text document at first glance.\n\nWould you
-        like me to elaborate on any specific aspect of the document?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2895,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":262}}'
-  recorded_at: Wed, 02 Apr 2025 12:32:12 GMT
+      string: '{"id":"msg_01JcRNdaC5Xoz7QfzBhQy82V","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"Continuing
+        the analysis of the Lorem Ipsum text:\n\nThe document consists of multiple
+        paragraphs with similar linguistic structures. While the text appears to be
+        prose, it''s actually meaningless filler text derived from Cicero''s \"de
+        Finibus Bonorum et Malorum\" (On the Ends of Good and Evil), a philosophical
+        work from 45 BC.\n\nThe text uses Latin-like words and grammatical structures
+        to create a natural-looking flow of text. Each paragraph contains a mix of
+        short and long sentences, creating a realistic text appearance. The paragraphs
+        seem to be randomly generated but maintain a consistent style that mimics
+        natural language writing.\n\nSome recurring linguistic elements include:\n-
+        Frequent use of Latin-root words\n- Varied sentence lengths\n- Grammatical
+        constructions that resemble scholarly or formal writing\n- Occasional use
+        of more complex vocabulary\n\nThe text serves multiple purposes in design
+        and publishing:\n1. Demonstrating font and typography\n2. Showing text layout
+        and spacing\n3. Providing a placeholder for design mockups\n4. Testing document
+        formatting and rendering\n\nThe document maintains a consistent typographic
+        style throughout, with uniform paragraph spacing and text alignment, making
+        it useful for visual design and layout testing.\n\nWould you like me to elaborate
+        on any specific aspect of the document?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2901,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":280}}'
+  recorded_at: Wed, 02 Apr 2025 17:47:46 GMT
 recorded_with: VCR 6.3.1

@@ -23,7 +23,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:35:38 GMT
+      - Wed, 02 Apr 2025 17:52:49 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -60,5 +60,5 @@ http_interactions:
                 "code": "invalid_api_key"
             }
         }
-  recorded_at: Wed, 02 Apr 2025 12:35:38 GMT
+  recorded_at: Wed, 02 Apr 2025 17:52:49 GMT
 recorded_with: VCR 6.3.1

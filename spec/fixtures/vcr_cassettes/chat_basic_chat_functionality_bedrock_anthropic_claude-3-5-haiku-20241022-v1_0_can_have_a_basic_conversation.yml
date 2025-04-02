@@ -13,12 +13,12 @@ http_interactions:
       Host:
       - bedrock-runtime.<AWS_REGION>.amazonaws.com
       X-Amz-Date:
-      - 20250402T124736Z
+      - 20250402T174817Z
       X-Amz-Content-Sha256:
       - b5957298a88788e861cf24c2faff82644662c726eed2de6599a41f3789caa703
       Authorization:
       - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20250402/<AWS_REGION>/bedrock/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=aa6e8acfdc23d3feba52204cf2c67f0ac66fc6c49020973433277c202215b580
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=1da3b01dbf53e557588962b12ecacecfa826a7fc88fdf0fe5772acebbdd13eab
       Content-Type:
       - application/json
       Accept:
@@ -31,7 +31,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:47:37 GMT
+      - Wed, 02 Apr 2025 17:48:18 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -39,15 +39,15 @@ http_interactions:
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 7a79c68b-4fc6-4d25-969c-f0cf1b01be36
+      - f3426af8-50f0-4fc8-af31-0a64d33567c4
       X-Amzn-Bedrock-Invocation-Latency:
-      - '321'
+      - '906'
       X-Amzn-Bedrock-Output-Token-Count:
       - '5'
       X-Amzn-Bedrock-Input-Token-Count:
       - '16'
     body:
       encoding: UTF-8
-      string: '{"id":"msg_bdrk_015zH2UWXa8TjfbmAKfn6typ","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"4"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":16,"output_tokens":5}}'
-  recorded_at: Wed, 02 Apr 2025 12:47:37 GMT
+      string: '{"id":"msg_bdrk_01TzJ7cprnjzsmGRWhNLshSs","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"4"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":16,"output_tokens":5}}'
+  recorded_at: Wed, 02 Apr 2025 17:48:18 GMT
 recorded_with: VCR 6.3.1

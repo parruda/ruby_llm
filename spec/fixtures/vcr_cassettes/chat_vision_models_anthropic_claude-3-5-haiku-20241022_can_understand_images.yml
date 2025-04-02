@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:31:53 GMT
+      - Wed, 02 Apr 2025 17:47:22 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,25 +38,25 @@ http_interactions:
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-04-02T12:31:51Z'
+      - '2025-04-02T17:47:20Z'
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '50000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '50000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-04-02T12:31:50Z'
+      - '2025-04-02T17:47:20Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '10000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '10000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-04-02T12:31:53Z'
+      - '2025-04-02T17:47:22Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '60000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '60000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-04-02T12:31:50Z'
+      - '2025-04-02T17:47:20Z'
       Request-Id:
       - "<REQUEST_ID>"
       Anthropic-Organization-Id:
@@ -73,13 +73,12 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01Q3tEMRozZTndg9nRtNunBj","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"This
-        image depicts the logo for Ruby, a popular programming language. The logo
-        is a stylized red gemstone or ruby, with angular facets creating a three-dimensional
-        geometric shape. The design is sleek and modern, using shades of red to create
-        depth and highlight the gem-like quality of the logo. The shape suggests a
-        cut precious stone, with light and shadow playing across its surfaces, making
-        it look sharp, elegant, and sophisticated - much like the programming language
-        it represents."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":54,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":102}}'
-  recorded_at: Wed, 02 Apr 2025 12:31:53 GMT
+      string: '{"id":"msg_01VbgPiiagqoqnfweo7ftwyY","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"This
+        is the logo for Ruby, a popular programming language. The logo depicts a stylized
+        red gemstone or ruby, with angular facets that create a three-dimensional
+        geometric shape. The logo uses shades of red and has a glossy, polished appearance
+        that resembles a cut precious stone. Ruby is known for being a dynamic, object-oriented
+        programming language that focuses on simplicity and productivity, and this
+        logo captures its sleek and elegant design philosophy."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":54,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":97}}'
+  recorded_at: Wed, 02 Apr 2025 17:47:22 GMT
 recorded_with: VCR 6.3.1

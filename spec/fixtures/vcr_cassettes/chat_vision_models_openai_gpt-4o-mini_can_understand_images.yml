@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:31:56 GMT
+      - Wed, 02 Apr 2025 17:47:30 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,7 +36,7 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '1753'
+      - '1265'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Input-Images:
@@ -48,13 +48,13 @@ http_interactions:
       X-Ratelimit-Remaining-Input-Images:
       - '49999'
       X-Ratelimit-Remaining-Requests:
-      - '9993'
+      - '9994'
       X-Ratelimit-Remaining-Tokens:
       - '199225'
       X-Ratelimit-Reset-Input-Images:
       - 1ms
       X-Ratelimit-Reset-Requests:
-      - 55.697s
+      - 51.037s
       X-Ratelimit-Reset-Tokens:
       - 232ms
       X-Request-Id:
@@ -78,16 +78,16 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BHrY3rMKYoamjmtqdYkcWIMplfSTY",
+          "id": "chatcmpl-BHwTQB56rfP8Nxq7FtZHWb9fvanik",
           "object": "chat.completion",
-          "created": 1743597115,
+          "created": 1743616048,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "The image appears to be a stylized representation of a red gem or ruby, often associated with the programming language Ruby. It features a faceted design, giving it a shiny appearance.",
+                "content": "The image depicts a stylized red gemstone or ruby, characterized by its facets and shiny appearance. It appears to be designed in a graphic or icon format.",
                 "refusal": null,
                 "annotations": []
               },
@@ -97,8 +97,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 8515,
-            "completion_tokens": 38,
-            "total_tokens": 8553,
+            "completion_tokens": 32,
+            "total_tokens": 8547,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -113,5 +113,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_86d0290411"
         }
-  recorded_at: Wed, 02 Apr 2025 12:31:56 GMT
+  recorded_at: Wed, 02 Apr 2025 17:47:30 GMT
 recorded_with: VCR 6.3.1

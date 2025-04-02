@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:32:34 GMT
+      - Wed, 02 Apr 2025 17:48:08 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,27 +36,27 @@ http_interactions:
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
-      - '48'
+      - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-04-02T12:32:33Z'
+      - '2025-04-02T17:48:07Z'
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '50000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '50000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-04-02T12:32:32Z'
+      - '2025-04-02T17:48:06Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '10000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '10000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-04-02T12:32:34Z'
+      - '2025-04-02T17:48:07Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '60000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '60000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-04-02T12:32:32Z'
+      - '2025-04-02T17:48:06Z'
       Request-Id:
       - "<REQUEST_ID>"
       Anthropic-Organization-Id:
@@ -73,13 +73,12 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01Bq8CLX9un8KzHSe6J3rq3F","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"Ruby
+      string: '{"id":"msg_01DfDN5HKfCpgqUuEoU9DKya","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"Ruby
         was created by Yukihiro Matsumoto (often called \"Matz\") in Japan. He first
-        released Ruby in 1995, designing it to be a more human-friendly and productive
-        programming language that emphasizes the principle of least astonishment (POLA).
-        Matz wanted to create a language that was both powerful and enjoyable for
-        programmers to use."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":13,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":84}}'
-  recorded_at: Wed, 02 Apr 2025 12:32:34 GMT
+        released Ruby in 1995 as a dynamic, object-oriented programming language designed
+        to be simple, productive, and enjoyable for programmers. Matz wanted to create
+        a language that would make programming more fun and increase developer productivity."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":13,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":77}}'
+  recorded_at: Wed, 02 Apr 2025 17:48:07 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -88,10 +87,10 @@ http_interactions:
       string: '{"model":"claude-3-5-haiku-20241022","messages":[{"role":"user","content":"Who
         was Ruby''s creator?"},{"role":"assistant","content":"Ruby was created by
         Yukihiro Matsumoto (often called \"Matz\") in Japan. He first released Ruby
-        in 1995, designing it to be a more human-friendly and productive programming
-        language that emphasizes the principle of least astonishment (POLA). Matz
-        wanted to create a language that was both powerful and enjoyable for programmers
-        to use."},{"role":"user","content":"What year did he create Ruby?"}],"temperature":0.7,"stream":false,"max_tokens":8192}'
+        in 1995 as a dynamic, object-oriented programming language designed to be
+        simple, productive, and enjoyable for programmers. Matz wanted to create a
+        language that would make programming more fun and increase developer productivity."},{"role":"user","content":"What
+        year did he create Ruby?"}],"temperature":0.7,"stream":false,"max_tokens":8192}'
     headers:
       User-Agent:
       - Faraday v2.12.2
@@ -111,7 +110,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:32:34 GMT
+      - Wed, 02 Apr 2025 17:48:09 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -123,25 +122,25 @@ http_interactions:
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-04-02T12:32:35Z'
+      - '2025-04-02T17:48:09Z'
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '50000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '50000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-04-02T12:32:34Z'
+      - '2025-04-02T17:48:08Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '10000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '10000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-04-02T12:32:34Z'
+      - '2025-04-02T17:48:09Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '60000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '60000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-04-02T12:32:34Z'
+      - '2025-04-02T17:48:08Z'
       Request-Id:
       - "<REQUEST_ID>"
       Anthropic-Organization-Id:
@@ -158,7 +157,9 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_013XBKXAF8swvhRiGzUk8qgu","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"Yukihiro
-        Matsumoto first released Ruby in 1995."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":107,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":19}}'
-  recorded_at: Wed, 02 Apr 2025 12:32:34 GMT
+      string: '{"id":"msg_01WeUd7xAyxKsfaSbopK9pW8","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"Yukihiro
+        Matsumoto first released Ruby in 1995. The initial public release was version
+        0.95, and he continued to develop and refine the language over the following
+        years."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":100,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":45}}'
+  recorded_at: Wed, 02 Apr 2025 17:48:09 GMT
 recorded_with: VCR 6.3.1

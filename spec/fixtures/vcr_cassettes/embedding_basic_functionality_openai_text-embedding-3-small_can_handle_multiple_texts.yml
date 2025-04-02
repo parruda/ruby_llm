@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Apr 2025 12:35:37 GMT
+      - Wed, 02 Apr 2025 17:52:49 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,15 +39,15 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '53'
+      - '303'
       Openai-Version:
       - '2020-10-01'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Via:
-      - envoy-router-f6f98d4cb-kw999
+      - envoy-router-5dc9c84f96-crvm8
       X-Envoy-Upstream-Service-Time:
-      - '33'
+      - '88'
       X-Ratelimit-Limit-Requests:
       - '3000'
       X-Ratelimit-Limit-Tokens:
@@ -4714,5 +4714,5 @@ http_interactions:
             "total_tokens": 3
           }
         }
-  recorded_at: Wed, 02 Apr 2025 12:35:38 GMT
+  recorded_at: Wed, 02 Apr 2025 17:52:49 GMT
 recorded_with: VCR 6.3.1
