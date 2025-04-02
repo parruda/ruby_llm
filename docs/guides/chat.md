@@ -69,6 +69,11 @@ See [Working with Models]({% link guides/models.md %}) for more details on model
 
 ## Instructions (aka System Prompts)
 
+{: .warning-title }
+> Coming in v1.1.0
+>
+> chat.with_instructions is coming in 1.1.0. 1.0.x users should use `add_message role: system, content: PROMPT`
+
 System prompts allow you to set specific instructions or context that guide the AI's behavior throughout the conversation. These prompts are not directly visible to the user but help shape the AI's responses:
 
 ```ruby
@@ -81,7 +86,7 @@ chat.with_instructions "You are a helpful Ruby programming assistant. Always inc
 # Now the AI will follow these instructions in all responses
 response = chat.ask "How do I handle file operations in Ruby?"
 
-# You can add multiple system messages or update them during the conversation
+# You can add multiple system messages or update them during the conversation - available from 1.1.0
 chat.with_instructions "Always format your code using proper Ruby style conventions and include comments."
 
 # System prompts are especially useful for:
