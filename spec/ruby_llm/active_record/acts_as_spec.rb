@@ -152,5 +152,22 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
       expect(chat.messages.first.role).to eq('system')
       expect(chat.messages.first.content).to eq('You are a Ruby expert')
     end
+
+    it 'optionally replaces existing system messages' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
+      chat = Chat.create!(model_id: 'gpt-4o-mini')
+
+      # Add first instruction
+      chat.with_instructions('Be helpful')
+      expect(chat.messages.where(role: 'system').count).to eq(1)
+
+      # Add second instruction without replace
+      chat.with_instructions('Be concise')
+      expect(chat.messages.where(role: 'system').count).to eq(2)
+
+      # Replace all instructions
+      chat.with_instructions('Be awesome', replace: true)
+      expect(chat.messages.where(role: 'system').count).to eq(1)
+      expect(chat.messages.find_by(role: 'system').content).to eq('Be awesome')
+    end
   end
 end

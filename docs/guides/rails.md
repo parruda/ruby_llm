@@ -162,6 +162,37 @@ Instructions are great for:
 3. Enforcing specific response formats
 4. Creating specialized assistants
 
+### Managing Instructions
+
+You can add multiple instructions or replace existing ones:
+
+```ruby
+# Add initial instructions
+chat.with_instructions("Be a helpful Ruby expert")
+
+# Add another instruction (keeps the first one)
+chat.with_instructions("Always include code examples")
+
+# Replace all previous instructions
+chat.with_instructions("Be a concise Ruby expert who always shows examples", replace: true)
+```
+
+This is particularly useful in controllers:
+
+```ruby
+def update_instructions
+  @chat = Chat.find(params[:id])
+
+  # Replace existing instructions with new ones
+  @chat.with_instructions(params[:instructions], replace: true)
+
+  respond_to do |format|
+    format.html { redirect_to @chat }
+    format.turbo_stream
+  end
+end
+```
+
 ## Streaming Responses
 
 You can stream responses while still persisting the final result:

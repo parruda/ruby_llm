@@ -79,8 +79,18 @@ module RubyLLM
              .on_end_message { |msg| persist_message_completion(msg) }
       end
 
-      def with_instructions(instructions)
-        messages.create!(role: :system, content: instructions)
+      def with_instructions(instructions, replace: false)
+        transaction do
+          # If replace is true, remove existing system messages
+          messages.where(role: :system).destroy_all if replace
+
+          # Create the new system message
+          messages.create!(
+            role: :system,
+            content: instructions
+          )
+        end
+        to_llm.with_instructions(instructions)
         self
       end
 
