@@ -49,7 +49,7 @@ VCR.configure do |config|
 
   config.filter_sensitive_data('<AWS_ACCESS_KEY_ID>') { ENV.fetch('AWS_ACCESS_KEY_ID', nil) }
   config.filter_sensitive_data('<AWS_SECRET_ACCESS_KEY>') { ENV.fetch('AWS_SECRET_ACCESS_KEY', nil) }
-  config.filter_sensitive_data('<AWS_REGION>') { ENV.fetch('AWS_REGION', nil) }
+  config.filter_sensitive_data('<AWS_REGION>') { ENV.fetch('AWS_REGION', 'us-west-2') }
   config.filter_sensitive_data('<AWS_SESSION_TOKEN>') { ENV.fetch('AWS_SESSION_TOKEN', nil) }
 
   config.filter_sensitive_data('<OPENAI_ORGANIZATION>') do |interaction|
