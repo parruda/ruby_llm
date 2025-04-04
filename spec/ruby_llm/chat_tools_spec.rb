@@ -29,6 +29,14 @@ RSpec.describe RubyLLM::Chat do
     end
   end
 
+  class BrokenTool < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
+    description 'Gets current weather'
+
+    def execute
+      raise 'This tool is broken'
+    end
+  end
+
   describe 'function calling' do
     chat_models.each do |model|
       provider = RubyLLM::Models.provider_for(model).slug
@@ -82,6 +90,16 @@ RSpec.describe RubyLLM::Chat do
         expect(chunks.first).to be_a(RubyLLM::Chunk)
         expect(response.content).to include('15')
         expect(response.content).to include('10')
+      end
+    end
+  end
+
+  describe 'error handling' do
+    it 'raises an error when tool execution fails' do # rubocop:disable RSpec/MultipleExpectations
+      chat = RubyLLM.chat.with_tool(BrokenTool)
+
+      expect { chat.ask('What is the weather?') }.to raise_error(RuntimeError) do |error|
+        expect(error.message).to include('This tool is broken')
       end
     end
   end
