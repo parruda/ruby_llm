@@ -44,7 +44,6 @@ module RubyLLM
 
     def tool_calls_from_stream # rubocop:disable Metrics/MethodLength
       tool_calls.transform_values do |tc|
-        # The key fix - handle empty string arguments
         arguments = if tc.arguments.is_a?(String) && !tc.arguments.empty?
                       JSON.parse(tc.arguments)
                     elsif tc.arguments.is_a?(String)
