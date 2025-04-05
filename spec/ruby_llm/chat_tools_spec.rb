@@ -68,6 +68,27 @@ RSpec.describe RubyLLM::Chat do
         expect(response.content).to include('Ruby')
       end
 
+      it "#{provider}/#{model} can use tools without parameters in multi-turn streaming conversations" do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
+        chat = RubyLLM.chat(model: model).with_tool(BestLanguageToLearn)
+        chunks = []
+
+        response = chat.ask("What's the best language to learn?") do |chunk|
+          chunks << chunk
+        end
+
+        expect(chunks).not_to be_empty
+        expect(chunks.first).to be_a(RubyLLM::Chunk)
+        expect(response.content).to include('Ruby')
+
+        response = chat.ask("Tell me again: what's the best language to learn?") do |chunk|
+          chunks << chunk
+        end
+
+        expect(chunks).not_to be_empty
+        expect(chunks.first).to be_a(RubyLLM::Chunk)
+        expect(response.content).to include('Ruby')
+      end
+
       it "#{provider}/#{model} can use tools with multi-turn streaming conversations" do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
         chat = RubyLLM.chat(model: model)
                       .with_tool(Weather)
