@@ -77,10 +77,6 @@ RubyLLM provides convenient aliases for popular models, so you don't have to rem
 # These are equivalent
 chat = RubyLLM.chat(model: 'claude-3-5-sonnet')
 chat = RubyLLM.chat(model: 'claude-3-5-sonnet-20241022')
-
-# These are also equivalent
-chat = RubyLLM.chat(model: 'gpt-4o')
-chat = RubyLLM.chat(model: 'gpt-4o-2024-11-20')
 ```
 
 If you want to ensure you're always getting a specific version, use the full model ID:
