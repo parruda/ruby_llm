@@ -7,7 +7,7 @@ module RubyLLM
   module Provider
     # Common functionality for all LLM providers. Implements the core provider
     # interface so specific providers only need to implement a few key methods.
-    module Methods
+    module Methods # rubocop:disable Metrics/ModuleLength
       extend Streaming
 
       def complete(messages, tools:, temperature:, model:, &block) # rubocop:disable Metrics/MethodLength
@@ -108,7 +108,7 @@ module RubyLLM
 
           f.request :retry, {
             max: RubyLLM.config.max_retries,
-            interval: 0.05,
+            interval: 0.1,
             interval_randomness: 0.5,
             backoff_factor: 2,
             exceptions: [
@@ -119,9 +119,10 @@ module RubyLLM
               Faraday::RetriableResponse,
               RubyLLM::RateLimitError,
               RubyLLM::ServerError,
-              RubyLLM::ServiceUnavailableError
+              RubyLLM::ServiceUnavailableError,
+              RubyLLM::OverloadedError
             ],
-            retry_statuses: [429, 500, 502, 503, 504]
+            retry_statuses: [429, 500, 502, 503, 504, 529]
           }
 
           f.request :json
