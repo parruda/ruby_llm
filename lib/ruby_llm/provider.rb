@@ -108,9 +108,9 @@ module RubyLLM
 
           f.request :retry, {
             max: RubyLLM.config.max_retries,
-            interval: 0.1,
-            interval_randomness: 0.5,
-            backoff_factor: 2,
+            interval: RubyLLM.config.retry_interval,
+            interval_randomness: RubyLLM.config.retry_interval_randomness,
+            backoff_factor: RubyLLM.config.retry_backoff_factor,
             exceptions: [
               Errno::ETIMEDOUT,
               Timeout::Error,
