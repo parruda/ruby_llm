@@ -64,7 +64,7 @@ RubyLLM.configure do |config|
   config.bedrock_session_token = ENV.fetch('AWS_SESSION_TOKEN', nil)
 
   # Optional: Set default models
-  config.default_model = 'gpt-4o-mini'               # Default chat model
+  config.default_model = 'gpt-4.1-nano'               # Default chat model
   config.default_embedding_model = 'text-embedding-3-small'  # Default embedding model
   config.default_image_model = 'dall-e-3'            # Default image generation model
 

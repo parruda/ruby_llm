@@ -195,7 +195,7 @@ class Chat < ApplicationRecord
   acts_as_chat
 end
 
-chat = Chat.create!(model_id: 'gpt-4o-mini')
+chat = Chat.create!(model_id: 'gpt-4.1-nano')
 
 # Stream responses while persisting the final result
 chat.ask("Tell me about Ruby") do |chunk|

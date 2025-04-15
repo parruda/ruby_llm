@@ -34,7 +34,7 @@ You can specify which model to use when creating a chat:
 
 ```ruby
 # Create a chat with a specific model
-chat = RubyLLM.chat(model: 'gpt-4o-mini')
+chat = RubyLLM.chat(model: 'gpt-4.1-nano')
 
 # Use Claude instead
 claude_chat = RubyLLM.chat(model: 'claude-3-5-sonnet-20241022')

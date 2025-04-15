@@ -94,7 +94,7 @@ RubyLLM.models.embedding_models.each do |model|
 end
 
 # Find info about a specific model
-gpt = RubyLLM.models.find('gpt-4o-mini')
+gpt = RubyLLM.models.find('gpt-4.1-nano')
 puts "Context window: #{gpt.context_window}"
 puts "Max tokens: #{gpt.max_tokens}"
 puts "Pricing: $#{gpt.input_price_per_million} per million input tokens"

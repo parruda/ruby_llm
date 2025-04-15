@@ -111,7 +111,7 @@ Once your models are set up, you can use them like any other Rails model:
 
 ```ruby
 # Create a new chat
-chat = Chat.create!(model_id: 'gpt-4o-mini')
+chat = Chat.create!(model_id: 'gpt-4.1-nano')
 
 # Ask a question
 chat.ask "What's the capital of France?"
@@ -134,7 +134,7 @@ Instructions help guide the AI's behavior throughout a conversation. With Rails 
 
 ```ruby
 # Create a new chat
-chat = Chat.create!(model_id: 'gpt-4o-mini')
+chat = Chat.create!(model_id: 'gpt-4.1-nano')
 
 # Add instructions (these are persisted)
 chat.with_instructions("You are a helpful Ruby programming assistant. Always include code examples in your responses and explain them line by line.")
@@ -198,7 +198,7 @@ end
 You can stream responses while still persisting the final result:
 
 ```ruby
-chat = Chat.create!(model_id: 'gpt-4o-mini')
+chat = Chat.create!(model_id: 'gpt-4.1-nano')
 
 chat.ask "Write a short poem about Ruby" do |chunk|
   # Stream content to the user
@@ -317,7 +317,7 @@ class Weather < RubyLLM::Tool
 end
 
 # Add the tool to your chat
-chat = Chat.create!(model_id: 'gpt-4o-mini')
+chat = Chat.create!(model_id: 'gpt-4.1-nano')
 chat.with_tool(Weather)
 
 # Ask a question that requires calculation
@@ -389,7 +389,7 @@ class Chat < ApplicationRecord
 end
 
 # Usage
-user.chats.create!(model_id: 'gpt-4o-mini').ask("Hello!")
+user.chats.create!(model_id: 'gpt-4.1-nano').ask("Hello!")
 ```
 
 ### Metadata and Tagging
@@ -407,7 +407,7 @@ end
 
 # Usage
 chat = Chat.create!(
-  model_id: 'gpt-4o-mini',
+  model_id: 'gpt-4.1-nano',
   metadata: {
     purpose: 'customer_support',
     category: 'billing',

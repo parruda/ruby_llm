@@ -39,7 +39,7 @@ module RubyLLM
       @retry_interval_randomness = 0.5
 
       # Default models
-      @default_model = 'gpt-4o-mini'
+      @default_model = 'gpt-4.1-nano'
       @default_embedding_model = 'text-embedding-3-small'
       @default_image_model = 'dall-e-3'
     end

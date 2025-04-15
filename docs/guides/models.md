@@ -21,7 +21,7 @@ The simplest way to use a model is to specify it when creating a chat:
 chat = RubyLLM.chat
 
 # Specify a model
-chat = RubyLLM.chat(model: 'gpt-4o-mini')
+chat = RubyLLM.chat(model: 'gpt-4.1-nano')
 
 # Change models mid-conversation
 chat.with_model('claude-3-5-sonnet')
@@ -157,7 +157,7 @@ anthropic_chat = RubyLLM.models.by_provider('anthropic').chat_models
 Find a specific model by ID to see its capabilities:
 
 ```ruby
-model = RubyLLM.models.find('gpt-4o-mini')
+model = RubyLLM.models.find('gpt-4.1-nano')
 
 puts "Model: #{model.display_name}"
 puts "Provider: #{model.provider}"
