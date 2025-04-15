@@ -12,6 +12,7 @@ module RubyLLM
   class Configuration
     # Provider-specific configuration
     attr_accessor :openai_api_key,
+                  :openai_api_base,
                   :anthropic_api_key,
                   :gemini_api_key,
                   :deepseek_api_key,
