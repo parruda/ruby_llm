@@ -40,11 +40,7 @@ RSpec.describe RubyLLM::Chat do
   describe 'function calling' do
     chat_models.each do |model|
       provider = RubyLLM::Models.provider_for(model).slug
-      it "#{provider}/#{model} can use tools" do # rubocop:disable RSpec/MultipleExpectations,RSpec/ExampleLength
-        if model == 'claude-3-5-haiku-20241022'
-          skip('Anthropic frequently returns 529 OverloadedError mid-stream for this specific test. ' \
-               'This appears to be provider-side flakiness. Skipping only for this model to allow release 1.2.0.')
-        end
+      it "#{provider}/#{model} can use tools" do # rubocop:disable RSpec/MultipleExpectations
         chat = RubyLLM.chat(model: model)
                       .with_tool(Weather)
 
@@ -57,10 +53,6 @@ RSpec.describe RubyLLM::Chat do
     chat_models.each do |model| # rubocop:disable Style/CombinableLoops
       provider = RubyLLM::Models.provider_for(model).slug
       it "#{provider}/#{model} can use tools in multi-turn conversations" do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
-        if model == 'claude-3-5-haiku-20241022'
-          skip('Anthropic frequently returns 529 OverloadedError mid-stream for this specific test. ' \
-               'This appears to be provider-side flakiness. Skipping only for this model to allow release 1.2.0.')
-        end
         chat = RubyLLM.chat(model: model)
                       .with_tool(Weather)
 
@@ -76,11 +68,7 @@ RSpec.describe RubyLLM::Chat do
 
     chat_models.each do |model| # rubocop:disable Style/CombinableLoops
       provider = RubyLLM::Models.provider_for(model).slug
-      it "#{provider}/#{model} can use tools without parameters" do # rubocop:disable RSpec/ExampleLength
-        if model == 'claude-3-5-haiku-20241022'
-          skip('Anthropic frequently returns 529 OverloadedError mid-stream for this specific test. ' \
-               'This appears to be provider-side flakiness. Skipping only for this model to allow release 1.2.0.')
-        end
+      it "#{provider}/#{model} can use tools without parameters" do
         chat = RubyLLM.chat(model: model).with_tool(BestLanguageToLearn)
         response = chat.ask("What's the best language to learn?")
         expect(response.content).to include('Ruby')
@@ -90,10 +78,6 @@ RSpec.describe RubyLLM::Chat do
     chat_models.each do |model| # rubocop:disable Style/CombinableLoops
       provider = RubyLLM::Models.provider_for(model).slug
       it "#{provider}/#{model} can use tools without parameters in multi-turn streaming conversations" do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
-        if model == 'claude-3-5-haiku-20241022'
-          skip('Anthropic frequently returns 529 OverloadedError mid-stream for this specific test. ' \
-               'This appears to be provider-side flakiness. Skipping only for this model to allow release 1.2.0.')
-        end
         chat = RubyLLM.chat(model: model).with_tool(BestLanguageToLearn)
         chunks = []
 
@@ -118,10 +102,6 @@ RSpec.describe RubyLLM::Chat do
     chat_models.each do |model| # rubocop:disable Style/CombinableLoops
       provider = RubyLLM::Models.provider_for(model).slug
       it "#{provider}/#{model} can use tools with multi-turn streaming conversations" do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
-        if model == 'claude-3-5-haiku-20241022'
-          skip('Anthropic frequently returns 529 OverloadedError mid-stream for this specific test. ' \
-               'This appears to be provider-side flakiness. Skipping only for this model to allow release 1.2.0.')
-        end
         chat = RubyLLM.chat(model: model)
                       .with_tool(Weather)
         chunks = []
