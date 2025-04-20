@@ -183,7 +183,7 @@ chat = RubyLLM.chat(
 response = chat.ask("Internal knowledge query...")
 puts response.content
 
-# You can also use in .with_model
+# You can also use it in .with_model
 chat.with_model(
   model: 'gpt-5-alpha',
   provider: :openai,                # MUST specify provider
