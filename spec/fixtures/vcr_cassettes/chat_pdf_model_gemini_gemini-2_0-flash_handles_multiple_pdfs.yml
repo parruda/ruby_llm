@@ -29,7 +29,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 18 Apr 2025 18:31:49 GMT
+      - Mon, 21 Apr 2025 17:04:34 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -39,7 +39,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1783
+      - gfet4t7; dur=1919
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -68,12 +68,12 @@ http_interactions:
             "totalTokenCount": 525,
             "promptTokensDetails": [
               {
-                "modality": "DOCUMENT",
-                "tokenCount": 516
-              },
-              {
                 "modality": "TEXT",
                 "tokenCount": 3
+              },
+              {
+                "modality": "DOCUMENT",
+                "tokenCount": 516
               }
             ],
             "candidatesTokensDetails": [
@@ -85,7 +85,7 @@ http_interactions:
           },
           "modelVersion": "gemini-2.0-flash"
         }
-  recorded_at: Fri, 18 Apr 2025 18:31:49 GMT
+  recorded_at: Mon, 21 Apr 2025 17:04:34 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
@@ -116,7 +116,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 18 Apr 2025 18:31:52 GMT
+      - Mon, 21 Apr 2025 17:04:37 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -126,7 +126,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=2423
+      - gfet4t7; dur=3100
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -140,37 +140,37 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "Okay, I can elaborate further. Both documents contain the same Lorem Ipsum text, a common placeholder used in publishing and graphic design. They both start with the title \"Sample PDF\" and the playful subtitle \"This is a simple PDF file. Fun fun fun.\"\n\nThe structure of the text is identical in both documents. They contain the same paragraphs of Latin text, starting with \"Lorem ipsum dolor sit amet...\" and ending with \"...venenatis quis, commodo at, quam.\" The line breaks and formatting within each paragraph are also the same.\n\nIn short, there are no differences in content, formatting, or layout between the two documents. They are perfect copies of each other. Is there anything specific you'd like me to analyze or compare between them? Perhaps you were expecting them to be different in some way?\n"
+                    "text": "Both documents are a single-page PDF containing placeholder text, often referred to as \"Lorem Ipsum.\"\n\nHere's a more detailed breakdown:\n\n*   **Content:** Both contain the same Latin-based, nonsensical text used for layout purposes in publishing and web design. The text is designed to simulate real content without distracting the viewer with actual meaning.\n*   **Structure:** Both have the same structure:\n    *   A title \"Sample PDF\"\n    *   A subtitle: \"This is a simple PDF file. Fun fun fun.\"\n    *   Followed by paragraphs of Lorem Ipsum text.\n*   **Purpose:** The document serves as a sample or template to demonstrate formatting, typography, and the overall appearance of a document.\n*   **OCR:** The OCR (Optical Character Recognition) output confirms that the textual content is exactly the same in both documents.\n\nIn essence, the documents are duplicates. There are no differences in the text, layout, or overall content."
                   }
                 ],
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.33617236346182738
+              "avgLogprobs": -0.36807613928341171
             }
           ],
           "usageMetadata": {
             "promptTokenCount": 527,
-            "candidatesTokenCount": 169,
-            "totalTokenCount": 696,
+            "candidatesTokenCount": 206,
+            "totalTokenCount": 733,
             "promptTokensDetails": [
-              {
-                "modality": "TEXT",
-                "tokenCount": 11
-              },
               {
                 "modality": "DOCUMENT",
                 "tokenCount": 516
+              },
+              {
+                "modality": "TEXT",
+                "tokenCount": 11
               }
             ],
             "candidatesTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 169
+                "tokenCount": 206
               }
             ]
           },
           "modelVersion": "gemini-2.0-flash"
         }
-  recorded_at: Fri, 18 Apr 2025 18:31:52 GMT
+  recorded_at: Mon, 21 Apr 2025 17:04:38 GMT
 recorded_with: VCR 6.3.1

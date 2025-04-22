@@ -43,8 +43,16 @@ module RubyLLM
         parse_image_response response
       end
 
-      def configured?(config)
+      def configured?(config = nil)
+        config ||= RubyLLM.config
         missing_configs(config).empty?
+      end
+
+      def missing_configs(config)
+        configuration_requirements.select do |key|
+          value = config.send(key)
+          value.nil? || value.empty?
+        end
       end
 
       private
@@ -54,13 +62,6 @@ module RubyLLM
           capabilities.normalize_temperature(temperature, model)
         else
           temperature
-        end
-      end
-
-      def missing_configs(config)
-        configuration_requirements.select do |key|
-          value = config.send(key)
-          value.nil? || value.empty?
         end
       end
 
@@ -127,7 +128,7 @@ module RubyLLM
         @providers ||= {}
       end
 
-      def configured_providers(config)
+      def configured_providers(config = nil)
         providers.select { |_name, provider| provider.configured?(config) }.values
       end
     end

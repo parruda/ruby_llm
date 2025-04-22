@@ -19,6 +19,7 @@ module RubyLLM
     end
 
     def post(url, payload)
+      RubyLLM.logger.debug "POST #{url} with payload: #{payload.inspect}"
       body = payload.is_a?(Hash) ? JSON.generate(payload, ascii_only: false) : payload
       @connection.post url, body do |req|
         req.headers.merge! @provider.headers(@config) if @provider.respond_to?(:headers)

@@ -46,6 +46,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<ANTHROPIC_API_KEY>') { ENV.fetch('ANTHROPIC_API_KEY', nil) }
   config.filter_sensitive_data('<GEMINI_API_KEY>') { ENV.fetch('GEMINI_API_KEY', nil) }
   config.filter_sensitive_data('<DEEPSEEK_API_KEY>') { ENV.fetch('DEEPSEEK_API_KEY', nil) }
+  config.filter_sensitive_data('<OPENROUTER_API_KEY>') { ENV.fetch('OPENROUTER_API_KEY', nil) }
 
   config.filter_sensitive_data('<AWS_ACCESS_KEY_ID>') { ENV.fetch('AWS_ACCESS_KEY_ID', nil) }
   config.filter_sensitive_data('<AWS_SECRET_ACCESS_KEY>') { ENV.fetch('AWS_SECRET_ACCESS_KEY', nil) }
@@ -93,6 +94,7 @@ RSpec.shared_context 'with configured RubyLLM' do
       config.anthropic_api_key = ENV.fetch('ANTHROPIC_API_KEY', 'test')
       config.gemini_api_key = ENV.fetch('GEMINI_API_KEY', 'test')
       config.deepseek_api_key = ENV.fetch('DEEPSEEK_API_KEY', 'test')
+      config.openrouter_api_key = ENV.fetch('OPENROUTER_API_KEY', 'test')
 
       config.bedrock_api_key = ENV.fetch('AWS_ACCESS_KEY_ID', 'test')
       config.bedrock_secret_key = ENV.fetch('AWS_SECRET_ACCESS_KEY', 'test')

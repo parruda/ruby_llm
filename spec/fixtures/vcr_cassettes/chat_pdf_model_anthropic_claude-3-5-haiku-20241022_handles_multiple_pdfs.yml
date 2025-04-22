@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 18 Apr 2025 18:31:36 GMT
+      - Mon, 21 Apr 2025 17:04:21 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,25 +38,25 @@ http_interactions:
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-04-18T18:31:28Z'
+      - '2025-04-21T17:04:16Z'
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '100000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '98000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-04-18T18:31:35Z'
+      - '2025-04-21T17:04:20Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '20000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '20000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-04-18T18:31:36Z'
+      - '2025-04-21T17:04:21Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '120000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '118000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-04-18T18:31:35Z'
+      - '2025-04-21T17:04:20Z'
       Request-Id:
       - "<REQUEST_ID>"
       Anthropic-Organization-Id:
@@ -73,13 +73,14 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01GTUrBm4zufbDop5jbeWoQg","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"After
+      string: '{"id":"msg_012PpBWugSmX9ngGNetjudLc","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"After
         carefully examining both documents, I can confirm that they are identical.
         Both PDFs:\n\n1. Have the same title \"Sample PDF\"\n2. Have the same subtitle
         \"This is a simple PDF file. Fun fun fun.\"\n3. Contain exactly the same Lorem
-        Ipsum text\n4. Have the same layout and formatting\n5. Are visually indistinguishable\n\nIn
-        other words, these are two exact copies of the same PDF document."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":5409,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":99}}'
-  recorded_at: Fri, 18 Apr 2025 18:31:36 GMT
+        Ipsum text\n4. Have the same page layout and formatting\n5. Are visually and
+        textually indistinguishable\n\nThese appear to be two copies of the exact
+        same PDF document."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":5409,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":101}}'
+  recorded_at: Mon, 21 Apr 2025 17:04:21 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -90,9 +91,9 @@ http_interactions:
         carefully examining both documents, I can confirm that they are identical.
         Both PDFs:\n\n1. Have the same title \"Sample PDF\"\n2. Have the same subtitle
         \"This is a simple PDF file. Fun fun fun.\"\n3. Contain exactly the same Lorem
-        Ipsum text\n4. Have the same layout and formatting\n5. Are visually indistinguishable\n\nIn
-        other words, these are two exact copies of the same PDF document."},{"role":"user","content":"go
-        on"}],"temperature":0.7,"stream":false,"max_tokens":8192}'
+        Ipsum text\n4. Have the same page layout and formatting\n5. Are visually and
+        textually indistinguishable\n\nThese appear to be two copies of the exact
+        same PDF document."},{"role":"user","content":"go on"}],"temperature":0.7,"stream":false,"max_tokens":8192}'
     headers:
       User-Agent:
       - Faraday v2.13.0
@@ -112,7 +113,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 18 Apr 2025 18:31:43 GMT
+      - Mon, 21 Apr 2025 17:04:26 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -124,25 +125,25 @@ http_interactions:
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-04-18T18:31:36Z'
+      - '2025-04-21T17:04:21Z'
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '100000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '98000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-04-18T18:31:42Z'
+      - '2025-04-21T17:04:26Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '20000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '20000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-04-18T18:31:43Z'
+      - '2025-04-21T17:04:26Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '120000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '118000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-04-18T18:31:42Z'
+      - '2025-04-21T17:04:26Z'
       Request-Id:
       - "<REQUEST_ID>"
       Anthropic-Organization-Id:
@@ -159,11 +160,12 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01CYrsppujUi2ewWR9qC3xPM","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"There''s
-        not much more to add. The two documents are completely identical in every
-        aspect:\n\n- Content\n- Text\n- Formatting\n- Page layout\n- Font\n- Spacing\n-
-        Title\n- Subtitle\n\nThey appear to be perfect duplicates of each other. If
-        you were expecting some difference or nuance between them, I can confirm there
-        are none. Would you like me to elaborate on any specific aspect of these documents?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":5513,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":94}}'
-  recorded_at: Fri, 18 Apr 2025 18:31:43 GMT
+      string: '{"id":"msg_01PpFbNPUhx3oraw7ANNgoXp","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"There''s
+        really nothing more to add. The two documents are 100% identical in every
+        respect. They are perfect copies of each other, with no discernible differences
+        in:\n\n- Text content\n- Formatting\n- Page layout\n- Font\n- Spacing\n- Title\n-
+        Subtitle\n- Lorem ipsum text\n\nIf you were expecting me to find some subtle
+        difference, I can confidently say there are none. These are completely identical
+        documents."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":5515,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":97}}'
+  recorded_at: Mon, 21 Apr 2025 17:04:26 GMT
 recorded_with: VCR 6.3.1
