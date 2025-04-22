@@ -12,7 +12,7 @@ permalink: /
   <iframe src="https://ghbtns.com/github-btn.html?user=crmne&repo=ruby_llm&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub" style="vertical-align: middle; display: inline-block;"></iframe>
 </div>
 
-A delightful Ruby way to work with AI through a unified interface to OpenAI, Anthropic, Google, AWS Bedrock Anthropic, and DeepSeek.
+A delightful Ruby way to work with AI through a unified interface to OpenAI, Anthropic, Google, AWS Bedrock Anthropic, OpenRouter, and DeepSeek.
 {: .fs-6 .fw-300 }
 
 
@@ -28,6 +28,10 @@ A delightful Ruby way to work with AI through a unified interface to OpenAI, Ant
   <div>
     <img src="https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/bedrock-color.svg" alt="Bedrock" height="40">
     <img src="https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/bedrock-text.svg" alt="Bedrock" height="40" width="120">
+  </div>
+  <div>
+    <img src="https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/openrouter.svg" alt="OpenRouter" height="40">
+    <img src="https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/openrouter-text.svg" alt="OpenRouter" height="40" width="120">
   </div>
   <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg" alt="DeepSeek" height="40" width="120">
 </div>
@@ -52,7 +56,7 @@ RubyLLM fixes all that. One beautiful API for everything. One consistent format.
 
 ## Features
 
-- 💬 **Chat** with OpenAI, Anthropic, Gemini, AWS Bedrock Anthropic, and DeepSeek models
+- 💬 **Chat** with OpenAI, Anthropic, Gemini, AWS Bedrock Anthropic, OpenRouter, and DeepSeek models
 - 👁️ **Vision and Audio** understanding
 - 📄 **PDF Analysis** for analyzing documents
 - 🖼️ **Image generation** with DALL-E and other providers

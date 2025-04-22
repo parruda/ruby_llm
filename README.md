@@ -12,6 +12,9 @@ A delightful Ruby way to work with AI. No configuration madness, no complex call
   <img src="https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/bedrock-color.svg" alt="Bedrock" height="40">
   <img src="https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/bedrock-text.svg" alt="Bedrock" height="40" width="120">
   &nbsp;&nbsp;
+  <img src="https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/openrouter.svg" alt="OpenRouter" height="40">
+  <img src="https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/openrouter-text.svg" alt="OpenRouter" height="40" width="120">
+  &nbsp;&nbsp;
   <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg" alt="DeepSeek" height="40" width="120">
 </div>
 
@@ -30,7 +33,7 @@ RubyLLM fixes all that. One beautiful API for everything. One consistent format.
 
 ## Features
 
-- 💬 **Chat** with OpenAI, Anthropic, Gemini, AWS Bedrock Anthropic, and DeepSeek models
+- 💬 **Chat** with OpenAI, Anthropic, Gemini, AWS Bedrock Anthropic, OpenRouter, and DeepSeek models
 - 👁️ **Vision and Audio** understanding
 - 📄 **PDF Analysis** for analyzing documents
 - 🖼️ **Image generation** with DALL-E and other providers
