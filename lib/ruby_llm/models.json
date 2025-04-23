@@ -165,8 +165,7 @@
       ],
       "response_streaming_supported": true,
       "input_modalities": [
-        "TEXT",
-        "IMAGE"
+        "TEXT"
       ],
       "output_modalities": [
         "TEXT"
@@ -1597,7 +1596,8 @@
       "output_token_limit": 8192,
       "supported_generation_methods": [
         "generateContent",
-        "countTokens"
+        "countTokens",
+        "createCachedContent"
       ]
     }
   },
@@ -1622,7 +1622,8 @@
       "output_token_limit": 8192,
       "supported_generation_methods": [
         "generateContent",
-        "countTokens"
+        "countTokens",
+        "createCachedContent"
       ]
     }
   },
@@ -1647,7 +1648,8 @@
       "output_token_limit": 8192,
       "supported_generation_methods": [
         "generateContent",
-        "countTokens"
+        "countTokens",
+        "createCachedContent"
       ]
     }
   },
@@ -1672,7 +1674,8 @@
       "output_token_limit": 8192,
       "supported_generation_methods": [
         "generateContent",
-        "countTokens"
+        "countTokens",
+        "createCachedContent"
       ]
     }
   },
@@ -1704,7 +1707,7 @@
   {
     "id": "gemini-2.0-flash-thinking-exp",
     "created_at": null,
-    "display_name": "Gemini 2.0 Flash Thinking Experimental 01-21",
+    "display_name": "Gemini 2.5 Flash Preview 04-17",
     "provider": "gemini",
     "context_window": 1048576,
     "max_tokens": 65536,
@@ -1716,20 +1719,21 @@
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
-      "version": "2.0-exp-01-21",
-      "description": "Experimental release (January 21st, 2025) of Gemini 2.0 Flash Thinking",
+      "version": "2.5-preview-04-17",
+      "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
       "input_token_limit": 1048576,
       "output_token_limit": 65536,
       "supported_generation_methods": [
         "generateContent",
-        "countTokens"
+        "countTokens",
+        "createCachedContent"
       ]
     }
   },
   {
     "id": "gemini-2.0-flash-thinking-exp-01-21",
     "created_at": null,
-    "display_name": "Gemini 2.0 Flash Thinking Experimental 01-21",
+    "display_name": "Gemini 2.5 Flash Preview 04-17",
     "provider": "gemini",
     "context_window": 1048576,
     "max_tokens": 65536,
@@ -1741,20 +1745,21 @@
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
-      "version": "2.0-exp-01-21",
-      "description": "Experimental release (January 21st, 2025) of Gemini 2.0 Flash Thinking",
+      "version": "2.5-preview-04-17",
+      "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
       "input_token_limit": 1048576,
       "output_token_limit": 65536,
       "supported_generation_methods": [
         "generateContent",
-        "countTokens"
+        "countTokens",
+        "createCachedContent"
       ]
     }
   },
   {
     "id": "gemini-2.0-flash-thinking-exp-1219",
     "created_at": null,
-    "display_name": "Gemini 2.0 Flash Thinking Experimental",
+    "display_name": "Gemini 2.5 Flash Preview 04-17",
     "provider": "gemini",
     "context_window": 1048576,
     "max_tokens": 65536,
@@ -1766,13 +1771,14 @@
     "input_price_per_million": 0.1,
     "output_price_per_million": 0.4,
     "metadata": {
-      "version": "2.0",
-      "description": "Gemini 2.0 Flash Thinking Experimental",
+      "version": "2.5-preview-04-17",
+      "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
       "input_token_limit": 1048576,
       "output_token_limit": 65536,
       "supported_generation_methods": [
         "generateContent",
-        "countTokens"
+        "countTokens",
+        "createCachedContent"
       ]
     }
   },
@@ -7235,94 +7241,6 @@
     }
   },
   {
-    "id": "google/gemini-2.0-flash-thinking-exp-1219:free",
-    "created_at": "2024-12-20T00:13:46+01:00",
-    "display_name": "Google: Gemini 2.0 Flash Thinking Experimental (free)",
-    "provider": "openrouter",
-    "context_window": 40000,
-    "max_tokens": 8000,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": true,
-    "supports_functions": true,
-    "supports_json_mode": true,
-    "input_price_per_million": 0.0,
-    "output_price_per_million": 0.0,
-    "metadata": {
-      "object": null,
-      "description": "Gemini 2.0 Flash Thinking Mode is an experimental model that's trained to generate the \"thinking process\" the model goes through as part of its response. As a result, Thinking Mode is capable of stronger reasoning capabilities in its responses than the [base Gemini 2.0 Flash model](/google/gemini-2.0-flash-exp).",
-      "architecture": {
-        "modality": "text+image->text",
-        "input_modalities": [
-          "text",
-          "image"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Gemini",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 40000,
-        "max_completion_tokens": 8000,
-        "is_moderated": false
-      }
-    }
-  },
-  {
-    "id": "google/gemini-2.0-flash-thinking-exp:free",
-    "created_at": "2025-01-22T13:11:39+01:00",
-    "display_name": "Google: Gemini 2.0 Flash Thinking Experimental 01-21 (free)",
-    "provider": "openrouter",
-    "context_window": 1048576,
-    "max_tokens": 65536,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": true,
-    "supports_functions": true,
-    "supports_json_mode": true,
-    "input_price_per_million": 0.0,
-    "output_price_per_million": 0.0,
-    "metadata": {
-      "object": null,
-      "description": "Gemini 2.0 Flash Thinking Experimental (01-21) is a snapshot of Gemini 2.0 Flash Thinking Experimental.\n\nGemini 2.0 Flash Thinking Mode is an experimental model that's trained to generate the \"thinking process\" the model goes through as part of its response. As a result, Thinking Mode is capable of stronger reasoning capabilities in its responses than the [base Gemini 2.0 Flash model](/google/gemini-2.0-flash-exp).",
-      "architecture": {
-        "modality": "text+image->text",
-        "input_modalities": [
-          "text",
-          "image"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Gemini",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 1048576,
-        "max_completion_tokens": 65536,
-        "is_moderated": false
-      }
-    }
-  },
-  {
     "id": "google/gemini-2.5-flash-preview",
     "created_at": "2025-04-17T20:31:07+02:00",
     "display_name": "Google: Gemini 2.5 Flash Preview",
@@ -7631,49 +7549,6 @@
       },
       "top_provider": {
         "context_length": 1000000,
-        "max_completion_tokens": 8192,
-        "is_moderated": false
-      }
-    }
-  },
-  {
-    "id": "google/gemini-pro",
-    "created_at": "2023-12-13T01:00:00+01:00",
-    "display_name": "Google: Gemini Pro 1.0",
-    "provider": "openrouter",
-    "context_window": 32760,
-    "max_tokens": 8192,
-    "type": "chat",
-    "family": "other",
-    "supports_vision": false,
-    "supports_functions": true,
-    "supports_json_mode": true,
-    "input_price_per_million": 0.5,
-    "output_price_per_million": 1.5,
-    "metadata": {
-      "object": null,
-      "description": "Google's flagship text generation model. Designed to handle natural language tasks, multiturn text and code chat, and code generation.\n\nSee the benchmarks and prompting guidelines from [Deepmind](https://deepmind.google/technologies/gemini/).\n\nUsage of Gemini is subject to Google's [Gemini Terms of Use](https://ai.google.dev/terms).",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Gemini",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.0000005",
-        "completion": "0.0000015",
-        "request": "0",
-        "image": "0.0025",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 32760,
         "max_completion_tokens": 8192,
         "is_moderated": false
       }
@@ -11229,8 +11104,8 @@
     "created_at": "2025-03-17T20:15:37+01:00",
     "display_name": "Mistral: Mistral Small 3.1 24B",
     "provider": "openrouter",
-    "context_window": 32768,
-    "max_tokens": null,
+    "context_window": 128000,
+    "max_tokens": 128000,
     "type": "chat",
     "family": "other",
     "supports_vision": true,
@@ -11257,13 +11132,13 @@
         "prompt": "0.0000001",
         "completion": "0.0000003",
         "request": "0",
-        "image": "0.0009264",
+        "image": "0.000926",
         "web_search": "0",
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": null,
+        "context_length": 128000,
+        "max_completion_tokens": 128000,
         "is_moderated": false
       }
     }
@@ -13538,7 +13413,7 @@
     "max_tokens": 16384,
     "type": "chat",
     "family": "other",
-    "supports_vision": true,
+    "supports_vision": false,
     "supports_functions": true,
     "supports_json_mode": true,
     "input_price_per_million": 0.15,
@@ -13547,10 +13422,9 @@
       "object": null,
       "description": "GPT-4o mini Search Preview is a specialized model for web search in Chat Completions. It is trained to understand and execute web search queries.",
       "architecture": {
-        "modality": "text+image->text",
+        "modality": "text->text",
         "input_modalities": [
-          "text",
-          "image"
+          "text"
         ],
         "output_modalities": [
           "text"
@@ -13582,7 +13456,7 @@
     "max_tokens": 16384,
     "type": "chat",
     "family": "other",
-    "supports_vision": true,
+    "supports_vision": false,
     "supports_functions": true,
     "supports_json_mode": true,
     "input_price_per_million": 2.5,
@@ -13591,10 +13465,9 @@
       "object": null,
       "description": "GPT-4o Search Previewis a specialized model for web search in Chat Completions. It is trained to understand and execute web search queries.",
       "architecture": {
-        "modality": "text+image->text",
+        "modality": "text->text",
         "input_modalities": [
-          "text",
-          "image"
+          "text"
         ],
         "output_modalities": [
           "text"

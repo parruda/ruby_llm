@@ -58,10 +58,20 @@ class ModelUpdater # rubocop:disable Style/Documentation
     RubyLLM::Provider.providers.each_key do |sym|
       name = sym.to_s.capitalize
       count = provider_counts[sym.to_s] || 0
-      status = RubyLLM::Provider.providers[sym].configured? ? '(OK)' : '(SKIP)'
+      status = status(sym)
       puts "  #{name}: #{count} models #{status}"
     end
 
     puts 'Refresh complete.'
+  end
+
+  def status(provider_sym)
+    if RubyLLM::Provider.providers[provider_sym].local?
+      ' (LOCAL - SKIP)'
+    elsif RubyLLM::Provider.providers[provider_sym].configured?
+      ' (OK)'
+    else
+      ' (NOT CONFIGURED)'
+    end
   end
 end

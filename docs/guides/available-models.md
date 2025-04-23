@@ -46,10 +46,10 @@ For more information about working with models, see the [Working with Models](/g
 ## Models by Type
 {: .d-inline-block }
 
-Last updated: 2025-04-22
+Last updated: 2025-04-23
 {: .label .label-green }
 
-### Chat Models (443)
+### Chat Models (440)
 
 | ID | Type | Name | Provider | Context | MaxTok | Family | In$/M | Out$/M |
 | :-- | :-- | :-- | :-- | --: | --: | :-- | --: | --: |
@@ -117,9 +117,9 @@ Last updated: 2025-04-22
 | gemini-2.0-flash-lite-preview | chat | Gemini 2.0 Flash-Lite Preview | gemini | 1048576 | 8192 | gemini20_flash_lite | 0.08 | 0.30 |
 | gemini-2.0-flash-lite-preview-02-05 | chat | Gemini 2.0 Flash-Lite Preview 02-05 | gemini | 1048576 | 8192 | gemini20_flash_lite | 0.08 | 0.30 |
 | gemini-2.0-flash-live-001 | chat | Gemini 2.0 Flash 001 | gemini | 131072 | 8192 | gemini20_flash | 0.10 | 0.40 |
-| gemini-2.0-flash-thinking-exp | chat | Gemini 2.0 Flash Thinking Experimental 01-21 | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
-| gemini-2.0-flash-thinking-exp-01-21 | chat | Gemini 2.0 Flash Thinking Experimental 01-21 | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
-| gemini-2.0-flash-thinking-exp-1219 | chat | Gemini 2.0 Flash Thinking Experimental | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
+| gemini-2.0-flash-thinking-exp | chat | Gemini 2.5 Flash Preview 04-17 | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
+| gemini-2.0-flash-thinking-exp-01-21 | chat | Gemini 2.5 Flash Preview 04-17 | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
+| gemini-2.0-flash-thinking-exp-1219 | chat | Gemini 2.5 Flash Preview 04-17 | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
 | gemini-2.0-pro-exp | chat | Gemini 2.0 Pro Experimental | gemini | 1048576 | 65536 | other | 0.08 | 0.30 |
 | gemini-2.0-pro-exp-02-05 | chat | Gemini 2.0 Pro Experimental 02-05 | gemini | 1048576 | 65536 | other | 0.08 | 0.30 |
 | gemini-2.5-flash-preview-04-17 | chat | Gemini 2.5 Flash Preview 04-17 | gemini | 1048576 | 65536 | other | 0.08 | 0.30 |
@@ -274,8 +274,6 @@ Last updated: 2025-04-22
 | google/gemini-2.0-flash-001 | chat | Google: Gemini 2.0 Flash | openrouter | 1000000 | 8192 | other | 0.10 | 0.40 |
 | google/gemini-2.0-flash-exp:free | chat | Google: Gemini 2.0 Flash Experimental (free) | openrouter | 1048576 | 8192 | other | 0.00 | 0.00 |
 | google/gemini-2.0-flash-lite-001 | chat | Google: Gemini 2.0 Flash Lite | openrouter | 1048576 | 8192 | other | 0.08 | 0.30 |
-| google/gemini-2.0-flash-thinking-exp-1219:free | chat | Google: Gemini 2.0 Flash Thinking Experimental (free) | openrouter | 40000 | 8000 | other | 0.00 | 0.00 |
-| google/gemini-2.0-flash-thinking-exp:free | chat | Google: Gemini 2.0 Flash Thinking Experimental 01-21 (free) | openrouter | 1048576 | 65536 | other | 0.00 | 0.00 |
 | google/gemini-2.5-flash-preview | chat | Google: Gemini 2.5 Flash Preview | openrouter | 1048576 | 65535 | other | 0.15 | 0.60 |
 | google/gemini-2.5-flash-preview:thinking | chat | Google: Gemini 2.5 Flash Preview (thinking) | openrouter | 1048576 | 65535 | other | 0.15 | 3.50 |
 | google/gemini-2.5-pro-exp-03-25:free | chat | Google: Gemini 2.5 Pro Experimental (free) | openrouter | 1000000 | 65535 | other | 0.00 | 0.00 |
@@ -283,7 +281,6 @@ Last updated: 2025-04-22
 | google/gemini-flash-1.5 | chat | Google: Gemini 1.5 Flash  | openrouter | 1000000 | 8192 | other | 0.08 | 0.30 |
 | google/gemini-flash-1.5-8b | chat | Google: Gemini 1.5 Flash 8B | openrouter | 1000000 | 8192 | other | 0.04 | 0.15 |
 | google/gemini-flash-1.5-8b-exp | chat | Google: Gemini 1.5 Flash 8B Experimental | openrouter | 1000000 | 8192 | other | 0.00 | 0.00 |
-| google/gemini-pro | chat | Google: Gemini Pro 1.0 | openrouter | 32760 | 8192 | other | 0.50 | 1.50 |
 | google/gemini-pro-1.5 | chat | Google: Gemini 1.5 Pro | openrouter | 2000000 | 8192 | other | 1.25 | 5.00 |
 | google/gemini-pro-vision | chat | Google: Gemini Pro Vision 1.0 | openrouter | 16384 | 2048 | other | 0.50 | 1.50 |
 | google/gemma-2-27b-it | chat | Google: Gemma 2 27B | openrouter | 8192 | 2048 | other | 0.80 | 0.80 |
@@ -366,7 +363,7 @@ Last updated: 2025-04-22
 | mistralai/mistral-small | chat | Mistral Small | openrouter | 32768 |  | other | 0.20 | 0.60 |
 | mistralai/mistral-small-24b-instruct-2501 | chat | Mistral: Mistral Small 3 | openrouter | 32768 | 16384 | other | 0.07 | 0.14 |
 | mistralai/mistral-small-24b-instruct-2501:free | chat | Mistral: Mistral Small 3 (free) | openrouter | 32768 |  | other | 0.00 | 0.00 |
-| mistralai/mistral-small-3.1-24b-instruct | chat | Mistral: Mistral Small 3.1 24B | openrouter | 32768 |  | other | 0.10 | 0.30 |
+| mistralai/mistral-small-3.1-24b-instruct | chat | Mistral: Mistral Small 3.1 24B | openrouter | 128000 | 128000 | other | 0.10 | 0.30 |
 | mistralai/mistral-small-3.1-24b-instruct:free | chat | Mistral: Mistral Small 3.1 24B (free) | openrouter | 96000 | 96000 | other | 0.00 | 0.00 |
 | mistralai/mistral-tiny | chat | Mistral Tiny | openrouter | 32768 |  | other | 0.25 | 0.25 |
 | mistralai/mixtral-8x22b-instruct | chat | Mistral: Mixtral 8x22B Instruct | openrouter | 65536 |  | other | 0.90 | 0.90 |
@@ -661,9 +658,9 @@ Last updated: 2025-04-22
 | gemini-2.0-flash-lite-preview | chat | Gemini 2.0 Flash-Lite Preview | gemini | 1048576 | 8192 | gemini20_flash_lite | 0.08 | 0.30 |
 | gemini-2.0-flash-lite-preview-02-05 | chat | Gemini 2.0 Flash-Lite Preview 02-05 | gemini | 1048576 | 8192 | gemini20_flash_lite | 0.08 | 0.30 |
 | gemini-2.0-flash-live-001 | chat | Gemini 2.0 Flash 001 | gemini | 131072 | 8192 | gemini20_flash | 0.10 | 0.40 |
-| gemini-2.0-flash-thinking-exp | chat | Gemini 2.0 Flash Thinking Experimental 01-21 | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
-| gemini-2.0-flash-thinking-exp-01-21 | chat | Gemini 2.0 Flash Thinking Experimental 01-21 | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
-| gemini-2.0-flash-thinking-exp-1219 | chat | Gemini 2.0 Flash Thinking Experimental | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
+| gemini-2.0-flash-thinking-exp | chat | Gemini 2.5 Flash Preview 04-17 | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
+| gemini-2.0-flash-thinking-exp-01-21 | chat | Gemini 2.5 Flash Preview 04-17 | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
+| gemini-2.0-flash-thinking-exp-1219 | chat | Gemini 2.5 Flash Preview 04-17 | gemini | 1048576 | 65536 | gemini20_flash | 0.10 | 0.40 |
 | gemini-2.0-pro-exp | chat | Gemini 2.0 Pro Experimental | gemini | 1048576 | 65536 | other | 0.08 | 0.30 |
 | gemini-2.0-pro-exp-02-05 | chat | Gemini 2.0 Pro Experimental 02-05 | gemini | 1048576 | 65536 | other | 0.08 | 0.30 |
 | gemini-2.5-flash-preview-04-17 | chat | Gemini 2.5 Flash Preview 04-17 | gemini | 1048576 | 65536 | other | 0.08 | 0.30 |
@@ -724,7 +721,7 @@ Last updated: 2025-04-22
 | anthropic.claude-v2:1:200k | chat | Claude | bedrock | 200000 | 4096 | claude2 | 8.00 | 24.00 |
 | us.anthropic.claude-3-7-sonnet-20250219-v1:0 | chat | Claude 3.7 Sonnet | bedrock | 200000 | 4096 | claude3_sonnet | 3.00 | 15.00 |
 
-### Openrouter Models (305)
+### Openrouter Models (302)
 
   | ID | Type | Name | Provider | Context | MaxTok | Family | In$/M | Out$/M |
 | :-- | :-- | :-- | :-- | --: | --: | :-- | --: | --: |
@@ -811,8 +808,6 @@ Last updated: 2025-04-22
 | google/gemini-2.0-flash-001 | chat | Google: Gemini 2.0 Flash | openrouter | 1000000 | 8192 | other | 0.10 | 0.40 |
 | google/gemini-2.0-flash-exp:free | chat | Google: Gemini 2.0 Flash Experimental (free) | openrouter | 1048576 | 8192 | other | 0.00 | 0.00 |
 | google/gemini-2.0-flash-lite-001 | chat | Google: Gemini 2.0 Flash Lite | openrouter | 1048576 | 8192 | other | 0.08 | 0.30 |
-| google/gemini-2.0-flash-thinking-exp-1219:free | chat | Google: Gemini 2.0 Flash Thinking Experimental (free) | openrouter | 40000 | 8000 | other | 0.00 | 0.00 |
-| google/gemini-2.0-flash-thinking-exp:free | chat | Google: Gemini 2.0 Flash Thinking Experimental 01-21 (free) | openrouter | 1048576 | 65536 | other | 0.00 | 0.00 |
 | google/gemini-2.5-flash-preview | chat | Google: Gemini 2.5 Flash Preview | openrouter | 1048576 | 65535 | other | 0.15 | 0.60 |
 | google/gemini-2.5-flash-preview:thinking | chat | Google: Gemini 2.5 Flash Preview (thinking) | openrouter | 1048576 | 65535 | other | 0.15 | 3.50 |
 | google/gemini-2.5-pro-exp-03-25:free | chat | Google: Gemini 2.5 Pro Experimental (free) | openrouter | 1000000 | 65535 | other | 0.00 | 0.00 |
@@ -820,7 +815,6 @@ Last updated: 2025-04-22
 | google/gemini-flash-1.5 | chat | Google: Gemini 1.5 Flash  | openrouter | 1000000 | 8192 | other | 0.08 | 0.30 |
 | google/gemini-flash-1.5-8b | chat | Google: Gemini 1.5 Flash 8B | openrouter | 1000000 | 8192 | other | 0.04 | 0.15 |
 | google/gemini-flash-1.5-8b-exp | chat | Google: Gemini 1.5 Flash 8B Experimental | openrouter | 1000000 | 8192 | other | 0.00 | 0.00 |
-| google/gemini-pro | chat | Google: Gemini Pro 1.0 | openrouter | 32760 | 8192 | other | 0.50 | 1.50 |
 | google/gemini-pro-1.5 | chat | Google: Gemini 1.5 Pro | openrouter | 2000000 | 8192 | other | 1.25 | 5.00 |
 | google/gemini-pro-vision | chat | Google: Gemini Pro Vision 1.0 | openrouter | 16384 | 2048 | other | 0.50 | 1.50 |
 | google/gemma-2-27b-it | chat | Google: Gemma 2 27B | openrouter | 8192 | 2048 | other | 0.80 | 0.80 |
@@ -903,7 +897,7 @@ Last updated: 2025-04-22
 | mistralai/mistral-small | chat | Mistral Small | openrouter | 32768 |  | other | 0.20 | 0.60 |
 | mistralai/mistral-small-24b-instruct-2501 | chat | Mistral: Mistral Small 3 | openrouter | 32768 | 16384 | other | 0.07 | 0.14 |
 | mistralai/mistral-small-24b-instruct-2501:free | chat | Mistral: Mistral Small 3 (free) | openrouter | 32768 |  | other | 0.00 | 0.00 |
-| mistralai/mistral-small-3.1-24b-instruct | chat | Mistral: Mistral Small 3.1 24B | openrouter | 32768 |  | other | 0.10 | 0.30 |
+| mistralai/mistral-small-3.1-24b-instruct | chat | Mistral: Mistral Small 3.1 24B | openrouter | 128000 | 128000 | other | 0.10 | 0.30 |
 | mistralai/mistral-small-3.1-24b-instruct:free | chat | Mistral: Mistral Small 3.1 24B (free) | openrouter | 96000 | 96000 | other | 0.00 | 0.00 |
 | mistralai/mistral-tiny | chat | Mistral Tiny | openrouter | 32768 |  | other | 0.25 | 0.25 |
 | mistralai/mixtral-8x22b-instruct | chat | Mistral: Mixtral 8x22B Instruct | openrouter | 65536 |  | other | 0.90 | 0.90 |
