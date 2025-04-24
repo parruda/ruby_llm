@@ -46,10 +46,10 @@ For more information about working with models, see the [Working with Models](/g
 ## Models by Type
 {: .d-inline-block }
 
-Last updated: 2025-04-23
+Last updated: 2025-04-24
 {: .label .label-green }
 
-### Chat Models (440)
+### Chat Models (439)
 
 | ID | Type | Name | Provider | Context | MaxTok | Family | In$/M | Out$/M |
 | :-- | :-- | :-- | :-- | --: | --: | :-- | --: | --: |
@@ -357,7 +357,7 @@ Last updated: 2025-04-23
 | mistralai/mistral-large-2407 | chat | Mistral Large 2407 | openrouter | 131072 |  | other | 2.00 | 6.00 |
 | mistralai/mistral-large-2411 | chat | Mistral Large 2411 | openrouter | 131072 |  | other | 2.00 | 6.00 |
 | mistralai/mistral-medium | chat | Mistral Medium | openrouter | 32768 |  | other | 2.75 | 8.10 |
-| mistralai/mistral-nemo | chat | Mistral: Mistral Nemo | openrouter | 131072 | 16384 | other | 0.04 | 0.08 |
+| mistralai/mistral-nemo | chat | Mistral: Mistral Nemo | openrouter | 98304 | 49152 | other | 0.03 | 0.07 |
 | mistralai/mistral-nemo:free | chat | Mistral: Mistral Nemo (free) | openrouter | 128000 | 128000 | other | 0.00 | 0.00 |
 | mistralai/mistral-saba | chat | Mistral: Saba | openrouter | 32768 |  | other | 0.20 | 0.60 |
 | mistralai/mistral-small | chat | Mistral Small | openrouter | 32768 |  | other | 0.20 | 0.60 |
@@ -391,7 +391,6 @@ Last updated: 2025-04-23
 | nvidia/llama-3.1-nemotron-ultra-253b-v1:free | chat | NVIDIA: Llama 3.1 Nemotron Ultra 253B v1 (free) | openrouter | 131072 |  | other | 0.00 | 0.00 |
 | nvidia/llama-3.3-nemotron-super-49b-v1:free | chat | NVIDIA: Llama 3.3 Nemotron Super 49B v1 (free) | openrouter | 131072 |  | other | 0.00 | 0.00 |
 | open-r1/olympiccoder-32b:free | chat | OlympicCoder 32B (free) | openrouter | 32768 |  | other | 0.00 | 0.00 |
-| open-r1/olympiccoder-7b:free | chat | OlympicCoder 7B (free) | openrouter | 32768 |  | other | 0.00 | 0.00 |
 | openai/chatgpt-4o-latest | chat | OpenAI: ChatGPT-4o | openrouter | 128000 | 16384 | other | 5.00 | 15.00 |
 | openai/gpt-3.5-turbo | chat | OpenAI: GPT-3.5 Turbo | openrouter | 16385 | 4096 | other | 0.50 | 1.50 |
 | openai/gpt-3.5-turbo-0125 | chat | OpenAI: GPT-3.5 Turbo 16k | openrouter | 16385 | 4096 | other | 0.50 | 1.50 |
@@ -721,7 +720,7 @@ Last updated: 2025-04-23
 | anthropic.claude-v2:1:200k | chat | Claude | bedrock | 200000 | 4096 | claude2 | 8.00 | 24.00 |
 | us.anthropic.claude-3-7-sonnet-20250219-v1:0 | chat | Claude 3.7 Sonnet | bedrock | 200000 | 4096 | claude3_sonnet | 3.00 | 15.00 |
 
-### Openrouter Models (302)
+### Openrouter Models (301)
 
   | ID | Type | Name | Provider | Context | MaxTok | Family | In$/M | Out$/M |
 | :-- | :-- | :-- | :-- | --: | --: | :-- | --: | --: |
@@ -891,7 +890,7 @@ Last updated: 2025-04-23
 | mistralai/mistral-large-2407 | chat | Mistral Large 2407 | openrouter | 131072 |  | other | 2.00 | 6.00 |
 | mistralai/mistral-large-2411 | chat | Mistral Large 2411 | openrouter | 131072 |  | other | 2.00 | 6.00 |
 | mistralai/mistral-medium | chat | Mistral Medium | openrouter | 32768 |  | other | 2.75 | 8.10 |
-| mistralai/mistral-nemo | chat | Mistral: Mistral Nemo | openrouter | 131072 | 16384 | other | 0.04 | 0.08 |
+| mistralai/mistral-nemo | chat | Mistral: Mistral Nemo | openrouter | 98304 | 49152 | other | 0.03 | 0.07 |
 | mistralai/mistral-nemo:free | chat | Mistral: Mistral Nemo (free) | openrouter | 128000 | 128000 | other | 0.00 | 0.00 |
 | mistralai/mistral-saba | chat | Mistral: Saba | openrouter | 32768 |  | other | 0.20 | 0.60 |
 | mistralai/mistral-small | chat | Mistral Small | openrouter | 32768 |  | other | 0.20 | 0.60 |
@@ -925,7 +924,6 @@ Last updated: 2025-04-23
 | nvidia/llama-3.1-nemotron-ultra-253b-v1:free | chat | NVIDIA: Llama 3.1 Nemotron Ultra 253B v1 (free) | openrouter | 131072 |  | other | 0.00 | 0.00 |
 | nvidia/llama-3.3-nemotron-super-49b-v1:free | chat | NVIDIA: Llama 3.3 Nemotron Super 49B v1 (free) | openrouter | 131072 |  | other | 0.00 | 0.00 |
 | open-r1/olympiccoder-32b:free | chat | OlympicCoder 32B (free) | openrouter | 32768 |  | other | 0.00 | 0.00 |
-| open-r1/olympiccoder-7b:free | chat | OlympicCoder 7B (free) | openrouter | 32768 |  | other | 0.00 | 0.00 |
 | openai/chatgpt-4o-latest | chat | OpenAI: ChatGPT-4o | openrouter | 128000 | 16384 | other | 5.00 | 15.00 |
 | openai/gpt-3.5-turbo | chat | OpenAI: GPT-3.5 Turbo | openrouter | 16385 | 4096 | other | 0.50 | 1.50 |
 | openai/gpt-3.5-turbo-0125 | chat | OpenAI: GPT-3.5 Turbo 16k | openrouter | 16385 | 4096 | other | 0.50 | 1.50 |
