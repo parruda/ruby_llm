@@ -5619,6 +5619,49 @@
     }
   },
   {
+    "id": "arcee-ai/arcee-blitz",
+    "created_at": "2025-05-05T20:35:00+02:00",
+    "display_name": "Arcee AI: Arcee Blitz",
+    "provider": "openrouter",
+    "context_window": 32768,
+    "max_tokens": null,
+    "type": "chat",
+    "family": "other",
+    "supports_vision": false,
+    "supports_functions": true,
+    "supports_json_mode": true,
+    "input_price_per_million": 0.44999999999999996,
+    "output_price_per_million": 0.75,
+    "metadata": {
+      "object": null,
+      "description": "Arcee-Blitz (24B) is a 24B-parameter instruct model built on Mistral-Small-24B and distilled from DeepSeek-V3. It emphasizes speed and practicality, with strong performance across general tasks and notable gains in world knowledge benchmarks. The model uses DeepSeek logits as pretraining targets and underwent additional fine-tuning to improve instruction-following and reasoning capabilities.\n\nBenchmarks show consistent improvements over Mistral-Small-3, particularly on MMLU-Pro, Math, and MixEval. Arcee-Blitz supports a 32k context length and is released under the Apache 2.0 license.",
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000045",
+        "completion": "0.00000075",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 32768,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      }
+    }
+  },
+  {
     "id": "arliai/qwq-32b-arliai-rpr-v1:free",
     "created_at": "2025-04-13T16:53:02+02:00",
     "display_name": "ArliAI: QwQ 32B RpR v1 (free)",
@@ -14236,7 +14279,7 @@
     "max_tokens": null,
     "type": "chat",
     "family": "other",
-    "supports_vision": false,
+    "supports_vision": true,
     "supports_functions": true,
     "supports_json_mode": true,
     "input_price_per_million": 1.0,
@@ -14245,9 +14288,10 @@
       "object": null,
       "description": "Sonar is lightweight, affordable, fast, and simple to use — now featuring citations and the ability to customize sources. It is designed for companies seeking to integrate lightweight question-and-answer features optimized for speed.",
       "architecture": {
-        "modality": "text->text",
+        "modality": "text+image->text",
         "input_modalities": [
-          "text"
+          "text",
+          "image"
         ],
         "output_modalities": [
           "text"
@@ -14322,7 +14366,7 @@
     "max_tokens": 8000,
     "type": "chat",
     "family": "other",
-    "supports_vision": false,
+    "supports_vision": true,
     "supports_functions": true,
     "supports_json_mode": true,
     "input_price_per_million": 3.0,
@@ -14331,9 +14375,10 @@
       "object": null,
       "description": "Note: Sonar Pro pricing includes Perplexity search pricing. See [details here](https://docs.perplexity.ai/guides/pricing#detailed-pricing-breakdown-for-sonar-reasoning-pro-and-sonar-pro)\n\nFor enterprises seeking more advanced capabilities, the Sonar Pro API can handle in-depth, multi-step queries with added extensibility, like double the number of citations per search as Sonar on average. Plus, with a larger context window, it can handle longer and more nuanced searches and follow-up questions. ",
       "architecture": {
-        "modality": "text->text",
+        "modality": "text+image->text",
         "input_modalities": [
-          "text"
+          "text",
+          "image"
         ],
         "output_modalities": [
           "text"
@@ -14408,7 +14453,7 @@
     "max_tokens": null,
     "type": "chat",
     "family": "other",
-    "supports_vision": false,
+    "supports_vision": true,
     "supports_functions": true,
     "supports_json_mode": true,
     "input_price_per_million": 2.0,
@@ -14417,9 +14462,10 @@
       "object": null,
       "description": "Note: Sonar Pro pricing includes Perplexity search pricing. See [details here](https://docs.perplexity.ai/guides/pricing#detailed-pricing-breakdown-for-sonar-reasoning-pro-and-sonar-pro)\n\nSonar Reasoning Pro is a premier reasoning model powered by DeepSeek R1 with Chain of Thought (CoT). Designed for advanced use cases, it supports in-depth, multi-step queries with a larger context window and can surface more citations per search, enabling more comprehensive and extensible responses.",
       "architecture": {
-        "modality": "text->text",
+        "modality": "text+image->text",
         "input_modalities": [
-          "text"
+          "text",
+          "image"
         ],
         "output_modalities": [
           "text"
