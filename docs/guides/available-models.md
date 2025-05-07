@@ -36,6 +36,9 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 2025-05-07
 {: .label .label-green }
 
+{: .warning }
+This page is currently work in progress given the new Parsera integration.
+
 ## Models by Provider
 
 ### Openai (77)

@@ -57,6 +57,9 @@ def generate_models_markdown
     #{Time.now.utc.strftime('%Y-%m-%d')}
     {: .label .label-green }
 
+    {: .warning }
+    This page is currently work in progress given the new Parsera integration.
+
     ## Models by Provider
 
     #{generate_provider_sections}
