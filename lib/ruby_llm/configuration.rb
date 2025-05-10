@@ -13,6 +13,8 @@ module RubyLLM
     # Provider-specific configuration
     attr_accessor :openai_api_key,
                   :openai_api_base,
+                  :openai_organization_id,
+                  :openai_project_id,
                   :anthropic_api_key,
                   :gemini_api_key,
                   :deepseek_api_key,
@@ -56,7 +58,7 @@ module RubyLLM
 
     def inspect
       redacted = lambda do |name, value|
-        if name.match?(/_key|_secret|_token$/)
+        if name.match?(/_id|_key|_secret|_token$/)
           value.nil? ? 'nil' : '[FILTERED]'
         else
           value
