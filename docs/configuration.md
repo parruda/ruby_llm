@@ -120,6 +120,10 @@ end
 This setting redirects requests made with `provider: :openai` to your specified base URL. See the [Working with Models Guide]({% link guides/models.md %}#connecting-to-custom-endpoints--using-unlisted-models) for more details on using custom models with this setting.
 
 ## Optional OpenAI Headers
+{: .d-inline-block }
+
+Coming in v1.3.0
+{: .label .label-yellow }
 
 OpenAI supports additional headers for organization and project management:
 
