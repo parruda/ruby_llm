@@ -1482,15 +1482,6 @@ This page is currently work in progress given the new Parsera integration.
 | xAI: Grok Vision Beta | x-ai/grok-vision-beta | openrouter | 8192 | - | In: $5.00, Out: $15.00 |
 
 
-### Reasoning (3)
-
-| Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
-| :-- | :-- | :-- | --: | --: | :-- |
-| Claude 3.7 Sonnet | us.anthropic.claude-3-7-sonnet-20250219-v1:0 | bedrock | 200000 | 4096 | In: $3.00, Out: $15.00 |
-| O1-Preview | o1-preview | openai | 200000 | 100000 | In: $15.00, Out: $60.00 |
-| O1-Preview 20240912 | o1-preview-2024-09-12 | openai | 200000 | 100000 | In: $15.00, Out: $60.00 |
-
-
 ### Batch Processing (69)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
