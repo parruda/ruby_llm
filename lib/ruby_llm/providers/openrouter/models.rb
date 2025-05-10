@@ -33,7 +33,6 @@ module RubyLLM
               value = model_data.dig('pricing', source_key.to_s).to_f
               pricing[:text_tokens][:standard][target_key] = value * 1_000_000 if value.positive?
             end
-            RubyLLM.logger.debug "Pricing: #{pricing}"
 
             # Convert OpenRouter's supported parameters to our capability format
             capabilities = supported_parameters_to_capabilities(model_data['supported_parameters'])
