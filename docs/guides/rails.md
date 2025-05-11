@@ -110,6 +110,8 @@ class Message < ApplicationRecord
   acts_as_message # Assumes Chat and ToolCall model names
 
   # --- Add your standard Rails model logic below ---
+  # IMPORTANT: Do NOT add "validates :content, presence: true" here.
+  # This will break the assistant message flow. See "Validation Considerations" section.
 end
 
 # app/models/tool_call.rb (Only if using tools)
@@ -120,6 +122,9 @@ class ToolCall < ApplicationRecord
   # --- Add your standard Rails model logic below ---
 end
 ```
+
+{: .warning }
+**Important**: You cannot use `validates :content, presence: true` on your `Message` model with the default approach. The persistence flow relies on initially creating an empty message that gets updated later. See the "Validation Considerations" section for alternatives.
 
 {: .note }
 The `acts_as` helpers primarily handle loading history and saving messages/tool calls related to the chat interaction. Add your application-specific logic (associations, validations, scopes, callbacks) as usual.
@@ -188,6 +193,76 @@ chat_record.with_instructions("You are a concise Ruby expert.", replace: true)
 system_message = chat_record.messages.find_by(role: :system)
 puts system_message.content # => "You are a concise Ruby expert."
 ```
+
+## Validation Considerations
+
+The default `acts_as_chat` persistence flow intentionally creates an empty assistant message record before making the API call. This design choice optimizes for streaming UIs by providing a target DOM ID for real-time updates.
+
+### Dealing with Existing Empty Messages
+
+If you encounter API errors that leave empty messages behind (in older versions of the gem or if something unexpected happens), you can clean them up:
+
+```ruby
+# Delete any empty assistant messages
+Message.where(role: "assistant", content: "").destroy_all
+```
+
+### Alternative: Validation-First Approach
+
+If you need content validations, you can override the default persistence methods:
+
+```ruby
+# app/models/chat.rb
+class Chat < ApplicationRecord
+  acts_as_chat
+
+  # Override the default persistence methods
+  private
+
+  def persist_new_message
+    # Create a new message object but don't save it yet
+    @message = messages.new(role: :assistant)
+  end
+
+  def persist_message_completion(message)
+    return unless message
+
+    # Fill in the attributes and save once we have content
+    @message.assign_attributes(
+      content: message.content,
+      model_id: message.model_id,
+      input_tokens: message.input_tokens,
+      output_tokens: message.output_tokens
+    )
+
+    @message.save!
+
+    # Handle tool calls if present
+    if message.tool_calls.present?
+      message.tool_calls.each_value do |tool_call|
+        attributes = tool_call.to_h
+        attributes[:tool_call_id] = attributes.delete(:id)
+        @message.tool_calls.create!(**attributes)
+      end
+    end
+  end
+end
+
+# app/models/message.rb
+class Message < ApplicationRecord
+  acts_as_message
+
+  # Now you can safely add this validation
+  validates :content, presence: true
+end
+```
+
+With this approach:
+1. The assistant message is only created and saved after receiving a valid API response
+2. This enables content validations
+3. The trade-off is that you lose the ability to target the assistant message DOM element for streaming updates before the API call completes
+
+Choose the approach that best fits your application requirements.
 
 ## Streaming Responses with Hotwire/Turbo
 
