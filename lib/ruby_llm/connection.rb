@@ -42,7 +42,7 @@ module RubyLLM
     def setup_logging(faraday)
       faraday.response :logger, RubyLLM.logger, bodies: true, response: true,
                                                 errors: true, headers: false, log_level: :debug do |logger|
-        logger.filter(%r{"[A-Za-z0-9+/=]{100,}"}, 'data":"[BASE64 DATA]"')
+        logger.filter(%r{[A-Za-z0-9+/=]{100,}}, 'data":"[BASE64 DATA]"')
         logger.filter(/[-\d.e,\s]{100,}/, '[EMBEDDINGS ARRAY]')
       end
     end
