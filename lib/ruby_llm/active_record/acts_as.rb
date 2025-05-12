@@ -3,8 +3,8 @@
 module RubyLLM
   module ActiveRecord
     # Adds chat and message persistence capabilities to ActiveRecord models.
-    # Provides a clean interface for storing chat history and message metadata
-    # in your database.
+    # Provides a clean interface for storing chat history, message metadata,
+    # and attachments in your database.
     module ActsAs
       extend ActiveSupport::Concern
 
@@ -143,11 +143,31 @@ module RubyLLM
         self
       end
 
-      def ask(message, &)
-        message = { role: :user, content: message }
-        messages.create!(**message)
+      def create_user_message(content, with: nil)
+        message_record = messages.create!(
+          role: :user,
+          content: content
+        )
+
+        if with.present?
+          files = Array(with).reject(&:blank?)
+
+          if files.any? && files.first.is_a?(ActionDispatch::Http::UploadedFile)
+            message_record.attachments.attach(files)
+          else
+            attach_files(message_record, process_attachments(with))
+          end
+        end
+
+        message_record
+      end
+
+      def ask(message, with: nil, &)
+        create_user_message(message, with:)
         complete(&)
       end
+
+      alias say ask
 
       def complete(...)
         to_llm.complete(...)
@@ -158,8 +178,6 @@ module RubyLLM
         end
         raise e
       end
-
-      alias say ask
 
       private
 
@@ -197,6 +215,84 @@ module RubyLLM
           attributes[:tool_call_id] = attributes.delete(:id)
           @message.tool_calls.create!(**attributes)
         end
+      end
+
+      def process_attachments(attachments) # rubocop:disable Metrics/PerceivedComplexity
+        return {} if attachments.nil?
+
+        result = {}
+        files = Array(attachments)
+
+        files.each do |file|
+          content_type = if file.respond_to?(:content_type)
+                           file.content_type
+                         elsif file.is_a?(ActiveStorage::Attachment)
+                           file.blob.content_type
+                         else
+                           RubyLLM::MimeTypes.detect_from_path(file.to_s)
+                         end
+
+          if RubyLLM::MimeTypes.image?(content_type)
+            result[:image] ||= []
+            result[:image] << file
+          elsif RubyLLM::MimeTypes.audio?(content_type)
+            result[:audio] ||= []
+            result[:audio] << file
+          else
+            # Default to PDF for unknown types
+            result[:pdf] ||= []
+            result[:pdf] << file
+          end
+        end
+
+        result
+      end
+
+      def attach_files(message, attachments_hash)
+        return unless message.respond_to?(:attachments)
+
+        %i[image audio pdf].each do |type|
+          Array(attachments_hash[type]).each do |file_source|
+            attach_file(message, file_source)
+          end
+        end
+      end
+
+      def attach_file(message, file_source)
+        if file_source.to_s.match?(%r{^https?://})
+          # For URLs, create a special attachment that just stores the URL
+          content_type = RubyLLM::MimeTypes.detect_from_path(file_source.to_s)
+
+          # Create a minimal blob that just stores the URL
+          blob = ActiveStorage::Blob.create_and_upload!(
+            io: StringIO.new('URL Reference'),
+            filename: File.basename(file_source),
+            content_type: content_type,
+            metadata: { original_url: file_source.to_s }
+          )
+          message.attachments.attach(blob)
+        elsif file_source.respond_to?(:read)
+          # Handle various file source types
+          message.attachments.attach(
+            io: file_source,
+            filename: extract_filename(file_source),
+            content_type: RubyLLM::MimeTypes.detect_from_path(extract_filename(file_source))
+          ) # Already a file-like object
+        elsif file_source.is_a?(::ActiveStorage::Attachment) || file_source.is_a?(::ActiveStorage::Blob)
+          # Copy from existing ActiveStorage attachment
+          message.attachments.attach(file_source.blob)
+        else
+          # Local file path
+          message.attachments.attach(
+            io: File.open(file_source),
+            filename: File.basename(file_source),
+            content_type: RubyLLM::MimeTypes.detect_from_path(file_source)
+          )
+        end
+      end
+
+      def extract_filename(file)
+        file.respond_to?(:original_filename) ? file.original_filename : 'attachment'
       end
     end
 
@@ -238,8 +334,55 @@ module RubyLLM
         parent_tool_call&.tool_call_id
       end
 
-      def extract_content
-        content
+      def extract_content # rubocop:disable Metrics/PerceivedComplexity
+        return content unless respond_to?(:attachments) && attachments.attached?
+
+        content_obj = RubyLLM::Content.new(content)
+
+        # We need to keep tempfiles alive for the duration of the API call
+        @_tempfiles = []
+
+        attachments.each do |attachment|
+          attachment_data = if attachment.metadata&.key?('original_url')
+                              attachment.metadata['original_url']
+                            elsif defined?(ActiveJob) && caller.any? { |c| c.include?('active_job') }
+                              # We're in a background job - need to download the data
+                              temp_file = Tempfile.new([File.basename(attachment.filename.to_s, '.*'),
+                                                        File.extname(attachment.filename.to_s)])
+                              temp_file.binmode
+                              temp_file.write(attachment.download)
+                              temp_file.flush
+                              temp_file.rewind
+
+                              # Store the tempfile reference in the instance variable to prevent GC
+                              @_tempfiles << temp_file
+
+                              # Return the file object itself, not just the path
+                              temp_file
+                            else
+                              blob_path_for(attachment)
+                            end
+
+          if RubyLLM::MimeTypes.image?(attachment.content_type)
+            content_obj.add_image(attachment_data)
+          elsif RubyLLM::MimeTypes.audio?(attachment.content_type)
+            content_obj.add_audio(attachment_data)
+          elsif RubyLLM::MimeTypes.pdf?(attachment.content_type)
+            content_obj.add_pdf(attachment_data)
+          end
+        end
+
+        content_obj
+      end
+
+      private
+
+      def blob_path_for(attachment)
+        if Rails.application.routes.url_helpers.respond_to?(:rails_blob_path)
+          Rails.application.routes.url_helpers.rails_blob_path(attachment, only_path: true)
+        else
+          attachment.service_url
+        end
       end
     end
   end

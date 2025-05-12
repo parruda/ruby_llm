@@ -39,7 +39,7 @@ module RubyLLM
         def format_pdf(pdf)
           {
             inline_data: {
-              mime_type: 'application/pdf',
+              mime_type: pdf.mime_type,
               data: pdf.encoded
             }
           }
@@ -48,7 +48,7 @@ module RubyLLM
         def format_audio(audio)
           {
             inline_data: {
-              mime_type: "audio/#{audio.format}",
+              mime_type: audio.mime_type,
               data: audio.encoded
             }
           }

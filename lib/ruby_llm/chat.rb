@@ -31,7 +31,7 @@ module RubyLLM
       }
     end
 
-    def ask(message = nil, with: {}, &)
+    def ask(message = nil, with: nil, &)
       add_message role: :user, content: Content.new(message, with)
       complete(&)
     end

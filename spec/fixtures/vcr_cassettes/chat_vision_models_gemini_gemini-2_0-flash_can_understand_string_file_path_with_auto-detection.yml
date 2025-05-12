@@ -30,7 +30,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 12 May 2025 12:04:23 GMT
+      - Mon, 12 May 2025 12:04:25 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -40,7 +40,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=907
+      - gfet4t7; dur=749
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -54,19 +54,19 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "The image shows a stylized representation of a red ruby gemstone. It is faceted and has a bright, glossy appearance.\n"
+                    "text": "The image appears to be a stylized ruby gemstone. It's red in color, faceted, and has highlights suggesting light reflecting off its surfaces. It is also the official logo for the Ruby programming language.\n"
                   }
                 ],
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.69602531433105463
+              "avgLogprobs": -0.43926811218261719
             }
           ],
           "usageMetadata": {
             "promptTokenCount": 266,
-            "candidatesTokenCount": 25,
-            "totalTokenCount": 291,
+            "candidatesTokenCount": 43,
+            "totalTokenCount": 309,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
@@ -80,11 +80,11 @@ http_interactions:
             "candidatesTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 25
+                "tokenCount": 43
               }
             ]
           },
           "modelVersion": "gemini-2.0-flash"
         }
-  recorded_at: Mon, 12 May 2025 12:04:23 GMT
+  recorded_at: Mon, 12 May 2025 12:04:25 GMT
 recorded_with: VCR 6.3.1

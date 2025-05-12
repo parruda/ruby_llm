@@ -35,6 +35,15 @@ RSpec.describe RubyLLM::Chat do # rubocop:disable RSpec/MultipleMemoizedHelpers
         expect(chat.messages.first.content).to be_a(RubyLLM::Content)
         expect(chat.messages.first.content.attachments.first).to be_a(RubyLLM::Attachments::Image)
       end
+
+      it "#{provider}/#{model} can understand string file path with auto-detection" do # rubocop:disable RSpec/MultipleExpectations
+        chat = RubyLLM.chat(model: model, provider: provider)
+        response = chat.ask('What do you see in this image?', with: image_path)
+
+        expect(response.content).to be_present
+        expect(chat.messages.first.content).to be_a(RubyLLM::Content)
+        expect(chat.messages.first.content.attachments.first).to be_a(RubyLLM::Attachments::Image)
+      end
     end
   end
 
@@ -77,6 +86,20 @@ RSpec.describe RubyLLM::Chat do # rubocop:disable RSpec/MultipleMemoizedHelpers
 
         response = chat.ask 'go on'
         expect(response.content).not_to be_empty
+      end
+
+      it "#{provider}/#{model} can handle array of mixed files with auto-detection" do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
+        chat = RubyLLM.chat(model: model, provider: provider)
+        response = chat.ask('Analyze these files', with: [image_path, pdf_path])
+
+        expect(response.content).to be_present
+        expect(chat.messages.first.content).to be_a(RubyLLM::Content)
+        expect(chat.messages.first.content.attachments.size).to eq(2)
+
+        # Check we have one of each type
+        attachment_types = chat.messages.first.content.attachments.map(&:class)
+        expect(attachment_types).to include(RubyLLM::Attachments::Image)
+        expect(attachment_types).to include(RubyLLM::Attachments::PDF)
       end
     end
   end

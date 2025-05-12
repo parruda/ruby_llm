@@ -67,7 +67,7 @@ module RubyLLM
               type: 'document',
               source: {
                 type: 'base64',
-                media_type: 'application/pdf',
+                media_type: pdf.mime_type,
                 data: pdf.encoded
               }
             }

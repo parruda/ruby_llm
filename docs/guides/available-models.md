@@ -33,7 +33,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 ## Last Updated
 {: .d-inline-block }
 
-2025-05-11
+2025-05-12
 {: .label .label-green }
 
 ## Models by Provider
@@ -321,7 +321,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | DeepSeek: R1 Distill Qwen 14B (free) | deepseek/deepseek-r1-distill-qwen-14b:free | openrouter | 64000 | - | - |
 | DeepSeek: R1 Distill Qwen 32B | deepseek/deepseek-r1-distill-qwen-32b | openrouter | 131072 | 16384 | In: $0.12, Out: $0.18 |
 | DeepSeek: R1 Distill Qwen 32B (free) | deepseek/deepseek-r1-distill-qwen-32b:free | openrouter | 16000 | 16000 | - |
-| Dolphin 2.9.2 Mixtral 8x22B 🐬 | cognitivecomputations/dolphin-mixtral-8x22b | openrouter | 16000 | - | In: $0.90, Out: $0.90 |
+| Dolphin 2.9.2 Mixtral 8x22B 🐬 | cognitivecomputations/dolphin-mixtral-8x22b | openrouter | 16000 | 8192 | In: $0.90, Out: $0.90 |
 | Dolphin3.0 Mistral 24B (free) | cognitivecomputations/dolphin3.0-mistral-24b:free | openrouter | 32768 | - | - |
 | Dolphin3.0 R1 Mistral 24B (free) | cognitivecomputations/dolphin3.0-r1-mistral-24b:free | openrouter | 32768 | - | - |
 | EVA Llama 3.33 70B | eva-unit-01/eva-llama-3.33-70b | openrouter | 16384 | 4096 | In: $4.00, Out: $6.00 |
@@ -1231,7 +1231,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | DeepSeek: R1 Distill Qwen 14B (free) | deepseek/deepseek-r1-distill-qwen-14b:free | openrouter | 64000 | - | - |
 | DeepSeek: R1 Distill Qwen 32B | deepseek/deepseek-r1-distill-qwen-32b | openrouter | 131072 | 16384 | In: $0.12, Out: $0.18 |
 | DeepSeek: R1 Distill Qwen 32B (free) | deepseek/deepseek-r1-distill-qwen-32b:free | openrouter | 16000 | 16000 | - |
-| Dolphin 2.9.2 Mixtral 8x22B 🐬 | cognitivecomputations/dolphin-mixtral-8x22b | openrouter | 16000 | - | In: $0.90, Out: $0.90 |
+| Dolphin 2.9.2 Mixtral 8x22B 🐬 | cognitivecomputations/dolphin-mixtral-8x22b | openrouter | 16000 | 8192 | In: $0.90, Out: $0.90 |
 | Dolphin3.0 Mistral 24B (free) | cognitivecomputations/dolphin3.0-mistral-24b:free | openrouter | 32768 | - | - |
 | Dolphin3.0 R1 Mistral 24B (free) | cognitivecomputations/dolphin3.0-r1-mistral-24b:free | openrouter | 32768 | - | - |
 | EVA Llama 3.33 70B | eva-unit-01/eva-llama-3.33-70b | openrouter | 16384 | 4096 | In: $4.00, Out: $6.00 |

@@ -117,6 +117,34 @@ end
 
 Run the migrations: `rails db:migrate`
 
+### ActiveStorage Setup for Attachments (Optional)
+{: .d-inline-block }
+
+Coming in v1.3.0
+{: .label .label-yellow }
+
+If you want to use attachments (images, audio, PDFs) with your AI chats, you need to set up ActiveStorage:
+
+```bash
+# Only needed if you plan to use attachments
+rails active_storage:install
+rails db:migrate
+```
+
+Then add the attachments association to your Message model:
+
+```ruby
+# app/models/message.rb
+class Message < ApplicationRecord
+  acts_as_message # Basic RubyLLM integration
+
+  # Optional: Add this line to enable attachment support
+  has_many_attached :attachments
+end
+```
+
+This setup is completely optional - your RubyLLM Rails integration works fine without it if you don't need attachment support.
+
 ### Configure RubyLLM
 
 Ensure your RubyLLM configuration (API keys, etc.) is set up, typically in `config/initializers/ruby_llm.rb`. See the [Installation Guide]({% link installation.md %}) for details.
@@ -242,6 +270,42 @@ response = chat_record.ask("What's the weather in Paris?")
 # The tool call and its result are persisted
 puts chat_record.messages.count # => 3 (user, assistant's tool call, tool result)
 ```
+
+### Working with Attachments
+{: .d-inline-block }
+
+Coming in v1.3.0
+{: .label .label-yellow }
+
+If you've set up ActiveStorage as described above, you can easily send attachments to AI models with automatic type detection:
+
+```ruby
+# Create a chat
+chat_record = Chat.create!(model_id: 'claude-3-5-sonnet')
+
+# Send a single file - type automatically detected
+chat_record.ask("What's in this file?", with: "app/assets/images/diagram.png")
+
+# Send multiple files of different types - all automatically detected
+chat_record.ask("What are in these files?", with: [
+  "app/assets/documents/report.pdf",
+  "app/assets/images/chart.jpg",
+  "app/assets/audio/recording.mp3"
+])
+
+# Still works with manually categorized hash (backward compatible)
+chat_record.ask("What's in this image?", with: {
+  image: "app/assets/images/diagram.png"
+})
+
+# Works with file uploads from forms
+chat_record.ask("Analyze this file", with: params[:uploaded_file])
+
+# Works with existing ActiveStorage attachments
+chat_record.ask("What's in this document?", with: user.profile_document)
+```
+
+The attachment API automatically detects file types based on file extension or content type, so you don't need to specify whether something is an image, audio file, or PDF - RubyLLM figures it out for you!
 
 ## Handling Persistence Edge Cases
 

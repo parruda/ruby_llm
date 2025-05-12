@@ -7,7 +7,7 @@ module RubyLLM
   class Content
     attr_reader :text, :attachments
 
-    def initialize(text = nil, attachments = {})
+    def initialize(text = nil, attachments = nil)
       @text = text
       @attachments = []
 
@@ -51,12 +51,33 @@ module RubyLLM
 
     private
 
-    def process_attachments(attachments)
+    def process_attachments_hash(attachments)
       return unless attachments.is_a?(Hash)
 
       Array(attachments[:image]).each { |source| add_image(source) }
       Array(attachments[:audio]).each { |source| add_audio(source) }
       Array(attachments[:pdf]).each { |source| add_pdf(source) }
+    end
+
+    def process_attachments_array_or_string(attachments)
+      Array(attachments).each do |file|
+        mime_type = RubyLLM::MimeTypes.detect_from_path(file.to_s)
+        if RubyLLM::MimeTypes.image?(mime_type)
+          add_image file
+        elsif RubyLLM::MimeTypes.audio?(mime_type)
+          add_audio file
+        else
+          add_pdf file # Default to PDF for unknown types for now
+        end
+      end
+    end
+
+    def process_attachments(attachments)
+      if attachments.is_a?(Hash)
+        process_attachments_hash attachments
+      else
+        process_attachments_array_or_string attachments
+      end
     end
   end
 end

@@ -5,23 +5,43 @@ module RubyLLM
   module Attachments
     # Base class for attachments
     class Base
-      attr_reader :source
+      attr_reader :source, :filename
 
-      def initialize(source)
+      def initialize(source, filename: nil)
         @source = source
+        @filename = filename ||
+                    (@source.respond_to?(:original_filename) && @source.original_filename) ||
+                    (@source.respond_to?(:path) && File.basename(@source.path)) ||
+                    (@source.is_a?(String) && File.basename(@source.split('?').first)) || # Basic URL basename
+                    nil
       end
 
       def url?
         @source.is_a?(String) && @source.match?(%r{^https?://})
       end
 
-      def file?
+      def file_path?
         @source.is_a?(String) && !url?
       end
 
+      def io_like?
+        @source.respond_to?(:read) && !file_path?
+      end
+
       def content
-        @content ||= load_content if file?
-        @content ||= fetch_content if url?
+        return @content if defined?(@content) && !@content.nil?
+
+        if url?
+          fetch_content
+        elsif file_path?
+          load_content_from_path
+        elsif io_like?
+          load_content_from_io
+        else
+          RubyLLM.logger.warn "Attachment source is neither a String nor an IO-like object: #{@source}"
+          nil
+        end
+
         @content
       end
 
@@ -33,15 +53,25 @@ module RubyLLM
         Base64.strict_encode64(content)
       end
 
+      def mime_type
+        RubyLLM::MimeTypes.detect_from_path(@filename)
+      end
+
       private
 
       def fetch_content
         RubyLLM.logger.debug("Fetching content from URL: #{@source}")
-        Faraday.get(@source).body if url?
+        response = Faraday.get(@source)
+        @content = response.body if response.success?
       end
 
-      def load_content
-        File.read(File.expand_path(@source)) if file?
+      def load_content_from_path
+        @content = File.read(File.expand_path(@source))
+      end
+
+      def load_content_from_io
+        @source.rewind if source.respond_to? :rewind
+        @content = @source.read
       end
     end
   end
