@@ -37,7 +37,7 @@ module RubyLLM
       end
 
       def fetch_from_providers
-        configured = Provider.configured_providers(RubyLLM.config)
+        configured = Provider.configured_providers(RubyLLM.config).filter(&:remote?)
 
         RubyLLM.logger.info "Fetching models from providers: #{configured.map(&:slug).join(', ')}"
 
