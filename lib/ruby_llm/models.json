@@ -1969,7 +1969,7 @@
   },
   {
     "id": "aqa",
-    "name": "AQA",
+    "name": "Model that performs Attributed Question Answering.",
     "provider": "gemini",
     "family": "aqa",
     "created_at": null,
@@ -1984,7 +1984,9 @@
         "text"
       ]
     },
-    "capabilities": [],
+    "capabilities": [
+      "streaming"
+    ],
     "pricing": {},
     "metadata": {
       "version": "001",
@@ -2037,23 +2039,33 @@
   },
   {
     "id": "embedding-001",
-    "name": "Embedding",
+    "name": "Embedding 001",
     "provider": "gemini",
-    "family": "embedding-001",
+    "family": "embedding1",
     "created_at": null,
     "context_window": 2048,
-    "max_output_tokens": null,
+    "max_output_tokens": 1,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
         "text"
       ],
       "output": [
+        "text",
         "embeddings"
       ]
     },
-    "capabilities": [],
-    "pricing": {},
+    "capabilities": [
+      "streaming",
+      "batch"
+    ],
+    "pricing": {
+      "embeddings": {
+        "standard": {
+          "input_per_million": 0.002
+        }
+      }
+    },
     "metadata": {
       "version": "001",
       "description": "Obtain a distributed representation of a text.",
@@ -2172,9 +2184,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2213,9 +2225,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2304,9 +2316,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2346,9 +2358,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2388,9 +2400,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2623,9 +2635,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "cached_input_per_million": 0.625,
-          "output_per_million": 10.0
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.3125,
+          "output_per_million": 5.0
         }
       }
     },
@@ -2664,9 +2676,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "cached_input_per_million": 0.625,
-          "output_per_million": 10.0
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.3125,
+          "output_per_million": 5.0
         }
       }
     },
@@ -2706,9 +2718,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "cached_input_per_million": 0.625,
-          "output_per_million": 10.0
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.3125,
+          "output_per_million": 5.0
         }
       }
     },
@@ -2854,33 +2866,39 @@
   },
   {
     "id": "gemini-2.0-flash-exp",
-    "name": "Gemini 2.0 Flash",
+    "name": "Gemini 2.0 Flash Experimental",
     "provider": "gemini",
-    "family": "gemini-2.0-flash",
+    "family": "gemini20_flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "audio",
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
         "text"
       ]
     },
     "capabilities": [
+      "streaming",
       "function_calling",
-      "structured_output"
+      "structured_output",
+      "batch",
+      "caching"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 0.1,
-          "cached_input_per_million": 0.025,
           "output_per_million": 0.4
+        },
+        "batch": {
+          "input_per_million": 0.05,
+          "output_per_million": 0.2
         }
       }
     },
@@ -3435,7 +3453,8 @@
       "text_tokens": {
         "standard": {
           "input_per_million": 0.15,
-          "output_per_million": 3.5
+          "cached_input_per_million": 0.0375,
+          "output_per_million": 0.6
         }
       }
     },
@@ -3523,9 +3542,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "cached_input_per_million": 0.625,
-          "output_per_million": 15.0
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.31,
+          "output_per_million": 10.0
         }
       }
     },
@@ -3612,9 +3631,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "cached_input_per_million": 0.625,
-          "output_per_million": 15.0
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.31,
+          "output_per_million": 10.0
         }
       }
     },
@@ -3984,13 +4003,7 @@
       ]
     },
     "capabilities": [],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "output_per_million": 0.03
-        }
-      }
-    },
+    "pricing": {},
     "metadata": {
       "version": "002",
       "description": "Vertex served Imagen 3.0 002 model",
@@ -4093,6 +4106,69 @@
     }
   },
   {
+    "id": "models/aqa",
+    "name": "AQA",
+    "provider": "gemini",
+    "family": "models/aqa",
+    "created_at": null,
+    "context_window": 7168,
+    "max_output_tokens": 1024,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [],
+    "pricing": {},
+    "metadata": {}
+  },
+  {
+    "id": "models/embedding-001",
+    "name": "Embedding",
+    "provider": "gemini",
+    "family": "models/embedding-001",
+    "created_at": null,
+    "context_window": 2048,
+    "max_output_tokens": null,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "embeddings"
+      ]
+    },
+    "capabilities": [],
+    "pricing": {},
+    "metadata": {}
+  },
+  {
+    "id": "models/text-embedding-004",
+    "name": "Text Embedding",
+    "provider": "gemini",
+    "family": "models/text-embedding-004",
+    "created_at": null,
+    "context_window": 2048,
+    "max_output_tokens": null,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "embeddings"
+      ]
+    },
+    "capabilities": [],
+    "pricing": {},
+    "metadata": {}
+  },
+  {
     "id": "text-bison-001",
     "name": "PaLM 2 (Legacy)",
     "provider": "gemini",
@@ -4136,23 +4212,33 @@
   },
   {
     "id": "text-embedding-004",
-    "name": "Text Embedding",
+    "name": "Text Embedding 004",
     "provider": "gemini",
-    "family": "text-embedding-004",
+    "family": "embedding4",
     "created_at": null,
     "context_window": 2048,
-    "max_output_tokens": null,
+    "max_output_tokens": 1,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
         "text"
       ],
       "output": [
+        "text",
         "embeddings"
       ]
     },
-    "capabilities": [],
-    "pricing": {},
+    "capabilities": [
+      "streaming",
+      "batch"
+    ],
+    "pricing": {
+      "embeddings": {
+        "standard": {
+          "input_per_million": 0.002
+        }
+      }
+    },
     "metadata": {
       "version": "004",
       "description": "Obtain a distributed representation of a text.",
@@ -4178,13 +4264,7 @@
       "output": []
     },
     "capabilities": [],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "output_per_million": 0.35
-        }
-      }
-    },
+    "pricing": {},
     "metadata": {
       "version": "2.0",
       "description": "Vertex served Veo 2 model.",
@@ -4210,18 +4290,12 @@
         "text"
       ]
     },
-    "capabilities": [
-      "batch"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 0.4,
           "output_per_million": 0.4
-        },
-        "batch": {
-          "input_per_million": 0.2,
-          "output_per_million": 0.2
         }
       }
     },
@@ -4248,18 +4322,12 @@
         "text"
       ]
     },
-    "capabilities": [
-      "batch"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 5.0,
           "output_per_million": 15.0
-        },
-        "batch": {
-          "input_per_million": 2.5,
-          "output_per_million": 7.5
         }
       }
     },
@@ -4356,13 +4424,7 @@
       ]
     },
     "capabilities": [],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "output_per_million": 0.02
-        }
-      }
-    },
+    "pricing": {},
     "metadata": {
       "object": "model",
       "owned_by": "system"
@@ -4382,13 +4444,10 @@
         "text"
       ],
       "output": [
-        "image",
-        "text"
+        "image"
       ]
     },
-    "capabilities": [
-      "batch"
-    ],
+    "capabilities": [],
     "pricing": {},
     "metadata": {
       "object": "model",
@@ -4412,18 +4471,12 @@
         "text"
       ]
     },
-    "capabilities": [
-      "batch"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 2.0,
           "output_per_million": 2.0
-        },
-        "batch": {
-          "input_per_million": 1.0,
-          "output_per_million": 1.0
         }
       }
     },
@@ -5399,43 +5452,6 @@
   },
   {
     "id": "gpt-4o-audio-preview-2024-10-01",
-    "name": "GPT-4o-Audio Preview 20241001",
-    "provider": "openai",
-    "family": "gpt4o_audio",
-    "created_at": "2024-09-27 00:17:22 +0200",
-    "context_window": 128000,
-    "max_output_tokens": 16384,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text",
-        "audio"
-      ],
-      "output": [
-        "text",
-        "audio"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "speech_generation",
-      "transcription"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 2.5,
-          "output_per_million": 10.0
-        }
-      }
-    },
-    "metadata": {
-      "object": "model",
-      "owned_by": "system"
-    }
-  },
-  {
-    "id": "gpt-4o-audio-preview-2024-12-17",
     "name": "GPT-4o Audio",
     "provider": "openai",
     "family": "gpt-4o-audio-preview",
@@ -5455,6 +5471,43 @@
     },
     "capabilities": [
       "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 2.5,
+          "output_per_million": 10.0
+        }
+      }
+    },
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-audio-preview-2024-12-17",
+    "name": "GPT-4o-Audio Preview 20241217",
+    "provider": "openai",
+    "family": "gpt4o_audio",
+    "created_at": "2024-12-12 21:10:39 +0100",
+    "context_window": 128000,
+    "max_output_tokens": 16384,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text",
+        "audio"
+      ],
+      "output": [
+        "text",
+        "audio"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "speech_generation",
+      "transcription"
     ],
     "pricing": {
       "text_tokens": {
@@ -5571,7 +5624,6 @@
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -5579,10 +5631,6 @@
         "standard": {
           "input_per_million": 0.15,
           "output_per_million": 0.6
-        },
-        "batch": {
-          "input_per_million": 0.075,
-          "output_per_million": 0.3
         }
       }
     },
@@ -5611,7 +5659,6 @@
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -5619,10 +5666,6 @@
         "standard": {
           "input_per_million": 0.15,
           "output_per_million": 0.6
-        },
-        "batch": {
-          "input_per_million": 0.075,
-          "output_per_million": 0.3
         }
       }
     },
@@ -5651,7 +5694,6 @@
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -5660,10 +5702,6 @@
           "input_per_million": 0.6,
           "cached_input_per_million": 0.3,
           "output_per_million": 2.4
-        },
-        "batch": {
-          "input_per_million": 0.3,
-          "output_per_million": 1.2
         }
       }
     },
@@ -5674,37 +5712,29 @@
   },
   {
     "id": "gpt-4o-mini-realtime-preview-2024-12-17",
-    "name": "GPT-4o mini Realtime",
+    "name": "GPT-4o-Mini Realtime Preview 20241217",
     "provider": "openai",
-    "family": "gpt-4o-mini-realtime-preview",
-    "created_at": null,
+    "family": "gpt4o_mini_realtime",
+    "created_at": "2024-12-13 18:56:41 +0100",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "audio",
         "text"
       ],
       "output": [
-        "audio",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling"
+      "streaming"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 0.6,
-          "cached_input_per_million": 0.3,
           "output_per_million": 2.4
-        },
-        "batch": {
-          "input_per_million": 0.3,
-          "output_per_million": 1.2
         }
       }
     },
@@ -5730,18 +5760,12 @@
         "text"
       ]
     },
-    "capabilities": [
-      "batch"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 0.15,
           "output_per_million": 0.6
-        },
-        "batch": {
-          "input_per_million": 0.075,
-          "output_per_million": 0.3
         }
       }
     },
@@ -5767,18 +5791,12 @@
         "text"
       ]
     },
-    "capabilities": [
-      "batch"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 0.15,
           "output_per_million": 0.6
-        },
-        "batch": {
-          "input_per_million": 0.075,
-          "output_per_million": 0.3
         }
       }
     },
@@ -5870,7 +5888,6 @@
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -5879,10 +5896,6 @@
           "input_per_million": 5.0,
           "cached_input_per_million": 2.5,
           "output_per_million": 20.0
-        },
-        "batch": {
-          "input_per_million": 2.5,
-          "output_per_million": 10.0
         }
       }
     },
@@ -5893,28 +5906,31 @@
   },
   {
     "id": "gpt-4o-realtime-preview-2024-10-01",
-    "name": "GPT-4o-Realtime Preview 20241001",
+    "name": "GPT-4o Realtime",
     "provider": "openai",
-    "family": "gpt4o_realtime",
-    "created_at": "2024-09-24 00:49:26 +0200",
+    "family": "gpt-4o-realtime-preview",
+    "created_at": null,
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "audio",
         "text"
       ],
       "output": [
+        "audio",
         "text"
       ]
     },
     "capabilities": [
-      "streaming"
+      "function_calling"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 5.0,
+          "cached_input_per_million": 2.5,
           "output_per_million": 20.0
         }
       }
@@ -6182,19 +6198,13 @@
         "text"
       ]
     },
-    "capabilities": [
-      "batch"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 1.1,
           "cached_input_per_million": 0.55,
           "output_per_million": 4.4
-        },
-        "batch": {
-          "input_per_million": 0.55,
-          "output_per_million": 2.2
         }
       }
     },
@@ -6220,19 +6230,13 @@
         "text"
       ]
     },
-    "capabilities": [
-      "batch"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 1.1,
           "cached_input_per_million": 0.55,
           "output_per_million": 4.4
-        },
-        "batch": {
-          "input_per_million": 0.55,
-          "output_per_million": 2.2
         }
       }
     },
@@ -7647,66 +7651,6 @@
         "top_k",
         "min_p",
         "seed"
-      ]
-    }
-  },
-  {
-    "id": "allenai/molmo-7b-d:free",
-    "name": "AllenAI: Molmo 7B D (free)",
-    "provider": "openrouter",
-    "family": "allenai",
-    "created_at": "2025-03-26 22:07:27 +0100",
-    "context_window": 4096,
-    "max_output_tokens": null,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text",
-        "image"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "predicted_outputs"
-    ],
-    "pricing": {},
-    "metadata": {
-      "description": "Molmo is a family of open vision-language models developed by the Allen Institute for AI. Molmo models are trained on PixMo, a dataset of 1 million, highly-curated image-text pairs. It has state-of-the-art performance among multimodal models with a similar size while being fully open-source. You can find all models in the Molmo family [here](https://huggingface.co/collections/allenai/molmo-66f379e6fe3b8ef090a8ca19). Learn more about the Molmo family [in the announcement blog post](https://molmo.allenai.org/blog) or the [paper](https://huggingface.co/papers/2409.17146).\n\nMolmo 7B-D is based on [Qwen2-7B](https://huggingface.co/Qwen/Qwen2-7B) and uses [OpenAI CLIP](https://huggingface.co/openai/clip-vit-large-patch14-336) as vision backbone. It performs comfortably between GPT-4V and GPT-4o on both academic benchmarks and human evaluation.\n\nThis checkpoint is a preview of the Molmo release. All artifacts used in creating Molmo (PixMo dataset, training code, evaluations, intermediate checkpoints) will be made available at a later date, furthering our commitment to open-source AI development and reproducibility.",
-      "architecture": {
-        "modality": "text+image->text",
-        "input_modalities": [
-          "text",
-          "image"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "top_provider": {
-        "context_length": 4096,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "max_tokens",
-        "temperature",
-        "top_p",
-        "stop",
-        "frequency_penalty",
-        "presence_penalty",
-        "seed",
-        "top_k",
-        "min_p",
-        "repetition_penalty",
-        "logprobs",
-        "logit_bias",
-        "top_logprobs"
       ]
     }
   },
@@ -10177,7 +10121,7 @@
     "family": "cognitivecomputations",
     "created_at": "2024-06-08 02:00:00 +0200",
     "context_window": 16000,
-    "max_output_tokens": null,
+    "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -10214,7 +10158,7 @@
       },
       "top_provider": {
         "context_length": 16000,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 8192,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -24294,7 +24238,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 32000,
@@ -24352,7 +24296,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 32000,
@@ -24418,7 +24362,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 40960,
@@ -24479,7 +24423,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 40960,
@@ -24548,7 +24492,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 40960,
@@ -24566,7 +24510,6 @@
         "frequency_penalty",
         "repetition_penalty",
         "top_k",
-        "seed",
         "tools",
         "tool_choice",
         "stop",
@@ -24575,6 +24518,7 @@
         "logit_bias",
         "logprobs",
         "top_logprobs",
+        "seed",
         "min_p"
       ]
     }
@@ -24612,7 +24556,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 40960,
@@ -24681,7 +24625,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 40960,
@@ -24745,7 +24689,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 40960,
@@ -24813,7 +24757,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 40960,
@@ -24874,7 +24818,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 40960,
@@ -24934,7 +24878,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 128000,
@@ -24999,7 +24943,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 128000,
@@ -25057,7 +25001,7 @@
           "text"
         ],
         "tokenizer": "Qwen3",
-        "instruct_type": null
+        "instruct_type": "qwen3"
       },
       "top_provider": {
         "context_length": 40960,
