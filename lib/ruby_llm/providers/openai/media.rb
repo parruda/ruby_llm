@@ -8,7 +8,7 @@ module RubyLLM
         module_function
 
         def format_content(content)
-          return [format_text(content)] unless content.is_a?(Content)
+          return content unless content.is_a?(Content)
 
           parts = []
           parts << format_text(content.text) if content.text

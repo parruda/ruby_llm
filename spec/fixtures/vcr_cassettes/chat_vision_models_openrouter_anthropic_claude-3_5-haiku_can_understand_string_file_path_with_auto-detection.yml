@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 12 May 2025 12:04:34 GMT
+      - Mon, 12 May 2025 13:34:58 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -49,12 +49,14 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
-        \        \n{\"id\":\"gen-1747051473-lSyUZ3UaBTMCj2xwtBrn\",\"provider\":\"Google\",\"model\":\"anthropic/claude-3.5-haiku\",\"object\":\"chat.completion\",\"created\":1747051473,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"This
-        is the logo for Ruby, a popular programming language. The logo depicts a stylized
-        red gemstone or ruby, with angular facets that create a three-dimensional
-        effect. The design uses shades of red and white to give the gem depth and
-        a sense of shine or reflection. Ruby is known for being a dynamic, object-oriented
-        programming language that is often used for web development, particularly
-        with the Ruby on Rails framework.\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":54,\"completion_tokens\":91,\"total_tokens\":145}}"
-  recorded_at: Mon, 12 May 2025 12:04:36 GMT
+        \        \n\n         \n{\"id\":\"gen-1747056898-9HY3qrUbHlPOktUQoqAd\",\"provider\":\"Google\",\"model\":\"anthropic/claude-3.5-haiku\",\"object\":\"chat.completion\",\"created\":1747056898,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"This
+        is the logo for the Ruby programming language. It depicts a stylized red gemstone
+        or ruby, with angular, faceted surfaces that create a sense of depth and shine.
+        The logo is designed to look like a cut precious stone, with light reflecting
+        off its surfaces, giving it a glossy, three-dimensional appearance. The color
+        is a deep, vibrant red, which is reminiscent of the actual gemstone ruby.
+        This logo is widely recognized in the software development community as the
+        symbol for Ruby, a dynamic, object-oriented programming language known for
+        its simplicity and readability.\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":54,\"completion_tokens\":125,\"total_tokens\":179}}"
+  recorded_at: Mon, 12 May 2025 13:35:01 GMT
 recorded_with: VCR 6.3.1

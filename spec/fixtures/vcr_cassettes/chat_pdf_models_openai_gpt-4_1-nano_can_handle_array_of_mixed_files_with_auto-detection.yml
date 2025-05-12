@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 12 May 2025 12:06:08 GMT
+      - Mon, 12 May 2025 13:36:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,11 +36,11 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '895'
+      - '1527'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '867'
+      - '1499'
       X-Ratelimit-Limit-Input-Images:
       - '50000'
       X-Ratelimit-Limit-Requests:
@@ -80,16 +80,16 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BWMD1m7tUJPgr0r48xPxn6afngRzx",
+          "id": "chatcmpl-BWNcSIrSxoTaHKWKWcSyUTTdUc8sT",
           "object": "chat.completion",
-          "created": 1747051567,
+          "created": 1747056988,
           "model": "gpt-4.1-nano-2025-04-14",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "The file you've shared appears to be a sample PDF document containing placeholder text, commonly known as \"Lorem ipsum,\" along with some generic descriptive content. The text is primarily used for demonstration purposes and does not convey specific information or data.\n\nSince this is a sample document, it does not include complex visuals, infographics, or diagrams that require detailed analysis. If you have other files or specific pages with visual content or data you'd like me to analyze, please upload or specify those, and I'll be happy to assist further.",
+                "content": "The files contain a PDF document with a sample text that appears to be placeholder or dummy text, commonly known as \"Lorem ipsum.\" The content on page 1 includes various paragraphs of this filler text, which discusses general themes of formatting and layout, but does not convey specific information or data.\n\nSince the document is labeled as a \"Sample PDF\" and contains typical placeholder text, it is likely intended for testing, demonstration, or layout purposes rather than providing substantive content.\n\nIf you need a detailed analysis or insights about specific elements such as layout, visual components, or embedded graphics, please specify, and I will review any images or visual content associated with the document.",
                 "refusal": null,
                 "annotations": []
               },
@@ -99,8 +99,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 1004,
-            "completion_tokens": 104,
-            "total_tokens": 1108,
+            "completion_tokens": 133,
+            "total_tokens": 1137,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -115,5 +115,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_eede8f0d45"
         }
-  recorded_at: Mon, 12 May 2025 12:06:08 GMT
+  recorded_at: Mon, 12 May 2025 13:36:29 GMT
 recorded_with: VCR 6.3.1

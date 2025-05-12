@@ -13,12 +13,12 @@ http_interactions:
       Host:
       - bedrock-runtime.<AWS_REGION>.amazonaws.com
       X-Amz-Date:
-      - 20250512T120417Z
+      - 20250512T133441Z
       X-Amz-Content-Sha256:
       - 7bb0eaa030e32dc604d2c6a3854240f9d356e118ff66de7de7bfe69b16753eb0
       Authorization:
       - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20250512/<AWS_REGION>/bedrock/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=dccab2d7566d9140291db8077a6a165072c51023bf039278cbf1561c9d33fb36
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=12ea24fae85beeaec33a989e5da7d4a68792ffe2b5731adbfc2399d7318adedd
       Content-Type:
       - application/json
       Accept:
@@ -31,29 +31,30 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 12 May 2025 12:04:22 GMT
+      - Mon, 12 May 2025 13:34:46 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '744'
+      - '750'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 0fa2ad29-5412-4e32-b284-b21490e37da4
+      - 2803ff14-2c97-4c57-9c59-610c0089e889
       X-Amzn-Bedrock-Invocation-Latency:
-      - '3617'
+      - '3884'
       X-Amzn-Bedrock-Output-Token-Count:
-      - '95'
+      - '101'
       X-Amzn-Bedrock-Input-Token-Count:
       - '43'
     body:
       encoding: UTF-8
-      string: '{"id":"msg_bdrk_01B4TLaZpymctKkpkKPv8u8o","type":"message","role":"assistant","model":"claude-3-5-sonnet-20241022","content":[{"type":"text","text":"This
-        image shows the official Ruby programming language logo. It''s a red, geometric
-        gem or crystal design with faceted surfaces that create a 3D effect. The gem
-        appears to have a bright highlight or sparkle on one of its surfaces, giving
-        it a polished, jewel-like appearance. Ruby is a popular programming language
-        known for its simplicity and readability, and this logo effectively represents
-        its name with the visual of a ruby gemstone."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":43,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":95}}'
-  recorded_at: Mon, 12 May 2025 12:04:22 GMT
+      string: '{"id":"msg_bdrk_0177rng5JzEF2wiSbxQQeeRt","type":"message","role":"assistant","model":"claude-3-5-sonnet-20241022","content":[{"type":"text","text":"This
+        image shows the red Ruby programming language logo. It''s a stylized red gemstone
+        or ruby with angular facets and a bright white highlight or sparkle in the
+        upper left portion. The logo has a distinctive geometric, crystalline appearance
+        that represents the Ruby programming language, which was created in the mid-1990s.
+        The design is simple but memorable, with its deep red color being particularly
+        characteristic of both the gemstone it''s named after and the programming
+        language''s brand identity."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":43,"output_tokens":101}}'
+  recorded_at: Mon, 12 May 2025 13:34:46 GMT
 recorded_with: VCR 6.3.1

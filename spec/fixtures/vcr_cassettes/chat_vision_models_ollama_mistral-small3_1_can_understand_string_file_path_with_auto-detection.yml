@@ -24,16 +24,18 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 12 May 2025 12:05:21 GMT
+      - Mon, 12 May 2025 13:35:42 GMT
       Content-Length:
-      - '514'
+      - '631'
     body:
       encoding: UTF-8
-      string: '{"id":"chatcmpl-612","object":"chat.completion","created":1747051521,"model":"mistral-small3.1","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"I
-        see a red gemstone with a faceted cut, resembling a ruby. The gemstone has
-        a polished, reflective surface and is set against a transparent background.
-        It appears to be a digital icon or graphic representation of a ruby."},"finish_reason":"stop"}],"usage":{"prompt_tokens":396,"completion_tokens":48,"total_tokens":444}}
+      string: '{"id":"chatcmpl-549","object":"chat.completion","created":1747056942,"model":"mistral-small3.1","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"The
+        image contains a red gemstone icon. The gemstone is faceted and appears to
+        be a cut ruby or similar precious stone. The color is a deep, vivid red with
+        highlights that suggest a polished surface. This type of icon is commonly
+        associated with software or applications, particularly Ruby programming language
+        or Ruby on Rails framework."},"finish_reason":"stop"}],"usage":{"prompt_tokens":396,"completion_tokens":66,"total_tokens":462}}
 
         '
-  recorded_at: Mon, 12 May 2025 12:05:21 GMT
+  recorded_at: Mon, 12 May 2025 13:35:42 GMT
 recorded_with: VCR 6.3.1
