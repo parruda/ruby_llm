@@ -221,8 +221,6 @@ module RubyLLM
         @values[key] = args.first if args.first && args.first != 0.0
       elsif @values.key?(method)
         @values[method]
-      else
-        super
       end
     end
 
