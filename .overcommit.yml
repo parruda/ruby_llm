@@ -20,7 +20,7 @@ PreCommit:
 
   RakeTarget:
     enabled: true
-    targets: ['models:update', 'models:docs']
+    targets: ['models:update', 'models:docs', 'aliases:generate']
     on_warn: fail
 
 PostCheckout:
