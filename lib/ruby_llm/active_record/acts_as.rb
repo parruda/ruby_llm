@@ -150,12 +150,14 @@ module RubyLLM
         )
 
         if with.present?
-          files = Array(with).reject(&:blank?)
+          files = Array(with).reject(&:empty?)
 
-          if files.any? && files.first.is_a?(ActionDispatch::Http::UploadedFile)
-            message_record.attachments.attach(files)
-          else
-            attach_files(message_record, process_attachments(with))
+          if files.any?
+            if files.first.is_a?(ActionDispatch::Http::UploadedFile)
+              message_record.attachments.attach(files)
+            else
+              attach_files(message_record, process_attachments(with))
+            end
           end
         end
 
