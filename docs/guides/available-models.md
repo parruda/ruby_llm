@@ -242,7 +242,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Claude Instant | anthropic.claude-instant-v1:2:100k | bedrock | 200000 | 4096 | In: $0.80, Out: $2.40 |
 
 
-### Openrouter (321)
+### Openrouter (320)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -501,7 +501,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Qwen 2 72B Instruct | qwen/qwen-2-72b-instruct | openrouter | 32768 | 4096 | In: $0.90, Out: $0.90 |
 | Qwen2.5 72B Instruct | qwen/qwen-2.5-72b-instruct | openrouter | 32768 | 16384 | In: $0.12, Out: $0.39 |
 | Qwen2.5 72B Instruct (free) | qwen/qwen-2.5-72b-instruct:free | openrouter | 32768 | - | - |
-| Qwen2.5 7B Instruct | qwen/qwen-2.5-7b-instruct | openrouter | 32768 | 16384 | In: $0.05, Out: $0.10 |
+| Qwen2.5 7B Instruct | qwen/qwen-2.5-7b-instruct | openrouter | 32768 | - | In: $0.04, Out: $0.10 |
 | Qwen2.5 7B Instruct (free) | qwen/qwen-2.5-7b-instruct:free | openrouter | 32768 | 32768 | - |
 | Qwen2.5 Coder 32B Instruct | qwen/qwen-2.5-coder-32b-instruct | openrouter | 32768 | 16384 | In: $0.06, Out: $0.15 |
 | Qwen2.5 Coder 32B Instruct (free) | qwen/qwen-2.5-coder-32b-instruct:free | openrouter | 32768 | - | - |
@@ -514,7 +514,6 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Qwen: Qwen-Max  | qwen/qwen-max | openrouter | 32768 | 8192 | In: $1.60, Out: $6.40 |
 | Qwen: Qwen-Plus | qwen/qwen-plus | openrouter | 131072 | 8192 | In: $0.40, Out: $1.20 |
 | Qwen: Qwen-Turbo | qwen/qwen-turbo | openrouter | 1000000 | 8192 | In: $0.05, Out: $0.20 |
-| Qwen: Qwen2.5 7B Instruct | qwen/qwen2.5-7b-instruct | openrouter | 32768 | - | In: $0.04, Out: $0.10 |
 | Qwen: Qwen2.5 Coder 7B Instruct | qwen/qwen2.5-coder-7b-instruct | openrouter | 32768 | - | In: $0.01, Out: $0.03 |
 | Qwen: Qwen2.5 VL 32B Instruct | qwen/qwen2.5-vl-32b-instruct | openrouter | 128000 | - | In: $0.90, Out: $0.90 |
 | Qwen: Qwen2.5 VL 32B Instruct (free) | qwen/qwen2.5-vl-32b-instruct:free | openrouter | 8192 | - | - |
@@ -571,7 +570,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 
 ## Models by Capability
 
-### Function Calling (233)
+### Function Calling (234)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -735,6 +734,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Meta: Llama 3.1 8B Instruct | meta-llama/llama-3.1-8b-instruct | openrouter | 16384 | 16384 | In: $0.02, Out: $0.03 |
 | Meta: Llama 3.2 3B Instruct | meta-llama/llama-3.2-3b-instruct | openrouter | 131072 | 16384 | In: $0.01, Out: $0.02 |
 | Meta: Llama 3.3 70B Instruct | meta-llama/llama-3.3-70b-instruct | openrouter | 131000 | 131000 | In: $0.07, Out: $0.33 |
+| Meta: Llama 3.3 70B Instruct (free) | meta-llama/llama-3.3-70b-instruct:free | openrouter | 131072 | 2048 | - |
 | Meta: Llama 4 Maverick | meta-llama/llama-4-maverick | openrouter | 1048576 | 16384 | In: $0.16, Out: $0.60 |
 | Meta: Llama 4 Scout | meta-llama/llama-4-scout | openrouter | 1048576 | 1048576 | In: $0.08, Out: $0.30 |
 | Microsoft: Phi-3 Medium 128K Instruct | microsoft/phi-3-medium-128k-instruct | openrouter | 131072 | - | In: $0.10, Out: $0.30 |
@@ -810,7 +810,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | xAI: Grok Beta | x-ai/grok-beta | openrouter | 131072 | - | In: $5.00, Out: $15.00 |
 
 
-### Structured Output (250)
+### Structured Output (249)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -1035,7 +1035,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Perplexity: R1 1776 | perplexity/r1-1776 | openrouter | 128000 | - | In: $2.00, Out: $8.00 |
 | Qwen 2 72B Instruct | qwen/qwen-2-72b-instruct | openrouter | 32768 | 4096 | In: $0.90, Out: $0.90 |
 | Qwen2.5 72B Instruct | qwen/qwen-2.5-72b-instruct | openrouter | 32768 | 16384 | In: $0.12, Out: $0.39 |
-| Qwen2.5 7B Instruct | qwen/qwen-2.5-7b-instruct | openrouter | 32768 | 16384 | In: $0.05, Out: $0.10 |
+| Qwen2.5 7B Instruct | qwen/qwen-2.5-7b-instruct | openrouter | 32768 | - | In: $0.04, Out: $0.10 |
 | Qwen2.5 Coder 32B Instruct | qwen/qwen-2.5-coder-32b-instruct | openrouter | 32768 | 16384 | In: $0.06, Out: $0.15 |
 | Qwen: QwQ 32B | qwen/qwq-32b | openrouter | 131072 | - | In: $0.15, Out: $0.20 |
 | Qwen: Qwen VL Max | qwen/qwen-vl-max | openrouter | 7500 | 1500 | In: $0.80, Out: $3.20 |
@@ -1043,7 +1043,6 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Qwen: Qwen-Max  | qwen/qwen-max | openrouter | 32768 | 8192 | In: $1.60, Out: $6.40 |
 | Qwen: Qwen-Plus | qwen/qwen-plus | openrouter | 131072 | 8192 | In: $0.40, Out: $1.20 |
 | Qwen: Qwen-Turbo | qwen/qwen-turbo | openrouter | 1000000 | 8192 | In: $0.05, Out: $0.20 |
-| Qwen: Qwen2.5 7B Instruct | qwen/qwen2.5-7b-instruct | openrouter | 32768 | - | In: $0.04, Out: $0.10 |
 | Qwen: Qwen2.5 VL 32B Instruct | qwen/qwen2.5-vl-32b-instruct | openrouter | 128000 | - | In: $0.90, Out: $0.90 |
 | Qwen: Qwen2.5 VL 32B Instruct (free) | qwen/qwen2.5-vl-32b-instruct:free | openrouter | 8192 | - | - |
 | Qwen: Qwen2.5 VL 72B Instruct | qwen/qwen2.5-vl-72b-instruct | openrouter | 32000 | - | In: $0.25, Out: $0.75 |
@@ -1066,7 +1065,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | xAI: Grok Vision Beta | x-ai/grok-vision-beta | openrouter | 8192 | - | In: $5.00, Out: $15.00 |
 
 
-### Streaming (410)
+### Streaming (409)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -1414,7 +1413,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Qwen 2 72B Instruct | qwen/qwen-2-72b-instruct | openrouter | 32768 | 4096 | In: $0.90, Out: $0.90 |
 | Qwen2.5 72B Instruct | qwen/qwen-2.5-72b-instruct | openrouter | 32768 | 16384 | In: $0.12, Out: $0.39 |
 | Qwen2.5 72B Instruct (free) | qwen/qwen-2.5-72b-instruct:free | openrouter | 32768 | - | - |
-| Qwen2.5 7B Instruct | qwen/qwen-2.5-7b-instruct | openrouter | 32768 | 16384 | In: $0.05, Out: $0.10 |
+| Qwen2.5 7B Instruct | qwen/qwen-2.5-7b-instruct | openrouter | 32768 | - | In: $0.04, Out: $0.10 |
 | Qwen2.5 7B Instruct (free) | qwen/qwen-2.5-7b-instruct:free | openrouter | 32768 | 32768 | - |
 | Qwen2.5 Coder 32B Instruct | qwen/qwen-2.5-coder-32b-instruct | openrouter | 32768 | 16384 | In: $0.06, Out: $0.15 |
 | Qwen2.5 Coder 32B Instruct (free) | qwen/qwen-2.5-coder-32b-instruct:free | openrouter | 32768 | - | - |
@@ -1427,7 +1426,6 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Qwen: Qwen-Max  | qwen/qwen-max | openrouter | 32768 | 8192 | In: $1.60, Out: $6.40 |
 | Qwen: Qwen-Plus | qwen/qwen-plus | openrouter | 131072 | 8192 | In: $0.40, Out: $1.20 |
 | Qwen: Qwen-Turbo | qwen/qwen-turbo | openrouter | 1000000 | 8192 | In: $0.05, Out: $0.20 |
-| Qwen: Qwen2.5 7B Instruct | qwen/qwen2.5-7b-instruct | openrouter | 32768 | - | In: $0.04, Out: $0.10 |
 | Qwen: Qwen2.5 Coder 7B Instruct | qwen/qwen2.5-coder-7b-instruct | openrouter | 32768 | - | In: $0.01, Out: $0.03 |
 | Qwen: Qwen2.5 VL 32B Instruct | qwen/qwen2.5-vl-32b-instruct | openrouter | 128000 | - | In: $0.90, Out: $0.90 |
 | Qwen: Qwen2.5 VL 32B Instruct (free) | qwen/qwen2.5-vl-32b-instruct:free | openrouter | 8192 | - | - |

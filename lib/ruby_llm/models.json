@@ -15370,6 +15370,7 @@
     },
     "capabilities": [
       "streaming",
+      "function_calling",
       "structured_output",
       "predicted_outputs"
     ],
@@ -15401,8 +15402,10 @@
         "frequency_penalty",
         "presence_penalty",
         "seed",
-        "top_k",
+        "tools",
+        "tool_choice",
         "repetition_penalty",
+        "top_k",
         "logit_bias",
         "min_p",
         "response_format"
@@ -23043,7 +23046,7 @@
     "family": "qwen",
     "created_at": "2024-10-16 02:00:00 +0200",
     "context_window": 32768,
-    "max_output_tokens": 16384,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -23061,7 +23064,7 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.049999999999999996,
+          "input_per_million": 0.04,
           "output_per_million": 0.09999999999999999
         }
       }
@@ -23081,7 +23084,7 @@
       },
       "top_provider": {
         "context_length": 32768,
-        "max_completion_tokens": 16384,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -23097,6 +23100,7 @@
         "logit_bias",
         "min_p",
         "response_format",
+        "structured_outputs",
         "seed"
       ]
     }
@@ -23710,66 +23714,6 @@
         "seed",
         "response_format",
         "presence_penalty"
-      ]
-    }
-  },
-  {
-    "id": "qwen/qwen2.5-7b-instruct",
-    "name": "Qwen: Qwen2.5 7B Instruct",
-    "provider": "openrouter",
-    "family": "qwen",
-    "created_at": "2025-05-15 16:07:49 +0200",
-    "context_window": 32768,
-    "max_output_tokens": null,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "structured_output"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.04,
-          "output_per_million": 0.09999999999999999
-        }
-      }
-    },
-    "metadata": {
-      "description": "Qwen2.5-7B-Instruct is a 7.6B parameter instruction-tuned language model from Alibaba Cloud’s Qwen2.5 series. It features improved capabilities in instruction following, coding, math, multilingual understanding (29+ languages), and structured output generation (e.g., JSON).",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Qwen",
-        "instruct_type": null
-      },
-      "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "max_tokens",
-        "temperature",
-        "top_p",
-        "stop",
-        "frequency_penalty",
-        "presence_penalty",
-        "response_format",
-        "structured_outputs"
       ]
     }
   },
