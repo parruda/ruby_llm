@@ -238,10 +238,12 @@ module RubyLLM
           elsif RubyLLM::MimeTypes.audio?(content_type)
             result[:audio] ||= []
             result[:audio] << file
-          else
-            # Default to PDF for unknown types
+          elsif RubyLLM::MimeTypes.pdf?(content_type)
             result[:pdf] ||= []
             result[:pdf] << file
+          else
+            result[:text] ||= []
+            result[:text] << file
           end
         end
 
@@ -251,7 +253,7 @@ module RubyLLM
       def attach_files(message, attachments_hash)
         return unless message.respond_to?(:attachments)
 
-        %i[image audio pdf].each do |type|
+        %i[image audio pdf text].each do |type|
           Array(attachments_hash[type]).each do |file_source|
             attach_file(message, file_source)
           end
@@ -371,6 +373,8 @@ module RubyLLM
             content_obj.add_audio(attachment_data)
           elsif RubyLLM::MimeTypes.pdf?(attachment.content_type)
             content_obj.add_pdf(attachment_data)
+          else
+            content_obj.add_text(attachment_data)
           end
         end
 
