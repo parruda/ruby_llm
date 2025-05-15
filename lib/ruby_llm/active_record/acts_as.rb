@@ -143,14 +143,16 @@ module RubyLLM
         self
       end
 
-      def create_user_message(content, with: nil)
+      def create_user_message(content, with: nil) # rubocop:disable Metrics/PerceivedComplexity
         message_record = messages.create!(
           role: :user,
           content: content
         )
 
         if with.present?
-          files = Array(with).reject(&:empty?)
+          files = Array(with).reject do |f|
+            f.nil? || (f.respond_to?(:empty?) && f.empty?) || (f.respond_to?(:blank?) && f.blank?)
+          end
 
           if files.any?
             if files.first.is_a?(ActionDispatch::Http::UploadedFile)
