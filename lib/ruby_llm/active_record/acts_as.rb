@@ -124,8 +124,7 @@ module RubyLLM
       end
 
       def with_model(...)
-        to_llm.with_model(...)
-        update(model_id: to_llm.model.id)
+        update(model_id: to_llm.with_model(...).model.id)
         self
       end
 
