@@ -85,14 +85,11 @@ module RubyLLM
       def fetch_from_parsera
         RubyLLM.logger.info 'Fetching models from Parsera API...'
 
-        connection = Faraday.new('https://api.parsera.org') do |f|
+        connection = Connection.basic do |f|
           f.request :json
           f.response :json, parser_options: { symbolize_names: true }
-          f.response :raise_error
-          f.adapter Faraday.default_adapter
         end
-
-        response = connection.get('/v1/llm-specs')
+        response = connection.get 'https://api.parsera.org/v1/llm-specs'
         response.body.map { |data| Model::Info.new(data) }
       end
 

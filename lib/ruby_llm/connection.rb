@@ -5,16 +5,17 @@ module RubyLLM
   class Connection
     attr_reader :provider, :connection, :config
 
-    def self.basic
-      Faraday.new do |faraday|
-        faraday.response :logger,
-                         RubyLLM.logger,
-                         bodies: false,
-                         response: false,
-                         errors: true,
-                         headers: false,
-                         log_level: :debug
-        faraday.use Faraday::Response::RaiseError
+    def self.basic(&)
+      Faraday.new do |f|
+        f.response :logger,
+                   RubyLLM.logger,
+                   bodies: false,
+                   response: false,
+                   errors: true,
+                   headers: false,
+                   log_level: :debug
+        f.response :raise_error
+        yield f if block_given?
       end
     end
 
