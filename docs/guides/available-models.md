@@ -243,7 +243,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Claude Instant | anthropic.claude-instant-v1:2:100k | bedrock | 200000 | 4096 | In: $0.80, Out: $2.40 |
 
 
-### Openrouter (319)
+### Openrouter (320)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -344,7 +344,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Google: Gemma 2 9B | google/gemma-2-9b-it | openrouter | 8192 | - | In: $0.02, Out: $0.06 |
 | Google: Gemma 2 9B (free) | google/gemma-2-9b-it:free | openrouter | 8192 | 8192 | - |
 | Google: Gemma 3 12B | google/gemma-3-12b-it | openrouter | 131072 | - | In: $0.05, Out: $0.10 |
-| Google: Gemma 3 12B (free) | google/gemma-3-12b-it:free | openrouter | 131072 | 8192 | - |
+| Google: Gemma 3 12B (free) | google/gemma-3-12b-it:free | openrouter | 96000 | 8192 | - |
 | Google: Gemma 3 1B (free) | google/gemma-3-1b-it:free | openrouter | 32768 | 8192 | - |
 | Google: Gemma 3 27B | google/gemma-3-27b-it | openrouter | 131072 | 16384 | In: $0.10, Out: $0.20 |
 | Google: Gemma 3 27B (free) | google/gemma-3-27b-it:free | openrouter | 96000 | 8192 | - |
@@ -385,7 +385,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Meta: Llama 4 Maverick | meta-llama/llama-4-maverick | openrouter | 1048576 | 16384 | In: $0.16, Out: $0.60 |
 | Meta: Llama 4 Maverick (free) | meta-llama/llama-4-maverick:free | openrouter | 128000 | - | - |
 | Meta: Llama 4 Scout | meta-llama/llama-4-scout | openrouter | 1048576 | 1048576 | In: $0.08, Out: $0.30 |
-| Meta: Llama 4 Scout (free) | meta-llama/llama-4-scout:free | openrouter | 256000 | - | - |
+| Meta: Llama 4 Scout (free) | meta-llama/llama-4-scout:free | openrouter | 200000 | - | - |
 | Meta: Llama Guard 4 12B | meta-llama/llama-guard-4-12b | openrouter | 163840 | - | In: $0.05, Out: $0.05 |
 | Meta: LlamaGuard 2 8B | meta-llama/llama-guard-2-8b | openrouter | 8192 | - | In: $0.20, Out: $0.20 |
 | Microsoft: MAI DS R1 (free) | microsoft/mai-ds-r1:free | openrouter | 163840 | - | - |
@@ -408,6 +408,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Mistral Tiny | mistralai/mistral-tiny | openrouter | 32768 | - | In: $0.25, Out: $0.25 |
 | Mistral: Codestral 2501 | mistralai/codestral-2501 | openrouter | 262144 | - | In: $0.30, Out: $0.90 |
 | Mistral: Codestral Mamba | mistralai/codestral-mamba | openrouter | 262144 | - | In: $0.25, Out: $0.25 |
+| Mistral: Devstral Small | mistralai/devstral-small | openrouter | 131072 | - | In: $0.10, Out: $0.30 |
 | Mistral: Ministral 3B | mistralai/ministral-3b | openrouter | 131072 | - | In: $0.04, Out: $0.04 |
 | Mistral: Ministral 8B | mistralai/ministral-8b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | Mistral: Mistral 7B Instruct | mistralai/mistral-7b-instruct | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
@@ -417,7 +418,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Mistral: Mistral 7B Instruct v0.3 | mistralai/mistral-7b-instruct-v0.3 | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
 | Mistral: Mistral Medium 3 | mistralai/mistral-medium-3 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | Mistral: Mistral Nemo | mistralai/mistral-nemo | openrouter | 131072 | 131072 | In: $0.02, Out: $0.07 |
-| Mistral: Mistral Nemo (free) | mistralai/mistral-nemo:free | openrouter | 128000 | 128000 | - |
+| Mistral: Mistral Nemo (free) | mistralai/mistral-nemo:free | openrouter | 131072 | 128000 | - |
 | Mistral: Mistral Small 3 | mistralai/mistral-small-24b-instruct-2501 | openrouter | 32768 | 16384 | In: $0.06, Out: $0.12 |
 | Mistral: Mistral Small 3 (free) | mistralai/mistral-small-24b-instruct-2501:free | openrouter | 32768 | - | - |
 | Mistral: Mistral Small 3.1 24B | mistralai/mistral-small-3.1-24b-instruct | openrouter | 131072 | - | In: $0.05, Out: $0.15 |
@@ -521,7 +522,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Qwen: Qwen2.5 VL 72B Instruct | qwen/qwen2.5-vl-72b-instruct | openrouter | 32000 | - | In: $0.25, Out: $0.75 |
 | Qwen: Qwen2.5 VL 72B Instruct (free) | qwen/qwen2.5-vl-72b-instruct:free | openrouter | 131072 | 2048 | - |
 | Qwen: Qwen2.5-VL 7B Instruct | qwen/qwen-2.5-vl-7b-instruct | openrouter | 32768 | - | In: $0.20, Out: $0.20 |
-| Qwen: Qwen2.5-VL 7B Instruct (free) | qwen/qwen-2.5-vl-7b-instruct:free | openrouter | 64000 | 64000 | - |
+| Qwen: Qwen2.5-VL 7B Instruct (free) | qwen/qwen-2.5-vl-7b-instruct:free | openrouter | 32768 | 32768 | - |
 | Qwen: Qwen3 0.6B (free) | qwen/qwen3-0.6b-04-28:free | openrouter | 32000 | - | - |
 | Qwen: Qwen3 1.7B (free) | qwen/qwen3-1.7b:free | openrouter | 32000 | - | - |
 | Qwen: Qwen3 14B | qwen/qwen3-14b | openrouter | 40960 | 40960 | In: $0.07, Out: $0.24 |
@@ -570,7 +571,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 
 ## Models by Capability
 
-### Function Calling (244)
+### Function Calling (245)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -746,7 +747,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Meta: Llama 4 Maverick | meta-llama/llama-4-maverick | openrouter | 1048576 | 16384 | In: $0.16, Out: $0.60 |
 | Meta: Llama 4 Maverick (free) | meta-llama/llama-4-maverick:free | openrouter | 128000 | - | - |
 | Meta: Llama 4 Scout | meta-llama/llama-4-scout | openrouter | 1048576 | 1048576 | In: $0.08, Out: $0.30 |
-| Meta: Llama 4 Scout (free) | meta-llama/llama-4-scout:free | openrouter | 256000 | - | - |
+| Meta: Llama 4 Scout (free) | meta-llama/llama-4-scout:free | openrouter | 200000 | - | - |
 | Microsoft: Phi-3 Medium 128K Instruct | microsoft/phi-3-medium-128k-instruct | openrouter | 131072 | - | In: $0.10, Out: $0.30 |
 | Microsoft: Phi-3 Mini 128K Instruct | microsoft/phi-3-mini-128k-instruct | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | Microsoft: Phi-3.5 Mini 128K Instruct | microsoft/phi-3.5-mini-128k-instruct | openrouter | 131072 | - | In: $0.03, Out: $0.09 |
@@ -758,6 +759,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Mistral Tiny | mistralai/mistral-tiny | openrouter | 32768 | - | In: $0.25, Out: $0.25 |
 | Mistral: Codestral 2501 | mistralai/codestral-2501 | openrouter | 262144 | - | In: $0.30, Out: $0.90 |
 | Mistral: Codestral Mamba | mistralai/codestral-mamba | openrouter | 262144 | - | In: $0.25, Out: $0.25 |
+| Mistral: Devstral Small | mistralai/devstral-small | openrouter | 131072 | - | In: $0.10, Out: $0.30 |
 | Mistral: Ministral 3B | mistralai/ministral-3b | openrouter | 131072 | - | In: $0.04, Out: $0.04 |
 | Mistral: Ministral 8B | mistralai/ministral-8b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | Mistral: Mistral 7B Instruct | mistralai/mistral-7b-instruct | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
@@ -820,7 +822,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | xAI: Grok Beta | x-ai/grok-beta | openrouter | 131072 | - | In: $5.00, Out: $15.00 |
 
 
-### Structured Output (259)
+### Structured Output (260)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -955,7 +957,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Google: Gemma 2 27B | google/gemma-2-27b-it | openrouter | 8192 | - | In: $0.10, Out: $0.30 |
 | Google: Gemma 2 9B | google/gemma-2-9b-it | openrouter | 8192 | - | In: $0.02, Out: $0.06 |
 | Google: Gemma 3 12B | google/gemma-3-12b-it | openrouter | 131072 | - | In: $0.05, Out: $0.10 |
-| Google: Gemma 3 12B (free) | google/gemma-3-12b-it:free | openrouter | 131072 | 8192 | - |
+| Google: Gemma 3 12B (free) | google/gemma-3-12b-it:free | openrouter | 96000 | 8192 | - |
 | Google: Gemma 3 27B | google/gemma-3-27b-it | openrouter | 131072 | 16384 | In: $0.10, Out: $0.20 |
 | Google: Gemma 3 27B (free) | google/gemma-3-27b-it:free | openrouter | 96000 | 8192 | - |
 | Google: Gemma 3 4B | google/gemma-3-4b-it | openrouter | 131072 | - | In: $0.02, Out: $0.04 |
@@ -981,7 +983,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Meta: Llama 4 Maverick | meta-llama/llama-4-maverick | openrouter | 1048576 | 16384 | In: $0.16, Out: $0.60 |
 | Meta: Llama 4 Maverick (free) | meta-llama/llama-4-maverick:free | openrouter | 128000 | - | - |
 | Meta: Llama 4 Scout | meta-llama/llama-4-scout | openrouter | 1048576 | 1048576 | In: $0.08, Out: $0.30 |
-| Meta: Llama 4 Scout (free) | meta-llama/llama-4-scout:free | openrouter | 256000 | - | - |
+| Meta: Llama 4 Scout (free) | meta-llama/llama-4-scout:free | openrouter | 200000 | - | - |
 | Meta: Llama Guard 4 12B | meta-llama/llama-guard-4-12b | openrouter | 163840 | - | In: $0.05, Out: $0.05 |
 | Meta: LlamaGuard 2 8B | meta-llama/llama-guard-2-8b | openrouter | 8192 | - | In: $0.20, Out: $0.20 |
 | Microsoft: Phi 4 | microsoft/phi-4 | openrouter | 16384 | 16384 | In: $0.07, Out: $0.14 |
@@ -995,6 +997,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Mistral Tiny | mistralai/mistral-tiny | openrouter | 32768 | - | In: $0.25, Out: $0.25 |
 | Mistral: Codestral 2501 | mistralai/codestral-2501 | openrouter | 262144 | - | In: $0.30, Out: $0.90 |
 | Mistral: Codestral Mamba | mistralai/codestral-mamba | openrouter | 262144 | - | In: $0.25, Out: $0.25 |
+| Mistral: Devstral Small | mistralai/devstral-small | openrouter | 131072 | - | In: $0.10, Out: $0.30 |
 | Mistral: Ministral 3B | mistralai/ministral-3b | openrouter | 131072 | - | In: $0.04, Out: $0.04 |
 | Mistral: Ministral 8B | mistralai/ministral-8b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | Mistral: Mistral 7B Instruct | mistralai/mistral-7b-instruct | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
@@ -1085,7 +1088,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | xAI: Grok Vision Beta | x-ai/grok-vision-beta | openrouter | 8192 | - | In: $5.00, Out: $15.00 |
 
 
-### Streaming (395)
+### Streaming (396)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -1262,7 +1265,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Google: Gemma 2 9B | google/gemma-2-9b-it | openrouter | 8192 | - | In: $0.02, Out: $0.06 |
 | Google: Gemma 2 9B (free) | google/gemma-2-9b-it:free | openrouter | 8192 | 8192 | - |
 | Google: Gemma 3 12B | google/gemma-3-12b-it | openrouter | 131072 | - | In: $0.05, Out: $0.10 |
-| Google: Gemma 3 12B (free) | google/gemma-3-12b-it:free | openrouter | 131072 | 8192 | - |
+| Google: Gemma 3 12B (free) | google/gemma-3-12b-it:free | openrouter | 96000 | 8192 | - |
 | Google: Gemma 3 1B (free) | google/gemma-3-1b-it:free | openrouter | 32768 | 8192 | - |
 | Google: Gemma 3 27B | google/gemma-3-27b-it | openrouter | 131072 | 16384 | In: $0.10, Out: $0.20 |
 | Google: Gemma 3 27B (free) | google/gemma-3-27b-it:free | openrouter | 96000 | 8192 | - |
@@ -1303,7 +1306,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Meta: Llama 4 Maverick | meta-llama/llama-4-maverick | openrouter | 1048576 | 16384 | In: $0.16, Out: $0.60 |
 | Meta: Llama 4 Maverick (free) | meta-llama/llama-4-maverick:free | openrouter | 128000 | - | - |
 | Meta: Llama 4 Scout | meta-llama/llama-4-scout | openrouter | 1048576 | 1048576 | In: $0.08, Out: $0.30 |
-| Meta: Llama 4 Scout (free) | meta-llama/llama-4-scout:free | openrouter | 256000 | - | - |
+| Meta: Llama 4 Scout (free) | meta-llama/llama-4-scout:free | openrouter | 200000 | - | - |
 | Meta: Llama Guard 4 12B | meta-llama/llama-guard-4-12b | openrouter | 163840 | - | In: $0.05, Out: $0.05 |
 | Meta: LlamaGuard 2 8B | meta-llama/llama-guard-2-8b | openrouter | 8192 | - | In: $0.20, Out: $0.20 |
 | Microsoft: MAI DS R1 (free) | microsoft/mai-ds-r1:free | openrouter | 163840 | - | - |
@@ -1326,6 +1329,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Mistral Tiny | mistralai/mistral-tiny | openrouter | 32768 | - | In: $0.25, Out: $0.25 |
 | Mistral: Codestral 2501 | mistralai/codestral-2501 | openrouter | 262144 | - | In: $0.30, Out: $0.90 |
 | Mistral: Codestral Mamba | mistralai/codestral-mamba | openrouter | 262144 | - | In: $0.25, Out: $0.25 |
+| Mistral: Devstral Small | mistralai/devstral-small | openrouter | 131072 | - | In: $0.10, Out: $0.30 |
 | Mistral: Ministral 3B | mistralai/ministral-3b | openrouter | 131072 | - | In: $0.04, Out: $0.04 |
 | Mistral: Ministral 8B | mistralai/ministral-8b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | Mistral: Mistral 7B Instruct | mistralai/mistral-7b-instruct | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
@@ -1335,7 +1339,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Mistral: Mistral 7B Instruct v0.3 | mistralai/mistral-7b-instruct-v0.3 | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
 | Mistral: Mistral Medium 3 | mistralai/mistral-medium-3 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | Mistral: Mistral Nemo | mistralai/mistral-nemo | openrouter | 131072 | 131072 | In: $0.02, Out: $0.07 |
-| Mistral: Mistral Nemo (free) | mistralai/mistral-nemo:free | openrouter | 128000 | 128000 | - |
+| Mistral: Mistral Nemo (free) | mistralai/mistral-nemo:free | openrouter | 131072 | 128000 | - |
 | Mistral: Mistral Small 3 | mistralai/mistral-small-24b-instruct-2501 | openrouter | 32768 | 16384 | In: $0.06, Out: $0.12 |
 | Mistral: Mistral Small 3 (free) | mistralai/mistral-small-24b-instruct-2501:free | openrouter | 32768 | - | - |
 | Mistral: Mistral Small 3.1 24B | mistralai/mistral-small-3.1-24b-instruct | openrouter | 131072 | - | In: $0.05, Out: $0.15 |
@@ -1439,7 +1443,7 @@ See [Contributing Guide](/CONTRIBUTING.md) for more details.
 | Qwen: Qwen2.5 VL 72B Instruct | qwen/qwen2.5-vl-72b-instruct | openrouter | 32000 | - | In: $0.25, Out: $0.75 |
 | Qwen: Qwen2.5 VL 72B Instruct (free) | qwen/qwen2.5-vl-72b-instruct:free | openrouter | 131072 | 2048 | - |
 | Qwen: Qwen2.5-VL 7B Instruct | qwen/qwen-2.5-vl-7b-instruct | openrouter | 32768 | - | In: $0.20, Out: $0.20 |
-| Qwen: Qwen2.5-VL 7B Instruct (free) | qwen/qwen-2.5-vl-7b-instruct:free | openrouter | 64000 | 64000 | - |
+| Qwen: Qwen2.5-VL 7B Instruct (free) | qwen/qwen-2.5-vl-7b-instruct:free | openrouter | 32768 | 32768 | - |
 | Qwen: Qwen3 0.6B (free) | qwen/qwen3-0.6b-04-28:free | openrouter | 32000 | - | - |
 | Qwen: Qwen3 1.7B (free) | qwen/qwen3-1.7b:free | openrouter | 32000 | - | - |
 | Qwen: Qwen3 14B | qwen/qwen3-14b | openrouter | 40960 | 40960 | In: $0.07, Out: $0.24 |
@@ -1698,7 +1702,7 @@ Models that can process images:
 | Google: Gemini 2.5 Pro Experimental | google/gemini-2.5-pro-exp-03-25 | openrouter | 1048576 | 65535 | - |
 | Google: Gemini 2.5 Pro Preview | google/gemini-2.5-pro-preview | openrouter | 1048576 | 65535 | In: $1.25, Out: $10.00, Cache: $0.31 |
 | Google: Gemma 3 12B | google/gemma-3-12b-it | openrouter | 131072 | - | In: $0.05, Out: $0.10 |
-| Google: Gemma 3 12B (free) | google/gemma-3-12b-it:free | openrouter | 131072 | 8192 | - |
+| Google: Gemma 3 12B (free) | google/gemma-3-12b-it:free | openrouter | 96000 | 8192 | - |
 | Google: Gemma 3 1B (free) | google/gemma-3-1b-it:free | openrouter | 32768 | 8192 | - |
 | Google: Gemma 3 27B | google/gemma-3-27b-it | openrouter | 131072 | 16384 | In: $0.10, Out: $0.20 |
 | Google: Gemma 3 27B (free) | google/gemma-3-27b-it:free | openrouter | 96000 | 8192 | - |
@@ -1710,7 +1714,7 @@ Models that can process images:
 | Meta: Llama 4 Maverick | meta-llama/llama-4-maverick | openrouter | 1048576 | 16384 | In: $0.16, Out: $0.60 |
 | Meta: Llama 4 Maverick (free) | meta-llama/llama-4-maverick:free | openrouter | 128000 | - | - |
 | Meta: Llama 4 Scout | meta-llama/llama-4-scout | openrouter | 1048576 | 1048576 | In: $0.08, Out: $0.30 |
-| Meta: Llama 4 Scout (free) | meta-llama/llama-4-scout:free | openrouter | 256000 | - | - |
+| Meta: Llama 4 Scout (free) | meta-llama/llama-4-scout:free | openrouter | 200000 | - | - |
 | Meta: Llama Guard 4 12B | meta-llama/llama-guard-4-12b | openrouter | 163840 | - | In: $0.05, Out: $0.05 |
 | Microsoft: Phi 4 Multimodal Instruct | microsoft/phi-4-multimodal-instruct | openrouter | 131072 | - | In: $0.05, Out: $0.10 |
 | MiniMax: MiniMax-01 | minimax/minimax-01 | openrouter | 1000192 | 1000192 | In: $0.20, Out: $1.10 |
@@ -1752,7 +1756,7 @@ Models that can process images:
 | Qwen: Qwen2.5 VL 72B Instruct | qwen/qwen2.5-vl-72b-instruct | openrouter | 32000 | - | In: $0.25, Out: $0.75 |
 | Qwen: Qwen2.5 VL 72B Instruct (free) | qwen/qwen2.5-vl-72b-instruct:free | openrouter | 131072 | 2048 | - |
 | Qwen: Qwen2.5-VL 7B Instruct | qwen/qwen-2.5-vl-7b-instruct | openrouter | 32768 | - | In: $0.20, Out: $0.20 |
-| Qwen: Qwen2.5-VL 7B Instruct (free) | qwen/qwen-2.5-vl-7b-instruct:free | openrouter | 64000 | 64000 | - |
+| Qwen: Qwen2.5-VL 7B Instruct (free) | qwen/qwen-2.5-vl-7b-instruct:free | openrouter | 32768 | 32768 | - |
 | xAI: Grok 2 Vision 1212 | x-ai/grok-2-vision-1212 | openrouter | 32768 | - | In: $2.00, Out: $10.00 |
 | xAI: Grok Vision Beta | x-ai/grok-vision-beta | openrouter | 8192 | - | In: $5.00, Out: $15.00 |
 
