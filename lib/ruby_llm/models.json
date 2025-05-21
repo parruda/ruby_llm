@@ -143,31 +143,33 @@
   },
   {
     "id": "claude-3-5-sonnet-20240620",
-    "name": "Claude 3.5 Sonnet",
+    "name": "Claude 3.5 Sonnet (Old)",
     "provider": "anthropic",
     "family": "claude-3-5-sonnet",
-    "created_at": null,
+    "created_at": "2024-06-20 00:00:00 UTC",
     "context_window": 200000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling"
+      "streaming",
+      "function_calling",
+      "structured_output",
+      "batch"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 3.0,
-          "cached_input_per_million": 3.75,
           "output_per_million": 15.0
         },
         "batch": {
@@ -180,68 +182,33 @@
   },
   {
     "id": "claude-3-5-sonnet-20241022",
-    "name": "Claude 3.5 Sonnet",
+    "name": "Claude 3.5 Sonnet (New)",
     "provider": "anthropic",
     "family": "claude-3-5-sonnet",
-    "created_at": null,
+    "created_at": "2024-10-22 00:00:00 UTC",
     "context_window": 200000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling"
+      "streaming",
+      "function_calling",
+      "structured_output",
+      "batch"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 3.0,
-          "cached_input_per_million": 3.75,
-          "output_per_million": 15.0
-        },
-        "batch": {
-          "input_per_million": 1.5,
-          "output_per_million": 7.5
-        }
-      }
-    },
-    "metadata": {}
-  },
-  {
-    "id": "claude-3-5-sonnet-latest",
-    "name": "Claude 3.5 Sonnet",
-    "provider": "anthropic",
-    "family": "claude-3-5-sonnet",
-    "created_at": null,
-    "context_window": 200000,
-    "max_output_tokens": 8192,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "image",
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "batch",
-      "function_calling"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 3.0,
-          "cached_input_per_million": 3.75,
           "output_per_million": 15.0
         },
         "batch": {
@@ -2131,9 +2098,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2172,9 +2139,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2263,9 +2230,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2305,9 +2272,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2347,9 +2314,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2485,9 +2452,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2527,9 +2494,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 0.6
+          "input_per_million": 0.075,
+          "cached_input_per_million": 0.01875,
+          "output_per_million": 0.3
         }
       }
     },
@@ -2568,9 +2535,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "cached_input_per_million": 0.625,
-          "output_per_million": 10.0
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.3125,
+          "output_per_million": 5.0
         }
       }
     },
@@ -2609,9 +2576,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "cached_input_per_million": 0.625,
-          "output_per_million": 10.0
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.3125,
+          "output_per_million": 5.0
         }
       }
     },
@@ -2651,9 +2618,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "cached_input_per_million": 0.625,
-          "output_per_million": 10.0
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.3125,
+          "output_per_million": 5.0
         }
       }
     },
@@ -2693,9 +2660,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "cached_input_per_million": 0.625,
-          "output_per_million": 10.0
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.3125,
+          "output_per_million": 5.0
         }
       }
     },
@@ -3046,14 +3013,7 @@
         }
       }
     },
-    "metadata": {
-      "version": "001",
-      "description": "Gemini 2.0 Flash 001",
-      "supported_generation_methods": [
-        "bidiGenerateContent",
-        "countTokens"
-      ]
-    }
+    "metadata": {}
   },
   {
     "id": "gemini-2.0-flash-preview-image-generation",
@@ -3333,34 +3293,72 @@
     }
   },
   {
+    "id": "gemini-2.5-flash-exp-native-audio-thinking-dialog",
+    "name": "Gemini 2.5 Flash Native Audio",
+    "provider": "gemini",
+    "family": "gemini-2.5-flash-preview-native-audio-dialog",
+    "created_at": null,
+    "context_window": 128000,
+    "max_output_tokens": 8000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "audio",
+        "text"
+      ],
+      "output": [
+        "audio",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.5,
+          "output_per_million": 2.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
     "id": "gemini-2.5-flash-preview-04-17",
     "name": "Gemini 2.5 Flash Preview 04-17",
     "provider": "gemini",
-    "family": "gemini-2.5-flash-preview-04-17",
+    "family": "other",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 65536,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "audio",
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
         "text"
       ]
     },
     "capabilities": [
+      "streaming",
       "function_calling",
-      "structured_output"
+      "structured_output",
+      "batch",
+      "caching"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.15,
-          "cached_input_per_million": 0.0375,
-          "output_per_million": 3.5
+          "input_per_million": 0.075,
+          "output_per_million": 0.3
+        },
+        "batch": {
+          "input_per_million": 0.0375,
+          "output_per_million": 0.15
         }
       }
     },
@@ -3428,37 +3426,31 @@
     "id": "gemini-2.5-flash-preview-05-20",
     "name": "Gemini 2.5 Flash Preview 05-20",
     "provider": "gemini",
-    "family": "other",
+    "family": "gemini-2.5-flash-preview-05-20",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 65536,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text",
+        "audio",
         "image",
-        "pdf"
+        "text"
       ],
       "output": [
         "text"
       ]
     },
     "capabilities": [
-      "streaming",
       "function_calling",
-      "structured_output",
-      "batch",
-      "caching"
+      "structured_output"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.075,
-          "output_per_million": 0.3
-        },
-        "batch": {
-          "input_per_million": 0.0375,
-          "output_per_million": 0.15
+          "input_per_million": 0.15,
+          "cached_input_per_million": 0.0375,
+          "output_per_million": 0.6
         }
       }
     },
@@ -3470,6 +3462,74 @@
         "countTokens",
         "createCachedContent",
         "batchGenerateContent"
+      ]
+    }
+  },
+  {
+    "id": "gemini-2.5-flash-preview-native-audio-dialog",
+    "name": "Gemini 2.5 Flash Native Audio",
+    "provider": "gemini",
+    "family": "gemini-2.5-flash-preview-native-audio-dialog",
+    "created_at": null,
+    "context_window": 128000,
+    "max_output_tokens": 8000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "audio",
+        "text"
+      ],
+      "output": [
+        "audio",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.5,
+          "output_per_million": 2.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "gemini-2.5-flash-preview-tts",
+    "name": "Gemini 2.5 Flash Preview Text-to-Speech",
+    "provider": "gemini",
+    "family": "gemini-2.5-flash-preview-tts",
+    "created_at": null,
+    "context_window": 8000,
+    "max_output_tokens": 16000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "audio"
+      ]
+    },
+    "capabilities": [],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.15,
+          "cached_input_per_million": 0.0375,
+          "output_per_million": 0.6
+        }
+      }
+    },
+    "metadata": {
+      "version": "gemini-2.5-flash-exp-tts-2025-05-19",
+      "description": "Gemini 2.5 Flash Preview TTS",
+      "supported_generation_methods": [
+        "countTokens",
+        "generateContent"
       ]
     }
   },
@@ -3593,9 +3653,9 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "cached_input_per_million": 0.625,
-          "output_per_million": 15.0
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.31,
+          "output_per_million": 10.0
         }
       }
     },
@@ -3607,6 +3667,42 @@
         "countTokens",
         "createCachedContent",
         "batchGenerateContent"
+      ]
+    }
+  },
+  {
+    "id": "gemini-2.5-pro-preview-tts",
+    "name": "Gemini 2.5 Pro Preview Text-to-Speech",
+    "provider": "gemini",
+    "family": "gemini-2.5-pro-preview-tts",
+    "created_at": null,
+    "context_window": 8000,
+    "max_output_tokens": 16000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "audio"
+      ]
+    },
+    "capabilities": [],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.31,
+          "output_per_million": 10.0
+        }
+      }
+    },
+    "metadata": {
+      "version": "gemini-2.5-pro-preview-tts-2025-05-19",
+      "description": "Gemini 2.5 Pro Preview TTS",
+      "supported_generation_methods": [
+        "countTokens",
+        "generateContent"
       ]
     }
   },
@@ -4109,13 +4205,7 @@
     },
     "capabilities": [],
     "pricing": {},
-    "metadata": {
-      "version": "2.0",
-      "description": "Vertex served Veo 2 model.",
-      "supported_generation_methods": [
-        "predictLongRunning"
-      ]
-    }
+    "metadata": {}
   },
   {
     "id": "babbage-002",
@@ -4297,7 +4387,8 @@
         "text"
       ],
       "output": [
-        "image"
+        "image",
+        "text"
       ]
     },
     "capabilities": [],
@@ -5329,43 +5420,6 @@
   },
   {
     "id": "gpt-4o-audio-preview-2024-10-01",
-    "name": "GPT-4o-Audio Preview 20241001",
-    "provider": "openai",
-    "family": "gpt4o_audio",
-    "created_at": "2024-09-27 00:17:22 +0200",
-    "context_window": 128000,
-    "max_output_tokens": 16384,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text",
-        "audio"
-      ],
-      "output": [
-        "text",
-        "audio"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "speech_generation",
-      "transcription"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 2.5,
-          "output_per_million": 10.0
-        }
-      }
-    },
-    "metadata": {
-      "object": "model",
-      "owned_by": "system"
-    }
-  },
-  {
-    "id": "gpt-4o-audio-preview-2024-12-17",
     "name": "GPT-4o Audio",
     "provider": "openai",
     "family": "gpt-4o-audio-preview",
@@ -5385,6 +5439,43 @@
     },
     "capabilities": [
       "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 2.5,
+          "output_per_million": 10.0
+        }
+      }
+    },
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-4o-audio-preview-2024-12-17",
+    "name": "GPT-4o-Audio Preview 20241217",
+    "provider": "openai",
+    "family": "gpt4o_audio",
+    "created_at": "2024-12-12 21:10:39 +0100",
+    "context_window": 128000,
+    "max_output_tokens": 16384,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text",
+        "audio"
+      ],
+      "output": [
+        "text",
+        "audio"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "speech_generation",
+      "transcription"
     ],
     "pricing": {
       "text_tokens": {
@@ -5786,28 +5877,31 @@
   },
   {
     "id": "gpt-4o-realtime-preview-2024-10-01",
-    "name": "GPT-4o-Realtime Preview 20241001",
+    "name": "GPT-4o Realtime",
     "provider": "openai",
-    "family": "gpt4o_realtime",
-    "created_at": "2024-09-24 00:49:26 +0200",
+    "family": "gpt-4o-realtime-preview",
+    "created_at": null,
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "audio",
         "text"
       ],
       "output": [
+        "audio",
         "text"
       ]
     },
     "capabilities": [
-      "streaming"
+      "function_calling"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 5.0,
+          "cached_input_per_million": 2.5,
           "output_per_million": 20.0
         }
       }
@@ -6312,14 +6406,6 @@
           "input_per_million": 5.0,
           "output_per_million": 20.0
         }
-      },
-      "embeddings": {
-        "standard": {
-          "input_per_million": 5.0
-        },
-        "batch": {
-          "input_per_million": 2.5
-        }
       }
     },
     "metadata": {}
@@ -6357,14 +6443,6 @@
         "batch": {
           "input_per_million": 5.0,
           "output_per_million": 20.0
-        }
-      },
-      "embeddings": {
-        "standard": {
-          "input_per_million": 5.0
-        },
-        "batch": {
-          "input_per_million": 2.5
         }
       }
     },
@@ -7194,61 +7272,6 @@
       "supported_parameters": [
         "tools",
         "tool_choice",
-        "max_tokens",
-        "temperature",
-        "top_p",
-        "stop"
-      ]
-    }
-  },
-  {
-    "id": "ai21/jamba-instruct",
-    "name": "AI21: Jamba Instruct",
-    "provider": "openrouter",
-    "family": "ai21",
-    "created_at": "2024-06-25 02:00:00 +0200",
-    "context_window": 256000,
-    "max_output_tokens": 4096,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 0.7
-        }
-      }
-    },
-    "metadata": {
-      "description": "The Jamba-Instruct model, introduced by AI21 Labs, is an instruction-tuned variant of their hybrid SSM-Transformer Jamba model, specifically optimized for enterprise applications.\n\n- 256K Context Window: It can process extensive information, equivalent to a 400-page novel, which is beneficial for tasks involving large documents such as financial reports or legal documents\n- Safety and Accuracy: Jamba-Instruct is designed with enhanced safety features to ensure secure deployment in enterprise environments, reducing the risk and cost of implementation\n\nRead their [announcement](https://www.ai21.com/blog/announcing-jamba) to learn more.\n\nJamba has a knowledge cutoff of February 2024.",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": 4096,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
         "max_tokens",
         "temperature",
         "top_p",
@@ -13626,6 +13649,59 @@
     }
   },
   {
+    "id": "google/gemma-3n-e4b-it:free",
+    "name": "Google: Gemma 3n 4B (free)",
+    "provider": "openrouter",
+    "family": "google",
+    "created_at": "2025-05-20 23:33:44 +0200",
+    "context_window": 8192,
+    "max_output_tokens": 2048,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "structured_output"
+    ],
+    "pricing": {},
+    "metadata": {
+      "description": "Gemma 3n E4B-it is optimized for efficient execution on mobile and low-resource devices, such as phones, laptops, and tablets. It supports multimodal inputs—including text, visual data, and audio—enabling diverse tasks such as text generation, speech recognition, translation, and image analysis. Leveraging innovations like Per-Layer Embedding (PLE) caching and the MatFormer architecture, Gemma 3n dynamically manages memory usage and computational load by selectively activating model parameters, significantly reducing runtime resource requirements.\n\nThis model supports a wide linguistic range (trained in over 140 languages) and features a flexible 32K token context window. Gemma 3n can selectively load parameters, optimizing memory and computational efficiency based on the task or device capabilities, making it well-suited for privacy-focused, offline-capable applications and on-device AI solutions. [Read more in the blog post](https://developers.googleblog.com/en/introducing-gemma-3n/)",
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 8192,
+        "max_completion_tokens": 2048,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed",
+        "response_format"
+      ]
+    }
+  },
+  {
     "id": "gryphe/mythomax-l2-13b",
     "name": "MythoMax 13B",
     "provider": "openrouter",
@@ -13918,69 +13994,6 @@
     }
   },
   {
-    "id": "jondurbin/airoboros-l2-70b",
-    "name": "Airoboros 70B",
-    "provider": "openrouter",
-    "family": "jondurbin",
-    "created_at": "2023-10-29 02:00:00 +0200",
-    "context_window": 4096,
-    "max_output_tokens": null,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "predicted_outputs"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 0.5
-        }
-      }
-    },
-    "metadata": {
-      "description": "A Llama 2 70B fine-tune using synthetic data (the Airoboros dataset).\n\nCurrently based on [jondurbin/airoboros-l2-70b](https://huggingface.co/jondurbin/airoboros-l2-70b-2.2.1), but might get updated in the future.",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Llama2",
-        "instruct_type": "airoboros"
-      },
-      "top_provider": {
-        "context_length": 4096,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "max_tokens",
-        "temperature",
-        "top_p",
-        "stop",
-        "frequency_penalty",
-        "presence_penalty",
-        "seed",
-        "top_k",
-        "min_p",
-        "repetition_penalty",
-        "logit_bias"
-      ]
-    }
-  },
-  {
     "id": "liquid/lfm-3b",
     "name": "Liquid: LFM 3B",
     "provider": "openrouter",
@@ -14126,7 +14139,9 @@
       ]
     },
     "capabilities": [
-      "streaming"
+      "streaming",
+      "structured_output",
+      "predicted_outputs"
     ],
     "pricing": {
       "text_tokens": {
@@ -14165,7 +14180,11 @@
         "seed",
         "top_k",
         "min_p",
-        "repetition_penalty"
+        "repetition_penalty",
+        "logit_bias",
+        "logprobs",
+        "top_logprobs",
+        "response_format"
       ]
     }
   },
@@ -14754,6 +14773,8 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "tools",
+        "tool_choice",
         "max_tokens",
         "temperature",
         "top_p",
@@ -14768,9 +14789,7 @@
         "top_k",
         "repetition_penalty",
         "structured_outputs",
-        "min_p",
-        "tools",
-        "tool_choice"
+        "min_p"
       ]
     }
   },
@@ -14845,6 +14864,7 @@
     },
     "capabilities": [
       "streaming",
+      "function_calling",
       "structured_output",
       "predicted_outputs"
     ],
@@ -14890,6 +14910,8 @@
         "logit_bias",
         "response_format",
         "top_logprobs",
+        "tools",
+        "tool_choice",
         "logprobs"
       ]
     }
@@ -15127,6 +15149,8 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "tools",
+        "tool_choice",
         "max_tokens",
         "temperature",
         "top_p",
@@ -15140,9 +15164,7 @@
         "response_format",
         "top_k",
         "min_p",
-        "repetition_penalty",
-        "tools",
-        "tool_choice"
+        "repetition_penalty"
       ]
     }
   },
@@ -15311,6 +15333,8 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "tools",
+        "tool_choice",
         "max_tokens",
         "temperature",
         "top_p",
@@ -15323,8 +15347,6 @@
         "top_logprobs",
         "response_format",
         "top_k",
-        "tools",
-        "tool_choice",
         "min_p",
         "repetition_penalty",
         "structured_outputs"
@@ -19385,6 +19407,8 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "tools",
+        "tool_choice",
         "max_tokens",
         "temperature",
         "top_p",
@@ -19398,9 +19422,7 @@
         "response_format",
         "top_k",
         "repetition_penalty",
-        "min_p",
-        "tools",
-        "tool_choice"
+        "min_p"
       ]
     }
   },

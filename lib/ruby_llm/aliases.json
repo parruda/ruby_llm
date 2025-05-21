@@ -21,10 +21,6 @@
     "anthropic": "claude-3-5-haiku-20241022",
     "bedrock": "anthropic.claude-3-5-haiku-20241022-v1:0"
   },
-  "claude-3-5-sonnet": {
-    "anthropic": "claude-3-5-sonnet-latest",
-    "bedrock": "anthropic.claude-3-5-sonnet-20240620-v1:0:200k"
-  },
   "claude-3-5-sonnet-20240620": {
     "anthropic": "claude-3-5-sonnet-20240620",
     "bedrock": "anthropic.claude-3-5-sonnet-20240620-v1:0:200k"
