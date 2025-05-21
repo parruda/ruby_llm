@@ -37,7 +37,8 @@ module RubyLLM
                   :http_proxy,
                   # Logging configuration
                   :log_file,
-                  :log_level
+                  :log_level,
+                  :log_assume_model_exists
 
     def initialize
       # Connection configuration
@@ -56,6 +57,7 @@ module RubyLLM
       # Logging configuration
       @log_file = $stdout
       @log_level = ENV['RUBYLLM_DEBUG'] ? Logger::DEBUG : Logger::INFO
+      @log_assume_model_exists = true
     end
 
     def inspect

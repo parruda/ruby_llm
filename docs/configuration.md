@@ -83,6 +83,7 @@ RubyLLM.configure do |config|
   # --- Logging Settings ---
   config.log_file = '/logs/ruby_llm.log'
   config.log_level = :debug # debug level can also be set to debug by setting RUBYLLM_DEBUG envar to true
+  config.log_assume_model_exists = false # Silence "Assuming model exists for provider" warning
 end
 ```
 

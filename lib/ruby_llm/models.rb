@@ -46,7 +46,7 @@ module RubyLLM
         end
       end
 
-      def resolve(model_id, provider: nil, assume_exists: false)
+      def resolve(model_id, provider: nil, assume_exists: false) # rubocop:disable Metrics/PerceivedComplexity
         assume_exists = true if provider && Provider.providers[provider.to_sym].local?
 
         if assume_exists
@@ -61,8 +61,10 @@ module RubyLLM
             modalities: { input: %w[text image], output: %w[text] },
             metadata: { warning: 'Assuming model exists, capabilities may not be accurate' }
           )
-          RubyLLM.logger.warn "Assuming model '#{model_id}' exists for provider '#{provider}'. " \
-                              'Capabilities may not be accurately reflected.'
+          if RubyLLM.config.log_assume_model_exists
+            RubyLLM.logger.warn "Assuming model '#{model_id}' exists for provider '#{provider}'. " \
+                                'Capabilities may not be accurately reflected.'
+          end
         else
           model = Models.find model_id, provider
           provider = Provider.providers[model.provider.to_sym] || raise(Error, "Unknown provider: #{model.provider}")
