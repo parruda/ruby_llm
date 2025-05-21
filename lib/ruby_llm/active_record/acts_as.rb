@@ -133,6 +133,11 @@ module RubyLLM
         self
       end
 
+      def with_context(...)
+        to_llm.with_context(...)
+        self
+      end
+
       def on_new_message(...)
         to_llm.on_new_message(...)
         self
