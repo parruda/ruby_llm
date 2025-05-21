@@ -58,8 +58,9 @@ module RubyLLM
       return :image if image?
       return :audio if audio?
       return :pdf if pdf?
+      return :text if text?
 
-      :text
+      :unknown
     end
 
     def image?
