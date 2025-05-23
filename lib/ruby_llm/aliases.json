@@ -21,6 +21,10 @@
     "anthropic": "claude-3-5-haiku-20241022",
     "bedrock": "anthropic.claude-3-5-haiku-20241022-v1:0"
   },
+  "claude-3-5-sonnet": {
+    "anthropic": "claude-3-5-sonnet-latest",
+    "bedrock": "anthropic.claude-3-5-sonnet-20240620-v1:0:200k"
+  },
   "claude-3-5-sonnet-20240620": {
     "anthropic": "claude-3-5-sonnet-20240620",
     "bedrock": "anthropic.claude-3-5-sonnet-20240620-v1:0:200k"
@@ -60,6 +64,14 @@
   "claude-3-sonnet-20240229": {
     "anthropic": "claude-3-sonnet-20240229",
     "bedrock": "anthropic.claude-3-sonnet-20240229-v1:0:200k"
+  },
+  "claude-opus-4-20250514": {
+    "anthropic": "claude-opus-4-20250514",
+    "bedrock": "us.anthropic.claude-opus-4-20250514-v1:0"
+  },
+  "claude-sonnet-4-20250514": {
+    "anthropic": "claude-sonnet-4-20250514",
+    "bedrock": "us.anthropic.claude-sonnet-4-20250514-v1:0"
   },
   "deepseek-chat": {
     "deepseek": "deepseek-chat",
