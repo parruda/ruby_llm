@@ -6,8 +6,10 @@ on:
     paths:
       - 'lib/**'
       - 'spec/**'
+      - 'gemfiles/**'
       - 'Gemfile'
       - 'Rakefile'
+      - 'Appraisals'
       - 'ruby_llm.gemspec'
       - '.github/workflows/cicd.yml'
   pull_request:
@@ -15,8 +17,10 @@ on:
     paths:
       - 'lib/**'
       - 'spec/**'
+      - 'gemfiles/**'
       - 'Gemfile'
       - 'Rakefile'
+      - 'Appraisals'
       - 'ruby_llm.gemspec'
       - '.github/workflows/cicd.yml'
   workflow_call:
