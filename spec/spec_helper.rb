@@ -27,7 +27,15 @@ require 'bundler/setup'
 ENV['RAILS_ENV'] = 'test'
 require_relative 'dummy/config/environment'
 
-# Migrate the database
+# Ensure database is properly set up
+begin
+  # Create database if it doesn't exist
+  ActiveRecord::Tasks::DatabaseTasks.create_current
+rescue ActiveRecord::DatabaseAlreadyExists
+  # Database already exists, that's fine
+end
+
+# Run all pending migrations
 ActiveRecord::Migration.maintain_test_schema!
 
 require 'fileutils'
