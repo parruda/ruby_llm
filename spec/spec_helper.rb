@@ -35,8 +35,8 @@ rescue ActiveRecord::DatabaseAlreadyExists
   # Database already exists, that's fine
 end
 
-# Run all pending migrations
-ActiveRecord::Migration.maintain_test_schema!
+# Explicitly run all migrations from the dummy app
+ActiveRecord::Tasks::DatabaseTasks.migrate
 
 require 'fileutils'
 require 'ruby_llm'
