@@ -7,6 +7,9 @@ require 'codecov'
 require 'vcr'
 
 SimpleCov.start do
+  add_filter '/spec/'
+  add_filter '/vendor/'
+
   enable_coverage :branch
 
   formatter SimpleCov::Formatter::MultiFormatter.new(
@@ -18,8 +21,15 @@ SimpleCov.start do
   )
 end
 
-require 'active_record'
 require 'bundler/setup'
+
+# Load the dummy Rails app
+ENV['RAILS_ENV'] = 'test'
+require_relative 'dummy/config/environment'
+
+# Migrate the database
+ActiveRecord::Migration.maintain_test_schema!
+
 require 'fileutils'
 require 'ruby_llm'
 require 'webmock/rspec'
