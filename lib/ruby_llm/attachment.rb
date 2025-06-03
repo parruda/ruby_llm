@@ -5,7 +5,7 @@ module RubyLLM
   class Attachment
     attr_reader :source, :filename, :mime_type
 
-    def initialize(source, filename: nil) # rubocop:disable Metrics/PerceivedComplexity
+    def initialize(source, filename: nil)
       @source = source
       if url?
         @source = URI source
@@ -19,12 +19,7 @@ module RubyLLM
         @filename = filename
       end
 
-      @mime_type = if active_storage? && active_storage_content_type.present?
-                     active_storage_content_type
-                   else
-                     RubyLLM::MimeType.for(@source, name: @filename)
-                   end
-      @mime_type = RubyLLM::MimeType.for(content) if @mime_type == 'application/octet-stream'
+      determine_mime_type
     end
 
     def url?
@@ -100,6 +95,14 @@ module RubyLLM
     end
 
     private
+
+    def determine_mime_type
+      return @mime_type = active_storage_content_type if active_storage? && active_storage_content_type.present?
+
+      @mime_type = RubyLLM::MimeType.for(@source, name: @filename)
+      @mime_type = RubyLLM::MimeType.for(content) if @mime_type == 'application/octet-stream'
+      @mime_type = 'audio/wav' if @mime_type == 'audio/x-wav' # Normalize WAV type
+    end
 
     def fetch_content
       response = Connection.basic.get @source.to_s

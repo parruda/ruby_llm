@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 02 Jun 2025 18:19:20 GMT
+      - Tue, 03 Jun 2025 09:37:26 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -35,11 +35,11 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '440'
+      - '539'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '442'
+      - '586'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -73,9 +73,9 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Be42hCeHEu4EBQCuauoyEtrIVkh3i",
+          "id": "chatcmpl-BeINB43whYcwlQFGbCStDp4SFEkUp",
           "object": "chat.completion",
-          "created": 1748888359,
+          "created": 1748943445,
           "model": "gpt-4.1-nano-2025-04-14",
           "choices": [
             {
@@ -108,5 +108,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_38343a2f8f"
         }
-  recorded_at: Mon, 02 Jun 2025 18:19:20 GMT
+  recorded_at: Tue, 03 Jun 2025 09:37:26 GMT
 recorded_with: VCR 6.3.1

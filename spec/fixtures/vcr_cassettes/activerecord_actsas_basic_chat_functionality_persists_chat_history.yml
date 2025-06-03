@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 02 Jun 2025 15:27:18 GMT
+      - Tue, 03 Jun 2025 09:37:20 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,11 +36,11 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '1263'
+      - '1512'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '1269'
+      - '1517'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -74,16 +74,16 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Be1MCqlHOr6DOflbWIxONLgokyCNz",
+          "id": "chatcmpl-BeIN5eXiLYFZFmNIEWWt5w864HwLW",
           "object": "chat.completion",
-          "created": 1748878036,
+          "created": 1748943439,
           "model": "gpt-4.1-nano-2025-04-14",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "One of my favorite Ruby features is its elegant and expressive syntax, especially the way it allows for concise code using blocks and iterators. Features like the Enumerable module enable powerful, readable operations on collections with methods like `map`, `select`, and `reduce`. Additionally, Ruby's flexibility with open classes and metaprogramming allows developers to customize and extend classes dynamically, making it a highly adaptable language. Overall, I appreciate how Ruby balances simplicity and power, making it enjoyable to write and read code.",
+                "content": "That's a great question! One of my favorite Ruby features is its elegant and expressive syntax, especially the way it handles blocks and iterators. Features like `each`, `map`, and `select` allow for very readable and concise code when working with collections. Additionally, Ruby's open classes and metaprogramming capabilities make it highly flexible, enabling developers to extend or modify existing classes dynamically. This combination of readability and flexibility makes Ruby a joy to work with!",
                 "refusal": null,
                 "annotations": []
               },
@@ -93,8 +93,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 13,
-            "completion_tokens": 101,
-            "total_tokens": 114,
+            "completion_tokens": 93,
+            "total_tokens": 106,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -107,7 +107,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_f12167b370"
+          "system_fingerprint": "fp_38343a2f8f"
         }
-  recorded_at: Mon, 02 Jun 2025 15:27:18 GMT
+  recorded_at: Tue, 03 Jun 2025 09:37:20 GMT
 recorded_with: VCR 6.3.1
