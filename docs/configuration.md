@@ -86,7 +86,7 @@ RubyLLM.configure do |config|
   # config.http_proxy = "socks5://proxy.company.com:1080"        # SOCKS5 proxy
 
   # --- Logging Settings ---
-  # config.logger = Rails.logger # When set the file and level settings are not used.
+  # config.logger = Rails.logger # NOTE: When set the log_file and log_level settings are not used.
   config.log_file = '/logs/ruby_llm.log'
   config.log_level = :debug # debug level can also be set to debug by setting RUBYLLM_DEBUG envar to true
   config.log_assume_model_exists = false # Silence "Assuming model exists for provider" warning
@@ -167,8 +167,8 @@ RubyLLM.configure do |config|
   config.log_file = '/logs/ruby_llm.log'  # Path to log file (default: nil, logs to STDOUT)
   config.log_level = :debug  # Log level (:debug, :info, :warn)
 
-  # --- Custom Logger ---
-  config.logger = Rails.logger
+  # --- OR Custom Logger ---
+  config.logger = Rails.logger # NOTE: When set the log_file and log_level settings are not used.
 end
 ```
 
