@@ -39,12 +39,12 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 ## Last Updated
 {: .d-inline-block }
 
-2025-06-10
+2025-06-11
 {: .label .label-green }
 
 ## Models by Provider
 
-### Openai (80)
+### Openai (82)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -103,7 +103,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Omni Moderation 20240926 | omni-moderation-2024-09-26 | openai | - | - | - |
 | TTS-1 | tts-1 | openai | - | - | In: $15.00 |
 | TTS-1 1106 | tts-1-1106 | openai | - | - | In: $15.00, Out: $15.00 |
-| TTS-1 HD | tts-1-hd | openai | - | - | Out: $30.00 |
+| TTS-1 HD | tts-1-hd | openai | - | - | In: $30.00 |
 | TTS-1 HD 1106 | tts-1-hd-1106 | openai | - | - | In: $30.00, Out: $30.00 |
 | Whisper | whisper-1 | openai | - | - | In: $0.01 |
 | babbage-002 | babbage-002 | openai | - | 16384 | In: $0.40, Out: $0.40 |
@@ -117,10 +117,12 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | o1-mini | o1-mini-2024-09-12 | openai | 128000 | 65536 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | o1-pro | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
 | o1-pro | o1-pro-2025-03-19 | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
-| o3 | o3 | openai | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
-| o3 | o3-2025-04-16 | openai | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
+| o3 | o3 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
+| o3 | o3-2025-04-16 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | o3-mini | o3-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | o3-mini | o3-mini-2025-01-31 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
+| o3-pro | o3-pro | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
+| o3-pro | o3-pro-2025-06-10 | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | o4-mini | o4-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | o4-mini | o4-mini-2025-04-16 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | omni-moderation | omni-moderation-latest | openai | - | - | - |
@@ -147,13 +149,12 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Claude Sonnet 4 | claude-sonnet-4-20250514 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
 
 
-### Gemini (59)
+### Gemini (56)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
-| AQA | models/aqa | gemini | 7168 | 1024 | - |
-| Embedding | models/embedding-001 | gemini | 2048 | - | - |
-| Embedding 001 | embedding-001 | gemini | 2048 | 1 | - |
+| AQA | aqa | gemini | 7168 | 1024 | - |
+| Embedding | embedding-001 | gemini | 2048 | - | - |
 | Embedding Gecko | embedding-gecko-001 | gemini | 1024 | 1 | - |
 | Gemini 1.0 Pro Vision | gemini-1.0-pro-vision-latest | gemini | 12288 | 4096 | In: $0.08, Out: $0.30 |
 | Gemini 1.0 Pro Vision | gemini-pro-vision | gemini | 12288 | 4096 | In: $0.08, Out: $0.30 |
@@ -204,12 +205,10 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Gemma 3 27B | gemma-3-27b-it | gemini | 131072 | 8192 | In: $0.08, Out: $0.30 |
 | Gemma 3 4B | gemma-3-4b-it | gemini | 32768 | 8192 | In: $0.08, Out: $0.30 |
 | Gemma 3n E4B | gemma-3n-e4b-it | gemini | 8192 | 2048 | In: $0.08, Out: $0.30 |
-| Imagen 3 | imagen-3.0-generate-002 | gemini | - | - | Out: $0.03 |
+| Imagen 3 | imagen-3.0-generate-002 | gemini | - | - | - |
 | LearnLM 2.0 Flash Experimental | learnlm-2.0-flash-experimental | gemini | 1048576 | 32768 | In: $0.08, Out: $0.30 |
-| Model that performs Attributed Question Answering. | aqa | gemini | 7168 | 1024 | - |
-| Text Embedding | models/text-embedding-004 | gemini | 2048 | - | - |
-| Text Embedding 004 | text-embedding-004 | gemini | 2048 | 1 | - |
-| Veo 2 | veo-2.0-generate-001 | gemini | - | - | Out: $0.35 |
+| Text Embedding | text-embedding-004 | gemini | 2048 | - | - |
+| Veo 2 | veo-2.0-generate-001 | gemini | - | - | - |
 
 
 ### Deepseek (2)
@@ -256,7 +255,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Claude Sonnet 4 | us.anthropic.claude-sonnet-4-20250514-v1:0 | bedrock | 200000 | 4096 | In: $0.10, Out: $0.20 |
 
 
-### Openrouter (322)
+### Openrouter (324)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -431,6 +430,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Mistral: Devstral Small (free) | mistralai/devstral-small:free | openrouter | 131072 | - | - |
 | Mistral: Magistral Medium 2506 | mistralai/magistral-medium-2506 | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | Mistral: Magistral Medium 2506 (thinking) | mistralai/magistral-medium-2506:thinking | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
+| Mistral: Magistral Small 2506 | mistralai/magistral-small-2506 | openrouter | 40000 | 40000 | In: $0.50, Out: $1.50 |
 | Mistral: Ministral 3B | mistralai/ministral-3b | openrouter | 131072 | - | In: $0.04, Out: $0.04 |
 | Mistral: Ministral 8B | mistralai/ministral-8b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | Mistral: Mistral 7B Instruct | mistralai/mistral-7b-instruct | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
@@ -502,9 +502,10 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | OpenAI: o1-preview | openai/o1-preview | openrouter | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | OpenAI: o1-preview (2024-09-12) | openai/o1-preview-2024-09-12 | openrouter | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | OpenAI: o1-pro | openai/o1-pro | openrouter | 200000 | 100000 | In: $150.00, Out: $600.00 |
-| OpenAI: o3 | openai/o3 | openrouter | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
+| OpenAI: o3 | openai/o3 | openrouter | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | OpenAI: o3 Mini | openai/o3-mini | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | OpenAI: o3 Mini High | openai/o3-mini-high | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
+| OpenAI: o3 Pro | openai/o3-pro | openrouter | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | OpenAI: o4 Mini | openai/o4-mini | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | OpenAI: o4 Mini High | openai/o4-mini-high | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | OpenGVLab: InternVL3 14B (free) | opengvlab/internvl3-14b:free | openrouter | 32000 | - | - |
@@ -571,7 +572,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | TheDrummer: Anubis Pro 105B V1 | thedrummer/anubis-pro-105b-v1 | openrouter | 131072 | 131072 | In: $0.80, Out: $1.00 |
 | TheDrummer: Rocinante 12B | thedrummer/rocinante-12b | openrouter | 32768 | - | In: $0.25, Out: $0.50 |
 | TheDrummer: Skyfall 36B V2 | thedrummer/skyfall-36b-v2 | openrouter | 32768 | 32768 | In: $0.50, Out: $0.80 |
-| TheDrummer: UnslopNemo 12B | thedrummer/unslopnemo-12b | openrouter | 32000 | 16000 | In: $0.45, Out: $0.45 |
+| TheDrummer: UnslopNemo 12B | thedrummer/unslopnemo-12b | openrouter | 32000 | 32000 | In: $0.45, Out: $0.45 |
 | TheDrummer: Valkyrie 49B V1 | thedrummer/valkyrie-49b-v1 | openrouter | 131072 | 131072 | In: $0.50, Out: $0.80 |
 | Toppy M 7B | undi95/toppy-m-7b | openrouter | 4096 | 4096 | In: $0.80, Out: $1.20 |
 | Typhoon2 70B Instruct | scb10x/llama3.1-typhoon2-70b-instruct | openrouter | 8192 | - | In: $0.88, Out: $0.88 |
@@ -586,7 +587,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 
 ## Models by Capability
 
-### Function Calling (254)
+### Function Calling (259)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -702,10 +703,12 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | o1 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-pro | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
 | o1-pro | o1-pro-2025-03-19 | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
-| o3 | o3 | openai | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
-| o3 | o3-2025-04-16 | openai | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
+| o3 | o3 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
+| o3 | o3-2025-04-16 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | o3-mini | o3-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | o3-mini | o3-mini-2025-01-31 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
+| o3-pro | o3-pro | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
+| o3-pro | o3-pro-2025-06-10 | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | o4-mini | o4-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | o4-mini | o4-mini-2025-04-16 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | AI21: Jamba 1.6 Large | ai21/jamba-1.6-large | openrouter | 256000 | 4096 | In: $2.00, Out: $8.00 |
@@ -785,6 +788,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Mistral: Devstral Small (free) | mistralai/devstral-small:free | openrouter | 131072 | - | - |
 | Mistral: Magistral Medium 2506 | mistralai/magistral-medium-2506 | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | Mistral: Magistral Medium 2506 (thinking) | mistralai/magistral-medium-2506:thinking | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
+| Mistral: Magistral Small 2506 | mistralai/magistral-small-2506 | openrouter | 40000 | 40000 | In: $0.50, Out: $1.50 |
 | Mistral: Ministral 3B | mistralai/ministral-3b | openrouter | 131072 | - | In: $0.04, Out: $0.04 |
 | Mistral: Ministral 8B | mistralai/ministral-8b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | Mistral: Mistral 7B Instruct | mistralai/mistral-7b-instruct | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
@@ -826,9 +830,10 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | OpenAI: GPT-4o-mini | openai/gpt-4o-mini | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | OpenAI: GPT-4o-mini (2024-07-18) | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | OpenAI: o1 | openai/o1 | openrouter | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
-| OpenAI: o3 | openai/o3 | openrouter | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
+| OpenAI: o3 | openai/o3 | openrouter | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | OpenAI: o3 Mini | openai/o3-mini | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | OpenAI: o3 Mini High | openai/o3-mini-high | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
+| OpenAI: o3 Pro | openai/o3-pro | openrouter | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | OpenAI: o4 Mini | openai/o4-mini | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | OpenAI: o4 Mini High | openai/o4-mini-high | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | OpenHands LM 32B V0.1 | all-hands/openhands-lm-32b-v0.1 | openrouter | 16384 | 4096 | In: $2.60, Out: $3.40 |
@@ -840,13 +845,14 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Qwen: Qwen3 235B A22B | qwen/qwen3-235b-a22b | openrouter | 40960 | 40960 | In: $0.13, Out: $0.60 |
 | Qwen: Qwen3 30B A3B | qwen/qwen3-30b-a3b | openrouter | 40960 | 40960 | In: $0.08, Out: $0.29 |
 | Qwen: Qwen3 32B | qwen/qwen3-32b | openrouter | 40960 | - | In: $0.10, Out: $0.30 |
+| TheDrummer: UnslopNemo 12B | thedrummer/unslopnemo-12b | openrouter | 32000 | 32000 | In: $0.45, Out: $0.45 |
 | xAI: Grok 2 1212 | x-ai/grok-2-1212 | openrouter | 131072 | - | In: $2.00, Out: $10.00 |
 | xAI: Grok 3 Beta | x-ai/grok-3-beta | openrouter | 131072 | - | In: $3.00, Out: $15.00, Cache: $0.75 |
 | xAI: Grok 3 Mini Beta | x-ai/grok-3-mini-beta | openrouter | 131072 | - | In: $0.30, Out: $0.50, Cache: $0.08 |
 | xAI: Grok Beta | x-ai/grok-beta | openrouter | 131072 | - | In: $5.00, Out: $15.00 |
 
 
-### Structured Output (269)
+### Structured Output (273)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -943,10 +949,12 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | o1 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-pro | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
 | o1-pro | o1-pro-2025-03-19 | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
-| o3 | o3 | openai | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
-| o3 | o3-2025-04-16 | openai | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
+| o3 | o3 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
+| o3 | o3-2025-04-16 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | o3-mini | o3-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | o3-mini | o3-mini-2025-01-31 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
+| o3-pro | o3-pro | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
+| o3-pro | o3-pro-2025-06-10 | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | o4-mini | o4-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | o4-mini | o4-mini-2025-04-16 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | 01.AI: Yi Large | 01-ai/yi-large | openrouter | 32768 | 4096 | In: $3.00, Out: $3.00 |
@@ -1033,6 +1041,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Mistral: Devstral Small | mistralai/devstral-small | openrouter | 128000 | - | In: $0.06, Out: $0.12 |
 | Mistral: Magistral Medium 2506 | mistralai/magistral-medium-2506 | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | Mistral: Magistral Medium 2506 (thinking) | mistralai/magistral-medium-2506:thinking | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
+| Mistral: Magistral Small 2506 | mistralai/magistral-small-2506 | openrouter | 40000 | 40000 | In: $0.50, Out: $1.50 |
 | Mistral: Ministral 3B | mistralai/ministral-3b | openrouter | 131072 | - | In: $0.04, Out: $0.04 |
 | Mistral: Ministral 8B | mistralai/ministral-8b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | Mistral: Mistral 7B Instruct | mistralai/mistral-7b-instruct | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
@@ -1083,9 +1092,10 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | OpenAI: GPT-4o-mini Search Preview | openai/gpt-4o-mini-search-preview | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60 |
 | OpenAI: o1 | openai/o1 | openrouter | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | OpenAI: o1-pro | openai/o1-pro | openrouter | 200000 | 100000 | In: $150.00, Out: $600.00 |
-| OpenAI: o3 | openai/o3 | openrouter | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
+| OpenAI: o3 | openai/o3 | openrouter | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | OpenAI: o3 Mini | openai/o3-mini | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | OpenAI: o3 Mini High | openai/o3-mini-high | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
+| OpenAI: o3 Pro | openai/o3-pro | openrouter | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | OpenAI: o4 Mini | openai/o4-mini | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | OpenAI: o4 Mini High | openai/o4-mini-high | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | Perplexity: R1 1776 | perplexity/r1-1776 | openrouter | 128000 | - | In: $2.00, Out: $8.00 |
@@ -1121,7 +1131,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | xAI: Grok Vision Beta | x-ai/grok-vision-beta | openrouter | 8192 | - | In: $5.00, Out: $15.00 |
 
 
-### Streaming (406)
+### Streaming (405)
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
@@ -1158,7 +1168,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Claude Instant | anthropic.claude-instant-v1:2:100k | bedrock | 200000 | 4096 | In: $0.80, Out: $2.40 |
 | Claude Opus 4 | us.anthropic.claude-opus-4-20250514-v1:0 | bedrock | 200000 | 4096 | In: $0.10, Out: $0.20 |
 | Claude Sonnet 4 | us.anthropic.claude-sonnet-4-20250514-v1:0 | bedrock | 200000 | 4096 | In: $0.10, Out: $0.20 |
-| Embedding 001 | embedding-001 | gemini | 2048 | 1 | - |
 | Embedding Gecko | embedding-gecko-001 | gemini | 1024 | 1 | - |
 | Gemini 1.0 Pro Vision | gemini-1.0-pro-vision-latest | gemini | 12288 | 4096 | In: $0.08, Out: $0.30 |
 | Gemini 1.0 Pro Vision | gemini-pro-vision | gemini | 12288 | 4096 | In: $0.08, Out: $0.30 |
@@ -1185,8 +1194,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Gemma 3 4B | gemma-3-4b-it | gemini | 32768 | 8192 | In: $0.08, Out: $0.30 |
 | Gemma 3n E4B | gemma-3n-e4b-it | gemini | 8192 | 2048 | In: $0.08, Out: $0.30 |
 | LearnLM 2.0 Flash Experimental | learnlm-2.0-flash-experimental | gemini | 1048576 | 32768 | In: $0.08, Out: $0.30 |
-| Model that performs Attributed Question Answering. | aqa | gemini | 7168 | 1024 | - |
-| Text Embedding 004 | text-embedding-004 | gemini | 2048 | 1 | - |
 | GPT-3.5 Turbo 0125 | gpt-3.5-turbo-0125 | openai | 16385 | 4096 | In: $0.50, Out: $1.50 |
 | GPT-3.5 Turbo 1106 | gpt-3.5-turbo-1106 | openai | 16385 | 4096 | In: $0.50, Out: $1.50 |
 | GPT-3.5 Turbo 16k | gpt-3.5-turbo-16k | openai | 16385 | 4096 | In: $0.50, Out: $1.50 |
@@ -1380,6 +1387,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Mistral: Devstral Small (free) | mistralai/devstral-small:free | openrouter | 131072 | - | - |
 | Mistral: Magistral Medium 2506 | mistralai/magistral-medium-2506 | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | Mistral: Magistral Medium 2506 (thinking) | mistralai/magistral-medium-2506:thinking | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
+| Mistral: Magistral Small 2506 | mistralai/magistral-small-2506 | openrouter | 40000 | 40000 | In: $0.50, Out: $1.50 |
 | Mistral: Ministral 3B | mistralai/ministral-3b | openrouter | 131072 | - | In: $0.04, Out: $0.04 |
 | Mistral: Ministral 8B | mistralai/ministral-8b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | Mistral: Mistral 7B Instruct | mistralai/mistral-7b-instruct | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
@@ -1451,9 +1459,10 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | OpenAI: o1-preview | openai/o1-preview | openrouter | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | OpenAI: o1-preview (2024-09-12) | openai/o1-preview-2024-09-12 | openrouter | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | OpenAI: o1-pro | openai/o1-pro | openrouter | 200000 | 100000 | In: $150.00, Out: $600.00 |
-| OpenAI: o3 | openai/o3 | openrouter | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
+| OpenAI: o3 | openai/o3 | openrouter | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | OpenAI: o3 Mini | openai/o3-mini | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | OpenAI: o3 Mini High | openai/o3-mini-high | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
+| OpenAI: o3 Pro | openai/o3-pro | openrouter | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | OpenAI: o4 Mini | openai/o4-mini | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | OpenAI: o4 Mini High | openai/o4-mini-high | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | OpenGVLab: InternVL3 14B (free) | opengvlab/internvl3-14b:free | openrouter | 32000 | - | - |
@@ -1520,7 +1529,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | TheDrummer: Anubis Pro 105B V1 | thedrummer/anubis-pro-105b-v1 | openrouter | 131072 | 131072 | In: $0.80, Out: $1.00 |
 | TheDrummer: Rocinante 12B | thedrummer/rocinante-12b | openrouter | 32768 | - | In: $0.25, Out: $0.50 |
 | TheDrummer: Skyfall 36B V2 | thedrummer/skyfall-36b-v2 | openrouter | 32768 | 32768 | In: $0.50, Out: $0.80 |
-| TheDrummer: UnslopNemo 12B | thedrummer/unslopnemo-12b | openrouter | 32000 | 16000 | In: $0.45, Out: $0.45 |
+| TheDrummer: UnslopNemo 12B | thedrummer/unslopnemo-12b | openrouter | 32000 | 32000 | In: $0.45, Out: $0.45 |
 | TheDrummer: Valkyrie 49B V1 | thedrummer/valkyrie-49b-v1 | openrouter | 131072 | 131072 | In: $0.50, Out: $0.80 |
 | Toppy M 7B | undi95/toppy-m-7b | openrouter | 4096 | 4096 | In: $0.80, Out: $1.20 |
 | Typhoon2 70B Instruct | scb10x/llama3.1-typhoon2-70b-instruct | openrouter | 8192 | - | In: $0.88, Out: $0.88 |
@@ -1539,7 +1548,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | :-- | :-- | :-- | --: | --: | :-- |
 | Claude Sonnet 3 | claude-3-sonnet-20240229 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | Claude 3.7 Sonnet | us.anthropic.claude-3-7-sonnet-20250219-v1:0 | bedrock | 200000 | 4096 | In: $3.00, Out: $15.00 |
-| Embedding 001 | embedding-001 | gemini | 2048 | 1 | - |
 | Embedding Gecko | embedding-gecko-001 | gemini | 1024 | 1 | - |
 | Gemini 1.5 Flash 001 Tuning | gemini-1.5-flash-001-tuning | gemini | 16384 | 8192 | In: $0.08, Out: $0.30 |
 | Gemini 1.5 Flash 8B Experimental 0827 | gemini-1.5-flash-8b-exp-0827 | gemini | 1000000 | 8192 | In: $0.04, Out: $0.15 |
@@ -1553,7 +1561,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | Gemini 2.5 Flash Preview 04-17 for cursor testing | gemini-2.5-flash-preview-04-17-thinking | gemini | 1048576 | 65536 | In: $0.08, Out: $0.30 |
 | Gemini Embedding Experimental | gemini-embedding-exp | gemini | 8192 | 1 | In: $0.00, Out: $0.00 |
 | LearnLM 2.0 Flash Experimental | learnlm-2.0-flash-experimental | gemini | 1048576 | 32768 | In: $0.08, Out: $0.30 |
-| Text Embedding 004 | text-embedding-004 | gemini | 2048 | 1 | - |
 | GPT-3.5 Turbo | gpt-3.5-turbo | openai | 16385 | 4096 | In: $0.50, Out: $1.50 |
 | GPT-4 | gpt-4 | openai | 8192 | 8192 | In: $30.00, Out: $60.00 |
 | GPT-4 | gpt-4-0613 | openai | 8192 | 8192 | In: $30.00, Out: $60.00 |
@@ -1575,10 +1582,12 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | o1 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-pro | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
 | o1-pro | o1-pro-2025-03-19 | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
-| o3 | o3 | openai | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
-| o3 | o3-2025-04-16 | openai | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
+| o3 | o3 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
+| o3 | o3-2025-04-16 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | o3-mini | o3-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | o3-mini | o3-mini-2025-01-31 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.55 |
+| o3-pro | o3-pro | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
+| o3-pro | o3-pro-2025-06-10 | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | o4-mini | o4-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | o4-mini | o4-mini-2025-04-16 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | text-embedding-3-large | text-embedding-3-large | openai | - | - | In: $0.13 |
@@ -1588,7 +1597,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 
 ## Models by Modality
 
-### Vision Models (206)
+### Vision Models (209)
 
 Models that can process images:
 
@@ -1672,7 +1681,7 @@ Models that can process images:
 | Gemini Embedding Experimental | gemini-embedding-exp | gemini | 8192 | 1 | In: $0.00, Out: $0.00 |
 | Gemini Experimental 1206 | gemini-exp-1206 | gemini | 1048576 | 65536 | In: $0.08, Out: $0.30 |
 | LearnLM 2.0 Flash Experimental | learnlm-2.0-flash-experimental | gemini | 1048576 | 32768 | In: $0.08, Out: $0.30 |
-| Veo 2 | veo-2.0-generate-001 | gemini | - | - | Out: $0.35 |
+| Veo 2 | veo-2.0-generate-001 | gemini | - | - | - |
 | ChatGPT-4o | chatgpt-4o-latest | openai | 128000 | 16384 | In: $5.00, Out: $15.00 |
 | GPT Image 1 | gpt-image-1 | openai | - | - | In: $5.00, Out: $40.00, Cache: $1.25 |
 | GPT-4 Turbo | gpt-4-turbo | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
@@ -1702,8 +1711,10 @@ Models that can process images:
 | o1 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-pro | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
 | o1-pro | o1-pro-2025-03-19 | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
-| o3 | o3 | openai | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
-| o3 | o3-2025-04-16 | openai | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
+| o3 | o3 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
+| o3 | o3-2025-04-16 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
+| o3-pro | o3-pro | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
+| o3-pro | o3-pro-2025-06-10 | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | o4-mini | o4-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | o4-mini | o4-mini-2025-04-16 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | omni-moderation | omni-moderation-latest | openai | - | - | - |
@@ -1781,7 +1792,8 @@ Models that can process images:
 | OpenAI: GPT-4o-mini (2024-07-18) | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | OpenAI: o1 | openai/o1 | openrouter | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | OpenAI: o1-pro | openai/o1-pro | openrouter | 200000 | 100000 | In: $150.00, Out: $600.00 |
-| OpenAI: o3 | openai/o3 | openrouter | 200000 | 100000 | In: $10.00, Out: $40.00, Cache: $2.50 |
+| OpenAI: o3 | openai/o3 | openrouter | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
+| OpenAI: o3 Pro | openai/o3-pro | openrouter | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | OpenAI: o4 Mini | openai/o4-mini | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | OpenAI: o4 Mini High | openai/o4-mini-high | openrouter | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | OpenGVLab: InternVL3 14B (free) | opengvlab/internvl3-14b:free | openrouter | 32000 | - | - |
@@ -1913,19 +1925,17 @@ Models that can process PDF documents:
 | Omni Moderation 20240926 | omni-moderation-2024-09-26 | openai | - | - | - |
 
 
-### Embedding Models (10)
+### Embedding Models (8)
 
 Models that generate embeddings:
 
 | Model | ID | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | :-- | --: | --: | :-- |
-| Embedding | models/embedding-001 | gemini | 2048 | - | - |
-| Embedding 001 | embedding-001 | gemini | 2048 | 1 | - |
+| Embedding | embedding-001 | gemini | 2048 | - | - |
 | Embedding Gecko | embedding-gecko-001 | gemini | 1024 | 1 | - |
 | Gemini Embedding Experimental | gemini-embedding-exp | gemini | 8192 | 1 | In: $0.00, Out: $0.00 |
 | Gemini Embedding Experimental | gemini-embedding-exp-03-07 | gemini | 8192 | - | - |
-| Text Embedding | models/text-embedding-004 | gemini | 2048 | - | - |
-| Text Embedding 004 | text-embedding-004 | gemini | 2048 | 1 | - |
+| Text Embedding | text-embedding-004 | gemini | 2048 | - | - |
 | text-embedding-3-large | text-embedding-3-large | openai | - | - | In: $0.13 |
 | text-embedding-3-small | text-embedding-3-small | openai | - | - | In: $0.02 |
 | text-embedding-ada-002 | text-embedding-ada-002 | openai | - | - | In: $0.10 |

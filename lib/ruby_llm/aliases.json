@@ -205,6 +205,10 @@
     "openai": "o3-mini",
     "openrouter": "openai/o3-mini"
   },
+  "o3-pro": {
+    "openai": "o3-pro",
+    "openrouter": "openai/o3-pro"
+  },
   "o4-mini": {
     "openai": "o4-mini",
     "openrouter": "openai/o4-mini"
