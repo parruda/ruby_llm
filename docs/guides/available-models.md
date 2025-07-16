@@ -2,7 +2,7 @@
 layout: default
 title: Available Models
 parent: Guides
-nav_order: 10
+nav_order: 11
 permalink: /guides/available-models
 ---
 
