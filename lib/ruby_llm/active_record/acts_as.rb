@@ -154,7 +154,7 @@ module RubyLLM
 
       alias say ask
 
-      def complete(*args, **kwargs, &) # rubocop:disable Metrics/PerceivedComplexity
+      def complete(*args, **kwargs, &)
         @message = nil
         @streaming = block_given?
         first_chunk_received = false
@@ -163,7 +163,7 @@ module RubyLLM
           # For streaming, handle message creation on first chunk
           to_llm.complete(*args, **kwargs) do |chunk|
             # Create assistant message on first content chunk
-            if !first_chunk_received && chunk.content.present?
+            unless first_chunk_received
               first_chunk_received = true
               persist_new_message
             end
