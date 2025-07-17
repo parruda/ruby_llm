@@ -92,9 +92,8 @@ module RubyLLM
           @chat.add_message(msg.to_llm)
         end
 
-        # Only set up the end_message callback by default
-        # The new_message callback will be handled differently for streaming
-        @chat.on_end_message { |msg| persist_message_completion(msg) }
+        @chat.on_new_message { persist_new_message }
+             .on_end_message { |msg| persist_message_completion(msg) }
       end
 
       def with_instructions(instructions, replace: false)
@@ -154,28 +153,8 @@ module RubyLLM
 
       alias say ask
 
-      def complete(*args, **kwargs, &)
-        @message = nil
-        @streaming = block_given?
-        first_chunk_received = false
-
-        if @streaming
-          # For streaming, handle message creation on first chunk
-          to_llm.complete(*args, **kwargs) do |chunk|
-            # Create assistant message on first content chunk
-            unless first_chunk_received
-              first_chunk_received = true
-              persist_new_message
-            end
-
-            # Pass the chunk to the user's block
-            yield chunk
-          end
-        else
-          # For non-streaming, maintain original behavior
-          to_llm.on_new_message { persist_new_message }
-          to_llm.complete(*args, **kwargs, &)
-        end
+      def complete(...)
+        to_llm.complete(...)
       rescue RubyLLM::Error => e
         if @message&.persisted? && @message.content.blank?
           RubyLLM.logger.debug "RubyLLM: API call failed, destroying message: #{@message.id}"
@@ -192,9 +171,6 @@ module RubyLLM
 
       def persist_message_completion(message)
         return unless message
-
-        # If we're streaming and never created a message (no content chunks), create it now
-        persist_new_message if @streaming && !@message&.persisted?
 
         tool_call_id = find_tool_call_id(message.tool_call_id) if message.tool_call_id
 
