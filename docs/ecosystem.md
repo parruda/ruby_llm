@@ -55,7 +55,7 @@ For detailed documentation, examples, and usage guides, visit the [RubyLLM::MCP 
 
 **Ruby DSL for JSON Schema Creation**
 
-[RubyLLM::Schema](https://github.com/patvice/ruby_llm-schema) provides a clean, Rails-inspired DSL for creating JSON schemas. It's designed specifically for defining structured data schemas for LLM function calling and structured outputs.
+[RubyLLM::Schema](https://github.com/danielfriis/ruby_llm-schema) provides a clean, Rails-inspired DSL for creating JSON schemas. It's designed specifically for defining structured data schemas for LLM function calling and structured outputs.
 
 ### Why Use RubyLLM::Schema?
 
@@ -82,7 +82,7 @@ RubyLLM::Schema makes this easy with a familiar Ruby syntax.
 gem install ruby_llm-schema
 ```
 
-For detailed documentation and examples, visit the [RubyLLM::Schema repository](https://github.com/patvice/ruby_llm-schema).
+For detailed documentation and examples, visit the [RubyLLM::Schema repository](https://github.com/danielfriis/ruby_llm-schema).
 
 ---
 
