@@ -4,12 +4,13 @@ title: Rails Integration
 parent: Guides
 nav_order: 5
 permalink: /guides/rails
+description: Rails + AI made simple. Persist chats with ActiveRecord. Stream with Hotwire. Deploy with confidence.
 ---
 
 # Rails Integration
 {: .no_toc }
 
-RubyLLM offers seamless integration with Ruby on Rails applications through helpers for ActiveRecord models. This allows you to easily persist chat conversations, including messages and tool interactions, directly in your database.
+Rails ❤️ AI. Build production AI features with conventions you already know.
 {: .fs-6 .fw-300 }
 
 ## Table of contents
@@ -508,7 +509,7 @@ class Conversation < ApplicationRecord
   # Specify custom model names if needed (not required if your models
   # are called Message and ToolCall)
   acts_as_chat message_class: 'ChatMessage', tool_call_class: 'AIToolCall'
-  
+
   belongs_to :user, optional: true
   # ... your custom logic
 end
@@ -519,16 +520,16 @@ class ChatMessage < ApplicationRecord
   acts_as_message chat_class: 'Conversation', tool_call_class: 'AIToolCall'
   # You can also customize foreign keys if needed:
   # chat_foreign_key: 'conversation_id'
-  
+
   # ... your custom logic
 end
 
 # app/models/ai_tool_call.rb (instead of ToolCall)
-class AIToolCall < ApplicationRecord 
+class AIToolCall < ApplicationRecord
   acts_as_tool_call message_class: 'ChatMessage'
   # Optionally customize foreign keys:
   # message_foreign_key: 'chat_message_id'
-  
+
   # ... your custom logic
 end
 ```

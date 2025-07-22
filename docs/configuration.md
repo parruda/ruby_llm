@@ -3,12 +3,13 @@ layout: default
 title: Configuration
 nav_order: 3
 permalink: /configuration
+description: Configure once, use everywhere. API keys, defaults, timeouts, and multi-tenant contexts made simple.
 ---
 
 # Configuring RubyLLM
 {: .no_toc }
 
-This guide covers all the configuration options available in RubyLLM, from setting API keys and default models to customizing connection behavior and using scoped contexts.
+Set it and forget it. Everything you need to configure RubyLLM in one place.
 {: .fs-6 .fw-300 }
 
 ## Table of contents

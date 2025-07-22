@@ -4,12 +4,13 @@ title: Chatting with AI Models
 parent: Guides
 nav_order: 2
 permalink: /guides/chat
+description: Chat with any AI model using one simple API. Handle images, audio, PDFs, and streaming with ease.
 ---
 
 # Chatting with AI Models
 {: .no_toc }
 
-The heart of RubyLLM is the `Chat` object, providing a unified and intuitive interface for conversational interactions with various AI models.
+One API for all AI conversations. Just ask.
 {: .fs-6 .fw-300 }
 
 ## Table of contents
