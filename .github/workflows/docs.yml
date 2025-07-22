@@ -44,11 +44,12 @@ jobs:
           # Install Inter font from apt
           sudo apt-get install -y fonts-inter fonts-inter-variable
 
-          # Download and install Plus Jakarta Sans from Google Fonts
-          wget -O Plus_Jakarta_Sans.zip "https://fonts.google.com/download?family=Plus%20Jakarta%20Sans"
+          # Download and install Plus Jakarta Sans from official GitHub repository
+          wget -q https://github.com/tokotype/PlusJakartaSans/archive/refs/heads/master.zip -O PlusJakartaSans.zip
+          unzip -q PlusJakartaSans.zip
           sudo mkdir -p /usr/share/fonts/truetype/plus-jakarta-sans
-          sudo unzip -d /usr/share/fonts/truetype/plus-jakarta-sans/ Plus_Jakarta_Sans.zip
-          rm Plus_Jakarta_Sans.zip
+          sudo cp PlusJakartaSans-master/fonts/ttf/*.ttf /usr/share/fonts/truetype/plus-jakarta-sans/
+          rm -rf PlusJakartaSans.zip PlusJakartaSans-master
 
           # Update font cache
           sudo fc-cache -fv
