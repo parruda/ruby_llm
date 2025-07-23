@@ -112,8 +112,8 @@ module RubyLLM
       say "\n  📚 Full docs: https://rubyllm.com", :cyan
 
       say "\n  ❤️  Love RubyLLM?", :magenta
-      say '     • Sponsor: https://github.com/sponsors/crmne'
-      say '     • Try Chat with Work: https://chatwithwork.com'
+      say '     • ⭐ Star on GitHub: https://github.com/crmne/ruby_llm'
+      say '     • 💖 Sponsor: https://github.com/sponsors/crmne'
       say "\n"
     end
   end

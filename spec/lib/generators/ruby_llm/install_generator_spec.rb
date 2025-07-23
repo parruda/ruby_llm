@@ -162,7 +162,7 @@ RSpec.describe RubyLLM::InstallGenerator, type: :generator do
     end
 
     it 'includes sponsorship information' do
-      expect(generator_content).to include('https://github.com/sponsors/crmne').and include('https://chatwithwork.com')
+      expect(generator_content).to include('https://github.com/sponsors/crmne').and include('Star on GitHub')
     end
   end
 
