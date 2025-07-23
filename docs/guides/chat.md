@@ -299,7 +299,7 @@ response = chat.ask("List 3 programming languages with their year created")
 
 ### Using RubyLLM::Schema (Recommended)
 
-The easiest way to define schemas is with the [RubyLLM::Schema](https://github.com/afomera/ruby_llm-schema) gem:
+The easiest way to define schemas is with the [RubyLLM::Schema](https://github.com/danielfriis/ruby_llm-schema) gem:
 
 ```ruby
 # First, install the gem: gem install ruby_llm-schema
