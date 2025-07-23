@@ -360,7 +360,6 @@ chat_record.ask("What's in this document?", with: user.profile_document)
 The attachment API automatically detects file types based on file extension or content type, so you don't need to specify whether something is an image, audio file, PDF, or text document - RubyLLM figures it out for you!
 
 ### Structured Output with Schemas
-
 {: .d-inline-block }
 
 Available in v1.4.0
