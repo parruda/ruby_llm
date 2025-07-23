@@ -134,35 +134,35 @@ RSpec.describe RubyLLM::InstallGenerator, type: :generator do
     end
   end
 
-  describe 'INSTALL_INFO template' do
-    let(:install_info_content) { File.read(File.join(template_dir, 'INSTALL_INFO.md.tt')) }
+  describe 'show_install_info method' do
+    let(:generator_content) { File.read(generator_file) }
 
-    it 'has INSTALL_INFO template file' do
-      expect(File.exist?(File.join(template_dir, 'INSTALL_INFO.md.tt'))).to be(true)
+    it 'defines show_install_info method' do
+      expect(generator_content).to include('def show_install_info')
     end
 
     it 'includes welcome message' do
-      expect(install_info_content).to include('RubyLLM Rails Setup Complete')
-    end
-
-    it 'includes setup information' do
-      expect(install_info_content).to include('Run migrations')
+      expect(generator_content).to include('RubyLLM installed!')
     end
 
     it 'includes migration instructions' do
-      expect(install_info_content).to include('rails db:migrate')
+      expect(generator_content).to include('rails db:migrate')
     end
 
     it 'includes API configuration instructions' do
-      expect(install_info_content).to include('Set your API keys')
+      expect(generator_content).to include('Set your API keys')
     end
 
-    it 'includes usage examples' do
-      expect(install_info_content).to include('Start using RubyLLM in your code')
+    it 'includes usage example with create! and ask' do
+      expect(generator_content).to include('.create!(model_id:').and include('.ask(')
     end
 
-    it 'includes streaming response information' do
-      expect(install_info_content).to include('For streaming responses')
+    it 'includes documentation link' do
+      expect(generator_content).to include('https://rubyllm.com')
+    end
+
+    it 'includes sponsorship information' do
+      expect(generator_content).to include('https://github.com/sponsors/crmne').and include('https://chatwithwork.com')
     end
   end
 

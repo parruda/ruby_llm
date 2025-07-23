@@ -60,7 +60,6 @@ This approach has one important consequence: **you cannot use `validates :conten
 ## Setting Up Your Rails Application
 
 ### Quick Setup with Generator
-
 {: .d-inline-block }
 
 Available in v1.4.0

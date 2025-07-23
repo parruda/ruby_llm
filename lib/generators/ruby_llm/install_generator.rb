@@ -36,8 +36,12 @@ module RubyLLM
 
     def acts_as_chat_declaration
       acts_as_chat_params = []
-      acts_as_chat_params << "message_class: \"#{options[:message_model_name]}\"" if options[:message_model_name]
-      acts_as_chat_params << "tool_call_class: \"#{options[:tool_call_model_name]}\"" if options[:tool_call_model_name]
+      if options[:message_model_name] != 'Message'
+        acts_as_chat_params << "message_class: \"#{options[:message_model_name]}\""
+      end
+      if options[:tool_call_model_name] != 'ToolCall'
+        acts_as_chat_params << "tool_call_class: \"#{options[:tool_call_model_name]}\""
+      end
       if acts_as_chat_params.any?
         "acts_as_chat #{acts_as_chat_params.join(', ')}"
       else
@@ -47,8 +51,8 @@ module RubyLLM
 
     def acts_as_message_declaration
       acts_as_message_params = []
-      acts_as_message_params << "chat_class: \"#{options[:chat_model_name]}\"" if options[:chat_model_name]
-      if options[:tool_call_model_name]
+      acts_as_message_params << "chat_class: \"#{options[:chat_model_name]}\"" if options[:chat_model_name] != 'Chat'
+      if options[:tool_call_model_name] != 'ToolCall'
         acts_as_message_params << "tool_call_class: \"#{options[:tool_call_model_name]}\""
       end
       if acts_as_message_params.any?
@@ -60,7 +64,9 @@ module RubyLLM
 
     def acts_as_tool_call_declaration
       acts_as_tool_call_params = []
-      acts_as_tool_call_params << "message_class: \"#{options[:message_model_name]}\"" if options[:message_model_name]
+      if options[:message_model_name] != 'Message'
+        acts_as_tool_call_params << "message_class: \"#{options[:message_model_name]}\""
+      end
       if acts_as_tool_call_params.any?
         "acts_as_tool_call #{acts_as_tool_call_params.join(', ')}"
       else
@@ -71,19 +77,18 @@ module RubyLLM
     def create_migration_files
       # Create migrations with timestamps to ensure proper order
       # First create chats table
-      timestamp = Time.now.utc
       migration_template 'create_chats_migration.rb.tt',
-                         "db/migrate/#{timestamp.strftime('%Y%m%d%H%M%S')}_create_#{options[:chat_model_name].tableize}.rb" # rubocop:disable Layout/LineLength
+                         "db/migrate/create_#{options[:chat_model_name].tableize}.rb"
 
-      # Then create tool_calls table with timestamp + 1 second
-      timestamp += 1
+      # Then create tool_calls table
+      sleep 1 # Ensure different timestamp
       migration_template 'create_tool_calls_migration.rb.tt',
-                         "db/migrate/#{timestamp.strftime('%Y%m%d%H%M%S')}_create_#{options[:tool_call_model_name].tableize}.rb" # rubocop:disable Layout/LineLength
+                         "db/migrate/create_#{options[:tool_call_model_name].tableize}.rb"
 
-      # Finally create messages table with timestamp + 2 seconds
-      timestamp += 1
+      # Finally create messages table
+      sleep 1 # Ensure different timestamp
       migration_template 'create_messages_migration.rb.tt',
-                         "db/migrate/#{timestamp.strftime('%Y%m%d%H%M%S')}_create_#{options[:message_model_name].tableize}.rb" # rubocop:disable Layout/LineLength
+                         "db/migrate/create_#{options[:message_model_name].tableize}.rb"
     end
 
     def create_model_files
@@ -97,8 +102,19 @@ module RubyLLM
     end
 
     def show_install_info
-      content = ERB.new(File.read("#{source_paths.first}/INSTALL_INFO.md.tt")).result(binding)
-      say content
+      say "\n  ✅ RubyLLM installed!", :green
+
+      say "\n  Next steps:", :yellow
+      say '     1. Run: rails db:migrate'
+      say '     2. Set your API keys in config/initializers/ruby_llm.rb'
+      say "     3. Start chatting: #{options[:chat_model_name]}.create!(model_id: 'gpt-4.1-nano').ask('Hello!')"
+
+      say "\n  📚 Full docs: https://rubyllm.com", :cyan
+
+      say "\n  ❤️  Love RubyLLM?", :magenta
+      say '     • Sponsor: https://github.com/sponsors/crmne'
+      say '     • Try Chat with Work: https://chatwithwork.com'
+      say "\n"
     end
   end
 end
