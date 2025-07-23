@@ -317,6 +317,51 @@ chat_record.ask("What's in this document?", with: user.profile_document)
 
 The attachment API automatically detects file types based on file extension or content type, so you don't need to specify whether something is an image, audio file, PDF, or text document - RubyLLM figures it out for you!
 
+### Structured Output with Schemas
+
+{: .d-inline-block }
+
+Available in v1.4.0
+{: .label .label-yellow }
+
+Structured output works seamlessly with Rails persistence:
+
+```ruby
+# Define a schema
+class PersonSchema < RubyLLM::Schema
+  string :name
+  integer :age
+  string :city, required: false
+end
+
+# Use with your persisted chat
+chat_record = Chat.create!(model_id: 'gpt-4o')
+response = chat_record.with_schema(PersonSchema).ask("Generate a person from Paris")
+
+# The structured response is automatically parsed as a Hash
+puts response.content # => {"name" => "Marie", "age" => 28, "city" => "Paris"}
+
+# But it's stored as JSON in the database
+message = chat_record.messages.last
+puts message.content # => "{\"name\":\"Marie\",\"age\":28,\"city\":\"Paris\"}"
+puts JSON.parse(message.content) # => {"name" => "Marie", "age" => 28, "city" => "Paris"}
+```
+
+You can use schemas in multi-turn conversations:
+
+```ruby
+# Start with a schema
+chat_record.with_schema(PersonSchema)
+person = chat_record.ask("Generate a French person")
+
+# Remove the schema for analysis
+chat_record.with_schema(nil)
+analysis = chat_record.ask("What's interesting about this person?")
+
+# All messages are persisted correctly
+puts chat_record.messages.count # => 4
+```
+
 ## Handling Persistence Edge Cases
 
 ### Orphaned Empty Messages
