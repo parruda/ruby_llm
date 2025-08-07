@@ -34,29 +34,11 @@ jobs:
       - name: Run models:docs rake task
         run: bundle exec rake models:docs
 
-      - name: Cache APT packages
-        uses: actions/cache@v4
-        id: cache-apt
-        with:
-          path: ~/apt-cache
-          key: ${{ runner.os }}-apt-libvips-fonts-v3
-          restore-keys: |
-            ${{ runner.os }}-apt-libvips-fonts-
-
       - name: Install libvips for jekyll-og-image
         run: |
-          if [ "${{ steps.cache-apt.outputs.cache-hit }}" != "true" ]; then
-            echo "Installing libvips..."
-            sudo apt-get update -qq
-            sudo apt-get install -y --no-install-recommends libvips-dev
-            # Save state for cache
-            mkdir -p ~/apt-cache
-            dpkg -l | grep libvips > ~/apt-cache/packages.txt
-          else
-            echo "Using cached libvips"
-            sudo apt-get update -qq
-            sudo apt-get install -y --no-install-recommends libvips-dev
-          fi
+          echo "Installing libvips..."
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libvips-dev
 
       - name: Cache fonts
         uses: actions/cache@v4
@@ -96,6 +78,7 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
           working-directory: docs
+          cache-version: 2
 
       - name: Setup Pages
         id: pages
