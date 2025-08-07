@@ -103,7 +103,16 @@ jobs:
 
       - name: Build with Jekyll
         working-directory: docs
-        run: bundle exec jekyll build --verbose --baseurl "${{ steps.pages.outputs.base_path }}"
+        run: |
+          echo "Ruby version: $(ruby -v)"
+          echo "Gem environment:"
+          gem env
+          echo "Installed gems related to vips:"
+          gem list | grep -i vips || echo "No vips gems found"
+          echo "System vips:"
+          pkg-config --modversion vips || echo "vips not found via pkg-config"
+          echo "Building Jekyll site..."
+          bundle exec jekyll build --verbose --trace --baseurl "${{ steps.pages.outputs.base_path }}" 2>&1
         env:
           JEKYLL_ENV: production
 
