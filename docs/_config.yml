@@ -114,8 +114,6 @@ plugins:
 og_image:
   output_dir: "assets/images/og"
   force: true
-  verbose: true
-  skip_drafts: false
   collections:
     - pages
     - getting_started
@@ -143,7 +141,3 @@ og_image:
       - "#D51F06"
       - "#DE3F24"
       - "#EDA895"
-
-# Include OG images in build output
-keep_files:
-  - assets/images/og

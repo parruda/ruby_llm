@@ -79,84 +79,15 @@ jobs:
           bundler-cache: true
           working-directory: docs
           cache-version: 3
-      - name: Verify bundle installation
-        working-directory: docs
-        run: |
-          echo "Checking bundle installation..."
-          bundle list | grep ruby-vips || echo "ruby-vips not in bundle"
-          echo "Bundle show ruby-vips:"
-          bundle show ruby-vips || echo "Cannot show ruby-vips"
-
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
 
       - name: Build with Jekyll
         working-directory: docs
-        run: |
-          echo "Ruby version: $(ruby -v)"
-          echo "Gem environment:"
-          gem env
-          echo "Installed gems related to vips:"
-          gem list | grep -i vips || echo "No vips gems found"
-          echo "System vips:"
-          pkg-config --modversion vips || echo "vips not found via pkg-config"
-          echo "Testing ruby-vips directly (without bundle):"
-          ruby -e "require 'ruby-vips'; puts 'ruby-vips version: ' + Vips::VERSION; puts 'libvips version: ' + Vips::version_string" 2>&1 || echo "Failed to load ruby-vips without bundle"
-          echo "Testing ruby-vips with bundle exec:"
-          bundle exec ruby -e "require 'ruby-vips'; puts 'ruby-vips version: ' + Vips::VERSION; puts 'libvips version: ' + Vips::version_string" || echo "Failed to load ruby-vips with bundle"
-          echo "Building Jekyll site..."
-          bundle exec jekyll build --verbose --trace --baseurl "${{ steps.pages.outputs.base_path }}" 2>&1 || true
-          echo "Jekyll build completed, checking for errors..."
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-          JEKYLL_LOG_LEVEL: debug
-
-      - name: Test OG image generation directly
-        working-directory: docs
-        run: |
-          echo "Testing direct OG image generation with ruby-vips..."
-          bundle exec ruby -e "
-            require 'ruby-vips'
-            begin
-              puts 'ruby-vips loaded successfully'
-              puts 'ruby-vips version: ' + Vips::VERSION
-              puts 'libvips version: ' + Vips::version_string
-              # Create a simple test image
-              img = Vips::Image.black(1200, 630)
-              img = img.draw_rect([255, 0, 0], 100, 100, 200, 200, fill: true)
-              img.write_to_file('test_og.png')
-              puts 'Successfully created test_og.png'
-              puts 'File exists: ' + File.exist?('test_og.png').to_s
-            rescue => e
-              puts 'Error creating image: ' + e.message
-              puts e.backtrace.join('\n')
-            end
-          "
-          ls -la test_og.png 2>/dev/null || echo "test_og.png not found"
-
-      - name: Check OG images
-        working-directory: docs
-        run: |
-          echo "Checking SOURCE directory for OG images..."
-          if [ -d "assets/images/og" ]; then
-            echo "SOURCE: OG images directory exists"
-            echo "Number of OG images in SOURCE: $(find assets/images/og -name "*.png" | wc -l)"
-            ls -la assets/images/og/ | head -10
-          else
-            echo "SOURCE: No OG images directory"
-          fi
-          echo ""
-          echo "Checking OUTPUT directory for OG images..."
-          if [ -d "_site/assets/images/og" ]; then
-            echo "OUTPUT: OG images directory exists"
-            echo "Number of OG images in OUTPUT: $(find _site/assets/images/og -name "*.png" | wc -l)"
-            ls -la _site/assets/images/og/ | head -10
-          else
-            echo "OUTPUT: OG images directory does not exist!"
-            echo "Checking if images directory exists:"
-            ls -la _site/assets/images/ 2>/dev/null || echo "No images directory"
-          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
