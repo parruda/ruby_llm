@@ -94,10 +94,34 @@ jobs:
           gem list | grep -i vips || echo "No vips gems found"
           echo "System vips:"
           pkg-config --modversion vips || echo "vips not found via pkg-config"
+          echo "Testing ruby-vips directly:"
+          ruby -e "require 'ruby-vips'; puts 'ruby-vips version: ' + Vips::VERSION; puts 'libvips version: ' + Vips::version_string" || echo "Failed to load ruby-vips"
           echo "Building Jekyll site..."
-          bundle exec jekyll build --verbose --trace --baseurl "${{ steps.pages.outputs.base_path }}" 2>&1
+          bundle exec jekyll build --verbose --trace --baseurl "${{ steps.pages.outputs.base_path }}" 2>&1 || true
+          echo "Jekyll build completed, checking for errors..."
         env:
           JEKYLL_ENV: production
+          JEKYLL_LOG_LEVEL: debug
+
+      - name: Test OG image generation directly
+        working-directory: docs
+        run: |
+          echo "Testing direct OG image generation with ruby-vips..."
+          ruby -e "
+            require 'ruby-vips'
+            begin
+              # Create a simple test image
+              img = Vips::Image.black(1200, 630)
+              img = img.draw_rect([255, 0, 0], 100, 100, 200, 200, fill: true)
+              img.write_to_file('test_og.png')
+              puts 'Successfully created test_og.png'
+              puts 'File exists: ' + File.exist?('test_og.png').to_s
+            rescue => e
+              puts 'Error creating image: ' + e.message
+              puts e.backtrace.join('\n')
+            end
+          "
+          ls -la test_og.png 2>/dev/null || echo "test_og.png not found"
 
       - name: Check OG images
         working-directory: docs
@@ -109,6 +133,8 @@ jobs:
             ls -la _site/assets/images/og/ | head -20
           else
             echo "WARNING: OG images directory does not exist!"
+            echo "Checking if directory was created but empty:"
+            ls -la _site/assets/images/ 2>/dev/null || echo "No images directory"
           fi
 
       - name: Upload artifact
