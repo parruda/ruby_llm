@@ -24,6 +24,8 @@ def generate_models_markdown
     title: Available Models
     nav_order: 1
     description: Browse hundreds of AI models from every major provider. Always up-to-date, automatically generated.
+    redirect_from:
+      - /guides/available-models
     ---
 
     # {{ page.title }}
