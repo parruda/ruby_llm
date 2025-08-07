@@ -31,6 +31,10 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
+      - name: Install dependencies
+        working-directory: docs
+        run: bundle install
+
       - name: Run models:docs rake task
         run: bundle exec rake models:docs
 
