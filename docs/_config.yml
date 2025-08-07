@@ -116,6 +116,10 @@ og_image:
   force: true
   collections:
     - pages
+    - getting_started
+    - core_features
+    - advanced
+    - reference
   image:
     path: "assets/images/logotype.jpg"
     width: 290
