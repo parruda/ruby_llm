@@ -143,3 +143,7 @@ og_image:
       - "#D51F06"
       - "#DE3F24"
       - "#EDA895"
+
+# Include OG images in build output
+keep_files:
+  - assets/images/og
