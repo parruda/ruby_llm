@@ -9,9 +9,13 @@ permalink: /
 <h1>
   <div class="logo-container">
     <img src="/assets/images/logotype.svg" alt="RubyLLM" height="120" width="250">
-    <iframe src="https://ghbtns.com/github-btn.html?user=crmne&repo=ruby_llm&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub" style="vertical-align: middle; display: inline-block;"></iframe>
+    <div style="transform: scale(1.2); transform-origin: left center; display: inline-block; margin-left: 20px;">
+      <a class="github-button" href="https://github.com/crmne/ruby_llm" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star crmne/ruby_llm on GitHub">Star</a>
+    </div>
   </div>
 </h1>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 
 {{ page.description }}
 {: .fs-6 .fw-300 }
