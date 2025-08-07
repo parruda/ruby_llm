@@ -138,14 +138,23 @@ jobs:
       - name: Check OG images
         working-directory: docs
         run: |
-          echo "Checking if OG images were generated..."
-          if [ -d "_site/assets/images/og" ]; then
-            echo "OG images directory exists"
-            echo "Number of OG images: $(find _site/assets/images/og -name "*.png" | wc -l)"
-            ls -la _site/assets/images/og/ | head -20
+          echo "Checking SOURCE directory for OG images..."
+          if [ -d "assets/images/og" ]; then
+            echo "SOURCE: OG images directory exists"
+            echo "Number of OG images in SOURCE: $(find assets/images/og -name "*.png" | wc -l)"
+            ls -la assets/images/og/ | head -10
           else
-            echo "WARNING: OG images directory does not exist!"
-            echo "Checking if directory was created but empty:"
+            echo "SOURCE: No OG images directory"
+          fi
+          echo ""
+          echo "Checking OUTPUT directory for OG images..."
+          if [ -d "_site/assets/images/og" ]; then
+            echo "OUTPUT: OG images directory exists"
+            echo "Number of OG images in OUTPUT: $(find _site/assets/images/og -name "*.png" | wc -l)"
+            ls -la _site/assets/images/og/ | head -10
+          else
+            echo "OUTPUT: OG images directory does not exist!"
+            echo "Checking if images directory exists:"
             ls -la _site/assets/images/ 2>/dev/null || echo "No images directory"
           fi
 
