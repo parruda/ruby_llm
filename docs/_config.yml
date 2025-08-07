@@ -114,6 +114,8 @@ plugins:
 og_image:
   output_dir: "assets/images/og"
   force: true
+  verbose: true
+  skip_drafts: false
   collections:
     - pages
     - getting_started
