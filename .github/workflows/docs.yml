@@ -78,7 +78,14 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
           working-directory: docs
-          cache-version: 2
+          cache-version: 3
+      - name: Verify bundle installation
+        working-directory: docs
+        run: |
+          echo "Checking bundle installation..."
+          bundle list | grep ruby-vips || echo "ruby-vips not in bundle"
+          echo "Bundle show ruby-vips:"
+          bundle show ruby-vips || echo "Cannot show ruby-vips"
 
       - name: Setup Pages
         id: pages
@@ -94,8 +101,10 @@ jobs:
           gem list | grep -i vips || echo "No vips gems found"
           echo "System vips:"
           pkg-config --modversion vips || echo "vips not found via pkg-config"
-          echo "Testing ruby-vips directly:"
-          ruby -e "require 'ruby-vips'; puts 'ruby-vips version: ' + Vips::VERSION; puts 'libvips version: ' + Vips::version_string" || echo "Failed to load ruby-vips"
+          echo "Testing ruby-vips directly (without bundle):"
+          ruby -e "require 'ruby-vips'; puts 'ruby-vips version: ' + Vips::VERSION; puts 'libvips version: ' + Vips::version_string" 2>&1 || echo "Failed to load ruby-vips without bundle"
+          echo "Testing ruby-vips with bundle exec:"
+          bundle exec ruby -e "require 'ruby-vips'; puts 'ruby-vips version: ' + Vips::VERSION; puts 'libvips version: ' + Vips::version_string" || echo "Failed to load ruby-vips with bundle"
           echo "Building Jekyll site..."
           bundle exec jekyll build --verbose --trace --baseurl "${{ steps.pages.outputs.base_path }}" 2>&1 || true
           echo "Jekyll build completed, checking for errors..."
@@ -107,9 +116,12 @@ jobs:
         working-directory: docs
         run: |
           echo "Testing direct OG image generation with ruby-vips..."
-          ruby -e "
+          bundle exec ruby -e "
             require 'ruby-vips'
             begin
+              puts 'ruby-vips loaded successfully'
+              puts 'ruby-vips version: ' + Vips::VERSION
+              puts 'libvips version: ' + Vips::version_string
               # Create a simple test image
               img = Vips::Image.black(1200, 630)
               img = img.draw_rect([255, 0, 0], 100, 100, 200, 200, fill: true)
