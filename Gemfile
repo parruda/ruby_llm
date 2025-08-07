@@ -18,7 +18,6 @@ group :development do # rubocop:disable Metrics/BlockLength
   gem 'pry', '>= 0.14'
   gem 'rails'
   gem 'rake', '>= 13.0'
-  gem 'rdoc'
   gem 'reline'
   gem 'rspec', '~> 3.12'
   gem 'rubocop', '>= 1.0'
@@ -35,5 +34,4 @@ group :development do # rubocop:disable Metrics/BlockLength
 
   gem 'vcr'
   gem 'webmock', '~> 3.18'
-  gem 'yard', '>= 0.9'
 end
