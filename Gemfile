@@ -6,6 +6,7 @@ gemspec
 
 group :development do # rubocop:disable Metrics/BlockLength
   gem 'appraisal'
+  gem 'async'
   gem 'bundler', '>= 2.0'
   gem 'codecov'
   gem 'dotenv'
