@@ -8,10 +8,12 @@ module RubyLLM
   module Streaming
     module_function
 
-    def stream_response(connection, payload, &block)
+    def stream_response(connection, payload, additional_headers = {}, &block)
       accumulator = StreamAccumulator.new
 
       response = connection.post stream_url, payload do |req|
+        # Merge additional headers, with existing headers taking precedence
+        req.headers = additional_headers.merge(req.headers) unless additional_headers.empty?
         if req.options.respond_to?(:on_data)
           # Handle Faraday 2.x streaming with on_data method
           req.options.on_data = handle_stream do |chunk|

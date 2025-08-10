@@ -131,6 +131,33 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
     end
   end
 
+  describe 'custom headers' do
+    it 'supports with_headers for custom HTTP headers' do
+      chat = Chat.create!(model_id: model)
+
+      result = chat.with_headers('X-Custom-Header' => 'test-value')
+      expect(result).to eq(chat) # Should return self for chaining
+
+      # Verify the headers are passed through to the underlying chat
+      llm_chat = chat.instance_variable_get(:@chat)
+      expect(llm_chat.headers).to eq('X-Custom-Header' => 'test-value')
+    end
+
+    it 'allows chaining with_headers with other methods' do
+      chat = Chat.create!(model_id: model)
+
+      result = chat
+               .with_temperature(0.5)
+               .with_headers('X-Test' => 'value')
+               .with_tool(Calculator)
+
+      expect(result).to eq(chat)
+
+      llm_chat = chat.instance_variable_get(:@chat)
+      expect(llm_chat.headers).to eq('X-Test' => 'value')
+    end
+  end
+
   describe 'error handling' do
     it 'destroys empty assistant messages on API failure' do
       chat = Chat.create!(model_id: model)

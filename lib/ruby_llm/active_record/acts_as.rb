@@ -138,6 +138,11 @@ module RubyLLM
         self
       end
 
+      def with_headers(...)
+        to_llm.with_headers(...)
+        self
+      end
+
       def with_schema(...)
         to_llm.with_schema(...)
         self

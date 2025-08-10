@@ -11,7 +11,7 @@ module RubyLLM
   class Chat
     include Enumerable
 
-    attr_reader :model, :messages, :tools, :params, :schema
+    attr_reader :model, :messages, :tools, :params, :headers, :schema
 
     def initialize(model: nil, provider: nil, assume_model_exists: false, context: nil)
       if assume_model_exists && !provider
@@ -26,6 +26,7 @@ module RubyLLM
       @messages = []
       @tools = {}
       @params = {}
+      @headers = {}
       @schema = nil
       @on = {
         new_message: nil,
@@ -87,6 +88,11 @@ module RubyLLM
       self
     end
 
+    def with_headers(**headers)
+      @headers = headers
+      self
+    end
+
     def with_schema(schema, force: false)
       unless force || @model.structured_output?
         raise UnsupportedStructuredOutputError, "Model #{@model.id} doesn't support structured output"
@@ -135,6 +141,7 @@ module RubyLLM
         temperature: @temperature,
         model: @model.id,
         params: @params,
+        headers: @headers,
         schema: @schema,
         &wrap_streaming_block(&)
       )
