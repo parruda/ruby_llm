@@ -131,6 +131,59 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
     end
   end
 
+  describe 'parameter passing' do
+    it 'supports with_params for provider-specific parameters' do
+      chat = Chat.create!(model_id: model)
+
+      result = chat.with_params(max_tokens: 100, temperature: 0.5)
+      expect(result).to eq(chat) # Should return self for chaining
+
+      # Verify params are passed through
+      llm_chat = chat.instance_variable_get(:@chat)
+      expect(llm_chat.params).to eq(max_tokens: 100, temperature: 0.5)
+    end
+  end
+
+  describe 'tool functionality' do
+    it 'supports with_tools for multiple tools' do
+      chat = Chat.create!(model_id: model)
+
+      result = chat.with_tools(Calculator, BestLanguageToLearn)
+      expect(result).to eq(chat) # Should return self for chaining
+
+      # Verify tools are registered
+      llm_chat = chat.instance_variable_get(:@chat)
+      expect(llm_chat.tools.keys).to include(:calculator, :best_language_to_learn)
+    end
+
+    it 'handles halt mechanism in tools' do
+      # Define a tool that uses halt
+      stub_const('HaltingTool', Class.new(RubyLLM::Tool) do
+        description 'A tool that halts'
+        param :input, desc: 'Input text'
+
+        def execute(input:)
+          halt("Halted with: #{input}")
+        end
+      end)
+
+      chat = Chat.create!(model_id: model)
+      chat.with_tool(HaltingTool)
+
+      # Mock the tool execution to test halt behavior
+      allow_any_instance_of(HaltingTool).to receive(:execute).and_return( # rubocop:disable RSpec/AnyInstance
+        RubyLLM::Tool::Halt.new('Halted response')
+      )
+
+      # When a tool returns halt, the conversation should stop
+      response = chat.ask("Use the halting tool with 'test'")
+
+      # The response should be the halt result, not additional AI commentary
+      expect(response).to be_a(RubyLLM::Tool::Halt)
+      expect(response.content).to eq('Halted response')
+    end
+  end
+
   describe 'custom headers' do
     it 'supports with_headers for custom HTTP headers' do
       chat = Chat.create!(model_id: model)
