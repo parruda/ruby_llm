@@ -73,19 +73,9 @@ When you provide tools to a chat, the AI model can decide when to use them based
 
 ### Providers
 
-Providers are the adapters that connect RubyLLM to specific AI services. Each provider module implements the same interface but handles the unique requirements of its service.
+Providers are the adapters that connect RubyLLM to specific AI services. Each provider implements the same interface but handles the unique requirements of its service - authentication, request formatting, response parsing, and streaming protocols.
 
-```ruby
-module RubyLLM::Providers::OpenAI
-  class Chat
-    def complete(messages:, model:, **options)
-      # Provider-specific implementation
-    end
-  end
-end
-```
-
-The provider system allows RubyLLM to support many different AI services while maintaining a consistent interface. New providers can be added without changing the core framework.
+The provider system allows RubyLLM to support many different AI services while maintaining a consistent interface. Whether you're using OpenAI, Anthropic, or a local model, your code stays the same. New providers can be added without changing the core framework.
 
 ### Configuration
 
