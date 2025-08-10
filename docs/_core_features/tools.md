@@ -178,6 +178,46 @@ These callbacks are useful for:
 - **Debugging:** Monitor tool inputs and outputs in production
 - **Auditing:** Record tool usage for compliance or billing
 
+### Limiting Tool Calls
+
+To prevent excessive API usage or infinite loops, you can use callbacks to limit tool calls:
+
+```ruby
+# Limit total tool calls per conversation
+call_count = 0
+max_calls = 10
+
+chat = RubyLLM.chat(model: 'gpt-4o')
+      .with_tool(Weather)
+      .on_tool_call do |tool_call|
+        call_count += 1
+        if call_count > max_calls
+          raise "Tool call limit exceeded (#{max_calls} calls)"
+        end
+      end
+
+# The conversation will stop if it tries to use tools more than 10 times
+chat.ask("Check weather for every major city...")
+```
+
+For more granular control, track specific tools:
+
+```ruby
+# Track calls per tool
+tool_counts = Hash.new(0)
+tool_limits = { 'weather' => 5, 'search' => 10 }
+
+chat.on_tool_call do |tool_call|
+  tool_name = tool_call.name
+  tool_counts[tool_name] += 1
+
+  limit = tool_limits[tool_name]
+  if limit && tool_counts[tool_name] > limit
+    raise "#{tool_name} exceeded limit of #{limit} calls"
+  end
+end
+```
+
 ## Advanced: Halting Tool Continuation
 {: .d-inline-block }
 
