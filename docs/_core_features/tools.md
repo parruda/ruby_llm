@@ -200,6 +200,9 @@ chat = RubyLLM.chat(model: 'gpt-4o')
 chat.ask("Check weather for every major city...")
 ```
 
+> **Warning:** Raising an exception in `on_tool_call` breaks the conversation flow - the LLM expects a tool response after requesting a tool call. This can leave the chat in an inconsistent state. Consider using better models or clearer tool descriptions to prevent loops instead of hard limits.
+{: .warning }
+
 For more granular control, track specific tools:
 
 ```ruby
