@@ -178,7 +178,7 @@ These callbacks are useful for:
 - **Debugging:** Monitor tool inputs and outputs in production
 - **Auditing:** Record tool usage for compliance or billing
 
-### Limiting Tool Calls
+### Example: Limiting Tool Calls
 
 To prevent excessive API usage or infinite loops, you can use callbacks to limit tool calls:
 
@@ -200,26 +200,8 @@ chat = RubyLLM.chat(model: 'gpt-4o')
 chat.ask("Check weather for every major city...")
 ```
 
-> **Warning:** Raising an exception in `on_tool_call` breaks the conversation flow - the LLM expects a tool response after requesting a tool call. This can leave the chat in an inconsistent state. Consider using better models or clearer tool descriptions to prevent loops instead of hard limits.
+> Raising an exception in `on_tool_call` breaks the conversation flow - the LLM expects a tool response after requesting a tool call. This can leave the chat in an inconsistent state. Consider using better models or clearer tool descriptions to prevent loops instead of hard limits.
 {: .warning }
-
-For more granular control, track specific tools:
-
-```ruby
-# Track calls per tool
-tool_counts = Hash.new(0)
-tool_limits = { 'weather' => 5, 'search' => 10 }
-
-chat.on_tool_call do |tool_call|
-  tool_name = tool_call.name
-  tool_counts[tool_name] += 1
-
-  limit = tool_limits[tool_name]
-  if limit && tool_counts[tool_name] > limit
-    raise "#{tool_name} exceeded limit of #{limit} calls"
-  end
-end
-```
 
 ## Advanced: Halting Tool Continuation
 {: .d-inline-block }
