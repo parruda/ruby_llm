@@ -3,7 +3,7 @@
     "id": "claude-3-5-haiku-20241022",
     "name": "Claude Haiku 3.5",
     "provider": "anthropic",
-    "family": "claude-3-5-haiku",
+    "family": "claude-haiku-3-5",
     "created_at": null,
     "context_window": 200000,
     "max_output_tokens": 8192,
@@ -35,7 +35,7 @@
     "id": "claude-3-5-sonnet-20240620",
     "name": "Claude Sonnet 3.5",
     "provider": "anthropic",
-    "family": "claude-3-5-sonnet",
+    "family": "claude-sonnet-3-5",
     "created_at": null,
     "context_window": 200000,
     "max_output_tokens": 8192,
@@ -67,7 +67,7 @@
     "id": "claude-3-5-sonnet-20241022",
     "name": "Claude Sonnet 3.5",
     "provider": "anthropic",
-    "family": "claude-3-5-sonnet",
+    "family": "claude-sonnet-3-5",
     "created_at": null,
     "context_window": 200000,
     "max_output_tokens": 8192,
@@ -99,7 +99,7 @@
     "id": "claude-3-7-sonnet-20250219",
     "name": "Claude Sonnet 3.7",
     "provider": "anthropic",
-    "family": "claude-3-7-sonnet",
+    "family": "claude-sonnet-3-7",
     "created_at": null,
     "context_window": 200000,
     "max_output_tokens": 64000,
@@ -131,7 +131,7 @@
     "id": "claude-3-haiku-20240307",
     "name": "Claude Haiku 3",
     "provider": "anthropic",
-    "family": "claude-3-haiku",
+    "family": "claude-haiku-3",
     "created_at": null,
     "context_window": 200000,
     "max_output_tokens": 4096,
@@ -6891,25 +6891,21 @@
     "id": "gpt-4-turbo-preview",
     "name": "GPT-4 Turbo Preview",
     "provider": "openai",
-    "family": "gpt4_turbo",
-    "created_at": "2024-01-23 20:22:57 +0100",
+    "family": "gpt-4-turbo-preview",
+    "created_at": null,
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text",
-        "image",
-        "pdf"
+        "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
-    "capabilities": [
-      "streaming",
-      "function_calling"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
@@ -7174,6 +7170,84 @@
       "object": "model",
       "owned_by": "system"
     }
+  },
+  {
+    "id": "gpt-4.5-preview",
+    "name": "GPT-4.5 Preview (Deprecated)",
+    "provider": "openai",
+    "family": "gpt-4.5-preview",
+    "created_at": null,
+    "context_window": 128000,
+    "max_output_tokens": 16384,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "batch",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 75.0,
+          "cached_input_per_million": 37.5,
+          "output_per_million": 150.0
+        },
+        "batch": {
+          "input_per_million": 37.5,
+          "output_per_million": 75.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "gpt-4.5-preview-2025-02-27",
+    "name": "GPT-4.5 Preview (Deprecated)",
+    "provider": "openai",
+    "family": "gpt-4.5-preview",
+    "created_at": null,
+    "context_window": 128000,
+    "max_output_tokens": 16384,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "batch",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 75.0,
+          "cached_input_per_million": 37.5,
+          "output_per_million": 150.0
+        },
+        "batch": {
+          "input_per_million": 37.5,
+          "output_per_million": 75.0
+        }
+      }
+    },
+    "metadata": {}
   },
   {
     "id": "gpt-4o",
@@ -8081,6 +8155,292 @@
     }
   },
   {
+    "id": "gpt-5",
+    "name": "GPT-5",
+    "provider": "openai",
+    "family": "gpt-5",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "batch",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.125,
+          "output_per_million": 10.0
+        },
+        "batch": {
+          "input_per_million": 0.625,
+          "output_per_million": 5.0
+        }
+      }
+    },
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-5-2025-08-07",
+    "name": "GPT-5",
+    "provider": "openai",
+    "family": "gpt-5",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "batch",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.125,
+          "output_per_million": 10.0
+        },
+        "batch": {
+          "input_per_million": 0.625,
+          "output_per_million": 5.0
+        }
+      }
+    },
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-5-chat-latest",
+    "name": "GPT-5 Chat",
+    "provider": "openai",
+    "family": "gpt-5-chat-latest",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 1.25,
+          "cached_input_per_million": 0.125,
+          "output_per_million": 10.0
+        }
+      }
+    },
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-5-mini",
+    "name": "GPT-5 mini",
+    "provider": "openai",
+    "family": "gpt-5-mini",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "batch",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.25,
+          "cached_input_per_million": 0.025,
+          "output_per_million": 2.0
+        },
+        "batch": {
+          "input_per_million": 0.125,
+          "output_per_million": 1.0
+        }
+      }
+    },
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-5-mini-2025-08-07",
+    "name": "GPT-5 mini",
+    "provider": "openai",
+    "family": "gpt-5-mini",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "batch",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.25,
+          "cached_input_per_million": 0.025,
+          "output_per_million": 2.0
+        },
+        "batch": {
+          "input_per_million": 0.125,
+          "output_per_million": 1.0
+        }
+      }
+    },
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-5-nano",
+    "name": "GPT-5 nano",
+    "provider": "openai",
+    "family": "gpt-5-nano",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "batch",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.05,
+          "cached_input_per_million": 0.005,
+          "output_per_million": 0.4
+        },
+        "batch": {
+          "input_per_million": 0.025,
+          "output_per_million": 0.2
+        }
+      }
+    },
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
+    "id": "gpt-5-nano-2025-08-07",
+    "name": "GPT-5 nano",
+    "provider": "openai",
+    "family": "gpt-5-nano",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "batch",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.05,
+          "cached_input_per_million": 0.005,
+          "output_per_million": 0.4
+        },
+        "batch": {
+          "input_per_million": 0.025,
+          "output_per_million": 0.2
+        }
+      }
+    },
+    "metadata": {
+      "object": "model",
+      "owned_by": "system"
+    }
+  },
+  {
     "id": "gpt-image-1",
     "name": "GPT Image 1",
     "provider": "openai",
@@ -8315,6 +8675,72 @@
       "object": "model",
       "owned_by": "system"
     }
+  },
+  {
+    "id": "o1-preview",
+    "name": "o1 Preview",
+    "provider": "openai",
+    "family": "o1-preview",
+    "created_at": null,
+    "context_window": 128000,
+    "max_output_tokens": 32768,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 15.0,
+          "cached_input_per_million": 7.5,
+          "output_per_million": 60.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "o1-preview-2024-09-12",
+    "name": "o1 Preview",
+    "provider": "openai",
+    "family": "o1-preview",
+    "created_at": null,
+    "context_window": 128000,
+    "max_output_tokens": 32768,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 15.0,
+          "cached_input_per_million": 7.5,
+          "output_per_million": 60.0
+        }
+      }
+    },
+    "metadata": {}
   },
   {
     "id": "o1-pro",
@@ -9098,6 +9524,28 @@
     "metadata": {}
   },
   {
+    "id": "text-moderation-stable",
+    "name": "text-moderation-stable",
+    "provider": "openai",
+    "family": "text-moderation-stable",
+    "created_at": null,
+    "context_window": null,
+    "max_output_tokens": 32768,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [],
+    "pricing": {},
+    "metadata": {}
+  },
+  {
     "id": "tts-1",
     "name": "TTS-1",
     "provider": "openai",
@@ -9112,8 +9560,7 @@
       ],
       "output": [
         "audio",
-        "embeddings",
-        "text"
+        "embeddings"
       ]
     },
     "capabilities": [],
@@ -9390,6 +9837,126 @@
     }
   },
   {
+    "id": "ai21/jamba-large-1.7",
+    "name": "AI21: Jamba Large 1.7",
+    "provider": "openrouter",
+    "family": "ai21",
+    "created_at": "2025-08-08 18:03:40 +0200",
+    "context_window": 256000,
+    "max_output_tokens": 4096,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 2.0,
+          "output_per_million": 8.0
+        }
+      }
+    },
+    "metadata": {
+      "description": "Jamba Large 1.7 is the latest model in the Jamba open family, offering improvements in grounding, instruction-following, and overall efficiency. Built on a hybrid SSM-Transformer architecture with a 256K context window, it delivers more accurate, contextually grounded responses and better steerability than previous versions.",
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 256000,
+        "max_completion_tokens": 4096,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "max_tokens",
+        "response_format",
+        "stop",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ]
+    }
+  },
+  {
+    "id": "ai21/jamba-mini-1.7",
+    "name": "AI21: Jamba Mini 1.7",
+    "provider": "openrouter",
+    "family": "ai21",
+    "created_at": "2025-08-08 18:30:01 +0200",
+    "context_window": 256000,
+    "max_output_tokens": 4096,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.19999999999999998,
+          "output_per_million": 0.39999999999999997
+        }
+      }
+    },
+    "metadata": {
+      "description": "Jamba Mini 1.7 is a compact and efficient member of the Jamba open model family, incorporating key improvements in grounding and instruction-following while maintaining the benefits of the SSM-Transformer hybrid architecture and 256K context window. Despite its compact size, it delivers accurate, contextually grounded responses and improved steerability.",
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 256000,
+        "max_completion_tokens": 4096,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "max_tokens",
+        "response_format",
+        "stop",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ]
+    }
+  },
+  {
     "id": "aion-labs/aion-1.0",
     "name": "AionLabs: Aion-1.0",
     "provider": "openrouter",
@@ -9578,8 +10145,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.6,
-          "output_per_million": 1.0
+          "input_per_million": 0.7,
+          "output_per_million": 1.1
         }
       }
     },
@@ -10310,7 +10877,8 @@
     "modalities": {
       "input": [
         "text",
-        "image"
+        "image",
+        "file"
       ],
       "output": [
         "text"
@@ -10335,7 +10903,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10434,7 +11003,8 @@
     "modalities": {
       "input": [
         "text",
-        "image"
+        "image",
+        "file"
       ],
       "output": [
         "text"
@@ -10459,7 +11029,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10496,7 +11067,8 @@
     "modalities": {
       "input": [
         "text",
-        "image"
+        "image",
+        "file"
       ],
       "output": [
         "text"
@@ -10521,7 +11093,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10558,7 +11131,8 @@
     "modalities": {
       "input": [
         "text",
-        "image"
+        "image",
+        "file"
       ],
       "output": [
         "text"
@@ -10583,7 +11157,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10620,7 +11195,8 @@
     "modalities": {
       "input": [
         "text",
-        "image"
+        "image",
+        "file"
       ],
       "output": [
         "text"
@@ -10645,7 +11221,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10682,7 +11259,8 @@
     "modalities": {
       "input": [
         "text",
-        "image"
+        "image",
+        "file"
       ],
       "output": [
         "text"
@@ -10707,7 +11285,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10746,7 +11325,8 @@
     "modalities": {
       "input": [
         "text",
-        "image"
+        "image",
+        "file"
       ],
       "output": [
         "text"
@@ -10771,7 +11351,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10808,7 +11389,8 @@
     "modalities": {
       "input": [
         "text",
-        "image"
+        "image",
+        "file"
       ],
       "output": [
         "text"
@@ -10833,7 +11415,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10870,7 +11453,8 @@
     "modalities": {
       "input": [
         "image",
-        "text"
+        "text",
+        "file"
       ],
       "output": [
         "text"
@@ -10895,7 +11479,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "image",
-          "text"
+          "text",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10934,7 +11519,8 @@
     "modalities": {
       "input": [
         "image",
-        "text"
+        "text",
+        "file"
       ],
       "output": [
         "text"
@@ -10959,7 +11545,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "image",
-          "text"
+          "text",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10996,7 +11583,8 @@
     "modalities": {
       "input": [
         "image",
-        "text"
+        "text",
+        "file"
       ],
       "output": [
         "text"
@@ -11021,7 +11609,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "image",
-          "text"
+          "text",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -20876,8 +21465,8 @@
     "provider": "openrouter",
     "family": "neversleep",
     "created_at": "2024-09-15 02:00:00 +0200",
-    "context_window": 8192,
-    "max_output_tokens": 8192,
+    "context_window": 40000,
+    "max_output_tokens": 40000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -20895,8 +21484,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.09999999999999999,
-          "output_per_million": 0.8999999999999999
+          "input_per_million": 0.16999999999999998,
+          "output_per_million": 0.9900000000000001
         }
       }
     },
@@ -20914,8 +21503,8 @@
         "instruct_type": "llama3"
       },
       "top_provider": {
-        "context_length": 8192,
-        "max_completion_tokens": 8192,
+        "context_length": 40000,
+        "max_completion_tokens": 40000,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -21772,7 +22361,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -23223,6 +23814,267 @@
     }
   },
   {
+    "id": "openai/gpt-5",
+    "name": "OpenAI: GPT-5",
+    "provider": "openrouter",
+    "family": "openai",
+    "created_at": "2025-08-07 19:23:33 +0200",
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text",
+        "image",
+        "file"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 1.25,
+          "output_per_million": 10.0,
+          "cached_input_per_million": 0.125
+        }
+      }
+    },
+    "metadata": {
+      "description": "GPT-5 is OpenAI’s most advanced model, offering major improvements in reasoning, code quality, and user experience. It is optimized for complex tasks that require step-by-step reasoning, instruction following, and accuracy in high-stakes use cases. It supports test-time routing features and advanced prompt understanding, including user-specified intent like \"think hard about this.\" Improvements include reductions in hallucination, sycophancy, and better performance in coding, writing, and health-related tasks.\n\nNote that BYOK is required for this model. Set up here: https://openrouter.ai/settings/integrations",
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": [
+          "text",
+          "image",
+          "file"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 400000,
+        "max_completion_tokens": 128000,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "tool_choice",
+        "tools"
+      ]
+    }
+  },
+  {
+    "id": "openai/gpt-5-chat",
+    "name": "OpenAI: GPT-5 Chat",
+    "provider": "openrouter",
+    "family": "openai",
+    "created_at": "2025-08-07 19:30:37 +0200",
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "file",
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 1.25,
+          "output_per_million": 10.0,
+          "cached_input_per_million": 0.125
+        }
+      }
+    },
+    "metadata": {
+      "description": "GPT-5 Chat is designed for advanced, natural, multimodal, and context-aware conversations for enterprise applications.",
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": [
+          "file",
+          "image",
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 400000,
+        "max_completion_tokens": 128000,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "seed",
+        "structured_outputs"
+      ]
+    }
+  },
+  {
+    "id": "openai/gpt-5-mini",
+    "name": "OpenAI: GPT-5 Mini",
+    "provider": "openrouter",
+    "family": "openai",
+    "created_at": "2025-08-07 19:23:27 +0200",
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text",
+        "image",
+        "file"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.25,
+          "output_per_million": 2.0,
+          "cached_input_per_million": 0.024999999999999998
+        }
+      }
+    },
+    "metadata": {
+      "description": "GPT-5 Mini is a compact version of GPT-5, designed to handle lighter-weight reasoning tasks. It provides the same instruction-following and safety-tuning benefits as GPT-5, but with reduced latency and cost. GPT-5 Mini is the successor to OpenAI's o4-mini model.",
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": [
+          "text",
+          "image",
+          "file"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 400000,
+        "max_completion_tokens": 128000,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "tool_choice",
+        "tools"
+      ]
+    }
+  },
+  {
+    "id": "openai/gpt-5-nano",
+    "name": "OpenAI: GPT-5 Nano",
+    "provider": "openrouter",
+    "family": "openai",
+    "created_at": "2025-08-07 19:23:22 +0200",
+    "context_window": 400000,
+    "max_output_tokens": 128000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text",
+        "image",
+        "file"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.049999999999999996,
+          "output_per_million": 0.39999999999999997,
+          "cached_input_per_million": 0.005
+        }
+      }
+    },
+    "metadata": {
+      "description": "GPT-5-Nano is the smallest and fastest variant in the GPT-5 system, optimized for developer tools, rapid interactions, and ultra-low latency environments. While limited in reasoning depth compared to its larger counterparts, it retains key instruction-following and safety features. It is the successor to GPT-4.1-nano and offers a lightweight option for cost-sensitive or real-time applications.",
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": [
+          "text",
+          "image",
+          "file"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 400000,
+        "max_completion_tokens": 128000,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "tool_choice",
+        "tools"
+      ]
+    }
+  },
+  {
     "id": "openai/gpt-oss-120b",
     "name": "OpenAI: gpt-oss-120b",
     "provider": "openrouter",
@@ -23641,7 +24493,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs"
@@ -23703,7 +24557,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -23886,7 +24742,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -23948,7 +24806,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -24012,7 +24872,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -24118,59 +24980,6 @@
       },
       "per_request_limits": null,
       "supported_parameters": []
-    }
-  },
-  {
-    "id": "openrouter/horizon-beta",
-    "name": "Horizon Beta",
-    "provider": "openrouter",
-    "family": "openrouter",
-    "created_at": "2025-08-02 01:03:39 +0200",
-    "context_window": 256000,
-    "max_output_tokens": 128000,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "image",
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "function_calling",
-      "structured_output"
-    ],
-    "pricing": {},
-    "metadata": {
-      "description": "This is a cloaked model provided to the community to gather feedback. This is an improved version of [Horizon Alpha](/openrouter/horizon-alpha)\n\nNote: It’s free to use during this testing period, and prompts and completions are logged by the model creator for feedback and training.",
-      "architecture": {
-        "modality": "text+image->text",
-        "input_modalities": [
-          "image",
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": 128000,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "max_tokens",
-        "response_format",
-        "structured_outputs",
-        "tool_choice",
-        "tools"
-      ]
     }
   },
   {
@@ -24563,8 +25372,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.6,
-          "output_per_million": 1.0
+          "input_per_million": 0.7,
+          "output_per_million": 1.1
         }
       }
     },
@@ -26545,6 +27354,54 @@
         "top_k",
         "top_logprobs",
         "top_p"
+      ]
+    }
+  },
+  {
+    "id": "qwen/qwen3-coder:free",
+    "name": "Qwen: Qwen3 Coder  (free)",
+    "provider": "openrouter",
+    "family": "qwen",
+    "created_at": "2025-07-23 02:29:06 +0200",
+    "context_window": 32000,
+    "max_output_tokens": 4000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming"
+    ],
+    "pricing": {},
+    "metadata": {
+      "description": "Qwen3-Coder-480B-A35B-Instruct is a Mixture-of-Experts (MoE) code generation model developed by the Qwen team. It is optimized for agentic coding tasks such as function calling, tool use, and long-context reasoning over repositories. The model features 480 billion total parameters, with 35 billion active per forward pass (8 out of 160 experts).\n\nPricing for the Alibaba endpoints varies by context length. Once a request is greater than 128k input tokens, the higher pricing is used.",
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Qwen3",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 32000,
+        "max_completion_tokens": 4000,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "max_tokens",
+        "seed",
+        "stop",
+        "temperature"
       ]
     }
   },
@@ -29042,7 +29899,7 @@
     "provider": "openrouter",
     "family": "z-ai",
     "created_at": "2025-07-25 21:22:27 +0200",
-    "context_window": 131072,
+    "context_window": 98304,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
@@ -29062,8 +29919,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.19999999999999998,
-          "output_per_million": 0.19999999999999998
+          "input_per_million": 0.1999188,
+          "output_per_million": 0.800064
         }
       }
     },
@@ -29081,7 +29938,7 @@
         "instruct_type": null
       },
       "top_provider": {
-        "context_length": 131072,
+        "context_length": 98304,
         "max_completion_tokens": null,
         "is_moderated": false
       },
@@ -29114,7 +29971,7 @@
     "provider": "openrouter",
     "family": "z-ai",
     "created_at": "2025-07-25 21:20:58 +0200",
-    "context_window": 128000,
+    "context_window": 131072,
     "max_output_tokens": 96000,
     "knowledge_cutoff": null,
     "modalities": {
@@ -29153,7 +30010,7 @@
         "instruct_type": null
       },
       "top_provider": {
-        "context_length": 128000,
+        "context_length": 131072,
         "max_completion_tokens": 96000,
         "is_moderated": false
       },
@@ -29196,6 +30053,7 @@
     },
     "capabilities": [
       "streaming",
+      "function_calling",
       "predicted_outputs"
     ],
     "pricing": {},
@@ -29231,6 +30089,8 @@
         "seed",
         "stop",
         "temperature",
+        "tool_choice",
+        "tools",
         "top_k",
         "top_logprobs",
         "top_p"
@@ -29242,7 +30102,7 @@
     "name": "Sonar",
     "provider": "perplexity",
     "family": "sonar",
-    "created_at": "2025-08-07 16:57:23 +0200",
+    "created_at": "2025-08-10 12:24:55 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -29274,7 +30134,7 @@
     "name": "Sonar Deep Research",
     "provider": "perplexity",
     "family": "sonar_deep_research",
-    "created_at": "2025-08-07 16:57:23 +0200",
+    "created_at": "2025-08-10 12:24:55 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -29309,7 +30169,7 @@
     "name": "Sonar Pro",
     "provider": "perplexity",
     "family": "sonar_pro",
-    "created_at": "2025-08-07 16:57:23 +0200",
+    "created_at": "2025-08-10 12:24:55 +0200",
     "context_window": 200000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
@@ -29341,7 +30201,7 @@
     "name": "Sonar Reasoning",
     "provider": "perplexity",
     "family": "sonar_reasoning",
-    "created_at": "2025-08-07 16:57:23 +0200",
+    "created_at": "2025-08-10 12:24:55 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -29373,7 +30233,7 @@
     "name": "Sonar Reasoning Pro",
     "provider": "perplexity",
     "family": "sonar_reasoning_pro",
-    "created_at": "2025-08-07 16:57:23 +0200",
+    "created_at": "2025-08-10 12:24:55 +0200",
     "context_window": 128000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,

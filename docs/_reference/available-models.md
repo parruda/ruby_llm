@@ -47,7 +47,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 ## Last Updated
 {: .d-inline-block }
 
-2025-08-07
+2025-08-10
 {: .label .label-green }
 
 ## Models by Provider
@@ -246,7 +246,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | voxtral-small-latest | mistral | 32768 | 8192 | - |
 
 
-### OpenAI (84)
+### OpenAI (96)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -273,6 +273,8 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-4.1-mini-2025-04-14 | openai | 1047576 | 32768 | In: $0.40, Out: $1.60, Cache: $0.10 |
 | gpt-4.1-nano | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
 | gpt-4.1-nano-2025-04-14 | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
+| gpt-4.5-preview | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
+| gpt-4.5-preview-2025-02-27 | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
 | gpt-4o | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-2024-08-06 | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-2024-05-13 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
@@ -298,6 +300,13 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-4o-realtime-preview-2024-10-01 | openai | 128000 | 4096 | In: $5.00, Out: $20.00 |
 | gpt-4o-realtime-preview-2024-12-17 | openai | 128000 | 4096 | In: $5.00, Out: $20.00 |
 | gpt-4o-realtime-preview-2025-06-03 | openai | 128000 | 4096 | In: $5.00, Out: $20.00 |
+| gpt-5 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-chat-latest | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-mini-2025-08-07 | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-nano | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
+| gpt-5-nano-2025-08-07 | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | omni-moderation-2024-09-26 | openai | - | - | - |
 | tts-1 | openai | - | - | In: $15.00 |
 | tts-1-1106 | openai | - | - | In: $15.00, Out: $15.00 |
@@ -313,6 +322,8 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-oss-20b | openai | 131072 | 131072 | - |
 | o1 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
+| o1-preview | openai | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
+| o1-preview-2024-09-12 | openai | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-mini | openai | 128000 | 65536 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | o1-mini-2024-09-12 | openai | 128000 | 65536 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
@@ -334,18 +345,21 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | text-embedding-3-small | openai | - | - | In: $0.02 |
 | text-embedding-ada-002 | openai | - | - | In: $0.10 |
 | text-moderation-latest | openai | - | 32768 | - |
+| text-moderation-stable | openai | - | 32768 | - |
 
 
-### OpenRouter (312)
+### OpenRouter (318)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
+| ai21/jamba-large-1.7 | openrouter | 256000 | 4096 | In: $2.00, Out: $8.00 |
+| ai21/jamba-mini-1.7 | openrouter | 256000 | 4096 | In: $0.20, Out: $0.40 |
 | agentica-org/deepcoder-14b-preview | openrouter | 96000 | - | In: $0.02, Out: $0.02 |
 | agentica-org/deepcoder-14b-preview:free | openrouter | 96000 | - | - |
 | aion-labs/aion-1.0 | openrouter | 131072 | 32768 | In: $4.00, Out: $8.00 |
 | aion-labs/aion-1.0-mini | openrouter | 131072 | 32768 | In: $0.70, Out: $1.40 |
 | aion-labs/aion-rp-llama-3.1-8b | openrouter | 32768 | 32768 | In: $0.20, Out: $0.20 |
-| alfredpros/codellama-7b-instruct-solidity | openrouter | 8192 | 8192 | In: $0.60, Out: $1.00 |
+| alfredpros/codellama-7b-instruct-solidity | openrouter | 8192 | 8192 | In: $0.70, Out: $1.10 |
 | amazon/nova-lite-v1 | openrouter | 300000 | 5120 | In: $0.06, Out: $0.24 |
 | amazon/nova-micro-v1 | openrouter | 128000 | 5120 | In: $0.04, Out: $0.14 |
 | amazon/nova-pro-v1 | openrouter | 300000 | 5120 | In: $0.80, Out: $3.20 |
@@ -435,7 +449,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | google/gemma-3n-e2b-it:free | openrouter | 8192 | 2048 | - |
 | google/gemma-3n-e4b-it | openrouter | 32768 | - | In: $0.02, Out: $0.04 |
 | google/gemma-3n-e4b-it:free | openrouter | 8192 | 2048 | - |
-| openrouter/horizon-beta | openrouter | 256000 | 128000 | - |
 | inception/mercury | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | inception/mercury-coder | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | infermatic/mn-inferor-12b | openrouter | 8192 | 8192 | In: $0.60, Out: $1.00 |
@@ -526,7 +539,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | nvidia/llama-3.1-nemotron-ultra-253b-v1:free | openrouter | 131072 | - | - |
 | nvidia/llama-3.3-nemotron-super-49b-v1 | openrouter | 131072 | - | In: $0.13, Out: $0.40 |
 | neversleep/llama-3-lumimaid-70b | openrouter | 8192 | 4096 | In: $4.00, Out: $6.00 |
-| neversleep/llama-3.1-lumimaid-8b | openrouter | 8192 | 8192 | In: $0.10, Out: $0.90 |
+| neversleep/llama-3.1-lumimaid-8b | openrouter | 40000 | 40000 | In: $0.17, Out: $0.99 |
 | neversleep/noromaid-20b | openrouter | 4096 | - | In: $1.00, Out: $1.75 |
 | nousresearch/deephermes-3-llama-3-8b-preview:free | openrouter | 131072 | - | - |
 | nousresearch/deephermes-3-mistral-24b-preview | openrouter | 32768 | - | In: $0.09, Out: $0.37 |
@@ -557,6 +570,10 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | openai/gpt-4o-mini | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-search-preview | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60 |
+| openai/gpt-5 | openrouter | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| openai/gpt-5-chat | openrouter | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| openai/gpt-5-mini | openrouter | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| openai/gpt-5-nano | openrouter | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | openai/gpt-oss-120b | openrouter | 131072 | - | In: $0.09, Out: $0.45 |
 | openai/gpt-oss-20b | openrouter | 131072 | - | In: $0.04, Out: $0.16 |
 | openai/gpt-oss-20b:free | openrouter | 131072 | 131072 | - |
@@ -577,7 +594,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | perplexity/sonar-pro | openrouter | 200000 | 8000 | In: $3.00, Out: $15.00 |
 | perplexity/sonar-reasoning | openrouter | 127000 | - | In: $1.00, Out: $5.00 |
 | perplexity/sonar-reasoning-pro | openrouter | 128000 | - | In: $2.00, Out: $8.00 |
-| pygmalionai/mythalion-13b | openrouter | 4096 | 4096 | In: $0.60, Out: $1.00 |
+| pygmalionai/mythalion-13b | openrouter | 4096 | 4096 | In: $0.70, Out: $1.10 |
 | featherless/qwerky-72b:free | openrouter | 32768 | 4096 | - |
 | qwen/qwen-2-72b-instruct | openrouter | 32768 | 4096 | In: $0.90, Out: $0.90 |
 | qwen/qwen-2.5-72b-instruct | openrouter | 32768 | - | In: $0.07, Out: $0.27 |
@@ -612,6 +629,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | qwen/qwen3-8b | openrouter | 128000 | 20000 | In: $0.04, Out: $0.14 |
 | qwen/qwen3-8b:free | openrouter | 40960 | 40960 | - |
 | qwen/qwen3-coder | openrouter | 262144 | - | In: $0.20, Out: $0.80 |
+| qwen/qwen3-coder:free | openrouter | 32000 | 4000 | - |
 | undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.70, Out: $1.00 |
 | rekaai/reka-flash-3:free | openrouter | 32768 | - | - |
 | sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.02, Out: $0.05 |
@@ -641,8 +659,8 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | cognitivecomputations/dolphin-mistral-24b-venice-edition:free | openrouter | 32768 | - | - |
 | microsoft/wizardlm-2-8x22b | openrouter | 65536 | 65536 | In: $0.48, Out: $0.48 |
 | z-ai/glm-4-32b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
-| z-ai/glm-4.5 | openrouter | 131072 | - | In: $0.20, Out: $0.20 |
-| z-ai/glm-4.5-air | openrouter | 128000 | 96000 | In: $0.20, Out: $1.10, Cache: $0.03 |
+| z-ai/glm-4.5 | openrouter | 98304 | - | In: $0.20, Out: $0.80 |
+| z-ai/glm-4.5-air | openrouter | 131072 | 96000 | In: $0.20, Out: $1.10, Cache: $0.03 |
 | z-ai/glm-4.5-air:free | openrouter | 131072 | - | - |
 | x-ai/grok-2-1212 | openrouter | 131072 | - | In: $2.00, Out: $10.00 |
 | x-ai/grok-2-vision-1212 | openrouter | 32768 | - | In: $2.00, Out: $10.00 |
@@ -667,7 +685,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 
 ## Models by Capability
 
-### Function Calling (317)
+### Function Calling (331)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -801,13 +819,14 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | pixtral-large-latest | mistral | 32768 | 8192 | - |
 | gpt-4-turbo | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
 | gpt-4-turbo-2024-04-09 | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
-| gpt-4-turbo-preview | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
 | gpt-4.1 | openai | 1047576 | 32768 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | gpt-4.1-2025-04-14 | openai | 1047576 | 32768 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | gpt-4.1-mini | openai | 1047576 | 32768 | In: $0.40, Out: $1.60, Cache: $0.10 |
 | gpt-4.1-mini-2025-04-14 | openai | 1047576 | 32768 | In: $0.40, Out: $1.60, Cache: $0.10 |
 | gpt-4.1-nano | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
 | gpt-4.1-nano-2025-04-14 | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
+| gpt-4.5-preview | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
+| gpt-4.5-preview-2025-02-27 | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
 | gpt-4o | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-2024-08-06 | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-2024-05-13 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
@@ -820,6 +839,12 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-4o-mini-audio-preview-2024-12-17 | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
 | gpt-4o-mini-realtime-preview | openai | 128000 | 4096 | In: $0.60, Out: $2.40, Cache: $0.30 |
 | gpt-4o-mini-realtime-preview-2024-12-17 | openai | 128000 | 4096 | In: $0.60, Out: $2.40, Cache: $0.30 |
+| gpt-5 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-mini-2025-08-07 | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-nano | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
+| gpt-5-nano-2025-08-07 | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | codex-mini-latest | openai | 200000 | 100000 | In: $1.50, Out: $6.00, Cache: $0.38 |
 | computer-use-preview | openai | 8192 | 1024 | In: $3.00, Out: $12.00 |
 | computer-use-preview-2025-03-11 | openai | 8192 | 1024 | In: $3.00, Out: $12.00 |
@@ -827,6 +852,8 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-oss-20b | openai | 131072 | 131072 | - |
 | o1 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
+| o1-preview | openai | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
+| o1-preview-2024-09-12 | openai | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
 | o1-pro-2025-03-19 | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
 | o3 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
@@ -837,6 +864,8 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | o3-pro-2025-06-10 | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | o4-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | o4-mini-2025-04-16 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
+| ai21/jamba-large-1.7 | openrouter | 256000 | 4096 | In: $2.00, Out: $8.00 |
+| ai21/jamba-mini-1.7 | openrouter | 256000 | 4096 | In: $0.20, Out: $0.40 |
 | amazon/nova-lite-v1 | openrouter | 300000 | 5120 | In: $0.06, Out: $0.24 |
 | amazon/nova-micro-v1 | openrouter | 128000 | 5120 | In: $0.04, Out: $0.14 |
 | amazon/nova-pro-v1 | openrouter | 300000 | 5120 | In: $0.80, Out: $3.20 |
@@ -883,7 +912,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | google/gemini-2.5-pro-exp-03-25 | openrouter | 1048576 | 65535 | - |
 | google/gemini-2.5-pro-preview-05-06 | openrouter | 1048576 | 65535 | In: $1.25, Out: $10.00, Cache: $0.31 |
 | google/gemini-2.5-pro-preview | openrouter | 1048576 | 65536 | In: $1.25, Out: $10.00, Cache: $0.31 |
-| openrouter/horizon-beta | openrouter | 256000 | 128000 | - |
 | inception/mercury | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | inception/mercury-coder | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | meta-llama/llama-3-70b-instruct | openrouter | 8192 | 16384 | In: $0.30, Out: $0.40 |
@@ -955,6 +983,9 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | openai/gpt-4o:extended | openrouter | 128000 | 64000 | In: $6.00, Out: $18.00 |
 | openai/gpt-4o-mini | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
+| openai/gpt-5 | openrouter | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| openai/gpt-5-mini | openrouter | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| openai/gpt-5-nano | openrouter | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | openai/gpt-oss-120b | openrouter | 131072 | - | In: $0.09, Out: $0.45 |
 | openai/gpt-oss-20b | openrouter | 131072 | - | In: $0.04, Out: $0.16 |
 | openai/o1 | openrouter | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
@@ -980,8 +1011,9 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | thedrummer/rocinante-12b | openrouter | 8192 | 8192 | In: $0.19, Out: $0.45 |
 | thedrummer/unslopnemo-12b | openrouter | 32768 | - | In: $0.40, Out: $0.40 |
 | z-ai/glm-4-32b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
-| z-ai/glm-4.5 | openrouter | 131072 | - | In: $0.20, Out: $0.20 |
-| z-ai/glm-4.5-air | openrouter | 128000 | 96000 | In: $0.20, Out: $1.10, Cache: $0.03 |
+| z-ai/glm-4.5 | openrouter | 98304 | - | In: $0.20, Out: $0.80 |
+| z-ai/glm-4.5-air | openrouter | 131072 | 96000 | In: $0.20, Out: $1.10, Cache: $0.03 |
+| z-ai/glm-4.5-air:free | openrouter | 131072 | - | - |
 | x-ai/grok-2-1212 | openrouter | 131072 | - | In: $2.00, Out: $10.00 |
 | x-ai/grok-3 | openrouter | 131072 | - | In: $3.00, Out: $15.00, Cache: $0.75 |
 | x-ai/grok-3-beta | openrouter | 131072 | - | In: $3.00, Out: $15.00, Cache: $0.75 |
@@ -990,7 +1022,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | x-ai/grok-4 | openrouter | 256000 | - | In: $3.00, Out: $15.00, Cache: $0.75 |
 
 
-### Structured Output (297)
+### Structured Output (312)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -1088,6 +1120,8 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-4.1-mini-2025-04-14 | openai | 1047576 | 32768 | In: $0.40, Out: $1.60, Cache: $0.10 |
 | gpt-4.1-nano | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
 | gpt-4.1-nano-2025-04-14 | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
+| gpt-4.5-preview | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
+| gpt-4.5-preview-2025-02-27 | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
 | gpt-4o | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-2024-08-06 | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-2024-05-13 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
@@ -1098,11 +1132,19 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-4o-mini-2024-07-18 | openai | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | gpt-4o-mini-search-preview | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
 | gpt-4o-mini-search-preview-2025-03-11 | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
+| gpt-5 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-mini-2025-08-07 | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-nano | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
+| gpt-5-nano-2025-08-07 | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | codex-mini-latest | openai | 200000 | 100000 | In: $1.50, Out: $6.00, Cache: $0.38 |
 | gpt-oss-120b | openai | 131072 | 131072 | - |
 | gpt-oss-20b | openai | 131072 | 131072 | - |
 | o1 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
+| o1-preview | openai | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
+| o1-preview-2024-09-12 | openai | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
 | o1-pro-2025-03-19 | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
 | o3 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
@@ -1113,6 +1155,8 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | o3-pro-2025-06-10 | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | o4-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | o4-mini-2025-04-16 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
+| ai21/jamba-large-1.7 | openrouter | 256000 | 4096 | In: $2.00, Out: $8.00 |
+| ai21/jamba-mini-1.7 | openrouter | 256000 | 4096 | In: $0.20, Out: $0.40 |
 | cohere/command | openrouter | 4096 | 4000 | In: $1.00, Out: $2.00 |
 | cohere/command-a | openrouter | 32768 | - | In: $2.00, Out: $8.00 |
 | cohere/command-r | openrouter | 128000 | 4000 | In: $0.50, Out: $1.50 |
@@ -1153,7 +1197,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | google/gemma-3-4b-it:free | openrouter | 32768 | 8192 | - |
 | google/gemma-3n-e2b-it:free | openrouter | 8192 | 2048 | - |
 | google/gemma-3n-e4b-it:free | openrouter | 8192 | 2048 | - |
-| openrouter/horizon-beta | openrouter | 256000 | 128000 | - |
 | inception/mercury | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | inception/mercury-coder | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | liquid/lfm-40b | openrouter | 65536 | 65536 | In: $0.15, Out: $0.15 |
@@ -1208,7 +1251,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | moonshotai/kimi-k2 | openrouter | 63000 | 63000 | In: $0.14, Out: $2.49 |
 | gryphe/mythomax-l2-13b | openrouter | 4096 | - | In: $0.06, Out: $0.06 |
 | nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 131072 | In: $0.12, Out: $0.30 |
-| neversleep/llama-3.1-lumimaid-8b | openrouter | 8192 | 8192 | In: $0.10, Out: $0.90 |
+| neversleep/llama-3.1-lumimaid-8b | openrouter | 40000 | 40000 | In: $0.17, Out: $0.99 |
 | neversleep/noromaid-20b | openrouter | 4096 | - | In: $1.00, Out: $1.75 |
 | nousresearch/hermes-3-llama-3.1-405b | openrouter | 131072 | 16384 | In: $0.70, Out: $0.80 |
 | nousresearch/hermes-3-llama-3.1-70b | openrouter | 131072 | - | In: $0.10, Out: $0.28 |
@@ -1236,6 +1279,10 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | openai/gpt-4o-mini | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-search-preview | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60 |
+| openai/gpt-5 | openrouter | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| openai/gpt-5-chat | openrouter | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| openai/gpt-5-mini | openrouter | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| openai/gpt-5-nano | openrouter | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | openai/gpt-oss-120b | openrouter | 131072 | - | In: $0.09, Out: $0.45 |
 | openai/gpt-oss-20b | openrouter | 131072 | - | In: $0.04, Out: $0.16 |
 | openai/gpt-oss-20b:free | openrouter | 131072 | 131072 | - |
@@ -1281,8 +1328,8 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | thedrummer/unslopnemo-12b | openrouter | 32768 | - | In: $0.40, Out: $0.40 |
 | cognitivecomputations/dolphin-mistral-24b-venice-edition:free | openrouter | 32768 | - | - |
 | microsoft/wizardlm-2-8x22b | openrouter | 65536 | 65536 | In: $0.48, Out: $0.48 |
-| z-ai/glm-4.5 | openrouter | 131072 | - | In: $0.20, Out: $0.20 |
-| z-ai/glm-4.5-air | openrouter | 128000 | 96000 | In: $0.20, Out: $1.10, Cache: $0.03 |
+| z-ai/glm-4.5 | openrouter | 98304 | - | In: $0.20, Out: $0.80 |
+| z-ai/glm-4.5-air | openrouter | 131072 | 96000 | In: $0.20, Out: $1.10, Cache: $0.03 |
 | x-ai/grok-2-1212 | openrouter | 131072 | - | In: $2.00, Out: $10.00 |
 | x-ai/grok-2-vision-1212 | openrouter | 32768 | - | In: $2.00, Out: $10.00 |
 | x-ai/grok-3 | openrouter | 131072 | - | In: $3.00, Out: $15.00, Cache: $0.75 |
@@ -1293,7 +1340,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | x-ai/grok-vision-beta | openrouter | 8192 | - | In: $5.00, Out: $15.00 |
 
 
-### Streaming (452)
+### Streaming (457)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -1421,7 +1468,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-3.5-turbo-instruct-0914 | openai | 16385 | 4096 | In: $0.50, Out: $1.50 |
 | gpt-4-0125-preview | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
 | gpt-4-1106-preview | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-4-turbo-preview | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
 | gpt-4o-2024-05-13 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | gpt-4o-2024-11-20 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | gpt-4o-audio-preview-2024-10-01 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
@@ -1432,12 +1478,14 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-4o-realtime-preview-2025-06-03 | openai | 128000 | 4096 | In: $5.00, Out: $20.00 |
 | tts-1-1106 | openai | - | - | In: $15.00, Out: $15.00 |
 | tts-1-hd-1106 | openai | - | - | In: $30.00, Out: $30.00 |
+| ai21/jamba-large-1.7 | openrouter | 256000 | 4096 | In: $2.00, Out: $8.00 |
+| ai21/jamba-mini-1.7 | openrouter | 256000 | 4096 | In: $0.20, Out: $0.40 |
 | agentica-org/deepcoder-14b-preview | openrouter | 96000 | - | In: $0.02, Out: $0.02 |
 | agentica-org/deepcoder-14b-preview:free | openrouter | 96000 | - | - |
 | aion-labs/aion-1.0 | openrouter | 131072 | 32768 | In: $4.00, Out: $8.00 |
 | aion-labs/aion-1.0-mini | openrouter | 131072 | 32768 | In: $0.70, Out: $1.40 |
 | aion-labs/aion-rp-llama-3.1-8b | openrouter | 32768 | 32768 | In: $0.20, Out: $0.20 |
-| alfredpros/codellama-7b-instruct-solidity | openrouter | 8192 | 8192 | In: $0.60, Out: $1.00 |
+| alfredpros/codellama-7b-instruct-solidity | openrouter | 8192 | 8192 | In: $0.70, Out: $1.10 |
 | amazon/nova-lite-v1 | openrouter | 300000 | 5120 | In: $0.06, Out: $0.24 |
 | amazon/nova-micro-v1 | openrouter | 128000 | 5120 | In: $0.04, Out: $0.14 |
 | amazon/nova-pro-v1 | openrouter | 300000 | 5120 | In: $0.80, Out: $3.20 |
@@ -1527,7 +1575,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | google/gemma-3n-e2b-it:free | openrouter | 8192 | 2048 | - |
 | google/gemma-3n-e4b-it | openrouter | 32768 | - | In: $0.02, Out: $0.04 |
 | google/gemma-3n-e4b-it:free | openrouter | 8192 | 2048 | - |
-| openrouter/horizon-beta | openrouter | 256000 | 128000 | - |
 | inception/mercury | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | inception/mercury-coder | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | infermatic/mn-inferor-12b | openrouter | 8192 | 8192 | In: $0.60, Out: $1.00 |
@@ -1618,7 +1665,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | nvidia/llama-3.1-nemotron-ultra-253b-v1:free | openrouter | 131072 | - | - |
 | nvidia/llama-3.3-nemotron-super-49b-v1 | openrouter | 131072 | - | In: $0.13, Out: $0.40 |
 | neversleep/llama-3-lumimaid-70b | openrouter | 8192 | 4096 | In: $4.00, Out: $6.00 |
-| neversleep/llama-3.1-lumimaid-8b | openrouter | 8192 | 8192 | In: $0.10, Out: $0.90 |
+| neversleep/llama-3.1-lumimaid-8b | openrouter | 40000 | 40000 | In: $0.17, Out: $0.99 |
 | neversleep/noromaid-20b | openrouter | 4096 | - | In: $1.00, Out: $1.75 |
 | nousresearch/deephermes-3-llama-3-8b-preview:free | openrouter | 131072 | - | - |
 | nousresearch/deephermes-3-mistral-24b-preview | openrouter | 32768 | - | In: $0.09, Out: $0.37 |
@@ -1649,6 +1696,10 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | openai/gpt-4o-mini | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-search-preview | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60 |
+| openai/gpt-5 | openrouter | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| openai/gpt-5-chat | openrouter | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| openai/gpt-5-mini | openrouter | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| openai/gpt-5-nano | openrouter | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | openai/gpt-oss-120b | openrouter | 131072 | - | In: $0.09, Out: $0.45 |
 | openai/gpt-oss-20b | openrouter | 131072 | - | In: $0.04, Out: $0.16 |
 | openai/gpt-oss-20b:free | openrouter | 131072 | 131072 | - |
@@ -1669,7 +1720,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | perplexity/sonar-pro | openrouter | 200000 | 8000 | In: $3.00, Out: $15.00 |
 | perplexity/sonar-reasoning | openrouter | 127000 | - | In: $1.00, Out: $5.00 |
 | perplexity/sonar-reasoning-pro | openrouter | 128000 | - | In: $2.00, Out: $8.00 |
-| pygmalionai/mythalion-13b | openrouter | 4096 | 4096 | In: $0.60, Out: $1.00 |
+| pygmalionai/mythalion-13b | openrouter | 4096 | 4096 | In: $0.70, Out: $1.10 |
 | featherless/qwerky-72b:free | openrouter | 32768 | 4096 | - |
 | qwen/qwen-2-72b-instruct | openrouter | 32768 | 4096 | In: $0.90, Out: $0.90 |
 | qwen/qwen-2.5-72b-instruct | openrouter | 32768 | - | In: $0.07, Out: $0.27 |
@@ -1704,6 +1755,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | qwen/qwen3-8b | openrouter | 128000 | 20000 | In: $0.04, Out: $0.14 |
 | qwen/qwen3-8b:free | openrouter | 40960 | 40960 | - |
 | qwen/qwen3-coder | openrouter | 262144 | - | In: $0.20, Out: $0.80 |
+| qwen/qwen3-coder:free | openrouter | 32000 | 4000 | - |
 | undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.70, Out: $1.00 |
 | rekaai/reka-flash-3:free | openrouter | 32768 | - | - |
 | sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.02, Out: $0.05 |
@@ -1733,8 +1785,8 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | cognitivecomputations/dolphin-mistral-24b-venice-edition:free | openrouter | 32768 | - | - |
 | microsoft/wizardlm-2-8x22b | openrouter | 65536 | 65536 | In: $0.48, Out: $0.48 |
 | z-ai/glm-4-32b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
-| z-ai/glm-4.5 | openrouter | 131072 | - | In: $0.20, Out: $0.20 |
-| z-ai/glm-4.5-air | openrouter | 128000 | 96000 | In: $0.20, Out: $1.10, Cache: $0.03 |
+| z-ai/glm-4.5 | openrouter | 98304 | - | In: $0.20, Out: $0.80 |
+| z-ai/glm-4.5-air | openrouter | 131072 | 96000 | In: $0.20, Out: $1.10, Cache: $0.03 |
 | z-ai/glm-4.5-air:free | openrouter | 131072 | - | - |
 | x-ai/grok-2-1212 | openrouter | 131072 | - | In: $2.00, Out: $10.00 |
 | x-ai/grok-2-vision-1212 | openrouter | 32768 | - | In: $2.00, Out: $10.00 |
@@ -1751,7 +1803,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | sonar-reasoning-pro | perplexity | 128000 | 8192 | In: $2.00, Out: $8.00 |
 
 
-### Batch Processing (114)
+### Batch Processing (122)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -1842,10 +1894,18 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-4.1-mini-2025-04-14 | openai | 1047576 | 32768 | In: $0.40, Out: $1.60, Cache: $0.10 |
 | gpt-4.1-nano | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
 | gpt-4.1-nano-2025-04-14 | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
+| gpt-4.5-preview | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
+| gpt-4.5-preview-2025-02-27 | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
 | gpt-4o | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-2024-08-06 | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-mini | openai | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | gpt-4o-mini-2024-07-18 | openai | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
+| gpt-5 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-mini-2025-08-07 | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-nano | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
+| gpt-5-nano-2025-08-07 | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | computer-use-preview | openai | 8192 | 1024 | In: $3.00, Out: $12.00 |
 | computer-use-preview-2025-03-11 | openai | 8192 | 1024 | In: $3.00, Out: $12.00 |
 | gpt-oss-120b | openai | 131072 | 131072 | - |
@@ -1873,7 +1933,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 
 ## Models by Modality
 
-### Vision Models (214)
+### Vision Models (225)
 
 Models that can process images:
 
@@ -1969,19 +2029,27 @@ Models that can process images:
 | gpt-image-1 | openai | - | - | In: $5.00, Out: $40.00, Cache: $1.25 |
 | gpt-4-turbo | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
 | gpt-4-turbo-2024-04-09 | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
-| gpt-4-turbo-preview | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
 | gpt-4.1 | openai | 1047576 | 32768 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | gpt-4.1-2025-04-14 | openai | 1047576 | 32768 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | gpt-4.1-mini | openai | 1047576 | 32768 | In: $0.40, Out: $1.60, Cache: $0.10 |
 | gpt-4.1-mini-2025-04-14 | openai | 1047576 | 32768 | In: $0.40, Out: $1.60, Cache: $0.10 |
 | gpt-4.1-nano | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
 | gpt-4.1-nano-2025-04-14 | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
+| gpt-4.5-preview | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
+| gpt-4.5-preview-2025-02-27 | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
 | gpt-4o | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-2024-08-06 | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-2024-05-13 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | gpt-4o-2024-11-20 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | gpt-4o-mini | openai | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | gpt-4o-mini-2024-07-18 | openai | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
+| gpt-5 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-chat-latest | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-mini-2025-08-07 | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-nano | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
+| gpt-5-nano-2025-08-07 | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | omni-moderation-2024-09-26 | openai | - | - | - |
 | codex-mini-latest | openai | 200000 | 100000 | In: $1.50, Out: $6.00, Cache: $0.38 |
 | computer-use-preview | openai | 8192 | 1024 | In: $3.00, Out: $12.00 |
@@ -2041,7 +2109,6 @@ Models that can process images:
 | google/gemma-3-27b-it:free | openrouter | 96000 | 8192 | - |
 | google/gemma-3-4b-it | openrouter | 131072 | - | In: $0.02, Out: $0.04 |
 | google/gemma-3-4b-it:free | openrouter | 32768 | 8192 | - |
-| openrouter/horizon-beta | openrouter | 256000 | 128000 | - |
 | meta-llama/llama-3.2-11b-vision-instruct | openrouter | 131072 | 16384 | In: $0.05, Out: $0.05 |
 | meta-llama/llama-3.2-11b-vision-instruct:free | openrouter | 131072 | 2048 | - |
 | meta-llama/llama-3.2-90b-vision-instruct | openrouter | 131072 | 2048 | In: $1.20, Out: $1.20 |
@@ -2072,6 +2139,10 @@ Models that can process images:
 | openai/gpt-4o:extended | openrouter | 128000 | 64000 | In: $6.00, Out: $18.00 |
 | openai/gpt-4o-mini | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
+| openai/gpt-5 | openrouter | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| openai/gpt-5-chat | openrouter | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| openai/gpt-5-mini | openrouter | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| openai/gpt-5-nano | openrouter | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | openai/o1 | openrouter | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | openai/o1-pro | openrouter | 200000 | 100000 | In: $150.00, Out: $600.00 |
 | openai/o3 | openrouter | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
@@ -2146,7 +2217,7 @@ Models that can process audio:
 | google/gemini-2.5-flash-lite | openrouter | 1048576 | 65535 | In: $0.10, Out: $0.40, Cache: $0.02 |
 
 
-### PDF Models (54)
+### PDF Models (53)
 
 Models that can process PDF documents:
 
@@ -2202,13 +2273,12 @@ Models that can process PDF documents:
 | imagen-4.0-generate-preview-06-06 | gemini | 480 | 8192 | - |
 | imagen-4.0-ultra-generate-preview-06-06 | gemini | 480 | 8192 | - |
 | learnlm-2.0-flash-experimental | gemini | 1048576 | 32768 | In: $0.08, Out: $0.30 |
-| gpt-4-turbo-preview | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
 | gpt-4o-2024-05-13 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | gpt-4o-2024-11-20 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | omni-moderation-2024-09-26 | openai | - | - | - |
 
 
-### Embedding Models (74)
+### Embedding Models (87)
 
 Models that generate embeddings:
 
@@ -2232,12 +2302,15 @@ Models that generate embeddings:
 | gpt-4-0613 | openai | 8192 | 8192 | In: $30.00, Out: $60.00 |
 | gpt-4-turbo | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
 | gpt-4-turbo-2024-04-09 | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
+| gpt-4-turbo-preview | openai | 128000 | 4096 | In: $10.00, Out: $30.00 |
 | gpt-4.1 | openai | 1047576 | 32768 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | gpt-4.1-2025-04-14 | openai | 1047576 | 32768 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | gpt-4.1-mini | openai | 1047576 | 32768 | In: $0.40, Out: $1.60, Cache: $0.10 |
 | gpt-4.1-mini-2025-04-14 | openai | 1047576 | 32768 | In: $0.40, Out: $1.60, Cache: $0.10 |
 | gpt-4.1-nano | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
 | gpt-4.1-nano-2025-04-14 | openai | 1047576 | 32768 | In: $0.10, Out: $0.40, Cache: $0.02 |
+| gpt-4.5-preview | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
+| gpt-4.5-preview-2025-02-27 | openai | 128000 | 16384 | In: $75.00, Out: $150.00, Cache: $37.50 |
 | gpt-4o | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-2024-08-06 | openai | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | gpt-4o-audio-preview | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
@@ -2255,6 +2328,13 @@ Models that generate embeddings:
 | gpt-4o-mini-search-preview-2025-03-11 | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
 | gpt-4o-mini-tts | openai | 2000 | - | In: $0.60, Out: $12.00 |
 | gpt-4o-mini-transcribe | openai | 16000 | 2000 | In: $1.25, Out: $5.00 |
+| gpt-5 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-chat-latest | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-mini-2025-08-07 | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
+| gpt-5-nano | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
+| gpt-5-nano-2025-08-07 | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
 | tts-1 | openai | - | - | In: $15.00 |
 | tts-1-hd | openai | - | - | Out: $30.00 |
 | whisper-1 | openai | - | - | In: $0.01 |
@@ -2267,6 +2347,8 @@ Models that generate embeddings:
 | gpt-oss-20b | openai | 131072 | 131072 | - |
 | o1 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00, Cache: $7.50 |
+| o1-preview | openai | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
+| o1-preview-2024-09-12 | openai | 128000 | 32768 | In: $15.00, Out: $60.00, Cache: $7.50 |
 | o1-mini | openai | 128000 | 65536 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | o1-mini-2024-09-12 | openai | 128000 | 65536 | In: $1.10, Out: $4.40, Cache: $0.55 |
 | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
@@ -2288,4 +2370,5 @@ Models that generate embeddings:
 | text-embedding-3-small | openai | - | - | In: $0.02 |
 | text-embedding-ada-002 | openai | - | - | In: $0.10 |
 | text-moderation-latest | openai | - | 32768 | - |
+| text-moderation-stable | openai | - | 32768 | - |
 
