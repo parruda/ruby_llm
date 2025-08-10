@@ -79,20 +79,27 @@ The provider system allows RubyLLM to support many different AI services while m
 
 ### Configuration
 
-Configuration in RubyLLM works at multiple levels. Global configuration sets defaults for the entire application, while instance-level configuration allows fine-tuning for specific use cases.
+Configuration in RubyLLM works at three levels: global defaults, isolated contexts for multi-tenancy, and instance-specific settings.
 
 ```ruby
-# Global configuration
+# Global configuration - applies everywhere
 RubyLLM.configure do |config|
   config.openai_api_key = ENV["OPENAI_API_KEY"]
   config.default_model = "gpt-4.1-nano"
 end
 
-# Instance configuration
+# Context configuration - isolated scope
+context = RubyLLM.context do |config|
+  config.openai_api_key = tenant.api_key  # Different credentials
+  config.default_model = "gpt-4o"         # Different defaults
+end
+chat = context.chat  # Uses context configuration
+
+# Instance configuration - what you need right now
 chat = RubyLLM.chat(model: "claude-3-opus", temperature: 0.7)
 ```
 
-This layered approach provides flexibility while keeping simple use cases simple.
+This layered approach supports everything from simple scripts to complex multi-tenant applications.
 
 ## Design Principles
 
