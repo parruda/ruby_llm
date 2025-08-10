@@ -149,5 +149,14 @@ module RubyLLM
     rescue JSON::ParserError => e
       RubyLLM.logger.debug "Failed to parse error event: #{e.message}"
     end
+
+    # Default implementation - providers should override this method
+    def parse_streaming_error(data)
+      error_data = JSON.parse(data)
+      [500, error_data['message'] || 'Unknown streaming error']
+    rescue JSON::ParserError => e
+      RubyLLM.logger.debug "Failed to parse streaming error: #{e.message}"
+      [500, "Failed to parse error: #{data}"]
+    end
   end
 end
