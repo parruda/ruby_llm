@@ -160,7 +160,7 @@ chat = RubyLLM.chat(model: 'gpt-4o')
         puts "Calling tool: #{tool_call.name}"
         puts "Arguments: #{tool_call.arguments}"
       end
-      .on_tool_result do |result|  # Available in > 1.5.1
+      .on_tool_result do |result|  # v1.6.0+
         # Called after the tool returns its result
         puts "Tool returned: #{result}"
       end
@@ -207,7 +207,7 @@ chat.ask("Check weather for every major city...")
 {: .d-inline-block }
 
 Available in v1.6.0+
-{: .label .label-yellow }
+{: .label .label-green }
 
 After a tool executes, the LLM normally continues the conversation to explain what happened. In rare cases, you might want to skip this and return the tool result directly.
 

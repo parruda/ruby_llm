@@ -57,12 +57,12 @@ RubyLLM.configure do |config|
   config.mistral_api_key = ENV['MISTRAL_API_KEY']
   config.perplexity_api_key = ENV['PERPLEXITY_API_KEY']
   config.openrouter_api_key = ENV['OPENROUTER_API_KEY']
-  
+
   # Local providers
   config.ollama_api_base = 'http://localhost:11434/v1'
   config.gpustack_api_base = ENV['GPUSTACK_API_BASE']
   config.gpustack_api_key = ENV['GPUSTACK_API_KEY']
-  
+
   # AWS Bedrock (uses standard AWS credential chain if not set)
   config.bedrock_api_key = ENV['AWS_ACCESS_KEY_ID']
   config.bedrock_secret_key = ENV['AWS_SECRET_ACCESS_KEY']
@@ -111,7 +111,7 @@ RubyLLM.configure do |config|
   # LiteLLM proxy
   config.openai_api_key = "dummy-key"  # Or what your proxy expects
   config.openai_api_base = "http://localhost:8000/v1"
-  
+
   # vLLM or other OpenAI-compatible servers
   config.openai_api_base = "http://your-server:8080/v1"
 end
@@ -121,7 +121,7 @@ end
 {: .d-inline-block }
 
 Available in v1.6.0+
-{: .label .label-yellow }
+{: .label .label-green }
 
 Some OpenAI-compatible APIs don't support the 'system' role. Configure RubyLLM to convert system messages to user messages:
 
@@ -161,7 +161,7 @@ RubyLLM.configure do |config|
   # Basic settings
   config.request_timeout = 120        # Seconds to wait for response (default: 120)
   config.max_retries = 3              # Retry attempts on failure (default: 3)
-  
+
   # Advanced retry behavior
   config.retry_interval = 0.1         # Initial retry delay in seconds (default: 0.1)
   config.retry_backoff_factor = 2     # Exponential backoff multiplier (default: 2)
@@ -188,10 +188,10 @@ Route requests through a proxy:
 RubyLLM.configure do |config|
   # Basic proxy
   config.http_proxy = "http://proxy.company.com:8080"
-  
+
   # Authenticated proxy
   config.http_proxy = "http://user:pass@proxy.company.com:8080"
-  
+
   # SOCKS5 proxy
   config.http_proxy = "socks5://proxy.company.com:1080"
 end
@@ -206,7 +206,7 @@ RubyLLM.configure do |config|
   # Log to file
   config.log_file = '/var/log/ruby_llm.log'
   config.log_level = :info  # :debug, :info, :warn
-  
+
   # Or use Rails logger
   config.logger = Rails.logger  # Overrides log_file and log_level
 end
@@ -226,10 +226,10 @@ Log levels:
 RubyLLM.configure do |config|
   # Enable debug logging via environment variable
   config.log_level = :debug if ENV['RUBYLLM_DEBUG'] == 'true'
-  
+
   # Silence "Assuming model exists" warnings
   config.log_assume_model_exists = false
-  
+
   # Show detailed streaming chunks (v1.6.0+)
   config.log_stream_debug = true  # Or set RUBYLLM_STREAM_DEBUG=true
 end
@@ -275,7 +275,7 @@ class TenantService
       config.request_timeout = tenant.timeout_seconds
     end
   end
-  
+
   def chat
     @context.chat
   end
@@ -302,10 +302,10 @@ RubyLLM.configure do |config|
   # Use Rails credentials
   config.openai_api_key = Rails.application.credentials.openai_api_key
   config.anthropic_api_key = Rails.application.credentials.anthropic_api_key
-  
+
   # Use Rails logger
   config.logger = Rails.logger
-  
+
   # Environment-specific settings
   config.request_timeout = Rails.env.production? ? 120 : 30
   config.log_level = Rails.env.production? ? :info : :debug
@@ -327,28 +327,28 @@ RubyLLM.configure do |config|
   config.perplexity_api_key = String
   config.openrouter_api_key = String
   config.gpustack_api_key = String
-  
+
   # Provider Endpoints
   config.openai_api_base = String
   config.ollama_api_base = String
   config.gpustack_api_base = String
-  
+
   # OpenAI Options
   config.openai_organization_id = String
   config.openai_project_id = String
   config.openai_use_system_role = Boolean  # v1.6.0+
-  
+
   # AWS Bedrock
   config.bedrock_api_key = String
   config.bedrock_secret_key = String
   config.bedrock_region = String
   config.bedrock_session_token = String
-  
+
   # Default Models
   config.default_model = String
   config.default_embedding_model = String
   config.default_image_model = String
-  
+
   # Connection Settings
   config.request_timeout = Integer
   config.max_retries = Integer
@@ -356,7 +356,7 @@ RubyLLM.configure do |config|
   config.retry_backoff_factor = Integer
   config.retry_interval_randomness = Float
   config.http_proxy = String
-  
+
   # Logging
   config.logger = Logger
   config.log_file = String

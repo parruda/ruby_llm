@@ -51,7 +51,9 @@ RSpec.describe RubyLLM::Chat do
       end
 
       it "#{provider}/#{model} replaces previous system messages when replace: true" do
-        skip 'Provider API does not allow system messages after user/assistant messages' if %i[perplexity mistral].include?(provider)
+        if %i[perplexity mistral].include?(provider)
+          skip 'Provider API does not allow system messages after user/assistant messages'
+        end
 
         chat = RubyLLM.chat(model: model, provider: provider).with_temperature(0.0)
         # Disable thinking mode for qwen models to avoid <think> tags in output

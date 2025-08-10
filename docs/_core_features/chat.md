@@ -276,7 +276,7 @@ puts JSON.parse(response.content)
 {: .d-inline-block }
 
 Available in v1.6.0+
-{: .label .label-yellow }
+{: .label .label-green }
 
 Some providers offer beta features or special capabilities through custom HTTP headers. The `with_headers` method lets you add these headers to your API requests while maintaining RubyLLM's security model.
 
@@ -528,7 +528,7 @@ chat.on_tool_call do |tool_call|
   puts "AI is calling tool: #{tool_call.name} with arguments: #{tool_call.arguments}"
 end
 
-# Called after a tool returns its result (Available in > 1.5.1)
+# Called after a tool returns its result (v1.6.0+)
 chat.on_tool_result do |result|
   puts "Tool returned: #{result}"
 end
