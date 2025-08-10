@@ -272,6 +272,35 @@ puts JSON.parse(response.content)
 > Available parameters vary by provider and model. Always consult the provider's documentation for supported features. RubyLLM passes these parameters through without validation, so incorrect parameters may cause API errors.
 {: .note }
 
+### Custom HTTP Headers
+{: .d-inline-block }
+
+Available in v1.6.0+
+{: .label .label-yellow }
+
+Some providers offer beta features or special capabilities through custom HTTP headers. The `with_headers` method lets you add these headers to your API requests while maintaining RubyLLM's security model.
+
+```ruby
+# Enable Anthropic's beta features
+chat = RubyLLM.chat(model: 'claude-3-5-sonnet')
+      .with_headers('anthropic-beta' => 'fine-grained-tool-streaming-2025-05-14')
+
+response = chat.ask "Tell me about the weather"
+```
+
+Headers are merged with provider defaults, with provider headers taking precedence for security. This means you can't override authentication or critical headers, but you can add supplementary headers for optional features.
+
+```ruby
+# Chain with other configuration methods
+chat = RubyLLM.chat
+      .with_temperature(0.5)
+      .with_headers('X-Custom-Feature' => 'enabled')
+      .with_params(max_tokens: 1000)
+```
+
+> Use custom headers with caution. They may enable experimental features that could change or be removed without notice. Always refer to your provider's documentation for supported headers and their behavior.
+{: .warning }
+
 ## Getting Structured Output
 
 When building applications, you often need AI responses in a specific format for parsing and processing. RubyLLM provides two approaches: JSON mode for valid JSON output, and structured output for guaranteed schema compliance.
