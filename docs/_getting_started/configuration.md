@@ -90,48 +90,43 @@ These headers are optional and only needed for organization-specific billing or 
 
 ## Custom Endpoints
 
-### Azure OpenAI Service
+### OpenAI-Compatible APIs
 
-Connect to Azure OpenAI or any OpenAI-compatible API:
-
-```ruby
-RubyLLM.configure do |config|
-  config.openai_api_key = ENV['AZURE_OPENAI_KEY']
-  config.openai_api_base = "https://YOUR-RESOURCE.openai.azure.com"
-end
-
-# Use your Azure deployment name as the model
-chat = RubyLLM.chat(model: 'my-gpt4-deployment', provider: :openai, assume_model_exists: true)
-```
-
-### Local Proxies & Self-Hosted Models
+Connect to any OpenAI-compatible API endpoint, including local models, proxies, and custom servers:
 
 ```ruby
 RubyLLM.configure do |config|
-  # LiteLLM proxy
-  config.openai_api_key = "dummy-key"  # Or what your proxy expects
-  config.openai_api_base = "http://localhost:8000/v1"
-
-  # vLLM or other OpenAI-compatible servers
-  config.openai_api_base = "http://your-server:8080/v1"
+  # API key - use what your server expects
+  config.openai_api_key = ENV['CUSTOM_API_KEY']  # Or 'dummy-key' if not required
+  
+  # Your custom endpoint
+  config.openai_api_base = "http://localhost:8080/v1"  # vLLM, LiteLLM, etc.
 end
+
+# Use your custom model name
+chat = RubyLLM.chat(model: 'my-custom-model', provider: :openai, assume_model_exists: true)
 ```
 
-### OpenAI-Compatible Servers Without System Role
+#### System Role Compatibility
 {: .d-inline-block }
 
 Available in v1.6.0+
 {: .label .label-green }
 
-Some OpenAI-compatible APIs don't support the 'system' role. Configure RubyLLM to convert system messages to user messages:
+OpenAI's API now uses 'developer' role for system messages, but some OpenAI-compatible servers still require the traditional 'system' role:
 
 ```ruby
 RubyLLM.configure do |config|
-  config.openai_use_system_role = false  # Default: true
+  # For servers that require 'system' role (e.g., older vLLM, some local models)
+  config.openai_use_system_role = true  # Use 'system' role instead of 'developer'
+  
+  # Your OpenAI-compatible endpoint
+  config.openai_api_base = "http://localhost:11434/v1"  # Ollama, vLLM, etc.
+  config.openai_api_key = "dummy-key"  # If required by your server
 end
 ```
 
-When false, system messages are converted to user messages with "System: " prefix, ensuring compatibility with servers that only support user/assistant roles.
+By default, RubyLLM uses the 'developer' role (matching OpenAI's current API). Set `openai_use_system_role` to true for compatibility with servers that still expect 'system'.
 
 ## Default Models
 
