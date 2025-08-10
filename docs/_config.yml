@@ -82,6 +82,9 @@ nav_external_links:
   - title: Blog
     url: https://paolino.me
     hide_icon: false
+  - title: Sponsor
+    url: https://github.com/sponsors/crmne
+    hide_icon: false
 
 footer_content: "Copyright &copy; 2025 <a href='https://paolino.me'>Carmine Paolino</a>. Distributed under an <a href=\"https://github.com/crmne/ruby_llm/tree/main/LICENSE\">MIT license.</a>"
 
