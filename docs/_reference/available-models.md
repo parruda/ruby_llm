@@ -348,7 +348,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | text-moderation-stable | openai | - | 32768 | - |
 
 
-### OpenRouter (315)
+### OpenRouter (314)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -639,7 +639,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | thudm/glm-4-32b | openrouter | 32000 | 32000 | In: $0.24, Out: $0.24 |
 | thudm/glm-4.1v-9b-thinking | openrouter | 65536 | 8000 | In: $0.04, Out: $0.14 |
 | thudm/glm-z1-32b | openrouter | 32768 | - | In: $0.02, Out: $0.08 |
-| thudm/glm-z1-32b:free | openrouter | 32768 | - | - |
 | tngtech/deepseek-r1t-chimera | openrouter | 163840 | - | In: $0.18, Out: $0.72 |
 | tngtech/deepseek-r1t-chimera:free | openrouter | 163840 | - | - |
 | tngtech/deepseek-r1t2-chimera:free | openrouter | 163840 | - | - |
@@ -1326,7 +1325,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | x-ai/grok-vision-beta | openrouter | 8192 | - | In: $5.00, Out: $15.00 |
 
 
-### Streaming (454)
+### Streaming (453)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -1751,7 +1750,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | thudm/glm-4-32b | openrouter | 32000 | 32000 | In: $0.24, Out: $0.24 |
 | thudm/glm-4.1v-9b-thinking | openrouter | 65536 | 8000 | In: $0.04, Out: $0.14 |
 | thudm/glm-z1-32b | openrouter | 32768 | - | In: $0.02, Out: $0.08 |
-| thudm/glm-z1-32b:free | openrouter | 32768 | - | - |
 | tngtech/deepseek-r1t-chimera | openrouter | 163840 | - | In: $0.18, Out: $0.72 |
 | tngtech/deepseek-r1t-chimera:free | openrouter | 163840 | - | - |
 | tngtech/deepseek-r1t2-chimera:free | openrouter | 163840 | - | - |
