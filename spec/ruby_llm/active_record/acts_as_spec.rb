@@ -524,15 +524,17 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
       expect(initial_response.content).to include('4')
 
       provider_instance = chat.instance_variable_get(:@chat).instance_variable_get(:@provider)
+      original_complete = provider_instance.method(:complete)
       call_count = 0
-      allow(provider_instance).to receive(:complete).and_wrap_original do |method, *args, **kwargs|
+
+      allow(provider_instance).to receive(:complete) do |*args, **kwargs, &block|
         call_count += 1
 
         if call_count == 2
           mock_response = instance_double(Faraday::Response, body: 'Rate limit exceeded')
           raise RubyLLM::RateLimitError, mock_response
         else
-          method.call(*args, **kwargs)
+          original_complete.call(*args, **kwargs, &block)
         end
       end
 
