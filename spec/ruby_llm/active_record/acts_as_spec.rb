@@ -515,32 +515,20 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
   end
 
   describe 'error recovery' do
-    it 'cleans up orphaned tool result messages on error', skip: 'Complex to simulate rate limit timing' do
+    it 'cleans up orphaned tool result messages on error' do
       chat = Chat.create!(model_id: model)
       chat.with_tool(Calculator)
 
-      # Simulate the scenario where:
-      # 1. Assistant message with tool call is saved
-      # 2. Tool executes and tool result is saved
-      # 3. The recursive complete() call fails with rate limit error
-
-      # First, create a successful tool call interaction
       initial_response = chat.ask('What is 2 + 2?')
       initial_message_count = chat.messages.count
       expect(initial_response.content).to include('4')
 
-      # Now simulate what happens when there's an error after tool execution
-      # We need to mock the provider's complete method to fail on the second call
-      # This happens after the persist_new_message callback has already created the empty message
       provider_instance = chat.instance_variable_get(:@chat).instance_variable_get(:@provider)
       call_count = 0
       allow(provider_instance).to receive(:complete).and_wrap_original do |method, messages, **kwargs|
-        # Track if this is a recursive call (after tool execution)
         call_count += 1
 
-        if call_count == 2 # Second call (after tool execution) should fail
-          # At this point, persist_new_message has already created the empty assistant message
-          # Create a mock response object with a body
+        if call_count == 2
           mock_response = instance_double(Faraday::Response, body: 'Rate limit exceeded')
           raise RubyLLM::RateLimitError, mock_response
         else
@@ -548,24 +536,33 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
         end
       end
 
-      # This should trigger tool execution, then fail on the recursive call
       expect { chat.ask('What is 5 + 5?') }.to raise_error(RubyLLM::RateLimitError)
 
-      # Debug output
-      puts 'Messages after error:'
-      chat.messages.reload.each do |msg|
-        puts "  #{msg.id}: #{msg.role} - #{msg.content.to_s.truncate(50)}"
-      end
-
-      # The orphaned tool result and empty assistant message should be cleaned up
-      # We should have the same number of messages as after the initial successful interaction
-      # plus the new user message and the assistant message with tool calls
       expect(chat.messages.count).to be <= initial_message_count + 2
 
-      # Verify no orphaned tool results exist
       last_assistant = chat.messages.where(role: 'assistant').last
       orphaned_tools = chat.messages.where(role: 'tool').where('id > ?', last_assistant.id)
       expect(orphaned_tools).to be_empty
+    end
+
+    it 'cleans up orphaned tool call messages on error' do
+      chat = Chat.create!(model_id: model)
+      chat.with_tool(Calculator)
+
+      initial_response = chat.ask('What is 2 + 2?')
+      chat.messages.count
+      expect(initial_response.content).to include('4')
+
+      mock_response = instance_double(Faraday::Response, body: 'Tool execution failed')
+      allow_any_instance_of(Calculator).to receive(:execute).and_raise(RubyLLM::Error, mock_response) # rubocop:disable RSpec/AnyInstance
+
+      expect { chat.ask('What is 3 + 3?') }.to raise_error(RubyLLM::Error)
+
+      last_user_message = chat.messages.where(role: 'user').last
+      expect(last_user_message.content).to eq('What is 3 + 3?')
+
+      messages_after_last_user = chat.messages.where('id > ?', last_user_message.id)
+      expect(messages_after_last_user).to be_empty
     end
   end
 end

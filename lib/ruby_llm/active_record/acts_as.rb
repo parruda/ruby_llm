@@ -199,32 +199,39 @@ module RubyLLM
         to_llm.complete(...)
       rescue RubyLLM::Error => e
         cleanup_failed_messages if @message&.persisted? && @message.content.blank?
+        messages.reload
+        cleanup_orphaned_tool_results
         raise e
       end
 
+      private
+
       def cleanup_failed_messages
         RubyLLM.logger.debug "RubyLLM: API call failed, destroying message: #{@message.id}"
-        cleanup_orphaned_tool_results
         @message.destroy
       end
 
       def cleanup_orphaned_tool_results
-        last_tool_result = messages.where(role: 'tool').last
-        return unless last_tool_result
+        last = messages.last
+        return unless last&.tool_call? || last&.tool_result?
 
-        has_response = messages.where(role: 'assistant')
-                               .where('id > ?', last_tool_result.id)
-                               .where.not(id: @message.id)
-                               .where.not(content: ['', nil])
-                               .exists?
-
-        return if has_response
-
-        RubyLLM.logger.debug "RubyLLM: Destroying orphaned tool result message #{last_tool_result.id}"
-        last_tool_result.destroy
+        if last.tool_call?
+          last.destroy
+        elsif last.tool_result?
+          cleanup_incomplete_tool_call(last)
+        end
       end
 
-      private
+      def cleanup_incomplete_tool_call(tool_result)
+        tool_call_message = messages.reverse.find do |m|
+          m.tool_call? && m.tool_calls.any? { |tc| tc['id'] == tool_result.tool_call_id }
+        end
+
+        return unless tool_call_message
+
+        messages_to_delete = messages.where('id >= ?', tool_call_message.id)
+        messages_to_delete.destroy_all
+      end
 
       def setup_persistence_callbacks
         # Only set up once per chat instance
