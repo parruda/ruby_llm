@@ -60,8 +60,9 @@ module RubyLLM
       self
     end
 
-    def with_tools(*tools)
-      tools.each { |tool| with_tool tool }
+    def with_tools(*tools, replace: false)
+      @tools.clear if replace
+      tools.compact.each { |tool| with_tool tool }
       self
     end
 

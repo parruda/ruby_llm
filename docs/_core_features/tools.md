@@ -124,6 +124,12 @@ weather_tool = Weather.new
 chat.with_tool(weather_tool)
 # Or add multiple: chat.with_tools(WeatherLookup, AnotherTool.new)
 
+# Replace all tools with new ones
+chat.with_tools(NewTool, AnotherTool, replace: true)
+
+# Clear all tools
+chat.with_tools(replace: true)
+
 # Ask a question that should trigger the tool
 response = chat.ask "What's the current weather like in Berlin? (Lat: 52.52, Long: 13.40)"
 puts response.content
