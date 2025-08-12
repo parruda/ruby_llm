@@ -198,11 +198,30 @@ module RubyLLM
       def complete(...)
         to_llm.complete(...)
       rescue RubyLLM::Error => e
-        if @message&.persisted? && @message.content.blank?
-          RubyLLM.logger.debug "RubyLLM: API call failed, destroying message: #{@message.id}"
-          @message.destroy
-        end
+        cleanup_failed_messages if @message&.persisted? && @message.content.blank?
         raise e
+      end
+
+      def cleanup_failed_messages
+        RubyLLM.logger.debug "RubyLLM: API call failed, destroying message: #{@message.id}"
+        cleanup_orphaned_tool_results
+        @message.destroy
+      end
+
+      def cleanup_orphaned_tool_results
+        last_tool_result = messages.where(role: 'tool').last
+        return unless last_tool_result
+
+        has_response = messages.where(role: 'assistant')
+                               .where('id > ?', last_tool_result.id)
+                               .where.not(id: @message.id)
+                               .where.not(content: ['', nil])
+                               .exists?
+
+        return if has_response
+
+        RubyLLM.logger.debug "RubyLLM: Destroying orphaned tool result message #{last_tool_result.id}"
+        last_tool_result.destroy
       end
 
       private
