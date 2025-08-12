@@ -199,7 +199,6 @@ module RubyLLM
         to_llm.complete(...)
       rescue RubyLLM::Error => e
         cleanup_failed_messages if @message&.persisted? && @message.content.blank?
-        messages.reload
         cleanup_orphaned_tool_results
         raise e
       end
@@ -212,25 +211,14 @@ module RubyLLM
       end
 
       def cleanup_orphaned_tool_results
-        last = messages.last
-        return unless last&.tool_call? || last&.tool_result?
+        loop do
+          messages.reload
+          last = messages.order(:id).last
 
-        if last.tool_call?
+          break unless last&.tool_call? || last&.tool_result?
+
           last.destroy
-        elsif last.tool_result?
-          cleanup_incomplete_tool_call(last)
         end
-      end
-
-      def cleanup_incomplete_tool_call(tool_result)
-        tool_call_message = messages.reverse.find do |m|
-          m.tool_call? && m.tool_calls.any? { |tc| tc['id'] == tool_result.tool_call_id }
-        end
-
-        return unless tool_call_message
-
-        messages_to_delete = messages.where('id >= ?', tool_call_message.id)
-        messages_to_delete.destroy_all
       end
 
       def setup_persistence_callbacks

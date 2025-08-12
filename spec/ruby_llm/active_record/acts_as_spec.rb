@@ -542,7 +542,7 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
 
       expect(chat.messages.count).to be <= initial_message_count + 2
 
-      last_assistant = chat.messages.where(role: 'assistant').last
+      last_assistant = chat.messages.where(role: 'assistant').where.not(content: nil).last
       orphaned_tools = chat.messages.where(role: 'tool').where('id > ?', last_assistant.id)
       expect(orphaned_tools).to be_empty
     end
@@ -560,6 +560,7 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
 
       expect { chat.ask('What is 3 + 3?') }.to raise_error(RubyLLM::Error)
 
+      chat.messages.reload
       last_user_message = chat.messages.where(role: 'user').last
       expect(last_user_message.content).to eq('What is 3 + 3?')
 
