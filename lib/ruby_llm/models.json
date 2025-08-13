@@ -14,12 +14,10 @@
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -28,10 +26,6 @@
           "input_per_million": 0.8,
           "cached_input_per_million": 1.0,
           "output_per_million": 4.0
-        },
-        "batch": {
-          "input_per_million": 0.4,
-          "output_per_million": 2.0
         }
       }
     },
@@ -52,12 +46,10 @@
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -66,10 +58,6 @@
           "input_per_million": 3.0,
           "cached_input_per_million": 3.75,
           "output_per_million": 15.0
-        },
-        "batch": {
-          "input_per_million": 1.5,
-          "output_per_million": 7.5
         }
       }
     },
@@ -90,12 +78,10 @@
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -104,10 +90,6 @@
           "input_per_million": 3.0,
           "cached_input_per_million": 3.75,
           "output_per_million": 15.0
-        },
-        "batch": {
-          "input_per_million": 1.5,
-          "output_per_million": 7.5
         }
       }
     },
@@ -128,12 +110,10 @@
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -142,10 +122,6 @@
           "input_per_million": 3.0,
           "cached_input_per_million": 3.75,
           "output_per_million": 15.0
-        },
-        "batch": {
-          "input_per_million": 1.5,
-          "output_per_million": 7.5
         }
       }
     },
@@ -166,12 +142,10 @@
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -180,10 +154,6 @@
           "input_per_million": 0.25,
           "cached_input_per_million": 0.3,
           "output_per_million": 1.25
-        },
-        "batch": {
-          "input_per_million": 0.125,
-          "output_per_million": 0.625
         }
       }
     },
@@ -242,12 +212,10 @@
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -256,10 +224,6 @@
           "input_per_million": 15.0,
           "cached_input_per_million": 18.75,
           "output_per_million": 75.0
-        },
-        "batch": {
-          "input_per_million": 7.5,
-          "output_per_million": 37.5
         }
       }
     },
@@ -280,12 +244,10 @@
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -294,10 +256,6 @@
           "input_per_million": 15.0,
           "cached_input_per_million": 18.75,
           "output_per_million": 75.0
-        },
-        "batch": {
-          "input_per_million": 7.5,
-          "output_per_million": 37.5
         }
       }
     },
@@ -318,12 +276,10 @@
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
       "function_calling"
     ],
     "pricing": {
@@ -332,10 +288,6 @@
           "input_per_million": 3.0,
           "cached_input_per_million": 3.75,
           "output_per_million": 15.0
-        },
-        "batch": {
-          "input_per_million": 1.5,
-          "output_per_million": 7.5
         }
       }
     },
@@ -5251,6 +5203,37 @@
     }
   },
   {
+    "id": "mistral-medium-2508",
+    "name": "Mistral Medium",
+    "provider": "mistral",
+    "family": "mistral-medium",
+    "created_at": null,
+    "context_window": 32768,
+    "max_output_tokens": 8192,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "function_calling",
+      "structured_output",
+      "vision",
+      "batch",
+      "fine_tuning"
+    ],
+    "pricing": {},
+    "metadata": {
+      "object": "model",
+      "owned_by": "mistralai"
+    }
+  },
+  {
     "id": "mistral-medium-latest",
     "name": "Mistral Medium",
     "provider": "mistral",
@@ -6468,8 +6451,7 @@
       ],
       "output": [
         "embeddings",
-        "image",
-        "text"
+        "image"
       ]
     },
     "capabilities": [],
@@ -6718,31 +6700,29 @@
     "id": "gpt-4",
     "name": "GPT-4",
     "provider": "openai",
-    "family": "gpt-4",
-    "created_at": null,
+    "family": "gpt4",
+    "created_at": "2023-06-27 18:13:31 +0200",
     "context_window": 8192,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text"
+        "text",
+        "image",
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch"
+      "streaming",
+      "function_calling"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 30.0,
-          "output_per_million": 60.0
-        },
-        "batch": {
-          "input_per_million": 15.0,
+          "input_per_million": 10.0,
           "output_per_million": 30.0
         }
       }
@@ -6787,34 +6767,29 @@
   },
   {
     "id": "gpt-4-0613",
-    "name": "GPT-4",
+    "name": "GPT-4 0613",
     "provider": "openai",
-    "family": "gpt-4",
-    "created_at": null,
-    "context_window": 8192,
-    "max_output_tokens": 8192,
+    "family": "other",
+    "created_at": "2023-06-12 18:54:56 +0200",
+    "context_window": 4096,
+    "max_output_tokens": 16384,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch"
+      "streaming"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 30.0,
-          "output_per_million": 60.0
-        },
-        "batch": {
-          "input_per_million": 15.0,
-          "output_per_million": 30.0
+          "input_per_million": 0.5,
+          "output_per_million": 1.5
         }
       }
     },
@@ -6940,21 +6915,25 @@
     "id": "gpt-4-turbo-preview",
     "name": "GPT-4 Turbo Preview",
     "provider": "openai",
-    "family": "gpt-4-turbo-preview",
-    "created_at": null,
+    "family": "gpt4_turbo",
+    "created_at": "2024-01-23 20:22:57 +0100",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text"
+        "text",
+        "image",
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
-    "capabilities": [],
+    "capabilities": [
+      "streaming",
+      "function_calling"
+    ],
     "pricing": {
       "text_tokens": {
         "standard": {
@@ -6972,23 +6951,23 @@
     "id": "gpt-4.1",
     "name": "GPT-4.1",
     "provider": "openai",
-    "family": "gpt-4.1",
-    "created_at": null,
+    "family": "gpt41",
+    "created_at": "2025-04-10 22:22:22 +0200",
     "context_window": 1047576,
     "max_output_tokens": 32768,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
+      "streaming",
       "function_calling",
       "structured_output"
     ],
@@ -6996,12 +6975,8 @@
       "text_tokens": {
         "standard": {
           "input_per_million": 2.0,
-          "cached_input_per_million": 0.5,
-          "output_per_million": 8.0
-        },
-        "batch": {
-          "input_per_million": 1.0,
-          "output_per_million": 4.0
+          "output_per_million": 8.0,
+          "cached_input_per_million": 0.5
         }
       }
     },
@@ -7012,25 +6987,25 @@
   },
   {
     "id": "gpt-4.1-2025-04-14",
-    "name": "GPT-4.1",
+    "name": "GPT-4.1 20250414",
     "provider": "openai",
-    "family": "gpt-4.1",
-    "created_at": null,
+    "family": "gpt41",
+    "created_at": "2025-04-10 22:09:06 +0200",
     "context_window": 1047576,
     "max_output_tokens": 32768,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
+      "streaming",
       "function_calling",
       "structured_output"
     ],
@@ -7038,12 +7013,8 @@
       "text_tokens": {
         "standard": {
           "input_per_million": 2.0,
-          "cached_input_per_million": 0.5,
-          "output_per_million": 8.0
-        },
-        "batch": {
-          "input_per_million": 1.0,
-          "output_per_million": 4.0
+          "output_per_million": 8.0,
+          "cached_input_per_million": 0.5
         }
       }
     },
@@ -8306,7 +8277,9 @@
         "text"
       ]
     },
-    "capabilities": [],
+    "capabilities": [
+      "structured_output"
+    ],
     "pricing": {
       "text_tokens": {
         "standard": {
@@ -8323,38 +8296,30 @@
   },
   {
     "id": "gpt-5-mini",
-    "name": "GPT-5 mini",
+    "name": "GPT-5 Mini",
     "provider": "openai",
-    "family": "gpt-5-mini",
-    "created_at": null,
-    "context_window": 400000,
-    "max_output_tokens": 128000,
+    "family": "other",
+    "created_at": "2025-08-05 22:32:08 +0200",
+    "context_window": 4096,
+    "max_output_tokens": 16384,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "image",
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling",
-      "structured_output"
+      "streaming",
+      "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.25,
-          "cached_input_per_million": 0.025,
-          "output_per_million": 2.0
-        },
-        "batch": {
-          "input_per_million": 0.125,
-          "output_per_million": 1.0
+          "input_per_million": 0.5,
+          "output_per_million": 1.5
         }
       }
     },
@@ -8365,38 +8330,30 @@
   },
   {
     "id": "gpt-5-mini-2025-08-07",
-    "name": "GPT-5 mini",
+    "name": "GPT-5 Mini 20250807",
     "provider": "openai",
-    "family": "gpt-5-mini",
-    "created_at": null,
-    "context_window": 400000,
-    "max_output_tokens": 128000,
+    "family": "other",
+    "created_at": "2025-08-05 22:31:07 +0200",
+    "context_window": 4096,
+    "max_output_tokens": 16384,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "image",
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling",
-      "structured_output"
+      "streaming",
+      "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.25,
-          "cached_input_per_million": 0.025,
-          "output_per_million": 2.0
-        },
-        "batch": {
-          "input_per_million": 0.125,
-          "output_per_million": 1.0
+          "input_per_million": 0.5,
+          "output_per_million": 1.5
         }
       }
     },
@@ -8407,38 +8364,30 @@
   },
   {
     "id": "gpt-5-nano",
-    "name": "GPT-5 nano",
+    "name": "GPT-5 Nano",
     "provider": "openai",
-    "family": "gpt-5-nano",
-    "created_at": null,
-    "context_window": 400000,
-    "max_output_tokens": 128000,
+    "family": "other",
+    "created_at": "2025-08-05 22:39:44 +0200",
+    "context_window": 4096,
+    "max_output_tokens": 16384,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "image",
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling",
-      "structured_output"
+      "streaming",
+      "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.05,
-          "cached_input_per_million": 0.005,
-          "output_per_million": 0.4
-        },
-        "batch": {
-          "input_per_million": 0.025,
-          "output_per_million": 0.2
+          "input_per_million": 0.5,
+          "output_per_million": 1.5
         }
       }
     },
@@ -8449,38 +8398,30 @@
   },
   {
     "id": "gpt-5-nano-2025-08-07",
-    "name": "GPT-5 nano",
+    "name": "GPT-5 Nano 20250807",
     "provider": "openai",
-    "family": "gpt-5-nano",
-    "created_at": null,
-    "context_window": 400000,
-    "max_output_tokens": 128000,
+    "family": "other",
+    "created_at": "2025-08-05 22:38:23 +0200",
+    "context_window": 4096,
+    "max_output_tokens": 16384,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "image",
         "text"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling",
-      "structured_output"
+      "streaming",
+      "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.05,
-          "cached_input_per_million": 0.005,
-          "output_per_million": 0.4
-        },
-        "batch": {
-          "input_per_million": 0.025,
-          "output_per_million": 0.2
+          "input_per_million": 0.5,
+          "output_per_million": 1.5
         }
       }
     },
@@ -8550,65 +8491,35 @@
     "metadata": {}
   },
   {
-    "id": "gpt-oss-20b",
-    "name": "gpt-oss-20b",
-    "provider": "openai",
-    "family": "gpt-oss-20b",
-    "created_at": null,
-    "context_window": 131072,
-    "max_output_tokens": 131072,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "embeddings",
-        "text"
-      ]
-    },
-    "capabilities": [
-      "batch",
-      "function_calling",
-      "structured_output"
-    ],
-    "pricing": {},
-    "metadata": {}
-  },
-  {
     "id": "o1",
-    "name": "o1",
+    "name": "O1",
     "provider": "openai",
     "family": "o1",
-    "created_at": null,
+    "created_at": "2024-12-16 20:03:36 +0100",
     "context_window": 200000,
     "max_output_tokens": 100000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
+      "streaming",
       "function_calling",
-      "structured_output"
+      "structured_output",
+      "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 15.0,
-          "cached_input_per_million": 7.5,
           "output_per_million": 60.0
-        },
-        "batch": {
-          "input_per_million": 7.5,
-          "output_per_million": 30.0
         }
       }
     },
@@ -8619,38 +8530,34 @@
   },
   {
     "id": "o1-2024-12-17",
-    "name": "o1",
+    "name": "O1-20241217",
     "provider": "openai",
     "family": "o1",
-    "created_at": null,
+    "created_at": "2024-12-16 06:29:36 +0100",
     "context_window": 200000,
     "max_output_tokens": 100000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
+      "streaming",
       "function_calling",
-      "structured_output"
+      "structured_output",
+      "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 15.0,
-          "cached_input_per_million": 7.5,
           "output_per_million": 60.0
-        },
-        "batch": {
-          "input_per_million": 7.5,
-          "output_per_million": 30.0
         }
       }
     },
@@ -8724,72 +8631,6 @@
       "object": "model",
       "owned_by": "system"
     }
-  },
-  {
-    "id": "o1-preview",
-    "name": "o1 Preview",
-    "provider": "openai",
-    "family": "o1-preview",
-    "created_at": null,
-    "context_window": 128000,
-    "max_output_tokens": 32768,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "embeddings",
-        "text"
-      ]
-    },
-    "capabilities": [
-      "function_calling",
-      "structured_output"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 15.0,
-          "cached_input_per_million": 7.5,
-          "output_per_million": 60.0
-        }
-      }
-    },
-    "metadata": {}
-  },
-  {
-    "id": "o1-preview-2024-09-12",
-    "name": "o1 Preview",
-    "provider": "openai",
-    "family": "o1-preview",
-    "created_at": null,
-    "context_window": 128000,
-    "max_output_tokens": 32768,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "embeddings",
-        "text"
-      ]
-    },
-    "capabilities": [
-      "function_calling",
-      "structured_output"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 15.0,
-          "cached_input_per_million": 7.5,
-          "output_per_million": 60.0
-        }
-      }
-    },
-    "metadata": {}
   },
   {
     "id": "o1-pro",
@@ -9394,21 +9235,22 @@
   },
   {
     "id": "omni-moderation-latest",
-    "name": "omni-moderation",
+    "name": "Omni Moderation Latest",
     "provider": "openai",
-    "family": "omni-moderation-latest",
-    "created_at": null,
+    "family": "moderation",
+    "created_at": "2024-11-15 17:47:45 +0100",
     "context_window": null,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
-        "text"
+        "text",
+        "moderation"
       ]
     },
     "capabilities": [],
@@ -9420,10 +9262,10 @@
   },
   {
     "id": "text-embedding-3-large",
-    "name": "text-embedding-3-large",
+    "name": "text-embedding- 3 Large",
     "provider": "openai",
-    "family": "text-embedding-3-large",
-    "created_at": null,
+    "family": "embedding3_large",
+    "created_at": "2024-01-22 20:53:00 +0100",
     "context_window": null,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
@@ -9432,8 +9274,8 @@
         "text"
       ],
       "output": [
-        "embeddings",
-        "text"
+        "text",
+        "embeddings"
       ]
     },
     "capabilities": [
@@ -9442,18 +9284,12 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.13
+          "input_per_million": 0.13,
+          "output_per_million": 0.13
         },
         "batch": {
-          "input_per_million": 0.065
-        }
-      },
-      "embeddings": {
-        "standard": {
-          "input_per_million": 0.13
-        },
-        "batch": {
-          "input_per_million": 0.065
+          "input_per_million": 0.065,
+          "output_per_million": 0.065
         }
       }
     },
@@ -9508,10 +9344,10 @@
   },
   {
     "id": "text-embedding-ada-002",
-    "name": "text-embedding-ada-002",
+    "name": "text-embedding- Ada 002",
     "provider": "openai",
-    "family": "text-embedding-ada-002",
-    "created_at": null,
+    "family": "embedding_ada",
+    "created_at": "2022-12-16 20:01:39 +0100",
     "context_window": null,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
@@ -9520,8 +9356,8 @@
         "text"
       ],
       "output": [
-        "embeddings",
-        "text"
+        "text",
+        "embeddings"
       ]
     },
     "capabilities": [
@@ -9530,18 +9366,12 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.1
+          "input_per_million": 0.1,
+          "output_per_million": 0.1
         },
         "batch": {
-          "input_per_million": 0.05
-        }
-      },
-      "embeddings": {
-        "standard": {
-          "input_per_million": 0.1
-        },
-        "batch": {
-          "input_per_million": 0.05
+          "input_per_million": 0.05,
+          "output_per_million": 0.05
         }
       }
     },
@@ -9598,26 +9428,29 @@
     "id": "tts-1",
     "name": "TTS-1",
     "provider": "openai",
-    "family": "tts-1",
-    "created_at": null,
+    "family": "tts1",
+    "created_at": "2023-04-19 23:49:11 +0200",
     "context_window": null,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text"
+        "text",
+        "audio"
       ],
       "output": [
-        "audio",
-        "embeddings",
-        "text"
+        "text",
+        "audio"
       ]
     },
-    "capabilities": [],
+    "capabilities": [
+      "streaming"
+    ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 15.0
+          "input_per_million": 15.0,
+          "output_per_million": 15.0
         }
       }
     },
@@ -9683,7 +9516,7 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 30.0
+          "output_per_million": 30.0
         }
       }
     },
@@ -10252,13 +10085,14 @@
     },
     "capabilities": [
       "streaming",
+      "structured_output",
       "predicted_outputs"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 10.0,
-          "output_per_million": 12.5
+          "input_per_million": 9.0,
+          "output_per_million": 11.0
         }
       }
     },
@@ -10288,8 +10122,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -12311,8 +12147,8 @@
     "provider": "openrouter",
     "family": "cohere",
     "created_at": "2025-03-13 20:32:22 +0100",
-    "context_window": 256000,
-    "max_output_tokens": 8192,
+    "context_window": 32768,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -12329,8 +12165,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 2.5,
-          "output_per_million": 10.0
+          "input_per_million": 2.0,
+          "output_per_million": 8.0
         }
       }
     },
@@ -12348,9 +12184,9 @@
         "instruct_type": null
       },
       "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": 8192,
-        "is_moderated": true
+        "context_length": 32768,
+        "max_completion_tokens": null,
+        "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
@@ -13867,63 +13703,6 @@
     }
   },
   {
-    "id": "deepseek/deepseek-r1-distill-qwen-7b",
-    "name": "DeepSeek: R1 Distill Qwen 7B",
-    "provider": "openrouter",
-    "family": "deepseek",
-    "created_at": "2025-05-30 20:03:57 +0200",
-    "context_window": 131072,
-    "max_output_tokens": null,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.09999999999999999,
-          "output_per_million": 0.19999999999999998
-        }
-      }
-    },
-    "metadata": {
-      "description": "DeepSeek-R1-Distill-Qwen-7B is a 7 billion parameter dense language model distilled from DeepSeek-R1, leveraging reinforcement learning-enhanced reasoning data generated by DeepSeek's larger models. The distillation process transfers advanced reasoning, math, and code capabilities into a smaller, more efficient model architecture based on Qwen2.5-Math-7B. This model demonstrates strong performance across mathematical benchmarks (92.8% pass@1 on MATH-500), coding tasks (Codeforces rating 1189), and general reasoning (49.1% pass@1 on GPQA Diamond), achieving competitive accuracy relative to larger models while maintaining smaller inference costs.",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Qwen",
-        "instruct_type": "deepseek-r1"
-      },
-      "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "include_reasoning",
-        "max_tokens",
-        "reasoning",
-        "seed",
-        "temperature",
-        "top_p"
-      ]
-    }
-  },
-  {
     "id": "deepseek/deepseek-r1:free",
     "name": "DeepSeek: R1 (free)",
     "provider": "openrouter",
@@ -15025,7 +14804,7 @@
     "family": "google",
     "created_at": "2024-07-13 02:00:00 +0200",
     "context_window": 8192,
-    "max_output_tokens": 2048,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -15037,13 +14816,14 @@
     },
     "capabilities": [
       "streaming",
+      "structured_output",
       "predicted_outputs"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.7999999999999999,
-          "output_per_million": 0.7999999999999999
+          "input_per_million": 0.65,
+          "output_per_million": 0.65
         }
       }
     },
@@ -15062,7 +14842,7 @@
       },
       "top_provider": {
         "context_length": 8192,
-        "max_completion_tokens": 2048,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -15073,7 +14853,9 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -15762,7 +15544,7 @@
     "family": "gryphe",
     "created_at": "2023-07-02 02:00:00 +0200",
     "context_window": 4096,
-    "max_output_tokens": 4096,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -15780,8 +15562,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.072,
-          "output_per_million": 0.072
+          "input_per_million": 0.06,
+          "output_per_million": 0.06
         }
       }
     },
@@ -15800,7 +15582,7 @@
       },
       "top_provider": {
         "context_length": 4096,
-        "max_completion_tokens": 4096,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -15814,6 +15596,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -18011,7 +17794,7 @@
     "family": "microsoft",
     "created_at": "2025-01-10 07:17:52 +0100",
     "context_window": 16384,
-    "max_output_tokens": 16384,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -18029,7 +17812,7 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.07,
+          "input_per_million": 0.06,
           "output_per_million": 0.14
         }
       }
@@ -18049,7 +17832,7 @@
       },
       "top_provider": {
         "context_length": 16384,
-        "max_completion_tokens": 16384,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -18064,6 +17847,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_logprobs",
@@ -20693,7 +20477,7 @@
   },
   {
     "id": "moonshotai/kimi-dev-72b:free",
-    "name": "Kimi Dev 72b (free)",
+    "name": "MoonshotAI: Kimi Dev 72B (free)",
     "provider": "openrouter",
     "family": "moonshotai",
     "created_at": "2025-06-17 01:18:29 +0200",
@@ -20885,7 +20669,7 @@
   },
   {
     "id": "moonshotai/kimi-vl-a3b-thinking",
-    "name": "Moonshot AI: Kimi VL A3B Thinking",
+    "name": "MoonshotAI: Kimi VL A3B Thinking",
     "provider": "openrouter",
     "family": "moonshotai",
     "created_at": "2025-04-10 19:07:21 +0200",
@@ -20954,7 +20738,7 @@
   },
   {
     "id": "moonshotai/kimi-vl-a3b-thinking:free",
-    "name": "Moonshot AI: Kimi VL A3B Thinking (free)",
+    "name": "MoonshotAI: Kimi VL A3B Thinking (free)",
     "provider": "openrouter",
     "family": "moonshotai",
     "created_at": "2025-04-10 19:07:21 +0200",
@@ -21202,6 +20986,7 @@
     },
     "capabilities": [
       "streaming",
+      "structured_output",
       "predicted_outputs"
     ],
     "pricing": {
@@ -21238,8 +21023,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -21253,8 +21040,8 @@
     "provider": "openrouter",
     "family": "neversleep",
     "created_at": "2023-11-26 01:00:00 +0100",
-    "context_window": 8192,
-    "max_output_tokens": 2048,
+    "context_window": 4096,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -21266,13 +21053,14 @@
     },
     "capabilities": [
       "streaming",
+      "structured_output",
       "predicted_outputs"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 1.25,
-          "output_per_million": 2.0
+          "input_per_million": 1.0,
+          "output_per_million": 1.75
         }
       }
     },
@@ -21290,8 +21078,8 @@
         "instruct_type": "alpaca"
       },
       "top_provider": {
-        "context_length": 8192,
-        "max_completion_tokens": 2048,
+        "context_length": 4096,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -21302,8 +21090,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -21496,6 +21286,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_logprobs",
@@ -21631,6 +21422,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -25322,8 +25114,8 @@
     "provider": "openrouter",
     "family": "qwen",
     "created_at": "2024-10-16 02:00:00 +0200",
-    "context_window": 32768,
-    "max_output_tokens": 16384,
+    "context_window": 65536,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -25360,8 +25152,8 @@
         "instruct_type": "chatml"
       },
       "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": 16384,
+        "context_length": 65536,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -25375,6 +25167,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -26020,7 +25813,7 @@
     "provider": "openrouter",
     "family": "qwen",
     "created_at": "2025-02-01 12:45:11 +0100",
-    "context_window": 32000,
+    "context_window": 32768,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
@@ -26039,8 +25832,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.25,
-          "output_per_million": 0.75
+          "input_per_million": 0.0999594,
+          "output_per_million": 0.400032
         }
       }
     },
@@ -26059,7 +25852,7 @@
         "instruct_type": null
       },
       "top_provider": {
-        "context_length": 32000,
+        "context_length": 32768,
         "max_completion_tokens": null,
         "is_moderated": false
       },
@@ -26201,6 +25994,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -27194,6 +26988,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_logprobs",
@@ -27577,8 +27372,8 @@
     "provider": "openrouter",
     "family": "sao10k",
     "created_at": "2024-08-28 02:00:00 +0200",
-    "context_window": 131072,
-    "max_output_tokens": 16384,
+    "context_window": 32768,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -27615,8 +27410,8 @@
         "instruct_type": "llama3"
       },
       "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": 16384,
+        "context_length": 32768,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -27630,6 +27425,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -27695,6 +27491,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -28199,8 +27996,8 @@
     "provider": "openrouter",
     "family": "thedrummer",
     "created_at": "2025-06-29 16:45:47 +0200",
-    "context_window": 131072,
-    "max_output_tokens": 131072,
+    "context_window": 16384,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -28211,13 +28008,14 @@
       ]
     },
     "capabilities": [
-      "streaming"
+      "streaming",
+      "structured_output"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 0.7999999999999999
+          "input_per_million": 0.39999999999999997,
+          "output_per_million": 0.7
         }
       }
     },
@@ -28235,8 +28033,8 @@
         "instruct_type": null
       },
       "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": 131072,
+        "context_length": 16384,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -28246,8 +28044,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -28404,6 +28204,7 @@
     },
     "capabilities": [
       "streaming",
+      "structured_output",
       "predicted_outputs"
     ],
     "pricing": {
@@ -28441,8 +28242,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_logprobs",
@@ -28456,8 +28259,8 @@
     "provider": "openrouter",
     "family": "thedrummer",
     "created_at": "2024-11-08 23:04:08 +0100",
-    "context_window": 32000,
-    "max_output_tokens": 32000,
+    "context_window": 32768,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -28476,8 +28279,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.44999999999999996,
-          "output_per_million": 0.44999999999999996
+          "input_per_million": 0.39999999999999997,
+          "output_per_million": 0.39999999999999997
         }
       }
     },
@@ -28495,8 +28298,8 @@
         "instruct_type": "mistral"
       },
       "top_provider": {
-        "context_length": 32000,
-        "max_completion_tokens": 32000,
+        "context_length": 32768,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -28974,7 +28777,7 @@
     "family": "undi95",
     "created_at": "2023-07-22 02:00:00 +0200",
     "context_window": 6144,
-    "max_output_tokens": 1024,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -28986,13 +28789,14 @@
     },
     "capabilities": [
       "streaming",
+      "structured_output",
       "predicted_outputs"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 1.0,
-          "output_per_million": 1.5
+          "input_per_million": 0.7,
+          "output_per_million": 1.0
         }
       }
     },
@@ -29011,7 +28815,7 @@
       },
       "top_provider": {
         "context_length": 6144,
-        "max_completion_tokens": 1024,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -29022,8 +28826,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -29826,7 +29632,7 @@
     "family": "z-ai",
     "created_at": "2025-08-11 16:24:48 +0200",
     "context_window": 65536,
-    "max_output_tokens": 16384,
+    "max_output_tokens": 65536,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -29845,9 +29651,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.6,
-          "output_per_million": 1.7999999999999998,
-          "cached_input_per_million": 0.11
+          "input_per_million": 0.5,
+          "output_per_million": 1.7999999999999998
         }
       }
     },
@@ -29867,7 +29672,7 @@
       },
       "top_provider": {
         "context_length": 65536,
-        "max_completion_tokens": 16384,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -29895,7 +29700,7 @@
     "name": "Sonar",
     "provider": "perplexity",
     "family": "sonar",
-    "created_at": "2025-08-12 16:44:27 +0200",
+    "created_at": "2025-08-13 11:35:41 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -29927,7 +29732,7 @@
     "name": "Sonar Deep Research",
     "provider": "perplexity",
     "family": "sonar_deep_research",
-    "created_at": "2025-08-12 16:44:27 +0200",
+    "created_at": "2025-08-13 11:35:41 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -29962,7 +29767,7 @@
     "name": "Sonar Pro",
     "provider": "perplexity",
     "family": "sonar_pro",
-    "created_at": "2025-08-12 16:44:27 +0200",
+    "created_at": "2025-08-13 11:35:41 +0200",
     "context_window": 200000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
@@ -29994,7 +29799,7 @@
     "name": "Sonar Reasoning",
     "provider": "perplexity",
     "family": "sonar_reasoning",
-    "created_at": "2025-08-12 16:44:27 +0200",
+    "created_at": "2025-08-13 11:35:41 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -30026,7 +29831,7 @@
     "name": "Sonar Reasoning Pro",
     "provider": "perplexity",
     "family": "sonar_reasoning_pro",
-    "created_at": "2025-08-12 16:44:27 +0200",
+    "created_at": "2025-08-13 11:35:41 +0200",
     "context_window": 128000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
