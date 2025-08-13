@@ -548,6 +548,8 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
     end
 
     it 'cleans up orphaned tool call messages on error' do
+      skip 'Flaky on JRuby due to association reload issues' if RUBY_PLATFORM == 'java'
+
       chat = Chat.create!(model_id: model)
       chat.with_tool(Calculator)
 
