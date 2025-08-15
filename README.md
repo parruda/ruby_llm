@@ -96,7 +96,10 @@ response = chat.with_schema(ProductSchema).ask "Analyze this product", with: "pr
 
 ## Features
 
-* **Chat:** Text, images, audio, PDFs, and any file type with `RubyLLM.chat`
+* **Chat:** Conversational AI with `RubyLLM.chat`
+* **Vision:** Analyze images and screenshots
+* **Audio:** Transcribe and understand speech
+* **Documents:** Extract from PDFs, CSVs, JSON, any file type
 * **Image generation:** Create images with `RubyLLM.paint`
 * **Embeddings:** Vector search with `RubyLLM.embed`
 * **Tools:** Let AI call your Ruby methods
