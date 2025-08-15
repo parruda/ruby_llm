@@ -33,31 +33,37 @@
   },
   {
     "id": "claude-3-5-sonnet-20240620",
-    "name": "Claude Sonnet 3.5",
+    "name": "Claude Sonnet 3.5 (Old)",
     "provider": "anthropic",
     "family": "claude-3-5-sonnet",
-    "created_at": null,
+    "created_at": "2024-06-20 00:00:00 UTC",
     "context_window": 200000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
         "text"
       ]
     },
     "capabilities": [
-      "function_calling"
+      "streaming",
+      "function_calling",
+      "batch"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 3.0,
-          "cached_input_per_million": 3.75,
           "output_per_million": 15.0
+        },
+        "batch": {
+          "input_per_million": 1.5,
+          "output_per_million": 7.5
         }
       }
     },
@@ -65,31 +71,37 @@
   },
   {
     "id": "claude-3-5-sonnet-20241022",
-    "name": "Claude Sonnet 3.5",
+    "name": "Claude Sonnet 3.5 (New)",
     "provider": "anthropic",
     "family": "claude-3-5-sonnet",
-    "created_at": null,
+    "created_at": "2024-10-22 00:00:00 UTC",
     "context_window": 200000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
         "text"
       ]
     },
     "capabilities": [
-      "function_calling"
+      "streaming",
+      "function_calling",
+      "batch"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 3.0,
-          "cached_input_per_million": 3.75,
           "output_per_million": 15.0
+        },
+        "batch": {
+          "input_per_million": 1.5,
+          "output_per_million": 7.5
         }
       }
     },
@@ -4127,7 +4139,7 @@
   },
   {
     "id": "imagen-3.0-generate-002",
-    "name": "Imagen 3.0 002 model",
+    "name": "Imagen 3.0",
     "provider": "gemini",
     "family": "imagen3",
     "created_at": null,
@@ -4151,6 +4163,37 @@
     "metadata": {
       "version": "002",
       "description": "Vertex served Imagen 3.0 002 model",
+      "supported_generation_methods": [
+        "predict"
+      ]
+    }
+  },
+  {
+    "id": "imagen-4.0-generate-001",
+    "name": "Imagen 4",
+    "provider": "gemini",
+    "family": "other",
+    "created_at": null,
+    "context_window": 480,
+    "max_output_tokens": 8192,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "image"
+      ]
+    },
+    "capabilities": [
+      "streaming"
+    ],
+    "pricing": {},
+    "metadata": {
+      "version": "001",
+      "description": "Vertex served Imagen 4.0 model",
       "supported_generation_methods": [
         "predict"
       ]
@@ -4299,46 +4342,6 @@
       "description": "Obtain a distributed representation of a text.",
       "supported_generation_methods": [
         "embedContent"
-      ]
-    }
-  },
-  {
-    "id": "veo-2.0-generate-001",
-    "name": "Veo 2",
-    "provider": "gemini",
-    "family": "other",
-    "created_at": null,
-    "context_window": 480,
-    "max_output_tokens": 8192,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.075,
-          "output_per_million": 0.3
-        },
-        "batch": {
-          "input_per_million": 0.0375,
-          "output_per_million": 0.15
-        }
-      }
-    },
-    "metadata": {
-      "version": "2.0",
-      "description": "Vertex served Veo 2 model. Access to this model requires billing to be enabled on the associated Google Cloud Platform account. Please visit https://console.cloud.google.com/billing to enable it.",
-      "supported_generation_methods": [
-        "predictLongRunning"
       ]
     }
   },
@@ -6700,29 +6703,31 @@
     "id": "gpt-4",
     "name": "GPT-4",
     "provider": "openai",
-    "family": "gpt4",
-    "created_at": "2023-06-27 18:13:31 +0200",
+    "family": "gpt-4",
+    "created_at": null,
     "context_window": 8192,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text",
-        "image",
-        "pdf"
+        "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "streaming",
-      "function_calling"
+      "batch"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 10.0,
+          "input_per_million": 30.0,
+          "output_per_million": 60.0
+        },
+        "batch": {
+          "input_per_million": 15.0,
           "output_per_million": 30.0
         }
       }
@@ -6767,29 +6772,34 @@
   },
   {
     "id": "gpt-4-0613",
-    "name": "GPT-4 0613",
+    "name": "GPT-4",
     "provider": "openai",
-    "family": "other",
-    "created_at": "2023-06-12 18:54:56 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "family": "gpt-4",
+    "created_at": null,
+    "context_window": 8192,
+    "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
         "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "streaming"
+      "batch"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 30.0,
+          "output_per_million": 60.0
+        },
+        "batch": {
+          "input_per_million": 15.0,
+          "output_per_million": 30.0
         }
       }
     },
@@ -6915,25 +6925,21 @@
     "id": "gpt-4-turbo-preview",
     "name": "GPT-4 Turbo Preview",
     "provider": "openai",
-    "family": "gpt4_turbo",
-    "created_at": "2024-01-23 20:22:57 +0100",
+    "family": "gpt-4-turbo-preview",
+    "created_at": null,
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text",
-        "image",
-        "pdf"
+        "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
-    "capabilities": [
-      "streaming",
-      "function_calling"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
@@ -6951,23 +6957,23 @@
     "id": "gpt-4.1",
     "name": "GPT-4.1",
     "provider": "openai",
-    "family": "gpt41",
-    "created_at": "2025-04-10 22:22:22 +0200",
+    "family": "gpt-4.1",
+    "created_at": null,
     "context_window": 1047576,
     "max_output_tokens": 32768,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text",
         "image",
-        "pdf"
+        "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "streaming",
+      "batch",
       "function_calling",
       "structured_output"
     ],
@@ -6975,8 +6981,12 @@
       "text_tokens": {
         "standard": {
           "input_per_million": 2.0,
-          "output_per_million": 8.0,
-          "cached_input_per_million": 0.5
+          "cached_input_per_million": 0.5,
+          "output_per_million": 8.0
+        },
+        "batch": {
+          "input_per_million": 1.0,
+          "output_per_million": 4.0
         }
       }
     },
@@ -6987,25 +6997,25 @@
   },
   {
     "id": "gpt-4.1-2025-04-14",
-    "name": "GPT-4.1 20250414",
+    "name": "GPT-4.1",
     "provider": "openai",
-    "family": "gpt41",
-    "created_at": "2025-04-10 22:09:06 +0200",
+    "family": "gpt-4.1",
+    "created_at": null,
     "context_window": 1047576,
     "max_output_tokens": 32768,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text",
         "image",
-        "pdf"
+        "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "streaming",
+      "batch",
       "function_calling",
       "structured_output"
     ],
@@ -7013,8 +7023,12 @@
       "text_tokens": {
         "standard": {
           "input_per_million": 2.0,
-          "output_per_million": 8.0,
-          "cached_input_per_million": 0.5
+          "cached_input_per_million": 0.5,
+          "output_per_million": 8.0
+        },
+        "batch": {
+          "input_per_million": 1.0,
+          "output_per_million": 4.0
         }
       }
     },
@@ -7312,6 +7326,45 @@
     }
   },
   {
+    "id": "gpt-4o-2023-01-01",
+    "name": "GPT-4o",
+    "provider": "openai",
+    "family": "gpt-4o",
+    "created_at": null,
+    "context_window": 128000,
+    "max_output_tokens": 16384,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "batch",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 2.5,
+          "cached_input_per_million": 1.25,
+          "output_per_million": 10.0
+        },
+        "batch": {
+          "input_per_million": 1.25,
+          "output_per_million": 5.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
     "id": "gpt-4o-2024-05-13",
     "name": "GPT-4o 20240513",
     "provider": "openai",
@@ -7350,25 +7403,25 @@
   },
   {
     "id": "gpt-4o-2024-08-06",
-    "name": "GPT-4o",
+    "name": "GPT-4o 20240806",
     "provider": "openai",
-    "family": "gpt-4o",
-    "created_at": null,
+    "family": "gpt4o",
+    "created_at": "2024-08-05 01:38:39 +0200",
     "context_window": 128000,
     "max_output_tokens": 16384,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
+      "streaming",
       "function_calling",
       "structured_output"
     ],
@@ -7376,12 +7429,7 @@
       "text_tokens": {
         "standard": {
           "input_per_million": 2.5,
-          "cached_input_per_million": 1.25,
           "output_per_million": 10.0
-        },
-        "batch": {
-          "input_per_million": 1.25,
-          "output_per_million": 5.0
         }
       }
     },
@@ -7769,32 +7817,28 @@
   },
   {
     "id": "gpt-4o-mini-realtime-preview-2024-12-17",
-    "name": "GPT-4o mini Realtime",
+    "name": "GPT-4o-Mini Realtime Preview 20241217",
     "provider": "openai",
-    "family": "gpt-4o-mini-realtime-preview",
-    "created_at": null,
+    "family": "gpt4o_mini_realtime",
+    "created_at": "2024-12-13 18:56:41 +0100",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "audio",
         "text"
       ],
       "output": [
-        "audio",
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "function_calling"
+      "streaming"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 0.6,
-          "cached_input_per_million": 0.3,
           "output_per_million": 2.4
         }
       }
@@ -8277,9 +8321,7 @@
         "text"
       ]
     },
-    "capabilities": [
-      "structured_output"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
@@ -8296,30 +8338,38 @@
   },
   {
     "id": "gpt-5-mini",
-    "name": "GPT-5 Mini",
+    "name": "GPT-5 mini",
     "provider": "openai",
-    "family": "other",
-    "created_at": "2025-08-05 22:32:08 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "family": "gpt-5-mini",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "image",
         "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "streaming",
-      "reasoning"
+      "batch",
+      "function_calling",
+      "structured_output"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 0.25,
+          "cached_input_per_million": 0.025,
+          "output_per_million": 2.0
+        },
+        "batch": {
+          "input_per_million": 0.125,
+          "output_per_million": 1.0
         }
       }
     },
@@ -8330,30 +8380,38 @@
   },
   {
     "id": "gpt-5-mini-2025-08-07",
-    "name": "GPT-5 Mini 20250807",
+    "name": "GPT-5 mini",
     "provider": "openai",
-    "family": "other",
-    "created_at": "2025-08-05 22:31:07 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "family": "gpt-5-mini",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "image",
         "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "streaming",
-      "reasoning"
+      "batch",
+      "function_calling",
+      "structured_output"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 0.25,
+          "cached_input_per_million": 0.025,
+          "output_per_million": 2.0
+        },
+        "batch": {
+          "input_per_million": 0.125,
+          "output_per_million": 1.0
         }
       }
     },
@@ -8364,30 +8422,38 @@
   },
   {
     "id": "gpt-5-nano",
-    "name": "GPT-5 Nano",
+    "name": "GPT-5 nano",
     "provider": "openai",
-    "family": "other",
-    "created_at": "2025-08-05 22:39:44 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "family": "gpt-5-nano",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "image",
         "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "streaming",
-      "reasoning"
+      "batch",
+      "function_calling",
+      "structured_output"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 0.05,
+          "cached_input_per_million": 0.005,
+          "output_per_million": 0.4
+        },
+        "batch": {
+          "input_per_million": 0.025,
+          "output_per_million": 0.2
         }
       }
     },
@@ -8398,30 +8464,38 @@
   },
   {
     "id": "gpt-5-nano-2025-08-07",
-    "name": "GPT-5 Nano 20250807",
+    "name": "GPT-5 nano",
     "provider": "openai",
-    "family": "other",
-    "created_at": "2025-08-05 22:38:23 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "family": "gpt-5-nano",
+    "created_at": null,
+    "context_window": 400000,
+    "max_output_tokens": 128000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "image",
         "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "streaming",
-      "reasoning"
+      "batch",
+      "function_calling",
+      "structured_output"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 0.05,
+          "cached_input_per_million": 0.005,
+          "output_per_million": 0.4
+        },
+        "batch": {
+          "input_per_million": 0.025,
+          "output_per_million": 0.2
         }
       }
     },
@@ -8491,35 +8565,65 @@
     "metadata": {}
   },
   {
+    "id": "gpt-oss-20b",
+    "name": "gpt-oss-20b",
+    "provider": "openai",
+    "family": "gpt-oss-20b",
+    "created_at": null,
+    "context_window": 131072,
+    "max_output_tokens": 131072,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "batch",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {},
+    "metadata": {}
+  },
+  {
     "id": "o1",
-    "name": "O1",
+    "name": "o1",
     "provider": "openai",
     "family": "o1",
-    "created_at": "2024-12-16 20:03:36 +0100",
+    "created_at": null,
     "context_window": 200000,
     "max_output_tokens": 100000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text",
         "image",
-        "pdf"
+        "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "streaming",
+      "batch",
       "function_calling",
-      "structured_output",
-      "reasoning"
+      "structured_output"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 15.0,
+          "cached_input_per_million": 7.5,
           "output_per_million": 60.0
+        },
+        "batch": {
+          "input_per_million": 7.5,
+          "output_per_million": 30.0
         }
       }
     },
@@ -8530,34 +8634,38 @@
   },
   {
     "id": "o1-2024-12-17",
-    "name": "O1-20241217",
+    "name": "o1",
     "provider": "openai",
     "family": "o1",
-    "created_at": "2024-12-16 06:29:36 +0100",
+    "created_at": null,
     "context_window": 200000,
     "max_output_tokens": 100000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text",
         "image",
-        "pdf"
+        "text"
       ],
       "output": [
+        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "streaming",
+      "batch",
       "function_calling",
-      "structured_output",
-      "reasoning"
+      "structured_output"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 15.0,
+          "cached_input_per_million": 7.5,
           "output_per_million": 60.0
+        },
+        "batch": {
+          "input_per_million": 7.5,
+          "output_per_million": 30.0
         }
       }
     },
@@ -8631,6 +8739,72 @@
       "object": "model",
       "owned_by": "system"
     }
+  },
+  {
+    "id": "o1-preview",
+    "name": "o1 Preview",
+    "provider": "openai",
+    "family": "o1-preview",
+    "created_at": null,
+    "context_window": 128000,
+    "max_output_tokens": 32768,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 15.0,
+          "cached_input_per_million": 7.5,
+          "output_per_million": 60.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "o1-preview-2024-09-12",
+    "name": "o1 Preview",
+    "provider": "openai",
+    "family": "o1-preview",
+    "created_at": null,
+    "context_window": 128000,
+    "max_output_tokens": 32768,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "embeddings",
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 15.0,
+          "cached_input_per_million": 7.5,
+          "output_per_million": 60.0
+        }
+      }
+    },
+    "metadata": {}
   },
   {
     "id": "o1-pro",
@@ -9235,22 +9409,21 @@
   },
   {
     "id": "omni-moderation-latest",
-    "name": "Omni Moderation Latest",
+    "name": "omni-moderation",
     "provider": "openai",
-    "family": "moderation",
-    "created_at": "2024-11-15 17:47:45 +0100",
+    "family": "omni-moderation-latest",
+    "created_at": null,
     "context_window": null,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text",
         "image",
-        "pdf"
+        "text"
       ],
       "output": [
-        "text",
-        "moderation"
+        "embeddings",
+        "text"
       ]
     },
     "capabilities": [],
@@ -9262,10 +9435,10 @@
   },
   {
     "id": "text-embedding-3-large",
-    "name": "text-embedding- 3 Large",
+    "name": "text-embedding-3-large",
     "provider": "openai",
-    "family": "embedding3_large",
-    "created_at": "2024-01-22 20:53:00 +0100",
+    "family": "text-embedding-3-large",
+    "created_at": null,
     "context_window": null,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
@@ -9274,8 +9447,8 @@
         "text"
       ],
       "output": [
-        "text",
-        "embeddings"
+        "embeddings",
+        "text"
       ]
     },
     "capabilities": [
@@ -9284,12 +9457,18 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.13,
-          "output_per_million": 0.13
+          "input_per_million": 0.13
         },
         "batch": {
-          "input_per_million": 0.065,
-          "output_per_million": 0.065
+          "input_per_million": 0.065
+        }
+      },
+      "embeddings": {
+        "standard": {
+          "input_per_million": 0.13
+        },
+        "batch": {
+          "input_per_million": 0.065
         }
       }
     },
@@ -9344,10 +9523,10 @@
   },
   {
     "id": "text-embedding-ada-002",
-    "name": "text-embedding- Ada 002",
+    "name": "text-embedding-ada-002",
     "provider": "openai",
-    "family": "embedding_ada",
-    "created_at": "2022-12-16 20:01:39 +0100",
+    "family": "text-embedding-ada-002",
+    "created_at": null,
     "context_window": null,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
@@ -9356,8 +9535,8 @@
         "text"
       ],
       "output": [
-        "text",
-        "embeddings"
+        "embeddings",
+        "text"
       ]
     },
     "capabilities": [
@@ -9366,12 +9545,18 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.1,
-          "output_per_million": 0.1
+          "input_per_million": 0.1
         },
         "batch": {
-          "input_per_million": 0.05,
-          "output_per_million": 0.05
+          "input_per_million": 0.05
+        }
+      },
+      "embeddings": {
+        "standard": {
+          "input_per_million": 0.1
+        },
+        "batch": {
+          "input_per_million": 0.05
         }
       }
     },
@@ -9428,29 +9613,25 @@
     "id": "tts-1",
     "name": "TTS-1",
     "provider": "openai",
-    "family": "tts1",
-    "created_at": "2023-04-19 23:49:11 +0200",
+    "family": "tts-1",
+    "created_at": null,
     "context_window": null,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text",
-        "audio"
+        "text"
       ],
       "output": [
-        "text",
-        "audio"
+        "audio",
+        "embeddings"
       ]
     },
-    "capabilities": [
-      "streaming"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 15.0,
-          "output_per_million": 15.0
+          "input_per_million": 15.0
         }
       }
     },
@@ -11582,6 +11763,69 @@
         "temperature",
         "top_k",
         "top_logprobs",
+        "top_p"
+      ]
+    }
+  },
+  {
+    "id": "baidu/ernie-4.5-21b-a3b",
+    "name": "Baidu: ERNIE 4.5 21B A3B",
+    "provider": "openrouter",
+    "family": "baidu",
+    "created_at": "2025-08-12 23:29:27 +0200",
+    "context_window": 120000,
+    "max_output_tokens": 8000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "predicted_outputs"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.07,
+          "output_per_million": 0.28
+        }
+      }
+    },
+    "metadata": {
+      "description": "A sophisticated text-based Mixture-of-Experts (MoE) model featuring 21B total parameters with 3B activated per token, delivering exceptional multimodal understanding and generation through heterogeneous MoE structures and modality-isolated routing. Supporting an extensive 131K token context length, the model achieves efficient inference via multi-expert parallel collaboration and quantization, while advanced post-training techniques including SFT, DPO, and UPO ensure optimized performance across diverse applications with specialized routing and balancing losses for superior task handling.",
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 120000,
+        "max_completion_tokens": 8000,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "repetition_penalty",
+        "seed",
+        "stop",
+        "temperature",
+        "top_k",
         "top_p"
       ]
     }
@@ -14068,7 +14312,8 @@
       "input": [
         "text",
         "image",
-        "file"
+        "file",
+        "audio"
       ],
       "output": [
         "text"
@@ -14094,7 +14339,8 @@
         "input_modalities": [
           "text",
           "image",
-          "file"
+          "file",
+          "audio"
         ],
         "output_modalities": [
           "text"
@@ -14254,6 +14500,7 @@
         "reasoning",
         "response_format",
         "seed",
+        "stop",
         "structured_outputs",
         "temperature",
         "tool_choice",
@@ -14275,7 +14522,8 @@
       "input": [
         "file",
         "image",
-        "text"
+        "text",
+        "audio"
       ],
       "output": [
         "text"
@@ -14302,7 +14550,8 @@
         "input_modalities": [
           "file",
           "image",
-          "text"
+          "text",
+          "audio"
         ],
         "output_modalities": [
           "text"
@@ -14344,7 +14593,8 @@
       "input": [
         "file",
         "image",
-        "text"
+        "text",
+        "audio"
       ],
       "output": [
         "text"
@@ -14371,7 +14621,8 @@
         "input_modalities": [
           "file",
           "image",
-          "text"
+          "text",
+          "audio"
         ],
         "output_modalities": [
           "text"
@@ -14472,7 +14723,8 @@
       "input": [
         "file",
         "image",
-        "text"
+        "text",
+        "audio"
       ],
       "output": [
         "text"
@@ -14499,7 +14751,8 @@
         "input_modalities": [
           "file",
           "image",
-          "text"
+          "text",
+          "audio"
         ],
         "output_modalities": [
           "text"
@@ -14541,7 +14794,8 @@
       "input": [
         "text",
         "image",
-        "file"
+        "file",
+        "audio"
       ],
       "output": [
         "text"
@@ -14568,7 +14822,8 @@
         "input_modalities": [
           "text",
           "image",
-          "file"
+          "file",
+          "audio"
         ],
         "output_modalities": [
           "text"
@@ -19021,68 +19276,6 @@
     }
   },
   {
-    "id": "mistralai/mistral-7b-instruct-v0.2",
-    "name": "Mistral: Mistral 7B Instruct v0.2",
-    "provider": "openrouter",
-    "family": "mistralai",
-    "created_at": "2023-12-28 01:00:00 +0100",
-    "context_window": 32768,
-    "max_output_tokens": null,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "predicted_outputs"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.19999999999999998,
-          "output_per_million": 0.19999999999999998
-        }
-      }
-    },
-    "metadata": {
-      "description": "A high-performing, industry-standard 7.3B parameter model, with optimizations for speed and context length.\n\nAn improved version of [Mistral 7B Instruct](/modelsmistralai/mistral-7b-instruct-v0.1), with the following changes:\n\n- 32k context window (vs 8k context in v0.1)\n- Rope-theta = 1e6\n- No Sliding-Window Attention",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Mistral",
-        "instruct_type": "mistral"
-      },
-      "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "repetition_penalty",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_p"
-      ]
-    }
-  },
-  {
     "id": "mistralai/mistral-7b-instruct-v0.3",
     "name": "Mistral: Mistral 7B Instruct v0.3",
     "provider": "openrouter",
@@ -19474,7 +19667,7 @@
     "provider": "openrouter",
     "family": "mistralai",
     "created_at": "2025-08-13 16:33:59 +0200",
-    "context_window": 131072,
+    "context_window": 262144,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
@@ -19514,7 +19707,7 @@
         "instruct_type": null
       },
       "top_provider": {
-        "context_length": 131072,
+        "context_length": 262144,
         "max_completion_tokens": null,
         "is_moderated": false
       },
@@ -28386,69 +28579,6 @@
     }
   },
   {
-    "id": "thedrummer/valkyrie-49b-v1",
-    "name": "TheDrummer: Valkyrie 49B V1",
-    "provider": "openrouter",
-    "family": "thedrummer",
-    "created_at": "2025-05-23 19:51:10 +0200",
-    "context_window": 131072,
-    "max_output_tokens": 131072,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.65,
-          "output_per_million": 1.0
-        }
-      }
-    },
-    "metadata": {
-      "description": "Built on top of NVIDIA's Llama 3.3 Nemotron Super 49B, Valkyrie is TheDrummer's newest model drop for creative writing.",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": 131072,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "reasoning",
-        "repetition_penalty",
-        "seed",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_p"
-      ]
-    }
-  },
-  {
     "id": "thudm/glm-4-32b",
     "name": "THUDM: GLM 4 32B",
     "provider": "openrouter",
@@ -29489,7 +29619,7 @@
     "provider": "openrouter",
     "family": "z-ai",
     "created_at": "2025-07-25 21:22:27 +0200",
-    "context_window": 98304,
+    "context_window": 131072,
     "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
@@ -29528,7 +29658,7 @@
         "instruct_type": null
       },
       "top_provider": {
-        "context_length": 98304,
+        "context_length": 131072,
         "max_completion_tokens": null,
         "is_moderated": false
       },
@@ -29709,13 +29839,14 @@
     "capabilities": [
       "streaming",
       "function_calling",
+      "structured_output",
       "predicted_outputs"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 0.5,
-          "output_per_million": 1.7999999999999998
+          "output_per_million": 1.7
         }
       }
     },
@@ -29748,6 +29879,7 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -29763,7 +29895,7 @@
     "name": "Sonar",
     "provider": "perplexity",
     "family": "sonar",
-    "created_at": "2025-08-14 00:27:27 +0200",
+    "created_at": "2025-08-15 16:34:12 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -29795,7 +29927,7 @@
     "name": "Sonar Deep Research",
     "provider": "perplexity",
     "family": "sonar_deep_research",
-    "created_at": "2025-08-14 00:27:27 +0200",
+    "created_at": "2025-08-15 16:34:12 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -29830,7 +29962,7 @@
     "name": "Sonar Pro",
     "provider": "perplexity",
     "family": "sonar_pro",
-    "created_at": "2025-08-14 00:27:27 +0200",
+    "created_at": "2025-08-15 16:34:12 +0200",
     "context_window": 200000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
@@ -29862,7 +29994,7 @@
     "name": "Sonar Reasoning",
     "provider": "perplexity",
     "family": "sonar_reasoning",
-    "created_at": "2025-08-14 00:27:27 +0200",
+    "created_at": "2025-08-15 16:34:12 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -29894,7 +30026,7 @@
     "name": "Sonar Reasoning Pro",
     "provider": "perplexity",
     "family": "sonar_reasoning_pro",
-    "created_at": "2025-08-14 00:27:27 +0200",
+    "created_at": "2025-08-15 16:34:12 +0200",
     "context_window": 128000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,

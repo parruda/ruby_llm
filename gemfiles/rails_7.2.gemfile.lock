@@ -92,7 +92,7 @@ GEM
       rake
       thor (>= 0.14.0)
     ast (2.4.3)
-    async (2.27.2)
+    async (2.27.3)
       console (~> 1.29)
       fiber-annotation
       io-event (~> 1.11)
@@ -322,10 +322,10 @@ GEM
     stringio (3.1.7)
     thor (1.4.0)
     timeout (0.4.3)
-    traces (0.16.2)
+    traces (0.17.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (3.1.4)
+    unicode-display_width (3.1.5)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
     uri (1.0.3)

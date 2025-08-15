@@ -182,6 +182,10 @@
     "openai": "gpt-oss-120b",
     "openrouter": "openai/gpt-oss-120b"
   },
+  "gpt-oss-20b": {
+    "openai": "gpt-oss-20b",
+    "openrouter": "openai/gpt-oss-20b"
+  },
   "o1": {
     "openai": "o1",
     "openrouter": "openai/o1"
