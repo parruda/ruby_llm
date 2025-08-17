@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"model":"sonar","messages":[{"role":"user","content":"What''s 2 +
-        2?"}],"stream":false,"temperature":0.7}'
+        2?"}],"stream":false}'
     headers:
       User-Agent:
       - Faraday v2.13.4
@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 10 Aug 2025 13:34:38 GMT
+      - Sun, 17 Aug 2025 19:41:37 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -43,29 +43,39 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id": "1e71a14c-1ccd-4ff7-ae6f-0769a6da6e01", "model": "sonar", "created":
-        1754832878, "usage": {"prompt_tokens": 8, "completion_tokens": 81, "total_tokens":
-        89, "search_context_size": "low", "cost": {"input_tokens_cost": 8e-06, "output_tokens_cost":
-        8.1e-05, "request_cost": 0.005, "total_cost": 0.005089}}, "citations": ["https://www.youtube.com/watch?v=tY46Kmm0LOo",
-        "https://www.youtube.com/watch?v=wLND9kOzQy8", "https://www.tiktok.com/@macynicolewalker/video/7152270660444917038?lang=en",
-        "https://www.tiktok.com/@spreadinghopelesscore/video/7449347360662048033",
-        "https://www.tiktok.com/@harrisay15/video/7343706642715774240?lang=en"], "search_results":
-        [{"title": "What is half of 2 plus 2? The \"correct\" answer explained - YouTube",
-        "url": "https://www.youtube.com/watch?v=tY46Kmm0LOo", "date": "2024-11-04",
-        "last_updated": "2025-06-29"}, {"title": "What''s Half of 2 + 2? Most People
-        Get It Wrong! - YouTube", "url": "https://www.youtube.com/watch?v=wLND9kOzQy8",
-        "date": "2025-06-30", "last_updated": "2025-07-01"}, {"title": "2 Plus 2 Meme:
-        A Fun and Confusing Mathematical Conundrum", "url": "https://www.tiktok.com/@macynicolewalker/video/7152270660444917038?lang=en",
-        "date": "2022-10-08", "last_updated": null}, {"title": "Understanding 2+2:
-        A Hopeful Meme Perspective - TikTok", "url": "https://www.tiktok.com/@spreadinghopelesscore/video/7449347360662048033",
-        "date": "2024-12-17", "last_updated": null}, {"title": "Why was she so excited
-        for 2+2 \ud83d\udc80 #HarrisAY #interview #math #viral", "url": "https://www.tiktok.com/@harrisay15/video/7343706642715774240?lang=en",
-        "date": "2024-03-07", "last_updated": null}], "object": "chat.completion",
+      string: '{"id": "4879593b-1d4e-4d12-8535-357989297e0c", "model": "sonar", "created":
+        1755459697, "usage": {"prompt_tokens": 8, "completion_tokens": 245, "total_tokens":
+        253, "search_context_size": "low", "cost": {"input_tokens_cost": 0.0, "output_tokens_cost":
+        0.0, "request_cost": 0.005, "total_cost": 0.005}}, "citations": ["https://www.youtube.com/watch?v=tY46Kmm0LOo",
+        "https://www.youtube.com/watch?v=wLND9kOzQy8", "https://www.youtube.com/watch?v=hSsd3GHU7CU",
+        "http://backreaction.blogspot.com/2021/06/22-doesnt-always-equal-4.html",
+        "https://www.youtube.com/watch?v=I86TArVgnNs"], "search_results": [{"title":
+        "What is half of 2 plus 2? The \"correct\" answer explained - YouTube", "url":
+        "https://www.youtube.com/watch?v=tY46Kmm0LOo", "date": "2024-11-04", "last_updated":
+        "2025-06-29"}, {"title": "What''s Half of 2 + 2? Most People Get It Wrong!
+        - YouTube", "url": "https://www.youtube.com/watch?v=wLND9kOzQy8", "date":
+        "2025-06-30", "last_updated": "2025-07-01"}, {"title": "2 + 2 \u00d7 2 = \u2753
+        Many won''t get RIGHT! - YouTube", "url": "https://www.youtube.com/watch?v=hSsd3GHU7CU",
+        "date": "2024-05-25", "last_updated": "2025-07-21"}, {"title": "2+2 doesn''t
+        always equal 4 - Sabine Hossenfelder: Backreaction", "url": "http://backreaction.blogspot.com/2021/06/22-doesnt-always-equal-4.html",
+        "date": "2021-06-12", "last_updated": "2025-06-16"}, {"title": "2 + 2 = 5
+        How | Breaking the rules of mathematics - YouTube", "url": "https://www.youtube.com/watch?v=I86TArVgnNs",
+        "date": "2019-03-26", "last_updated": "2025-08-15"}], "object": "chat.completion",
         "choices": [{"index": 0, "finish_reason": "stop", "message": {"role": "assistant",
-        "content": "**2 + 2 equals 4.**\n\nThis is a basic arithmetic fact where the
-        sum of two and two is four. The videos and memes referencing \"2 + 2\" sometimes
-        explore related or trickier expressions like \"half of 2 + 2,\" which involve
-        order of operations and parentheses, but the simple addition of 2 + 2 is always
-        4[1][2]."}, "delta": {"role": "assistant", "content": ""}}]}'
-  recorded_at: Sun, 10 Aug 2025 13:34:38 GMT
+        "content": "The straightforward mathematical answer to \"What is 2 + 2?\"
+        is **4**.\n\nThis is the standard addition operation in arithmetic, where
+        adding two and two results in four, just as combining two apples with another
+        two apples gives a total of four apples[4]. This basic fact is universally
+        true in elementary arithmetic.\n\nHowever, some discussions and puzzles playfully
+        challenge or reinterpret this equation by changing the context or the definitions
+        of addition. For example:\n\n- In certain abstract or playful mathematical
+        contexts, or by redefining the operations or meanings of \"2,\" \"+,\" or
+        \"equals,\" one might claim different results like 5, but these are not standard
+        arithmetic results and depend on breaking or altering conventional rules[4][5].\n-
+        Sometimes, for expressions like \"half of 2 + 2,\" ambiguity in interpreting
+        operations or order of operations (PEMDAS/BODMAS) leads to different answers
+        (3 if interpreted as 1/2 \u00d7 2 + 2, or 2 if taken as 1/2 \u00d7 (2 + 2))[1][2].\n\nBut
+        strictly for the direct query \"2 + 2,\" the mathematically correct and classical
+        answer is **4**."}, "delta": {"role": "assistant", "content": ""}}]}'
+  recorded_at: Sun, 17 Aug 2025 19:41:37 GMT
 recorded_with: VCR 6.3.1

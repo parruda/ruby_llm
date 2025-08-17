@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 10 Aug 2025 13:34:54 GMT
+      - Sun, 17 Aug 2025 19:41:50 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,29 +44,40 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id": "0934b938-c175-4311-8e05-8ffaf867bf1b", "model": "sonar", "created":
-        1754832894, "usage": {"prompt_tokens": 24, "completion_tokens": 211, "total_tokens":
-        235, "search_context_size": "low", "cost": {"input_tokens_cost": 2.4e-05,
-        "output_tokens_cost": 0.000211, "request_cost": 0.005, "total_cost": 0.005235}},
-        "citations": ["https://en.wikipedia.org/wiki/Weather"], "search_results":
-        [{"title": "Weather - Wikipedia", "url": "https://en.wikipedia.org/wiki/Weather",
-        "date": "2001-12-11", "last_updated": "2025-06-16"}], "object": "chat.completion",
+      string: '{"id": "b195c31d-2c3e-4e7e-b064-4d4921442cee", "model": "sonar", "created":
+        1755459710, "usage": {"prompt_tokens": 24, "completion_tokens": 261, "total_tokens":
+        285, "search_context_size": "low", "cost": {"input_tokens_cost": 0.0, "output_tokens_cost":
+        0.0, "request_cost": 0.005, "total_cost": 0.005}}, "citations": ["https://uwmpost.com/home-featured-weather/5-day-weather-forecast-august-17-2025",
+        "https://www.weatherbug.com/weather-forecast/10-day-weather", "https://www.youtube.com/watch?v=lys4yC9ulVo",
+        "https://en.wikipedia.org/wiki/Weather", "https://www.accuweather.com/en/us/milwaukee/53202/august-weather/351543"],
+        "search_results": [{"title": "5-Day Weather Forecast August 17, 2025", "url":
+        "https://uwmpost.com/home-featured-weather/5-day-weather-forecast-august-17-2025",
+        "date": "2025-08-17", "last_updated": "2025-08-17"}, {"title": "10-Day Weather
+        Forecast & Weekend Weather", "url": "https://www.weatherbug.com/weather-forecast/10-day-weather",
+        "date": "2025-08-17", "last_updated": "2025-08-17"}, {"title": "Local 10 Weather
+        Video Forecast: 08/17/2025 Morning ...", "url": "https://www.youtube.com/watch?v=lys4yC9ulVo",
+        "date": "2025-08-17", "last_updated": "2025-08-17"}, {"title": "Weather",
+        "url": "https://en.wikipedia.org/wiki/Weather", "date": "2001-12-11", "last_updated":
+        "2025-06-16"}, {"title": "Milwaukee, WI Monthly Weather", "url": "https://www.accuweather.com/en/us/milwaukee/53202/august-weather/351543",
+        "date": "2025-08-11", "last_updated": "2025-08-11"}], "object": "chat.completion",
         "choices": [{"index": 0, "finish_reason": "stop", "message": {"role": "assistant",
-        "content": "**Weather** is the state of the atmosphere at a given time and
-        place, describing conditions such as temperature (hot or cold), moisture (wet
-        or dry), wind (calm or stormy), and cloudiness (clear or cloudy)[1]. It is
-        a fundamental Earth process that shapes the planet by influencing erosion,
-        chemical reactions, and the formation of soils and rocks.\n\nWeather affects
-        daily life significantly; for example, forecasts help people decide what to
-        wear and plan activities, especially since heavy rain, snow, or wind chill
-        can limit outdoor events[1]. Tropical weather differs from that at higher
-        latitudes because the sun shines more directly on the tropics, making them
-        warmer on average. Also, the Earth''s rotation affects atmospheric circulation
-        more strongly at higher latitudes, leading to more spontaneous clouds and
-        rainstorms in the tropics, which makes tropical weather harder to predict
-        compared to temperate regions[1].\n\nIn summary, weather encompasses atmospheric
-        conditions that vary by location and time, influencing both natural processes
-        and human activities[1]. XKCD7392"}, "delta": {"role": "assistant", "content":
-        ""}}]}'
-  recorded_at: Sun, 10 Aug 2025 13:34:54 GMT
+        "content": "The weather today, August 17, 2025, is characterized by a transition
+        to more comfortable conditions with lower humidity and heat due to a high-pressure
+        system moving in. In Milwaukee, for example, temperatures are around 75\u00b0F
+        inland and about 70\u00b0F near Lake Michigan, with gusty northeast winds
+        around 13 mph and frequent clouds but no heavy rain expected. Tonight, temperatures
+        will drop to the mid-60s inland and lakeside, with variable winds influenced
+        by local geography and air masses[1][5].\n\nIn other regions, such as South
+        Florida, drier air is moving in, reducing the chance of rain, though isolated
+        showers or storms may still occur near beaches or inland areas. The overall
+        pattern includes mostly sunny to partly cloudy skies with occasional chances
+        of rain over the next several days, with highs generally in the 70s to 90s
+        Fahrenheit depending on location[2][3].\n\nWeather, in general, refers to
+        the atmospheric conditions including temperature, humidity, wind, and precipitation
+        at a given time and place. Forecasts help people plan activities and prepare
+        for changes such as storms or heat waves. Tropical weather tends to be more
+        variable and harder to predict than weather at higher latitudes due to differences
+        in solar heating and atmospheric circulation[4].\n\nXKCD7392"}, "delta": {"role":
+        "assistant", "content": ""}}]}'
+  recorded_at: Sun, 17 Aug 2025 19:41:50 GMT
 recorded_with: VCR 6.3.1

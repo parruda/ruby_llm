@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"model":"qwen3","messages":[{"role":"user","content":"What is the
-        capital of France?"}],"stream":false,"temperature":0.7}'
+        capital of France?"}],"stream":false}'
     headers:
       User-Agent:
       - Faraday v2.13.4
@@ -22,15 +22,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 10 Aug 2025 13:34:13 GMT
-      - Sun, 10 Aug 2025 13:34:13 GMT
+      - Sun, 17 Aug 2025 19:41:12 GMT
+      - Sun, 17 Aug 2025 19:41:12 GMT
       Server:
       - uvicorn
       - uvicorn
       Keep-Alive:
       - timeout=15, max=100
       Content-Length:
-      - '891'
+      - '802'
       Content-Type:
       - application/json
       X-Request-Accepted-At:
@@ -40,11 +40,8 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
     body:
-      encoding: UTF-8
-      string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"\n\nThe
-        capital of France is **Paris**. It is the largest city in France and serves
-        as the country''s political, economic, and cultural hub. Paris is renowned
-        for its iconic landmarks such as the Eiffel Tower, the Louvre Museum, and
-        the Seine River.","role":"assistant"}}],"created":1754832856,"id":"chatcmpl-9koWXhYpuuYXzZrN0MEGgDBq9SI70NdQ","model":"qwen3","object":"chat.completion","usage":{"completion_tokens":235,"completion_tokens_details":{"accepted_prediction_tokens":0,"reasoning_tokens":175,"rejected_prediction_tokens":0},"draft_tokens":0,"draft_tokens_acceptance":0.0,"prompt_tokens":15,"prompt_tokens_details":{"cached_tokens":3},"prompt_tokens_per_second":879.301248607773,"time_per_output_token_ms":8.966787234042554,"time_to_first_token_ms":17.059,"tokens_per_second":111.52266401543284,"total_tokens":250}}'
-  recorded_at: Sun, 10 Aug 2025 13:34:16 GMT
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjaG9pY2VzIjpbeyJmaW5pc2hfcmVhc29uIjoic3RvcCIsImluZGV4IjowLCJtZXNzYWdlIjp7ImNvbnRlbnQiOiJcblxuVGhlIGNhcGl0YWwgb2YgRnJhbmNlIGlzICoqUGFyaXMqKi4gSXQgaXMgYSBtYWpvciBnbG9iYWwgY2l0eSBrbm93biBmb3IgaXRzIGN1bHR1cmFsIGxhbmRtYXJrcywgaGlzdG9yaWNhbCBzaWduaWZpY2FuY2UsIGFuZCBlY29ub21pYyBpbmZsdWVuY2UuIPCfh6vwn4e34pyoIiwicm9sZSI6ImFzc2lzdGFudCJ9fV0sImNyZWF0ZWQiOjE3NTU0NTk2NzUsImlkIjoiY2hhdGNtcGwtSkRMd1Y0Y2JCVFliVGtoYWlWenJVRnpKVDJmcHk1VWUiLCJtb2RlbCI6InF3ZW4zIiwib2JqZWN0IjoiY2hhdC5jb21wbGV0aW9uIiwidXNhZ2UiOnsiY29tcGxldGlvbl90b2tlbnMiOjI1MSwiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6eyJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6MCwicmVhc29uaW5nX3Rva2VucyI6MjE0LCJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6MH0sImRyYWZ0X3Rva2VucyI6MCwiZHJhZnRfdG9rZW5zX2FjY2VwdGFuY2UiOjAuMCwicHJvbXB0X3Rva2VucyI6MTUsInByb21wdF90b2tlbnNfZGV0YWlscyI6eyJjYWNoZWRfdG9rZW5zIjozfSwicHJvbXB0X3Rva2Vuc19wZXJfc2Vjb25kIjo4ODcuNTczOTY0NDk3MDQxNSwidGltZV9wZXJfb3V0cHV0X3Rva2VuX21zIjo5LjA3Njk1NjE3NTI5ODgwNCwidGltZV90b19maXJzdF90b2tlbl9tcyI6MTYuOSwidG9rZW5zX3Blcl9zZWNvbmQiOjExMC4xNjkwODk4MDE0MTQ3NCwidG90YWxfdG9rZW5zIjoyNjZ9fQ==
+  recorded_at: Sun, 17 Aug 2025 19:41:15 GMT
 recorded_with: VCR 6.3.1

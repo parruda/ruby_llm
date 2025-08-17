@@ -7,8 +7,8 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"qwen3","messages":[{"role":"system","content":"You must call
         the dice_roll tool exactly 3 times when asked to roll dice 3 times."},{"role":"user","content":"Roll
-        the dice 3 times"}],"stream":false,"temperature":0.7,"tools":[{"type":"function","function":{"name":"dice_roll","description":"Rolls
-        a single six-sided die and returns the result","parameters":{"type":"object","properties":{},"required":[]}}}],"tool_choice":"auto"}'
+        the dice 3 times"}],"stream":false,"tools":[{"type":"function","function":{"name":"dice_roll","description":"Rolls
+        a single six-sided die and returns the result","parameters":{"type":"object","properties":{},"required":[]}}}]}'
     headers:
       User-Agent:
       - Faraday v2.13.4
@@ -26,20 +26,23 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 10 Aug 2025 14:22:54 GMT
+      - Sun, 17 Aug 2025 19:47:19 GMT
       Content-Length:
-      - '1044'
+      - '1193'
     body:
       encoding: UTF-8
-      string: '{"id":"chatcmpl-160","object":"chat.completion","created":1754835774,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+      string: '{"id":"chatcmpl-807","object":"chat.completion","created":1755460039,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
         the user wants me to roll the dice three times. Let me check the tools available.
-        There''s a function called dice_roll that rolls a six-sided die. The user
-        said exactly three times, so I need to call that function three separate times.
-        Each call doesn''t need any parameters, so I''ll just make three individual
-        tool calls. Let me make sure I don''t miss any and that each is properly formatted.\n\u003c/think\u003e\n\n","tool_calls":[{"id":"call_1eaoxwfx","index":0,"type":"function","function":{"name":"dice_roll","arguments":"{}"}},{"id":"call_7r1carm8","index":1,"type":"function","function":{"name":"dice_roll","arguments":"{}"}},{"id":"call_z5rtvbwp","index":2,"type":"function","function":{"name":"dice_roll","arguments":"{}"}}]},"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":159,"completion_tokens":138,"total_tokens":297}}
+        There''s a function called dice_roll that rolls a single six-sided die. Since
+        they need it three times, I should call that function three separate times.
+        Each call doesn''t require any parameters, so I''ll just make three individual
+        tool calls. I need to make sure each is in the correct JSON format within
+        the tool_call tags. Let me structure each one properly and ensure there are
+        no arguments since the parameters object is empty. Alright, that should do
+        it.\n\u003c/think\u003e\n\n","tool_calls":[{"id":"call_e6lynqlo","index":0,"type":"function","function":{"name":"dice_roll","arguments":"{}"}},{"id":"call_rr9llcse","index":1,"type":"function","function":{"name":"dice_roll","arguments":"{}"}},{"id":"call_dahtkfyy","index":2,"type":"function","function":{"name":"dice_roll","arguments":"{}"}}]},"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":159,"completion_tokens":165,"total_tokens":324}}
 
         '
-  recorded_at: Sun, 10 Aug 2025 14:22:54 GMT
+  recorded_at: Sun, 17 Aug 2025 19:47:19 GMT
 - request:
     method: post
     uri: "<OLLAMA_API_BASE>/chat/completions"
@@ -49,13 +52,16 @@ http_interactions:
         the dice_roll tool exactly 3 times when asked to roll dice 3 times."},{"role":"user","content":"Roll
         the dice 3 times"},{"role":"assistant","content":"<think>\nOkay, the user
         wants me to roll the dice three times. Let me check the tools available. There''s
-        a function called dice_roll that rolls a six-sided die. The user said exactly
-        three times, so I need to call that function three separate times. Each call
-        doesn''t need any parameters, so I''ll just make three individual tool calls.
-        Let me make sure I don''t miss any and that each is properly formatted.\n</think>\n\n","tool_calls":[{"id":"call_1eaoxwfx","type":"function","function":{"name":"dice_roll","arguments":"{}"}},{"id":"call_7r1carm8","type":"function","function":{"name":"dice_roll","arguments":"{}"}},{"id":"call_z5rtvbwp","type":"function","function":{"name":"dice_roll","arguments":"{}"}}]},{"role":"tool","content":"{roll:
-        1}","tool_call_id":"call_1eaoxwfx"},{"role":"tool","content":"{roll: 2}","tool_call_id":"call_7r1carm8"},{"role":"tool","content":"{roll:
-        3}","tool_call_id":"call_z5rtvbwp"}],"stream":false,"temperature":0.7,"tools":[{"type":"function","function":{"name":"dice_roll","description":"Rolls
-        a single six-sided die and returns the result","parameters":{"type":"object","properties":{},"required":[]}}}],"tool_choice":"auto"}'
+        a function called dice_roll that rolls a single six-sided die. Since they
+        need it three times, I should call that function three separate times. Each
+        call doesn''t require any parameters, so I''ll just make three individual
+        tool calls. I need to make sure each is in the correct JSON format within
+        the tool_call tags. Let me structure each one properly and ensure there are
+        no arguments since the parameters object is empty. Alright, that should do
+        it.\n</think>\n\n","tool_calls":[{"id":"call_e6lynqlo","type":"function","function":{"name":"dice_roll","arguments":"{}"}},{"id":"call_rr9llcse","type":"function","function":{"name":"dice_roll","arguments":"{}"}},{"id":"call_dahtkfyy","type":"function","function":{"name":"dice_roll","arguments":"{}"}}]},{"role":"tool","content":"{roll:
+        1}","tool_call_id":"call_e6lynqlo"},{"role":"tool","content":"{roll: 2}","tool_call_id":"call_rr9llcse"},{"role":"tool","content":"{roll:
+        3}","tool_call_id":"call_dahtkfyy"}],"stream":false,"tools":[{"type":"function","function":{"name":"dice_roll","description":"Rolls
+        a single six-sided die and returns the result","parameters":{"type":"object","properties":{},"required":[]}}}]}'
     headers:
       User-Agent:
       - Faraday v2.13.4
@@ -73,12 +79,12 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 10 Aug 2025 14:22:56 GMT
+      - Sun, 17 Aug 2025 19:47:21 GMT
       Content-Length:
-      - '1081'
+      - '1145'
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJpZCI6ImNoYXRjbXBsLTQzIiwib2JqZWN0IjoiY2hhdC5jb21wbGV0aW9uIiwiY3JlYXRlZCI6MTc1NDgzNTc3NiwibW9kZWwiOiJxd2VuMyIsInN5c3RlbV9maW5nZXJwcmludCI6ImZwX29sbGFtYSIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiXHUwMDNjdGhpbmtcdTAwM2Vcbk9rYXksIHRoZSB1c2VyIGFza2VkIHRvIHJvbGwgdGhlIGRpY2UgdGhyZWUgdGltZXMsIGFuZCBJIGNhbGxlZCB0aGUgZGljZV9yb2xsIGZ1bmN0aW9uIHRocmVlIHRpbWVzLiBFYWNoIHJlc3BvbnNlIGZyb20gdGhlIHRvb2wgZ2F2ZSBhIHJvbGwgcmVzdWx0OiAxLCAyLCBhbmQgMy4gTm93IEkgbmVlZCB0byBwcmVzZW50IHRoZXNlIHJlc3VsdHMgdG8gdGhlIHVzZXIgaW4gYSBjbGVhciB3YXkuIExldCBtZSBsaXN0IGVhY2ggcm9sbCBzZXF1ZW50aWFsbHkgdG8gc2hvdyB0aGUgdGhyZWUgb3V0Y29tZXMuIEkgc2hvdWxkIG1lbnRpb24gZWFjaCByb2xsIG51bWJlciBhbmQgdGhlIHJlc3VsdC4gVGhlbiwgbWF5YmUgYWRkIGEgZnJpZW5kbHkgbWVzc2FnZSB0byBzdW1tYXJpemUgdGhlIHRvdGFsIG9yIGNvbmZpcm0gdGhlIGNvbXBsZXRpb24uIExldCBtZSBjaGVjayBpZiB0aGUgdXNlciBuZWVkcyBhbnl0aGluZyBlbHNlLCBsaWtlIHRoZSBzdW0gb3IganVzdCB0aGUgaW5kaXZpZHVhbCByb2xscy4gU2luY2UgdGhleSBkaWRuJ3Qgc3BlY2lmeSwgSSdsbCBwcm92aWRlIGFsbCB0aHJlZSByZXN1bHRzIGFuZCBvZmZlciBmdXJ0aGVyIGhlbHAuXG5cdTAwM2MvdGhpbmtcdTAwM2VcblxuSGVyZSBhcmUgeW91ciB0aHJlZSBkaWNlIHJvbGxzOlxuXG4xLiAqKlJvbGwgMToqKiDwn46yIDEgIFxuMi4gKipSb2xsIDI6Kiog8J+OsiAyICBcbjMuICoqUm9sbCAzOioqIPCfjrIgMyAgXG5cbkxldCBtZSBrbm93IGlmIHlvdSdkIGxpa2UgdG8gZG8gYW55dGhpbmcgZWxzZSEg8J+YiiJ9LCJmaW5pc2hfcmVhc29uIjoic3RvcCJ9XSwidXNhZ2UiOnsicHJvbXB0X3Rva2VucyI6Mjk2LCJjb21wbGV0aW9uX3Rva2VucyI6MTk2LCJ0b3RhbF90b2tlbnMiOjQ5Mn19Cg==
-  recorded_at: Sun, 10 Aug 2025 14:22:56 GMT
+        eyJpZCI6ImNoYXRjbXBsLTExOCIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NTU0NjAwNDEsIm1vZGVsIjoicXdlbjMiLCJzeXN0ZW1fZmluZ2VycHJpbnQiOiJmcF9vbGxhbWEiLCJjaG9pY2VzIjpbeyJpbmRleCI6MCwibWVzc2FnZSI6eyJyb2xlIjoiYXNzaXN0YW50IiwiY29udGVudCI6Ilx1MDAzY3RoaW5rXHUwMDNlXG5Pa2F5LCB0aGUgdXNlciBhc2tlZCB0byByb2xsIHRoZSBkaWNlIHRocmVlIHRpbWVzLiBJIG5lZWQgdG8gdXNlIHRoZSBkaWNlX3JvbGwgZnVuY3Rpb24gZXhhY3RseSB0aHJlZSB0aW1lcy4gTGV0IG1lIGNoZWNrIGVhY2ggdG9vbCBjYWxsLlxuXG5GaXJzdCBjYWxsOiB7XCJuYW1lXCI6IFwiZGljZV9yb2xsXCIsIFwiYXJndW1lbnRzXCI6IHt9fSDihpIgcm9sbCByZXN1bHQgMS4gVGhhdCdzIGNvcnJlY3QuXG5TZWNvbmQgY2FsbDoge1wibmFtZVwiOiBcImRpY2Vfcm9sbFwiLCBcImFyZ3VtZW50c1wiOiB7fX0g4oaSIHJvbGwgcmVzdWx0IDIuIEdvb2QuXG5UaGlyZCBjYWxsOiB7XCJuYW1lXCI6IFwiZGljZV9yb2xsXCIsIFwiYXJndW1lbnRzXCI6IHt9fSDihpIgcm9sbCByZXN1bHQgMy4gUGVyZmVjdC5cblxuTm93LCBjb21waWxlIHRoZSByZXN1bHRzLiBFYWNoIHJvbGwgaXMgYSBzZXBhcmF0ZSBhY3Rpb24sIHNvIEknbGwgbGlzdCBlYWNoIHJlc3VsdCBjbGVhcmx5LiBNYWtlIHN1cmUgdG8gbWVudGlvbiBhbGwgdGhyZWUgcm9sbHMgYW5kIHByZXNlbnQgdGhlIGZpbmFsIGFuc3dlciBhcyBhIGxpc3QuIE5vIHBhcmFtZXRlcnMgbmVlZGVkIHNpbmNlIHRoZSBmdW5jdGlvbiBkb2Vzbid0IHJlcXVpcmUgYW55LiBKdXN0IGNvbmZpcm0gdGhlIHRocmVlIHJvbGxzIGFuZCBzaG93IHRoZSBvdXRjb21lcy5cblx1MDAzYy90aGlua1x1MDAzZVxuXG5UaGUgZGljZSB3ZXJlIHJvbGxlZCB0aHJlZSB0aW1lcywgcmVzdWx0aW5nIGluOlxuMS4g8J+OsiBSb2xsIDE6IDFcbjIuIPCfjrIgUm9sbCAyOiAyXG4zLiDwn46yIFJvbGwgMzogM1xuXG5GaW5hbCByZXN1bHRzOiBbMSwgMiwgM10ifSwiZmluaXNoX3JlYXNvbiI6InN0b3AifV0sInVzYWdlIjp7InByb21wdF90b2tlbnMiOjMyMywiY29tcGxldGlvbl90b2tlbnMiOjIyMywidG90YWxfdG9rZW5zIjo1NDZ9fQo=
+  recorded_at: Sun, 17 Aug 2025 19:47:21 GMT
 recorded_with: VCR 6.3.1

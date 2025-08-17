@@ -7,7 +7,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-5-haiku-20241022","messages":[{"role":"user","content":[{"type":"text","text":"What''s
         the best language to learn?"}]}],"stream":false,"max_tokens":8192,"tools":[{"name":"best_language_to_learn","description":"Gets
-        the best language to learn","input_schema":{"type":"object","properties":{},"required":[]}}],"temperature":0.7}'
+        the best language to learn","input_schema":{"type":"object","properties":{},"required":[]}}]}'
     headers:
       User-Agent:
       - Faraday v2.13.4
@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 10 Aug 2025 13:37:16 GMT
+      - Sun, 17 Aug 2025 19:44:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,25 +39,25 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '100000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-10T13:37:15Z'
+      - '2025-08-17T19:44:23Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '20000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '20000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-10T13:37:16Z'
+      - '2025-08-17T19:44:25Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-10T13:37:15Z'
+      - '2025-08-17T19:44:23Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '120000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '120000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-10T13:37:15Z'
+      - '2025-08-17T19:44:23Z'
       Request-Id:
       - "<REQUEST_ID>"
       Strict-Transport-Security:
@@ -76,9 +76,10 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01JNo2ek5oxW3H7Nvei7CRF4","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"I''ll
-        help you find out the best language to learn by using the available tool."},{"type":"tool_use","id":"toolu_01DQ1aySKdR8ScUfkM3rXxCe","name":"best_language_to_learn","input":{}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":327,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":58,"service_tier":"standard"}}'
-  recorded_at: Sun, 10 Aug 2025 13:37:16 GMT
+      string: '{"id":"msg_01GSRnKs5XLq22NretwDjKSq","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"I''ll
+        help you find out by using the best_language_to_learn tool to get the recommended
+        language."},{"type":"tool_use","id":"toolu_01TdGZpMb2zpDEycPETLNPFD","name":"best_language_to_learn","input":{}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":327,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":64,"service_tier":"standard"}}'
+  recorded_at: Sun, 17 Aug 2025 19:44:24 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -86,8 +87,9 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-5-haiku-20241022","messages":[{"role":"user","content":[{"type":"text","text":"What''s
         the best language to learn?"}]},{"role":"assistant","content":[{"type":"text","text":"I''ll
-        help you find out the best language to learn by using the available tool."},{"type":"tool_use","id":"toolu_01DQ1aySKdR8ScUfkM3rXxCe","name":"best_language_to_learn","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01DQ1aySKdR8ScUfkM3rXxCe","content":"Ruby"}]}],"stream":false,"max_tokens":8192,"tools":[{"name":"best_language_to_learn","description":"Gets
-        the best language to learn","input_schema":{"type":"object","properties":{},"required":[]}}],"temperature":0.7}'
+        help you find out by using the best_language_to_learn tool to get the recommended
+        language."},{"type":"tool_use","id":"toolu_01TdGZpMb2zpDEycPETLNPFD","name":"best_language_to_learn","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01TdGZpMb2zpDEycPETLNPFD","content":"Ruby"}]}],"stream":false,"max_tokens":8192,"tools":[{"name":"best_language_to_learn","description":"Gets
+        the best language to learn","input_schema":{"type":"object","properties":{},"required":[]}}]}'
     headers:
       User-Agent:
       - Faraday v2.13.4
@@ -107,7 +109,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 10 Aug 2025 13:37:20 GMT
+      - Sun, 17 Aug 2025 19:44:28 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -119,25 +121,25 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '100000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-10T13:37:16Z'
+      - '2025-08-17T19:44:25Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '20000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '20000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-10T13:37:20Z'
+      - '2025-08-17T19:44:28Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-10T13:37:16Z'
+      - '2025-08-17T19:44:25Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '120000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '120000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-10T13:37:16Z'
+      - '2025-08-17T19:44:25Z'
       Request-Id:
       - "<REQUEST_ID>"
       Strict-Transport-Security:
@@ -156,17 +158,14 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01AhcUUoxZffPywDvAgeQQAa","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"According
-        to the tool, Ruby is the best language to learn! \n\nRuby is a dynamic, object-oriented
+      string: '{"id":"msg_01J7unzpDH73KQPUfWRqyTNo","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"According
+        to the tool, Ruby is the best language to learn! Ruby is a dynamic, object-oriented
         programming language known for its simplicity and readability. It''s particularly
         popular for web development, especially with the Ruby on Rails framework.
-        Some key advantages of learning Ruby include:\n\n1. Easy to read and write
-        syntax\n2. Strong community support\n3. Versatile for web development, scripting,
-        and automation\n4. Used in many startups and tech companies\n5. Good for beginners
-        due to its intuitive nature\n\nHowever, the \"best\" language can depend on
-        your specific goals:\n- Web development\n- Data science\n- Mobile app development\n-
-        Game development\n- Automation\n\nWould you like to know more about why Ruby
-        might be a good choice for you, or are you interested in learning about other
-        programming languages?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":397,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":181,"service_tier":"standard"}}'
-  recorded_at: Sun, 10 Aug 2025 13:37:20 GMT
+        \n\nSome key benefits of learning Ruby include:\n1. Easy to read and write
+        syntax\n2. Strong community support\n3. Versatile for web development\n4.
+        Good for beginners due to its intuitive nature\n5. Used in many startups and
+        tech companies\n\nWould you like to know more about why Ruby might be a great
+        language to learn, or are you interested in exploring its potential applications?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":403,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":138,"service_tier":"standard"}}'
+  recorded_at: Sun, 17 Aug 2025 19:44:28 GMT
 recorded_with: VCR 6.3.1

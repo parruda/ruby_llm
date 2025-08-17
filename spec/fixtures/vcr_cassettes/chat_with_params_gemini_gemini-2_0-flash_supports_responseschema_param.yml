@@ -5,7 +5,7 @@ http_interactions:
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
     body:
       encoding: UTF-8
-      string: '{"generationConfig":{"responseMimeType":"application/json","responseSchema":{"type":"OBJECT","properties":{"result":{"type":"NUMBER"}}},"temperature":0.7},"contents":[{"role":"user","parts":[{"text":"What
+      string: '{"generationConfig":{"responseMimeType":"application/json","responseSchema":{"type":"OBJECT","properties":{"result":{"type":"NUMBER"}}}},"contents":[{"role":"user","parts":[{"text":"What
         is the square root of 64? Answer with a JSON object with the key `result`."}]}]}'
     headers:
       User-Agent:
@@ -30,7 +30,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 10 Aug 2025 13:31:19 GMT
+      - Sun, 17 Aug 2025 19:38:22 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -40,7 +40,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=755
+      - gfet4t7; dur=589
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -60,7 +60,7 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.071400159597396845
+              "avgLogprobs": -0.010784775763750077
             }
           ],
           "usageMetadata": {
@@ -81,7 +81,7 @@ http_interactions:
             ]
           },
           "modelVersion": "gemini-2.0-flash",
-          "responseId": "Jp-YaNO_KrednvgPlKGr8Ag"
+          "responseId": "ri-iaIpDsIyqww_c7ZGQCg"
         }
-  recorded_at: Sun, 10 Aug 2025 13:31:19 GMT
+  recorded_at: Sun, 17 Aug 2025 19:38:22 GMT
 recorded_with: VCR 6.3.1

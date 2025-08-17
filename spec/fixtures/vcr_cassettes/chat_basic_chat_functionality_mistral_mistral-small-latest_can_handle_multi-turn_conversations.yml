@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"model":"mistral-small-latest","messages":[{"role":"user","content":"Who
-        was Ruby''s creator?"}],"stream":false,"temperature":0.7}'
+        was Ruby''s creator?"}],"stream":false}'
     headers:
       User-Agent:
       - Faraday v2.13.4
@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 10 Aug 2025 14:07:38 GMT
+      - Sun, 17 Aug 2025 19:41:52 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -32,31 +32,31 @@ http_interactions:
       Connection:
       - keep-alive
       Mistral-Correlation-Id:
-      - '0198944e-f014-75a5-b790-8139d4da6d78'
+      - '0198b98d-7420-77f9-8ce6-a5b0c1ec9954'
       X-Kong-Request-Id:
-      - '0198944e-f014-75a5-b790-8139d4da6d78'
+      - '0198b98d-7420-77f9-8ce6-a5b0c1ec9954'
       X-Envoy-Upstream-Service-Time:
-      - '872'
+      - '869'
       X-Ratelimit-Limit-Tokens-Minute:
       - '500000'
       X-Ratelimit-Remaining-Tokens-Minute:
-      - '499859'
+      - '499742'
       X-Ratelimit-Limit-Tokens-Month:
       - '1000000000'
       X-Ratelimit-Remaining-Tokens-Month:
-      - '999565812'
+      - '999557628'
       X-Ratelimit-Tokens-Query-Cost:
-      - '141'
+      - '139'
       X-Ratelimit-Limit-Req-Minute:
       - '60'
       X-Ratelimit-Remaining-Req-Minute:
-      - '59'
+      - '57'
       Access-Control-Allow-Origin:
       - "*"
       X-Kong-Upstream-Latency:
-      - '873'
+      - '869'
       X-Kong-Proxy-Latency:
-      - '6'
+      - '7'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
@@ -72,16 +72,16 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"56a8c8e89d7d4faaa081ae6c5555bb49","created":1754834858,"model":"mistral-small-latest","usage":{"prompt_tokens":9,"total_tokens":141,"completion_tokens":132},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"Ruby
+      string: '{"id":"4de2e063f81642c58f0a210e8a0ea19c","created":1755459712,"model":"mistral-small-latest","usage":{"prompt_tokens":9,"total_tokens":139,"completion_tokens":130},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"Ruby
         was created by **Yukihiro \"Matz\" Matsumoto**, a Japanese programmer. He
-        began developing Ruby in the 1990s and officially released it in 1995. Matsumoto
-        designed Ruby to be a simple, intuitive, and highly productive programming
-        language, emphasizing developer happiness and elegance.\n\nRuby gained widespread
-        popularity, especially with the rise of the **Ruby on Rails** web framework
-        (created by David Heinemeier Hansson in 2004). Today, Ruby remains a popular
+        began developing Ruby in the 1990s and released the first public version in
+        1995. Matsumoto designed Ruby to be a simple, elegant, and productive programming
+        language, emphasizing developer happiness and readability.\n\nRuby gained
+        widespread popularity with the rise of the **Ruby on Rails** web framework,
+        created by David Heinemeier Hansson in 2004. Today, Ruby remains a popular
         language for web development, scripting, and automation.\n\nWould you like
         more details about Ruby''s history or features?"}}]}'
-  recorded_at: Sun, 10 Aug 2025 14:07:38 GMT
+  recorded_at: Sun, 17 Aug 2025 19:41:52 GMT
 - request:
     method: post
     uri: https://api.mistral.ai/v1/chat/completions
@@ -90,13 +90,14 @@ http_interactions:
       string: '{"model":"mistral-small-latest","messages":[{"role":"user","content":"Who
         was Ruby''s creator?"},{"role":"assistant","content":"Ruby was created by
         **Yukihiro \"Matz\" Matsumoto**, a Japanese programmer. He began developing
-        Ruby in the 1990s and officially released it in 1995. Matsumoto designed Ruby
-        to be a simple, intuitive, and highly productive programming language, emphasizing
-        developer happiness and elegance.\n\nRuby gained widespread popularity, especially
-        with the rise of the **Ruby on Rails** web framework (created by David Heinemeier
-        Hansson in 2004). Today, Ruby remains a popular language for web development,
-        scripting, and automation.\n\nWould you like more details about Ruby''s history
-        or features?"},{"role":"user","content":"What year did he create Ruby?"}],"stream":false,"temperature":0.7}'
+        Ruby in the 1990s and released the first public version in 1995. Matsumoto
+        designed Ruby to be a simple, elegant, and productive programming language,
+        emphasizing developer happiness and readability.\n\nRuby gained widespread
+        popularity with the rise of the **Ruby on Rails** web framework, created by
+        David Heinemeier Hansson in 2004. Today, Ruby remains a popular language for
+        web development, scripting, and automation.\n\nWould you like more details
+        about Ruby''s history or features?"},{"role":"user","content":"What year did
+        he create Ruby?"}],"stream":false}'
     headers:
       User-Agent:
       - Faraday v2.13.4
@@ -114,7 +115,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 10 Aug 2025 14:07:39 GMT
+      - Sun, 17 Aug 2025 19:41:53 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -122,31 +123,31 @@ http_interactions:
       Connection:
       - keep-alive
       Mistral-Correlation-Id:
-      - '0198944e-f411-7af4-8ea0-d526d4b241ef'
+      - '0198b98d-7822-7b91-9193-93a0552b728f'
       X-Kong-Request-Id:
-      - '0198944e-f411-7af4-8ea0-d526d4b241ef'
+      - '0198b98d-7822-7b91-9193-93a0552b728f'
       X-Envoy-Upstream-Service-Time:
-      - '749'
+      - '729'
       X-Ratelimit-Limit-Tokens-Minute:
       - '500000'
       X-Ratelimit-Remaining-Tokens-Minute:
-      - '499591'
+      - '499487'
       X-Ratelimit-Limit-Tokens-Month:
       - '1000000000'
       X-Ratelimit-Remaining-Tokens-Month:
-      - '999565544'
+      - '999557373'
       X-Ratelimit-Tokens-Query-Cost:
-      - '268'
+      - '255'
       X-Ratelimit-Limit-Req-Minute:
       - '60'
       X-Ratelimit-Remaining-Req-Minute:
-      - '58'
+      - '56'
       Access-Control-Allow-Origin:
       - "*"
       X-Kong-Upstream-Latency:
-      - '750'
+      - '730'
       X-Kong-Proxy-Latency:
-      - '10'
+      - '8'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
@@ -162,12 +163,7 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"65b291c84c294bb48769de207221647d","created":1754834859,"model":"mistral-small-latest","usage":{"prompt_tokens":150,"total_tokens":268,"completion_tokens":118},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"Yukihiro
-        \"Matz\" Matsumoto **began developing Ruby in 1993** and **officially released
-        version 0.95** on **December 25, 1995**.\n\nHe had the initial idea for Ruby
-        in **February 1993** and worked on it for about two and a half years before
-        the first public release. The language was designed to balance simplicity
-        and productivity, inspired by languages like Perl, Smalltalk, and Lisp.\n\nWould
-        you like details on Ruby''s evolution or its impact?"}}]}'
-  recorded_at: Sun, 10 Aug 2025 14:07:39 GMT
+      string: !binary |-
+        eyJpZCI6IjQxOWRmZjM3ZmFhMDRmMWVhYmQzNmFhNGQ1MTYzODg0IiwiY3JlYXRlZCI6MTc1NTQ1OTcxMywibW9kZWwiOiJtaXN0cmFsLXNtYWxsLWxhdGVzdCIsInVzYWdlIjp7InByb21wdF90b2tlbnMiOjE0OCwidG90YWxfdG9rZW5zIjoyNTUsImNvbXBsZXRpb25fdG9rZW5zIjoxMDd9LCJvYmplY3QiOiJjaGF0LmNvbXBsZXRpb24iLCJjaG9pY2VzIjpbeyJpbmRleCI6MCwiZmluaXNoX3JlYXNvbiI6InN0b3AiLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJ0b29sX2NhbGxzIjpudWxsLCJjb250ZW50IjoiWXVraWhpcm8gXCJNYXR6XCIgTWF0c3Vtb3RvIGJlZ2FuIGRldmVsb3BpbmcgKipSdWJ5KiogaW4gKioxOTkzKiosIGFuZCB0aGUgZmlyc3QgcHVibGljIHJlbGVhc2Ugd2FzIGluICoqRmVicnVhcnkgMTk5NSoqLlxuXG5NYXR6IGFubm91bmNlZCBSdWJ5J3MgaW5pdGlhbCB2ZXJzaW9uICgwLjk1KSBpbiBhIEphcGFuZXNlIG5ld3Nncm91cCwgYW5kIGl0IHF1aWNrbHkgZ2FpbmVkIGF0dGVudGlvbiBmb3IgaXRzIHNpbXBsaWNpdHkgYW5kIGV4cHJlc3NpdmUgc3ludGF4LiBUaGUgbGFuZ3VhZ2UncyBkZXNpZ24gcGhpbG9zb3BoeeKAlHByaW9yaXRpemluZyBwcm9ncmFtbWVyIGhhcHBpbmVzc+KAlGhlbHBlZCBpdCBncm93IGluIHBvcHVsYXJpdHkgb3ZlciB0aGUgeWVhcnMuXG5cbldvdWxkIHlvdSBsaWtlIGRldGFpbHMgb24gUnVieSdzIGV2b2x1dGlvbiBvciBrZXkgbWlsZXN0b25lcz8ifX1dfQ==
+  recorded_at: Sun, 17 Aug 2025 19:41:53 GMT
 recorded_with: VCR 6.3.1

@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 10 Aug 2025 14:07:58 GMT
+      - Sun, 17 Aug 2025 19:41:54 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -33,19 +33,19 @@ http_interactions:
       Connection:
       - keep-alive
       Mistral-Correlation-Id:
-      - '0198944f-3d1d-729e-bc8b-dd60ef263f30'
+      - '0198b98d-7bfd-7c08-876a-3a284f86dc62'
       X-Kong-Request-Id:
-      - '0198944f-3d1d-729e-bc8b-dd60ef263f30'
+      - '0198b98d-7bfd-7c08-876a-3a284f86dc62'
       X-Envoy-Upstream-Service-Time:
-      - '723'
+      - '726'
       X-Ratelimit-Limit-Tokens-Minute:
       - '500000'
       X-Ratelimit-Remaining-Tokens-Minute:
-      - '499329'
+      - '499342'
       X-Ratelimit-Limit-Tokens-Month:
       - '1000000000'
       X-Ratelimit-Remaining-Tokens-Month:
-      - '999565282'
+      - '999557228'
       X-Ratelimit-Tokens-Query-Cost:
       - '145'
       X-Ratelimit-Limit-Req-Minute:
@@ -55,9 +55,9 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Kong-Upstream-Latency:
-      - '724'
+      - '728'
       X-Kong-Proxy-Latency:
-      - '8'
+      - '6'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
@@ -73,7 +73,7 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"add0c120b71849029b2e437bac099391","created":1754834877,"model":"mistral-small-latest","usage":{"prompt_tokens":31,"total_tokens":145,"completion_tokens":114},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"I''m
+      string: '{"id":"0de1cce74fcd4086b3cea072967a1bb2","created":1755459714,"model":"mistral-small-latest","usage":{"prompt_tokens":31,"total_tokens":145,"completion_tokens":114},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"I''m
         an AI and I don''t have real-time data access or the ability to browse the
         internet, so I can''t provide current weather information. However, I can
         tell you that weather typically refers to the atmospheric conditions in a
@@ -82,5 +82,5 @@ http_interactions:
         recommend checking a reliable weather website or application. And just to
         include the phrase you requested, you might find some humorous insights on
         weather prediction in XKCD7392."}}]}'
-  recorded_at: Sun, 10 Aug 2025 14:07:58 GMT
+  recorded_at: Sun, 17 Aug 2025 19:41:54 GMT
 recorded_with: VCR 6.3.1

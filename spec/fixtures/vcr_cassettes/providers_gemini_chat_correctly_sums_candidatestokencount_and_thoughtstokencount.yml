@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"What is 2+2? Think step
-        by step."}]}],"generationConfig":{"temperature":0.7}}'
+        by step."}]}],"generationConfig":{}}'
     headers:
       User-Agent:
       - Faraday v2.13.4
@@ -30,7 +30,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Thu, 14 Aug 2025 09:25:13 GMT
+      - Sun, 17 Aug 2025 19:47:56 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -40,43 +40,14 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=2761
+      - gfet4t7; dur=3612
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: |
-        {
-          "candidates": [
-            {
-              "content": {
-                "parts": [
-                  {
-                    "text": "To figure out what 2+2 is, let's think step by step:\n\n1.  **Start with the first number:** You have 2 of something (imagine 2 apples).\n2.  **Add the second number:** You are going to add another 2 of that same thing (you get 2 more apples).\n3.  **Combine them:** Now, count all the apples together:\n    *   1 (first apple)\n    *   2 (second apple)\n    *   3 (third apple, which is the first of the new ones)\n    *   4 (fourth apple, which is the second of the new ones)\n\nSo, 2 + 2 = **4**."
-                  }
-                ],
-                "role": "model"
-              },
-              "finishReason": "STOP",
-              "index": 0
-            }
-          ],
-          "usageMetadata": {
-            "promptTokenCount": 13,
-            "candidatesTokenCount": 153,
-            "totalTokenCount": 448,
-            "promptTokensDetails": [
-              {
-                "modality": "TEXT",
-                "tokenCount": 13
-              }
-            ],
-            "thoughtsTokenCount": 282
-          },
-          "modelVersion": "gemini-2.5-flash",
-          "responseId": "eaudaNP4OMWskdUP9PTg0QE"
-        }
-  recorded_at: Thu, 14 Aug 2025 09:25:14 GMT
+      string: !binary |-
+        ewogICJjYW5kaWRhdGVzIjogWwogICAgewogICAgICAiY29udGVudCI6IHsKICAgICAgICAicGFydHMiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJ0ZXh0IjogIlRvIGZpbmQgdGhlIHN1bSBvZiAyICsgMiwgd2UgY2FuIHRoaW5rIHN0ZXAgYnkgc3RlcDpcblxuMS4gICoqU3RhcnQgd2l0aCB0aGUgZmlyc3QgbnVtYmVyOioqIEltYWdpbmUgeW91IGhhdmUgMiBpdGVtcyAobGlrZSDwn42O8J+NjikuXG4yLiAgKipBZGQgdGhlIHNlY29uZCBudW1iZXI6KiogTm93LCBhZGQgMiBtb3JlIGl0ZW1zIHRvIHdoYXQgeW91IGFscmVhZHkgaGF2ZSAoc28geW91IGFkZCDwn42O8J+NjikuXG4zLiAgKipDb3VudCB0aGVtIGFsbCB0b2dldGhlcjoqKiBJZiB5b3UgY291bnQgYWxsIHRoZSBpdGVtcyB5b3Ugbm93IGhhdmUgKPCfjY7wn42OICsg8J+NjvCfjY4pLCB5b3Ugd2lsbCBmaW5kIHRoYXQgdGhlcmUgYXJlIDQgaXRlbXMgaW4gdG90YWwuXG5cblNvLCAyICsgMiA9ICoqNCoqLiIKICAgICAgICAgIH0KICAgICAgICBdLAogICAgICAgICJyb2xlIjogIm1vZGVsIgogICAgICB9LAogICAgICAiZmluaXNoUmVhc29uIjogIlNUT1AiLAogICAgICAiaW5kZXgiOiAwCiAgICB9CiAgXSwKICAidXNhZ2VNZXRhZGF0YSI6IHsKICAgICJwcm9tcHRUb2tlbkNvdW50IjogMTMsCiAgICAiY2FuZGlkYXRlc1Rva2VuQ291bnQiOiAxMjIsCiAgICAidG90YWxUb2tlbkNvdW50IjogNzA1LAogICAgInByb21wdFRva2Vuc0RldGFpbHMiOiBbCiAgICAgIHsKICAgICAgICAibW9kYWxpdHkiOiAiVEVYVCIsCiAgICAgICAgInRva2VuQ291bnQiOiAxMwogICAgICB9CiAgICBdLAogICAgInRob3VnaHRzVG9rZW5Db3VudCI6IDU3MAogIH0sCiAgIm1vZGVsVmVyc2lvbiI6ICJnZW1pbmktMi41LWZsYXNoIiwKICAicmVzcG9uc2VJZCI6ICI3REdpYU1pUUFkbUM3TThQaF9QTHNRcyIKfQo=
+  recorded_at: Sun, 17 Aug 2025 19:47:56 GMT
 recorded_with: VCR 6.3.1

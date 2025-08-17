@@ -22,7 +22,7 @@ module RubyLLM
       @config = context&.config || RubyLLM.config
       model_id = model || @config.default_model
       with_model(model_id, provider: provider, assume_exists: assume_model_exists)
-      @temperature = 0.7
+      @temperature = nil
       @messages = []
       @tools = {}
       @params = {}

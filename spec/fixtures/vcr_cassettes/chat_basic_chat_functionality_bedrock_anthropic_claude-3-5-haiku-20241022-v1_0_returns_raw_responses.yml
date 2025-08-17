@@ -6,19 +6,19 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"anthropic_version":"bedrock-2023-05-31","messages":[{"role":"user","content":[{"type":"text","text":"What
-        is the capital of France?"}]}],"max_tokens":4096,"temperature":0.7}'
+        is the capital of France?"}]}],"max_tokens":4096}'
     headers:
       User-Agent:
       - Faraday v2.13.4
       Host:
       - bedrock-runtime.<AWS_REGION>.amazonaws.com
       X-Amz-Date:
-      - 20250810T133141Z
+      - 20250817T193845Z
       X-Amz-Content-Sha256:
-      - 83e97bd59131448e628d97ac09291d554085a3c126feccc1e85e58a491e88936
+      - 72ccd27b3f73e81693fa27291ff6c5b19dbd025b279e59d3f3a47c86c8e64b03
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20250810/<AWS_REGION>/bedrock/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=0e484f457b81537e39b75e5ee589e610e3d31f86c57e24d9309f9d0954c41265
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20250817/<AWS_REGION>/bedrock/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=f60968d8a651bb278cfb852efd5244a27f4b56722b9cfdb817bd6f215139a667
       Content-Type:
       - application/json
       Accept:
@@ -31,24 +31,26 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 10 Aug 2025 13:31:42 GMT
+      - Sun, 17 Aug 2025 19:38:46 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '336'
+      - '537'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 46d7e314-f704-428c-bde6-899cf894446f
+      - a6c2ceaf-cd8b-446b-b480-a82bc3a901be
       X-Amzn-Bedrock-Invocation-Latency:
-      - '993'
+      - '1224'
       X-Amzn-Bedrock-Output-Token-Count:
-      - '10'
+      - '52'
       X-Amzn-Bedrock-Input-Token-Count:
       - '14'
     body:
       encoding: UTF-8
-      string: '{"id":"msg_bdrk_01XgxUmdqiWUUPr14cKZeRnX","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"Paris
-        is the capital of France."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":14,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":10}}'
-  recorded_at: Sun, 10 Aug 2025 13:31:42 GMT
+      string: '{"id":"msg_bdrk_01PVWKNwziounx8X6RPSGRDg","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"The
+        capital of France is Paris. It is located in the north-central part of the
+        country and is not only the political and administrative center of France,
+        but also a major global city known for its culture, art, fashion, and history."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":14,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":52}}'
+  recorded_at: Sun, 17 Aug 2025 19:38:46 GMT
 recorded_with: VCR 6.3.1

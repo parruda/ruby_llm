@@ -128,6 +128,8 @@ RSpec.describe RubyLLM::Chat do
           skip 'gpustack/qwen3 does not support streaming tool calls properly'
         end
 
+        skip 'Mistral has a bug with tool arguments in multi-turn streaming' if provider == :mistral
+
         unless RubyLLM::Provider.providers[provider]&.local?
           model_info = RubyLLM.models.find(model)
           skip "#{model} doesn't support function calling" unless model_info&.supports_functions?

@@ -15,10 +15,10 @@ module RubyLLM
           @model = model # Store model for completion_url/stream_url
           payload = {
             contents: format_messages(messages),
-            generationConfig: {
-              temperature: temperature
-            }
+            generationConfig: {}
           }
+
+          payload[:generationConfig][:temperature] = temperature unless temperature.nil?
 
           if schema
             payload[:generationConfig][:responseMimeType] = 'application/json'
