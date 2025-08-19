@@ -12,7 +12,7 @@ module RubyLLM
         end
 
         def render_payload(messages, tools:, temperature:, model:, stream: false, schema: nil) # rubocop:disable Metrics/ParameterLists,Lint/UnusedMethodArgument
-          @model = model # Store model for completion_url/stream_url
+          @model = model
           payload = {
             contents: format_messages(messages),
             generationConfig: {}
@@ -43,7 +43,7 @@ module RubyLLM
         def format_role(role)
           case role
           when :assistant then 'model'
-          when :system, :tool then 'user' # Gemini doesn't have system, use user role, function responses use user role
+          when :system, :tool then 'user'
           else role.to_s
           end
         end
@@ -118,10 +118,8 @@ module RubyLLM
           candidate = data.dig('candidates', 0)
           return '' unless candidate
 
-          # Content will be empty for function calls
           return '' if function_call?(candidate)
 
-          # Extract text content
           parts = candidate.dig('content', 'parts')
           text_parts = parts&.select { |p| p['text'] }
           return '' unless text_parts&.any?

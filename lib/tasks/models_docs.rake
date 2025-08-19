@@ -6,12 +6,8 @@ require 'fileutils'
 namespace :models do
   desc 'Generate available models documentation'
   task :docs do
-    FileUtils.mkdir_p('docs') # ensure output directory exists
-
-    # Generate markdown content
+    FileUtils.mkdir_p('docs')
     output = generate_models_markdown
-
-    # Write the output
     File.write('docs/_reference/available-models.md', output)
     puts 'Generated docs/_reference/available-models.md'
   end
@@ -121,7 +117,6 @@ end
 def generate_modality_sections # rubocop:disable Metrics/PerceivedComplexity
   sections = []
 
-  # Models that support vision/images
   vision_models = RubyLLM.models.select { |m| (m.modalities.input || []).include?('image') }
   if vision_models.any?
     sections << <<~SECTION
@@ -133,7 +128,6 @@ def generate_modality_sections # rubocop:disable Metrics/PerceivedComplexity
     SECTION
   end
 
-  # Models that support audio
   audio_models = RubyLLM.models.select { |m| (m.modalities.input || []).include?('audio') }
   if audio_models.any?
     sections << <<~SECTION
@@ -145,7 +139,6 @@ def generate_modality_sections # rubocop:disable Metrics/PerceivedComplexity
     SECTION
   end
 
-  # Models that support PDFs
   pdf_models = RubyLLM.models.select { |m| (m.modalities.input || []).include?('pdf') }
   if pdf_models.any?
     sections << <<~SECTION
@@ -157,7 +150,6 @@ def generate_modality_sections # rubocop:disable Metrics/PerceivedComplexity
     SECTION
   end
 
-  # Models for embeddings
   embedding_models = RubyLLM.models.select { |m| (m.modalities.output || []).include?('embeddings') }
   if embedding_models.any?
     sections << <<~SECTION
@@ -179,7 +171,6 @@ def models_table(models)
   alignment = [':--', ':--', '--:', '--:', ':--']
 
   rows = models.sort_by { |m| [m.provider, m.name] }.map do |model|
-    # Format pricing information
     pricing = standard_pricing_display(model)
 
     [
@@ -203,7 +194,6 @@ def models_table(models)
 end
 
 def standard_pricing_display(model)
-  # Access pricing data using to_h to get the raw hash
   pricing_data = model.pricing.to_h[:text_tokens]&.dig(:standard) || {}
 
   if pricing_data.any?

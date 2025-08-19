@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 
 module RubyLLM
-  # Represents a conversation with an AI model. Handles message history,
-  # streaming responses, and tool integration with a simple, conversational API.
-  #
-  # Example:
-  #   chat = RubyLLM.chat
-  #   chat.ask "What's the best way to learn Ruby?"
-  #   chat.ask "Can you elaborate on that?"
+  # Represents a conversation with an AI model
   class Chat
     include Enumerable
 
@@ -141,7 +135,6 @@ module RubyLLM
 
       @on[:new_message]&.call unless block_given?
 
-      # Parse JSON if schema was set
       if @schema && response.content.is_a?(String)
         begin
           response.content = JSON.parse(response.content)
@@ -184,7 +177,6 @@ module RubyLLM
           @on[:new_message]&.call
         end
 
-        # Pass chunk to user's block
         block.call chunk
       end
     end

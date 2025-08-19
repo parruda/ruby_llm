@@ -61,7 +61,7 @@ def refresh_models
 end
 
 def validate_models!(models)
-  schema_path = File.expand_path('../ruby_llm/models_schema.json', __dir__)
+  schema_path = RubyLLM::Models.schema_file
   models_data = models.all.map(&:to_h)
 
   validation_errors = JSON::Validator.fully_validate(schema_path, models_data)

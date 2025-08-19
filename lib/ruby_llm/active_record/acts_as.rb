@@ -3,8 +3,6 @@
 module RubyLLM
   module ActiveRecord
     # Adds chat and message persistence capabilities to ActiveRecord models.
-    # Provides a clean interface for storing chat history, message metadata,
-    # and attachments in your database.
     module ActsAs
       extend ActiveSupport::Concern
 
@@ -75,8 +73,7 @@ module RubyLLM
       end
     end
 
-    # Methods mixed into chat models to handle message persistence and
-    # provide a conversation interface.
+    # Methods mixed into chat models.
     module ChatMethods
       extend ActiveSupport::Concern
 
@@ -222,10 +219,8 @@ module RubyLLM
       end
 
       def setup_persistence_callbacks
-        # Only set up once per chat instance
         return @chat if @chat.instance_variable_get(:@_persistence_callbacks_setup)
 
-        # Set up persistence callbacks (user callbacks will be chained via on_new_message/on_end_message methods)
         @chat.on_new_message { persist_new_message }
         @chat.on_end_message { |msg| persist_message_completion(msg) }
 
@@ -243,7 +238,6 @@ module RubyLLM
         tool_call_id = find_tool_call_id(message.tool_call_id) if message.tool_call_id
 
         transaction do
-          # Convert parsed JSON back to JSON string for storage
           content = message.content
           content = content.to_json if content.is_a?(Hash) || content.is_a?(Array)
 
@@ -297,7 +291,6 @@ module RubyLLM
       def convert_to_active_storage_format(source)
         return if source.blank?
 
-        # Let RubyLLM::Attachment handle the heavy lifting
         attachment = RubyLLM::Attachment.new(source)
 
         {
@@ -311,8 +304,7 @@ module RubyLLM
       end
     end
 
-    # Methods mixed into message models to handle serialization and
-    # provide a clean interface to the underlying message data.
+    # Methods mixed into message models.
     module MessageMethods
       extend ActiveSupport::Concern
 

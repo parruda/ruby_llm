@@ -73,7 +73,6 @@ module RubyLLM
         def parse_tool_calls(content_blocks)
           return nil if content_blocks.nil?
 
-          # Handle single content block (backward compatibility)
           content_blocks = [content_blocks] unless content_blocks.is_a?(Array)
 
           tool_calls = {}
