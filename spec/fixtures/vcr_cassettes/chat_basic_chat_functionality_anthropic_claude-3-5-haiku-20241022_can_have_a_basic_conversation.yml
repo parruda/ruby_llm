@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:38:30 GMT
+      - Wed, 20 Aug 2025 17:08:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,31 +38,33 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '100000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-17T19:38:30Z'
+      - '2025-08-20T17:08:29Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '20000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '20000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-17T19:38:30Z'
+      - '2025-08-20T17:08:29Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-17T19:38:30Z'
+      - '2025-08-20T17:08:28Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '120000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '120000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-17T19:38:30Z'
+      - '2025-08-20T17:08:29Z'
       Request-Id:
       - "<REQUEST_ID>"
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - "<ANTHROPIC_ORGANIZATION_ID>"
+      X-Envoy-Upstream-Service-Time:
+      - '1007'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -75,6 +77,6 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_013TqiDtdHtaCjhyAgSikQ38","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"4."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":16,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":6,"service_tier":"standard"}}'
-  recorded_at: Sun, 17 Aug 2025 19:38:30 GMT
+      string: '{"id":"msg_0155Q3cdUX3biHjE6qu4WfSz","type":"message","role":"assistant","model":"claude-3-5-haiku-20241022","content":[{"type":"text","text":"4"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":16,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":5,"service_tier":"standard"}}'
+  recorded_at: Wed, 20 Aug 2025 17:08:29 GMT
 recorded_with: VCR 6.3.1

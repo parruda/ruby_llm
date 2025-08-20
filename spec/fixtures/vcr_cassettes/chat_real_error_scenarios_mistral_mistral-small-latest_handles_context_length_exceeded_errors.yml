@@ -23,7 +23,7 @@ http_interactions:
       message: Internal Server Error
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:38:16 GMT
+      - Wed, 20 Aug 2025 17:08:11 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -33,17 +33,17 @@ http_interactions:
       Cf-Ray:
       - "<CF_RAY>"
       Mistral-Correlation-Id:
-      - '0198b98a-2186-7f38-a3f1-ffca4977d7e8'
+      - '0198c873-d1cd-757b-9d4d-5671c80034ca'
       X-Kong-Request-Id:
-      - '0198b98a-2186-7f38-a3f1-ffca4977d7e8'
+      - '0198c873-d1cd-757b-9d4d-5671c80034ca'
       X-Envoy-Upstream-Service-Time:
-      - '819'
+      - '876'
       Access-Control-Allow-Origin:
       - "*"
       X-Kong-Upstream-Latency:
-      - '830'
+      - '887'
       X-Kong-Proxy-Latency:
-      - '1114'
+      - '420'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
@@ -58,5 +58,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"object":"error","message":"Service unavailable.","type":"internal_server_error","param":null,"code":"1000"}'
-  recorded_at: Sun, 17 Aug 2025 19:38:16 GMT
+  recorded_at: Wed, 20 Aug 2025 17:08:11 GMT
 recorded_with: VCR 6.3.1

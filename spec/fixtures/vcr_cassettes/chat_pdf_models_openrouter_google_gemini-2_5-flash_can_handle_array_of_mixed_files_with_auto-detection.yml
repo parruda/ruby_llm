@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:36:19 GMT
+      - Wed, 20 Aug 2025 17:06:22 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -49,91 +49,12 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
-        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
-        \        \n\n         \n\n         \n\n         \n{\"id\":\"gen-1755459376-TaNQq6TSpYKRJsqOd7G1\",\"provider\":\"Google\",\"model\":\"google/gemini-2.5-flash\",\"object\":\"chat.completion\",\"created\":1755459377,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"STOP\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"This
-        analysis will cover the image and the PDF file provided.\\n\\n**Image Analysis:**\\n\\nThe
-        image displays a stylized red gemstone, resembling a ruby.\\n*   **Color:**
-        The primary color is a rich red, with variations in shade and highlights indicating
-        facets and reflective surfaces.\\n*   **Shape:** It's cut into a faceted shape,
-        typical of gemstones, presenting a three-dimensional appearance. The top surface
-        shows a large, central facet, and the sides have multiple smaller, angular
-        facets.\\n*   **Lighting/Shine:** There are prominent white and light red
-        highlights on some of the facets, suggesting a light source hitting the gem
-        and creating a luminous effect. This gives it a polished, reflective quality.\\n*
-        \  **Association:** This particular design is widely recognized as the official
-        logo or symbol for the **Ruby programming language**.\\n\\n**PDF File Analysis
-        (sample.pdf):**\\n\\nThe PDF file \\\"sample.pdf\\\" contains text content
-        structured with headings and paragraphs.\\n\\n*   **Title/Heading:** The document
-        starts with a main title \\\"**# Sample PDF**\\\" and a subtitle \\\"**##
-        This is a simple PDF file. Fun fun fun.**\\\". The use of '#' and '##' suggests
-        markdown formatting, even though it's displayed as a PDF.\\n*   **Content:**
-        The bulk of the PDF consists of several paragraphs of Latin placeholder text,
-        commonly known as \\\"Lorem Ipsum\\\".\\n    *   **Paragraph 1:** Begins \\\"Lorem
-        ipsum dolor sit amet, consectetuer adipiscing elit...\\\" and discusses various
-        aspects of \\\"Lorem Ipsum\\\" ipsum and related concepts.\\n    *   **Paragraph
-        2:** Continues with \\\"Pellentesque sit amet lectus. Praesent pulvinar...\\\"\\n
-        \   *   **Paragraph 3:** Continues with \\\"In mauris. Pellentesque dui nisi,
-        iaculis eu...\\\"\\n    *   **Paragraph 4:** Concludes with \\\"Morbi elit
-        nunc, facilisis a, mollis a, molestie at, lectus...\\\"\\n*   **Purpose of
-        Content:** The use of Lorem Ipsum indicates that the textual content itself
-        is not meaningful and serves as a placeholder to demonstrate the layout and
-        structure of a document. It's often used in design and development to show
-        what a document would look like with text, without distracting from the visual
-        presentation.\\n\\n**Combined Analysis and Potential Relationship:**\\n\\nThere
-        is no direct thematic or content-based relationship between the image (Ruby
-        programming language logo) and the PDF file (a generic sample document with
-        Lorem Ipsum text).\\n\\n*   The image represents a specific technology/programming
-        language.\\n*   The PDF is a \\\"sample\\\" document, likely used for testing
-        or demonstration purposes, given its placeholder text.\\n\\nIt's possible
-        that:\\n*   The PDF could be an example document generated *by* a Ruby application,
-        but the content itself doesn't suggest this.\\n*   The files are unrelated
-        and merely provided together for a general analysis task.\\n*   The name \\\"sample.pdf\\\"
-        along with the Ruby logo might hint that this PDF is a *sample output* from
-        a Ruby script or library that generates PDF documents. This is a common use
-        case for programming languages when demonstrating document generation capabilities.
-        Without more context, this is speculative, but it's a logical connection given
-        the presence of both items.\\n\\nIn summary, the image is the Ruby language
-        logo, and the PDF is a placeholder document. Their connection, if any, is
-        most likely functional (e.g., the PDF was created using Ruby) rather than
-        thematic.\",\"refusal\":null,\"reasoning\":null,\"annotations\":[{\"type\":\"file\",\"file\":{\"hash\":\"cd39db59623299aa75d5d332db9c8d70f555409813ec97525563264a3a1b3e42\",\"name\":\"sample.pdf\",\"content\":[{\"type\":\"text\",\"text\":\"<file
-        name=\\\"sample.pdf\\\">\"},{\"type\":\"text\",\"text\":\"# Sample PDF \\n\\n##
-        This is a simple PDF file. Fun fun fun.\\n\\nLorem ipsum dolor sit amet, consectetuer
-        adipiscing elit. Phasellus facilisis odio sed mi. Curabitur suscipit. Nullam
-        vel nisi. Etiam semper ipsum ut lectus. Proin aliquam, erat eget pharetra
-        commodo, eros mi condimentum quam, sed commodo justo quam ut velit. Integer
-        a erat. Cras laoreet ligula cursus enim. Aenean scelerisque velit et tellus.
-        Vestibulum dictum aliquet sem. Nulla facilisi. Vestibulum accumsan ante vitae
-        elit. Nulla erat dolor, blandit in, rutrum quis, semper pulvinar, enim. Nullam
-        varius congue risus. Vivamus sollicitudin, metus ut interdum eleifend, nisi
-        tellus pellentesque elit, tristique accumsan eros quam et risus. Suspendisse
-        libero odio, mattis sit amet, aliquet eget, hendrerit vel, nulla. Sed vitae
-        augue. Aliquam erat volutpat. Aliquam feugiat vulputate nisl. Suspendisse
-        quis nulla pretium ante pretium mollis. Proin velit ligula, sagittis at, egestas
-        a, pulvinar quis, nisl.\\n\\nPellentesque sit amet lectus. Praesent pulvinar,
-        nunc quis iaculis sagittis, justo quam lobortis tortor, sed vestibulum dui
-        metus venenatis est. Nunc cursus ligula. Nulla facilisi. Phasellus ullamcorper
-        consectetuer ante. Duis tincidunt, urna id condimentum luctus, nibh ante vulputate
-        sapien, id sagittis massa orci ut enim. Pellentesque vestibulum convallis
-        sem. Nulla consequat quam ut nisl. Nullam est. Curabitur tincidunt dapibus
-        lorem. Proin velit turpis, scelerisque sit amet, iaculis nec, rhoncus ac,
-        ipsum. Phasellus lorem arcu, feugiat eu, gravida eu, consequat molestie, ipsum.
-        Nullam vel est ut ipsum volutpat feugiat. Aenean pellentesque.\\n\\nIn mauris.
-        Pellentesque dui nisi, iaculis eu, rhoncus in, venenatis ac, ante. Ut odio
-        justo, scelerisque vel, facilisis non, commodo a, pede. Cras nec massa sit
-        amet tortor volutpat varius. Donec lacinia, neque a luctus aliquet, pede massa
-        imperdiet ante, at varius lorem pede sed sapien. Fusce erat nibh, aliquet
-        in, eleifend eget, commodo eget, erat. Fusce consectetuer. Cras risus tortor,
-        porttitor nec, tristique sed, convallis semper, eros. Fusce vulputate ipsum
-        a mauris. Phasellus mollis. Curabitur sed urna. Aliquam nec sapien non nibh
-        pulvinar convallis. Vivamus facilisis augue quis quam. Proin cursus aliquet
-        metus. Suspendisse lacinia. Nulla at tellus ac turpis eleifend scelerisque.
-        Maecenas a pede vitae enim commodo interdum. Donec odio. Sed sollicitudin
-        dui vitae justo.\\n\\nMorbi elit nunc, facilisis a, mollis a, molestie at,
-        lectus. Suspendisse eget mauris eu tellus molestie cursus. Duis ut magna at
-        justo dignissim condimentum. Cum sociis natoque penatibus et magnis dis parturient
-        montes, nascetur ridiculus mus. Vivamus varius. Ut sit amet diam suscipit
-        mauris ornare aliquam. Sed varius. Duis arcu. Etiam tristique massa eget dui.
-        Phasellus congue. Aenean est erat, tincidunt eget, venenatis quis, commodo
-        at, quam.\"},{\"type\":\"text\",\"text\":\"</file>\"}]}}]}}],\"usage\":{\"prompt_tokens\":1119,\"completion_tokens\":740,\"total_tokens\":1859,\"prompt_tokens_details\":{\"cached_tokens\":0}}}"
-  recorded_at: Sun, 17 Aug 2025 19:36:22 GMT
+        \        \n{\"id\":\"gen-1755709579-VmgUE573p4kLdJk2sri0\",\"provider\":\"Google\",\"model\":\"google/gemini-2.5-flash\",\"object\":\"chat.completion\",\"created\":1755709579,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"STOP\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The
+        first image is a logo for the programming language Ruby, featuring a stylized
+        red gemstone.\\n\\nThe second image is a sample PDF document.\\n- The title
+        \\\"Sample PDF\\\" is at the top.\\n- Below it is the text \\\"This is a simple
+        PDF file. Fun fun fun.\\\"\\n- The rest of the document is filled with typical
+        placeholder text, Latin-sounding but nonsensical, often referred to as \\\"Lorem
+        ipsum\\\". It appears to be multiple paragraphs of this text.\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":519,\"completion_tokens\":99,\"total_tokens\":618,\"prompt_tokens_details\":{\"cached_tokens\":0}}}"
+  recorded_at: Wed, 20 Aug 2025 17:06:22 GMT
 recorded_with: VCR 6.3.1

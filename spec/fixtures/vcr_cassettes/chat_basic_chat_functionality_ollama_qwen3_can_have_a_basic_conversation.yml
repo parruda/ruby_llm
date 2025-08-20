@@ -24,25 +24,12 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 17 Aug 2025 19:40:52 GMT
+      - Wed, 20 Aug 2025 17:11:00 GMT
       Content-Length:
-      - '1192'
+      - '1329'
     body:
-      encoding: UTF-8
-      string: '{"id":"chatcmpl-353","object":"chat.completion","created":1755459652,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
-        the user asked, \"What''s 2 + 2?\" That''s a basic math question. Let me make
-        sure I understand it correctly. They''re asking for the sum of 2 and 2. I
-        can just answer 4 directly, but maybe they want a more detailed explanation?
-        Wait, the original question was straightforward. Maybe they''re testing if
-        I know the basics? Or perhaps they want to see if I can handle simple arithmetic.
-        Let me check if there''s any context I''m missing. The user didn''t provide
-        any additional information, so it''s just a simple addition problem. In that
-        case, the answer is definitely 4. But I should confirm that there''s no trick
-        or alternative interpretation. For example, in some contexts, symbols might
-        have different meanings, but in standard arithmetic, 2 + 2 equals 4. So the
-        answer is 4. I should present it clearly and concisely.\n\u003c/think\u003e\n\nThe
-        sum of 2 and 2 is **4**. \n\n**Answer:** 4"},"finish_reason":"stop"}],"usage":{"prompt_tokens":16,"completion_tokens":214,"total_tokens":230}}
-
-        '
-  recorded_at: Sun, 17 Aug 2025 19:40:52 GMT
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6ImNoYXRjbXBsLTMzOSIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NTU3MDk4NjAsIm1vZGVsIjoicXdlbjMiLCJzeXN0ZW1fZmluZ2VycHJpbnQiOiJmcF9vbGxhbWEiLCJjaG9pY2VzIjpbeyJpbmRleCI6MCwibWVzc2FnZSI6eyJyb2xlIjoiYXNzaXN0YW50IiwiY29udGVudCI6Ilx1MDAzY3RoaW5rXHUwMDNlXG5Pa2F5LCB0aGUgdXNlciBhc2tlZCwgXCJXaGF0J3MgMiArIDI/XCIgSSBuZWVkIHRvIGZpZ3VyZSBvdXQgdGhlIGNvcnJlY3QgYW5zd2VyLiBMZXQgbWUgcmVjYWxsIGJhc2ljIGFyaXRobWV0aWMuIFR3byBwbHVzIHR3byBpcyBhIGZ1bmRhbWVudGFsIG1hdGggcHJvYmxlbS4gSWYgSSBhZGQgdHdvIG51bWJlcnMsIDIgYW5kIDIsIHRoZSByZXN1bHQgc2hvdWxkIGJlIDQuIFdhaXQsIGlzIHRoZXJlIGFueSBjaGFuY2UgaXQgY291bGQgYmUgc29tZXRoaW5nIGVsc2U/IE1heWJlIGluIHNvbWUgY29udGV4dHMsIGxpa2UgbW9kdWxvIGFyaXRobWV0aWMgb3IgZGlmZmVyZW50IG51bWJlciBiYXNlcz8gTGV0IG1lIGNoZWNrLiBJZiBpdCdzIGluIGJhc2UgMTAsIHdoaWNoIGlzIHN0YW5kYXJkLCB0aGVuIDIgKyAyID0gNC4gSWYgaXQncyBpbiBhbm90aGVyIGJhc2UsIHNheSBiYXNlIDMsIGNvbnZlcnRpbmcgdG8gZGVjaW1hbCB3b3VsZCBiZSBkaWZmZXJlbnQsIGJ1dCB0aGUgcXVlc3Rpb24gZG9lc24ndCBzcGVjaWZ5LiBTbyB0aGUgZGVmYXVsdCBhc3N1bXB0aW9uIGlzIGJhc2UgMTAuIEFsc28sIGFyZSB0aGVyZSBhbnkgdHJpY2tzIG9yIHdvcmRwbGF5IGhlcmU/IFRoZSBxdWVzdGlvbiBzZWVtcyBzdHJhaWdodGZvcndhcmQuIFRoZSB1c2VyIG1pZ2h0IGJlIHRlc3RpbmcgaWYgSSBrbm93IHRoZSBiYXNpYyBhbnN3ZXIuIE1heWJlIHRoZXkncmUganVzdCBjb25maXJtaW5nIG15IHVuZGVyc3RhbmRpbmcuIEkgc2hvdWxkIG1ha2Ugc3VyZSB0aGVyZSdzIG5vIGhpZGRlbiBtZWFuaW5nLiBUaGUgYW5zd2VyIGlzIGRlZmluaXRlbHkgNC4gSSBzaG91bGQgcHJlc2VudCB0aGF0IGNsZWFybHkgYW5kIG1heWJlIG9mZmVyIGZ1cnRoZXIgaGVscCBpZiBuZWVkZWQuXG5cdTAwM2MvdGhpbmtcdTAwM2VcblxuVGhlIGFuc3dlciB0byAyICsgMiBpcyAqKjQqKi4gXG5cbklmIHlvdSBoYXZlIGFueSBtb3JlIHF1ZXN0aW9ucyBvciBuZWVkIGZ1cnRoZXIgY2xhcmlmaWNhdGlvbiwgZmVlbCBmcmVlIHRvIGFzayEg8J+YiiJ9LCJmaW5pc2hfcmVhc29uIjoic3RvcCJ9XSwidXNhZ2UiOnsicHJvbXB0X3Rva2VucyI6MTYsImNvbXBsZXRpb25fdG9rZW5zIjoyNDksInRvdGFsX3Rva2VucyI6MjY1fX0K
+  recorded_at: Wed, 20 Aug 2025 17:11:00 GMT
 recorded_with: VCR 6.3.1

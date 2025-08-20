@@ -24,14 +24,14 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 17 Aug 2025 19:38:21 GMT
+      - Wed, 20 Aug 2025 17:08:18 GMT
       Content-Length:
-      - '307'
+      - '300'
     body:
       encoding: UTF-8
-      string: '{"id":"chatcmpl-218","object":"chat.completion","created":1755459501,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"{\n\n\n  \"result\":
-        8\n\n}"},"finish_reason":"stop"}],"usage":{"prompt_tokens":29,"completion_tokens":10,"total_tokens":39}}
+      string: '{"id":"chatcmpl-87","object":"chat.completion","created":1755709698,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"{\n  \"result\":
+        8\n}"},"finish_reason":"stop"}],"usage":{"prompt_tokens":29,"completion_tokens":10,"total_tokens":39}}
 
         '
-  recorded_at: Sun, 17 Aug 2025 19:38:21 GMT
+  recorded_at: Wed, 20 Aug 2025 17:08:18 GMT
 recorded_with: VCR 6.3.1

@@ -29,7 +29,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Sun, 17 Aug 2025 19:36:23 GMT
+      - Wed, 20 Aug 2025 17:06:23 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -69,5 +69,5 @@ http_interactions:
             ]
           }
         }
-  recorded_at: Sun, 17 Aug 2025 19:36:23 GMT
+  recorded_at: Wed, 20 Aug 2025 17:06:23 GMT
 recorded_with: VCR 6.3.1

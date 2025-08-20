@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 19 Aug 2025 08:58:38 GMT
+      - Wed, 20 Aug 2025 17:13:00 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,7 +39,7 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '75'
+      - '85'
       Openai-Project:
       - proj_KyS64Yhsc9qhhwjNcgkOa88E
       Openai-Version:
@@ -47,9 +47,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Via:
-      - envoy-router-5566854f45-9bsn8
+      - envoy-router-5dbccf4799-mcqds
       X-Envoy-Upstream-Service-Time:
-      - '136'
+      - '951'
       X-Ratelimit-Limit-Requests:
       - '3000'
       X-Ratelimit-Limit-Tokens:
@@ -3168,7 +3168,7 @@ http_interactions:
             "total_tokens": 2
           }
         }
-  recorded_at: Tue, 19 Aug 2025 08:58:38 GMT
+  recorded_at: Wed, 20 Aug 2025 17:13:00 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/embeddings
@@ -3192,7 +3192,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 19 Aug 2025 08:58:39 GMT
+      - Wed, 20 Aug 2025 17:13:00 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -3208,7 +3208,7 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '95'
+      - '281'
       Openai-Project:
       - proj_KyS64Yhsc9qhhwjNcgkOa88E
       Openai-Version:
@@ -3216,9 +3216,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Via:
-      - envoy-router-5b9495584c-2t7lq
+      - envoy-router-8585dbb8c-8cdmr
       X-Envoy-Upstream-Service-Time:
-      - '565'
+      - '381'
       X-Ratelimit-Limit-Requests:
       - '3000'
       X-Ratelimit-Limit-Tokens:
@@ -4801,5 +4801,5 @@ http_interactions:
             "total_tokens": 2
           }
         }
-  recorded_at: Tue, 19 Aug 2025 08:58:40 GMT
+  recorded_at: Wed, 20 Aug 2025 17:13:00 GMT
 recorded_with: VCR 6.3.1

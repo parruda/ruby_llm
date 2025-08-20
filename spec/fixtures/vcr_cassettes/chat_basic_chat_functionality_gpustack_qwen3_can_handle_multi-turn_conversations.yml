@@ -22,15 +22,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:41:14 GMT
-      - Sun, 17 Aug 2025 19:41:15 GMT
+      - Wed, 20 Aug 2025 17:11:20 GMT
+      - Wed, 20 Aug 2025 17:11:21 GMT
       Server:
       - uvicorn
       - uvicorn
       Keep-Alive:
       - timeout=15, max=100
       Content-Length:
-      - '1165'
+      - '1097'
       Content-Type:
       - application/json
       X-Request-Accepted-At:
@@ -43,13 +43,12 @@ http_interactions:
       encoding: UTF-8
       string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"\n\nRuby
         was created by **Yukihiro \"Matz\" Matsumoto**, a Japanese programmer. He
-        developed the language in the mid-1990s, with the first version released in
-        1995. Matsumoto designed Ruby to be a practical, programmer-friendly language
-        that combined the flexibility of Perl with the object-oriented features of
-        Smalltalk and Lisp. The name \"Ruby\" comes from the gemstone, a common naming
-        convention for programming languages. Matz has remained actively involved
-        in the Ruby community and its development over the years.","role":"assistant"}}],"created":1755459679,"id":"chatcmpl-L4hOUoBJVkXS8oo3gTMY8OeRSjM44HaG","model":"qwen3","object":"chat.completion","usage":{"completion_tokens":448,"completion_tokens_details":{"accepted_prediction_tokens":0,"reasoning_tokens":332,"rejected_prediction_tokens":0},"draft_tokens":0,"draft_tokens_acceptance":0.0,"prompt_tokens":14,"prompt_tokens_details":{"cached_tokens":2},"prompt_tokens_per_second":827.4231678486997,"time_per_output_token_ms":9.104645089285714,"time_to_first_token_ms":16.92,"tokens_per_second":109.83404517072208,"total_tokens":462}}'
-  recorded_at: Sun, 17 Aug 2025 19:41:19 GMT
+        developed the Ruby programming language in the mid-1990s, with the first version
+        released in 1995. Matsumoto chose the name \"Ruby\" because he admired the
+        gemstone and its qualities, such as its beauty and versatility. He is also
+        the lead developer of the Ruby language and has been actively involved in
+        its evolution and the broader Ruby community since its inception.","role":"assistant"}}],"created":1755709884,"id":"chatcmpl-KDHRalBctwxT8fqJZzP2cKeBGtyo0fmU","model":"qwen3","object":"chat.completion","usage":{"completion_tokens":318,"completion_tokens_details":{"accepted_prediction_tokens":0,"reasoning_tokens":213,"rejected_prediction_tokens":0},"draft_tokens":0,"draft_tokens_acceptance":0.0,"prompt_tokens":14,"prompt_tokens_details":{"cached_tokens":2},"prompt_tokens_per_second":817.9003330022783,"time_per_output_token_ms":8.772367924528302,"time_to_first_token_ms":17.117,"tokens_per_second":113.99430673717107,"total_tokens":332}}'
+  recorded_at: Wed, 20 Aug 2025 17:11:24 GMT
 - request:
     method: post
     uri: "<GPUSTACK_API_BASE>/chat/completions"
@@ -57,14 +56,13 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"qwen3","messages":[{"role":"user","content":"Who was Ruby''s
         creator?"},{"role":"assistant","content":"\n\nRuby was created by **Yukihiro
-        \"Matz\" Matsumoto**, a Japanese programmer. He developed the language in
-        the mid-1990s, with the first version released in 1995. Matsumoto designed
-        Ruby to be a practical, programmer-friendly language that combined the flexibility
-        of Perl with the object-oriented features of Smalltalk and Lisp. The name
-        \"Ruby\" comes from the gemstone, a common naming convention for programming
-        languages. Matz has remained actively involved in the Ruby community and its
-        development over the years."},{"role":"user","content":"What year did he create
-        Ruby?"}],"stream":false}'
+        \"Matz\" Matsumoto**, a Japanese programmer. He developed the Ruby programming
+        language in the mid-1990s, with the first version released in 1995. Matsumoto
+        chose the name \"Ruby\" because he admired the gemstone and its qualities,
+        such as its beauty and versatility. He is also the lead developer of the Ruby
+        language and has been actively involved in its evolution and the broader Ruby
+        community since its inception."},{"role":"user","content":"What year did he
+        create Ruby?"}],"stream":false}'
     headers:
       User-Agent:
       - Faraday v2.13.4
@@ -80,15 +78,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:41:19 GMT
-      - Sun, 17 Aug 2025 19:41:19 GMT
+      - Wed, 20 Aug 2025 17:11:23 GMT
+      - Wed, 20 Aug 2025 17:11:24 GMT
       Server:
       - uvicorn
       - uvicorn
       Keep-Alive:
       - timeout=15, max=100
       Content-Length:
-      - '860'
+      - '967'
       Content-Type:
       - application/json
       X-Request-Accepted-At:
@@ -100,8 +98,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"\n\nYukihiro
-        \"Matz\" Matsumoto created Ruby, and the first version of the language was
-        officially released in **1995**. This marked the debut of Ruby, which became
-        widely known for its simplicity and flexibility.","role":"assistant"}}],"created":1755459682,"id":"chatcmpl-CjNUXTbjgoccbPubPsHwNhPVNYruPOHJ","model":"qwen3","object":"chat.completion","usage":{"completion_tokens":276,"completion_tokens_details":{"accepted_prediction_tokens":0,"reasoning_tokens":224,"rejected_prediction_tokens":0},"draft_tokens":0,"draft_tokens_acceptance":0.0,"prompt_tokens":143,"prompt_tokens_details":{"cached_tokens":12},"prompt_tokens_per_second":3546.8029168113503,"time_per_output_token_ms":8.784492753623189,"time_to_first_token_ms":40.318,"tokens_per_second":113.83696566743107,"total_tokens":419}}'
-  recorded_at: Sun, 17 Aug 2025 19:41:22 GMT
+        \"Matz\" Matsumoto created the Ruby programming language, and the **first
+        version (Ruby 0.0)** was released in **1995**. The **first stable version
+        (Ruby 1.0)** was released in **1997**. The exact year of creation is often
+        cited as **1995**, when the initial version was developed and made publicly
+        available.","role":"assistant"}}],"created":1755709889,"id":"chatcmpl-7ONzYKQOeiJoOivSGXXpIG41zFeKzrdq","model":"qwen3","object":"chat.completion","usage":{"completion_tokens":533,"completion_tokens_details":{"accepted_prediction_tokens":0,"reasoning_tokens":443,"rejected_prediction_tokens":0},"draft_tokens":0,"draft_tokens_acceptance":0.0,"prompt_tokens":132,"prompt_tokens_details":{"cached_tokens":12},"prompt_tokens_per_second":3200.155159038014,"time_per_output_token_ms":8.91860037523452,"time_to_first_token_ms":41.248,"tokens_per_second":112.12521672983966,"total_tokens":665}}'
+  recorded_at: Wed, 20 Aug 2025 17:11:29 GMT
 recorded_with: VCR 6.3.1

@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 19 Aug 2025 08:58:45 GMT
+      - Wed, 20 Aug 2025 17:13:07 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -47,9 +47,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Via:
-      - envoy-router-66df57bb7-r5fs5
+      - envoy-router-54744b885f-pxfkc
       X-Envoy-Upstream-Service-Time:
-      - '121'
+      - '140'
       X-Ratelimit-Limit-Requests:
       - '3000'
       X-Ratelimit-Limit-Tokens:
@@ -4716,5 +4716,5 @@ http_interactions:
             "total_tokens": 3
           }
         }
-  recorded_at: Tue, 19 Aug 2025 08:58:45 GMT
+  recorded_at: Wed, 20 Aug 2025 17:13:07 GMT
 recorded_with: VCR 6.3.1

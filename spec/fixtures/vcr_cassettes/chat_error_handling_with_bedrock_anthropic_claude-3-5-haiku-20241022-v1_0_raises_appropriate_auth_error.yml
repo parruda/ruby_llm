@@ -12,12 +12,12 @@ http_interactions:
       Host:
       - bedrock-runtime.<AWS_REGION>.amazonaws.com
       X-Amz-Date:
-      - 20250817T193622Z
+      - 20250820T170622Z
       X-Amz-Content-Sha256:
       - d0e2b91788bc7649f3c9126d7ecaa5bf9f37fd75270d80e3b43638d8ab271d4c
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=invalid-key/20250817/<AWS_REGION>/bedrock/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=8e29e33b3335a57669367ba88985f1d51ce4d80894d7393a18bd6e38fd9662ee
+      - AWS4-HMAC-SHA256 Credential=invalid-key/20250820/<AWS_REGION>/bedrock/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=d1f81e5e0bc6b23a514df5f62d14d0575ddd6daffa4ba3fc90824bbd2fbb6bc9
       Content-Type:
       - application/json
       Accept:
@@ -30,7 +30,7 @@ http_interactions:
       message: Forbidden
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:36:23 GMT
+      - Wed, 20 Aug 2025 17:06:23 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -38,11 +38,11 @@ http_interactions:
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 14aed022-d29e-4945-a1a5-2cbc2919aff4
+      - 23eb3629-5a94-4902-8706-dfddb4fe2e02
       X-Amzn-Errortype:
       - UnrecognizedClientException:http://internal.amazon.com/coral/com.amazon.coral.service/
     body:
       encoding: UTF-8
       string: '{"message":"The security token included in the request is invalid."}'
-  recorded_at: Sun, 17 Aug 2025 19:36:23 GMT
+  recorded_at: Wed, 20 Aug 2025 17:06:23 GMT
 recorded_with: VCR 6.3.1

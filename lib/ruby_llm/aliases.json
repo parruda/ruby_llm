@@ -150,6 +150,10 @@
     "openai": "gpt-4o-2024-11-20",
     "openrouter": "openai/gpt-4o-2024-11-20"
   },
+  "gpt-4o-audio-preview": {
+    "openai": "gpt-4o-audio-preview",
+    "openrouter": "openai/gpt-4o-audio-preview"
+  },
   "gpt-4o-mini": {
     "openai": "gpt-4o-mini",
     "openrouter": "openai/gpt-4o-mini"

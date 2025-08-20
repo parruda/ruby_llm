@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:31:55 GMT
+      - Wed, 20 Aug 2025 17:01:49 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,13 +36,13 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '439'
+      - '617'
       Openai-Project:
       - proj_KyS64Yhsc9qhhwjNcgkOa88E
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '616'
+      - '652'
       X-Ratelimit-Limit-Input-Images:
       - '50000'
       X-Ratelimit-Limit-Requests:
@@ -82,16 +82,16 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-C5dOd4tJpOkyjH1TzkKpFlwLTZGEu",
+          "id": "chatcmpl-C6gU07N2V2DwdgvGd2hP10QFrcgMv",
           "object": "chat.completion",
-          "created": 1755459115,
+          "created": 1755709308,
           "model": "gpt-4.1-nano-2025-04-14",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "This is an image of a red gemstone or crystal with a faceted cut, reflecting light and creating a shiny appearance.",
+                "content": "This image appears to be an abstract representation of a red gemstone or jewel with facets.",
                 "refusal": null,
                 "annotations": []
               },
@@ -101,8 +101,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 53,
-            "completion_tokens": 24,
-            "total_tokens": 77,
+            "completion_tokens": 17,
+            "total_tokens": 70,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -117,5 +117,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_c4c155951e"
         }
-  recorded_at: Sun, 17 Aug 2025 19:31:55 GMT
+  recorded_at: Wed, 20 Aug 2025 17:01:49 GMT
 recorded_with: VCR 6.3.1

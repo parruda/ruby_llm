@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:34:59 GMT
+      - Wed, 20 Aug 2025 17:04:18 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,13 +36,13 @@ http_interactions:
       Openai-Organization:
       - "<OPENAI_ORGANIZATION>"
       Openai-Processing-Ms:
-      - '550'
+      - '646'
       Openai-Project:
       - proj_KyS64Yhsc9qhhwjNcgkOa88E
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '580'
+      - '679'
       X-Ratelimit-Limit-Input-Images:
       - '50000'
       X-Ratelimit-Limit-Requests:
@@ -82,16 +82,16 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-C5dRaFvTHE9IL8ivRTTVREse66Cx6",
+          "id": "chatcmpl-C6gWQTZqSUaPodN3Fi9UTD5mo7Lae",
           "object": "chat.completion",
-          "created": 1755459298,
+          "created": 1755709458,
           "model": "gpt-4.1-nano-2025-04-14",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "This image appears to be an abstract or stylized representation of a red gemstone, possibly a ruby or a similarly faceted gemstone, with facets and reflections creating a three-dimensional effect.",
+                "content": "The image appears to depict a faceted, geometrically stylized red gemstone or ruby with a deep red color and a shiny surface.",
                 "refusal": null,
                 "annotations": []
               },
@@ -101,8 +101,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 56,
-            "completion_tokens": 36,
-            "total_tokens": 92,
+            "completion_tokens": 27,
+            "total_tokens": 83,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -117,5 +117,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_c4c155951e"
         }
-  recorded_at: Sun, 17 Aug 2025 19:34:59 GMT
+  recorded_at: Wed, 20 Aug 2025 17:04:18 GMT
 recorded_with: VCR 6.3.1

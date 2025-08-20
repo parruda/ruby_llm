@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:40:32 GMT
+      - Wed, 20 Aug 2025 17:10:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -48,10 +48,7 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1755459631-2CWYOX5fFiHIp3i6va19\",\"provider\":\"Anthropic\",\"model\":\"anthropic/claude-3.5-haiku\",\"object\":\"chat.completion\",\"created\":1755459631,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The
-        capital of France is Paris. It is located in the north-central part of the
-        country and is known for its iconic landmarks such as the Eiffel Tower, the
-        Louvre Museum, and Notre-Dame Cathedral. Paris is also the largest city in
-        France and serves as the country's political, economic, and cultural center.\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":14,\"completion_tokens\":72,\"total_tokens\":86}}"
-  recorded_at: Sun, 17 Aug 2025 19:40:33 GMT
+      string: "\n         \n\n         \n{\"id\":\"gen-1755709838-SyZH176PzFu4o5J9fpK1\",\"provider\":\"Google\",\"model\":\"anthropic/claude-3.5-haiku\",\"object\":\"chat.completion\",\"created\":1755709838,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The
+        capital of France is Paris.\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":14,\"completion_tokens\":10,\"total_tokens\":24}}"
+  recorded_at: Wed, 20 Aug 2025 17:10:39 GMT
 recorded_with: VCR 6.3.1

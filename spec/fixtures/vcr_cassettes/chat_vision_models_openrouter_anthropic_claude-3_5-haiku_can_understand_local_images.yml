@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:35:01 GMT
+      - Wed, 20 Aug 2025 17:04:21 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -49,13 +49,12 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
-        \        \n\n         \n\n         \n\n         \n{\"id\":\"gen-1755459300-IQ2TrsOUleGMuJFWHeTv\",\"provider\":\"Google\",\"model\":\"anthropic/claude-3.5-haiku\",\"object\":\"chat.completion\",\"created\":1755459300,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"This
-        image depicts the logo for the Ruby programming language. It's a stylized
-        red gemstone or ruby, designed with angular, geometric shapes that create
-        a three-dimensional effect. The logo uses shades of red, ranging from a deep,
-        rich crimson to a brighter, more vibrant red, with highlights and shadows
-        that give it depth and a sense of shine. The shape is reminiscent of a cut
-        precious stone, with multiple facets and a sleek, modern design that represents
-        the programming language's elegance and simplicity.\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":54,\"completion_tokens\":114,\"total_tokens\":168}}"
-  recorded_at: Sun, 17 Aug 2025 19:35:04 GMT
+        \        \n\n         \n{\"id\":\"gen-1755709460-426eDbJEgG5gbztgXLeS\",\"provider\":\"Anthropic\",\"model\":\"anthropic/claude-3.5-haiku\",\"object\":\"chat.completion\",\"created\":1755709460,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"This
+        is the logo for Ruby, a popular programming language. The logo depicts a stylized
+        red gemstone or ruby, with a three-dimensional, faceted design. It uses shades
+        of red and has a sleek, modern look that suggests shine and precision. Ruby
+        is known for being a dynamic, object-oriented programming language that was
+        created by Yukihiro Matsumoto in the mid-1990s and is particularly valued
+        for web development, especially with frameworks like Ruby on Rails.\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":54,\"completion_tokens\":105,\"total_tokens\":159}}"
+  recorded_at: Wed, 20 Aug 2025 17:04:23 GMT
 recorded_with: VCR 6.3.1

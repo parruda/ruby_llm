@@ -22,15 +22,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:41:11 GMT
-      - Sun, 17 Aug 2025 19:41:11 GMT
+      - Wed, 20 Aug 2025 17:11:17 GMT
+      - Wed, 20 Aug 2025 17:11:17 GMT
       Server:
       - uvicorn
       - uvicorn
       Keep-Alive:
       - timeout=15, max=100
       Content-Length:
-      - '703'
+      - '718'
       Content-Type:
       - application/json
       X-Request-Accepted-At:
@@ -40,8 +40,8 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
     body:
-      encoding: UTF-8
-      string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"\n\n2
-        + 2 equals 4. Let me know if you need help with anything else!","role":"assistant"}}],"created":1755459673,"id":"chatcmpl-YASa0IOIdwL1IPB4bv0bsB4JysvQVAZD","model":"qwen3","object":"chat.completion","usage":{"completion_tokens":160,"completion_tokens_details":{"accepted_prediction_tokens":0,"reasoning_tokens":137,"rejected_prediction_tokens":0},"draft_tokens":0,"draft_tokens_acceptance":0.0,"prompt_tokens":16,"prompt_tokens_details":{"cached_tokens":4},"prompt_tokens_per_second":850.0690681117841,"time_per_output_token_ms":8.397025,"time_to_first_token_ms":18.822,"tokens_per_second":119.08979668394463,"total_tokens":176}}'
-  recorded_at: Sun, 17 Aug 2025 19:41:13 GMT
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjaG9pY2VzIjpbeyJmaW5pc2hfcmVhc29uIjoic3RvcCIsImluZGV4IjowLCJtZXNzYWdlIjp7ImNvbnRlbnQiOiJcblxuMiArIDIgZXF1YWxzIDQuIExldCBtZSBrbm93IGlmIHlvdSBuZWVkIGhlbHAgd2l0aCBhbnl0aGluZyBlbHNlISDwn5iKIiwicm9sZSI6ImFzc2lzdGFudCJ9fV0sImNyZWF0ZWQiOjE3NTU3MDk4NzksImlkIjoiY2hhdGNtcGwtZ3VSS2tNZDVKTzBQeUpTRHdWZnowZWVrSTRLaVpKQmsiLCJtb2RlbCI6InF3ZW4zIiwib2JqZWN0IjoiY2hhdC5jb21wbGV0aW9uIiwidXNhZ2UiOnsiY29tcGxldGlvbl90b2tlbnMiOjE2MiwiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6eyJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6MCwicmVhc29uaW5nX3Rva2VucyI6MTM3LCJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6MH0sImRyYWZ0X3Rva2VucyI6MCwiZHJhZnRfdG9rZW5zX2FjY2VwdGFuY2UiOjAuMCwicHJvbXB0X3Rva2VucyI6MTYsInByb21wdF90b2tlbnNfZGV0YWlscyI6eyJjYWNoZWRfdG9rZW5zIjo0fSwicHJvbXB0X3Rva2Vuc19wZXJfc2Vjb25kIjozODQuNDQ5MDM2NDc0NjAyMzQsInRpbWVfcGVyX291dHB1dF90b2tlbl9tcyI6OC45NTE1OTI1OTI1OTI1OTIsInRpbWVfdG9fZmlyc3RfdG9rZW5fbXMiOjQxLjYxOCwidG9rZW5zX3Blcl9zZWNvbmQiOjExMS43MTE5NjUxNzg5NjY3MiwidG90YWxfdG9rZW5zIjoxNzh9fQ==
+  recorded_at: Wed, 20 Aug 2025 17:11:19 GMT
 recorded_with: VCR 6.3.1

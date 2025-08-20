@@ -47,7 +47,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 ## Last Updated
 {: .d-inline-block }
 
-2025-08-19
+2025-08-20
 {: .label .label-green }
 
 ## Models by Provider
@@ -420,7 +420,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | cognitivecomputations/dolphin3.0-r1-mistral-24b | openrouter | 32768 | - | In: $0.01, Out: $0.03 |
 | cognitivecomputations/dolphin3.0-r1-mistral-24b:free | openrouter | 32768 | - | - |
 | eleutherai/llemma_7b | openrouter | 4096 | 4096 | In: $0.80, Out: $1.20 |
-| alpindale/goliath-120b | openrouter | 6144 | 512 | In: $5.00, Out: $6.25 |
+| alpindale/goliath-120b | openrouter | 6144 | 512 | In: $4.00, Out: $5.50 |
 | google/gemini-flash-1.5 | openrouter | 1000000 | 8192 | In: $0.08, Out: $0.30, Cache: $0.02 |
 | google/gemini-flash-1.5-8b | openrouter | 1000000 | 8192 | In: $0.04, Out: $0.15, Cache: $0.01 |
 | google/gemini-pro-1.5 | openrouter | 2000000 | 8192 | In: $1.25, Out: $5.00 |
@@ -452,12 +452,11 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | inflection/inflection-3-pi | openrouter | 8000 | 1024 | In: $2.50, Out: $10.00 |
 | inflection/inflection-3-productivity | openrouter | 8000 | 1024 | In: $2.50, Out: $10.00 |
 | liquid/lfm-3b | openrouter | 32768 | - | In: $0.02, Out: $0.02 |
-| liquid/lfm-40b | openrouter | 65536 | 65536 | In: $0.15, Out: $0.15 |
 | liquid/lfm-7b | openrouter | 32768 | - | In: $0.01, Out: $0.01 |
 | meta-llama/llama-guard-3-8b | openrouter | 131072 | - | In: $0.02, Out: $0.06 |
 | anthracite-org/magnum-v2-72b | openrouter | 32768 | - | In: $3.00, Out: $3.00 |
-| anthracite-org/magnum-v4-72b | openrouter | 16384 | 1024 | In: $1.25, Out: $1.50 |
-| mancer/weaver | openrouter | 8000 | 1000 | In: $0.75, Out: $0.75 |
+| anthracite-org/magnum-v4-72b | openrouter | 16384 | 1024 | In: $2.00, Out: $5.00 |
+| mancer/weaver | openrouter | 8000 | 1000 | In: $1.12, Out: $1.12 |
 | meta-llama/llama-3-70b-instruct | openrouter | 8192 | 16384 | In: $0.30, Out: $0.40 |
 | meta-llama/llama-3-8b-instruct | openrouter | 8192 | 16384 | In: $0.03, Out: $0.06 |
 | meta-llama/llama-3.1-405b | openrouter | 32768 | - | In: $2.00, Out: $2.00 |
@@ -531,13 +530,13 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | morph/morph-v3-fast | openrouter | 81920 | 38000 | In: $0.90, Out: $1.90 |
 | morph/morph-v3-large | openrouter | 81920 | 38000 | In: $0.90, Out: $1.90 |
 | gryphe/mythomax-l2-13b | openrouter | 4096 | - | In: $0.06, Out: $0.06 |
-| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 131072 | In: $0.12, Out: $0.30 |
+| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.12, Out: $0.30 |
 | nvidia/llama-3.1-nemotron-ultra-253b-v1 | openrouter | 131072 | - | In: $0.60, Out: $1.80 |
 | nvidia/llama-3.1-nemotron-ultra-253b-v1:free | openrouter | 131072 | - | - |
 | nvidia/llama-3.3-nemotron-super-49b-v1 | openrouter | 131072 | - | In: $0.13, Out: $0.40 |
 | neversleep/llama-3-lumimaid-70b | openrouter | 8192 | 4096 | In: $4.00, Out: $6.00 |
-| neversleep/llama-3.1-lumimaid-8b | openrouter | 32768 | 2048 | In: $0.10, Out: $0.62 |
-| neversleep/noromaid-20b | openrouter | 8192 | 2048 | In: $0.62, Out: $1.00 |
+| neversleep/llama-3.1-lumimaid-8b | openrouter | 32768 | - | In: $0.09, Out: $0.60 |
+| neversleep/noromaid-20b | openrouter | 4096 | - | In: $1.00, Out: $1.75 |
 | nousresearch/deephermes-3-llama-3-8b-preview:free | openrouter | 131072 | - | - |
 | nousresearch/deephermes-3-mistral-24b-preview | openrouter | 32768 | - | In: $0.09, Out: $0.37 |
 | nousresearch/nous-hermes-2-mixtral-8x7b-dpo | openrouter | 32768 | 2048 | In: $0.60, Out: $0.60 |
@@ -563,6 +562,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | openai/gpt-4o-2024-08-06 | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | openai/gpt-4o-2024-11-20 | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | openai/gpt-4o:extended | openrouter | 128000 | 64000 | In: $6.00, Out: $18.00 |
+| openai/gpt-4o-audio-preview | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | openai/gpt-4o-search-preview | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | openai/gpt-4o-mini | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
@@ -627,7 +627,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | qwen/qwen3-8b:free | openrouter | 40960 | 40960 | - |
 | qwen/qwen3-coder | openrouter | 262144 | - | In: $0.20, Out: $0.80 |
 | qwen/qwen3-coder:free | openrouter | 262144 | - | - |
-| undi95/remm-slerp-l2-13b | openrouter | 6144 | 1024 | In: $0.50, Out: $0.75 |
+| undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.45, Out: $0.65 |
 | rekaai/reka-flash-3:free | openrouter | 32768 | - | - |
 | sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.02, Out: $0.05 |
 | sao10k/l3.1-euryale-70b | openrouter | 32768 | - | In: $0.65, Out: $0.75 |
@@ -648,7 +648,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | tencent/hunyuan-a13b-instruct:free | openrouter | 32768 | - | - |
 | thedrummer/anubis-70b-v1.1 | openrouter | 16384 | - | In: $0.40, Out: $0.70 |
 | thedrummer/anubis-pro-105b-v1 | openrouter | 131072 | 131072 | In: $0.50, Out: $1.00 |
-| thedrummer/rocinante-12b | openrouter | 8192 | 8192 | In: $0.19, Out: $0.45 |
+| thedrummer/rocinante-12b | openrouter | 32768 | - | In: $0.17, Out: $0.43 |
 | thedrummer/skyfall-36b-v2 | openrouter | 32768 | - | In: $0.05, Out: $0.19 |
 | thedrummer/unslopnemo-12b | openrouter | 32768 | - | In: $0.40, Out: $0.40 |
 | scb10x/llama3.1-typhoon2-70b-instruct | openrouter | 8192 | - | In: $0.88, Out: $0.88 |
@@ -682,7 +682,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 
 ## Models by Capability
 
-### Function Calling (328)
+### Function Calling (329)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -954,7 +954,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | mistralai/mistral-saba | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | moonshotai/kimi-k2 | openrouter | 63000 | 63000 | In: $0.14, Out: $2.49 |
 | moonshotai/kimi-k2:free | openrouter | 32768 | - | - |
-| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 131072 | In: $0.12, Out: $0.30 |
+| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.12, Out: $0.30 |
 | nousresearch/hermes-3-llama-3.1-70b | openrouter | 131072 | - | In: $0.10, Out: $0.28 |
 | openai/codex-mini | openrouter | 200000 | 100000 | In: $1.50, Out: $6.00, Cache: $0.38 |
 | openai/gpt-3.5-turbo | openrouter | 16385 | 4096 | In: $0.50, Out: $1.50 |
@@ -973,6 +973,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | openai/gpt-4o-2024-08-06 | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | openai/gpt-4o-2024-11-20 | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | openai/gpt-4o:extended | openrouter | 128000 | 64000 | In: $6.00, Out: $18.00 |
+| openai/gpt-4o-audio-preview | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | openai/gpt-4o-mini | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-5 | openrouter | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
@@ -1001,7 +1002,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | qwen/qwen3-4b:free | openrouter | 40960 | - | - |
 | qwen/qwen3-coder | openrouter | 262144 | - | In: $0.20, Out: $0.80 |
 | qwen/qwen3-coder:free | openrouter | 262144 | - | - |
-| thedrummer/rocinante-12b | openrouter | 8192 | 8192 | In: $0.19, Out: $0.45 |
+| thedrummer/rocinante-12b | openrouter | 32768 | - | In: $0.17, Out: $0.43 |
 | thedrummer/unslopnemo-12b | openrouter | 32768 | - | In: $0.40, Out: $0.40 |
 | z-ai/glm-4-32b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | z-ai/glm-4.5 | openrouter | 131072 | - | In: $0.20, Out: $0.80 |
@@ -1016,7 +1017,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | x-ai/grok-4 | openrouter | 256000 | - | In: $3.00, Out: $15.00, Cache: $0.75 |
 
 
-### Structured Output (315)
+### Structured Output (313)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -1129,7 +1130,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | gpt-4o-mini-search-preview-2025-03-11 | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
 | gpt-5 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
 | gpt-5-2025-08-07 | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
-| gpt-5-chat-latest | openai | 128000 | 16384 | In: $1.25, Out: $10.00, Cache: $0.12 |
 | gpt-5-mini | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
 | gpt-5-mini-2025-08-07 | openai | 400000 | 128000 | In: $0.25, Out: $2.00, Cache: $0.02 |
 | gpt-5-nano | openai | 400000 | 128000 | In: $0.05, Out: $0.40, Cache: $0.01 |
@@ -1169,7 +1169,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | deepseek/deepseek-r1-0528 | openrouter | 163840 | - | In: $0.18, Out: $0.72 |
 | deepseek/deepseek-r1-distill-llama-70b | openrouter | 131072 | - | In: $0.03, Out: $0.13 |
 | deepseek/deepseek-r1-distill-qwen-32b | openrouter | 131072 | 16384 | In: $0.08, Out: $0.15 |
-| alpindale/goliath-120b | openrouter | 6144 | 512 | In: $5.00, Out: $6.25 |
+| alpindale/goliath-120b | openrouter | 6144 | 512 | In: $4.00, Out: $5.50 |
 | google/gemini-flash-1.5 | openrouter | 1000000 | 8192 | In: $0.08, Out: $0.30, Cache: $0.02 |
 | google/gemini-flash-1.5-8b | openrouter | 1000000 | 8192 | In: $0.04, Out: $0.15, Cache: $0.01 |
 | google/gemini-pro-1.5 | openrouter | 2000000 | 8192 | In: $1.25, Out: $5.00 |
@@ -1194,7 +1194,6 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | google/gemma-3n-e4b-it:free | openrouter | 8192 | 2048 | - |
 | inception/mercury | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | inception/mercury-coder | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
-| liquid/lfm-40b | openrouter | 65536 | 65536 | In: $0.15, Out: $0.15 |
 | liquid/lfm-7b | openrouter | 32768 | - | In: $0.01, Out: $0.01 |
 | meta-llama/llama-guard-3-8b | openrouter | 131072 | - | In: $0.02, Out: $0.06 |
 | meta-llama/llama-3-70b-instruct | openrouter | 8192 | 16384 | In: $0.30, Out: $0.40 |
@@ -1246,9 +1245,9 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | mistralai/mistral-saba | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | moonshotai/kimi-k2 | openrouter | 63000 | 63000 | In: $0.14, Out: $2.49 |
 | gryphe/mythomax-l2-13b | openrouter | 4096 | - | In: $0.06, Out: $0.06 |
-| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 131072 | In: $0.12, Out: $0.30 |
-| neversleep/llama-3.1-lumimaid-8b | openrouter | 32768 | 2048 | In: $0.10, Out: $0.62 |
-| neversleep/noromaid-20b | openrouter | 8192 | 2048 | In: $0.62, Out: $1.00 |
+| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.12, Out: $0.30 |
+| neversleep/llama-3.1-lumimaid-8b | openrouter | 32768 | - | In: $0.09, Out: $0.60 |
+| neversleep/noromaid-20b | openrouter | 4096 | - | In: $1.00, Out: $1.75 |
 | nousresearch/hermes-3-llama-3.1-405b | openrouter | 131072 | 16384 | In: $0.70, Out: $0.80 |
 | nousresearch/hermes-3-llama-3.1-70b | openrouter | 131072 | - | In: $0.10, Out: $0.28 |
 | nousresearch/hermes-2-pro-llama-3-8b | openrouter | 131072 | 131072 | In: $0.02, Out: $0.04 |
@@ -1271,6 +1270,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | openai/gpt-4o-2024-08-06 | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | openai/gpt-4o-2024-11-20 | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | openai/gpt-4o:extended | openrouter | 128000 | 64000 | In: $6.00, Out: $18.00 |
+| openai/gpt-4o-audio-preview | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | openai/gpt-4o-search-preview | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | openai/gpt-4o-mini | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
@@ -1314,18 +1314,17 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | qwen/qwen3-32b | openrouter | 40960 | - | In: $0.02, Out: $0.07 |
 | qwen/qwen3-4b:free | openrouter | 40960 | - | - |
 | qwen/qwen3-coder | openrouter | 262144 | - | In: $0.20, Out: $0.80 |
-| undi95/remm-slerp-l2-13b | openrouter | 6144 | 1024 | In: $0.50, Out: $0.75 |
+| undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.45, Out: $0.65 |
 | sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.02, Out: $0.05 |
 | sao10k/l3.1-euryale-70b | openrouter | 32768 | - | In: $0.65, Out: $0.75 |
 | sao10k/l3.3-euryale-70b | openrouter | 131072 | 16384 | In: $0.65, Out: $0.75 |
 | thedrummer/anubis-70b-v1.1 | openrouter | 16384 | - | In: $0.40, Out: $0.70 |
-| thedrummer/rocinante-12b | openrouter | 8192 | 8192 | In: $0.19, Out: $0.45 |
+| thedrummer/rocinante-12b | openrouter | 32768 | - | In: $0.17, Out: $0.43 |
 | thedrummer/skyfall-36b-v2 | openrouter | 32768 | - | In: $0.05, Out: $0.19 |
 | thedrummer/unslopnemo-12b | openrouter | 32768 | - | In: $0.40, Out: $0.40 |
 | cognitivecomputations/dolphin-mistral-24b-venice-edition:free | openrouter | 32768 | - | - |
 | microsoft/wizardlm-2-8x22b | openrouter | 65536 | 65536 | In: $0.48, Out: $0.48 |
 | z-ai/glm-4.5 | openrouter | 131072 | - | In: $0.20, Out: $0.80 |
-| z-ai/glm-4.5-air | openrouter | 131072 | 96000 | In: $0.20, Out: $1.10, Cache: $0.03 |
 | z-ai/glm-4.5v | openrouter | 65536 | 65536 | In: $0.50, Out: $1.70 |
 | x-ai/grok-2-1212 | openrouter | 131072 | - | In: $2.00, Out: $10.00 |
 | x-ai/grok-2-vision-1212 | openrouter | 32768 | - | In: $2.00, Out: $10.00 |
@@ -1545,7 +1544,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | cognitivecomputations/dolphin3.0-r1-mistral-24b | openrouter | 32768 | - | In: $0.01, Out: $0.03 |
 | cognitivecomputations/dolphin3.0-r1-mistral-24b:free | openrouter | 32768 | - | - |
 | eleutherai/llemma_7b | openrouter | 4096 | 4096 | In: $0.80, Out: $1.20 |
-| alpindale/goliath-120b | openrouter | 6144 | 512 | In: $5.00, Out: $6.25 |
+| alpindale/goliath-120b | openrouter | 6144 | 512 | In: $4.00, Out: $5.50 |
 | google/gemini-flash-1.5 | openrouter | 1000000 | 8192 | In: $0.08, Out: $0.30, Cache: $0.02 |
 | google/gemini-flash-1.5-8b | openrouter | 1000000 | 8192 | In: $0.04, Out: $0.15, Cache: $0.01 |
 | google/gemini-pro-1.5 | openrouter | 2000000 | 8192 | In: $1.25, Out: $5.00 |
@@ -1577,12 +1576,11 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | inflection/inflection-3-pi | openrouter | 8000 | 1024 | In: $2.50, Out: $10.00 |
 | inflection/inflection-3-productivity | openrouter | 8000 | 1024 | In: $2.50, Out: $10.00 |
 | liquid/lfm-3b | openrouter | 32768 | - | In: $0.02, Out: $0.02 |
-| liquid/lfm-40b | openrouter | 65536 | 65536 | In: $0.15, Out: $0.15 |
 | liquid/lfm-7b | openrouter | 32768 | - | In: $0.01, Out: $0.01 |
 | meta-llama/llama-guard-3-8b | openrouter | 131072 | - | In: $0.02, Out: $0.06 |
 | anthracite-org/magnum-v2-72b | openrouter | 32768 | - | In: $3.00, Out: $3.00 |
-| anthracite-org/magnum-v4-72b | openrouter | 16384 | 1024 | In: $1.25, Out: $1.50 |
-| mancer/weaver | openrouter | 8000 | 1000 | In: $0.75, Out: $0.75 |
+| anthracite-org/magnum-v4-72b | openrouter | 16384 | 1024 | In: $2.00, Out: $5.00 |
+| mancer/weaver | openrouter | 8000 | 1000 | In: $1.12, Out: $1.12 |
 | meta-llama/llama-3-70b-instruct | openrouter | 8192 | 16384 | In: $0.30, Out: $0.40 |
 | meta-llama/llama-3-8b-instruct | openrouter | 8192 | 16384 | In: $0.03, Out: $0.06 |
 | meta-llama/llama-3.1-405b | openrouter | 32768 | - | In: $2.00, Out: $2.00 |
@@ -1656,13 +1654,13 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | morph/morph-v3-fast | openrouter | 81920 | 38000 | In: $0.90, Out: $1.90 |
 | morph/morph-v3-large | openrouter | 81920 | 38000 | In: $0.90, Out: $1.90 |
 | gryphe/mythomax-l2-13b | openrouter | 4096 | - | In: $0.06, Out: $0.06 |
-| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 131072 | In: $0.12, Out: $0.30 |
+| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.12, Out: $0.30 |
 | nvidia/llama-3.1-nemotron-ultra-253b-v1 | openrouter | 131072 | - | In: $0.60, Out: $1.80 |
 | nvidia/llama-3.1-nemotron-ultra-253b-v1:free | openrouter | 131072 | - | - |
 | nvidia/llama-3.3-nemotron-super-49b-v1 | openrouter | 131072 | - | In: $0.13, Out: $0.40 |
 | neversleep/llama-3-lumimaid-70b | openrouter | 8192 | 4096 | In: $4.00, Out: $6.00 |
-| neversleep/llama-3.1-lumimaid-8b | openrouter | 32768 | 2048 | In: $0.10, Out: $0.62 |
-| neversleep/noromaid-20b | openrouter | 8192 | 2048 | In: $0.62, Out: $1.00 |
+| neversleep/llama-3.1-lumimaid-8b | openrouter | 32768 | - | In: $0.09, Out: $0.60 |
+| neversleep/noromaid-20b | openrouter | 4096 | - | In: $1.00, Out: $1.75 |
 | nousresearch/deephermes-3-llama-3-8b-preview:free | openrouter | 131072 | - | - |
 | nousresearch/deephermes-3-mistral-24b-preview | openrouter | 32768 | - | In: $0.09, Out: $0.37 |
 | nousresearch/nous-hermes-2-mixtral-8x7b-dpo | openrouter | 32768 | 2048 | In: $0.60, Out: $0.60 |
@@ -1688,6 +1686,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | openai/gpt-4o-2024-08-06 | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | openai/gpt-4o-2024-11-20 | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00, Cache: $1.25 |
 | openai/gpt-4o:extended | openrouter | 128000 | 64000 | In: $6.00, Out: $18.00 |
+| openai/gpt-4o-audio-preview | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | openai/gpt-4o-search-preview | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | openai/gpt-4o-mini | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
 | openai/gpt-4o-mini-2024-07-18 | openrouter | 128000 | 16384 | In: $0.15, Out: $0.60, Cache: $0.08 |
@@ -1752,7 +1751,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | qwen/qwen3-8b:free | openrouter | 40960 | 40960 | - |
 | qwen/qwen3-coder | openrouter | 262144 | - | In: $0.20, Out: $0.80 |
 | qwen/qwen3-coder:free | openrouter | 262144 | - | - |
-| undi95/remm-slerp-l2-13b | openrouter | 6144 | 1024 | In: $0.50, Out: $0.75 |
+| undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.45, Out: $0.65 |
 | rekaai/reka-flash-3:free | openrouter | 32768 | - | - |
 | sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.02, Out: $0.05 |
 | sao10k/l3.1-euryale-70b | openrouter | 32768 | - | In: $0.65, Out: $0.75 |
@@ -1773,7 +1772,7 @@ See the [Contributing Guide](https://github.com/crmne/ruby_llm/blob/main/CONTRIB
 | tencent/hunyuan-a13b-instruct:free | openrouter | 32768 | - | - |
 | thedrummer/anubis-70b-v1.1 | openrouter | 16384 | - | In: $0.40, Out: $0.70 |
 | thedrummer/anubis-pro-105b-v1 | openrouter | 131072 | 131072 | In: $0.50, Out: $1.00 |
-| thedrummer/rocinante-12b | openrouter | 8192 | 8192 | In: $0.19, Out: $0.45 |
+| thedrummer/rocinante-12b | openrouter | 32768 | - | In: $0.17, Out: $0.43 |
 | thedrummer/skyfall-36b-v2 | openrouter | 32768 | - | In: $0.05, Out: $0.19 |
 | thedrummer/unslopnemo-12b | openrouter | 32768 | - | In: $0.40, Out: $0.40 |
 | scb10x/llama3.1-typhoon2-70b-instruct | openrouter | 8192 | - | In: $0.88, Out: $0.88 |
@@ -2164,7 +2163,7 @@ Models that can process images:
 | x-ai/grok-vision-beta | openrouter | 8192 | - | In: $5.00, Out: $15.00 |
 
 
-### Audio Input Models (48)
+### Audio Input Models (49)
 
 Models that can process audio:
 
@@ -2218,6 +2217,7 @@ Models that can process audio:
 | google/gemini-2.5-pro | openrouter | 1048576 | 65536 | In: $1.25, Out: $10.00, Cache: $0.31 |
 | google/gemini-2.5-pro-preview-05-06 | openrouter | 1048576 | 65535 | In: $1.25, Out: $10.00, Cache: $0.31 |
 | google/gemini-2.5-pro-preview | openrouter | 1048576 | 65536 | In: $1.25, Out: $10.00, Cache: $0.31 |
+| openai/gpt-4o-audio-preview | openrouter | 128000 | 16384 | In: $2.50, Out: $10.00 |
 
 
 ### PDF Models (56)

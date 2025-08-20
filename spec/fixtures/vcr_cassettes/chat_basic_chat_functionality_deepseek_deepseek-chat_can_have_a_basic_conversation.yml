@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:39:08 GMT
+      - Wed, 20 Aug 2025 17:09:12 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,7 +36,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - b8fcc2b12b6138b1a18eaed74bac8c12
+      - 0c0dfccdcccf1472a99c4c0435b30563
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -51,7 +51,10 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJpZCI6IjU0YzE0ZjdhLTE3OTQtNDQ1Ni1iMmE3LTk4NmFlYjVjNWEyMSIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NTU0NTk1NDgsIm1vZGVsIjoiZGVlcHNlZWstY2hhdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiVGhlIHN1bSBvZiAyICsgMiBpcyAqKjQqKi4gIFxuXG5MZXQgbWUga25vdyBpZiB5b3UnZCBsaWtlIGhlbHAgd2l0aCBhbnl0aGluZyBlbHNlISDwn5iKIn0sImxvZ3Byb2JzIjpudWxsLCJmaW5pc2hfcmVhc29uIjoic3RvcCJ9XSwidXNhZ2UiOnsicHJvbXB0X3Rva2VucyI6MTEsImNvbXBsZXRpb25fdG9rZW5zIjoyNywidG90YWxfdG9rZW5zIjozOCwicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjp7ImNhY2hlZF90b2tlbnMiOjB9LCJwcm9tcHRfY2FjaGVfaGl0X3Rva2VucyI6MCwicHJvbXB0X2NhY2hlX21pc3NfdG9rZW5zIjoxMX0sInN5c3RlbV9maW5nZXJwcmludCI6ImZwXzg4MDIzNjllYWFfcHJvZDA2MjNfZnA4X2t2Y2FjaGUifQ==
-  recorded_at: Sun, 17 Aug 2025 19:39:12 GMT
+      string: '{"id":"be05b5ff-a407-4aba-85b9-5683d6dfe186","object":"chat.completion","created":1755709752,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"That''s
+        a fundamental math question! **2 + 2 equals 4.**\n\nIt''s often used as a
+        simple test or even a joke in pop culture (like in the movie *Animal House*
+        or the TV show *The IT Crowd*), implying something is so obvious it shouldn''t
+        need to be asked."},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":12,"completion_tokens":64,"total_tokens":76,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":12},"system_fingerprint":"fp_baeac5aaa3_prod0820_fp8_kvcache"}'
+  recorded_at: Wed, 20 Aug 2025 17:09:19 GMT
 recorded_with: VCR 6.3.1

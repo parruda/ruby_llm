@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:35:12 GMT
+      - Wed, 20 Aug 2025 17:04:32 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -32,19 +32,19 @@ http_interactions:
       Connection:
       - keep-alive
       Mistral-Correlation-Id:
-      - '0198b987-5aec-7891-89a6-61d3a80aab67'
+      - '0198c870-79c4-7b8b-ba75-4384ed1566a7'
       X-Kong-Request-Id:
-      - '0198b987-5aec-7891-89a6-61d3a80aab67'
+      - '0198c870-79c4-7b8b-ba75-4384ed1566a7'
       X-Envoy-Upstream-Service-Time:
-      - '539'
+      - '1483'
       X-Ratelimit-Limit-Tokens-Minute:
       - '500000'
       X-Ratelimit-Remaining-Tokens-Minute:
-      - '498456'
+      - '498513'
       X-Ratelimit-Limit-Tokens-Month:
       - '1000000000'
       X-Ratelimit-Remaining-Tokens-Month:
-      - '999558220'
+      - '999548403'
       X-Ratelimit-Tokens-Query-Cost:
       - '118'
       X-Ratelimit-Limit-Req-Minute:
@@ -54,9 +54,9 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Kong-Upstream-Latency:
-      - '540'
+      - '1483'
       X-Kong-Proxy-Latency:
-      - '13'
+      - '8'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
@@ -72,8 +72,8 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"bb2dc46e33b2416ca53cbc1555441794","created":1755459312,"model":"pixtral-12b-latest","usage":{"prompt_tokens":83,"total_tokens":118,"completion_tokens":35},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"I
-        see a red gemstone or crystal with a faceted surface. It appears to be a close-up
-        view of the gemstone, highlighting its intricate and reflective facets."}}]}'
-  recorded_at: Sun, 17 Aug 2025 19:35:12 GMT
+      string: '{"id":"8e0530b4d03c41feacbfb79f3f53139a","created":1755709471,"model":"pixtral-12b-latest","usage":{"prompt_tokens":83,"total_tokens":118,"completion_tokens":35},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"I
+        see a red gemstone or crystal with a faceted surface. It appears to be a polished
+        and cut gem, possibly resembling a ruby or a similar precious stone."}}]}'
+  recorded_at: Wed, 20 Aug 2025 17:04:32 GMT
 recorded_with: VCR 6.3.1

@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 17 Aug 2025 19:41:51 GMT
+      - Wed, 20 Aug 2025 17:12:00 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -32,19 +32,19 @@ http_interactions:
       Connection:
       - keep-alive
       Mistral-Correlation-Id:
-      - '0198b98d-71f3-7f9d-acb2-e24d9872ee1f'
+      - '0198c877-52f3-74eb-bc4f-d9c83bee5ea1'
       X-Kong-Request-Id:
-      - '0198b98d-71f3-7f9d-acb2-e24d9872ee1f'
+      - '0198c877-52f3-74eb-bc4f-d9c83bee5ea1'
       X-Envoy-Upstream-Service-Time:
-      - '390'
+      - '434'
       X-Ratelimit-Limit-Tokens-Minute:
       - '500000'
       X-Ratelimit-Remaining-Tokens-Minute:
-      - '499881'
+      - '499887'
       X-Ratelimit-Limit-Tokens-Month:
       - '1000000000'
       X-Ratelimit-Remaining-Tokens-Month:
-      - '999557767'
+      - '999547946'
       X-Ratelimit-Tokens-Query-Cost:
       - '67'
       X-Ratelimit-Limit-Req-Minute:
@@ -54,9 +54,9 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Kong-Upstream-Latency:
-      - '391'
+      - '435'
       X-Kong-Proxy-Latency:
-      - '6'
+      - '8'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
@@ -72,10 +72,10 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"e0941e8d16f44b46bf86fa2b7cc97566","created":1755459711,"model":"mistral-small-latest","usage":{"prompt_tokens":10,"total_tokens":67,"completion_tokens":57},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"The
+      string: '{"id":"c9afa587ee2f426ca0c53c36113d70e3","created":1755709920,"model":"mistral-small-latest","usage":{"prompt_tokens":10,"total_tokens":67,"completion_tokens":57},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"The
         capital of France is **Paris**.\n\nParis is known for its iconic landmarks
-        such as the Eiffel Tower, the Louvre Museum, and Notre-Dame Cathedral, as
+        such as the Eiffel Tower, Notre-Dame Cathedral, and the Louvre Museum, as
         well as its rich history, culture, and cuisine. It is one of the most visited
         cities in the world."}}]}'
-  recorded_at: Sun, 17 Aug 2025 19:41:51 GMT
+  recorded_at: Wed, 20 Aug 2025 17:12:00 GMT
 recorded_with: VCR 6.3.1
