@@ -98,7 +98,7 @@ class AnalyzeTool < RubyLLM::Tool
     # Return Content with text and attachments
     RubyLLM::Content.new(
       "Analysis complete for: #{query}",
-      chart_path  # Attach the generated chart
+      [chart_path]  # Attach the generated chart (array of paths/blobs)
     )
   end
 
