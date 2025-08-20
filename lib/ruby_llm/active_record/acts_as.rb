@@ -232,14 +232,21 @@ module RubyLLM
         @message = messages.create!(role: :assistant, content: '')
       end
 
-      def persist_message_completion(message)
+      def persist_message_completion(message) # rubocop:disable Metrics/PerceivedComplexity
         return unless message
 
         tool_call_id = find_tool_call_id(message.tool_call_id) if message.tool_call_id
 
         transaction do
           content = message.content
-          content = content.to_json if content.is_a?(Hash) || content.is_a?(Array)
+          attachments_to_persist = nil
+
+          if content.is_a?(RubyLLM::Content)
+            attachments_to_persist = content.attachments if content.attachments.any?
+            content = content.text
+          elsif content.is_a?(Hash) || content.is_a?(Array)
+            content = content.to_json
+          end
 
           @message.update!(
             role: message.role,
@@ -250,6 +257,8 @@ module RubyLLM
           )
           @message.write_attribute(@message.class.tool_call_foreign_key, tool_call_id) if tool_call_id
           @message.save!
+
+          persist_content(@message, attachments_to_persist) if attachments_to_persist
           persist_tool_calls(message.tool_calls) if message.tool_calls.present?
         end
       end
@@ -291,7 +300,7 @@ module RubyLLM
       def convert_to_active_storage_format(source)
         return if source.blank?
 
-        attachment = RubyLLM::Attachment.new(source)
+        attachment = source.is_a?(RubyLLM::Attachment) ? source : RubyLLM::Attachment.new(source)
 
         {
           io: StringIO.new(attachment.content),

@@ -181,7 +181,7 @@ module RubyLLM
       end
     end
 
-    def handle_tool_calls(response, &)
+    def handle_tool_calls(response, &) # rubocop:disable Metrics/PerceivedComplexity
       halt_result = nil
 
       response.tool_calls.each_value do |tool_call|
@@ -189,7 +189,8 @@ module RubyLLM
         @on[:tool_call]&.call(tool_call)
         result = execute_tool tool_call
         @on[:tool_result]&.call(result)
-        message = add_message role: :tool, content: result.to_s, tool_call_id: tool_call.id
+        content = result.is_a?(Content) ? result : result.to_s
+        message = add_message role: :tool, content:, tool_call_id: tool_call.id
         @on[:end_message]&.call(message)
 
         halt_result = result if result.is_a?(Tool::Halt)

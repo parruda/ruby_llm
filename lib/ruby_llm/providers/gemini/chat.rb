@@ -62,7 +62,7 @@ module RubyLLM
                 name: msg.tool_call_id,
                 response: {
                   name: msg.tool_call_id,
-                  content: msg.content
+                  content: Media.format_content(msg.content)
                 }
               }
             }]

@@ -27,23 +27,22 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 17 Aug 2025 19:43:12 GMT
+      - Wed, 20 Aug 2025 15:49:25 GMT
       Content-Length:
-      - '1060'
+      - '1054'
     body:
       encoding: UTF-8
-      string: '{"id":"chatcmpl-116","object":"chat.completion","created":1755459792,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+      string: '{"id":"chatcmpl-330","object":"chat.completion","created":1755704965,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
         the user is asking for the weather in Berlin, and they provided the coordinates
         52.5200 latitude and 13.4050 longitude. I need to use the weather function
         to get the current weather for that location. Let me check the function parameters.
-        The function requires latitude and longitude as strings. The user provided
-        both, so I should format them into the tool call. I''ll make sure to include
-        them in the arguments as specified. No other functions are available, so this
-        is the only one to use. Alright, time to structure the tool call with the
-        given parameters.\n\u003c/think\u003e\n\n","tool_calls":[{"id":"call_gl8x50mv","index":0,"type":"function","function":{"name":"weather","arguments":"{\"latitude\":\"52.5200\",\"longitude\":\"13.4050\"}"}}]},"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":200,"completion_tokens":166,"total_tokens":366}}
+        The function requires latitude and longitude as strings. The user has already
+        given these values, so I should format them into the function call correctly.
+        I''ll make sure to include both parameters in the JSON object under the arguments.
+        No other functions are needed here. Let me structure the tool_call properly.\n\u003c/think\u003e\n\n","tool_calls":[{"id":"call_udfkea2r","index":0,"type":"function","function":{"name":"weather","arguments":"{\"latitude\":\"52.5200\",\"longitude\":\"13.4050\"}"}}]},"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":200,"completion_tokens":160,"total_tokens":360}}
 
         '
-  recorded_at: Sun, 17 Aug 2025 19:43:12 GMT
+  recorded_at: Wed, 20 Aug 2025 15:49:25 GMT
 - request:
     method: post
     uri: "<OLLAMA_API_BASE>/chat/completions"
@@ -54,12 +53,11 @@ http_interactions:
         the user is asking for the weather in Berlin, and they provided the coordinates
         52.5200 latitude and 13.4050 longitude. I need to use the weather function
         to get the current weather for that location. Let me check the function parameters.
-        The function requires latitude and longitude as strings. The user provided
-        both, so I should format them into the tool call. I''ll make sure to include
-        them in the arguments as specified. No other functions are available, so this
-        is the only one to use. Alright, time to structure the tool call with the
-        given parameters.\n</think>\n\n","tool_calls":[{"id":"call_gl8x50mv","type":"function","function":{"name":"weather","arguments":"{\"latitude\":\"52.5200\",\"longitude\":\"13.4050\"}"}}]},{"role":"tool","content":"Current
-        weather at 52.5200, 13.4050: 15°C, Wind: 10 km/h","tool_call_id":"call_gl8x50mv"}],"stream":false,"tools":[{"type":"function","function":{"name":"weather","description":"Gets
+        The function requires latitude and longitude as strings. The user has already
+        given these values, so I should format them into the function call correctly.
+        I''ll make sure to include both parameters in the JSON object under the arguments.
+        No other functions are needed here. Let me structure the tool_call properly.\n</think>\n\n","tool_calls":[{"id":"call_udfkea2r","type":"function","function":{"name":"weather","arguments":"{\"latitude\":\"52.5200\",\"longitude\":\"13.4050\"}"}}]},{"role":"tool","content":"Current
+        weather at 52.5200, 13.4050: 15°C, Wind: 10 km/h","tool_call_id":"call_udfkea2r"}],"stream":false,"tools":[{"type":"function","function":{"name":"weather","description":"Gets
         current weather for a location","parameters":{"type":"object","properties":{"latitude":{"type":"string","description":"Latitude
         (e.g., 52.5200)"},"longitude":{"type":"string","description":"Longitude (e.g.,
         13.4050)"}},"required":["latitude","longitude"]}}}]}'
@@ -80,12 +78,12 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 17 Aug 2025 19:43:13 GMT
+      - Wed, 20 Aug 2025 15:49:26 GMT
       Content-Length:
-      - '867'
+      - '401'
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJpZCI6ImNoYXRjbXBsLTk4NSIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NTU0NTk3OTMsIm1vZGVsIjoicXdlbjMiLCJzeXN0ZW1fZmluZ2VycHJpbnQiOiJmcF9vbGxhbWEiLCJjaG9pY2VzIjpbeyJpbmRleCI6MCwibWVzc2FnZSI6eyJyb2xlIjoiYXNzaXN0YW50IiwiY29udGVudCI6Ilx1MDAzY3RoaW5rXHUwMDNlXG5Pa2F5LCB0aGUgdXNlciBhc2tlZCBmb3IgdGhlIHdlYXRoZXIgaW4gQmVybGluIHdpdGggdGhlIGNvb3JkaW5hdGVzIHByb3ZpZGVkLiBJIGNhbGxlZCB0aGUgd2VhdGhlciBmdW5jdGlvbiB3aXRoIHRob3NlIGNvb3JkaW5hdGVzIGFuZCBnb3QgdGhlIHJlc3BvbnNlOiAxNcKwQyBhbmQgd2luZCBhdCAxMCBrbS9oLiBOb3cgSSBuZWVkIHRvIHByZXNlbnQgdGhpcyBpbmZvcm1hdGlvbiBjbGVhcmx5LiBMZXQgbWUgY29uZmlybSB0aGUgbG9jYXRpb24gZmlyc3QsIG1lbnRpb24gdGhlIHRlbXBlcmF0dXJlLCBhbmQgbm90ZSB0aGUgd2luZCBzcGVlZC4gS2VlcCBpdCBzdHJhaWdodGZvcndhcmQgYW5kIGZyaWVuZGx5LiBNYWtlIHN1cmUgdGhlcmUncyBubyBtYXJrZG93biBhbmQgdGhlIHJlc3BvbnNlIGlzIGNvbmNpc2UuXG5cdTAwM2MvdGhpbmtcdTAwM2VcblxuVGhlIGN1cnJlbnQgd2VhdGhlciBpbiBCZXJsaW4gKDUyLjUyMDAsIDEzLjQwNTApIGlzICoqMTXCsEMqKiB3aXRoIHdpbmQgc3BlZWRzIGF0ICoqMTAga20vaCoqLiBMZXQgbWUga25vdyBpZiB5b3UgbmVlZCBtb3JlIGRldGFpbHMhIn0sImZpbmlzaF9yZWFzb24iOiJzdG9wIn1dLCJ1c2FnZSI6eyJwcm9tcHRfdG9rZW5zIjozNzYsImNvbXBsZXRpb25fdG9rZW5zIjoxMzksInRvdGFsX3Rva2VucyI6NTE1fX0K
-  recorded_at: Sun, 17 Aug 2025 19:43:13 GMT
+        eyJpZCI6ImNoYXRjbXBsLTg2Iiwib2JqZWN0IjoiY2hhdC5jb21wbGV0aW9uIiwiY3JlYXRlZCI6MTc1NTcwNDk2NiwibW9kZWwiOiJxd2VuMyIsInN5c3RlbV9maW5nZXJwcmludCI6ImZwX29sbGFtYSIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiXHUwMDNjdGhpbmtcdTAwM2Vcblx1MDAzYy90aGlua1x1MDAzZVxuXG5UaGUgY3VycmVudCB3ZWF0aGVyIGluIEJlcmxpbiAoNTIuNTIwMCwgMTMuNDA1MCkgaXMgMTXCsEMgd2l0aCB3aW5kIGF0IDEwIGttL2guIn0sImZpbmlzaF9yZWFzb24iOiJzdG9wIn1dLCJ1c2FnZSI6eyJwcm9tcHRfdG9rZW5zIjozNzAsImNvbXBsZXRpb25fdG9rZW5zIjo0MiwidG90YWxfdG9rZW5zIjo0MTJ9fQo=
+  recorded_at: Wed, 20 Aug 2025 15:49:26 GMT
 recorded_with: VCR 6.3.1

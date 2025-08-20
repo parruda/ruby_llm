@@ -46,7 +46,7 @@ module RubyLLM
           {
             type: 'tool_result',
             tool_use_id: msg.tool_call_id,
-            content: msg.content
+            content: Media.format_content(msg.content)
           }
         end
 
