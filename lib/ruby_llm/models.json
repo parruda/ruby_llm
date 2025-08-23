@@ -1,6 +1,230 @@
 [
   {
+    "id": "anthropic.claude-3-5-haiku-20241022-v1:0",
+    "name": "Claude Haiku 3.5",
+    "provider": "anthropic",
+    "family": "claude-3-5-haiku",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 8192,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.8,
+          "cached_input_per_million": 1.0,
+          "output_per_million": 4.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "anthropic.claude-3-7-sonnet-20250219-v1:0",
+    "name": "Claude Sonnet 3.7",
+    "provider": "anthropic",
+    "family": "claude-3-7-sonnet",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 64000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 3.0,
+          "cached_input_per_million": 3.75,
+          "output_per_million": 15.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "anthropic.claude-3-haiku-20240307-v1:0",
+    "name": "Claude Haiku 3",
+    "provider": "anthropic",
+    "family": "claude-3-haiku",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 4096,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.25,
+          "cached_input_per_million": 0.3,
+          "output_per_million": 1.25
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "anthropic.claude-opus-4-1-20250805-v1:0",
+    "name": "Claude Opus 4.1",
+    "provider": "anthropic",
+    "family": "claude-opus-4-1",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 32000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 15.0,
+          "cached_input_per_million": 18.75,
+          "output_per_million": 75.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "anthropic.claude-opus-4-20250514-v1:0",
+    "name": "Claude Opus 4",
+    "provider": "anthropic",
+    "family": "claude-opus-4",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 32000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 15.0,
+          "cached_input_per_million": 18.75,
+          "output_per_million": 75.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "anthropic.claude-sonnet-4-20250514-v1:0",
+    "name": "Claude Sonnet 4",
+    "provider": "anthropic",
+    "family": "claude-sonnet-4",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 64000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 3.0,
+          "cached_input_per_million": 3.75,
+          "output_per_million": 15.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
     "id": "claude-3-5-haiku-20241022",
+    "name": "Claude Haiku 3.5",
+    "provider": "anthropic",
+    "family": "claude-3-5-haiku",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 8192,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.8,
+          "cached_input_per_million": 1.0,
+          "output_per_million": 4.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "claude-3-5-haiku@20241022",
     "name": "Claude Haiku 3.5",
     "provider": "anthropic",
     "family": "claude-3-5-haiku",
@@ -140,7 +364,71 @@
     "metadata": {}
   },
   {
+    "id": "claude-3-7-sonnet@20250219",
+    "name": "Claude Sonnet 3.7",
+    "provider": "anthropic",
+    "family": "claude-3-7-sonnet",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 64000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 3.0,
+          "cached_input_per_million": 3.75,
+          "output_per_million": 15.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
     "id": "claude-3-haiku-20240307",
+    "name": "Claude Haiku 3",
+    "provider": "anthropic",
+    "family": "claude-3-haiku",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 4096,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.25,
+          "cached_input_per_million": 0.3,
+          "output_per_million": 1.25
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "claude-3-haiku@20240307",
     "name": "Claude Haiku 3",
     "provider": "anthropic",
     "family": "claude-3-haiku",
@@ -242,6 +530,38 @@
     "metadata": {}
   },
   {
+    "id": "claude-opus-4-1@20250805",
+    "name": "Claude Opus 4.1",
+    "provider": "anthropic",
+    "family": "claude-opus-4-1",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 32000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 15.0,
+          "cached_input_per_million": 18.75,
+          "output_per_million": 75.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
     "id": "claude-opus-4-20250514",
     "name": "Claude Opus 4",
     "provider": "anthropic",
@@ -274,7 +594,71 @@
     "metadata": {}
   },
   {
+    "id": "claude-opus-4@20250514",
+    "name": "Claude Opus 4",
+    "provider": "anthropic",
+    "family": "claude-opus-4",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 32000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 15.0,
+          "cached_input_per_million": 18.75,
+          "output_per_million": 75.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
     "id": "claude-sonnet-4-20250514",
+    "name": "Claude Sonnet 4",
+    "provider": "anthropic",
+    "family": "claude-sonnet-4",
+    "created_at": null,
+    "context_window": 200000,
+    "max_output_tokens": 64000,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "image",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "function_calling"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 3.0,
+          "cached_input_per_million": 3.75,
+          "output_per_million": 15.0
+        }
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "id": "claude-sonnet-4@20250514",
     "name": "Claude Sonnet 4",
     "provider": "anthropic",
     "family": "claude-sonnet-4",
@@ -1850,7 +2234,7 @@
     "provider": "deepseek",
     "family": "deepseek-chat",
     "created_at": null,
-    "context_window": 64000,
+    "context_window": 128000,
     "max_output_tokens": 8000,
     "knowledge_cutoff": null,
     "modalities": {
@@ -1885,7 +2269,7 @@
     "provider": "deepseek",
     "family": "deepseek-reasoner",
     "created_at": null,
-    "context_window": 64000,
+    "context_window": null,
     "max_output_tokens": 64000,
     "knowledge_cutoff": null,
     "modalities": {
@@ -6429,7 +6813,8 @@
       ],
       "output": [
         "embeddings",
-        "image"
+        "image",
+        "text"
       ]
     },
     "capabilities": [],
@@ -7710,26 +8095,27 @@
   },
   {
     "id": "gpt-4o-mini-audio-preview-2024-12-17",
-    "name": "GPT-4o mini Audio",
+    "name": "GPT-4o-Mini Audio Preview 20241217",
     "provider": "openai",
-    "family": "gpt-4o-mini-audio-preview",
-    "created_at": null,
+    "family": "gpt4o_mini_audio",
+    "created_at": "2024-12-13 19:52:00 +0100",
     "context_window": 128000,
     "max_output_tokens": 16384,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "audio",
-        "text"
+        "text",
+        "audio"
       ],
       "output": [
-        "audio",
-        "embeddings",
-        "text"
+        "text",
+        "audio"
       ]
     },
     "capabilities": [
-      "function_calling"
+      "streaming",
+      "speech_generation",
+      "transcription"
     ],
     "pricing": {
       "text_tokens": {
@@ -8291,9 +8677,7 @@
         "text"
       ]
     },
-    "capabilities": [
-      "structured_output"
-    ],
+    "capabilities": [],
     "pricing": {
       "text_tokens": {
         "standard": {
@@ -9669,7 +10053,7 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "output_per_million": 30.0
+          "input_per_million": 30.0
         }
       }
     },
@@ -10244,8 +10628,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 5.0,
-          "output_per_million": 6.25
+          "input_per_million": 4.0,
+          "output_per_million": 5.5
         }
       }
     },
@@ -10551,8 +10935,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 1.25,
-          "output_per_million": 1.5
+          "input_per_million": 2.0,
+          "output_per_million": 5.0
         }
       }
     },
@@ -12961,8 +13345,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.17992692,
-          "output_per_million": 0.7200576000000001
+          "input_per_million": 0.1999188,
+          "output_per_million": 0.800064
         }
       }
     },
@@ -13032,8 +13416,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.17992692,
-          "output_per_million": 0.7200576000000001
+          "input_per_million": 0.1999188,
+          "output_per_million": 0.800064
         }
       }
     },
@@ -13129,6 +13513,79 @@
         "repetition_penalty",
         "seed",
         "stop",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ]
+    }
+  },
+  {
+    "id": "deepseek/deepseek-chat-v3.1",
+    "name": "DeepSeek: DeepSeek V3.1",
+    "provider": "openrouter",
+    "family": "deepseek",
+    "created_at": "2025-08-21 14:33:48 +0200",
+    "context_window": 163840,
+    "max_output_tokens": null,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "function_calling",
+      "structured_output",
+      "predicted_outputs"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.19999999999999998,
+          "output_per_million": 0.7999999999999999
+        }
+      }
+    },
+    "metadata": {
+      "description": "DeepSeek-V3.1 is a large hybrid reasoning model (671B parameters, 37B active) that supports both thinking and non-thinking modes via prompt templates. It extends the DeepSeek-V3 base with a two-phase long-context training process, reaching up to 128K tokens, and uses FP8 microscaling for efficient inference.\n\nThe model improves tool use, code generation, and reasoning efficiency, achieving performance comparable to DeepSeek-R1 on difficult benchmarks while responding more quickly. It supports structured tool calling, code agents, and search agents, making it suitable for research, coding, and agentic workflows.\n\nIt succeeds the [DeepSeek V3-0324](/deepseek/deepseek-chat-v3-0324) model and performs well on a variety of tasks.",
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "DeepSeek",
+        "instruct_type": "deepseek-v3.1"
+      },
+      "top_provider": {
+        "context_length": 163840,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -13300,8 +13757,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.17992692,
-          "output_per_million": 0.7200576000000001
+          "input_per_million": 0.1999188,
+          "output_per_million": 0.800064
         }
       }
     },
@@ -13597,7 +14054,6 @@
         "response_format",
         "seed",
         "stop",
-        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -14077,6 +14533,71 @@
         ],
         "tokenizer": "DeepSeek",
         "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 163840,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "repetition_penalty",
+        "seed",
+        "stop",
+        "temperature",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ]
+    }
+  },
+  {
+    "id": "deepseek/deepseek-v3.1-base",
+    "name": "DeepSeek: DeepSeek V3.1 Base",
+    "provider": "openrouter",
+    "family": "deepseek",
+    "created_at": "2025-08-20 23:56:57 +0200",
+    "context_window": 163840,
+    "max_output_tokens": null,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "predicted_outputs"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 0.19999999999999998,
+          "output_per_million": 0.7999999999999999
+        }
+      }
+    },
+    "metadata": {
+      "description": "This is a base model, trained only for raw next-token prediction. Unlike instruct/chat models, it has not been fine-tuned to follow user instructions. Prompts need to be written more like training text or examples rather than simple requests (e.g., “Translate the following sentence…” instead of just “Translate this”).\n\nDeepSeek-V3.1 Base is a 671B parameter open Mixture-of-Experts (MoE) language model with 37B active parameters per forward pass and a context length of 128K tokens. Trained on 14.8T tokens using FP8 mixed precision, it achieves high training efficiency and stability, with strong performance across language, reasoning, math, and coding tasks. \n",
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "DeepSeek",
+        "instruct_type": "none"
       },
       "top_provider": {
         "context_length": 163840,
@@ -15475,6 +15996,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_logprobs",
@@ -16259,73 +16781,6 @@
     }
   },
   {
-    "id": "liquid/lfm-40b",
-    "name": "Liquid: LFM 40B MoE",
-    "provider": "openrouter",
-    "family": "liquid",
-    "created_at": "2024-09-30 02:00:00 +0200",
-    "context_window": 65536,
-    "max_output_tokens": 65536,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "structured_output",
-      "predicted_outputs"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.15,
-          "output_per_million": 0.15
-        }
-      }
-    },
-    "metadata": {
-      "description": "Liquid's 40.3B Mixture of Experts (MoE) model. Liquid Foundation Models (LFMs) are large neural networks built with computational units rooted in dynamic systems.\n\nLFMs are general-purpose AI models that can be used to model any kind of sequential data, including video, audio, text, time series, and signals.\n\nSee the [launch announcement](https://www.liquid.ai/liquid-foundation-models) for benchmarks and more info.",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": "chatml"
-      },
-      "top_provider": {
-        "context_length": 65536,
-        "max_completion_tokens": 65536,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "repetition_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_logprobs",
-        "top_p"
-      ]
-    }
-  },
-  {
     "id": "liquid/lfm-7b",
     "name": "Liquid: LFM 7B",
     "provider": "openrouter",
@@ -16416,8 +16871,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.75,
-          "output_per_million": 0.75
+          "input_per_million": 1.125,
+          "output_per_million": 1.125
         }
       }
     },
@@ -20179,8 +20634,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.017992691999999998,
-          "output_per_million": 0.07200576
+          "input_per_million": 0.01999188,
+          "output_per_million": 0.0800064
         }
       }
     },
@@ -21268,7 +21723,7 @@
     "family": "neversleep",
     "created_at": "2024-09-15 02:00:00 +0200",
     "context_window": 32768,
-    "max_output_tokens": 2048,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -21286,8 +21741,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.09999999999999999,
-          "output_per_million": 0.625
+          "input_per_million": 0.09,
+          "output_per_million": 0.6
         }
       }
     },
@@ -21306,7 +21761,7 @@
       },
       "top_provider": {
         "context_length": 32768,
-        "max_completion_tokens": 2048,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -21334,8 +21789,8 @@
     "provider": "openrouter",
     "family": "neversleep",
     "created_at": "2023-11-26 01:00:00 +0100",
-    "context_window": 8192,
-    "max_output_tokens": 2048,
+    "context_window": 4096,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -21353,8 +21808,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.625,
-          "output_per_million": 1.0
+          "input_per_million": 1.0,
+          "output_per_million": 1.75
         }
       }
     },
@@ -21372,8 +21827,8 @@
         "instruct_type": "alpaca"
       },
       "top_provider": {
-        "context_length": 8192,
-        "max_completion_tokens": 2048,
+        "context_length": 4096,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -21795,7 +22250,7 @@
     "family": "nvidia",
     "created_at": "2024-10-15 02:00:00 +0200",
     "context_window": 131072,
-    "max_output_tokens": 131072,
+    "max_output_tokens": 16384,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -21834,14 +22289,13 @@
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": 131072,
+        "max_completion_tokens": 16384,
         "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
         "frequency_penalty",
         "logit_bias",
-        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -21853,7 +22307,6 @@
         "tool_choice",
         "tools",
         "top_k",
-        "top_logprobs",
         "top_p"
       ]
     }
@@ -23286,6 +23739,75 @@
     }
   },
   {
+    "id": "openai/gpt-4o-audio-preview",
+    "name": "OpenAI: GPT-4o Audio",
+    "provider": "openrouter",
+    "family": "openai",
+    "created_at": "2025-08-15 06:44:21 +0200",
+    "context_window": 128000,
+    "max_output_tokens": 16384,
+    "knowledge_cutoff": null,
+    "modalities": {
+      "input": [
+        "audio",
+        "text"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "capabilities": [
+      "streaming",
+      "function_calling",
+      "structured_output"
+    ],
+    "pricing": {
+      "text_tokens": {
+        "standard": {
+          "input_per_million": 2.5,
+          "output_per_million": 10.0
+        }
+      }
+    },
+    "metadata": {
+      "description": "The gpt-4o-audio-preview model adds support for audio inputs as prompts. This enhancement allows the model to detect nuances within audio recordings and add depth to generated user experiences. Audio outputs are currently not supported. Audio tokens are priced at $40 per million input audio tokens.",
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "audio",
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "context_length": 128000,
+        "max_completion_tokens": 16384,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ]
+    }
+  },
+  {
     "id": "openai/gpt-4o-mini",
     "name": "OpenAI: GPT-4o-mini",
     "provider": "openrouter",
@@ -23649,7 +24171,7 @@
       }
     },
     "metadata": {
-      "description": "GPT-5 is OpenAI’s most advanced model, offering major improvements in reasoning, code quality, and user experience. It is optimized for complex tasks that require step-by-step reasoning, instruction following, and accuracy in high-stakes use cases. It supports test-time routing features and advanced prompt understanding, including user-specified intent like \"think hard about this.\" Improvements include reductions in hallucination, sycophancy, and better performance in coding, writing, and health-related tasks.\n\nNote that BYOK is required for this model. Set up here: https://openrouter.ai/settings/integrations",
+      "description": "GPT-5 is OpenAI’s most advanced model, offering major improvements in reasoning, code quality, and user experience. It is optimized for complex tasks that require step-by-step reasoning, instruction following, and accuracy in high-stakes use cases. It supports test-time routing features and advanced prompt understanding, including user-specified intent like \"think hard about this.\" Improvements include reductions in hallucination, sycophancy, and better performance in coding, writing, and health-related tasks.",
       "architecture": {
         "modality": "text+image->text",
         "input_modalities": [
@@ -28415,8 +28937,8 @@
     "provider": "openrouter",
     "family": "thedrummer",
     "created_at": "2024-09-30 02:00:00 +0200",
-    "context_window": 8192,
-    "max_output_tokens": 8192,
+    "context_window": 32768,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -28435,8 +28957,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.19,
-          "output_per_million": 0.44999999999999996
+          "input_per_million": 0.16999999999999998,
+          "output_per_million": 0.43
         }
       }
     },
@@ -28454,8 +28976,8 @@
         "instruct_type": "chatml"
       },
       "top_provider": {
-        "context_length": 8192,
-        "max_completion_tokens": 8192,
+        "context_length": 32768,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -28641,8 +29163,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.24,
-          "output_per_million": 0.24
+          "input_per_million": 0.55,
+          "output_per_million": 1.66
         }
       }
     },
@@ -28838,8 +29360,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.17992692,
-          "output_per_million": 0.7200576000000001
+          "input_per_million": 0.1999188,
+          "output_per_million": 0.800064
         }
       }
     },
@@ -29008,7 +29530,7 @@
     "family": "undi95",
     "created_at": "2023-07-22 02:00:00 +0200",
     "context_window": 6144,
-    "max_output_tokens": 1024,
+    "max_output_tokens": null,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
@@ -29026,8 +29548,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 0.75
+          "input_per_million": 0.44999999999999996,
+          "output_per_million": 0.65
         }
       }
     },
@@ -29046,7 +29568,7 @@
       },
       "top_provider": {
         "context_length": 6144,
-        "max_completion_tokens": 1024,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -29743,8 +30265,7 @@
     },
     "capabilities": [
       "streaming",
-      "function_calling",
-      "structured_output"
+      "function_calling"
     ],
     "pricing": {
       "text_tokens": {
@@ -29775,21 +30296,12 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "frequency_penalty",
         "include_reasoning",
         "max_tokens",
-        "min_p",
-        "presence_penalty",
         "reasoning",
-        "repetition_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
-        "top_k",
         "top_p"
       ]
     }
@@ -29878,14 +30390,13 @@
     "capabilities": [
       "streaming",
       "function_calling",
-      "structured_output",
       "predicted_outputs"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 0.5,
-          "output_per_million": 1.7
+          "output_per_million": 1.7999999999999998
         }
       }
     },
@@ -29918,7 +30429,6 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
-        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -29934,7 +30444,7 @@
     "name": "Sonar",
     "provider": "perplexity",
     "family": "sonar",
-    "created_at": "2025-08-19 12:48:52 +0200",
+    "created_at": "2025-08-23 12:54:38 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -29966,7 +30476,7 @@
     "name": "Sonar Deep Research",
     "provider": "perplexity",
     "family": "sonar_deep_research",
-    "created_at": "2025-08-19 12:48:52 +0200",
+    "created_at": "2025-08-23 12:54:38 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -30001,7 +30511,7 @@
     "name": "Sonar Pro",
     "provider": "perplexity",
     "family": "sonar_pro",
-    "created_at": "2025-08-19 12:48:52 +0200",
+    "created_at": "2025-08-23 12:54:38 +0200",
     "context_window": 200000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
@@ -30033,7 +30543,7 @@
     "name": "Sonar Reasoning",
     "provider": "perplexity",
     "family": "sonar_reasoning",
-    "created_at": "2025-08-19 12:48:52 +0200",
+    "created_at": "2025-08-23 12:54:38 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -30065,7 +30575,7 @@
     "name": "Sonar Reasoning Pro",
     "provider": "perplexity",
     "family": "sonar_reasoning_pro",
-    "created_at": "2025-08-19 12:48:52 +0200",
+    "created_at": "2025-08-23 12:54:38 +0200",
     "context_window": 128000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,

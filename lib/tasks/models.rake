@@ -369,7 +369,7 @@ def generate_aliases # rubocop:disable Metrics/PerceivedComplexity
 
   models['bedrock'].each do |bedrock_model|
     next unless bedrock_model.start_with?('anthropic.')
-    next unless bedrock_model =~ /anthropic\.(claude-[\d\.]+-[a-z]+)/
+    next unless bedrock_model =~ /anthropic\.(claude-[\d.]+-[a-z]+)/
 
     base_name = Regexp.last_match(1)
     anthropic_name = base_name.tr('.', '-')
