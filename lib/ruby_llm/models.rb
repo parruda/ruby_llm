@@ -146,6 +146,24 @@ module RubyLLM
     end
 
     def load_models
+      # Try to load from database first if configured
+      if RubyLLM.config.model_registry_class
+        load_from_database
+      else
+        load_from_json
+      end
+    rescue StandardError => e
+      RubyLLM.logger.debug "Failed to load models from database: #{e.message}, falling back to JSON"
+      load_from_json
+    end
+
+    def load_from_database
+      model_class = RubyLLM.config.model_registry_class
+      model_class = model_class.constantize if model_class.is_a?(String)
+      model_class.all.map(&:to_llm)
+    end
+
+    def load_from_json
       data = File.exist?(self.class.models_file) ? File.read(self.class.models_file) : '[]'
       JSON.parse(data, symbolize_names: true).map { |model| Model::Info.new(model) }
     rescue JSON::ParserError

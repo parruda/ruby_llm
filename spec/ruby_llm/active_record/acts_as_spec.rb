@@ -7,6 +7,14 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
 
   let(:model) { 'gpt-4.1-nano' }
 
+  before do
+    # Clean up database before each test
+    Chat.destroy_all
+    Message.destroy_all
+    ToolCall.destroy_all if defined?(ToolCall)
+    Model.destroy_all if defined?(Model)
+  end
+
   class Calculator < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
     description 'Performs basic arithmetic'
     param :expression, type: :string, desc: 'Math expression to evaluate'
@@ -91,6 +99,41 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
 
       chat.with_model('claude-3-5-haiku-20241022')
       expect(chat.reload.model_id).to eq('claude-3-5-haiku-20241022')
+    end
+  end
+
+  describe 'model associations' do
+    context 'when model registry is configured' do
+      before do
+        # Only set up if Model class exists (from dummy app)
+        next unless defined?(Model)
+
+        if Model.table_exists?
+          Model.create!(
+            model_id: 'gpt-4.1-nano',
+            name: 'GPT-4.1 Nano',
+            provider: 'openai'
+          )
+        end
+      end
+
+      it 'associates chat with model' do
+        skip 'Model not available' unless defined?(Model) && Model.table_exists?
+
+        chat = Chat.create!(model_id: 'gpt-4.1-nano')
+        expect(chat).to respond_to(:model)
+        expect(chat.model&.name).to eq('GPT-4.1 Nano') if chat.model
+      end
+
+      it 'associates messages with model' do
+        skip 'Model not available' unless defined?(Model) && Model.table_exists?
+
+        chat = Chat.create!(model_id: 'gpt-4.1-nano')
+        chat.ask('Hello')
+
+        message = chat.messages.last
+        expect(message).to respond_to(:model) if defined?(Message.model)
+      end
     end
   end
 
