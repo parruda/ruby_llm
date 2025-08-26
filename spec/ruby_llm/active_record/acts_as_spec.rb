@@ -9,10 +9,15 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
 
   before do
     # Clean up database before each test
-    Chat.destroy_all
-    Message.destroy_all
-    ToolCall.destroy_all if defined?(ToolCall)
-    Model.destroy_all if defined?(Model)
+    # Use connection.execute to avoid ActiveRecord callbacks and locks
+    if ActiveRecord::Base.connection.table_exists?(:messages)
+      ActiveRecord::Base.connection.execute('DELETE FROM messages')
+    end
+    if ActiveRecord::Base.connection.table_exists?(:tool_calls)
+      ActiveRecord::Base.connection.execute('DELETE FROM tool_calls')
+    end
+    ActiveRecord::Base.connection.execute('DELETE FROM chats') if ActiveRecord::Base.connection.table_exists?(:chats)
+    ActiveRecord::Base.connection.execute('DELETE FROM models') if ActiveRecord::Base.connection.table_exists?(:models)
   end
 
   class Calculator < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
