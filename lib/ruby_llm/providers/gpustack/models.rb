@@ -47,7 +47,7 @@ module RubyLLM
           'other'
         end
 
-        def build_capabilities(model)
+        def build_capabilities(model) # rubocop:disable Metrics/PerceivedComplexity
           capabilities = []
 
           # Add streaming by default for LLM models

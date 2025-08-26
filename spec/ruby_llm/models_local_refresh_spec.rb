@@ -7,34 +7,44 @@ RSpec.describe RubyLLM::Models do
 
   describe 'local provider model fetching' do
     describe '.refresh!' do
-      context 'with default parameters' do
+      context 'with default parameters' do # rubocop:disable RSpec/NestedGroups
         it 'includes local providers' do
           allow(described_class).to receive(:fetch_from_parsera).and_return([])
-          expect(RubyLLM::Provider).to receive(:configured_providers).and_call_original
+          allow(RubyLLM::Provider).to receive(:configured_providers).and_return([])
 
           described_class.refresh!
+
+          expect(RubyLLM::Provider).to have_received(:configured_providers)
         end
       end
 
-      context 'with remote_only: true' do
+      context 'with remote_only: true' do # rubocop:disable RSpec/NestedGroups
         it 'excludes local providers' do
           allow(described_class).to receive(:fetch_from_parsera).and_return([])
-          expect(RubyLLM::Provider).to receive(:configured_remote_providers).and_call_original
+          allow(RubyLLM::Provider).to receive(:configured_remote_providers).and_return([])
 
           described_class.refresh!(remote_only: true)
+
+          expect(RubyLLM::Provider).to have_received(:configured_remote_providers)
         end
       end
     end
 
     describe '.fetch_from_providers' do
       it 'defaults to remote_only: true' do
-        expect(RubyLLM::Provider).to receive(:configured_remote_providers).and_call_original
+        allow(RubyLLM::Provider).to receive(:configured_remote_providers).and_return([])
+
         described_class.fetch_from_providers
+
+        expect(RubyLLM::Provider).to have_received(:configured_remote_providers)
       end
 
       it 'can include local providers with remote_only: false' do
-        expect(RubyLLM::Provider).to receive(:configured_providers).and_call_original
+        allow(RubyLLM::Provider).to receive(:configured_providers).and_return([])
+
         described_class.fetch_from_providers(remote_only: false)
+
+        expect(RubyLLM::Provider).to have_received(:configured_providers)
       end
     end
 
@@ -46,7 +56,8 @@ RSpec.describe RubyLLM::Models do
       end
 
       it 'can parse list models response' do
-        response = double(
+        response = double( # rubocop:disable RSpec/VerifiedDoubles
+          'Response',
           body: {
             'data' => [
               {
@@ -88,12 +99,13 @@ RSpec.describe RubyLLM::Models do
                                              )
                                            ])
         )
+        allow(RubyLLM.logger).to receive(:warn)
 
         described_class.refresh!
 
-        expect(RubyLLM.logger).not_to receive(:warn)
         chat = RubyLLM.chat(provider: :ollama, model: 'test-model')
         expect(chat.model.id).to eq('test-model')
+        expect(RubyLLM.logger).not_to have_received(:warn)
       end
 
       it 'assumes model exists for GPUStack without checking registry' do
