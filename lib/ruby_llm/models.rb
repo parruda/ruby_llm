@@ -22,16 +22,20 @@ module RubyLLM
         File.expand_path('models_schema.json', __dir__)
       end
 
-      def refresh!
-        provider_models = fetch_from_providers
+      def refresh!(remote_only: false)
+        provider_models = fetch_from_providers(remote_only: remote_only)
         parsera_models = fetch_from_parsera
         merged_models = merge_models(provider_models, parsera_models)
         @instance = new(merged_models)
       end
 
-      def fetch_from_providers
+      def fetch_from_providers(remote_only: true)
         config = RubyLLM.config
-        configured_classes = Provider.configured_remote_providers(config)
+        configured_classes = if remote_only
+                               Provider.configured_remote_providers(config)
+                             else
+                               Provider.configured_providers(config)
+                             end
         configured = configured_classes.map { |klass| klass.new(config) }
 
         RubyLLM.logger.info "Fetching models from providers: #{configured.map(&:name).join(', ')}"
@@ -54,11 +58,19 @@ module RubyLLM
           provider_class ||= raise(Error, "Unknown provider: #{provider.to_sym}")
           provider_instance = provider_class.new(config)
 
-          model = Model::Info.new(
+          model = if provider_instance.local?
+                    begin
+                      Models.find(model_id, provider)
+                    rescue ModelNotFoundError
+                      nil
+                    end
+                  end
+
+          model ||= Model::Info.new(
             id: model_id,
             name: model_id.tr('-', ' ').capitalize,
             provider: provider_instance.slug,
-            capabilities: %w[function_calling streaming],
+            capabilities: %w[function_calling streaming vision structured_output],
             modalities: { input: %w[text image], output: %w[text] },
             metadata: { warning: 'Assuming model exists, capabilities may not be accurate' }
           )
@@ -184,8 +196,8 @@ module RubyLLM
       self.class.new(all.select { |m| m.provider == provider.to_s })
     end
 
-    def refresh!
-      self.class.refresh!
+    def refresh!(remote_only: false)
+      self.class.refresh!(remote_only: remote_only)
     end
 
     private
