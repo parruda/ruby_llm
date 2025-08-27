@@ -21,13 +21,6 @@ redirect_from:
 
 ---
 
-After reading this guide, you will know:
-
-* How RubyLLM's model registry works and where data comes from
-* How to find models by provider, capability, or purpose
-* What information is available for each model
-* How to use model aliases for simpler configuration
-
 ## Model Data Sources
 
 - **OpenAI, Anthropic, DeepSeek, Gemini, VertexAI**: Enriched by [🚀 Parsera](https://parsera.org/) *([free LLM metadata API](https://api.parsera.org/v1/llm-specs) - [go say thanks!](https://github.com/parsera-labs/api-llm-specs))*
