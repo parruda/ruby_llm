@@ -66,14 +66,7 @@ module RubyLLM
                     end
                   end
 
-          model ||= Model::Info.new(
-            id: model_id,
-            name: model_id.tr('-', ' ').capitalize,
-            provider: provider_instance.slug,
-            capabilities: %w[function_calling streaming vision structured_output],
-            modalities: { input: %w[text image], output: %w[text] },
-            metadata: { warning: 'Assuming model exists, capabilities may not be accurate' }
-          )
+          model ||= Model::Info.default(model_id, provider_instance.slug)
         else
           model = Models.find model_id, provider
           provider_class = Provider.providers[model.provider.to_sym] || raise(Error,
@@ -114,18 +107,34 @@ module RubyLLM
         all_keys = parsera_by_key.keys | provider_by_key.keys
 
         models = all_keys.map do |key|
-          if (parsera_model = parsera_by_key[key])
-            if (provider_model = provider_by_key[key])
-              add_provider_metadata(parsera_model, provider_model)
-            else
-              parsera_model
-            end
+          parsera_model = find_parsera_model(key, parsera_by_key)
+          provider_model = provider_by_key[key]
+
+          if parsera_model && provider_model
+            add_provider_metadata(parsera_model, provider_model)
+          elsif parsera_model
+            parsera_model
           else
-            provider_by_key[key]
+            provider_model
           end
         end
 
         models.sort_by { |m| [m.provider, m.id] }
+      end
+
+      def find_parsera_model(key, parsera_by_key)
+        # Direct match
+        return parsera_by_key[key] if parsera_by_key[key]
+
+        # VertexAI uses same models as Gemini
+        provider, model_id = key.split(':', 2)
+        return unless provider == 'vertexai'
+
+        gemini_model = parsera_by_key["gemini:#{model_id}"]
+        return unless gemini_model
+
+        # Return Gemini's Parsera data but with VertexAI as provider
+        Model::Info.new(gemini_model.to_h.merge(provider: 'vertexai'))
       end
 
       def index_by_key(models)
