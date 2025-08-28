@@ -24,7 +24,6 @@ class CreateTables < ActiveRecord::Migration[7.0]
     end
 
     create_table :chats do |t|
-      t.string :model_id
       t.references :model, foreign_key: true
       t.timestamps
     end
@@ -33,7 +32,6 @@ class CreateTables < ActiveRecord::Migration[7.0]
       t.references :chat
       t.string :role
       t.text :content
-      t.string :model_id
       t.references :model, foreign_key: true
       t.integer :input_tokens
       t.integer :output_tokens
