@@ -5,6 +5,16 @@ require 'spec_helper'
 RSpec.describe RubyLLM::ActiveRecord::ActsAs do
   let(:model) { 'gpt-4.1-nano' }
 
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
+    # Load models from JSON once at the start of the spec
+    if ActiveRecord::Base.connection.table_exists?(:models)
+      ActiveRecord::Base.connection.execute('DELETE FROM models')
+      # Reload models from JSON and save to database
+      RubyLLM.models.load_from_json!
+      Model.save_to_database
+    end
+  end
+
   describe 'when global configuration is missing' do
     around do |example|
       # Save current config
@@ -20,35 +30,13 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
     end
 
     it 'works when using chat with a custom context' do
-      chat = Chat.create!(model_id: model)
-
-      # Create a custom context with API key
       context = RubyLLM.context do |config|
         config.openai_api_key = 'sk-test-key'
       end
 
-      expect do
-        chat.with_context(context)
-      end.not_to raise_error
+      chat = Chat.create!(model: model, context: context)
 
-      # The chat should be properly configured with the context
-      llm_chat = chat.instance_variable_get(:@chat)
-      expect(llm_chat).to be_a(RubyLLM::Chat)
-      expect(llm_chat.instance_variable_get(:@context)).to eq(context)
-    end
-
-    it 'would have failed before the fix when calling to_llm then with_context' do
-      # This test demonstrates that the issue has been fixed
-      # Previously, calling to_llm first would create a chat without context
-      # and fail if no global config was present
-
-      chat = Chat.create!(model_id: model)
-      context = RubyLLM.context do |config|
-        config.openai_api_key = 'sk-test-key'
-      end
-
-      # This now works because to_llm accepts a context parameter
-      expect { chat.with_context(context) }.not_to raise_error
+      expect(chat.instance_variable_get(:@context)).to eq(context)
     end
   end
 
@@ -56,18 +44,15 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
     include_context 'with configured RubyLLM'
 
     it 'works with custom context even when global config exists' do
-      chat = Chat.create!(model_id: model)
-
       # Create a different API key in custom context
       custom_context = RubyLLM.context do |config|
         config.openai_api_key = 'sk-different-key'
       end
 
-      chat.with_context(custom_context)
+      chat = Chat.create!(model: model, context: custom_context)
 
-      llm_chat = chat.instance_variable_get(:@chat)
-      expect(llm_chat.instance_variable_get(:@context)).to eq(custom_context)
-      expect(llm_chat.instance_variable_get(:@config).openai_api_key).to eq('sk-different-key')
+      expect(chat.instance_variable_get(:@context)).to eq(custom_context)
+      expect(chat.instance_variable_get(:@context).config.openai_api_key).to eq('sk-different-key')
     end
   end
 end

@@ -234,6 +234,9 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
           provider: 'anthropic',
           capabilities: ['streaming']
         )
+
+        # Reload models from database so RubyLLM.models knows about them
+        RubyLLM.models.load_from_database!
       end
 
       after do
@@ -279,18 +282,40 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
         chat.to_llm
       end
 
-      it 'falls back to string when no model association' do
-        chat = chat_class.create!(model_id: 'non-existent')
+      it 'fails when model does not exist' do
+        expect { chat_class.create!(model_id: 'non-existent') }.to raise_error(RubyLLM::ModelNotFoundError)
+      end
 
-        expect(chat.model).to be_nil
+      it 'creates model in database when assume_model_exists is true with provider' do
+        chat = chat_class.new(model_id: 'gpt-1999', provider: 'openai', assume_model_exists: true)
+        chat.save!
 
-        expect(RubyLLM).to receive(:chat).with( # rubocop:disable RSpec/MessageSpies
-          model: 'non-existent',
-          provider: nil
-        ).and_call_original
+        expect(chat.model).to be_present
+        expect(chat.model.model_id).to eq('gpt-1999')
+        expect(chat.model.provider).to eq('openai')
 
-        # This will fail because the model doesn't exist, but we're testing the parameters
-        expect { chat.to_llm }.to raise_error(RubyLLM::ModelNotFoundError)
+        # Verify it was created in the database
+        db_model = model_class.find_by(model_id: 'gpt-1999', provider: 'openai')
+        expect(db_model).to be_present
+        expect(db_model.name).to eq('Gpt 1999') # Should use model_id as name when not found
+      end
+
+      it 'works with assume_model_exists and different provider' do
+        chat = chat_class.new(model_id: 'future-model-2050', provider: 'anthropic', assume_model_exists: true)
+        chat.save!
+
+        expect(chat.model).to be_present
+        expect(chat.model.model_id).to eq('future-model-2050')
+        expect(chat.model.provider).to eq('anthropic')
+
+        # Verify it was created in the database
+        db_model = model_class.find_by(model_id: 'future-model-2050', provider: 'anthropic')
+        expect(db_model).to be_present
+      end
+
+      it 'fails with assume_model_exists when provider is missing' do
+        chat = chat_class.new(model_id: 'mystery-model-3000', assume_model_exists: true)
+        expect { chat.save! }.to raise_error(ArgumentError, /Provider must be specified/)
       end
     end
   end
