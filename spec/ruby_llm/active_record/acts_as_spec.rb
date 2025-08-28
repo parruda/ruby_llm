@@ -4,30 +4,9 @@ require 'spec_helper'
 
 RSpec.describe RubyLLM::ActiveRecord::ActsAs do
   include_context 'with configured RubyLLM'
+  include_context 'with database setup'
 
   let(:model) { 'gpt-4.1-nano' }
-
-  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
-    # Load models from JSON once at the start of the spec
-    if ActiveRecord::Base.connection.table_exists?(:models)
-      ActiveRecord::Base.connection.execute('DELETE FROM models')
-      # Reload models from JSON and save to database
-      RubyLLM.models.load_from_json!
-      Model.save_to_database
-    end
-  end
-
-  before do
-    # Clean up database before each test
-    # Use connection.execute to avoid ActiveRecord callbacks and locks
-    if ActiveRecord::Base.connection.table_exists?(:messages)
-      ActiveRecord::Base.connection.execute('DELETE FROM messages')
-    end
-    if ActiveRecord::Base.connection.table_exists?(:tool_calls)
-      ActiveRecord::Base.connection.execute('DELETE FROM tool_calls')
-    end
-    ActiveRecord::Base.connection.execute('DELETE FROM chats') if ActiveRecord::Base.connection.table_exists?(:chats)
-  end
 
   class Calculator < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
     description 'Performs basic arithmetic'
@@ -637,11 +616,6 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
   end
 
   describe 'assume_model_exists' do
-    after do
-      # Clean up any custom models created during tests
-      Model.where(model_id: %w[my-custom-model another-custom-model]).destroy_all if defined?(Model)
-    end
-
     it 'creates a Model record when assume_model_exists is true' do
       chat = Chat.new
       chat.assume_model_exists = true

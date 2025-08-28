@@ -3,17 +3,9 @@
 require 'spec_helper'
 
 RSpec.describe RubyLLM::ActiveRecord::ActsAs do
-  let(:model) { 'gpt-4.1-nano' }
+  include_context 'with database setup'
 
-  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
-    # Load models from JSON once at the start of the spec
-    if ActiveRecord::Base.connection.table_exists?(:models)
-      ActiveRecord::Base.connection.execute('DELETE FROM models')
-      # Reload models from JSON and save to database
-      RubyLLM.models.load_from_json!
-      Model.save_to_database
-    end
-  end
+  let(:model) { 'gpt-4.1-nano' }
 
   describe 'when global configuration is missing' do
     around do |example|

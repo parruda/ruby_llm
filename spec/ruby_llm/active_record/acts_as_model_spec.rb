@@ -4,6 +4,7 @@ require 'spec_helper'
 
 RSpec.describe RubyLLM::ActiveRecord::ActsAs do
   include_context 'with configured RubyLLM'
+  include_context 'with database setup'
 
   describe 'acts_as_model' do
     let(:model_class) do
@@ -31,8 +32,11 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
     end
 
     before do
+      # Drop tables in correct order due to foreign key constraints
+      ActiveRecord::Base.connection.drop_table(:chats) if ActiveRecord::Base.connection.table_exists?(:chats)
+      ActiveRecord::Base.connection.drop_table(:models) if ActiveRecord::Base.connection.table_exists?(:models)
       ActiveRecord::Schema.define do
-        create_table :models, force: true do |t|
+        create_table :models do |t|
           t.string :model_id, null: false
           t.string :name, null: false
           t.string :provider, null: false
@@ -213,9 +217,12 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
           config.model_registry_class = model_class
         end
 
+        # Recreate chats table (models table already exists from outer before block)
+        ActiveRecord::Base.connection.drop_table(:chats) if ActiveRecord::Base.connection.table_exists?(:chats)
+
         ActiveRecord::Schema.define do
-          create_table :chats, force: true do |t|
-            t.string :model_id
+          create_table :chats do |t|
+            t.references :model, foreign_key: true
             t.timestamps
           end
         end

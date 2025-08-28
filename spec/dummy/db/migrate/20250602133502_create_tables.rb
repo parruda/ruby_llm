@@ -46,9 +46,5 @@ class CreateTables < ActiveRecord::Migration[7.0]
       t.json :arguments
       t.timestamps
     end
-
-    # Load models from JSON
-    RubyLLM.models.load_from_json!
-    ::Model.save_to_database
   end
 end
