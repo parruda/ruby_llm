@@ -23,12 +23,13 @@ redirect_from:
 
 After reading this guide, you will know:
 
-*   How to set up ActiveRecord models for persisting chats and messages.
-*   How the RubyLLM persistence flow works with Rails applications.
-*   How to use `acts_as_chat` and `acts_as_message` with your models.
-*   How to persist AI model metadata in your database with `acts_as_model`.
-*   How to integrate streaming responses with Hotwire/Turbo Streams.
-*   How to customize the persistence behavior for validation-focused scenarios.
+*   How to set up ActiveRecord models for persisting chats and messages
+*   How the RubyLLM persistence flow works with Rails applications
+*   How to use `acts_as_chat` and `acts_as_message` with your models
+*   How to persist AI model metadata in your database with `acts_as_model`
+*   How to send file attachments to AI models with ActiveStorage
+*   How to integrate streaming responses with Hotwire/Turbo Streams
+*   How to customize the persistence behavior for validation-focused scenarios
 
 ## Understanding the Persistence Flow
 
@@ -185,29 +186,24 @@ Run the migrations: `rails db:migrate`
 > **Database Compatibility:** The generator automatically detects your database and uses `jsonb` for PostgreSQL or `json` for MySQL/SQLite. If setting up manually, adjust the column type accordingly.
 {: .note }
 
-### ActiveStorage Setup for Attachments (Optional)
+### ActiveStorage Setup (Optional)
 
-If you want to use attachments (images, audio, PDFs) with your AI chats, you need to set up ActiveStorage:
+To send files to AI models (see [Working with Attachments](#working-with-attachments) below), set up ActiveStorage:
 
 ```bash
-# Only needed if you plan to use attachments
 rails active_storage:install
 rails db:migrate
 ```
 
-Then add the attachments association to your Message model:
+Then add to your Message model:
 
 ```ruby
 # app/models/message.rb
 class Message < ApplicationRecord
-  acts_as_message # Basic RubyLLM integration
-
-  # Optional: Add this line to enable attachment support
-  has_many_attached :attachments
+  acts_as_message
+  has_many_attached :attachments  # Enables file attachments
 end
 ```
-
-This setup is completely optional - your RubyLLM Rails integration works fine without it if you don't need attachment support.
 
 ### Configure RubyLLM
 
@@ -472,7 +468,7 @@ puts chat_record.messages.count # => 3 (user, assistant's tool call, tool result
 
 ### Working with Attachments
 
-If you've set up ActiveStorage as described above, you can easily send attachments to AI models with automatic type detection:
+With [ActiveStorage configured](#activestorage-setup-optional), send files to AI models:
 
 ```ruby
 # Create a chat
