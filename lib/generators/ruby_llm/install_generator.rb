@@ -22,8 +22,10 @@ module RubyLLM
                                     desc: 'Name of the Model model class (for model registry)'
     class_option :skip_model_registry, type: :boolean, default: false,
                                        desc: 'Skip creating Model registry (uses string fields instead)'
+    class_option :skip_active_storage, type: :boolean, default: false,
+                                       desc: 'Skip ActiveStorage installation and attachment setup'
 
-    desc 'Creates models and migrations for RubyLLM Rails integration'
+    desc 'Creates models and migrations for RubyLLM Rails integration with ActiveStorage for file attachments'
 
     def self.next_migration_number(dirname)
       ::ActiveRecord::Generators::Base.next_migration_number(dirname)
@@ -132,8 +134,17 @@ module RubyLLM
       template 'initializer.rb.tt', 'config/initializers/ruby_llm.rb'
     end
 
+    def install_active_storage
+      return if options[:skip_active_storage]
+
+      say '  Installing ActiveStorage for file attachments...', :cyan
+      rails_command 'active_storage:install'
+    end
+
     def show_install_info
       say "\n  ✅ RubyLLM installed!", :green
+
+      say '  ✅ ActiveStorage configured for file attachments support', :green unless options[:skip_active_storage]
 
       say "\n  Next steps:", :yellow
       say '     1. Run: rails db:migrate'
@@ -152,7 +163,15 @@ module RubyLLM
         say '     Models automatically load from the database'
         say '     Pass model names as strings - RubyLLM handles the rest!'
       end
-      say "     Specify provider when needed: Chat.create!(model: 'claude-3-5-sonnet', provider: 'bedrock')"
+      say "     Specify provider when needed: Chat.create!(model: 'gemini-2.5-flash', provider: 'vertexai')"
+
+      if options[:skip_active_storage]
+        say "\n  📎 Note: ActiveStorage was skipped", :yellow
+        say '     File attachments won\'t work without ActiveStorage.'
+        say '     To enable later:'
+        say '       1. Run: rails active_storage:install && rails db:migrate'
+        say "       2. Add to your #{options[:message_model_name]} model: has_many_attached :attachments"
+      end
 
       say "\n  📚 Documentation: https://rubyllm.com", :cyan
 

@@ -69,10 +69,12 @@ The easiest way to get started is using the provided Rails generator:
 rails generate ruby_llm:install
 ```
 
-This generator automatically creates:
-- All required migrations (Chat, Message, ToolCall, Model tables)
-- Model files with `acts_as_chat`, `acts_as_message`, `acts_as_tool_call`, and `acts_as_model` configured
-- A RubyLLM initializer in `config/initializers/ruby_llm.rb` with database model registry enabled
+This generator automatically:
+- Creates all required migrations (Chat, Message, ToolCall, Model tables)
+- Sets up model files with `acts_as_chat`, `acts_as_message`, `acts_as_tool_call`, and `acts_as_model`
+- Installs ActiveStorage for file attachments
+- Adds `has_many_attached :attachments` to your Message model
+- Creates a RubyLLM initializer with database model registry enabled
 
 After running the generator:
 
@@ -93,6 +95,9 @@ rails generate ruby_llm:install --chat-model-name=Conversation --message-model-n
 
 # Skip the Model registry (uses string fields instead)
 rails generate ruby_llm:install --skip-model-registry
+
+# Skip ActiveStorage installation (no file attachment support)
+rails generate ruby_llm:install --skip-active-storage
 ```
 
 This is useful if you already have models with these names or prefer different naming conventions.
@@ -186,9 +191,11 @@ Run the migrations: `rails db:migrate`
 > **Database Compatibility:** The generator automatically detects your database and uses `jsonb` for PostgreSQL or `json` for MySQL/SQLite. If setting up manually, adjust the column type accordingly.
 {: .note }
 
-### ActiveStorage Setup (Optional)
+### ActiveStorage for Attachments
 
-To send files to AI models (see [Working with Attachments](#working-with-attachments) below), set up ActiveStorage:
+The generator automatically sets up ActiveStorage and adds `has_many_attached :attachments` to your Message model. This enables file attachments out of the box.
+
+If you skipped ActiveStorage during generation (`--skip-active-storage`), you can add it later:
 
 ```bash
 rails active_storage:install
@@ -201,7 +208,7 @@ Then add to your Message model:
 # app/models/message.rb
 class Message < ApplicationRecord
   acts_as_message
-  has_many_attached :attachments  # Enables file attachments
+  has_many_attached :attachments  # Required for file attachments
 end
 ```
 
