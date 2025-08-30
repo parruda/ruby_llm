@@ -4,7 +4,6 @@ ENV['RAILS_ENV'] = 'test'
 
 require_relative 'dummy/config/environment'
 
-Rails.application.initialize! unless Rails.application.initialized?
 ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
 
 require_relative 'spec_helper'
