@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-puts '[CI DEBUG] acts_as.rb is being loaded!' if ENV['CI']
-
 module RubyLLM
   module ActiveRecord
     # Adds chat and message persistence capabilities to ActiveRecord models.
@@ -35,7 +33,6 @@ module RubyLLM
       class_methods do # rubocop:disable Metrics/BlockLength
         def acts_as_chat(message_class: 'Message', tool_call_class: 'ToolCall',
                          model_class: 'Model', model_foreign_key: nil)
-          puts "[ActsAs] acts_as_chat called on #{name}" if ENV['CI']
           include RubyLLM::ActiveRecord::ChatMethods
 
           @message_class = message_class.to_s

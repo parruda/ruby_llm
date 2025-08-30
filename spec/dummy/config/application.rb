@@ -16,9 +16,6 @@ RubyLLM.configure do |config|
   config.model_registry_class = 'Model'
 end
 
-# Debug output for CI
-puts "[DUMMY APP] After config: model_registry_class = #{RubyLLM.config.model_registry_class.inspect}" if ENV['CI']
-
 module Dummy
   class Application < Rails::Application
     config.load_defaults Rails::VERSION::STRING.to_f
