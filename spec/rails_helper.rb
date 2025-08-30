@@ -2,19 +2,19 @@
 
 ENV['RAILS_ENV'] = 'test'
 
-# Load the Rails application but don't initialize yet
 require_relative 'spec_helper'
-require_relative 'dummy/config/environment'
+require_relative 'dummy/config/application'
 require 'ruby_llm/railtie'
-require 'ruby_llm/active_record/acts_as'
-ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
 
+Rails.application.initialize! unless Rails.application.initialized?
+
+# Drop and recreate database to avoid foreign key constraint issues
 begin
-  ActiveRecord::Tasks::DatabaseTasks.create_current
-rescue ActiveRecord::DatabaseAlreadyExists
-  # Database already exists, that's fine
+  ActiveRecord::Tasks::DatabaseTasks.drop_current
+rescue StandardError
+  nil
 end
-
+ActiveRecord::Tasks::DatabaseTasks.create_current
 ActiveRecord::Tasks::DatabaseTasks.load_schema_current
 
 RubyLLM.models.load_from_json!
