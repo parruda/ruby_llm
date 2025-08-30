@@ -3,27 +3,23 @@
 module RubyLLM
   # Rails integration for RubyLLM
   class Railtie < Rails::Railtie
-    initializer 'ruby_llm.inflections' do
-      ActiveSupport::Inflector.inflections(:en) do |inflect|
-        inflect.acronym 'RubyLLM'
-      end
+    ActiveSupport::Inflector.inflections(:en) do |inflect|
+      inflect.acronym 'RubyLLM'
     end
 
-    initializer 'ruby_llm.active_record' do
-      ActiveSupport.on_load :active_record do
-        if RubyLLM.config.model_registry_class
-          require 'ruby_llm/active_record/acts_as'
-          ::ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
-        else
-          require 'ruby_llm/active_record/acts_as_legacy'
-          ::ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAsLegacy
+    ActiveSupport.on_load :active_record do
+      if RubyLLM.config.model_registry_class
+        require 'ruby_llm/active_record/acts_as'
+        ::ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
+      else
+        require 'ruby_llm/active_record/acts_as_legacy'
+        ::ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAsLegacy
 
-          Rails.logger.warn(
-            'RubyLLM: String-based model fields are deprecated and will be removed in RubyLLM 2.0.0. ' \
-            'Please migrate to the DB-backed model registry. ' \
-            "Run 'rails generate ruby_llm:migrate_model_fields' to upgrade."
-          )
-        end
+        Rails.logger.warn(
+          'RubyLLM: String-based model fields are deprecated and will be removed in RubyLLM 2.0.0. ' \
+          'Please migrate to the DB-backed model registry. ' \
+          "Run 'rails generate ruby_llm:migrate_model_fields' to upgrade."
+        )
       end
     end
 
