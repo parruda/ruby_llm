@@ -3,6 +3,7 @@
 SimpleCov.start do
   add_filter '/spec/'
   add_filter '/vendor/'
+  add_filter 'acts_as_legacy.rb'
 
   enable_coverage :branch
 
