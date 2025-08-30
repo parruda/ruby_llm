@@ -11,7 +11,15 @@ module RubyLLM
 
     initializer 'ruby_llm.active_record' do
       ActiveSupport.on_load :active_record do
-        if RubyLLM.config.model_registry_class
+        model_registry_class = RubyLLM.config.model_registry_class
+
+        # Debug output for CI
+        if ENV['CI']
+          puts "[RAILTIE DEBUG] model_registry_class = #{model_registry_class.inspect}"
+          puts "[RAILTIE DEBUG] Choosing #{model_registry_class ? 'ActsAs' : 'ActsAsLegacy'}"
+        end
+
+        if model_registry_class
           require 'ruby_llm/active_record/acts_as'
           ::ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
         else
