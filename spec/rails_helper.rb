@@ -12,8 +12,6 @@ ActiveSupport.on_load(:active_record) do
   include RubyLLM::ActiveRecord::ActsAs
 end
 
-Rails.application.initialize! unless Rails.application.initialized?
-
 begin
   ActiveRecord::Tasks::DatabaseTasks.create_current
 rescue ActiveRecord::DatabaseAlreadyExists
