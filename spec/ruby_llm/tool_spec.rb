@@ -30,7 +30,7 @@ RSpec.describe RubyLLM::Tool do
 
     it 'strips :: for class in module namespace' do
       stub_const('TestModule::SampleTool', Class.new(described_class))
-      expect(TestModule::SampleTool.new.name).to eq('test_module-sample')
+      expect(TestModule::SampleTool.new.name).to eq('test_module--sample')
     end
 
     it 'handles ASCII-8BIT encoded class names without raising Encoding::CompatibilityError' do

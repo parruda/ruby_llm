@@ -45,15 +45,5 @@ module RubyLLM
         end
       end
     end
-
-    def parameterize(string, separator: '-')
-      normalized = string.to_s.dup.force_encoding('UTF-8').unicode_normalize(:nfkd)
-      normalized.encode('ASCII', replace: '')
-                .gsub(/[^a-zA-Z0-9_-]/, separator)
-                .gsub(/#{separator}+/, separator)
-                .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
-                .gsub(/([a-z\d])([A-Z])/, '\1_\2')
-                .downcase
-    end
   end
 end
