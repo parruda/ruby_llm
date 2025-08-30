@@ -3,6 +3,7 @@
 ENV['RAILS_ENV'] = 'test'
 
 # Load the Rails application but don't initialize yet
+require_relative 'spec_helper'
 require_relative 'dummy/config/application'
 
 # This is a workaround for the railtie not working properly with appraisal
@@ -12,8 +13,6 @@ ActiveSupport.on_load(:active_record) do
 end
 
 Rails.application.initialize! unless Rails.application.initialized?
-
-require_relative 'spec_helper'
 
 begin
   ActiveRecord::Tasks::DatabaseTasks.create_current
