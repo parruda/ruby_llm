@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-RubyLLM.configure do |config|
-  config.model_registry_class = 'Model'
-end
-
 RSpec.shared_context 'with configured RubyLLM' do
   before do
     RubyLLM.configure do |config|
