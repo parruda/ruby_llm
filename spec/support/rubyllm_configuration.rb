@@ -23,8 +23,6 @@ RSpec.shared_context 'with configured RubyLLM' do
       config.vertexai_project_id = ENV.fetch('GOOGLE_CLOUD_PROJECT', 'test-project')
       config.vertexai_location = ENV.fetch('GOOGLE_CLOUD_LOCATION', 'us-central1')
 
-      config.model_registry_class = nil
-
       config.request_timeout = 240
       config.max_retries = 10
       config.retry_interval = 1
