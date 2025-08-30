@@ -7,6 +7,7 @@ require_relative 'spec_helper'
 require_relative 'dummy/config/environment'
 require 'ruby_llm/railtie'
 require 'ruby_llm/active_record/acts_as'
+ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
 
 begin
   ActiveRecord::Tasks::DatabaseTasks.create_current
