@@ -28,8 +28,6 @@ RSpec.shared_context 'with configured RubyLLM' do
       config.retry_interval = 1
       config.retry_backoff_factor = 3
       config.retry_interval_randomness = 0.5
-
-      config.model_registry_class = nil
     end
   end
 end

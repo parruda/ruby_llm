@@ -2,6 +2,10 @@
 
 ENV['RAILS_ENV'] = 'test'
 
+RubyLLM.configure do |config|
+  config.model_registry_class = 'Model'
+end
+
 # Load the Rails application but don't initialize yet
 require_relative 'dummy/config/application'
 
@@ -16,10 +20,6 @@ end
 Rails.application.initialize! unless Rails.application.initialized?
 
 require_relative 'spec_helper'
-
-RubyLLM.configure do |config|
-  config.model_registry_class = 'Model'
-end
 
 begin
   ActiveRecord::Tasks::DatabaseTasks.create_current
