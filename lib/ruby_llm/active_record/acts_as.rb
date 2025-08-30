@@ -33,6 +33,7 @@ module RubyLLM
       class_methods do # rubocop:disable Metrics/BlockLength
         def acts_as_chat(message_class: 'Message', tool_call_class: 'ToolCall',
                          model_class: 'Model', model_foreign_key: nil)
+          puts "[ActsAs] acts_as_chat called on #{name}" if ENV['CI']
           include ChatMethods
 
           @message_class = message_class.to_s

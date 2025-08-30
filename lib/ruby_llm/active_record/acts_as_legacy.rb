@@ -8,6 +8,7 @@ module RubyLLM
 
       class_methods do # rubocop:disable Metrics/BlockLength
         def acts_as_chat(message_class: 'Message', tool_call_class: 'ToolCall')
+          puts "[ActsAsLegacy] acts_as_chat called on #{name}" if ENV['CI']
           include ChatMethods
 
           @message_class = message_class.to_s
