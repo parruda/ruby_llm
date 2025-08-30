@@ -2,13 +2,20 @@
 
 ENV['RAILS_ENV'] = 'test'
 
-require_relative 'dummy/config/environment'
+# Load the Rails application but don't initialize yet
+require_relative 'dummy/config/application'
 
-# Ensure ActsAs is included (workaround for appraisal)
-unless ActiveRecord::Base.included_modules.include?(RubyLLM::ActiveRecord::ActsAs)
-  require 'ruby_llm/active_record/acts_as'
-  ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
+# Ensure ActsAs module will be included when ActiveRecord loads
+# This is a workaround for the railtie not working properly with appraisal
+ActiveSupport.on_load(:active_record) do
+  unless included_modules.include?(RubyLLM::ActiveRecord::ActsAs)
+    require 'ruby_llm/active_record/acts_as'
+    include RubyLLM::ActiveRecord::ActsAs
+  end
 end
+
+# Now initialize Rails (this will load models)
+Rails.application.initialize! unless Rails.application.initialized?
 
 require_relative 'spec_helper'
 
