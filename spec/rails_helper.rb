@@ -4,7 +4,11 @@ ENV['RAILS_ENV'] = 'test'
 
 require_relative 'dummy/config/environment'
 
-ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
+# Ensure ActsAs is included (workaround for appraisal)
+unless ActiveRecord::Base.included_modules.include?(RubyLLM::ActiveRecord::ActsAs)
+  require 'ruby_llm/active_record/acts_as'
+  ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
+end
 
 require_relative 'spec_helper'
 

@@ -13,10 +13,10 @@ module RubyLLM
       ActiveSupport.on_load :active_record do
         if RubyLLM.config.model_registry_class
           require 'ruby_llm/active_record/acts_as'
-          include RubyLLM::ActiveRecord::ActsAs
+          ::ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
         else
           require 'ruby_llm/active_record/acts_as_legacy'
-          include RubyLLM::ActiveRecord::ActsAsLegacy
+          ::ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAsLegacy
 
           Rails.logger.warn(
             'RubyLLM: String-based model fields are deprecated and will be removed in RubyLLM 2.0.0. ' \
