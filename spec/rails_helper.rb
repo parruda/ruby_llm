@@ -4,7 +4,7 @@ ENV['RAILS_ENV'] = 'test'
 
 # Load the Rails application but don't initialize yet
 require_relative 'spec_helper'
-require_relative 'dummy/config/application'
+require_relative 'dummy/config/environment'
 
 # This is a workaround for the railtie not working properly with appraisal
 ActiveSupport.on_load(:active_record) do
