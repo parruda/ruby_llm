@@ -8,9 +8,6 @@ require 'vcr'
 require 'bundler/setup'
 require 'fileutils'
 require 'ruby_llm'
-RubyLLM.configure do |config|
-  config.model_registry_class = 'Model'
-end
 require 'webmock/rspec'
 require 'active_support'
 require 'active_support/core_ext'
