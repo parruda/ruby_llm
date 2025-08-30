@@ -8,7 +8,7 @@ VCR.configure do |config|
 
   # Don't record new HTTP interactions when running in CI
   config.default_cassette_options = {
-    record: ENV['CI'] ? :none : :new_episodes
+    record: ENV['CI'] ? :none : :once
   }
 
   # Create new cassette directory if it doesn't exist
