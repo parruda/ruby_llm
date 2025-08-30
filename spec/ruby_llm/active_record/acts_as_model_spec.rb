@@ -161,7 +161,7 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
 
       after do
         RubyLLM.configure do |config|
-          config.model_registry_class = nil
+          config.model_registry_class = 'Model'
         end
       end
 
@@ -236,7 +236,7 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
 
       after do
         RubyLLM.configure do |config|
-          config.model_registry_class = nil
+          config.model_registry_class = 'Model'
         end
       end
 

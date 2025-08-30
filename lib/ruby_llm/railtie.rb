@@ -3,7 +3,6 @@
 module RubyLLM
   # Rails integration for RubyLLM
   class Railtie < Rails::Railtie
-    puts 'RAILTIE LOADED'
     initializer 'ruby_llm.inflections' do
       ActiveSupport::Inflector.inflections(:en) do |inflect|
         inflect.acronym 'RubyLLM'
@@ -12,7 +11,6 @@ module RubyLLM
 
     initializer 'ruby_llm.active_record' do
       ActiveSupport.on_load :active_record do
-        puts "RAILTIE DEBUG: model_registry_class = #{RubyLLM.config.model_registry_class.inspect}"
         if RubyLLM.config.model_registry_class
           require 'ruby_llm/active_record/acts_as'
           ::ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAs
