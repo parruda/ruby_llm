@@ -6,6 +6,30 @@ module RubyLLM
     module ActsAs
       extend ActiveSupport::Concern
 
+      # When ActsAs is included, ensure models are loaded from database
+      def self.included(base)
+        super
+        # Monkey-patch Models to use database when ActsAs is active
+        RubyLLM::Models.class_eval do
+          def load_models
+            read_from_database
+          rescue StandardError => e
+            RubyLLM.logger.debug "Failed to load models from database: #{e.message}, falling back to JSON"
+            read_from_json
+          end
+
+          def load_from_database!
+            @models = read_from_database
+          end
+
+          def read_from_database
+            model_class = RubyLLM.config.model_registry_class
+            model_class = model_class.constantize if model_class.is_a?(String)
+            model_class.all.map(&:to_llm)
+          end
+        end
+      end
+
       class_methods do # rubocop:disable Metrics/BlockLength
         def acts_as_chat(message_class: 'Message', tool_call_class: 'ToolCall',
                          model_class: 'Model', model_foreign_key: nil)
