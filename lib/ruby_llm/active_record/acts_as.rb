@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+puts '[CI DEBUG] acts_as.rb is being loaded!' if ENV['CI']
+
 module RubyLLM
   module ActiveRecord
     # Adds chat and message persistence capabilities to ActiveRecord models.
@@ -34,7 +36,7 @@ module RubyLLM
         def acts_as_chat(message_class: 'Message', tool_call_class: 'ToolCall',
                          model_class: 'Model', model_foreign_key: nil)
           puts "[ActsAs] acts_as_chat called on #{name}" if ENV['CI']
-          include ChatMethods
+          include RubyLLM::ActiveRecord::ChatMethods
 
           @message_class = message_class.to_s
           @tool_call_class = tool_call_class.to_s
@@ -56,7 +58,7 @@ module RubyLLM
         end
 
         def acts_as_model(chat_class: 'Chat')
-          include ModelMethods
+          include RubyLLM::ActiveRecord::ModelMethods
 
           @chat_class = chat_class.to_s
 
@@ -76,7 +78,7 @@ module RubyLLM
                             model_class: 'Model',
                             model_foreign_key: nil,
                             touch_chat: false)
-          include MessageMethods
+          include RubyLLM::ActiveRecord::MessageMethods
 
           @chat_class = chat_class.to_s
           @chat_foreign_key = chat_foreign_key || ActiveSupport::Inflector.foreign_key(@chat_class)

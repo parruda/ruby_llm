@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+puts '[CI DEBUG] acts_as_legacy.rb is being loaded!' if ENV['CI']
+
 module RubyLLM
   module ActiveRecord
     # Adds chat and message persistence capabilities to ActiveRecord models.
