@@ -3,7 +3,7 @@
 module RubyLLM
   module ActiveRecord
     # Adds chat and message persistence capabilities to ActiveRecord models.
-    module ActsAs
+    module ActsAsLegacy
       extend ActiveSupport::Concern
 
       class_methods do # rubocop:disable Metrics/BlockLength
