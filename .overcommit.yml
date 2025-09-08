@@ -30,3 +30,8 @@ PostCheckout:
 
   IndexTags:
     enabled: true # Generate a tags file with `ctags` each time HEAD changes
+
+  LfsInstall:
+    enabled: true
+    description: 'Ensure Git LFS files are pulled'
+    command: ['git', 'lfs', 'pull']
