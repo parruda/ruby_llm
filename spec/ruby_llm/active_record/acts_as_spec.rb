@@ -94,6 +94,16 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
     end
   end
 
+  describe 'default model' do
+    it 'uses config default when no model specified' do
+      chat = Chat.create!
+      chat.ask('Hello')
+
+      expect(chat.reload.model_id).to eq(RubyLLM.config.default_model)
+      expect(chat.messages.count).to eq(2)
+    end
+  end
+
   describe 'model associations' do
     context 'when model registry is configured' do
       before do

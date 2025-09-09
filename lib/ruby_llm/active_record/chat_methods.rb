@@ -36,13 +36,15 @@ module RubyLLM
       private
 
       def resolve_model_from_strings # rubocop:disable Metrics/PerceivedComplexity
+        config = context&.config || RubyLLM.config
+        @model_string ||= config.default_model unless model
         return unless @model_string
 
         model_info, _provider = Models.resolve(
           @model_string,
           provider: @provider_string,
           assume_exists: assume_model_exists || false,
-          config: context&.config || RubyLLM.config
+          config: config
         )
 
         model_class = self.class.model_class.constantize
@@ -68,8 +70,6 @@ module RubyLLM
       public
 
       def to_llm
-        raise RubyLLM::ModelNotFoundError 'No model specified' unless model
-
         @chat ||= (context || RubyLLM).chat(
           model: model.model_id,
           provider: model.provider.to_sym
