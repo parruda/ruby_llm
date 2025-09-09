@@ -1,4 +1,7 @@
 class <%= message_model_name %> < ApplicationRecord
   <%= acts_as_message_declaration %><% unless options[:skip_active_storage] %>
   has_many_attached :attachments<% end %>
+
+  # Broadcast updates for real-time chat UI
+  broadcasts_to ->(message) { "chat_#{message.<%= chat_model_name.underscore %>_id}" }
 end
