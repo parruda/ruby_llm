@@ -25,7 +25,7 @@ module RubyLLM
       private
 
       def extract_tool_calls
-        tool_calls.to_h do |tool_call|
+        send(self.class.tool_calls_association).to_h do |tool_call|
           [
             tool_call.tool_call_id,
             RubyLLM::ToolCall.new(

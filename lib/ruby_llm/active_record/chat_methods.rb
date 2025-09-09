@@ -10,10 +10,6 @@ module RubyLLM
         before_save :resolve_model_from_strings
       end
 
-      class_methods do
-        attr_reader :tool_call_class, :model_class
-      end
-
       attr_accessor :assume_model_exists, :context
 
       def model=(value)
@@ -72,7 +68,7 @@ module RubyLLM
       public
 
       def to_llm
-        raise 'No model specified' unless model
+        raise RubyLLM::ModelNotFoundError 'No model specified' unless model
 
         @chat ||= (context || RubyLLM).chat(
           model: model.model_id,
@@ -80,7 +76,7 @@ module RubyLLM
         )
         @chat.reset_messages!
 
-        messages.each do |msg|
+        send(messages_association_name).each do |msg|
           @chat.add_message(msg.to_llm)
         end
 
@@ -89,8 +85,8 @@ module RubyLLM
 
       def with_instructions(instructions, replace: false)
         transaction do
-          messages.where(role: :system).destroy_all if replace
-          messages.create!(role: :system, content: instructions)
+          send(messages_association_name).where(role: :system).destroy_all if replace
+          send(messages_association_name).create!(role: :system, content: instructions)
         end
         to_llm.with_instructions(instructions)
         self
@@ -106,12 +102,13 @@ module RubyLLM
         self
       end
 
-      def with_model(model_name, provider: nil)
-        self.provider = provider if provider
+      def with_model(model_name, provider: nil, assume_exists: false)
         self.model = model_name
+        self.provider = provider if provider
+        self.assume_model_exists = assume_exists
         resolve_model_from_strings
         save!
-        to_llm.with_model(model.model_id, provider: model.provider.to_sym)
+        to_llm.with_model(model.model_id, provider: model.provider.to_sym, assume_exists:)
         self
       end
 
@@ -170,7 +167,7 @@ module RubyLLM
       end
 
       def create_user_message(content, with: nil)
-        message_record = messages.create!(role: :user, content: content)
+        message_record = send(messages_association_name).create!(role: :user, content: content)
         persist_content(message_record, with) if with.present?
         message_record
       end
@@ -198,8 +195,8 @@ module RubyLLM
       end
 
       def cleanup_orphaned_tool_results # rubocop:disable Metrics/PerceivedComplexity
-        messages.reload
-        last = messages.order(:id).last
+        send(messages_association_name).reload
+        last = send(messages_association_name).order(:id).last
 
         return unless last&.tool_call? || last&.tool_result?
 
@@ -228,7 +225,7 @@ module RubyLLM
       end
 
       def persist_new_message
-        @message = messages.create!(role: :assistant, content: '')
+        @message = send(messages_association_name).create!(role: :assistant, content: '')
       end
 
       def persist_message_completion(message) # rubocop:disable Metrics/PerceivedComplexity
@@ -247,15 +244,20 @@ module RubyLLM
             content = content.to_json
           end
 
-          @message.update!(
+          attrs = {
             role: message.role,
             content: content,
             model: model,
             input_tokens: message.input_tokens,
             output_tokens: message.output_tokens
-          )
-          @message.write_attribute(@message.class.tool_call_foreign_key, tool_call_id) if tool_call_id
-          @message.save!
+          }
+
+          if tool_call_id
+            parent_tool_call_assoc = @message.class.reflect_on_association(:parent_tool_call)
+            attrs[parent_tool_call_assoc.foreign_key] = tool_call_id
+          end
+
+          @message.update!(attrs)
 
           persist_content(@message, attachments_to_persist) if attachments_to_persist
           persist_tool_calls(message.tool_calls) if message.tool_calls.present?
@@ -266,12 +268,26 @@ module RubyLLM
         tool_calls.each_value do |tool_call|
           attributes = tool_call.to_h
           attributes[:tool_call_id] = attributes.delete(:id)
-          @message.tool_calls.create!(**attributes)
+          @message.send(@message.class.tool_calls_association).create!(**attributes)
         end
       end
 
       def find_tool_call_id(tool_call_id)
-        self.class.tool_call_class.constantize.find_by(tool_call_id: tool_call_id)&.id
+        messages = send(messages_association_name)
+        message_class = messages.klass
+        tool_calls_assoc = message_class.tool_calls_association
+        tool_call_table_name = message_class.reflect_on_association(tool_calls_assoc).table_name
+
+        message_with_tool_call = messages.joins(tool_calls_assoc)
+                                         .find_by(tool_call_table_name => { tool_call_id: tool_call_id })
+        return nil unless message_with_tool_call
+
+        tool_call = message_with_tool_call.send(tool_calls_assoc).find_by(tool_call_id: tool_call_id)
+        tool_call&.id
+      end
+
+      def messages_association_name
+        self.class.messages_association
       end
 
       def persist_content(message_record, attachments)

@@ -190,7 +190,7 @@ RSpec.describe RubyLLM::InstallGenerator, type: :generator do
     end
 
     it 'includes usage example with create! and ask' do
-      expect(generator_content).to include('.create!(model_id:').and include('.ask(')
+      expect(generator_content).to include('.create!(model:').and include('.ask(')
     end
 
     it 'includes documentation link' do
