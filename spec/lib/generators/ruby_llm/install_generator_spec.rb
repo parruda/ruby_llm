@@ -29,11 +29,11 @@ RSpec.describe RubyLLM::InstallGenerator, type: :generator do
       let(:chat_migration) { File.read(File.join(template_dir, 'create_chats_migration.rb.tt')) }
 
       it 'defines chats table' do
-        expect(chat_migration).to include('create_table :<%= options[:chat_model_name].tableize %>')
+        expect(chat_migration).to include('create_table :<%= chat_model_name.tableize %>')
       end
 
       it 'includes model reference' do
-        expect(chat_migration).to include('t.references :<%= options[:model_model_name].tableize.singularize %>')
+        expect(chat_migration).to include('t.references :<%= model_model_name.tableize.singularize %>')
       end
     end
 
@@ -41,11 +41,11 @@ RSpec.describe RubyLLM::InstallGenerator, type: :generator do
       let(:message_migration) { File.read(File.join(template_dir, 'create_messages_migration.rb.tt')) }
 
       it 'defines messages table' do
-        expect(message_migration).to include('create_table :<%= options[:message_model_name].tableize %>')
+        expect(message_migration).to include('create_table :<%= message_model_name.tableize %>')
       end
 
       it 'includes chat reference' do
-        expect(message_migration).to include('t.references :<%= options[:chat_model_name].tableize.singularize %>, null: false, foreign_key: true') # rubocop:disable Layout/LineLength
+        expect(message_migration).to include('t.references :<%= chat_model_name.tableize.singularize %>, null: false, foreign_key: true') # rubocop:disable Layout/LineLength
       end
 
       it 'includes role field' do
@@ -61,7 +61,7 @@ RSpec.describe RubyLLM::InstallGenerator, type: :generator do
       let(:tool_call_migration) { File.read(File.join(template_dir, 'create_tool_calls_migration.rb.tt')) }
 
       it 'defines tool_calls table' do
-        expect(tool_call_migration).to include('create_table :<%= options[:tool_call_model_name].tableize %>')
+        expect(tool_call_migration).to include('create_table :<%= tool_call_model_name.tableize %>')
       end
 
       it 'includes tool_call_id field' do
@@ -125,7 +125,7 @@ RSpec.describe RubyLLM::InstallGenerator, type: :generator do
     let(:models_migration) { File.read(File.join(template_dir, 'create_models_migration.rb.tt')) }
 
     it 'defines models table' do
-      expect(models_migration).to include('create_table :<%= options[:model_model_name].tableize %>')
+      expect(models_migration).to include('create_table :<%= model_model_name.tableize %>')
     end
 
     it 'includes model_id field' do
