@@ -108,7 +108,7 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
 
         chat = Chat.create!(model: 'gpt-4.1-nano')
         expect(chat).to respond_to(:model)
-        expect(chat.model&.name).to eq('GPT-4.1 nano') if chat.model
+        expect(chat.model&.name).to eq('GPT-4.1 Nano') if chat.model
       end
 
       it 'associates messages with model' do
