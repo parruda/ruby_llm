@@ -42,7 +42,7 @@ That's it! The generator:
 If you're using custom model names:
 
 ```bash
-rails generate ruby_llm:upgrade_to_v1_7 chat:Conversation message:ChatMessage
+rails generate ruby_llm:upgrade_to_v1_7 chat:Conversation message:ChatMessage tool_call:MyToolCall model:MyModel
 rails db:migrate
 ```
 
@@ -68,7 +68,7 @@ v1.7.0+
 ```ruby
 # New API uses association names as primary parameters
 acts_as_chat messages: :messages, model: :model
-acts_as_message chat: :chat, tool_calls: :tool_calls
+acts_as_message chat: :chat, tool_calls: :tool_calls, model: :model
 
 # vs Legacy API which required explicit class names
 acts_as_chat message_class: 'Message', tool_call_class: 'ToolCall'
