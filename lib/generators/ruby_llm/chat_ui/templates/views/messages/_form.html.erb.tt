@@ -12,8 +12,7 @@
   <%% end %>
 
   <div>
-    <%%= form.label :content, "Your message:", style: "display: block" %>
-    <%%= form.text_area :content, rows: 3, style: "width: 100%; max-width: 600px;" %>
+    <%%= form.text_field :content, style: "width: 100%; max-width: 600px;", placeholder: "Message...", autofocus: true %>
   </div>
 
   <div>

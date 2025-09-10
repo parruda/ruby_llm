@@ -1,19 +1,30 @@
+<p style="color: green"><%%= notice %></p>
+
 <%% content_for :title, "<%= model_model_name.pluralize %>" %>
 
 <h1><%= model_model_name.pluralize %></h1>
 
-<%% @<%= model_model_name.tableize %>.each do |provider, <%= model_model_name.tableize %>| %>
-  <h2><%%= provider.upcase %></h2>
+<p>
+  <%%= button_to "Refresh <%= model_model_name.pluralize %>", refresh_<%= model_model_name.tableize %>_path, method: :post %>
+</p>
 
-  <ul>
-    <%% <%= model_model_name.tableize %>.each do |<%= model_model_name.underscore %>| %>
-      <li>
-        <strong><%%= <%= model_model_name.underscore %>.name %></strong>
-        (<%%= <%= model_model_name.underscore %>.model_id %>)
-        - <%%= link_to "Start <%= chat_model_name.underscore.humanize.downcase %>", new_<%= chat_model_name.underscore %>_path(model: <%= model_model_name.underscore %>.model_id) %>
-      </li>
-    <%% end %>
-  </ul>
-<%% end %>
+<div id="<%= model_model_name.tableize %>">
+  <table>
+    <thead>
+      <tr>
+        <th>Provider</th>
+        <th>Model</th>
+        <th>Context Window</th>
+        <th>$/1M tokens (In/Out)</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%% @<%= model_model_name.tableize %>.values.flatten.each do |<%= model_model_name.underscore %>| %>
+        <%%= render <%= model_model_name.underscore %> %>
+      <%% end %>
+    </tbody>
+  </table>
+</div>
 
-<p><%%= link_to "Back to <%= chat_model_name.tableize.humanize.downcase %>", <%= chat_model_name.tableize %>_path %></p>
+<%%= link_to "Back to <%= chat_model_name.tableize.humanize.downcase %>", <%= chat_model_name.tableize %>_path %>

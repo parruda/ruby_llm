@@ -20,11 +20,10 @@
   </div>
 
   <div style="margin-top: 15px;">
-    <%%= form.label :prompt, "Enter your prompt:", style: "display: block" %>
-    <%%= form.text_area :prompt, rows: 4, style: "width: 100%; max-width: 600px;" %>
+    <%%= form.text_field :prompt, style: "width: 100%; max-width: 600px;", placeholder: "What would you like to discuss?", autofocus: true %>
   </div>
 
-  <div style="margin-top: 15px;">
+  <div>
     <%%= form.submit "Start new <%= chat_model_name.underscore.humanize.downcase %>" %>
   </div>
 <%% end %>

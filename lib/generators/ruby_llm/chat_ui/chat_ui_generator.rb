@@ -59,6 +59,8 @@ module RubyLLM
         # Model views
         template 'views/models/index.html.erb', "app/views/#{model_model_name.tableize}/index.html.erb"
         template 'views/models/show.html.erb', "app/views/#{model_model_name.tableize}/show.html.erb"
+        template 'views/models/_model.html.erb',
+                 "app/views/#{model_model_name.tableize}/_#{model_model_name.underscore}.html.erb"
       end
 
       def create_controllers
@@ -72,7 +74,14 @@ module RubyLLM
       end
 
       def add_routes
-        route "resources :#{model_model_name.tableize}, only: [:index, :show]"
+        model_routes = <<~ROUTES.strip
+          resources :#{model_model_name.tableize}, only: [:index, :show] do
+            collection do
+              post :refresh
+            end
+          end
+        ROUTES
+        route model_routes
         chat_routes = <<~ROUTES.strip
           resources :#{chat_model_name.tableize} do
             resources :#{message_model_name.tableize}, only: [:create]
@@ -95,7 +104,11 @@ module RubyLLM
       end
 
       def display_post_install_message
-        readme 'README' if behavior == :invoke
+        return unless behavior == :invoke
+
+        say "\n  ✅ Chat UI installed!", :green
+        say "\n  Start your server and visit http://localhost:3000/#{chat_model_name.tableize}", :cyan
+        say "\n"
       end
     end
   end
