@@ -43,6 +43,16 @@ module RubyLLM
         route "resources :chats do\n    resources :messages, only: [:create]\n  end"
       end
 
+      def add_broadcasting_to_message_model
+        broadcasting_code = 'broadcasts_to ->(message) { "chat_#{message.chat_id}" }'
+
+        inject_into_class 'app/models/message.rb', 'Message' do
+          "\n  #{broadcasting_code}\n"
+        end
+      rescue Errno::ENOENT
+        say "Message model not found. Add `#{broadcasting_code}` to your message model.", :yellow
+      end
+
       def display_post_install_message
         readme 'README' if behavior == :invoke
       end

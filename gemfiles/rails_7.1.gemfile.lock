@@ -204,7 +204,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     method_source (1.1.0)
-    metrics (0.14.0)
+    metrics (0.15.0)
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
@@ -359,7 +359,7 @@ GEM
     stringio (3.1.7)
     thor (1.4.0)
     timeout (0.4.3)
-    traces (0.18.1)
+    traces (0.18.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.2.0)
