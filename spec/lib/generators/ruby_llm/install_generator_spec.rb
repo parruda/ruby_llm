@@ -2,12 +2,12 @@
 
 require 'rails_helper'
 require 'fileutils'
-require 'generators/ruby_llm/install_generator'
+require 'generators/ruby_llm/install/install_generator'
 
 RSpec.describe RubyLLM::InstallGenerator, type: :generator do
   # Use the actual template directory
   let(:template_dir) { File.join(__dir__, '../../../../lib/generators/ruby_llm/install/templates') }
-  let(:generator_file) { File.join(__dir__, '../../../../lib/generators/ruby_llm/install_generator.rb') }
+  let(:generator_file) { File.join(__dir__, '../../../../lib/generators/ruby_llm/install/install_generator.rb') }
 
   describe 'migration templates' do
     let(:expected_migration_files) do

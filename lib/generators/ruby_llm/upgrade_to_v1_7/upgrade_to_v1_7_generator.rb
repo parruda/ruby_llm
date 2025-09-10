@@ -8,13 +8,13 @@ module RubyLLM
     include Rails::Generators::Migration
 
     namespace 'ruby_llm:upgrade_to_v1_7'
-    source_root File.expand_path('upgrade_to_v1_7/templates', __dir__)
+    source_root File.expand_path('templates', __dir__)
 
     # Override source_paths to include install templates
     def self.source_paths
       [
-        File.expand_path('upgrade_to_v1_7/templates', __dir__),
-        File.expand_path('install/templates', __dir__)
+        File.expand_path('templates', __dir__),
+        File.expand_path('../install/templates', __dir__)
       ]
     end
 
@@ -43,12 +43,6 @@ module RubyLLM
       end
 
       @model_names
-    end
-
-    def table_name_for(model_name)
-      # Convert namespaced model names to proper table names
-      # e.g., "Assistant::Chat" -> "assistant_chats" (not "assistant/chats")
-      model_name.underscore.pluralize.tr('/', '_')
     end
 
     %i[chat message tool_call model].each do |type|
@@ -153,6 +147,12 @@ module RubyLLM
 
     def migration_version
       "[#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}]"
+    end
+
+    def table_name_for(model_name)
+      # Convert namespaced model names to proper table names
+      # e.g., "Assistant::Chat" -> "assistant_chats" (not "assistant/chats")
+      model_name.underscore.pluralize.tr('/', '_')
     end
 
     def table_exists?(table_name)

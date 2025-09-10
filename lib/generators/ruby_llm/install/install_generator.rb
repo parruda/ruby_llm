@@ -10,7 +10,7 @@ module RubyLLM
 
     namespace 'ruby_llm:install'
 
-    source_root File.expand_path('install/templates', __dir__)
+    source_root File.expand_path('templates', __dir__)
 
     argument :model_mappings, type: :array, default: [], banner: 'chat:ChatName message:MessageName ...'
 

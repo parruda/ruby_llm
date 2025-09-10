@@ -38,35 +38,39 @@ module RubyLLM
           @model_names ||= parse_model_mappings
           @model_names[type]
         end
+
+        define_method("#{type}_table_name") do
+          table_name_for(send("#{type}_model_name"))
+        end
       end
 
       def create_views
         # Chat views
-        template 'views/chats/index.html.erb', "app/views/#{chat_model_name.tableize}/index.html.erb"
-        template 'views/chats/new.html.erb', "app/views/#{chat_model_name.tableize}/new.html.erb"
-        template 'views/chats/show.html.erb', "app/views/#{chat_model_name.tableize}/show.html.erb"
+        template 'views/chats/index.html.erb', "app/views/#{chat_table_name}/index.html.erb"
+        template 'views/chats/new.html.erb', "app/views/#{chat_table_name}/new.html.erb"
+        template 'views/chats/show.html.erb', "app/views/#{chat_table_name}/show.html.erb"
         template 'views/chats/_chat.html.erb',
-                 "app/views/#{chat_model_name.tableize}/_#{chat_model_name.underscore}.html.erb"
-        template 'views/chats/_form.html.erb', "app/views/#{chat_model_name.tableize}/_form.html.erb"
+                 "app/views/#{chat_table_name}/_#{chat_model_name.underscore}.html.erb"
+        template 'views/chats/_form.html.erb', "app/views/#{chat_table_name}/_form.html.erb"
 
         # Message views
         template 'views/messages/_message.html.erb',
-                 "app/views/#{message_model_name.tableize}/_#{message_model_name.underscore}.html.erb"
-        template 'views/messages/_form.html.erb', "app/views/#{message_model_name.tableize}/_form.html.erb"
+                 "app/views/#{message_table_name}/_#{message_model_name.underscore}.html.erb"
+        template 'views/messages/_form.html.erb', "app/views/#{message_table_name}/_form.html.erb"
         template 'views/messages/create.turbo_stream.erb',
-                 "app/views/#{message_model_name.tableize}/create.turbo_stream.erb"
+                 "app/views/#{message_table_name}/create.turbo_stream.erb"
 
         # Model views
-        template 'views/models/index.html.erb', "app/views/#{model_model_name.tableize}/index.html.erb"
-        template 'views/models/show.html.erb', "app/views/#{model_model_name.tableize}/show.html.erb"
+        template 'views/models/index.html.erb', "app/views/#{model_table_name}/index.html.erb"
+        template 'views/models/show.html.erb', "app/views/#{model_table_name}/show.html.erb"
         template 'views/models/_model.html.erb',
-                 "app/views/#{model_model_name.tableize}/_#{model_model_name.underscore}.html.erb"
+                 "app/views/#{model_table_name}/_#{model_model_name.underscore}.html.erb"
       end
 
       def create_controllers
-        template 'controllers/chats_controller.rb', "app/controllers/#{chat_model_name.tableize}_controller.rb"
-        template 'controllers/messages_controller.rb', "app/controllers/#{message_model_name.tableize}_controller.rb"
-        template 'controllers/models_controller.rb', "app/controllers/#{model_model_name.tableize}_controller.rb"
+        template 'controllers/chats_controller.rb', "app/controllers/#{chat_table_name}_controller.rb"
+        template 'controllers/messages_controller.rb', "app/controllers/#{message_table_name}_controller.rb"
+        template 'controllers/models_controller.rb', "app/controllers/#{model_table_name}_controller.rb"
       end
 
       def create_jobs
@@ -75,7 +79,7 @@ module RubyLLM
 
       def add_routes
         model_routes = <<~ROUTES.strip
-          resources :#{model_model_name.tableize}, only: [:index, :show] do
+          resources :#{model_table_name}, only: [:index, :show] do
             collection do
               post :refresh
             end
@@ -83,8 +87,8 @@ module RubyLLM
         ROUTES
         route model_routes
         chat_routes = <<~ROUTES.strip
-          resources :#{chat_model_name.tableize} do
-            resources :#{message_model_name.tableize}, only: [:create]
+          resources :#{chat_table_name} do
+            resources :#{message_table_name}, only: [:create]
           end
         ROUTES
         route chat_routes
@@ -107,8 +111,16 @@ module RubyLLM
         return unless behavior == :invoke
 
         say "\n  ✅ Chat UI installed!", :green
-        say "\n  Start your server and visit http://localhost:3000/#{chat_model_name.tableize}", :cyan
+        say "\n  Start your server and visit http://localhost:3000/#{chat_table_name}", :cyan
         say "\n"
+      end
+
+      private
+
+      def table_name_for(model_name)
+        # Convert namespaced model names to proper table names
+        # e.g., "Assistant::Chat" -> "assistant_chats" (not "assistant/chats")
+        model_name.underscore.pluralize.tr('/', '_')
       end
     end
   end
