@@ -1,0 +1,19 @@
+<%% content_for :title, "<%= model_model_name.pluralize %>" %>
+
+<h1><%= model_model_name.pluralize %></h1>
+
+<%% @<%= model_model_name.tableize %>.each do |provider, <%= model_model_name.tableize %>| %>
+  <h2><%%= provider.upcase %></h2>
+
+  <ul>
+    <%% <%= model_model_name.tableize %>.each do |<%= model_model_name.underscore %>| %>
+      <li>
+        <strong><%%= <%= model_model_name.underscore %>.name %></strong>
+        (<%%= <%= model_model_name.underscore %>.model_id %>)
+        - <%%= link_to "Start <%= chat_model_name.underscore.humanize.downcase %>", new_<%= chat_model_name.underscore %>_path(model: <%= model_model_name.underscore %>.model_id) %>
+      </li>
+    <%% end %>
+  </ul>
+<%% end %>
+
+<p><%%= link_to "Back to <%= chat_model_name.tableize.humanize.downcase %>", <%= chat_model_name.tableize %>_path %></p>

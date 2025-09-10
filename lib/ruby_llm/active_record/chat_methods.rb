@@ -14,7 +14,13 @@ module RubyLLM
 
       def model=(value)
         @model_string = value if value.is_a?(String)
-        super unless value.is_a?(String)
+        return if value.is_a?(String)
+
+        if self.class.model_association_name == :model
+          super
+        else
+          self.model_association = value
+        end
       end
 
       def model_id=(value)
@@ -22,7 +28,7 @@ module RubyLLM
       end
 
       def model_id
-        model&.model_id
+        model_association&.model_id
       end
 
       def provider=(value)
@@ -30,14 +36,14 @@ module RubyLLM
       end
 
       def provider
-        model&.provider
+        model_association&.provider
       end
 
       private
 
       def resolve_model_from_strings # rubocop:disable Metrics/PerceivedComplexity
         config = context&.config || RubyLLM.config
-        @model_string ||= config.default_model unless model
+        @model_string ||= config.default_model unless model_association
         return unless @model_string
 
         model_info, _provider = Models.resolve(
@@ -62,7 +68,7 @@ module RubyLLM
           m.metadata = model_info.metadata || {}
         end
 
-        self.model = model_record
+        self.model_association = model_record
         @model_string = nil
         @provider_string = nil
       end
@@ -70,13 +76,14 @@ module RubyLLM
       public
 
       def to_llm
+        model_record = model_association
         @chat ||= (context || RubyLLM).chat(
-          model: model.model_id,
-          provider: model.provider.to_sym
+          model: model_record.model_id,
+          provider: model_record.provider.to_sym
         )
         @chat.reset_messages!
 
-        send(messages_association_name).each do |msg|
+        messages_association.each do |msg|
           @chat.add_message(msg.to_llm)
         end
 
@@ -85,8 +92,8 @@ module RubyLLM
 
       def with_instructions(instructions, replace: false)
         transaction do
-          send(messages_association_name).where(role: :system).destroy_all if replace
-          send(messages_association_name).create!(role: :system, content: instructions)
+          messages_association.where(role: :system).destroy_all if replace
+          messages_association.create!(role: :system, content: instructions)
         end
         to_llm.with_instructions(instructions)
         self
@@ -167,7 +174,7 @@ module RubyLLM
       end
 
       def create_user_message(content, with: nil)
-        message_record = send(messages_association_name).create!(role: :user, content: content)
+        message_record = messages_association.create!(role: :user, content: content)
         persist_content(message_record, with) if with.present?
         message_record
       end
@@ -195,8 +202,8 @@ module RubyLLM
       end
 
       def cleanup_orphaned_tool_results # rubocop:disable Metrics/PerceivedComplexity
-        send(messages_association_name).reload
-        last = send(messages_association_name).order(:id).last
+        messages_association.reload
+        last = messages_association.order(:id).last
 
         return unless last&.tool_call? || last&.tool_result?
 
@@ -225,7 +232,7 @@ module RubyLLM
       end
 
       def persist_new_message
-        @message = send(messages_association_name).create!(role: :assistant, content: '')
+        @message = messages_association.create!(role: :assistant, content: '')
       end
 
       def persist_message_completion(message) # rubocop:disable Metrics/PerceivedComplexity
@@ -247,10 +254,12 @@ module RubyLLM
           attrs = {
             role: message.role,
             content: content,
-            model: model,
             input_tokens: message.input_tokens,
             output_tokens: message.output_tokens
           }
+
+          # Add model association dynamically
+          attrs[self.class.model_association_name] = model_association
 
           if tool_call_id
             parent_tool_call_assoc = @message.class.reflect_on_association(:parent_tool_call)
@@ -268,26 +277,22 @@ module RubyLLM
         tool_calls.each_value do |tool_call|
           attributes = tool_call.to_h
           attributes[:tool_call_id] = attributes.delete(:id)
-          @message.send(@message.class.tool_calls_association).create!(**attributes)
+          @message.tool_calls_association.create!(**attributes)
         end
       end
 
       def find_tool_call_id(tool_call_id)
-        messages = send(messages_association_name)
+        messages = messages_association
         message_class = messages.klass
-        tool_calls_assoc = message_class.tool_calls_association
+        tool_calls_assoc = message_class.tool_calls_association_name
         tool_call_table_name = message_class.reflect_on_association(tool_calls_assoc).table_name
 
         message_with_tool_call = messages.joins(tool_calls_assoc)
                                          .find_by(tool_call_table_name => { tool_call_id: tool_call_id })
         return nil unless message_with_tool_call
 
-        tool_call = message_with_tool_call.send(tool_calls_assoc).find_by(tool_call_id: tool_call_id)
+        tool_call = message_with_tool_call.tool_calls_association.find_by(tool_call_id: tool_call_id)
         tool_call&.id
-      end
-
-      def messages_association_name
-        self.class.messages_association
       end
 
       def persist_content(message_record, attachments)

@@ -35,10 +35,10 @@ module RubyLLM
                          model: :model, model_class: nil)
           include RubyLLM::ActiveRecord::ChatMethods
 
-          class_attribute :messages_association, :model_association, :message_class, :model_class
+          class_attribute :messages_association_name, :model_association_name, :message_class, :model_class
 
-          self.messages_association = messages
-          self.model_association = model
+          self.messages_association_name = messages
+          self.model_association_name = model
           self.message_class = (message_class || messages.to_s.classify).to_s
           self.model_class = (model_class || model.to_s.classify).to_s
 
@@ -52,14 +52,26 @@ module RubyLLM
                      optional: true
 
           delegate :add_message, to: :to_llm
+
+          define_method :messages_association do
+            send(messages_association_name)
+          end
+
+          define_method :model_association do
+            send(model_association_name)
+          end
+
+          define_method :'model_association=' do |value|
+            send("#{model_association_name}=", value)
+          end
         end
 
         def acts_as_model(chats: :chats, chat_class: nil)
           include RubyLLM::ActiveRecord::ModelMethods
 
-          class_attribute :chats_association, :chat_class
+          class_attribute :chats_association_name, :chat_class
 
-          self.chats_association = chats
+          self.chats_association_name = chats
           self.chat_class = (chat_class || chats.to_s.classify).to_s
 
           validates :model_id, presence: true, uniqueness: { scope: :provider }
@@ -67,6 +79,10 @@ module RubyLLM
           validates :name, presence: true
 
           has_many chats, class_name: self.chat_class
+
+          define_method :chats_association do
+            send(chats_association_name)
+          end
         end
 
         def acts_as_message(chat: :chat, chat_class: nil, touch_chat: false, # rubocop:disable Metrics/ParameterLists
@@ -74,12 +90,12 @@ module RubyLLM
                             model: :model, model_class: nil)
           include RubyLLM::ActiveRecord::MessageMethods
 
-          class_attribute :chat_association, :tool_calls_association, :model_association,
+          class_attribute :chat_association_name, :tool_calls_association_name, :model_association_name,
                           :chat_class, :tool_call_class, :model_class
 
-          self.chat_association = chat
-          self.tool_calls_association = tool_calls
-          self.model_association = model
+          self.chat_association_name = chat
+          self.tool_calls_association_name = tool_calls
+          self.model_association_name = model
           self.chat_class = (chat_class || chat.to_s.classify).to_s
           self.tool_call_class = (tool_call_class || tool_calls.to_s.classify).to_s
           self.model_class = (model_class || model.to_s.classify).to_s
@@ -107,12 +123,26 @@ module RubyLLM
                      optional: true
 
           delegate :tool_call?, :tool_result?, to: :to_llm
+
+          define_method :chat_association do
+            send(chat_association_name)
+          end
+
+          define_method :tool_calls_association do
+            send(tool_calls_association_name)
+          end
+
+          define_method :model_association do
+            send(model_association_name)
+          end
         end
 
         def acts_as_tool_call(message: :message, message_class: nil,
                               result: :result, result_class: nil)
-          class_attribute :message_class, :result_class
+          class_attribute :message_association_name, :result_association_name, :message_class, :result_class
 
+          self.message_association_name = message
+          self.result_association_name = result
           self.message_class = (message_class || message.to_s.classify).to_s
           self.result_class = (result_class || self.message_class).to_s
 
@@ -122,6 +152,14 @@ module RubyLLM
           has_one result,
                   class_name: self.result_class,
                   dependent: :nullify
+
+          define_method :message_association do
+            send(message_association_name)
+          end
+
+          define_method :result_association do
+            send(result_association_name)
+          end
         end
       end
     end

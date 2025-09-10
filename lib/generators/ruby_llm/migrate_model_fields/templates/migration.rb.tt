@@ -1,43 +1,43 @@
 class MigrateToRubyLLMModelReferences < ActiveRecord::Migration<%= migration_version %>
   def up
     # Ensure Models table exists
-    unless table_exists?(:<%= options[:model_model_name].tableize %>)
+    unless table_exists?(:<%= model_model_name.tableize %>)
       raise "Models table doesn't exist. Please run 'rails generate ruby_llm:install' with model registry first."
     end
 
-    model_class = <%= options[:model_model_name] %>
-    chat_class = <%= options[:chat_model_name] %>
-    message_class = <%= options[:message_model_name] %>
+    model_class = <%= model_model_name %>
+    chat_class = <%= chat_model_name %>
+    message_class = <%= message_model_name %>
 
     # Then check for any models in existing data that aren't in models.json
     say_with_time "Checking for additional models in existing data" do
-      collect_and_create_models(chat_class, :<%= options[:chat_model_name].tableize %>, model_class)
-      collect_and_create_models(message_class, :<%= options[:message_model_name].tableize %>, model_class)
+      collect_and_create_models(chat_class, :<%= chat_model_name.tableize %>, model_class)
+      collect_and_create_models(message_class, :<%= message_model_name.tableize %>, model_class)
       model_class.count
     end
 
     # Migrate foreign keys
-    migrate_foreign_key(:<%= options[:chat_model_name].tableize %>, chat_class, model_class, :<%= options[:model_model_name].underscore %>)
-    migrate_foreign_key(:<%= options[:message_model_name].tableize %>, message_class, model_class, :<%= options[:model_model_name].underscore %>)
+    migrate_foreign_key(:<%= chat_model_name.tableize %>, chat_class, model_class, :<%= model_model_name.underscore %>)
+    migrate_foreign_key(:<%= message_model_name.tableize %>, message_class, model_class, :<%= model_model_name.underscore %>)
   end
 
   def down
     # Remove foreign key references
-    if column_exists?(:<%= options[:message_model_name].tableize %>, :<%= options[:model_model_name].underscore %>_id)
-      remove_reference :<%= options[:message_model_name].tableize %>, :<%= options[:model_model_name].underscore %>, foreign_key: true
+    if column_exists?(:<%= message_model_name.tableize %>, :<%= model_model_name.underscore %>_id)
+      remove_reference :<%= message_model_name.tableize %>, :<%= model_model_name.underscore %>, foreign_key: true
     end
 
-    if column_exists?(:<%= options[:chat_model_name].tableize %>, :<%= options[:model_model_name].underscore %>_id)
-      remove_reference :<%= options[:chat_model_name].tableize %>, :<%= options[:model_model_name].underscore %>, foreign_key: true
+    if column_exists?(:<%= chat_model_name.tableize %>, :<%= model_model_name.underscore %>_id)
+      remove_reference :<%= chat_model_name.tableize %>, :<%= model_model_name.underscore %>, foreign_key: true
     end
 
     # Restore original model_id string columns
-    if column_exists?(:<%= options[:message_model_name].tableize %>, :model_id_string)
-      rename_column :<%= options[:message_model_name].tableize %>, :model_id_string, :model_id
+    if column_exists?(:<%= message_model_name.tableize %>, :model_id_string)
+      rename_column :<%= message_model_name.tableize %>, :model_id_string, :model_id
     end
 
-    if column_exists?(:<%= options[:chat_model_name].tableize %>, :model_id_string)
-      rename_column :<%= options[:chat_model_name].tableize %>, :model_id_string, :model_id
+    if column_exists?(:<%= chat_model_name.tableize %>, :model_id_string)
+      rename_column :<%= chat_model_name.tableize %>, :model_id_string, :model_id
     end
   end
 

@@ -1,0 +1,6 @@
+<div id="<%%= dom_id <%= chat_model_name.underscore %> %>">
+  <p><strong><%= chat_model_name %> #<%%= <%= chat_model_name.underscore %>.id %></strong></p>
+  <p><%%= <%= chat_model_name.underscore %>.model_association.name %></p>
+  <p><%%= <%= chat_model_name.underscore %>.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+  <p><%%= pluralize(<%= chat_model_name.underscore %>.messages_association.count, 'message') %></p>
+</div>

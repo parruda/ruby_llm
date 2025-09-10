@@ -98,35 +98,42 @@ chat.model_id  # => "{{ site.models.openai_standard }}" (string only, no metadat
 Your existing 1.6 app continues working without any changes (legacy API is the default). You'll see a deprecation warning on Rails boot:
 
 ```
-RubyLLM: Legacy acts_as API is deprecated and will be removed in RubyLLM 2.0.0.
-Please migrate to the new association-based API.
+!!! RubyLLM's legacy acts_as API is deprecated and will be removed in RubyLLM 2.0.0. Please consult the migration guide at https://rubyllm.com/upgrading-to-1-7/
 ```
 
-### Migrate to Model Registry (Recommended)
+### Migration Steps (Recommended)
 
-```bash
-rails generate ruby_llm:install
-rails generate ruby_llm:migrate_model_fields
-rails db:migrate
-```
+#### Step 1: Enable the New API
 
-Then opt into the new API in your initializer:
+First, opt into the new API in your initializer:
 
 ```ruby
 # config/initializers/ruby_llm.rb
 RubyLLM.configure do |config|
-  config.use_new_acts_as = true  # Use the new API!
+  config.use_new_acts_as = true  # Enable the new acts_as API
 end
 ```
 
-That's it! The migration:
+#### Step 2: Generate and Run Migration
+
+```bash
+# Default model names
+rails generate ruby_llm:migrate_model_fields
+
+# Or with custom model names (same as install generator)
+rails generate ruby_llm:migrate_model_fields chat:Conversation message:ChatMessage
+
+rails db:migrate
+```
+
+The migration:
 - Creates the models table
 - Loads all models from models.json automatically
 - Migrates your existing data to use foreign keys
 - Preserves everything (renames old columns to `model_id_string`)
-- Enables the new `acts_as` API (when you set `use_new_acts_as = true`)
+- Works seamlessly with the new API you enabled in Step 1
 
-> **Note:** Legacy API is the default for backward compatibility. Set `config.use_new_acts_as = true` to use the new API!
+> **Important:** Enable `config.use_new_acts_as = true` BEFORE running the migration generator for best results!
 {: .info }
 
 ### If You Have Custom Model Names
@@ -157,6 +164,39 @@ class ChatMessage < ApplicationRecord
 end
 ```
 
+## New Chat UI Generator
+
+### Instant Chat Interface
+{: .d-inline-block }
+
+v1.7.0+
+{: .label .label-green }
+
+Add a fully-functional chat UI to your Rails app with Turbo streaming:
+
+```bash
+# Default model names
+rails generate ruby_llm:chat_ui
+
+# Or with custom model names (same as install generator)
+rails generate ruby_llm:chat_ui chat:Conversation message:ChatMessage model:LLMModel
+```
+
+This creates:
+- Complete chat controller with streaming responses
+- Turbo-powered views with real-time updates
+- Styled chat interface (messages, input, model selector)
+- File attachment support
+- Token usage tracking
+- Copy-to-clipboard functionality
+
+The chat UI works with your existing Chat and Message models and includes:
+- Model selection dropdown
+- Real-time streaming responses
+- Markdown rendering
+- Code syntax highlighting
+- Responsive design
+
 ## New Applications
 
 Fresh installs get the model registry automatically:
@@ -164,4 +204,7 @@ Fresh installs get the model registry automatically:
 ```bash
 rails generate ruby_llm:install
 rails db:migrate
+
+# Optional: Add chat UI
+rails generate ruby_llm:chat_ui
 ```

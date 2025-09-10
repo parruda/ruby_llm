@@ -52,24 +52,11 @@ module RubyLLM
       @model_names
     end
 
-    def chat_model_name
-      @model_names ||= parse_model_mappings
-      @model_names[:chat]
-    end
-
-    def message_model_name
-      @model_names ||= parse_model_mappings
-      @model_names[:message]
-    end
-
-    def tool_call_model_name
-      @model_names ||= parse_model_mappings
-      @model_names[:tool_call]
-    end
-
-    def model_model_name
-      @model_names ||= parse_model_mappings
-      @model_names[:model]
+    %i[chat message tool_call model].each do |type|
+      define_method("#{type}_model_name") do
+        @model_names ||= parse_model_mappings
+        @model_names[type]
+      end
     end
 
     def acts_as_chat_declaration

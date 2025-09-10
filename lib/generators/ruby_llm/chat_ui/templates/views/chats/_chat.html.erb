@@ -1,6 +1,0 @@
-<div id="<%%= dom_id chat %>">
-  <p><strong>Chat #<%%= chat.id %></strong></p>
-  <p><%%= chat.model.name %></p>
-  <p><%%= chat.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
-  <p><%%= pluralize(chat.messages.count, 'message') %></p>
-</div>

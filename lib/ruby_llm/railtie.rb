@@ -19,9 +19,8 @@ module RubyLLM
           ::ActiveRecord::Base.include RubyLLM::ActiveRecord::ActsAsLegacy
 
           Rails.logger.warn(
-            'RubyLLM: Legacy acts_as API is deprecated and will be removed in RubyLLM 2.0.0. ' \
-            'Please migrate to the new association-based API by setting config.use_new_acts_as = true. ' \
-            "Run 'rails generate ruby_llm:migrate_model_fields' if you haven't already."
+            "\n!!! RubyLLM's legacy acts_as API is deprecated and will be removed in RubyLLM 2.0.0. " \
+            "Please consult the migration guide at https://rubyllm.com/upgrading-to-1-7/\n"
           )
         end
       end
