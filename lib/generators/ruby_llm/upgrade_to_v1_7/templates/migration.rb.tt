@@ -1,10 +1,5 @@
 class MigrateToRubyLLMModelReferences < ActiveRecord::Migration<%= migration_version %>
   def up
-    # Ensure Models table exists
-    unless table_exists?(:<%= model_model_name.tableize %>)
-      raise "Models table doesn't exist. Please run 'rails generate ruby_llm:install' with model registry first."
-    end
-
     model_class = <%= model_model_name %>
     chat_class = <%= chat_model_name %>
     message_class = <%= message_model_name %>

@@ -19,6 +19,41 @@ description: Upgrade to the DB-backed model registry for better data integrity a
 
 ---
 
+## How to Upgrade
+
+### From 1.6 to 1.7 (2 commands)
+
+```bash
+# Run the upgrade generator
+rails generate ruby_llm:upgrade_to_v1_7
+
+# Run migrations
+rails db:migrate
+```
+
+That's it! The generator:
+- Creates the models table if needed
+- Automatically adds `config.use_new_acts_as = true` to your initializer
+- Migrates your existing data to use foreign keys
+- Preserves all your data (old string columns renamed to `model_id_string`)
+
+### Custom Model Names
+
+If you're using custom model names:
+
+```bash
+rails generate ruby_llm:upgrade_to_v1_7 chat:Conversation message:ChatMessage
+rails db:migrate
+```
+
+### What happens without upgrading
+
+Your existing 1.6 app continues working without any changes. You'll see a deprecation warning on Rails boot:
+
+```
+!!! RubyLLM's legacy acts_as API is deprecated and will be removed in RubyLLM 2.0.0.
+```
+
 ## What's New in 1.7
 
 Among other features, the DB-backed model registry replaces simple string fields with proper ActiveRecord associations. Additionally, the `acts_as` helpers have been redesigned with a more Rails-like API.
@@ -91,52 +126,7 @@ chat.model_id  # => "{{ site.models.openai_standard }}" (string only, no metadat
 - String-based model IDs only
 - Default provider routing
 
-## Upgrading from 1.6
-
-### Your App Continues Working
-
-Your existing 1.6 app continues working without any changes (legacy API is the default). You'll see a deprecation warning on Rails boot:
-
-```
-!!! RubyLLM's legacy acts_as API is deprecated and will be removed in RubyLLM 2.0.0. Please consult the migration guide at https://rubyllm.com/upgrading-to-1-7/
-```
-
-### Migration Steps (Recommended)
-
-#### Step 1: Enable the New API
-
-First, opt into the new API in your initializer:
-
-```ruby
-# config/initializers/ruby_llm.rb
-RubyLLM.configure do |config|
-  config.use_new_acts_as = true  # Enable the new acts_as API
-end
-```
-
-#### Step 2: Generate and Run Migration
-
-```bash
-# Default model names
-rails generate ruby_llm:migrate_model_fields
-
-# Or with custom model names (same as install generator)
-rails generate ruby_llm:migrate_model_fields chat:Conversation message:ChatMessage
-
-rails db:migrate
-```
-
-The migration:
-- Creates the models table
-- Loads all models from models.json automatically
-- Migrates your existing data to use foreign keys
-- Preserves everything (renames old columns to `model_id_string`)
-- Works seamlessly with the new API you enabled in Step 1
-
-> **Important:** Enable `config.use_new_acts_as = true` BEFORE running the migration generator for best results!
-{: .info }
-
-### If You Have Custom Model Names
+## If You Have Custom Model Names
 
 If you're using custom model names (e.g., `Conversation` instead of `Chat`), you may need to update your `acts_as` declarations to the new API:
 

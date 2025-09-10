@@ -5,7 +5,7 @@ module RubyLLM
   class Railtie < Rails::Railtie
     initializer 'ruby_llm.inflections' do
       ActiveSupport::Inflector.inflections(:en) do |inflect|
-        inflect.acronym 'RubyLLM'
+        inflect.acronym 'LLM'
       end
     end
 
@@ -24,11 +24,6 @@ module RubyLLM
           )
         end
       end
-    end
-
-    generators do
-      require 'generators/ruby_llm/install_generator'
-      require 'generators/ruby_llm/migrate_model_fields_generator'
     end
 
     rake_tasks do

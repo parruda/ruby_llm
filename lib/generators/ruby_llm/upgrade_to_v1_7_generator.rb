@@ -4,16 +4,24 @@ require 'rails/generators'
 require 'rails/generators/active_record'
 
 module RubyLLM
-  class MigrateModelFieldsGenerator < Rails::Generators::Base # rubocop:disable Style/Documentation
+  class UpgradeToV17Generator < Rails::Generators::Base # rubocop:disable Style/Documentation
     include Rails::Generators::Migration
 
-    namespace 'ruby_llm:migrate_model_fields'
-    source_root File.expand_path('migrate_model_fields/templates', __dir__)
+    namespace 'ruby_llm:upgrade_to_v1_7'
+    source_root File.expand_path('upgrade_to_v1_7/templates', __dir__)
+
+    # Override source_paths to include install templates
+    def self.source_paths
+      [
+        File.expand_path('upgrade_to_v1_7/templates', __dir__),
+        File.expand_path('install/templates', __dir__)
+      ]
+    end
 
     argument :model_mappings, type: :array, default: [], banner: 'chat:ChatName message:MessageName ...'
 
-    desc 'Migrates existing RubyLLM models to use the new DB-backed model registry\n' \
-         'Usage: rails g ruby_llm:migrate_model_fields [chat:ChatName] [message:MessageName] ...'
+    desc 'Upgrades existing RubyLLM apps to v1.7 with new Rails-like API\n' \
+         'Usage: rails g ruby_llm:upgrade_to_v1_7 [chat:ChatName] [message:MessageName] ...'
 
     def self.next_migration_number(dirname)
       ::ActiveRecord::Generators::Base.next_migration_number(dirname)
@@ -45,6 +53,16 @@ module RubyLLM
     end
 
     def create_migration_file
+      # First check if models table exists, if not create it
+      unless table_exists?(model_model_name.tableize)
+        migration_template 'create_models_migration.rb.tt',
+                           "db/migrate/create_#{model_model_name.tableize}.rb",
+                           migration_version: migration_version,
+                           model_model_name: model_model_name
+
+        sleep 1 # Ensure different timestamp
+      end
+
       migration_template 'migration.rb.tt',
                          'db/migrate/migrate_to_ruby_llm_model_references.rb',
                          migration_version: migration_version,
@@ -88,20 +106,18 @@ module RubyLLM
     end
 
     def update_initializer
-      say_status :info, 'Update your config/initializers/ruby_llm.rb:', :yellow
-      instructions = ['Add this line to enable the new Rails-like API:', '  config.use_new_acts_as = true']
+      initializer_content = File.read('config/initializers/ruby_llm.rb')
 
-      if model_model_name != 'Model'
-        instructions << ''
-        instructions << 'Also add this line for your custom model class:'
-        instructions << "  config.model_registry_class = \"#{model_model_name}\""
+      unless initializer_content.include?('config.use_new_acts_as')
+        inject_into_file 'config/initializers/ruby_llm.rb', before: /^end/ do
+          lines = ["\n  # Enable the new Rails-like API", '  config.use_new_acts_as = true']
+          lines << "  config.model_registry_class = \"#{model_model_name}\"" if model_model_name != 'Model'
+          lines << "\n"
+          lines.join("\n")
+        end
       end
-
-      say <<~INSTRUCTIONS
-
-        #{instructions.join("\n")}
-
-      INSTRUCTIONS
+    rescue Errno::ENOENT
+      say_status :error, 'config/initializers/ruby_llm.rb not found', :red
     end
 
     def show_next_steps
@@ -127,6 +143,18 @@ module RubyLLM
 
     def migration_version
       "[#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}]"
+    end
+
+    def table_exists?(table_name)
+      ::ActiveRecord::Base.connection.table_exists?(table_name)
+    rescue StandardError
+      false
+    end
+
+    def postgresql?
+      ::ActiveRecord::Base.connection.adapter_name.downcase.include?('postgresql')
+    rescue StandardError
+      false
     end
   end
 end
