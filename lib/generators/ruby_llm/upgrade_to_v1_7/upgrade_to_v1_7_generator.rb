@@ -57,8 +57,10 @@ module RubyLLM
     end
 
     def create_migration_file
+      @model_table_already_existed = table_exists?(table_name_for(model_model_name))
+
       # First check if models table exists, if not create it
-      unless table_exists?(table_name_for(model_model_name))
+      unless @model_table_already_existed
         migration_template 'create_models_migration.rb.tt',
                            "db/migrate/create_#{table_name_for(model_model_name)}.rb",
                            migration_version: migration_version,
@@ -73,7 +75,8 @@ module RubyLLM
                          chat_model_name: chat_model_name,
                          message_model_name: message_model_name,
                          tool_call_model_name: tool_call_model_name,
-                         model_model_name: model_model_name
+                         model_model_name: model_model_name,
+                         model_table_already_existed: @model_table_already_existed
     end
 
     def create_model_file
@@ -94,51 +97,51 @@ module RubyLLM
     end
 
     def acts_as_model_declaration
-      acts_as_model_params = []
-      chats_assoc = chat_model_name.tableize.to_sym
+      params = []
 
-      if chats_assoc != :chats
-        acts_as_model_params << "chats: :#{chats_assoc}"
-        acts_as_model_params << "chat_class: '#{chat_model_name}'" if chat_model_name != chats_assoc.to_s.classify
-      end
+      add_association_params(params, :chats, chat_table_name, chat_model_name, plural: true)
 
-      if acts_as_model_params.any?
-        "acts_as_model #{acts_as_model_params.join(', ')}"
-      else
-        'acts_as_model'
-      end
+      "acts_as_model#{" #{params.join(', ')}" if params.any?}"
     end
 
     def update_initializer
-      initializer_content = File.read('config/initializers/ruby_llm.rb')
+      initializer_path = 'config/initializers/ruby_llm.rb'
 
-      unless initializer_content.include?('config.use_new_acts_as')
-        inject_into_file 'config/initializers/ruby_llm.rb', before: /^end/ do
-          lines = ["\n  # Enable the new Rails-like API", '  config.use_new_acts_as = true']
-          lines << "  config.model_registry_class = \"#{model_model_name}\"" if model_model_name != 'Model'
-          lines << "\n"
-          lines.join("\n")
-        end
+      unless File.exist?(initializer_path)
+        say_status :warning, 'No initializer found. Creating one...', :yellow
+        template '../install/templates/initializer.rb.tt', initializer_path
+        return
       end
-    rescue Errno::ENOENT
-      say_status :error, 'config/initializers/ruby_llm.rb not found', :red
+
+      initializer_content = File.read(initializer_path)
+
+      return if initializer_content.include?('config.use_new_acts_as')
+
+      inject_into_file initializer_path, before: /^end/ do
+        lines = ["\n  # Enable the new Rails-like API", '  config.use_new_acts_as = true']
+        lines << "  config.model_registry_class = \"#{model_model_name}\"" if model_model_name != 'Model'
+        lines << "\n"
+        lines.join("\n")
+      end
     end
 
     def show_next_steps
-      say_status :success, 'Migration created!', :green
+      say_status :success, 'Upgrade prepared!', :green
       say <<~INSTRUCTIONS
 
         Next steps:
-        1. Review the migration: db/migrate/*_migrate_to_ruby_llm_model_references.rb
+        1. Review the generated migrations
         2. Run: rails db:migrate
-        3. Update config/initializers/ruby_llm.rb as shown above
-        4. Test your application thoroughly
+        3. Update your code to use the new API
 
-        The migration will:
-        - Create the Models table if it doesn't exist
-        - Load all models from models.json
-        - Migrate your existing data to use foreign keys
-        - Preserve all existing data (string columns renamed to model_id_string)
+        ⚠️  If you get "undefined method 'acts_as_model'" during migration:
+           Add this to config/application.rb BEFORE your Application class:
+
+           RubyLLM.configure do |config|
+             config.use_new_acts_as = true
+           end
+
+        📚 See the full migration guide: https://rubyllm.com/upgrading-to-1-7/
 
       INSTRUCTIONS
     end
@@ -147,6 +150,15 @@ module RubyLLM
 
     def migration_version
       "[#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}]"
+    end
+
+    def add_association_params(params, default_assoc, table_name, model_name, plural: false)
+      assoc = plural ? table_name.to_sym : table_name.singularize.to_sym
+
+      return if assoc == default_assoc
+
+      params << "#{default_assoc}: :#{assoc}"
+      params << "#{default_assoc}_class: '#{model_name}'" if model_name != assoc.to_s.classify
     end
 
     def table_name_for(model_name)

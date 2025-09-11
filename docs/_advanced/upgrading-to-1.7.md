@@ -187,6 +187,31 @@ The chat UI works with your existing Chat and Message models and includes:
 - Code syntax highlighting
 - Responsive design
 
+## Troubleshooting
+
+### "undefined local variable or method 'acts_as_model'" error during migration
+
+If you get this error when running `rails db:migrate`, add the configuration to `config/application.rb` **before** your Application class:
+
+```ruby
+# config/application.rb
+require_relative "boot"
+require "rails/all"
+
+# Configure RubyLLM before Rails::Application is inherited
+RubyLLM.configure do |config|
+  config.use_new_acts_as = true
+end
+
+module YourApp
+  class Application < Rails::Application
+    # ...
+  end
+end
+```
+
+This ensures RubyLLM is configured before ActiveRecord loads your models.
+
 ## New Applications
 
 Fresh installs get the model registry automatically:

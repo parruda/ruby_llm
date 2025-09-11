@@ -64,85 +64,38 @@ module RubyLLM
     end
 
     def acts_as_chat_declaration
-      acts_as_chat_params = []
-      messages_assoc = message_model_name.tableize.to_sym
-      model_assoc = model_model_name.underscore.to_sym
+      params = []
 
-      if messages_assoc != :messages
-        acts_as_chat_params << "messages: :#{messages_assoc}"
-        if message_model_name != messages_assoc.to_s.classify
-          acts_as_chat_params << "message_class: '#{message_model_name}'"
-        end
-      end
+      add_association_params(params, :messages, message_table_name, message_model_name, plural: true)
+      add_association_params(params, :model, model_table_name, model_model_name)
 
-      if model_assoc != :model
-        acts_as_chat_params << "model: :#{model_assoc}"
-        acts_as_chat_params << "model_class: '#{model_model_name}'" if model_model_name != model_assoc.to_s.classify
-      end
-
-      if acts_as_chat_params.any?
-        "acts_as_chat #{acts_as_chat_params.join(', ')}"
-      else
-        'acts_as_chat'
-      end
+      "acts_as_chat#{" #{params.join(', ')}" if params.any?}"
     end
 
     def acts_as_message_declaration
       params = []
 
-      add_message_association_params(params, :chat, chat_model_name)
-      add_message_association_params(params, :tool_calls, tool_call_model_name, tableize: true)
-      add_message_association_params(params, :model, model_model_name)
+      add_association_params(params, :chat, chat_table_name, chat_model_name)
+      add_association_params(params, :tool_calls, tool_call_table_name, tool_call_model_name, plural: true)
+      add_association_params(params, :model, model_table_name, model_model_name)
 
-      params.any? ? "acts_as_message #{params.join(', ')}" : 'acts_as_message'
-    end
-
-    private
-
-    def add_message_association_params(params, default_assoc, model_name, tableize: false)
-      assoc = tableize ? model_name.tableize.to_sym : model_name.underscore.to_sym
-
-      return if assoc == default_assoc
-
-      params << "#{default_assoc}: :#{assoc}"
-      expected_class = assoc.to_s.classify
-      params << "#{default_assoc.to_s.singularize}_class: '#{model_name}'" if model_name != expected_class
-    end
-
-    public
-
-    def acts_as_tool_call_declaration
-      acts_as_tool_call_params = []
-      message_assoc = message_model_name.underscore.to_sym
-
-      if message_assoc != :message
-        acts_as_tool_call_params << "message: :#{message_assoc}"
-        if message_model_name != message_assoc.to_s.classify
-          acts_as_tool_call_params << "message_class: '#{message_model_name}'"
-        end
-      end
-
-      if acts_as_tool_call_params.any?
-        "acts_as_tool_call #{acts_as_tool_call_params.join(', ')}"
-      else
-        'acts_as_tool_call'
-      end
+      "acts_as_message#{" #{params.join(', ')}" if params.any?}"
     end
 
     def acts_as_model_declaration
-      acts_as_model_params = []
-      chats_assoc = chat_model_name.tableize.to_sym
+      params = []
 
-      if chats_assoc != :chats
-        acts_as_model_params << "chats: :#{chats_assoc}"
-        acts_as_model_params << "chat_class: '#{chat_model_name}'" if chat_model_name != chats_assoc.to_s.classify
-      end
+      add_association_params(params, :chats, chat_table_name, chat_model_name, plural: true)
 
-      if acts_as_model_params.any?
-        "acts_as_model #{acts_as_model_params.join(', ')}"
-      else
-        'acts_as_model'
-      end
+      "acts_as_model#{" #{params.join(', ')}" if params.any?}"
+    end
+
+    def acts_as_tool_call_declaration
+      params = []
+
+      add_association_params(params, :message, message_table_name, message_model_name)
+
+      "acts_as_tool_call#{" #{params.join(', ')}" if params.any?}"
     end
 
     def create_migration_files
@@ -186,12 +139,6 @@ module RubyLLM
       rails_command 'active_storage:install'
     end
 
-    def table_name_for(model_name)
-      # Convert namespaced model names to proper table names
-      # e.g., "Assistant::Chat" -> "assistant_chats" (not "assistant/chats")
-      model_name.underscore.pluralize.tr('/', '_')
-    end
-
     def show_install_info
       say "\n  ✅ RubyLLM installed!", :green
 
@@ -222,6 +169,23 @@ module RubyLLM
       say '     • ⭐ Star on GitHub: https://github.com/crmne/ruby_llm'
       say '     • 🐦 Follow for updates: https://x.com/paolino'
       say "\n"
+    end
+
+    private
+
+    def add_association_params(params, default_assoc, table_name, model_name, plural: false)
+      assoc = plural ? table_name.to_sym : table_name.singularize.to_sym
+
+      return if assoc == default_assoc
+
+      params << "#{default_assoc}: :#{assoc}"
+      params << "#{default_assoc.to_s.singularize}_class: '#{model_name}'" if model_name != assoc.to_s.classify
+    end
+
+    def table_name_for(model_name)
+      # Convert namespaced model names to proper table names
+      # e.g., "Assistant::Chat" -> "assistant_chats" (not "assistant/chats")
+      model_name.underscore.pluralize.tr('/', '_')
     end
   end
 end

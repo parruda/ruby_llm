@@ -3,6 +3,14 @@ class MigrateToRubyLLMModelReferences < ActiveRecord::Migration<%= migration_ver
     model_class = <%= model_model_name %>
     chat_class = <%= chat_model_name %>
     message_class = <%= message_model_name %>
+<% if @model_table_already_existed %>
+    # Load models from models.json if Model table already existed
+    say_with_time "Loading models from models.json" do
+      RubyLLM.models.load_from_json!
+      model_class.save_to_database
+      "Loaded #{model_class.count} models"
+    end
+<% end %>
 
     # Then check for any models in existing data that aren't in models.json
     say_with_time "Checking for additional models in existing data" do
