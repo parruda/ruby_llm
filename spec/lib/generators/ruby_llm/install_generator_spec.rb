@@ -264,31 +264,6 @@ RSpec.describe RubyLLM::InstallGenerator, type: :generator do
     end
   end
 
-  describe 'database detection' do
-    let(:generator_content) { File.read(generator_file) }
-
-    it 'defines postgresql? method' do
-      expect(generator_content).to include('def postgresql?')
-    end
-
-    it 'uses global ActiveRecord constant' do
-      expect(generator_content).to include('::ActiveRecord::Base.connection.adapter_name')
-    end
-
-    it 'detects PostgreSQL adapter' do
-      expect(generator_content).to include('.downcase.include?(\'postgresql\')')
-    end
-
-    it 'includes rescue block for error handling' do
-      expect(generator_content).to include('rescue StandardError')
-    end
-
-    it 'returns false on error' do
-      postgresql_method = generator_content[/def postgresql\?.*?end/m]
-      expect(postgresql_method).to include('false')
-    end
-  end
-
   describe '#postgresql?' do
     subject(:generator) { described_class.new }
 

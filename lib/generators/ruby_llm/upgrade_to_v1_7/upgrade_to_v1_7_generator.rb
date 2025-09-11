@@ -2,10 +2,12 @@
 
 require 'rails/generators'
 require 'rails/generators/active_record'
+require_relative '../generator_helpers'
 
 module RubyLLM
   class UpgradeToV17Generator < Rails::Generators::Base # rubocop:disable Style/Documentation
     include Rails::Generators::Migration
+    include RubyLLM::GeneratorHelpers
 
     namespace 'ruby_llm:upgrade_to_v1_7'
     source_root File.expand_path('templates', __dir__)
@@ -25,35 +27,6 @@ module RubyLLM
 
     def self.next_migration_number(dirname)
       ::ActiveRecord::Generators::Base.next_migration_number(dirname)
-    end
-
-    def parse_model_mappings
-      @model_names = {
-        chat: 'Chat',
-        message: 'Message',
-        tool_call: 'ToolCall',
-        model: 'Model'
-      }
-
-      model_mappings.each do |mapping|
-        if mapping.include?(':')
-          key, value = mapping.split(':', 2)
-          @model_names[key.to_sym] = value.classify
-        end
-      end
-
-      @model_names
-    end
-
-    %i[chat message tool_call model].each do |type|
-      define_method("#{type}_model_name") do
-        @model_names ||= parse_model_mappings
-        @model_names[type]
-      end
-
-      define_method("#{type}_table_name") do
-        table_name_for(send("#{type}_model_name"))
-      end
     end
 
     def create_migration_file
@@ -80,28 +53,15 @@ module RubyLLM
     end
 
     def create_model_file
-      # Check if Model file already exists
-      model_path = "app/models/#{model_model_name.underscore}.rb"
+      create_namespace_modules
 
-      if File.exist?(Rails.root.join(model_path))
-        say_status :skip, model_path, :yellow
-      else
-        create_file model_path do
-          <<~RUBY
-            class #{model_model_name} < ApplicationRecord
-              #{acts_as_model_declaration}
-            end
-          RUBY
-        end
-      end
+      template 'model_model.rb.tt', "app/models/#{model_model_name.underscore}.rb"
     end
 
-    def acts_as_model_declaration
-      params = []
-
-      add_association_params(params, :chats, chat_table_name, chat_model_name, plural: true)
-
-      "acts_as_model#{" #{params.join(', ')}" if params.any?}"
+    def update_existing_models
+      update_model_acts_as(chat_model_name, 'acts_as_chat', acts_as_chat_declaration)
+      update_model_acts_as(message_model_name, 'acts_as_message', acts_as_message_declaration)
+      update_model_acts_as(tool_call_model_name, 'acts_as_tool_call', acts_as_tool_call_declaration)
     end
 
     def update_initializer
@@ -109,7 +69,7 @@ module RubyLLM
 
       unless File.exist?(initializer_path)
         say_status :warning, 'No initializer found. Creating one...', :yellow
-        template '../install/templates/initializer.rb.tt', initializer_path
+        template 'initializer.rb.tt', initializer_path
         return
       end
 
@@ -132,7 +92,7 @@ module RubyLLM
         Next steps:
         1. Review the generated migrations
         2. Run: rails db:migrate
-        3. Update your code to use the new API
+        3. Update your code to use the new API: #{chat_model_name}.create! now has the same signature as RubyLLM.chat
 
         ⚠️  If you get "undefined method 'acts_as_model'" during migration:
            Add this to config/application.rb BEFORE your Application class:
@@ -148,35 +108,14 @@ module RubyLLM
 
     private
 
-    def migration_version
-      "[#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}]"
-    end
+    def update_model_acts_as(model_name, old_acts_as, new_acts_as)
+      model_path = "app/models/#{model_name.underscore}.rb"
+      return unless File.exist?(Rails.root.join(model_path))
 
-    def add_association_params(params, default_assoc, table_name, model_name, plural: false)
-      assoc = plural ? table_name.to_sym : table_name.singularize.to_sym
+      content = File.read(Rails.root.join(model_path))
+      return unless content.match?(/^\s*#{old_acts_as}/)
 
-      return if assoc == default_assoc
-
-      params << "#{default_assoc}: :#{assoc}"
-      params << "#{default_assoc}_class: '#{model_name}'" if model_name != assoc.to_s.classify
-    end
-
-    def table_name_for(model_name)
-      # Convert namespaced model names to proper table names
-      # e.g., "Assistant::Chat" -> "assistant_chats" (not "assistant/chats")
-      model_name.underscore.pluralize.tr('/', '_')
-    end
-
-    def table_exists?(table_name)
-      ::ActiveRecord::Base.connection.table_exists?(table_name)
-    rescue StandardError
-      false
-    end
-
-    def postgresql?
-      ::ActiveRecord::Base.connection.adapter_name.downcase.include?('postgresql')
-    rescue StandardError
-      false
+      gsub_file model_path, /^\s*#{old_acts_as}.*$/, "  #{new_acts_as}"
     end
   end
 end

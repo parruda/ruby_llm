@@ -34,7 +34,9 @@ rails db:migrate
 That's it! The generator:
 - Creates the models table if needed
 - Automatically adds `config.use_new_acts_as = true` to your initializer
+- Automatically updates your existing models' `acts_as` declarations to the new version
 - Migrates your existing data to use foreign keys
+- Loads the models in the db
 - Preserves all your data (old string columns renamed to `model_id_string`)
 
 ### Custom Model Names
