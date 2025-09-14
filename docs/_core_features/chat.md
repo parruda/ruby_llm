@@ -150,7 +150,7 @@ puts response.content
 
 ### Working with Videos
 
-You can also analyze video files or URLs with vision-capable models. RubyLLM will automatically detect video files and handle them appropriately.
+You can also analyze video files or URLs with video-capable models. RubyLLM will automatically detect video files and handle them appropriately.
 
 ```ruby
 # Ask about a local video file
@@ -167,11 +167,12 @@ response = chat.ask "Analyze these files for visual content.", with: ["diagram.p
 puts response.content
 ```
 
-Notes:
-
-    Supported video formats include .mp4, .mov, .avi, .webm, and others (provider-dependent).
-    Only Google Gemini models currently support video input; check the [Available Models Guide]({% link guides/available-models.md %}) for details.
-    Large video files may be subject to size or duration limits imposed by the provider.
+> Supported video formats include .mp4, .mov, .avi, .webm, and others (provider-dependent).
+>
+> Only Google Gemini and VertexAI models currently support video input.
+>
+> Large video files may be subject to size or duration limits imposed by the provider.
+{: .note }
 
 RubyLLM automatically handles image encoding and formatting for each provider's API. Local images are read and encoded as needed, while URLs are passed directly when supported by the provider.
 
