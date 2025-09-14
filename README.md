@@ -70,6 +70,11 @@ RubyLLM.embed "Ruby is elegant and expressive"
 ```
 
 ```ruby
+# Moderate content for safety
+RubyLLM.moderate("Check if this text is safe").flagged? # => false
+```
+
+```ruby
 # Let AI use your code
 class Weather < RubyLLM::Tool
   description "Get current weather"
@@ -106,6 +111,7 @@ response = chat.with_schema(ProductSchema).ask "Analyze this product", with: "pr
 * **Documents:** Extract from PDFs, CSVs, JSON, any file type
 * **Image generation:** Create images with `RubyLLM.paint`
 * **Embeddings:** Vector search with `RubyLLM.embed`
+* **Moderation:** Content safety with `RubyLLM.moderate`
 * **Tools:** Let AI call your Ruby methods
 * **Structured output:** JSON schemas that just work
 * **Streaming:** Real-time responses with blocks
