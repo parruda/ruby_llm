@@ -194,7 +194,11 @@ end
 ## Rails
 
 ```bash
+# Install database models
 rails generate ruby_llm:install
+
+# Add chat UI (optional)
+rails generate ruby_llm:chat_ui
 ```
 
 ```ruby
@@ -202,7 +206,9 @@ class Chat < ApplicationRecord
   acts_as_chat
 end
 
-chat = Chat.create! model_id: "claude-sonnet-4"
+chat = Chat.create! model: "claude-sonnet-4"
 chat.ask "What's in this file?", with: "report.pdf"
 ```
+
+Visit `http://localhost:3000/chats` for a ready-to-use chat interface!
 
