@@ -86,7 +86,7 @@ chat_models = RubyLLM.models.refresh!.chat_models
 
 **Local Provider Models:**
 
-By default, `refresh!` includes models from local providers like Ollama and GPUStack if they're configured. To exclude local providers and only fetch from remote APIs (available in v1.6.5+):
+By default, `refresh!` includes models from local providers like Ollama and GPUStack if they're configured. To exclude local providers and only fetch from remote APIs:
 
 ```ruby
 # Only fetch from remote providers (Anthropic, OpenAI, etc.)

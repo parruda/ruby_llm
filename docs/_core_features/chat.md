@@ -303,10 +303,6 @@ puts JSON.parse(response.content)
 {: .warning }
 
 ### Custom HTTP Headers
-{: .d-inline-block }
-
-Available in v1.6.0+
-{: .label .label-green }
 
 Some providers offer beta features or special capabilities through custom HTTP headers. The `with_headers` method lets you add these headers to your API requests while maintaining RubyLLM's security model.
 
@@ -457,13 +453,10 @@ Not all models support structured output. Currently supported:
 Models that don't support structured output:
 
 ```ruby
-# RubyLLM 1.6.2+ will attempt to use schemas with any model
 chat = RubyLLM.chat(model: '{{ site.models.openai_legacy }}')
 chat.with_schema(schema)
 response = chat.ask('Generate a person')
 # Provider will return an error if unsupported
-
-# Prior to 1.6.2, with_schema would raise UnsupportedStructuredOutputError
 ```
 
 ### Multi-turn Conversations with Schemas
@@ -557,7 +550,7 @@ chat.on_tool_call do |tool_call|
   puts "AI is calling tool: #{tool_call.name} with arguments: #{tool_call.arguments}"
 end
 
-# Called after a tool returns its result (v1.6.0+)
+# Called after a tool returns its result
 chat.on_tool_result do |result|
   puts "Tool returned: #{result}"
 end
