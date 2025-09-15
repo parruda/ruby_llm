@@ -4,29 +4,29 @@
     "name": "Claude Haiku 3.5",
     "provider": "anthropic",
     "family": "claude-3-5-haiku",
-    "created_at": null,
+    "created_at": "2024-10-22 00:00:00 UTC",
     "context_window": 200000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling"
+      "streaming",
+      "function_calling",
+      "batch"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 0.8,
-          "cached_input_per_million": 1.0,
           "output_per_million": 4.0
         },
         "batch": {
@@ -118,34 +118,38 @@
     "name": "Claude Sonnet 3.7",
     "provider": "anthropic",
     "family": "claude-3-7-sonnet",
-    "created_at": null,
+    "created_at": "2025-02-24 00:00:00 UTC",
     "context_window": 200000,
-    "max_output_tokens": 64000,
+    "max_output_tokens": 8192,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
+      "streaming",
+      "function_calling",
       "batch",
-      "function_calling"
+      "reasoning",
+      "citations"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 3.0,
-          "cached_input_per_million": 3.75,
-          "output_per_million": 15.0
+          "output_per_million": 15.0,
+          "reasoning_output_per_million": 37.5
         },
         "batch": {
           "input_per_million": 1.5,
-          "output_per_million": 7.5
+          "output_per_million": 7.5,
+          "reasoning_output_per_million": 18.75
         }
       }
     },
@@ -156,29 +160,29 @@
     "name": "Claude Haiku 3",
     "provider": "anthropic",
     "family": "claude-3-haiku",
-    "created_at": null,
+    "created_at": "2024-03-07 00:00:00 UTC",
     "context_window": 200000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling"
+      "streaming",
+      "function_calling",
+      "batch"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 0.25,
-          "cached_input_per_million": 0.3,
           "output_per_million": 1.25
         },
         "batch": {
@@ -231,35 +235,34 @@
     "id": "claude-opus-4-1-20250805",
     "name": "Claude Opus 4.1",
     "provider": "anthropic",
-    "family": "claude-opus-4-1",
-    "created_at": null,
+    "family": "claude-2",
+    "created_at": "2025-08-05 00:00:00 UTC",
     "context_window": 200000,
-    "max_output_tokens": 32000,
+    "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling"
+      "streaming",
+      "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 15.0,
-          "cached_input_per_million": 18.75,
-          "output_per_million": 75.0
+          "input_per_million": 3.0,
+          "output_per_million": 15.0
         },
         "batch": {
-          "input_per_million": 7.5,
-          "output_per_million": 37.5
+          "input_per_million": 1.5,
+          "output_per_million": 7.5
         }
       }
     },
@@ -269,35 +272,34 @@
     "id": "claude-opus-4-20250514",
     "name": "Claude Opus 4",
     "provider": "anthropic",
-    "family": "claude-opus-4",
-    "created_at": null,
+    "family": "claude-2",
+    "created_at": "2025-05-22 00:00:00 UTC",
     "context_window": 200000,
-    "max_output_tokens": 32000,
+    "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling"
+      "streaming",
+      "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 15.0,
-          "cached_input_per_million": 18.75,
-          "output_per_million": 75.0
+          "input_per_million": 3.0,
+          "output_per_million": 15.0
         },
         "batch": {
-          "input_per_million": 7.5,
-          "output_per_million": 37.5
+          "input_per_million": 1.5,
+          "output_per_million": 7.5
         }
       }
     },
@@ -307,30 +309,29 @@
     "id": "claude-sonnet-4-20250514",
     "name": "Claude Sonnet 4",
     "provider": "anthropic",
-    "family": "claude-sonnet-4",
-    "created_at": null,
+    "family": "claude-2",
+    "created_at": "2025-05-22 00:00:00 UTC",
     "context_window": 200000,
-    "max_output_tokens": 64000,
+    "max_output_tokens": 4096,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
+        "text",
         "image",
-        "text"
+        "pdf"
       ],
       "output": [
-        "embeddings",
         "text"
       ]
     },
     "capabilities": [
-      "batch",
-      "function_calling"
+      "streaming",
+      "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
           "input_per_million": 3.0,
-          "cached_input_per_million": 3.75,
           "output_per_million": 15.0
         },
         "batch": {
@@ -1903,7 +1904,7 @@
     "id": "gemini-1.5-flash",
     "name": "Gemini 1.5 Flash",
     "provider": "gemini",
-    "family": "models/gemini-1.5-flash",
+    "family": "gemini-1.5-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -1944,7 +1945,7 @@
     "id": "gemini-1.5-flash-001",
     "name": "Gemini 1.5 Flash",
     "provider": "gemini",
-    "family": "models/gemini-1.5-flash",
+    "family": "gemini-1.5-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -1978,7 +1979,7 @@
     "id": "gemini-1.5-flash-002",
     "name": "Gemini 1.5 Flash",
     "provider": "gemini",
-    "family": "models/gemini-1.5-flash",
+    "family": "gemini-1.5-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2020,7 +2021,7 @@
     "id": "gemini-1.5-flash-8b",
     "name": "Gemini 1.5 Flash-8B",
     "provider": "gemini",
-    "family": "models/gemini-1.5-flash-8b",
+    "family": "gemini-1.5-flash-8b",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2062,7 +2063,7 @@
     "id": "gemini-1.5-flash-8b-001",
     "name": "Gemini 1.5 Flash-8B",
     "provider": "gemini",
-    "family": "models/gemini-1.5-flash-8b",
+    "family": "gemini-1.5-flash-8b",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2104,7 +2105,7 @@
     "id": "gemini-1.5-flash-8b-latest",
     "name": "Gemini 1.5 Flash-8B",
     "provider": "gemini",
-    "family": "models/gemini-1.5-flash-8b",
+    "family": "gemini-1.5-flash-8b",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2146,7 +2147,7 @@
     "id": "gemini-1.5-flash-latest",
     "name": "Gemini 1.5 Flash",
     "provider": "gemini",
-    "family": "models/gemini-1.5-flash",
+    "family": "gemini-1.5-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2187,7 +2188,7 @@
     "id": "gemini-1.5-pro",
     "name": "Gemini 1.5 Pro",
     "provider": "gemini",
-    "family": "models/gemini-1.5-pro",
+    "family": "gemini-1.5-pro",
     "created_at": null,
     "context_window": 2097152,
     "max_output_tokens": 8192,
@@ -2228,7 +2229,7 @@
     "id": "gemini-1.5-pro-001",
     "name": "Gemini 1.5 Pro",
     "provider": "gemini",
-    "family": "models/gemini-1.5-pro",
+    "family": "gemini-1.5-pro",
     "created_at": null,
     "context_window": 2097152,
     "max_output_tokens": 8192,
@@ -2262,7 +2263,7 @@
     "id": "gemini-1.5-pro-002",
     "name": "Gemini 1.5 Pro",
     "provider": "gemini",
-    "family": "models/gemini-1.5-pro",
+    "family": "gemini-1.5-pro",
     "created_at": null,
     "context_window": 2097152,
     "max_output_tokens": 8192,
@@ -2304,7 +2305,7 @@
     "id": "gemini-1.5-pro-latest",
     "name": "Gemini 1.5 Pro",
     "provider": "gemini",
-    "family": "models/gemini-1.5-pro",
+    "family": "gemini-1.5-pro",
     "created_at": null,
     "context_window": 2097152,
     "max_output_tokens": 8192,
@@ -2345,7 +2346,7 @@
     "id": "gemini-2.0-flash",
     "name": "Gemini 2.0 Flash",
     "provider": "gemini",
-    "family": "models/gemini-2.0-flash",
+    "family": "gemini-2.0-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2393,7 +2394,7 @@
     "id": "gemini-2.0-flash-001",
     "name": "Gemini 2.0 Flash",
     "provider": "gemini",
-    "family": "models/gemini-2.0-flash",
+    "family": "gemini-2.0-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2441,7 +2442,7 @@
     "id": "gemini-2.0-flash-exp",
     "name": "Gemini 2.0 Flash",
     "provider": "gemini",
-    "family": "models/gemini-2.0-flash",
+    "family": "gemini-2.0-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2488,7 +2489,7 @@
     "id": "gemini-2.0-flash-lite",
     "name": "Gemini 2.0 Flash-Lite",
     "provider": "gemini",
-    "family": "models/gemini-2.0-flash-lite",
+    "family": "gemini-2.0-flash-lite",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2536,7 +2537,7 @@
     "id": "gemini-2.0-flash-lite-001",
     "name": "Gemini 2.0 Flash-Lite",
     "provider": "gemini",
-    "family": "models/gemini-2.0-flash-lite",
+    "family": "gemini-2.0-flash-lite",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2678,7 +2679,7 @@
     "id": "gemini-2.0-flash-live-001",
     "name": "Gemini 2.0 Flash Live",
     "provider": "gemini",
-    "family": "models/gemini-2.0-flash-live-001",
+    "family": "gemini-2.0-flash-live-001",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -2712,7 +2713,7 @@
     "id": "gemini-2.0-flash-preview-image-generation",
     "name": "Gemini 2.0 Flash Preview Image Generation",
     "provider": "gemini",
-    "family": "models/gemini-2.0-flash-preview-image-generation",
+    "family": "gemini-2.0-flash-preview-image-generation",
     "created_at": null,
     "context_window": 32000,
     "max_output_tokens": 8192,
@@ -2999,7 +3000,7 @@
     "id": "gemini-2.5-flash",
     "name": "Gemini 2.5 Flash",
     "provider": "gemini",
-    "family": "models/gemini-2.5-flash",
+    "family": "gemini-2.5-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 65536,
@@ -3047,7 +3048,7 @@
     "id": "gemini-2.5-flash-exp-native-audio-thinking-dialog",
     "name": "Gemini 2.5 Flash Native Audio",
     "provider": "gemini",
-    "family": "models/gemini-2.5-flash-preview-native-audio-dialog",
+    "family": "gemini-2.5-flash-preview-native-audio-dialog",
     "created_at": null,
     "context_window": 128000,
     "max_output_tokens": 8000,
@@ -3080,7 +3081,7 @@
     "id": "gemini-2.5-flash-image-preview",
     "name": "Gemini 2.5 Flash Image Preview",
     "provider": "gemini",
-    "family": "models/gemini-2.5-flash-image-preview",
+    "family": "gemini-2.5-flash-image-preview",
     "created_at": null,
     "context_window": 32768,
     "max_output_tokens": 32768,
@@ -3125,7 +3126,7 @@
     "id": "gemini-2.5-flash-lite",
     "name": "Gemini 2.5 Flash-Lite",
     "provider": "gemini",
-    "family": "models/gemini-2.5-flash-lite",
+    "family": "gemini-2.5-flash-lite",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 65536,
@@ -3173,7 +3174,7 @@
     "id": "gemini-2.5-flash-lite-06-17",
     "name": "Gemini 2.5 Flash-Lite",
     "provider": "gemini",
-    "family": "models/gemini-2.5-flash-lite",
+    "family": "gemini-2.5-flash-lite",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 65536,
@@ -3260,7 +3261,7 @@
     "id": "gemini-2.5-flash-preview-05-20",
     "name": "Gemini 2.5 Flash",
     "provider": "gemini",
-    "family": "models/gemini-2.5-flash",
+    "family": "gemini-2.5-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 65536,
@@ -3308,7 +3309,7 @@
     "id": "gemini-2.5-flash-preview-native-audio-dialog",
     "name": "Gemini 2.5 Flash Native Audio",
     "provider": "gemini",
-    "family": "models/gemini-2.5-flash-preview-native-audio-dialog",
+    "family": "gemini-2.5-flash-preview-native-audio-dialog",
     "created_at": null,
     "context_window": 128000,
     "max_output_tokens": 8000,
@@ -3339,9 +3340,9 @@
   },
   {
     "id": "gemini-2.5-flash-preview-tts",
-    "name": "Gemini 2.5 Flash Preview TTS",
+    "name": "Gemini 2.5 Flash Preview Text-to-Speech",
     "provider": "gemini",
-    "family": "models/gemini-2.5-flash-preview-tts",
+    "family": "gemini-2.5-flash-preview-tts",
     "created_at": null,
     "context_window": 8000,
     "max_output_tokens": 16000,
@@ -3383,7 +3384,7 @@
     "id": "gemini-2.5-pro",
     "name": "Gemini 2.5 Pro",
     "provider": "gemini",
-    "family": "models/gemini-2.5-pro",
+    "family": "gemini-2.5-pro",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 65536,
@@ -3576,9 +3577,9 @@
   },
   {
     "id": "gemini-2.5-pro-preview-tts",
-    "name": "Gemini 2.5 Pro Preview TTS",
+    "name": "Gemini 2.5 Pro Preview Text-to-Speech",
     "provider": "gemini",
-    "family": "models/gemini-2.5-pro-preview-tts",
+    "family": "gemini-2.5-pro-preview-tts",
     "created_at": null,
     "context_window": 8000,
     "max_output_tokens": 16000,
@@ -3820,7 +3821,7 @@
     "id": "gemini-live-2.5-flash-preview",
     "name": "Gemini 2.5 Flash Live",
     "provider": "gemini",
-    "family": "models/gemini-live-2.5-flash-preview",
+    "family": "gemini-live-2.5-flash-preview",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -7946,14 +7947,16 @@
     "id": "gpt-5",
     "name": "GPT-5",
     "provider": "openai",
-    "family": "other",
+    "family": "gpt5",
     "created_at": "2025-08-05 22:29:37 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "context_window": 128000,
+    "max_output_tokens": 400000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text"
+        "text",
+        "image",
+        "pdf"
       ],
       "output": [
         "text"
@@ -7961,13 +7964,16 @@
     },
     "capabilities": [
       "streaming",
+      "function_calling",
+      "structured_output",
       "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 1.25,
+          "output_per_million": 10.0,
+          "cached_input_per_million": 0.125
         }
       }
     },
@@ -7980,14 +7986,16 @@
     "id": "gpt-5-2025-08-07",
     "name": "GPT-5 20250807",
     "provider": "openai",
-    "family": "other",
+    "family": "gpt5",
     "created_at": "2025-08-01 21:09:20 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "context_window": 128000,
+    "max_output_tokens": 400000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text"
+        "text",
+        "image",
+        "pdf"
       ],
       "output": [
         "text"
@@ -7995,13 +8003,16 @@
     },
     "capabilities": [
       "streaming",
+      "function_calling",
+      "structured_output",
       "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 1.25,
+          "output_per_million": 10.0,
+          "cached_input_per_million": 0.125
         }
       }
     },
@@ -8014,14 +8025,16 @@
     "id": "gpt-5-chat-latest",
     "name": "GPT-5 Chat Latest",
     "provider": "openai",
-    "family": "other",
+    "family": "gpt5",
     "created_at": "2025-08-01 20:35:06 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "context_window": 128000,
+    "max_output_tokens": 400000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text"
+        "text",
+        "image",
+        "pdf"
       ],
       "output": [
         "text"
@@ -8029,13 +8042,16 @@
     },
     "capabilities": [
       "streaming",
+      "function_calling",
+      "structured_output",
       "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 1.25,
+          "output_per_million": 10.0,
+          "cached_input_per_million": 0.125
         }
       }
     },
@@ -8048,14 +8064,16 @@
     "id": "gpt-5-mini",
     "name": "GPT-5 Mini",
     "provider": "openai",
-    "family": "other",
+    "family": "gpt5",
     "created_at": "2025-08-05 22:32:08 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "context_window": 128000,
+    "max_output_tokens": 400000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text"
+        "text",
+        "image",
+        "pdf"
       ],
       "output": [
         "text"
@@ -8063,13 +8081,16 @@
     },
     "capabilities": [
       "streaming",
+      "function_calling",
+      "structured_output",
       "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 1.25,
+          "output_per_million": 10.0,
+          "cached_input_per_million": 0.125
         }
       }
     },
@@ -8082,14 +8103,16 @@
     "id": "gpt-5-mini-2025-08-07",
     "name": "GPT-5 Mini 20250807",
     "provider": "openai",
-    "family": "other",
+    "family": "gpt5",
     "created_at": "2025-08-05 22:31:07 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "context_window": 128000,
+    "max_output_tokens": 400000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text"
+        "text",
+        "image",
+        "pdf"
       ],
       "output": [
         "text"
@@ -8097,13 +8120,16 @@
     },
     "capabilities": [
       "streaming",
+      "function_calling",
+      "structured_output",
       "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 1.25,
+          "output_per_million": 10.0,
+          "cached_input_per_million": 0.125
         }
       }
     },
@@ -8116,14 +8142,16 @@
     "id": "gpt-5-nano",
     "name": "GPT-5 Nano",
     "provider": "openai",
-    "family": "other",
+    "family": "gpt5",
     "created_at": "2025-08-05 22:39:44 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "context_window": 128000,
+    "max_output_tokens": 400000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text"
+        "text",
+        "image",
+        "pdf"
       ],
       "output": [
         "text"
@@ -8131,13 +8159,16 @@
     },
     "capabilities": [
       "streaming",
+      "function_calling",
+      "structured_output",
       "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 1.25,
+          "output_per_million": 10.0,
+          "cached_input_per_million": 0.125
         }
       }
     },
@@ -8150,14 +8181,16 @@
     "id": "gpt-5-nano-2025-08-07",
     "name": "GPT-5 Nano 20250807",
     "provider": "openai",
-    "family": "other",
+    "family": "gpt5",
     "created_at": "2025-08-05 22:38:23 +0200",
-    "context_window": 4096,
-    "max_output_tokens": 16384,
+    "context_window": 128000,
+    "max_output_tokens": 400000,
     "knowledge_cutoff": null,
     "modalities": {
       "input": [
-        "text"
+        "text",
+        "image",
+        "pdf"
       ],
       "output": [
         "text"
@@ -8165,13 +8198,16 @@
     },
     "capabilities": [
       "streaming",
+      "function_calling",
+      "structured_output",
       "reasoning"
     ],
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.5,
-          "output_per_million": 1.5
+          "input_per_million": 1.25,
+          "output_per_million": 10.0,
+          "cached_input_per_million": 0.125
         }
       }
     },
@@ -11824,69 +11860,6 @@
         "response_format",
         "stop",
         "structured_outputs",
-        "temperature",
-        "top_k",
-        "top_p"
-      ]
-    }
-  },
-  {
-    "id": "cognitivecomputations/dolphin-mixtral-8x22b",
-    "name": "Dolphin 2.9.2 Mixtral 8x22B 🐬",
-    "provider": "openrouter",
-    "family": "cognitivecomputations",
-    "created_at": "2024-06-08 02:00:00 +0200",
-    "context_window": 16000,
-    "max_output_tokens": 8192,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "predicted_outputs"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.8999999999999999,
-          "output_per_million": 0.8999999999999999
-        }
-      }
-    },
-    "metadata": {
-      "description": "Dolphin 2.9 is designed for instruction following, conversational, and coding. This model is a finetune of [Mixtral 8x22B Instruct](/models/mistralai/mixtral-8x22b-instruct). It features a 64k context length and was fine-tuned with a 16k sequence length using ChatML templates.\n\nThis model is a successor to [Dolphin Mixtral 8x7B](/models/cognitivecomputations/dolphin-mixtral-8x7b).\n\nThe model is uncensored and is stripped of alignment and bias. It requires an external alignment layer for ethical use. Users are cautioned to use this highly compliant model responsibly, as detailed in a blog post about uncensored models at [erichartford.com/uncensored-models](https://erichartford.com/uncensored-models).\n\n#moe #uncensored",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Mistral",
-        "instruct_type": "chatml"
-      },
-      "top_provider": {
-        "context_length": 16000,
-        "max_completion_tokens": 8192,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "repetition_penalty",
-        "seed",
-        "stop",
         "temperature",
         "top_k",
         "top_p"
@@ -20557,8 +20530,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.08,
-          "output_per_million": 0.24
+          "input_per_million": 0.39999999999999997,
+          "output_per_million": 0.39999999999999997
         }
       }
     },
@@ -21991,8 +21964,8 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.12,
-          "output_per_million": 0.3
+          "input_per_million": 0.6,
+          "output_per_million": 0.6
         }
       }
     },
@@ -28390,7 +28363,7 @@
     "pricing": {
       "text_tokens": {
         "standard": {
-          "input_per_million": 0.02,
+          "input_per_million": 0.04,
           "output_per_million": 0.049999999999999996
         }
       }
@@ -28679,69 +28652,6 @@
         "temperature",
         "top_k",
         "top_logprobs",
-        "top_p"
-      ]
-    }
-  },
-  {
-    "id": "sophosympatheia/midnight-rose-70b",
-    "name": "Midnight Rose 70B",
-    "provider": "openrouter",
-    "family": "sophosympatheia",
-    "created_at": "2024-03-22 01:00:00 +0100",
-    "context_window": 4096,
-    "max_output_tokens": 2048,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "predicted_outputs"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.7999999999999999,
-          "output_per_million": 0.7999999999999999
-        }
-      }
-    },
-    "metadata": {
-      "description": "A merge with a complex family tree, this model was crafted for roleplaying and storytelling. Midnight Rose is a successor to Rogue Rose and Aurora Nights and improves upon them both. It wants to produce lengthy output by default and is the best creative writing merge produced so far by sophosympatheia.\n\nDescending from earlier versions of Midnight Rose and [Wizard Tulu Dolphin 70B](https://huggingface.co/sophosympatheia/Wizard-Tulu-Dolphin-70B-v1.0), it inherits the best qualities of each.",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Llama2",
-        "instruct_type": "airoboros"
-      },
-      "top_provider": {
-        "context_length": 4096,
-        "max_completion_tokens": 2048,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "repetition_penalty",
-        "seed",
-        "stop",
-        "temperature",
-        "top_k",
         "top_p"
       ]
     }
@@ -29327,69 +29237,6 @@
         "temperature",
         "tool_choice",
         "tools",
-        "top_k",
-        "top_p"
-      ]
-    }
-  },
-  {
-    "id": "thudm/glm-4-32b",
-    "name": "THUDM: GLM 4 32B",
-    "provider": "openrouter",
-    "family": "thudm",
-    "created_at": "2025-04-17 22:15:15 +0200",
-    "context_window": 32000,
-    "max_output_tokens": 32000,
-    "knowledge_cutoff": null,
-    "modalities": {
-      "input": [
-        "text"
-      ],
-      "output": [
-        "text"
-      ]
-    },
-    "capabilities": [
-      "streaming",
-      "predicted_outputs"
-    ],
-    "pricing": {
-      "text_tokens": {
-        "standard": {
-          "input_per_million": 0.55,
-          "output_per_million": 1.66
-        }
-      }
-    },
-    "metadata": {
-      "description": "GLM-4-32B-0414 is a 32B bilingual (Chinese-English) open-weight language model optimized for code generation, function calling, and agent-style tasks. Pretrained on 15T of high-quality and reasoning-heavy data, it was further refined using human preference alignment, rejection sampling, and reinforcement learning. The model excels in complex reasoning, artifact generation, and structured output tasks, achieving performance comparable to GPT-4o and DeepSeek-V3-0324 across several benchmarks.",
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "top_provider": {
-        "context_length": 32000,
-        "max_completion_tokens": 32000,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "repetition_penalty",
-        "seed",
-        "stop",
-        "temperature",
         "top_k",
         "top_p"
       ]
@@ -30644,7 +30491,7 @@
     "name": "Sonar",
     "provider": "perplexity",
     "family": "sonar",
-    "created_at": "2025-09-14 11:15:24 +0200",
+    "created_at": "2025-09-15 15:56:28 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -30676,7 +30523,7 @@
     "name": "Sonar Deep Research",
     "provider": "perplexity",
     "family": "sonar_deep_research",
-    "created_at": "2025-09-14 11:15:24 +0200",
+    "created_at": "2025-09-15 15:56:28 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -30711,7 +30558,7 @@
     "name": "Sonar Pro",
     "provider": "perplexity",
     "family": "sonar_pro",
-    "created_at": "2025-09-14 11:15:24 +0200",
+    "created_at": "2025-09-15 15:56:28 +0200",
     "context_window": 200000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
@@ -30743,7 +30590,7 @@
     "name": "Sonar Reasoning",
     "provider": "perplexity",
     "family": "sonar_reasoning",
-    "created_at": "2025-09-14 11:15:24 +0200",
+    "created_at": "2025-09-15 15:56:28 +0200",
     "context_window": 128000,
     "max_output_tokens": 4096,
     "knowledge_cutoff": null,
@@ -30775,7 +30622,7 @@
     "name": "Sonar Reasoning Pro",
     "provider": "perplexity",
     "family": "sonar_reasoning_pro",
-    "created_at": "2025-09-14 11:15:24 +0200",
+    "created_at": "2025-09-15 15:56:28 +0200",
     "context_window": 128000,
     "max_output_tokens": 8192,
     "knowledge_cutoff": null,
@@ -30915,7 +30762,7 @@
     "id": "gemini-1.5-flash",
     "name": "Gemini 1.5 Flash",
     "provider": "vertexai",
-    "family": "models/gemini-1.5-flash",
+    "family": "gemini-1.5-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -30951,7 +30798,7 @@
     "id": "gemini-1.5-flash-002",
     "name": "Gemini 1.5 Flash",
     "provider": "vertexai",
-    "family": "models/gemini-1.5-flash",
+    "family": "gemini-1.5-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -30987,7 +30834,7 @@
     "id": "gemini-1.5-flash-8b",
     "name": "Gemini 1.5 Flash-8B",
     "provider": "vertexai",
-    "family": "models/gemini-1.5-flash-8b",
+    "family": "gemini-1.5-flash-8b",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -31023,7 +30870,7 @@
     "id": "gemini-1.5-pro",
     "name": "Gemini 1.5 Pro",
     "provider": "vertexai",
-    "family": "models/gemini-1.5-pro",
+    "family": "gemini-1.5-pro",
     "created_at": null,
     "context_window": 2097152,
     "max_output_tokens": 8192,
@@ -31059,7 +30906,7 @@
     "id": "gemini-1.5-pro-002",
     "name": "Gemini 1.5 Pro",
     "provider": "vertexai",
-    "family": "models/gemini-1.5-pro",
+    "family": "gemini-1.5-pro",
     "created_at": null,
     "context_window": 2097152,
     "max_output_tokens": 8192,
@@ -31095,7 +30942,7 @@
     "id": "gemini-2.0-flash",
     "name": "Gemini 2.0 Flash",
     "provider": "vertexai",
-    "family": "models/gemini-2.0-flash",
+    "family": "gemini-2.0-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -31136,7 +30983,7 @@
     "id": "gemini-2.0-flash-001",
     "name": "Gemini 2.0 Flash",
     "provider": "vertexai",
-    "family": "models/gemini-2.0-flash",
+    "family": "gemini-2.0-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -31177,7 +31024,7 @@
     "id": "gemini-2.0-flash-exp",
     "name": "Gemini 2.0 Flash",
     "provider": "vertexai",
-    "family": "models/gemini-2.0-flash",
+    "family": "gemini-2.0-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -31218,7 +31065,7 @@
     "id": "gemini-2.0-flash-lite-001",
     "name": "Gemini 2.0 Flash-Lite",
     "provider": "vertexai",
-    "family": "models/gemini-2.0-flash-lite",
+    "family": "gemini-2.0-flash-lite",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 8192,
@@ -31259,7 +31106,7 @@
     "id": "gemini-2.5-flash",
     "name": "Gemini 2.5 Flash",
     "provider": "vertexai",
-    "family": "models/gemini-2.5-flash",
+    "family": "gemini-2.5-flash",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 65536,
@@ -31300,7 +31147,7 @@
     "id": "gemini-2.5-flash-lite",
     "name": "Gemini 2.5 Flash-Lite",
     "provider": "vertexai",
-    "family": "models/gemini-2.5-flash-lite",
+    "family": "gemini-2.5-flash-lite",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 65536,
@@ -31341,7 +31188,7 @@
     "id": "gemini-2.5-pro",
     "name": "Gemini 2.5 Pro",
     "provider": "vertexai",
-    "family": "models/gemini-2.5-pro",
+    "family": "gemini-2.5-pro",
     "created_at": null,
     "context_window": 1048576,
     "max_output_tokens": 65536,

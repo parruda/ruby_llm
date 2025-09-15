@@ -30,7 +30,7 @@ redirect_from:
 ## Last Updated
 {: .d-inline-block }
 
-2025-09-14
+2025-09-15
 {: .label .label-green }
 
 ## Models by Provider
@@ -39,15 +39,15 @@ redirect_from:
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25, Cache: $0.30 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $1.00 |
+| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
+| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
-| claude-opus-4-20250514 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00, Cache: $18.75 |
-| claude-opus-4-1-20250805 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00, Cache: $18.75 |
+| claude-opus-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
+| claude-opus-4-1-20250805 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
-| claude-sonnet-4-20250514 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
+| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
+| claude-sonnet-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 
 
 ### Bedrock (28)
@@ -282,13 +282,13 @@ redirect_from:
 | gpt-4o-realtime-preview-2024-12-17 | openai | 128000 | 4096 | In: $5.00, Out: $20.00 |
 | gpt-4o-realtime-preview-2025-06-03 | openai | 128000 | 4096 | In: $5.00, Out: $20.00 |
 | gpt-4o-transcribe | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
-| gpt-5 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-2025-08-07 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-chat-latest | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-mini | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-mini-2025-08-07 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-nano | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-nano-2025-08-07 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
+| gpt-5 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-chat-latest | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
 | gpt-audio | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
 | gpt-audio-2025-08-28 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
 | gpt-image-1 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
@@ -324,7 +324,7 @@ redirect_from:
 | text-embedding-ada-002 | openai | - | - | In: $0.10, Out: $0.10 |
 
 
-### OpenRouter (331)
+### OpenRouter (328)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -395,7 +395,6 @@ redirect_from:
 | deepseek/deepseek-r1-distill-qwen-14b | openrouter | 64000 | 32000 | In: $0.15, Out: $0.15 |
 | deepseek/deepseek-r1-distill-qwen-14b:free | openrouter | 64000 | - | - |
 | deepseek/deepseek-r1-distill-qwen-32b | openrouter | 131072 | 16384 | In: $0.27, Out: $0.27 |
-| cognitivecomputations/dolphin-mixtral-8x22b | openrouter | 16000 | 8192 | In: $0.90, Out: $0.90 |
 | cognitivecomputations/dolphin3.0-mistral-24b | openrouter | 32768 | - | In: $0.03, Out: $0.11 |
 | cognitivecomputations/dolphin3.0-mistral-24b:free | openrouter | 32768 | - | - |
 | cognitivecomputations/dolphin3.0-r1-mistral-24b | openrouter | 32768 | - | In: $0.01, Out: $0.03 |
@@ -467,7 +466,6 @@ redirect_from:
 | microsoft/phi-3-medium-128k-instruct | openrouter | 128000 | - | In: $1.00, Out: $1.00 |
 | microsoft/phi-3-mini-128k-instruct | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | microsoft/phi-3.5-mini-128k-instruct | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
-| sophosympatheia/midnight-rose-70b | openrouter | 4096 | 2048 | In: $0.80, Out: $0.80 |
 | minimax/minimax-m1 | openrouter | 1000000 | 40000 | In: $0.30, Out: $1.65 |
 | minimax/minimax-01 | openrouter | 1000192 | 1000192 | In: $0.20, Out: $1.10 |
 | mistralai/mistral-large | openrouter | 128000 | - | In: $2.00, Out: $6.00 |
@@ -501,7 +499,7 @@ redirect_from:
 | mistralai/mistral-small-3.2-24b-instruct | openrouter | 128000 | - | In: $0.05, Out: $0.10 |
 | mistralai/mistral-small-3.2-24b-instruct:free | openrouter | 131072 | - | - |
 | mistralai/mixtral-8x22b-instruct | openrouter | 65536 | - | In: $0.90, Out: $0.90 |
-| mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.08, Out: $0.24 |
+| mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.40, Out: $0.40 |
 | mistralai/pixtral-12b | openrouter | 32768 | - | In: $0.10, Out: $0.10 |
 | mistralai/pixtral-large-2411 | openrouter | 131072 | - | In: $2.00, Out: $6.00 |
 | mistralai/mistral-saba | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
@@ -515,7 +513,7 @@ redirect_from:
 | morph/morph-v3-fast | openrouter | 81920 | 38000 | In: $0.90, Out: $1.90 |
 | morph/morph-v3-large | openrouter | 81920 | 38000 | In: $0.90, Out: $1.90 |
 | gryphe/mythomax-l2-13b | openrouter | 4096 | - | In: $0.06, Out: $0.06 |
-| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.12, Out: $0.30 |
+| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.60, Out: $0.60 |
 | nvidia/llama-3.1-nemotron-ultra-253b-v1 | openrouter | 131072 | - | In: $0.60, Out: $1.80 |
 | nvidia/llama-3.1-nemotron-ultra-253b-v1:free | openrouter | 131072 | - | - |
 | nvidia/nemotron-nano-9b-v2 | openrouter | 131072 | - | In: $0.04, Out: $0.16 |
@@ -620,7 +618,7 @@ redirect_from:
 | qwen/qwen3-next-80b-a3b-thinking | openrouter | 262144 | - | In: $0.10, Out: $0.39 |
 | undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.45, Out: $0.65 |
 | rekaai/reka-flash-3:free | openrouter | 32768 | - | - |
-| sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.02, Out: $0.05 |
+| sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.04, Out: $0.05 |
 | sao10k/l3.1-euryale-70b | openrouter | 32768 | - | In: $0.65, Out: $0.75 |
 | sao10k/l3.3-euryale-70b | openrouter | 131072 | 16384 | In: $0.65, Out: $0.75 |
 | sao10k/l3-euryale-70b | openrouter | 8192 | 8192 | In: $1.48, Out: $1.48 |
@@ -631,7 +629,6 @@ redirect_from:
 | raifle/sorcererlm-8x22b | openrouter | 16000 | - | In: $4.50, Out: $4.50 |
 | stepfun-ai/step3 | openrouter | 65536 | 65536 | In: $0.57, Out: $1.42 |
 | switchpoint/router | openrouter | 131072 | - | In: $0.85, Out: $3.40 |
-| thudm/glm-4-32b | openrouter | 32000 | 32000 | In: $0.55, Out: $1.66 |
 | thudm/glm-4.1v-9b-thinking | openrouter | 65536 | 8000 | In: $0.04, Out: $0.14 |
 | thudm/glm-z1-32b | openrouter | 32768 | - | In: $0.04, Out: $0.14 |
 | tngtech/deepseek-r1t-chimera | openrouter | 163840 | - | In: $0.25, Out: $1.00 |
@@ -714,19 +711,16 @@ redirect_from:
 
 ## Models by Capability
 
-### Function Calling (345)
+### Function Calling (349)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25, Cache: $0.30 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $1.00 |
+| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
+| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
-| claude-opus-4-20250514 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00, Cache: $18.75 |
-| claude-opus-4-1-20250805 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00, Cache: $18.75 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
-| claude-sonnet-4-20250514 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
+| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | anthropic.claude-v2:0:100k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:0:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:1:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
@@ -860,6 +854,13 @@ redirect_from:
 | gpt-4o-2024-11-20 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | gpt-4o-mini | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
 | gpt-4o-mini-2024-07-18 | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
+| gpt-5 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-chat-latest | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
 | o1 | openai | 200000 | 100000 | In: $15.00, Out: $60.00 |
 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00 |
 | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
@@ -958,14 +959,14 @@ redirect_from:
 | mistralai/mistral-small-3.2-24b-instruct | openrouter | 128000 | - | In: $0.05, Out: $0.10 |
 | mistralai/mistral-small-3.2-24b-instruct:free | openrouter | 131072 | - | - |
 | mistralai/mixtral-8x22b-instruct | openrouter | 65536 | - | In: $0.90, Out: $0.90 |
-| mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.08, Out: $0.24 |
+| mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.40, Out: $0.40 |
 | mistralai/pixtral-12b | openrouter | 32768 | - | In: $0.10, Out: $0.10 |
 | mistralai/pixtral-large-2411 | openrouter | 131072 | - | In: $2.00, Out: $6.00 |
 | mistralai/mistral-saba | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | moonshotai/kimi-k2 | openrouter | 63000 | 63000 | In: $0.14, Out: $2.49 |
 | moonshotai/kimi-k2:free | openrouter | 32768 | - | - |
 | moonshotai/kimi-k2-0905 | openrouter | 262144 | - | In: $0.38, Out: $1.52 |
-| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.12, Out: $0.30 |
+| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.60, Out: $0.60 |
 | nvidia/nemotron-nano-9b-v2 | openrouter | 131072 | - | In: $0.04, Out: $0.16 |
 | nvidia/nemotron-nano-9b-v2:free | openrouter | 128000 | - | - |
 | nousresearch/hermes-3-llama-3.1-70b | openrouter | 131072 | - | In: $0.12, Out: $0.30 |
@@ -1065,7 +1066,7 @@ redirect_from:
 | text-multilingual-embedding-002 | vertexai | - | - | - |
 
 
-### Structured Output (324)
+### Structured Output (331)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -1172,6 +1173,13 @@ redirect_from:
 | gpt-4o-2024-11-20 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | gpt-4o-mini | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
 | gpt-4o-mini-2024-07-18 | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
+| gpt-5 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-chat-latest | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
 | o1 | openai | 200000 | 100000 | In: $15.00, Out: $60.00 |
 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00 |
 | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
@@ -1272,7 +1280,7 @@ redirect_from:
 | mistralai/mistral-small-3.1-24b-instruct:free | openrouter | 128000 | - | - |
 | mistralai/mistral-small-3.2-24b-instruct | openrouter | 128000 | - | In: $0.05, Out: $0.10 |
 | mistralai/mixtral-8x22b-instruct | openrouter | 65536 | - | In: $0.90, Out: $0.90 |
-| mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.08, Out: $0.24 |
+| mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.40, Out: $0.40 |
 | mistralai/pixtral-12b | openrouter | 32768 | - | In: $0.10, Out: $0.10 |
 | mistralai/pixtral-large-2411 | openrouter | 131072 | - | In: $2.00, Out: $6.00 |
 | mistralai/mistral-saba | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
@@ -1280,7 +1288,7 @@ redirect_from:
 | moonshotai/kimi-k2 | openrouter | 63000 | 63000 | In: $0.14, Out: $2.49 |
 | moonshotai/kimi-k2-0905 | openrouter | 262144 | - | In: $0.38, Out: $1.52 |
 | gryphe/mythomax-l2-13b | openrouter | 4096 | - | In: $0.06, Out: $0.06 |
-| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.12, Out: $0.30 |
+| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.60, Out: $0.60 |
 | nvidia/nemotron-nano-9b-v2 | openrouter | 131072 | - | In: $0.04, Out: $0.16 |
 | nvidia/nemotron-nano-9b-v2:free | openrouter | 128000 | - | - |
 | neversleep/llama-3.1-lumimaid-8b | openrouter | 32768 | - | In: $0.09, Out: $0.60 |
@@ -1359,7 +1367,7 @@ redirect_from:
 | qwen/qwen3-next-80b-a3b-instruct | openrouter | 262144 | - | In: $0.10, Out: $0.39 |
 | qwen/qwen3-next-80b-a3b-thinking | openrouter | 262144 | - | In: $0.10, Out: $0.39 |
 | undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.45, Out: $0.65 |
-| sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.02, Out: $0.05 |
+| sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.04, Out: $0.05 |
 | sao10k/l3.1-euryale-70b | openrouter | 32768 | - | In: $0.65, Out: $0.75 |
 | sao10k/l3.3-euryale-70b | openrouter | 131072 | 16384 | In: $0.65, Out: $0.75 |
 | openrouter/sonoma-dusk-alpha | openrouter | 2000000 | - | - |
@@ -1395,13 +1403,19 @@ redirect_from:
 | gemini-2.5-pro | vertexai | 1048576 | 65536 | In: $1.25, Out: $10.00, Cache: $0.31 |
 
 
-### Streaming (559)
+### Streaming (562)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
+| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
+| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
+| claude-opus-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
+| claude-opus-4-1-20250805 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
+| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
+| claude-sonnet-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | anthropic.claude-v2:0:100k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:0:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:1:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
@@ -1565,13 +1579,13 @@ redirect_from:
 | gpt-4o-realtime-preview-2024-12-17 | openai | 128000 | 4096 | In: $5.00, Out: $20.00 |
 | gpt-4o-realtime-preview-2025-06-03 | openai | 128000 | 4096 | In: $5.00, Out: $20.00 |
 | gpt-4o-transcribe | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
-| gpt-5 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-2025-08-07 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-chat-latest | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-mini | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-mini-2025-08-07 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-nano | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
-| gpt-5-nano-2025-08-07 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
+| gpt-5 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-chat-latest | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
 | gpt-audio | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
 | gpt-audio-2025-08-28 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
 | gpt-image-1 | openai | 4096 | 16384 | In: $0.50, Out: $1.50 |
@@ -1667,7 +1681,6 @@ redirect_from:
 | deepseek/deepseek-r1-distill-qwen-14b | openrouter | 64000 | 32000 | In: $0.15, Out: $0.15 |
 | deepseek/deepseek-r1-distill-qwen-14b:free | openrouter | 64000 | - | - |
 | deepseek/deepseek-r1-distill-qwen-32b | openrouter | 131072 | 16384 | In: $0.27, Out: $0.27 |
-| cognitivecomputations/dolphin-mixtral-8x22b | openrouter | 16000 | 8192 | In: $0.90, Out: $0.90 |
 | cognitivecomputations/dolphin3.0-mistral-24b | openrouter | 32768 | - | In: $0.03, Out: $0.11 |
 | cognitivecomputations/dolphin3.0-mistral-24b:free | openrouter | 32768 | - | - |
 | cognitivecomputations/dolphin3.0-r1-mistral-24b | openrouter | 32768 | - | In: $0.01, Out: $0.03 |
@@ -1739,7 +1752,6 @@ redirect_from:
 | microsoft/phi-3-medium-128k-instruct | openrouter | 128000 | - | In: $1.00, Out: $1.00 |
 | microsoft/phi-3-mini-128k-instruct | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
 | microsoft/phi-3.5-mini-128k-instruct | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
-| sophosympatheia/midnight-rose-70b | openrouter | 4096 | 2048 | In: $0.80, Out: $0.80 |
 | minimax/minimax-m1 | openrouter | 1000000 | 40000 | In: $0.30, Out: $1.65 |
 | minimax/minimax-01 | openrouter | 1000192 | 1000192 | In: $0.20, Out: $1.10 |
 | mistralai/mistral-large | openrouter | 128000 | - | In: $2.00, Out: $6.00 |
@@ -1773,7 +1785,7 @@ redirect_from:
 | mistralai/mistral-small-3.2-24b-instruct | openrouter | 128000 | - | In: $0.05, Out: $0.10 |
 | mistralai/mistral-small-3.2-24b-instruct:free | openrouter | 131072 | - | - |
 | mistralai/mixtral-8x22b-instruct | openrouter | 65536 | - | In: $0.90, Out: $0.90 |
-| mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.08, Out: $0.24 |
+| mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.40, Out: $0.40 |
 | mistralai/pixtral-12b | openrouter | 32768 | - | In: $0.10, Out: $0.10 |
 | mistralai/pixtral-large-2411 | openrouter | 131072 | - | In: $2.00, Out: $6.00 |
 | mistralai/mistral-saba | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
@@ -1787,7 +1799,7 @@ redirect_from:
 | morph/morph-v3-fast | openrouter | 81920 | 38000 | In: $0.90, Out: $1.90 |
 | morph/morph-v3-large | openrouter | 81920 | 38000 | In: $0.90, Out: $1.90 |
 | gryphe/mythomax-l2-13b | openrouter | 4096 | - | In: $0.06, Out: $0.06 |
-| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.12, Out: $0.30 |
+| nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.60, Out: $0.60 |
 | nvidia/llama-3.1-nemotron-ultra-253b-v1 | openrouter | 131072 | - | In: $0.60, Out: $1.80 |
 | nvidia/llama-3.1-nemotron-ultra-253b-v1:free | openrouter | 131072 | - | - |
 | nvidia/nemotron-nano-9b-v2 | openrouter | 131072 | - | In: $0.04, Out: $0.16 |
@@ -1892,7 +1904,7 @@ redirect_from:
 | qwen/qwen3-next-80b-a3b-thinking | openrouter | 262144 | - | In: $0.10, Out: $0.39 |
 | undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.45, Out: $0.65 |
 | rekaai/reka-flash-3:free | openrouter | 32768 | - | - |
-| sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.02, Out: $0.05 |
+| sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.04, Out: $0.05 |
 | sao10k/l3.1-euryale-70b | openrouter | 32768 | - | In: $0.65, Out: $0.75 |
 | sao10k/l3.3-euryale-70b | openrouter | 131072 | 16384 | In: $0.65, Out: $0.75 |
 | sao10k/l3-euryale-70b | openrouter | 8192 | 8192 | In: $1.48, Out: $1.48 |
@@ -1903,7 +1915,6 @@ redirect_from:
 | raifle/sorcererlm-8x22b | openrouter | 16000 | - | In: $4.50, Out: $4.50 |
 | stepfun-ai/step3 | openrouter | 65536 | 65536 | In: $0.57, Out: $1.42 |
 | switchpoint/router | openrouter | 131072 | - | In: $0.85, Out: $3.40 |
-| thudm/glm-4-32b | openrouter | 32000 | 32000 | In: $0.55, Out: $1.66 |
 | thudm/glm-4.1v-9b-thinking | openrouter | 65536 | 8000 | In: $0.04, Out: $0.14 |
 | thudm/glm-z1-32b | openrouter | 32768 | - | In: $0.04, Out: $0.14 |
 | tngtech/deepseek-r1t-chimera | openrouter | 163840 | - | In: $0.25, Out: $1.00 |
@@ -1960,19 +1971,16 @@ redirect_from:
 | textembedding-gecko | vertexai | - | - | - |
 
 
-### Batch Processing (99)
+### Batch Processing (96)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25, Cache: $0.30 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $1.00 |
+| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
+| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
-| claude-opus-4-20250514 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00, Cache: $18.75 |
-| claude-opus-4-1-20250805 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00, Cache: $18.75 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
-| claude-sonnet-4-20250514 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
+| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | us.anthropic.claude-3-7-sonnet-20250219-v1:0 | bedrock | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | embedding-001 | gemini | 2048 | 1 | - |
 | embedding-gecko-001 | gemini | 1024 | 1 | - |
@@ -2067,21 +2075,21 @@ redirect_from:
 
 ## Models by Modality
 
-### Vision Models (218)
+### Vision Models (225)
 
 Models that can process images:
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25, Cache: $0.30 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $1.00 |
+| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
+| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
-| claude-opus-4-20250514 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00, Cache: $18.75 |
-| claude-opus-4-1-20250805 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00, Cache: $18.75 |
+| claude-opus-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
+| claude-opus-4-1-20250805 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
-| claude-sonnet-4-20250514 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
+| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
+| claude-sonnet-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | anthropic.claude-v2:0:100k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:0:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:1:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
@@ -2176,6 +2184,13 @@ Models that can process images:
 | gpt-4o-search-preview-2025-03-11 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | gpt-4o-mini | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
 | gpt-4o-mini-2024-07-18 | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
+| gpt-5 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-chat-latest | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
 | o1 | openai | 200000 | 100000 | In: $15.00, Out: $60.00 |
 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00 |
 | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
@@ -2364,15 +2379,21 @@ Models that can process audio:
 | gemini-2.5-pro | vertexai | 1048576 | 65536 | In: $1.25, Out: $10.00, Cache: $0.31 |
 
 
-### PDF Models (74)
+### PDF Models (87)
 
 Models that can process PDF documents:
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
+| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
+| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
+| claude-opus-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
+| claude-opus-4-1-20250805 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
+| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
+| claude-sonnet-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | anthropic.claude-v2:0:100k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:0:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:1:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
@@ -2438,6 +2459,13 @@ Models that can process PDF documents:
 | gpt-4o-search-preview-2025-03-11 | openai | 128000 | 16384 | In: $2.50, Out: $10.00 |
 | gpt-4o-mini | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
 | gpt-4o-mini-2024-07-18 | openai | 128000 | 16384 | In: $0.15, Out: $0.60 |
+| gpt-5 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-chat-latest | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-mini-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
+| gpt-5-nano-2025-08-07 | openai | 128000 | 400000 | In: $1.25, Out: $10.00, Cache: $0.12 |
 | o1 | openai | 200000 | 100000 | In: $15.00, Out: $60.00 |
 | o1-2024-12-17 | openai | 200000 | 100000 | In: $15.00, Out: $60.00 |
 | o1-pro | openai | 200000 | 100000 | In: $150.00, Out: $600.00 |
@@ -2446,18 +2474,12 @@ Models that can process PDF documents:
 | omni-moderation-latest | openai | - | - | - |
 
 
-### Embedding Models (19)
+### Embedding Models (13)
 
 Models that generate embeddings:
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25, Cache: $0.30 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $1.00 |
-| claude-opus-4-20250514 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00, Cache: $18.75 |
-| claude-opus-4-1-20250805 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00, Cache: $18.75 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
-| claude-sonnet-4-20250514 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $3.75 |
 | embedding-001 | gemini | 2048 | 1 | - |
 | embedding-gecko-001 | gemini | 1024 | 1 | - |
 | gemini-embedding-001 | gemini | 2048 | 1 | - |
