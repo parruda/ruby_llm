@@ -3,7 +3,7 @@
   <div style="font-weight: bold; margin-bottom: 5px;">
     <%%= <%= message_model_name.underscore %>.role&.capitalize %>
   </div>
-  <div style="white-space: pre-wrap;"><%%= <%= message_model_name.underscore %>.content %></div>
+  <div id="<%%= dom_id(<%= message_model_name.underscore %>) %>_content" style="white-space: pre-wrap;"><%%= <%= message_model_name.underscore %>.content %></div>
   <div style="font-size: 0.85em; color: #666; margin-top: 5px;">
     <%%= <%= message_model_name.underscore %>.created_at&.strftime("%I:%M %p") %>
   </div>
