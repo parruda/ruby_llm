@@ -65,13 +65,24 @@ jobs:
       run: bundle exec rubocop
 
     - name: Run tests
+      if: matrix.ruby-version != '3.4' || matrix.rails-version != 'rails-8.0'
       run: bundle exec appraisal ${{ matrix.rails-version }} rspec --tag '~generator'
+      env: # Dummy environment variables for local providers
+        OLLAMA_API_BASE: http://localhost:11434/v1
+        GPUSTACK_API_BASE: http://localhost:11444/v1
+        GPUSTACK_API_KEY: test
+        SKIP_COVERAGE: true
+
+    - name: Run full test suite with coverage (latest Ruby/Rails)
+      if: matrix.ruby-version == '3.4' && matrix.rails-version == 'rails-8.0'
+      run: bundle exec appraisal ${{ matrix.rails-version }} rspec
       env: # Dummy environment variables for local providers
         OLLAMA_API_BASE: http://localhost:11434/v1
         GPUSTACK_API_BASE: http://localhost:11444/v1
         GPUSTACK_API_KEY: test
 
     - name: Upload coverage to Codecov
+      if: matrix.ruby-version == '3.4' && matrix.rails-version == 'rails-8.0'
       uses: codecov/codecov-action@v5
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
@@ -88,34 +99,11 @@ jobs:
         OLLAMA_API_BASE: http://localhost:11434/v1
         GPUSTACK_API_BASE: http://localhost:11444/v1
         GPUSTACK_API_KEY: test
-
-  generator-tests:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.4'
-        bundler-cache: true
-
-    - name: Install dependencies
-      run: |
-        bundle install
-        bundle exec appraisal rails-8.0 bundle install
-
-    - name: Run generator tests
-      run: bundle exec appraisal rails-8.0 rspec --tag generator
-      env: # Dummy environment variables for local providers
-        OLLAMA_API_BASE: http://localhost:11434/v1
-        GPUSTACK_API_BASE: http://localhost:11444/v1
-        GPUSTACK_API_KEY: test
+        SKIP_COVERAGE: true
 
   publish:
     name: Build + Publish
-    needs: [test, generator-tests]
+    needs: test
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
