@@ -139,10 +139,10 @@ end
 ## Rails
 
 ```bash
-# Install database models
+# Install Rails Integration
 rails generate ruby_llm:install
 
-# Add chat UI (optional)
+# Add Chat UI (optional)
 rails generate ruby_llm:chat_ui
 ```
 
