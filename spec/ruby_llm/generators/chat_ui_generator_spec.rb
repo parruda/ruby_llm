@@ -5,7 +5,7 @@ require 'fileutils'
 require 'generators/ruby_llm/chat_ui/chat_ui_generator'
 require_relative '../../support/generator_test_helpers'
 
-RSpec.describe RubyLLM::Generators::ChatUIGenerator, type: :generator do
+RSpec.describe RubyLLM::Generators::ChatUIGenerator, :generator, type: :generator do
   include GeneratorTestHelpers
 
   let(:rails_root) { Rails.root }

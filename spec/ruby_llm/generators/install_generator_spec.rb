@@ -5,7 +5,7 @@ require 'fileutils'
 require 'generators/ruby_llm/install/install_generator'
 require_relative '../../support/generator_test_helpers'
 
-RSpec.describe RubyLLM::Generators::InstallGenerator, type: :generator do
+RSpec.describe RubyLLM::Generators::InstallGenerator, :generator, type: :generator do
   include GeneratorTestHelpers
 
   let(:template_path) { File.expand_path('../../fixtures/templates', __dir__) }
