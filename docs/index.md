@@ -132,7 +132,7 @@ RubyLLM.embed "Ruby is elegant and expressive"
 
 ```ruby
 # Moderate content for safety
-RubyLLM.moderate("Check if this text is safe").flagged? # => false
+RubyLLM.moderate "Check if this text is safe"
 ```
 
 ```ruby
