@@ -324,6 +324,36 @@ RubyLLM.configure do |config|
 end
 ```
 
+### Initializer Load Timing Issue with `use_new_acts_as`
+
+**Important**: If you're using `use_new_acts_as = true` (from upgrading to 1.7+), you **cannot** set it in an initializer. Rails loads models before initializers run, so the legacy `acts_as` module will already be included by the time your initializer executes.
+
+Instead, configure it in `config/application.rb` **before** the `Application` class:
+
+```ruby
+# config/application.rb
+require_relative "boot"
+require "rails/all"
+
+# Configure RubyLLM before Rails::Application is inherited
+RubyLLM.configure do |config|
+  config.use_new_acts_as = true
+end
+
+module YourApp
+  class Application < Rails::Application
+    # ...
+  end
+end
+```
+
+This ensures RubyLLM is configured before ActiveRecord loads your models. Other configuration options (API keys, timeouts, etc.) can still go in your initializer.
+
+> This limitation exists because both legacy and new `acts_as` APIs need to coexist during the 1.x series. It will be resolved in RubyLLM 2.0 when the legacy API is removed.
+{: .note }
+
+See the [Upgrading to 1.7 guide]({% link _advanced/upgrading-to-1.7.md %}#troubleshooting) for more details.
+
 ## Configuration Reference
 
 Here's a complete reference of all configuration options:
