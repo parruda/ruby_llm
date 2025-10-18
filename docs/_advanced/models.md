@@ -70,10 +70,10 @@ This refreshes the in-memory model registry and is what you want 99% of the time
 
 ```ruby
 RubyLLM.models.refresh!
-RubyLLM.models.save_to_json  # Saves to configured model_registry_file
+RubyLLM.models.save_to_json  # Saves to configured model_registry_file (v1.9.0+)
 ```
 
-If your gem directory is read-only, configure a writable location with `config.model_registry_file`. See the [Configuration Guide]({% link _getting_started/configuration.md %}#model-registry-file) for details.
+If your gem directory is read-only, configure a writable location with `config.model_registry_file` (v1.9.0+). See the [Configuration Guide]({% link _getting_started/configuration.md %}#model-registry-file) for details.
 
 **How refresh! Works:**
 

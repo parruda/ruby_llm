@@ -151,7 +151,7 @@ By default, RubyLLM reads model information from the bundled `models.json` file.
 # First time: save to writable location
 RubyLLM.models.save_to_json('/var/app/models.json')
 
-# Configure to use new location
+# Configure to use new location (Available in v1.9.0+)
 RubyLLM.configure do |config|
   config.model_registry_file = '/var/app/models.json'
 end
@@ -365,7 +365,7 @@ RubyLLM.configure do |config|
   config.default_moderation_model = String
 
   # Model Registry
-  config.model_registry_file = String  # Path to model registry JSON file
+  config.model_registry_file = String  # Path to model registry JSON file (v1.9.0+)
 
   # Connection Settings
   config.request_timeout = Integer
