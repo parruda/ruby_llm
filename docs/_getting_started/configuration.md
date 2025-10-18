@@ -143,6 +143,28 @@ Defaults if not configured:
 - Embeddings: `{{ site.models.default_embedding }}`
 - Images: `{{ site.models.default_image }}`
 
+## Model Registry File
+
+By default, RubyLLM reads model information from the bundled `models.json` file. If your gem directory is read-only, you can configure a writable location:
+
+```ruby
+# First time: save to writable location
+RubyLLM.models.save_to_json('/var/app/models.json')
+
+# Configure to use new location
+RubyLLM.configure do |config|
+  config.model_registry_file = '/var/app/models.json'
+end
+```
+
+After this one-time setup, RubyLLM will read from your configured path automatically.
+
+> `RubyLLM.models.refresh!` updates the in-memory registry only. To persist changes, call `RubyLLM.models.save_to_json`.
+{: .note }
+
+> If you're using the ActiveRecord integration, model data is stored in the database. This configuration doesn't apply.
+{: .note }
+
 ## Connection Settings
 
 ### Timeouts & Retries
@@ -340,6 +362,10 @@ RubyLLM.configure do |config|
   config.default_model = String
   config.default_embedding_model = String
   config.default_image_model = String
+  config.default_moderation_model = String
+
+  # Model Registry
+  config.model_registry_file = String  # Path to model registry JSON file
 
   # Connection Settings
   config.request_timeout = Integer
