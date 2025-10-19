@@ -29,6 +29,7 @@ module RubyLLM
                   :default_embedding_model,
                   :default_moderation_model,
                   :default_image_model,
+                  :default_transcription_model,
                   # Model registry
                   :model_registry_file,
                   :model_registry_class,
@@ -48,7 +49,7 @@ module RubyLLM
                   :log_stream_debug
 
     def initialize
-      @request_timeout = 120
+      @request_timeout = 300
       @max_retries = 3
       @retry_interval = 0.1
       @retry_backoff_factor = 2
@@ -59,6 +60,7 @@ module RubyLLM
       @default_embedding_model = 'text-embedding-3-small'
       @default_moderation_model = 'omni-moderation-latest'
       @default_image_model = 'gpt-image-1'
+      @default_transcription_model = 'whisper-1'
 
       @model_registry_file = File.expand_path('models.json', __dir__)
       @model_registry_class = 'Model'

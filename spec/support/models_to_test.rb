@@ -50,3 +50,8 @@ EMBEDDING_MODELS = [
   { provider: :mistral, model: 'mistral-embed' },
   { provider: :vertexai, model: 'text-embedding-004' }
 ].freeze
+
+TRANSCRIPTION_MODELS = [
+  { provider: :openai, model: 'whisper-1' },
+  { provider: :openai, model: 'gpt-4o-transcribe-diarize' }
+].freeze

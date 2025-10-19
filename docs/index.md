@@ -132,6 +132,11 @@ RubyLLM.embed "Ruby is elegant and expressive"
 ```
 
 ```ruby
+# Transcribe audio to text
+RubyLLM.transcribe "meeting.wav"
+```
+
+```ruby
 # Moderate content for safety
 RubyLLM.moderate "Check if this text is safe"
 ```
@@ -168,8 +173,8 @@ response = chat.with_schema(ProductSchema).ask "Analyze this product", with: "pr
 ## Features
 
 * **Chat:** Conversational AI with `RubyLLM.chat`
-* **Vision:** Analyze images and screenshots
-* **Audio:** Transcribe and understand speech
+* **Vision:** Analyze images and videos
+* **Audio:** Transcribe and understand speech with `RubyLLM.transcribe`
 * **Documents:** Extract from PDFs, CSVs, JSON, any file type
 * **Image generation:** Create images with `RubyLLM.paint`
 * **Embeddings:** Generate embeddings with `RubyLLM.embed`
