@@ -126,6 +126,23 @@ end
 
 By default, RubyLLM uses the 'developer' role (matching OpenAI's current API). Set `openai_use_system_role` to true for compatibility with servers that still expect 'system'.
 
+### Gemini API Versions
+{: .d-inline-block }
+
+v1.9.0+
+{: .label .label-green }
+
+Gemini offers two API versions: `v1` (stable) and `v1beta` (early access). RubyLLM defaults to `v1beta` for access to the latest features, but you can switch to `v1` to support older models:
+
+```ruby
+RubyLLM.configure do |config|
+  config.gemini_api_key = ENV['GEMINI_API_KEY']
+  config.gemini_api_base = 'https://generativelanguage.googleapis.com/v1'
+end
+```
+
+Some models are only available on specific API versions. For example, `gemini-1.5-flash-8b` requires `v1`. Check the [Gemini API documentation](https://ai.google.dev/gemini-api/docs/api-versions) for version-specific model availability.
+
 ## Default Models
 
 Set defaults for the convenience methods (`RubyLLM.chat`, `RubyLLM.embed`, `RubyLLM.paint`):
@@ -374,6 +391,7 @@ RubyLLM.configure do |config|
 
   # Provider Endpoints
   config.openai_api_base = String
+  config.gemini_api_base = String  # v1.9.0+
   config.ollama_api_base = String
   config.gpustack_api_base = String
 
