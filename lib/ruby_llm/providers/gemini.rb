@@ -8,6 +8,7 @@ module RubyLLM
       include Gemini::Embeddings
       include Gemini::Images
       include Gemini::Models
+      include Gemini::Transcription
       include Gemini::Streaming
       include Gemini::Tools
       include Gemini::Media

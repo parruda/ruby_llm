@@ -53,5 +53,6 @@ EMBEDDING_MODELS = [
 
 TRANSCRIPTION_MODELS = [
   { provider: :openai, model: 'whisper-1' },
-  { provider: :openai, model: 'gpt-4o-transcribe-diarize' }
+  { provider: :openai, model: 'gpt-4o-transcribe-diarize' },
+  { provider: :gemini, model: 'gemini-2.5-flash' }
 ].freeze

@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"Transcribe the provided audio and respond with only the transcript
+        text."},{"inline_data":{"mime_type":"audio/wav","data":"UklGRiCrAQBXQVZFZm10IBAAAAABAAEAgLsAAAB3AQACABAAZGF0YQCrAQAnADAANAAzACwAIQAVAAgA///3//H/7v/r/+r/6v/q/+z/7//1//7/CAAUACIALQAzADUAMwAsACMAGQANAAQA/P/2//P/8f/z//X/+P/6//z///8CAAcADQASABcAHAAfACIAJAAkACMAIQAfAB0AHAAbABsAHAAcAB8AIQAkACUAJAAgABkAEgANAAoACQAKAA0AEgAYAB4AIwAlACUAIQAbABUAEgAPAA4ADgAMAAoACAAGAAQAAgAAAP3//P/8/wAABwAPABcAHQAfAB0AGQATAA0ABwABAPz/+P/3//f/+f/8////AQAFAAsAEgAbACQALQAyADQAMQApAB4AEQAEAPn/8v/u/+//9P/7/wEACAAMAA8AEAARABMAFQAXABoAGgAZABYAEAAKAAMA/v/5//T/8f/u/+3/7P/t/+//8f/0//b/+P/5//r/+f/2//P/7v/r/+j/5v/m/+f/6f/s/+7/7//v/+3/6v/m/+H/3P/X/9L/zv/L/8n/yf/K/83/0v/X/97/5P/q//D/9P/2//f/9f/x/+v/5P/d/9f/0v/P/8z/yv/J/8r/zf/R/9b/3P/j/+r/8P/3//r//P/6//f/8//u/+n/4//c/9T/zP/H/8X/x//N/9T/3f/m//D/+v8CAAoADQALAAUA/v/3//H/7f/p/+b/4v/h/+D/4v/m/+r/7P/t/+7/7//z//f/+//+//7//v/+//7//v/+//z//P/8//7/AgAHAAwADgANAAsABwADAAAA/P/4//T/8v/y//b/+/8AAAQABQAFAAMAAAD9//r/+P/1//X/9//6//z//f/7//n/9//3//n//v8CAAgADgAVAB0AIwAnACgAJAAeABgAEwAQAA4ADQAKAAgACAAKAA8AFwAeACQAKAAqACsALAArACoAKAAlACIAIQAgACEAIgAhACAAHwAgACQAKQAwADYAOgA8ADwAOgA2ADIALAAmACAAHQAcAB4AIgAoACwAMAAyADIALwApACQAHwAcABwAHgAhACQAKAAqACsALQAuAC0AKgAmACEAHgAdAB4AIAAhACAAHQAYABIADQAJAAYABAABAAAAAAACAAYACQAOABAAEgATABMAEQANAAcAAQD7//X/8f/v//D/8//4//3/AQADAAMAAAD5//H/6P/i/9//3//f/97/3f/a/9X/0P/L/8f/xP/E/8j/zv/X/+H/6v/w//H/8P/s/+f/4f/d/9n/2P/Y/9n/3f/g/+P/5P/k/+P/4v/f/97/3P/a/9f/1P/T/9L/0v/S/9P/1P/U/9X/2P/c/9//4v/k/+b/5v/l/+T/4//h/97/3P/b/9z/3P/d/9z/2v/Z/9r/3P/i/+f/6//s/+v/6v/o/+n/6//u//H/9P/3//n//P/+//7//f/7//r/+v/6//r/+f/1//D/6//m/+H/3f/Z/9f/1f/X/9v/4P/l/+j/6//t/+//8//5//3///////3/+v/7//z//P/8//v/+P/2//T/8//y//D/7v/w//T//f8HAA8AEwASAAsAAgD4/+3/4v/Y/8//yf/J/8//2P/i/+r/7//x//X//P8DAAoADgAOAAsABgADAAMAAgAAAP3/9//y/+7/7f/u/+7/7v/u//D/9P/7/wIACQAMAAsACgAKAA4AFAAbAB8AIgAhAB8AHgAeAB4AHwAfACIAJAApAC8AMwAzAC8AKQAjACEAJAAqADEANwA6ADsAOAA1ADEALAAnACEAGwAYABgAGwAgACYAKQAqACkAKgAqACwALQAuACwAKgApACcAJwAmACEAGgASAAsABwAIAA0AFAAZAB0AHwAgACIAJAAlACUAJAAgAB0AGgAWABIADQAGAAEA//8AAAUADAAVABwAIAAjACYAKAAqACkAJwAkACAAHgAcABsAGgAXABQAEgARABIAFAAVABUAEwARABAAEAARABMAFAAVABUAFQAVABUAFQATAA8ACQAEAAAA/f/8//3///8BAAYACgAPABMAFQAVABMAEAAMAAkABgAFAAMAAwADAAUABwAIAAcABAAAAPz/+P/0//H/7//t/+3/8P/0//v/AAADAAQAAwAAAP///v/+//3/+//4//X/9P/0//T/8//x/+3/6P/l/+X/6P/s//D/8f/x/+//6//l/9z/0f/H/77/vP/B/83/2v/n/+7/8f/w//H/8v/3//3/AgAGAAgABwABAPb/5f/R/73/rv+n/6f/q/+y/7f/u/+//8b/0P/a/+L/5v/l/+P/4f/j/+X/5v/k/+D/3P/b/97/5P/q/+3/6//n/+T/5v/s//H/8//y/+3/6P/n/+b/4//b/87/wP+2/7X/u//H/9H/2P/b/9//6P/2/wQADQANAAUA+v/w/+v/6//r/+z/6//r/+7/9v/9/wAA/P/y/+j/5f/q//T///8EAAMAAAD+/wEACwAWAB8AIwAhACAAIgAlACoALAApACUAIgAiACQAJAAeABIAAQD0/+7/7//3/wAABgAKAAsADgAUAB0AJwAtAC8ALwAvADEANAA2ADcAMwAvACwALQAxADcAOgA6ADQAKwAjAB4AHQAdAB0AHQAcAB0AHwAjACcAKQApACoALAAxADgAQABCAEAAOwAzADAAMwA5AD8AQQA+ADYALQAnACQAJAAlACYAKAArADAANwA8AD4AOQAxACkAJAAiACMAIgAfABcAEQANAA0AEgAXABoAGgAXABMADgAJAAQA///6//f/+f///wcADgAQAAwABAD9//f/9P/1//f/+/8AAAUACwASABYAFQARAAkAAQD8//b/8v/t/+f/4P/b/9v/3f/k/+v/8f/0//T/8v/w/+3/6v/p/+j/6v/s/+7/8P/v/+3/6v/n/+j/6//w//b/+v/9//7//v/9//v/9v/x/+7/7P/s/+7/7f/q/+D/1P/J/8L/wP/B/8T/xv/F/8X/xf/I/87/1P/c/+D/4//k/+X/5v/m/+P/4P/c/9r/2//d/97/2//W/83/xf/B/8H/xf/N/9P/2f/f/+T/6v/v//P/9P/z//L/8v/z//X/9f/0//H/7f/s/+z/7v/w/+//7f/r/+n/6f/q/+z/7P/t/+v/6//r/+v/6//q/+j/5v/m/+f/6v/s/+v/6P/k/+H/4P/j/+f/6v/s/+3/7v/y//j/AAAGAAoADAALAAsADQAOAAwACQADAP3/9v/v/+r/5f/f/9j/0//T/9f/3//q//f/AAAIAA4AEgAVABYAFQASAA8ACwALAAwADQAOAA0ADAAKAAgABwAGAAUABQAGAAkADAASABYAGAAXABMADgAIAAQAAAD//wAAAQAHAA4AFAAZAB0AHQAaABUADwAIAAEA/P/3//P/8v/x//H/8P/u/+v/6f/p/+r/7v/0//z/BAALABEAFAAVABMAEAAOAAwACgAJAAYAAgD///z/+//+/wAABwANABMAGQAfACQAKAAoACYAIgAcABYADwAJAAMA/v/5//X/9P/2//r/AAAFAAwAEwAaACIAKQAuADEAMgAzADEALwAqACUAIAAZABQADgAKAAcABgAHAAoADQARABQAFgAZABwAHwAjACUAJgAkACEAHgAcAB0AHgAgACIAIgAhAB4AGgAWABIADwAMAAwADQAPABIAEgAQAAsABQAAAPv/+P/6//3/AQAFAAcABwAEAAAA/v/8//z//v8AAAAA/v/7//j/9f/0//P/8v/x//H/8f/y//T/9P/z//P/8v/y//L/9P/1//T/8P/q/+P/3f/Y/9T/0P/M/8j/xf/C/77/u/+5/7f/t/+6/7//xf/L/8//0f/U/9b/1//Z/9n/2f/W/9T/0v/S/9P/0//T/9L/0f/R/9D/z//N/8r/x//F/8n/0f/c/+j/8P/0//P/7//r/+f/5f/k/+L/4v/h/+P/5f/n/+f/5P/f/9n/1v/X/9r/4v/q//L/+P/9/wAAAgADAAMAAgABAAAAAAD+//z/+f/3//X/9f/3//r//v8AAAAAAQACAAQABwAKAA0ADwAPABAAEgAVABgAGwAdACAAIwAnACsALwAxADEAMQAxADEANAA1ADYAMwAuACoAJgAlACcALAAwADQANwA5ADsAPQA+AEAAQQBCAEEAQAA9ADcALQAiABcADgAIAAcACwARABgAIAAlACoALgAxADYAOwBBAEgATgBRAFEATgBHAD8ANgAtACUAHgAWAA4ABgAAAPz/+//9/wAABAAKABAAFwAdACMAJgAmACMAHgAZABYAFAATABEADgALAAoADAAPABQAFgAVABMADwANAA0ADgAPAA4ACwAIAAYABwAMAA0ADQAKAAYABgAKABEAGQAgACUAJgAnACgAKQAnACEAGAAOAAgABwAJAAsACAACAPn/8//y//f///8EAAQAAAD6//X/9P/1//f/9//3//r/AAAKABMAFgASAAkAAAD//wQADgAXABoAFAALAAEA/f/+/wAA///6//P/7v/s/+//8P/v/+n/5P/j/+n/9v8CAAkABwAAAPf/9P/4/wAABQAGAAIA/f/5//j/+P/3//L/6v/i/93/3f/e/9v/0//K/8T/yP/X/+z///8GAAIA9f/l/9v/2f/c/+H/4v/h/97/3P/a/9f/0P/G/73/uv+//8r/1v/b/9b/yf+7/7P/tP++/8r/0P/S/87/y//K/87/0v/U/9T/0//V/9z/5v/v//D/6f/e/9P/zv/Q/9f/3v/g/93/1//S/9D/"}]},{"generationConfig":{"responseMimeType":"text/plain"}}'
+    headers:
+      User-Agent:
+      - Faraday v2.13.4
+      X-Goog-Api-Key:
+      - <GEMINI_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Thu, 13 Feb 2025 18:42:01 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=1875
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"candidates":[{"content":{"parts":[{"text":"This is a Gemini transcription
+        of the Ruby audio sample."}],"role":"model"},"finishReason":"STOP","index":0}],"modelVersion":"gemini-2.5-flash","responseId":"transcription-test-response"}'
+  recorded_at: Thu, 13 Feb 2025 18:42:01 GMT
+recorded_with: VCR 6.3.1
