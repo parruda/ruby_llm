@@ -52,12 +52,16 @@ module RubyLLM
 
           return RubyLLM::Transcription.new(text: data, model: model) if data.is_a?(String)
 
+          usage = data['usage'] || {}
+
           RubyLLM::Transcription.new(
             text: data['text'],
             model: model,
             language: data['language'],
             duration: data['duration'],
-            segments: data['segments']
+            segments: data['segments'],
+            input_tokens: usage['input_tokens'] || usage['prompt_tokens'],
+            output_tokens: usage['output_tokens'] || usage['completion_tokens']
           )
         end
       end

@@ -62,6 +62,13 @@ RubyLLM.transcribe("audio.mp3", model: "gpt-4o-mini-transcribe")
 
 # Diarization model (identifies speakers)
 RubyLLM.transcribe("meeting.wav", model: "gpt-4o-transcribe-diarize")
+
+# Gemini 2.5 Flash/Pro (Google's multimodal transcription)
+RubyLLM.transcribe(
+  "lecture.wav",
+  model: "gemini-2.5-flash",
+  prompt: "Return only the verbatim transcript."
+)
 ```
 
 Configure the default globally:
@@ -123,6 +130,8 @@ transcription = RubyLLM.transcribe(
 
 Speaker references accept file paths, URLs, IO objects, or ActiveStorage attachments.
 
+> **Note:** Gemini models currently return plain text transcripts without segment metadata. Use OpenAI's diarization models when you need speaker labels or timestamps.
+
 ## Improving Accuracy with Prompts
 
 Guide the model with context about technical terms or domain-specific vocabulary:
@@ -138,6 +147,10 @@ RubyLLM.transcribe(
   prompt: "Product demo for ZyntriQix, Digique Plus, and CynapseFive."
 )
 ```
+
+### Gemini prompt tips
+
+Gemini treats transcription requests like any other conversation. Use the `prompt:` argument to steer formatting (for example, "Respond with plain text only."), and combine it with `language:` when you want a specific locale in the final transcript. RubyLLM automatically adds the language hint to the Gemini request.
 
 ## Segments and Timestamps
 

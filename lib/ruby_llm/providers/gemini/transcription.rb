@@ -57,10 +57,10 @@ module RubyLLM
         end
 
         def build_prompt(custom_prompt, language)
-          return custom_prompt if custom_prompt
-          return "#{DEFAULT_PROMPT} Respond in the #{language} language." if language
-
-          DEFAULT_PROMPT
+          prompt = DEFAULT_PROMPT
+          prompt += " Respond in the #{language} language." if language
+          prompt += " #{custom_prompt}" if custom_prompt
+          prompt
         end
 
         def format_audio_part(attachment)
@@ -73,12 +73,16 @@ module RubyLLM
         end
 
         def parse_transcription_response(response, model:)
-          text = extract_text(response.body)
-          raise Error.new(response, 'Gemini transcription returned no text') if text.nil? || text.strip.empty?
+          data = response.body
+          text = extract_text(data)
+
+          usage = extract_usage(data)
 
           RubyLLM::Transcription.new(
             text: text,
-            model: model
+            model: model,
+            input_tokens: usage[:input_tokens],
+            output_tokens: usage[:output_tokens]
           )
         end
 
@@ -89,6 +93,22 @@ module RubyLLM
           parts = candidate.dig('content', 'parts') || []
           texts = parts.filter_map { |part| part['text'] }
           texts.join if texts.any?
+        end
+
+        def extract_usage(data)
+          metadata = data.is_a?(Hash) ? data['usageMetadata'] : nil
+          return { input_tokens: nil, output_tokens: nil } unless metadata
+
+          {
+            input_tokens: metadata['promptTokenCount'],
+            output_tokens: sum_output_tokens(metadata)
+          }
+        end
+
+        def sum_output_tokens(metadata)
+          candidates = metadata['candidatesTokenCount'] || 0
+          thoughts = metadata['thoughtsTokenCount'] || 0
+          candidates + thoughts
         end
       end
     end
