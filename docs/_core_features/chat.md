@@ -315,11 +315,6 @@ puts JSON.parse(response.content)
 v1.9.0+
 {: .label .label-green }
 
-{: .d-inline-block }
-
-v1.9.0+
-{: .label .label-green }
-
 Most of the time you can rely on RubyLLM to format messages for each provider. When you need to send a custom payload as content,  wrap it in `RubyLLM::Content::Raw`. The block is forwarded verbatim, with no additional processing.
 
 ```ruby
