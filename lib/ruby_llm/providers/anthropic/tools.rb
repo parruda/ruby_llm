@@ -12,6 +12,8 @@ module RubyLLM
         end
 
         def format_tool_call(msg)
+          return { role: 'assistant', content: msg.content.value } if msg.content.is_a?(RubyLLM::Content::Raw)
+
           content = []
 
           content << Media.format_text(msg.content) unless msg.content.nil? || msg.content.empty?
@@ -29,7 +31,7 @@ module RubyLLM
         def format_tool_result(msg)
           {
             role: 'user',
-            content: [format_tool_result_block(msg)]
+            content: msg.content.is_a?(RubyLLM::Content::Raw) ? msg.content.value : [format_tool_result_block(msg)]
           }
         end
 
@@ -59,7 +61,7 @@ module RubyLLM
               properties: clean_parameters(tool.parameters),
               required: required_parameters(tool.parameters)
             }
-          }
+          }.merge(tool.provider_params)
         end
 
         def extract_tool_calls(data)

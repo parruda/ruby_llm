@@ -7,10 +7,10 @@ RSpec.describe RubyLLM::Providers::Anthropic::Tools do
 
   describe '.format_tool_call' do
     let(:msg) do
-      instance_double(Message,
+      instance_double(RubyLLM::Message,
                       content: 'Some content',
                       tool_calls: {
-                        'tool_123' => instance_double(ToolCall,
+                        'tool_123' => instance_double(RubyLLM::ToolCall,
                                                       id: 'tool_123',
                                                       name: 'test_tool',
                                                       arguments: { 'arg1' => 'value1' })
@@ -36,10 +36,10 @@ RSpec.describe RubyLLM::Providers::Anthropic::Tools do
 
     context 'when message has no content' do
       let(:msg) do
-        instance_double(Message,
+        instance_double(RubyLLM::Message,
                         content: nil,
                         tool_calls: {
-                          'tool_123' => instance_double(ToolCall,
+                          'tool_123' => instance_double(RubyLLM::ToolCall,
                                                         id: 'tool_123',
                                                         name: 'test_tool',
                                                         arguments: { 'arg1' => 'value1' })
@@ -65,10 +65,10 @@ RSpec.describe RubyLLM::Providers::Anthropic::Tools do
 
     context 'when message has empty content' do
       let(:msg) do
-        instance_double(Message,
+        instance_double(RubyLLM::Message,
                         content: '',
                         tool_calls: {
-                          'tool_123' => instance_double(ToolCall,
+                          'tool_123' => instance_double(RubyLLM::ToolCall,
                                                         id: 'tool_123',
                                                         name: 'test_tool',
                                                         arguments: { 'arg1' => 'value1' })
@@ -196,6 +196,27 @@ RSpec.describe RubyLLM::Providers::Anthropic::Tools do
     it 'returns nil for empty or nil input' do
       expect(described_class.parse_tool_calls(nil)).to be_nil
       expect(described_class.parse_tool_calls([])).to be_nil
+    end
+  end
+
+  describe '.function_for' do
+    it 'merges additional tool params when provided' do
+      tool_class = Class.new(RubyLLM::Tool) do
+        def self.name = 'CacheTool'
+
+        with_params cache_control: { type: 'ephemeral' }
+
+        description 'Example tool with cache control'
+
+        def execute(**)
+          'ok'
+        end
+      end
+
+      tool = tool_class.new
+      definition = described_class.function_for(tool)
+
+      expect(definition[:cache_control]).to eq(type: 'ephemeral')
     end
   end
 end
