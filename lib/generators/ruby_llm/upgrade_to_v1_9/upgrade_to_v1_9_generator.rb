@@ -9,7 +9,7 @@ module RubyLLM
     # Generator to add v1.9 columns (cached tokens + raw content support) to existing apps.
     class UpgradeToV19Generator < Rails::Generators::Base
       include Rails::Generators::Migration
-      include RubyLLM::GeneratorHelpers
+      include RubyLLM::Generators::GeneratorHelpers
 
       namespace 'ruby_llm:upgrade_to_v1_9'
       source_root File.expand_path('templates', __dir__)
