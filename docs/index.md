@@ -4,6 +4,8 @@ title: Home
 nav_order: 1
 description: One beautiful Ruby API for GPT, Claude, Gemini, and more. Easily build chatbots, AI agents, RAG applications, and content generators.
 permalink: /
+redirect_from:
+ - /guides/
 ---
 
 <h1>
