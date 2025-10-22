@@ -53,7 +53,7 @@ module RubyLLM
         end
 
         def function_for(tool)
-          {
+          declaration = {
             name: tool.name,
             description: tool.description,
             input_schema: {
@@ -61,7 +61,11 @@ module RubyLLM
               properties: clean_parameters(tool.parameters),
               required: required_parameters(tool.parameters)
             }
-          }.merge(tool.provider_params)
+          }
+
+          return declaration if tool.provider_params.empty?
+
+          RubyLLM::Utils.deep_merge(declaration, tool.provider_params)
         end
 
         def extract_tool_calls(data)

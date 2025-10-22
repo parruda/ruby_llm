@@ -108,7 +108,7 @@ class TodoTool < RubyLLM::Tool
 end
 ```
 
-Provider-specific tool parameters are passed through verbatim. Currently implemented only for the Anthropic provider, other providers will ignore `with_params` for now. Use `RUBYLLM_DEBUG=true` and keep an eye on your logs when rolling out new metadata.
+Provider-specific tool parameters are passed through verbatim. Use `RUBYLLM_DEBUG=true` and keep an eye on your logs when rolling out new metadata.
 
 ## Returning Rich Content from Tools
 

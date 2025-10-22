@@ -42,11 +42,15 @@ module RubyLLM
         private
 
         def function_declaration_for(tool)
-          {
+          declaration = {
             name: tool.name,
             description: tool.description,
             parameters: tool.parameters.any? ? format_parameters(tool.parameters) : nil
           }.compact
+
+          return declaration if tool.provider_params.empty?
+
+          RubyLLM::Utils.deep_merge(declaration, tool.provider_params)
         end
 
         def format_parameters(parameters)

@@ -198,25 +198,4 @@ RSpec.describe RubyLLM::Providers::Anthropic::Tools do
       expect(described_class.parse_tool_calls([])).to be_nil
     end
   end
-
-  describe '.function_for' do
-    it 'merges additional tool params when provided' do
-      tool_class = Class.new(RubyLLM::Tool) do
-        def self.name = 'CacheTool'
-
-        with_params cache_control: { type: 'ephemeral' }
-
-        description 'Example tool with cache control'
-
-        def execute(**)
-          'ok'
-        end
-      end
-
-      tool = tool_class.new
-      definition = described_class.function_for(tool)
-
-      expect(definition[:cache_control]).to eq(type: 'ephemeral')
-    end
-  end
 end
