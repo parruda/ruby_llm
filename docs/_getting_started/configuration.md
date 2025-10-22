@@ -369,7 +369,7 @@ This ensures RubyLLM is configured before ActiveRecord loads your models. Other 
 > This limitation exists because both legacy and new `acts_as` APIs need to coexist during the 1.x series. It will be resolved in RubyLLM 2.0 when the legacy API is removed.
 {: .note }
 
-See the [Upgrading to 1.7 guide]({% link _advanced/upgrading-to-1.7.md %}#troubleshooting) for more details.
+See the [Upgrading guide]({% link _advanced/upgrading.md %}#troubleshooting) for more details.
 
 ## Configuration Reference
 

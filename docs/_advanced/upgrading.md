@@ -1,8 +1,10 @@
 ---
 layout: default
-title: Upgrading to 1.7
+title: Upgrading
 nav_order: 6
-description: Upgrade to the DB-backed model registry for better data integrity and rich model metadata.
+description: Upgrade guides for changes in data formats
+redirect_from:
+  - /upgrading-to-1-7
 ---
 
 # {{ page.title }}
@@ -18,6 +20,32 @@ description: Upgrade to the DB-backed model registry for better data integrity a
 {:toc}
 
 ---
+# Upgrade to 1.9
+
+## How to Upgrade
+
+```bash
+# Run the upgrade generator
+rails generate ruby_llm:upgrade_to_v1_9
+
+# Run migrations
+rails db:migrate
+```
+
+That's it! The generator:
+- Adds the `cached_tokens` and `cache_creation_tokens` columns for tracking accessed cached tokens and created cache tokens respectively.
+- Adds the `content_raw` column for the new [Raw Content Blocks]({% link _core_features/chat.md %}#raw-content-blocks) feature
+
+## What's New in 1.9
+
+Among other features:
+
+- [Raw Content Blocks]({% link _core_features/chat.md %}#raw-content-blocks) to pass content verbatim to an LLM, e.g. useful to enable Anthropic Prompt Caching.
+- Cached token tracking to accurately track costs given cache hits
+
+# Upgrade to 1.7
+
+Upgrade to the DB-backed model registry for better data integrity and rich model metadata.
 
 ## How to Upgrade
 
