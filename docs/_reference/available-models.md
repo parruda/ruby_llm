@@ -30,27 +30,31 @@ redirect_from:
 ## Last Updated
 {: .d-inline-block }
 
-2025-10-18
+2025-10-22
 {: .label .label-green }
 
 ## Models by Provider
 
-### Anthropic (14)
+### Anthropic (18)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
+| claude-3-haiku-20240307 | anthropic | 200000 | 4000 | In: $0.25, Out: $1.25 |
+| claude-3-5-haiku-20241022 | anthropic | 200000 | 8000 | In: $0.80, Out: $4.00 |
+| claude-3-5-haiku-latest | anthropic | 200000 | 8000 | In: $0.80, Out: $4.00 |
 | claude-haiku-4-5 | anthropic | 200000 | 64000 | In: $1.00, Out: $5.00 |
 | claude-haiku-4-5-20251001 | anthropic | 200000 | 64000 | In: $1.00, Out: $5.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
-| claude-opus-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
+| claude-opus-4-0 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00 |
+| claude-opus-4-20250514 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00 |
 | claude-opus-4-1 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00 |
 | claude-opus-4-1-20250805 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-sonnet-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
+| claude-3-7-sonnet-20250219 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
+| claude-3-7-sonnet-latest | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
+| claude-sonnet-4-0 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
+| claude-sonnet-4-20250514 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
 | claude-sonnet-4-5 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
 | claude-sonnet-4-5-20250929 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
 
@@ -295,7 +299,7 @@ redirect_from:
 | gpt-5-pro-2025-10-06 | openai | 400000 | 272000 | In: $15.00, Out: $120.00 |
 | gpt-5-codex | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
 | omni-moderation-2024-09-26 | openai | - | - | - |
-| sora-2 | openai | - | - | Out: $100000.00 |
+| sora-2 | openai | - | - | Out: $0.10 |
 | sora-2-pro | openai | - | - | - |
 | tts-1 | openai | - | - | In: $15.00 |
 | tts-1-1106 | openai | - | - | In: $15.00, Out: $15.00 |
@@ -346,7 +350,7 @@ redirect_from:
 | text-moderation-stable | openai | - | 32768 | - |
 
 
-### OpenRouter (340)
+### OpenRouter (339)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -358,16 +362,16 @@ redirect_from:
 | aion-labs/aion-1.0-mini | openrouter | 131072 | 32768 | In: $0.70, Out: $1.40 |
 | aion-labs/aion-rp-llama-3.1-8b | openrouter | 32768 | 32768 | In: $0.20, Out: $0.20 |
 | alfredpros/codellama-7b-instruct-solidity | openrouter | 4096 | 4096 | In: $0.80, Out: $1.20 |
-| allenai/molmo-7b-d | openrouter | 4096 | 4096 | In: $0.10, Out: $0.20 |
 | allenai/olmo-2-0325-32b-instruct | openrouter | 4096 | 4096 | In: $0.20, Out: $0.35 |
 | amazon/nova-lite-v1 | openrouter | 300000 | 5120 | In: $0.06, Out: $0.24 |
 | amazon/nova-micro-v1 | openrouter | 128000 | 5120 | In: $0.04, Out: $0.14 |
 | amazon/nova-pro-v1 | openrouter | 300000 | 5120 | In: $0.80, Out: $3.20 |
+| openrouter/andromeda-alpha | openrouter | 128000 | 128000 | - |
 | anthropic/claude-3-haiku | openrouter | 200000 | 4096 | In: $0.25, Out: $1.25, Cache: $0.03 |
 | anthropic/claude-3-opus | openrouter | 200000 | 4096 | In: $15.00, Out: $75.00, Cache: $1.50 |
 | anthropic/claude-3.5-haiku | openrouter | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $0.08 |
 | anthropic/claude-3.5-haiku-20241022 | openrouter | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $0.08 |
-| anthropic/claude-3.5-sonnet | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00, Cache: $0.30 |
+| anthropic/claude-3.5-sonnet | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | anthropic/claude-3.5-sonnet-20240620 | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00, Cache: $0.30 |
 | anthropic/claude-3.7-sonnet | openrouter | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $0.30 |
 | anthropic/claude-3.7-sonnet:thinking | openrouter | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $0.30 |
@@ -399,15 +403,15 @@ redirect_from:
 | deepcogito/cogito-v2-preview-llama-405b | openrouter | 32768 | - | In: $3.50, Out: $3.50 |
 | deepcogito/cogito-v2-preview-llama-70b | openrouter | 32768 | - | In: $0.88, Out: $0.88 |
 | deepseek/deepseek-prover-v2 | openrouter | 163840 | - | In: $0.50, Out: $2.18 |
+| deepseek/deepseek-r1-0528-qwen3-8b | openrouter | 32768 | 32768 | In: $0.03, Out: $0.11 |
+| deepseek/deepseek-r1-0528-qwen3-8b:free | openrouter | 131072 | - | - |
 | deepseek/deepseek-chat | openrouter | 163840 | 163840 | In: $0.30, Out: $0.85 |
 | deepseek/deepseek-chat-v3-0324 | openrouter | 163840 | 163840 | In: $0.24, Out: $0.84 |
 | deepseek/deepseek-chat-v3-0324:free | openrouter | 163840 | - | - |
-| deepseek/deepseek-chat-v3.1 | openrouter | 163840 | 163840 | In: $0.20, Out: $0.80 |
+| deepseek/deepseek-chat-v3.1 | openrouter | 131072 | 32768 | In: $0.27, Out: $1.00 |
 | deepseek/deepseek-chat-v3.1:free | openrouter | 163800 | - | - |
 | deepseek/deepseek-v3.1-terminus | openrouter | 163840 | 163840 | In: $0.23, Out: $0.90 |
 | deepseek/deepseek-v3.2-exp | openrouter | 163840 | - | In: $0.27, Out: $0.40 |
-| deepseek/deepseek-r1-0528-qwen3-8b | openrouter | 32768 | 32768 | In: $0.03, Out: $0.11 |
-| deepseek/deepseek-r1-0528-qwen3-8b:free | openrouter | 131072 | - | - |
 | deepseek/deepseek-r1 | openrouter | 163840 | 163840 | In: $0.40, Out: $2.00 |
 | deepseek/deepseek-r1:free | openrouter | 163840 | - | - |
 | deepseek/deepseek-r1-0528 | openrouter | 163840 | 163840 | In: $0.40, Out: $1.75 |
@@ -445,15 +449,14 @@ redirect_from:
 | google/gemma-3n-e2b-it:free | openrouter | 8192 | 2048 | - |
 | google/gemma-3n-e4b-it | openrouter | 32768 | - | In: $0.02, Out: $0.04 |
 | google/gemma-3n-e4b-it:free | openrouter | 8192 | 2048 | - |
+| ibm-granite/granite-4.0-h-micro | openrouter | 131000 | - | In: $0.02, Out: $0.11 |
 | inception/mercury | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | inception/mercury-coder | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | inflection/inflection-3-pi | openrouter | 8000 | 1024 | In: $2.50, Out: $10.00 |
 | inflection/inflection-3-productivity | openrouter | 8000 | 1024 | In: $2.50, Out: $10.00 |
-| liquid/lfm-3b | openrouter | 32768 | - | In: $0.02, Out: $0.02 |
-| liquid/lfm-7b | openrouter | 32768 | - | In: $0.01, Out: $0.01 |
 | meta-llama/llama-guard-3-8b | openrouter | 131072 | - | In: $0.02, Out: $0.06 |
 | anthracite-org/magnum-v2-72b | openrouter | 32768 | - | In: $3.00, Out: $3.00 |
-| anthracite-org/magnum-v4-72b | openrouter | 16384 | 2048 | In: $2.50, Out: $5.00 |
+| anthracite-org/magnum-v4-72b | openrouter | 16384 | 2048 | In: $3.00, Out: $5.00 |
 | mancer/weaver | openrouter | 8000 | 2000 | In: $1.12, Out: $1.12 |
 | meituan/longcat-flash-chat | openrouter | 131072 | 131072 | In: $0.15, Out: $0.75 |
 | meituan/longcat-flash-chat:free | openrouter | 131072 | 131072 | - |
@@ -462,14 +465,14 @@ redirect_from:
 | meta-llama/llama-3.1-405b | openrouter | 32768 | 32768 | In: $4.00, Out: $4.00 |
 | meta-llama/llama-3.1-405b-instruct | openrouter | 32768 | 16384 | In: $0.80, Out: $0.80 |
 | meta-llama/llama-3.1-70b-instruct | openrouter | 131072 | - | In: $0.40, Out: $0.40 |
-| meta-llama/llama-3.1-8b-instruct | openrouter | 131072 | 16384 | In: $0.02, Out: $0.03 |
+| meta-llama/llama-3.1-8b-instruct | openrouter | 16384 | 16384 | In: $0.02, Out: $0.03 |
 | meta-llama/llama-3.2-11b-vision-instruct | openrouter | 131072 | 16384 | In: $0.05, Out: $0.05 |
 | meta-llama/llama-3.2-1b-instruct | openrouter | 131072 | 16384 | In: $0.01, Out: $0.01 |
 | meta-llama/llama-3.2-3b-instruct | openrouter | 16384 | 16384 | In: $0.02, Out: $0.02 |
 | meta-llama/llama-3.2-3b-instruct:free | openrouter | 131072 | - | - |
 | meta-llama/llama-3.2-90b-vision-instruct | openrouter | 32768 | 16384 | In: $0.35, Out: $0.40 |
 | meta-llama/llama-3.3-70b-instruct | openrouter | 131072 | 16384 | In: $0.13, Out: $0.38 |
-| meta-llama/llama-3.3-70b-instruct:free | openrouter | 65536 | - | - |
+| meta-llama/llama-3.3-70b-instruct:free | openrouter | 131072 | 2048 | - |
 | meta-llama/llama-3.3-8b-instruct:free | openrouter | 128000 | 4028 | - |
 | meta-llama/llama-4-maverick | openrouter | 1048576 | 16384 | In: $0.15, Out: $0.60 |
 | meta-llama/llama-4-maverick:free | openrouter | 128000 | 4028 | - |
@@ -493,12 +496,12 @@ redirect_from:
 | mistralai/mistral-small | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | mistralai/mistral-tiny | openrouter | 32768 | - | In: $0.25, Out: $0.25 |
 | mistralai/codestral-2501 | openrouter | 262144 | - | In: $0.30, Out: $0.90 |
-| mistralai/codestral-2508 | openrouter | 32768 | - | In: $0.30, Out: $0.90 |
+| mistralai/codestral-2508 | openrouter | 256000 | - | In: $0.30, Out: $0.90 |
 | mistralai/devstral-medium | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/devstral-small | openrouter | 128000 | - | In: $0.07, Out: $0.28 |
 | mistralai/devstral-small-2505 | openrouter | 131072 | 131072 | In: $0.05, Out: $0.22 |
 | mistralai/devstral-small-2505:free | openrouter | 32768 | - | - |
-| mistralai/magistral-medium-2506 | openrouter | 32768 | 40000 | In: $2.00, Out: $5.00 |
+| mistralai/magistral-medium-2506 | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | mistralai/magistral-medium-2506:thinking | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | mistralai/magistral-small-2506 | openrouter | 40000 | 40000 | In: $0.50, Out: $1.50 |
 | mistralai/ministral-3b | openrouter | 32768 | - | In: $0.04, Out: $0.04 |
@@ -508,7 +511,7 @@ redirect_from:
 | mistralai/mistral-7b-instruct-v0.1 | openrouter | 2824 | - | In: $0.11, Out: $0.19 |
 | mistralai/mistral-7b-instruct-v0.2 | openrouter | 32768 | - | In: $0.20, Out: $0.20 |
 | mistralai/mistral-7b-instruct-v0.3 | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
-| mistralai/mistral-medium-3 | openrouter | 32768 | - | In: $0.40, Out: $2.00 |
+| mistralai/mistral-medium-3 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/mistral-medium-3.1 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/mistral-nemo | openrouter | 131072 | 16384 | In: $0.02, Out: $0.04 |
 | mistralai/mistral-nemo:free | openrouter | 131072 | 128000 | - |
@@ -521,7 +524,7 @@ redirect_from:
 | mistralai/mixtral-8x22b-instruct | openrouter | 65536 | - | In: $2.00, Out: $6.00 |
 | mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.54, Out: $0.54 |
 | mistralai/pixtral-12b | openrouter | 32768 | - | In: $0.10, Out: $0.10 |
-| mistralai/pixtral-large-2411 | openrouter | 32768 | - | In: $2.00, Out: $6.00 |
+| mistralai/pixtral-large-2411 | openrouter | 131072 | - | In: $2.00, Out: $6.00 |
 | mistralai/mistral-saba | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | moonshotai/kimi-dev-72b | openrouter | 131072 | 131072 | In: $0.29, Out: $1.15 |
 | moonshotai/kimi-dev-72b:free | openrouter | 131072 | - | - |
@@ -530,7 +533,7 @@ redirect_from:
 | moonshotai/kimi-k2-0905 | openrouter | 262144 | 262144 | In: $0.39, Out: $1.90 |
 | morph/morph-v3-fast | openrouter | 81920 | 38000 | In: $0.80, Out: $1.20 |
 | morph/morph-v3-large | openrouter | 81920 | 38000 | In: $0.90, Out: $1.90 |
-| gryphe/mythomax-l2-13b | openrouter | 4096 | 4096 | In: $0.05, Out: $0.09 |
+| gryphe/mythomax-l2-13b | openrouter | 4096 | 4096 | In: $0.06, Out: $0.06 |
 | nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.60, Out: $0.60 |
 | nvidia/llama-3.1-nemotron-ultra-253b-v1 | openrouter | 131072 | - | In: $0.60, Out: $1.80 |
 | nvidia/llama-3.3-nemotron-super-49b-v1.5 | openrouter | 131072 | - | In: $0.10, Out: $0.40 |
@@ -542,6 +545,7 @@ redirect_from:
 | nousresearch/deephermes-3-llama-3-8b-preview:free | openrouter | 131072 | - | - |
 | nousresearch/deephermes-3-mistral-24b-preview | openrouter | 32768 | 32768 | In: $0.15, Out: $0.59 |
 | nousresearch/hermes-3-llama-3.1-405b | openrouter | 131072 | 16384 | In: $1.00, Out: $1.00 |
+| nousresearch/hermes-3-llama-3.1-405b:free | openrouter | 131072 | - | - |
 | nousresearch/hermes-3-llama-3.1-70b | openrouter | 65536 | - | In: $0.30, Out: $0.30 |
 | nousresearch/hermes-4-405b | openrouter | 131072 | 131072 | In: $0.30, Out: $1.20 |
 | nousresearch/hermes-4-70b | openrouter | 131072 | 131072 | In: $0.11, Out: $0.38 |
@@ -616,12 +620,11 @@ redirect_from:
 | qwen/qwen2.5-vl-32b-instruct | openrouter | 16384 | 16384 | In: $0.05, Out: $0.22 |
 | qwen/qwen2.5-vl-32b-instruct:free | openrouter | 16384 | - | - |
 | qwen/qwen2.5-vl-72b-instruct | openrouter | 32768 | 32768 | In: $0.08, Out: $0.33 |
-| qwen/qwen2.5-vl-72b-instruct:free | openrouter | 131072 | 2048 | - |
 | qwen/qwen-2.5-vl-7b-instruct | openrouter | 32768 | - | In: $0.20, Out: $0.20 |
 | qwen/qwen3-14b | openrouter | 40960 | 40960 | In: $0.05, Out: $0.22 |
 | qwen/qwen3-14b:free | openrouter | 40960 | - | - |
 | qwen/qwen3-235b-a22b | openrouter | 40960 | 40960 | In: $0.18, Out: $0.54 |
-| qwen/qwen3-235b-a22b:free | openrouter | 131072 | - | - |
+| qwen/qwen3-235b-a22b:free | openrouter | 40960 | - | - |
 | qwen/qwen3-235b-a22b-2507 | openrouter | 262144 | 262144 | In: $0.08, Out: $0.55 |
 | qwen/qwen3-235b-a22b-thinking-2507 | openrouter | 262144 | 262144 | In: $0.11, Out: $0.60 |
 | qwen/qwen3-30b-a3b | openrouter | 40960 | 40960 | In: $0.06, Out: $0.22 |
@@ -634,17 +637,17 @@ redirect_from:
 | qwen/qwen3-8b:free | openrouter | 40960 | 40960 | - |
 | qwen/qwen3-coder-30b-a3b-instruct | openrouter | 262144 | 262144 | In: $0.06, Out: $0.25 |
 | qwen/qwen3-coder | openrouter | 262144 | 262144 | In: $0.22, Out: $0.95 |
-| qwen/qwen3-coder:free | openrouter | 262144 | - | - |
+| qwen/qwen3-coder:free | openrouter | 262000 | 262000 | - |
 | qwen/qwen3-coder-flash | openrouter | 128000 | 65536 | In: $0.30, Out: $1.50, Cache: $0.08 |
 | qwen/qwen3-coder-plus | openrouter | 128000 | 65536 | In: $1.00, Out: $5.00, Cache: $0.10 |
 | qwen/qwen3-max | openrouter | 256000 | 32768 | In: $1.20, Out: $6.00, Cache: $0.24 |
 | qwen/qwen3-next-80b-a3b-instruct | openrouter | 262144 | 262144 | In: $0.10, Out: $0.80 |
 | qwen/qwen3-next-80b-a3b-thinking | openrouter | 262144 | - | In: $0.14, Out: $1.20 |
-| qwen/qwen3-vl-235b-a22b-instruct | openrouter | 131072 | - | In: $0.30, Out: $1.20 |
+| qwen/qwen3-vl-235b-a22b-instruct | openrouter | 262144 | 262144 | In: $0.30, Out: $1.20 |
 | qwen/qwen3-vl-235b-a22b-thinking | openrouter | 262144 | 262144 | In: $0.30, Out: $1.20 |
-| qwen/qwen3-vl-30b-a3b-instruct | openrouter | 262144 | - | In: $0.29, Out: $0.99 |
-| qwen/qwen3-vl-30b-a3b-thinking | openrouter | 262144 | 262144 | In: $0.29, Out: $1.00 |
-| qwen/qwen3-vl-8b-instruct | openrouter | 262144 | - | In: $0.18, Out: $0.69 |
+| qwen/qwen3-vl-30b-a3b-instruct | openrouter | 131072 | 32768 | In: $0.20, Out: $0.70 |
+| qwen/qwen3-vl-30b-a3b-thinking | openrouter | 131072 | 32768 | In: $0.20, Out: $1.00 |
+| qwen/qwen3-vl-8b-instruct | openrouter | 131072 | 32768 | In: $0.08, Out: $0.50 |
 | qwen/qwen3-vl-8b-thinking | openrouter | 256000 | 32768 | In: $0.18, Out: $2.10 |
 | undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.45, Out: $0.65 |
 | relace/relace-apply-3 | openrouter | 256000 | 128000 | In: $0.85, Out: $1.25 |
@@ -676,8 +679,8 @@ redirect_from:
 | cognitivecomputations/dolphin-mistral-24b-venice-edition:free | openrouter | 32768 | - | - |
 | microsoft/wizardlm-2-8x22b | openrouter | 65536 | 16384 | In: $0.48, Out: $0.48 |
 | z-ai/glm-4-32b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
-| z-ai/glm-4.5 | openrouter | 131072 | 131072 | In: $0.35, Out: $1.55 |
-| z-ai/glm-4.5-air | openrouter | 131072 | 131072 | In: $0.14, Out: $0.86 |
+| z-ai/glm-4.5 | openrouter | 131072 | 131072 | In: $0.35, Out: $1.50 |
+| z-ai/glm-4.5-air | openrouter | 131072 | 98304 | In: $0.13, Out: $0.85 |
 | z-ai/glm-4.5-air:free | openrouter | 131072 | 131072 | - |
 | z-ai/glm-4.5v | openrouter | 65536 | 16384 | In: $0.60, Out: $1.80, Cache: $0.11 |
 | z-ai/glm-4.6 | openrouter | 202752 | 202752 | In: $0.50, Out: $1.75 |
@@ -746,20 +749,26 @@ redirect_from:
 
 ## Models by Capability
 
-### Function Calling (410)
+### Function Calling (417)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
+| claude-3-haiku-20240307 | anthropic | 200000 | 4000 | In: $0.25, Out: $1.25 |
+| claude-3-5-haiku-20241022 | anthropic | 200000 | 8000 | In: $0.80, Out: $4.00 |
+| claude-3-5-haiku-latest | anthropic | 200000 | 8000 | In: $0.80, Out: $4.00 |
 | claude-haiku-4-5 | anthropic | 200000 | 64000 | In: $1.00, Out: $5.00 |
 | claude-haiku-4-5-20251001 | anthropic | 200000 | 64000 | In: $1.00, Out: $5.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
+| claude-opus-4-0 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00 |
+| claude-opus-4-20250514 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00 |
 | claude-opus-4-1 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00 |
 | claude-opus-4-1-20250805 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
+| claude-3-7-sonnet-20250219 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
+| claude-3-7-sonnet-latest | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
+| claude-sonnet-4-0 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
+| claude-sonnet-4-20250514 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
 | claude-sonnet-4-5 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
 | claude-sonnet-4-5-20250929 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
 | anthropic.claude-v2:0:100k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
@@ -940,11 +949,12 @@ redirect_from:
 | amazon/nova-lite-v1 | openrouter | 300000 | 5120 | In: $0.06, Out: $0.24 |
 | amazon/nova-micro-v1 | openrouter | 128000 | 5120 | In: $0.04, Out: $0.14 |
 | amazon/nova-pro-v1 | openrouter | 300000 | 5120 | In: $0.80, Out: $3.20 |
+| openrouter/andromeda-alpha | openrouter | 128000 | 128000 | - |
 | anthropic/claude-3-haiku | openrouter | 200000 | 4096 | In: $0.25, Out: $1.25, Cache: $0.03 |
 | anthropic/claude-3-opus | openrouter | 200000 | 4096 | In: $15.00, Out: $75.00, Cache: $1.50 |
 | anthropic/claude-3.5-haiku | openrouter | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $0.08 |
 | anthropic/claude-3.5-haiku-20241022 | openrouter | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $0.08 |
-| anthropic/claude-3.5-sonnet | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00, Cache: $0.30 |
+| anthropic/claude-3.5-sonnet | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | anthropic/claude-3.5-sonnet-20240620 | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00, Cache: $0.30 |
 | anthropic/claude-3.7-sonnet | openrouter | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $0.30 |
 | anthropic/claude-3.7-sonnet:thinking | openrouter | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $0.30 |
@@ -964,7 +974,7 @@ redirect_from:
 | deepseek/deepseek-chat | openrouter | 163840 | 163840 | In: $0.30, Out: $0.85 |
 | deepseek/deepseek-chat-v3-0324 | openrouter | 163840 | 163840 | In: $0.24, Out: $0.84 |
 | deepseek/deepseek-chat-v3-0324:free | openrouter | 163840 | - | - |
-| deepseek/deepseek-chat-v3.1 | openrouter | 163840 | 163840 | In: $0.20, Out: $0.80 |
+| deepseek/deepseek-chat-v3.1 | openrouter | 131072 | 32768 | In: $0.27, Out: $1.00 |
 | deepseek/deepseek-v3.1-terminus | openrouter | 163840 | 163840 | In: $0.23, Out: $0.90 |
 | deepseek/deepseek-v3.2-exp | openrouter | 163840 | - | In: $0.27, Out: $0.40 |
 | deepseek/deepseek-r1 | openrouter | 163840 | 163840 | In: $0.40, Out: $2.00 |
@@ -989,10 +999,10 @@ redirect_from:
 | meta-llama/llama-3-8b-instruct | openrouter | 8192 | 16384 | In: $0.03, Out: $0.06 |
 | meta-llama/llama-3.1-405b-instruct | openrouter | 32768 | 16384 | In: $0.80, Out: $0.80 |
 | meta-llama/llama-3.1-70b-instruct | openrouter | 131072 | - | In: $0.40, Out: $0.40 |
-| meta-llama/llama-3.1-8b-instruct | openrouter | 131072 | 16384 | In: $0.02, Out: $0.03 |
+| meta-llama/llama-3.1-8b-instruct | openrouter | 16384 | 16384 | In: $0.02, Out: $0.03 |
 | meta-llama/llama-3.2-3b-instruct | openrouter | 16384 | 16384 | In: $0.02, Out: $0.02 |
 | meta-llama/llama-3.3-70b-instruct | openrouter | 131072 | 16384 | In: $0.13, Out: $0.38 |
-| meta-llama/llama-3.3-70b-instruct:free | openrouter | 65536 | - | - |
+| meta-llama/llama-3.3-70b-instruct:free | openrouter | 131072 | 2048 | - |
 | meta-llama/llama-3.3-8b-instruct:free | openrouter | 128000 | 4028 | - |
 | meta-llama/llama-4-maverick | openrouter | 1048576 | 16384 | In: $0.15, Out: $0.60 |
 | meta-llama/llama-4-maverick:free | openrouter | 128000 | 4028 | - |
@@ -1008,12 +1018,12 @@ redirect_from:
 | mistralai/mistral-small | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | mistralai/mistral-tiny | openrouter | 32768 | - | In: $0.25, Out: $0.25 |
 | mistralai/codestral-2501 | openrouter | 262144 | - | In: $0.30, Out: $0.90 |
-| mistralai/codestral-2508 | openrouter | 32768 | - | In: $0.30, Out: $0.90 |
+| mistralai/codestral-2508 | openrouter | 256000 | - | In: $0.30, Out: $0.90 |
 | mistralai/devstral-medium | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/devstral-small | openrouter | 128000 | - | In: $0.07, Out: $0.28 |
 | mistralai/devstral-small-2505 | openrouter | 131072 | 131072 | In: $0.05, Out: $0.22 |
 | mistralai/devstral-small-2505:free | openrouter | 32768 | - | - |
-| mistralai/magistral-medium-2506 | openrouter | 32768 | 40000 | In: $2.00, Out: $5.00 |
+| mistralai/magistral-medium-2506 | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | mistralai/magistral-medium-2506:thinking | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | mistralai/magistral-small-2506 | openrouter | 40000 | 40000 | In: $0.50, Out: $1.50 |
 | mistralai/ministral-8b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
@@ -1021,7 +1031,7 @@ redirect_from:
 | mistralai/mistral-7b-instruct:free | openrouter | 32768 | 16384 | - |
 | mistralai/mistral-7b-instruct-v0.1 | openrouter | 2824 | - | In: $0.11, Out: $0.19 |
 | mistralai/mistral-7b-instruct-v0.3 | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
-| mistralai/mistral-medium-3 | openrouter | 32768 | - | In: $0.40, Out: $2.00 |
+| mistralai/mistral-medium-3 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/mistral-medium-3.1 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/mistral-nemo | openrouter | 131072 | 16384 | In: $0.02, Out: $0.04 |
 | mistralai/mistral-small-24b-instruct-2501 | openrouter | 32768 | 16384 | In: $0.05, Out: $0.08 |
@@ -1032,7 +1042,7 @@ redirect_from:
 | mistralai/mixtral-8x22b-instruct | openrouter | 65536 | - | In: $2.00, Out: $6.00 |
 | mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.54, Out: $0.54 |
 | mistralai/pixtral-12b | openrouter | 32768 | - | In: $0.10, Out: $0.10 |
-| mistralai/pixtral-large-2411 | openrouter | 32768 | - | In: $2.00, Out: $6.00 |
+| mistralai/pixtral-large-2411 | openrouter | 131072 | - | In: $2.00, Out: $6.00 |
 | mistralai/mistral-saba | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | moonshotai/kimi-k2 | openrouter | 63000 | 63000 | In: $0.14, Out: $2.49 |
 | moonshotai/kimi-k2-0905 | openrouter | 262144 | 262144 | In: $0.39, Out: $1.90 |
@@ -1095,7 +1105,7 @@ redirect_from:
 | qwen/qwen-2.5-7b-instruct | openrouter | 32768 | 16384 | In: $0.04, Out: $0.10 |
 | qwen/qwen3-14b | openrouter | 40960 | 40960 | In: $0.05, Out: $0.22 |
 | qwen/qwen3-235b-a22b | openrouter | 40960 | 40960 | In: $0.18, Out: $0.54 |
-| qwen/qwen3-235b-a22b:free | openrouter | 131072 | - | - |
+| qwen/qwen3-235b-a22b:free | openrouter | 40960 | - | - |
 | qwen/qwen3-235b-a22b-2507 | openrouter | 262144 | 262144 | In: $0.08, Out: $0.55 |
 | qwen/qwen3-235b-a22b-thinking-2507 | openrouter | 262144 | 262144 | In: $0.11, Out: $0.60 |
 | qwen/qwen3-30b-a3b | openrouter | 40960 | 40960 | In: $0.06, Out: $0.22 |
@@ -1105,17 +1115,17 @@ redirect_from:
 | qwen/qwen3-4b:free | openrouter | 40960 | - | - |
 | qwen/qwen3-coder-30b-a3b-instruct | openrouter | 262144 | 262144 | In: $0.06, Out: $0.25 |
 | qwen/qwen3-coder | openrouter | 262144 | 262144 | In: $0.22, Out: $0.95 |
-| qwen/qwen3-coder:free | openrouter | 262144 | - | - |
+| qwen/qwen3-coder:free | openrouter | 262000 | 262000 | - |
 | qwen/qwen3-coder-flash | openrouter | 128000 | 65536 | In: $0.30, Out: $1.50, Cache: $0.08 |
 | qwen/qwen3-coder-plus | openrouter | 128000 | 65536 | In: $1.00, Out: $5.00, Cache: $0.10 |
 | qwen/qwen3-max | openrouter | 256000 | 32768 | In: $1.20, Out: $6.00, Cache: $0.24 |
 | qwen/qwen3-next-80b-a3b-instruct | openrouter | 262144 | 262144 | In: $0.10, Out: $0.80 |
 | qwen/qwen3-next-80b-a3b-thinking | openrouter | 262144 | - | In: $0.14, Out: $1.20 |
-| qwen/qwen3-vl-235b-a22b-instruct | openrouter | 131072 | - | In: $0.30, Out: $1.20 |
+| qwen/qwen3-vl-235b-a22b-instruct | openrouter | 262144 | 262144 | In: $0.30, Out: $1.20 |
 | qwen/qwen3-vl-235b-a22b-thinking | openrouter | 262144 | 262144 | In: $0.30, Out: $1.20 |
-| qwen/qwen3-vl-30b-a3b-instruct | openrouter | 262144 | - | In: $0.29, Out: $0.99 |
-| qwen/qwen3-vl-30b-a3b-thinking | openrouter | 262144 | 262144 | In: $0.29, Out: $1.00 |
-| qwen/qwen3-vl-8b-instruct | openrouter | 262144 | - | In: $0.18, Out: $0.69 |
+| qwen/qwen3-vl-30b-a3b-instruct | openrouter | 131072 | 32768 | In: $0.20, Out: $0.70 |
+| qwen/qwen3-vl-30b-a3b-thinking | openrouter | 131072 | 32768 | In: $0.20, Out: $1.00 |
+| qwen/qwen3-vl-8b-instruct | openrouter | 131072 | 32768 | In: $0.08, Out: $0.50 |
 | qwen/qwen3-vl-8b-thinking | openrouter | 256000 | 32768 | In: $0.18, Out: $2.10 |
 | sao10k/l3.1-euryale-70b | openrouter | 32768 | - | In: $0.65, Out: $0.75 |
 | sao10k/l3-euryale-70b | openrouter | 8192 | 8192 | In: $1.48, Out: $1.48 |
@@ -1126,8 +1136,8 @@ redirect_from:
 | alibaba/tongyi-deepresearch-30b-a3b | openrouter | 131072 | 131072 | In: $0.09, Out: $0.40 |
 | alibaba/tongyi-deepresearch-30b-a3b:free | openrouter | 131072 | 131072 | - |
 | z-ai/glm-4-32b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
-| z-ai/glm-4.5 | openrouter | 131072 | 131072 | In: $0.35, Out: $1.55 |
-| z-ai/glm-4.5-air | openrouter | 131072 | 131072 | In: $0.14, Out: $0.86 |
+| z-ai/glm-4.5 | openrouter | 131072 | 131072 | In: $0.35, Out: $1.50 |
+| z-ai/glm-4.5-air | openrouter | 131072 | 98304 | In: $0.13, Out: $0.85 |
 | z-ai/glm-4.5-air:free | openrouter | 131072 | 131072 | - |
 | z-ai/glm-4.5v | openrouter | 65536 | 16384 | In: $0.60, Out: $1.80, Cache: $0.11 |
 | z-ai/glm-4.6 | openrouter | 202752 | 202752 | In: $0.50, Out: $1.75 |
@@ -1162,7 +1172,7 @@ redirect_from:
 | text-multilingual-embedding-002 | vertexai | - | - | - |
 
 
-### Structured Output (378)
+### Structured Output (377)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
@@ -1298,9 +1308,9 @@ redirect_from:
 | o3-pro-2025-06-10 | openai | 200000 | 100000 | In: $20.00, Out: $80.00 |
 | o4-mini | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
 | o4-mini-2025-04-16 | openai | 200000 | 100000 | In: $1.10, Out: $4.40, Cache: $0.28 |
-| text-embedding-3-small | openai | - | - | In: $0.02 |
 | ai21/jamba-large-1.7 | openrouter | 256000 | 4096 | In: $2.00, Out: $8.00 |
 | ai21/jamba-mini-1.7 | openrouter | 256000 | 4096 | In: $0.20, Out: $0.40 |
+| openrouter/andromeda-alpha | openrouter | 128000 | 128000 | - |
 | arcee-ai/afm-4.5b | openrouter | 65536 | - | In: $0.05, Out: $0.15 |
 | arliai/qwq-32b-arliai-rpr-v1 | openrouter | 32768 | 32768 | In: $0.03, Out: $0.11 |
 | baidu/ernie-4.5-300b-a47b | openrouter | 123000 | 12000 | In: $0.28, Out: $1.10 |
@@ -1311,12 +1321,12 @@ redirect_from:
 | deepcogito/cogito-v2-preview-llama-405b | openrouter | 32768 | - | In: $3.50, Out: $3.50 |
 | deepcogito/cogito-v2-preview-llama-70b | openrouter | 32768 | - | In: $0.88, Out: $0.88 |
 | deepseek/deepseek-prover-v2 | openrouter | 163840 | - | In: $0.50, Out: $2.18 |
+| deepseek/deepseek-r1-0528-qwen3-8b | openrouter | 32768 | 32768 | In: $0.03, Out: $0.11 |
 | deepseek/deepseek-chat | openrouter | 163840 | 163840 | In: $0.30, Out: $0.85 |
 | deepseek/deepseek-chat-v3-0324 | openrouter | 163840 | 163840 | In: $0.24, Out: $0.84 |
-| deepseek/deepseek-chat-v3.1 | openrouter | 163840 | 163840 | In: $0.20, Out: $0.80 |
+| deepseek/deepseek-chat-v3.1 | openrouter | 131072 | 32768 | In: $0.27, Out: $1.00 |
 | deepseek/deepseek-v3.1-terminus | openrouter | 163840 | 163840 | In: $0.23, Out: $0.90 |
 | deepseek/deepseek-v3.2-exp | openrouter | 163840 | - | In: $0.27, Out: $0.40 |
-| deepseek/deepseek-r1-0528-qwen3-8b | openrouter | 32768 | 32768 | In: $0.03, Out: $0.11 |
 | deepseek/deepseek-r1 | openrouter | 163840 | 163840 | In: $0.40, Out: $2.00 |
 | deepseek/deepseek-r1:free | openrouter | 163840 | - | - |
 | deepseek/deepseek-r1-0528 | openrouter | 163840 | 163840 | In: $0.40, Out: $1.75 |
@@ -1350,14 +1360,14 @@ redirect_from:
 | inception/mercury | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | inception/mercury-coder | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | meta-llama/llama-guard-3-8b | openrouter | 131072 | - | In: $0.02, Out: $0.06 |
-| anthracite-org/magnum-v4-72b | openrouter | 16384 | 2048 | In: $2.50, Out: $5.00 |
+| anthracite-org/magnum-v4-72b | openrouter | 16384 | 2048 | In: $3.00, Out: $5.00 |
 | mancer/weaver | openrouter | 8000 | 2000 | In: $1.12, Out: $1.12 |
 | meituan/longcat-flash-chat:free | openrouter | 131072 | 131072 | - |
 | meta-llama/llama-3-70b-instruct | openrouter | 8192 | 16384 | In: $0.30, Out: $0.40 |
 | meta-llama/llama-3-8b-instruct | openrouter | 8192 | 16384 | In: $0.03, Out: $0.06 |
 | meta-llama/llama-3.1-405b-instruct | openrouter | 32768 | 16384 | In: $0.80, Out: $0.80 |
 | meta-llama/llama-3.1-70b-instruct | openrouter | 131072 | - | In: $0.40, Out: $0.40 |
-| meta-llama/llama-3.1-8b-instruct | openrouter | 131072 | 16384 | In: $0.02, Out: $0.03 |
+| meta-llama/llama-3.1-8b-instruct | openrouter | 16384 | 16384 | In: $0.02, Out: $0.03 |
 | meta-llama/llama-3.2-11b-vision-instruct | openrouter | 131072 | 16384 | In: $0.05, Out: $0.05 |
 | meta-llama/llama-3.2-1b-instruct | openrouter | 131072 | 16384 | In: $0.01, Out: $0.01 |
 | meta-llama/llama-3.2-3b-instruct | openrouter | 16384 | 16384 | In: $0.02, Out: $0.02 |
@@ -1379,11 +1389,11 @@ redirect_from:
 | mistralai/mistral-small | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | mistralai/mistral-tiny | openrouter | 32768 | - | In: $0.25, Out: $0.25 |
 | mistralai/codestral-2501 | openrouter | 262144 | - | In: $0.30, Out: $0.90 |
-| mistralai/codestral-2508 | openrouter | 32768 | - | In: $0.30, Out: $0.90 |
+| mistralai/codestral-2508 | openrouter | 256000 | - | In: $0.30, Out: $0.90 |
 | mistralai/devstral-medium | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/devstral-small | openrouter | 128000 | - | In: $0.07, Out: $0.28 |
 | mistralai/devstral-small-2505 | openrouter | 131072 | 131072 | In: $0.05, Out: $0.22 |
-| mistralai/magistral-medium-2506 | openrouter | 32768 | 40000 | In: $2.00, Out: $5.00 |
+| mistralai/magistral-medium-2506 | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | mistralai/magistral-medium-2506:thinking | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | mistralai/magistral-small-2506 | openrouter | 40000 | 40000 | In: $0.50, Out: $1.50 |
 | mistralai/ministral-3b | openrouter | 32768 | - | In: $0.04, Out: $0.04 |
@@ -1391,7 +1401,7 @@ redirect_from:
 | mistralai/mistral-7b-instruct | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
 | mistralai/mistral-7b-instruct:free | openrouter | 32768 | 16384 | - |
 | mistralai/mistral-7b-instruct-v0.3 | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
-| mistralai/mistral-medium-3 | openrouter | 32768 | - | In: $0.40, Out: $2.00 |
+| mistralai/mistral-medium-3 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/mistral-medium-3.1 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/mistral-nemo | openrouter | 131072 | 16384 | In: $0.02, Out: $0.04 |
 | mistralai/mistral-small-24b-instruct-2501 | openrouter | 32768 | 16384 | In: $0.05, Out: $0.08 |
@@ -1401,13 +1411,14 @@ redirect_from:
 | mistralai/mixtral-8x22b-instruct | openrouter | 65536 | - | In: $2.00, Out: $6.00 |
 | mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.54, Out: $0.54 |
 | mistralai/pixtral-12b | openrouter | 32768 | - | In: $0.10, Out: $0.10 |
-| mistralai/pixtral-large-2411 | openrouter | 32768 | - | In: $2.00, Out: $6.00 |
+| mistralai/pixtral-large-2411 | openrouter | 131072 | - | In: $2.00, Out: $6.00 |
 | mistralai/mistral-saba | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | moonshotai/kimi-dev-72b | openrouter | 131072 | 131072 | In: $0.29, Out: $1.15 |
 | moonshotai/kimi-k2 | openrouter | 63000 | 63000 | In: $0.14, Out: $2.49 |
 | moonshotai/kimi-k2-0905 | openrouter | 262144 | 262144 | In: $0.39, Out: $1.90 |
-| gryphe/mythomax-l2-13b | openrouter | 4096 | 4096 | In: $0.05, Out: $0.09 |
+| gryphe/mythomax-l2-13b | openrouter | 4096 | 4096 | In: $0.06, Out: $0.06 |
 | nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.60, Out: $0.60 |
+| nvidia/llama-3.1-nemotron-ultra-253b-v1 | openrouter | 131072 | - | In: $0.60, Out: $1.80 |
 | nvidia/llama-3.3-nemotron-super-49b-v1.5 | openrouter | 131072 | - | In: $0.10, Out: $0.40 |
 | nvidia/nemotron-nano-9b-v2 | openrouter | 131072 | - | In: $0.04, Out: $0.16 |
 | nvidia/nemotron-nano-9b-v2:free | openrouter | 128000 | - | - |
@@ -1479,13 +1490,11 @@ redirect_from:
 | qwen/qwen-2.5-7b-instruct | openrouter | 32768 | 16384 | In: $0.04, Out: $0.10 |
 | qwen/qwen2.5-coder-7b-instruct | openrouter | 32768 | - | In: $0.03, Out: $0.09 |
 | qwen/qwen2.5-vl-32b-instruct | openrouter | 16384 | 16384 | In: $0.05, Out: $0.22 |
-| qwen/qwen2.5-vl-32b-instruct:free | openrouter | 16384 | - | - |
 | qwen/qwen2.5-vl-72b-instruct | openrouter | 32768 | 32768 | In: $0.08, Out: $0.33 |
-| qwen/qwen2.5-vl-72b-instruct:free | openrouter | 131072 | 2048 | - |
 | qwen/qwen-2.5-vl-7b-instruct | openrouter | 32768 | - | In: $0.20, Out: $0.20 |
 | qwen/qwen3-14b | openrouter | 40960 | 40960 | In: $0.05, Out: $0.22 |
 | qwen/qwen3-235b-a22b | openrouter | 40960 | 40960 | In: $0.18, Out: $0.54 |
-| qwen/qwen3-235b-a22b:free | openrouter | 131072 | - | - |
+| qwen/qwen3-235b-a22b:free | openrouter | 40960 | - | - |
 | qwen/qwen3-235b-a22b-2507 | openrouter | 262144 | 262144 | In: $0.08, Out: $0.55 |
 | qwen/qwen3-235b-a22b-thinking-2507 | openrouter | 262144 | 262144 | In: $0.11, Out: $0.60 |
 | qwen/qwen3-30b-a3b | openrouter | 40960 | 40960 | In: $0.06, Out: $0.22 |
@@ -1500,11 +1509,11 @@ redirect_from:
 | qwen/qwen3-max | openrouter | 256000 | 32768 | In: $1.20, Out: $6.00, Cache: $0.24 |
 | qwen/qwen3-next-80b-a3b-instruct | openrouter | 262144 | 262144 | In: $0.10, Out: $0.80 |
 | qwen/qwen3-next-80b-a3b-thinking | openrouter | 262144 | - | In: $0.14, Out: $1.20 |
-| qwen/qwen3-vl-235b-a22b-instruct | openrouter | 131072 | - | In: $0.30, Out: $1.20 |
+| qwen/qwen3-vl-235b-a22b-instruct | openrouter | 262144 | 262144 | In: $0.30, Out: $1.20 |
 | qwen/qwen3-vl-235b-a22b-thinking | openrouter | 262144 | 262144 | In: $0.30, Out: $1.20 |
-| qwen/qwen3-vl-30b-a3b-instruct | openrouter | 262144 | - | In: $0.29, Out: $0.99 |
-| qwen/qwen3-vl-30b-a3b-thinking | openrouter | 262144 | 262144 | In: $0.29, Out: $1.00 |
-| qwen/qwen3-vl-8b-instruct | openrouter | 262144 | - | In: $0.18, Out: $0.69 |
+| qwen/qwen3-vl-30b-a3b-instruct | openrouter | 131072 | 32768 | In: $0.20, Out: $0.70 |
+| qwen/qwen3-vl-30b-a3b-thinking | openrouter | 131072 | 32768 | In: $0.20, Out: $1.00 |
+| qwen/qwen3-vl-8b-instruct | openrouter | 131072 | 32768 | In: $0.08, Out: $0.50 |
 | qwen/qwen3-vl-8b-thinking | openrouter | 256000 | 32768 | In: $0.18, Out: $2.10 |
 | undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.45, Out: $0.65 |
 | sao10k/l3-lunaris-8b | openrouter | 8192 | - | In: $0.04, Out: $0.05 |
@@ -1523,8 +1532,8 @@ redirect_from:
 | alibaba/tongyi-deepresearch-30b-a3b:free | openrouter | 131072 | 131072 | - |
 | cognitivecomputations/dolphin-mistral-24b-venice-edition:free | openrouter | 32768 | - | - |
 | microsoft/wizardlm-2-8x22b | openrouter | 65536 | 16384 | In: $0.48, Out: $0.48 |
-| z-ai/glm-4.5 | openrouter | 131072 | 131072 | In: $0.35, Out: $1.55 |
-| z-ai/glm-4.5-air | openrouter | 131072 | 131072 | In: $0.14, Out: $0.86 |
+| z-ai/glm-4.5 | openrouter | 131072 | 131072 | In: $0.35, Out: $1.50 |
+| z-ai/glm-4.5-air | openrouter | 131072 | 98304 | In: $0.13, Out: $0.85 |
 | z-ai/glm-4.5-air:free | openrouter | 131072 | 131072 | - |
 | z-ai/glm-4.5v | openrouter | 65536 | 16384 | In: $0.60, Out: $1.80, Cache: $0.11 |
 | z-ai/glm-4.6 | openrouter | 202752 | 202752 | In: $0.50, Out: $1.75 |
@@ -1546,18 +1555,13 @@ redirect_from:
 | gemini-2.5-pro | vertexai | 1048576 | 65536 | In: $1.25, Out: $10.00, Cache: $0.12 |
 
 
-### Streaming (528)
+### Streaming (522)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
-| claude-opus-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-sonnet-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | anthropic.claude-v2:0:100k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:0:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:1:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
@@ -1713,16 +1717,16 @@ redirect_from:
 | aion-labs/aion-1.0-mini | openrouter | 131072 | 32768 | In: $0.70, Out: $1.40 |
 | aion-labs/aion-rp-llama-3.1-8b | openrouter | 32768 | 32768 | In: $0.20, Out: $0.20 |
 | alfredpros/codellama-7b-instruct-solidity | openrouter | 4096 | 4096 | In: $0.80, Out: $1.20 |
-| allenai/molmo-7b-d | openrouter | 4096 | 4096 | In: $0.10, Out: $0.20 |
 | allenai/olmo-2-0325-32b-instruct | openrouter | 4096 | 4096 | In: $0.20, Out: $0.35 |
 | amazon/nova-lite-v1 | openrouter | 300000 | 5120 | In: $0.06, Out: $0.24 |
 | amazon/nova-micro-v1 | openrouter | 128000 | 5120 | In: $0.04, Out: $0.14 |
 | amazon/nova-pro-v1 | openrouter | 300000 | 5120 | In: $0.80, Out: $3.20 |
+| openrouter/andromeda-alpha | openrouter | 128000 | 128000 | - |
 | anthropic/claude-3-haiku | openrouter | 200000 | 4096 | In: $0.25, Out: $1.25, Cache: $0.03 |
 | anthropic/claude-3-opus | openrouter | 200000 | 4096 | In: $15.00, Out: $75.00, Cache: $1.50 |
 | anthropic/claude-3.5-haiku | openrouter | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $0.08 |
 | anthropic/claude-3.5-haiku-20241022 | openrouter | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $0.08 |
-| anthropic/claude-3.5-sonnet | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00, Cache: $0.30 |
+| anthropic/claude-3.5-sonnet | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | anthropic/claude-3.5-sonnet-20240620 | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00, Cache: $0.30 |
 | anthropic/claude-3.7-sonnet | openrouter | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $0.30 |
 | anthropic/claude-3.7-sonnet:thinking | openrouter | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $0.30 |
@@ -1754,15 +1758,15 @@ redirect_from:
 | deepcogito/cogito-v2-preview-llama-405b | openrouter | 32768 | - | In: $3.50, Out: $3.50 |
 | deepcogito/cogito-v2-preview-llama-70b | openrouter | 32768 | - | In: $0.88, Out: $0.88 |
 | deepseek/deepseek-prover-v2 | openrouter | 163840 | - | In: $0.50, Out: $2.18 |
+| deepseek/deepseek-r1-0528-qwen3-8b | openrouter | 32768 | 32768 | In: $0.03, Out: $0.11 |
+| deepseek/deepseek-r1-0528-qwen3-8b:free | openrouter | 131072 | - | - |
 | deepseek/deepseek-chat | openrouter | 163840 | 163840 | In: $0.30, Out: $0.85 |
 | deepseek/deepseek-chat-v3-0324 | openrouter | 163840 | 163840 | In: $0.24, Out: $0.84 |
 | deepseek/deepseek-chat-v3-0324:free | openrouter | 163840 | - | - |
-| deepseek/deepseek-chat-v3.1 | openrouter | 163840 | 163840 | In: $0.20, Out: $0.80 |
+| deepseek/deepseek-chat-v3.1 | openrouter | 131072 | 32768 | In: $0.27, Out: $1.00 |
 | deepseek/deepseek-chat-v3.1:free | openrouter | 163800 | - | - |
 | deepseek/deepseek-v3.1-terminus | openrouter | 163840 | 163840 | In: $0.23, Out: $0.90 |
 | deepseek/deepseek-v3.2-exp | openrouter | 163840 | - | In: $0.27, Out: $0.40 |
-| deepseek/deepseek-r1-0528-qwen3-8b | openrouter | 32768 | 32768 | In: $0.03, Out: $0.11 |
-| deepseek/deepseek-r1-0528-qwen3-8b:free | openrouter | 131072 | - | - |
 | deepseek/deepseek-r1 | openrouter | 163840 | 163840 | In: $0.40, Out: $2.00 |
 | deepseek/deepseek-r1:free | openrouter | 163840 | - | - |
 | deepseek/deepseek-r1-0528 | openrouter | 163840 | 163840 | In: $0.40, Out: $1.75 |
@@ -1800,15 +1804,14 @@ redirect_from:
 | google/gemma-3n-e2b-it:free | openrouter | 8192 | 2048 | - |
 | google/gemma-3n-e4b-it | openrouter | 32768 | - | In: $0.02, Out: $0.04 |
 | google/gemma-3n-e4b-it:free | openrouter | 8192 | 2048 | - |
+| ibm-granite/granite-4.0-h-micro | openrouter | 131000 | - | In: $0.02, Out: $0.11 |
 | inception/mercury | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | inception/mercury-coder | openrouter | 128000 | 16384 | In: $0.25, Out: $1.00 |
 | inflection/inflection-3-pi | openrouter | 8000 | 1024 | In: $2.50, Out: $10.00 |
 | inflection/inflection-3-productivity | openrouter | 8000 | 1024 | In: $2.50, Out: $10.00 |
-| liquid/lfm-3b | openrouter | 32768 | - | In: $0.02, Out: $0.02 |
-| liquid/lfm-7b | openrouter | 32768 | - | In: $0.01, Out: $0.01 |
 | meta-llama/llama-guard-3-8b | openrouter | 131072 | - | In: $0.02, Out: $0.06 |
 | anthracite-org/magnum-v2-72b | openrouter | 32768 | - | In: $3.00, Out: $3.00 |
-| anthracite-org/magnum-v4-72b | openrouter | 16384 | 2048 | In: $2.50, Out: $5.00 |
+| anthracite-org/magnum-v4-72b | openrouter | 16384 | 2048 | In: $3.00, Out: $5.00 |
 | mancer/weaver | openrouter | 8000 | 2000 | In: $1.12, Out: $1.12 |
 | meituan/longcat-flash-chat | openrouter | 131072 | 131072 | In: $0.15, Out: $0.75 |
 | meituan/longcat-flash-chat:free | openrouter | 131072 | 131072 | - |
@@ -1817,14 +1820,14 @@ redirect_from:
 | meta-llama/llama-3.1-405b | openrouter | 32768 | 32768 | In: $4.00, Out: $4.00 |
 | meta-llama/llama-3.1-405b-instruct | openrouter | 32768 | 16384 | In: $0.80, Out: $0.80 |
 | meta-llama/llama-3.1-70b-instruct | openrouter | 131072 | - | In: $0.40, Out: $0.40 |
-| meta-llama/llama-3.1-8b-instruct | openrouter | 131072 | 16384 | In: $0.02, Out: $0.03 |
+| meta-llama/llama-3.1-8b-instruct | openrouter | 16384 | 16384 | In: $0.02, Out: $0.03 |
 | meta-llama/llama-3.2-11b-vision-instruct | openrouter | 131072 | 16384 | In: $0.05, Out: $0.05 |
 | meta-llama/llama-3.2-1b-instruct | openrouter | 131072 | 16384 | In: $0.01, Out: $0.01 |
 | meta-llama/llama-3.2-3b-instruct | openrouter | 16384 | 16384 | In: $0.02, Out: $0.02 |
 | meta-llama/llama-3.2-3b-instruct:free | openrouter | 131072 | - | - |
 | meta-llama/llama-3.2-90b-vision-instruct | openrouter | 32768 | 16384 | In: $0.35, Out: $0.40 |
 | meta-llama/llama-3.3-70b-instruct | openrouter | 131072 | 16384 | In: $0.13, Out: $0.38 |
-| meta-llama/llama-3.3-70b-instruct:free | openrouter | 65536 | - | - |
+| meta-llama/llama-3.3-70b-instruct:free | openrouter | 131072 | 2048 | - |
 | meta-llama/llama-3.3-8b-instruct:free | openrouter | 128000 | 4028 | - |
 | meta-llama/llama-4-maverick | openrouter | 1048576 | 16384 | In: $0.15, Out: $0.60 |
 | meta-llama/llama-4-maverick:free | openrouter | 128000 | 4028 | - |
@@ -1848,12 +1851,12 @@ redirect_from:
 | mistralai/mistral-small | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | mistralai/mistral-tiny | openrouter | 32768 | - | In: $0.25, Out: $0.25 |
 | mistralai/codestral-2501 | openrouter | 262144 | - | In: $0.30, Out: $0.90 |
-| mistralai/codestral-2508 | openrouter | 32768 | - | In: $0.30, Out: $0.90 |
+| mistralai/codestral-2508 | openrouter | 256000 | - | In: $0.30, Out: $0.90 |
 | mistralai/devstral-medium | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/devstral-small | openrouter | 128000 | - | In: $0.07, Out: $0.28 |
 | mistralai/devstral-small-2505 | openrouter | 131072 | 131072 | In: $0.05, Out: $0.22 |
 | mistralai/devstral-small-2505:free | openrouter | 32768 | - | - |
-| mistralai/magistral-medium-2506 | openrouter | 32768 | 40000 | In: $2.00, Out: $5.00 |
+| mistralai/magistral-medium-2506 | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | mistralai/magistral-medium-2506:thinking | openrouter | 40960 | 40000 | In: $2.00, Out: $5.00 |
 | mistralai/magistral-small-2506 | openrouter | 40000 | 40000 | In: $0.50, Out: $1.50 |
 | mistralai/ministral-3b | openrouter | 32768 | - | In: $0.04, Out: $0.04 |
@@ -1863,7 +1866,7 @@ redirect_from:
 | mistralai/mistral-7b-instruct-v0.1 | openrouter | 2824 | - | In: $0.11, Out: $0.19 |
 | mistralai/mistral-7b-instruct-v0.2 | openrouter | 32768 | - | In: $0.20, Out: $0.20 |
 | mistralai/mistral-7b-instruct-v0.3 | openrouter | 32768 | 16384 | In: $0.03, Out: $0.05 |
-| mistralai/mistral-medium-3 | openrouter | 32768 | - | In: $0.40, Out: $2.00 |
+| mistralai/mistral-medium-3 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/mistral-medium-3.1 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/mistral-nemo | openrouter | 131072 | 16384 | In: $0.02, Out: $0.04 |
 | mistralai/mistral-nemo:free | openrouter | 131072 | 128000 | - |
@@ -1876,7 +1879,7 @@ redirect_from:
 | mistralai/mixtral-8x22b-instruct | openrouter | 65536 | - | In: $2.00, Out: $6.00 |
 | mistralai/mixtral-8x7b-instruct | openrouter | 32768 | 16384 | In: $0.54, Out: $0.54 |
 | mistralai/pixtral-12b | openrouter | 32768 | - | In: $0.10, Out: $0.10 |
-| mistralai/pixtral-large-2411 | openrouter | 32768 | - | In: $2.00, Out: $6.00 |
+| mistralai/pixtral-large-2411 | openrouter | 131072 | - | In: $2.00, Out: $6.00 |
 | mistralai/mistral-saba | openrouter | 32768 | - | In: $0.20, Out: $0.60 |
 | moonshotai/kimi-dev-72b | openrouter | 131072 | 131072 | In: $0.29, Out: $1.15 |
 | moonshotai/kimi-dev-72b:free | openrouter | 131072 | - | - |
@@ -1885,7 +1888,7 @@ redirect_from:
 | moonshotai/kimi-k2-0905 | openrouter | 262144 | 262144 | In: $0.39, Out: $1.90 |
 | morph/morph-v3-fast | openrouter | 81920 | 38000 | In: $0.80, Out: $1.20 |
 | morph/morph-v3-large | openrouter | 81920 | 38000 | In: $0.90, Out: $1.90 |
-| gryphe/mythomax-l2-13b | openrouter | 4096 | 4096 | In: $0.05, Out: $0.09 |
+| gryphe/mythomax-l2-13b | openrouter | 4096 | 4096 | In: $0.06, Out: $0.06 |
 | nvidia/llama-3.1-nemotron-70b-instruct | openrouter | 131072 | 16384 | In: $0.60, Out: $0.60 |
 | nvidia/llama-3.1-nemotron-ultra-253b-v1 | openrouter | 131072 | - | In: $0.60, Out: $1.80 |
 | nvidia/llama-3.3-nemotron-super-49b-v1.5 | openrouter | 131072 | - | In: $0.10, Out: $0.40 |
@@ -1897,6 +1900,7 @@ redirect_from:
 | nousresearch/deephermes-3-llama-3-8b-preview:free | openrouter | 131072 | - | - |
 | nousresearch/deephermes-3-mistral-24b-preview | openrouter | 32768 | 32768 | In: $0.15, Out: $0.59 |
 | nousresearch/hermes-3-llama-3.1-405b | openrouter | 131072 | 16384 | In: $1.00, Out: $1.00 |
+| nousresearch/hermes-3-llama-3.1-405b:free | openrouter | 131072 | - | - |
 | nousresearch/hermes-3-llama-3.1-70b | openrouter | 65536 | - | In: $0.30, Out: $0.30 |
 | nousresearch/hermes-4-405b | openrouter | 131072 | 131072 | In: $0.30, Out: $1.20 |
 | nousresearch/hermes-4-70b | openrouter | 131072 | 131072 | In: $0.11, Out: $0.38 |
@@ -1971,12 +1975,11 @@ redirect_from:
 | qwen/qwen2.5-vl-32b-instruct | openrouter | 16384 | 16384 | In: $0.05, Out: $0.22 |
 | qwen/qwen2.5-vl-32b-instruct:free | openrouter | 16384 | - | - |
 | qwen/qwen2.5-vl-72b-instruct | openrouter | 32768 | 32768 | In: $0.08, Out: $0.33 |
-| qwen/qwen2.5-vl-72b-instruct:free | openrouter | 131072 | 2048 | - |
 | qwen/qwen-2.5-vl-7b-instruct | openrouter | 32768 | - | In: $0.20, Out: $0.20 |
 | qwen/qwen3-14b | openrouter | 40960 | 40960 | In: $0.05, Out: $0.22 |
 | qwen/qwen3-14b:free | openrouter | 40960 | - | - |
 | qwen/qwen3-235b-a22b | openrouter | 40960 | 40960 | In: $0.18, Out: $0.54 |
-| qwen/qwen3-235b-a22b:free | openrouter | 131072 | - | - |
+| qwen/qwen3-235b-a22b:free | openrouter | 40960 | - | - |
 | qwen/qwen3-235b-a22b-2507 | openrouter | 262144 | 262144 | In: $0.08, Out: $0.55 |
 | qwen/qwen3-235b-a22b-thinking-2507 | openrouter | 262144 | 262144 | In: $0.11, Out: $0.60 |
 | qwen/qwen3-30b-a3b | openrouter | 40960 | 40960 | In: $0.06, Out: $0.22 |
@@ -1989,17 +1992,17 @@ redirect_from:
 | qwen/qwen3-8b:free | openrouter | 40960 | 40960 | - |
 | qwen/qwen3-coder-30b-a3b-instruct | openrouter | 262144 | 262144 | In: $0.06, Out: $0.25 |
 | qwen/qwen3-coder | openrouter | 262144 | 262144 | In: $0.22, Out: $0.95 |
-| qwen/qwen3-coder:free | openrouter | 262144 | - | - |
+| qwen/qwen3-coder:free | openrouter | 262000 | 262000 | - |
 | qwen/qwen3-coder-flash | openrouter | 128000 | 65536 | In: $0.30, Out: $1.50, Cache: $0.08 |
 | qwen/qwen3-coder-plus | openrouter | 128000 | 65536 | In: $1.00, Out: $5.00, Cache: $0.10 |
 | qwen/qwen3-max | openrouter | 256000 | 32768 | In: $1.20, Out: $6.00, Cache: $0.24 |
 | qwen/qwen3-next-80b-a3b-instruct | openrouter | 262144 | 262144 | In: $0.10, Out: $0.80 |
 | qwen/qwen3-next-80b-a3b-thinking | openrouter | 262144 | - | In: $0.14, Out: $1.20 |
-| qwen/qwen3-vl-235b-a22b-instruct | openrouter | 131072 | - | In: $0.30, Out: $1.20 |
+| qwen/qwen3-vl-235b-a22b-instruct | openrouter | 262144 | 262144 | In: $0.30, Out: $1.20 |
 | qwen/qwen3-vl-235b-a22b-thinking | openrouter | 262144 | 262144 | In: $0.30, Out: $1.20 |
-| qwen/qwen3-vl-30b-a3b-instruct | openrouter | 262144 | - | In: $0.29, Out: $0.99 |
-| qwen/qwen3-vl-30b-a3b-thinking | openrouter | 262144 | 262144 | In: $0.29, Out: $1.00 |
-| qwen/qwen3-vl-8b-instruct | openrouter | 262144 | - | In: $0.18, Out: $0.69 |
+| qwen/qwen3-vl-30b-a3b-instruct | openrouter | 131072 | 32768 | In: $0.20, Out: $0.70 |
+| qwen/qwen3-vl-30b-a3b-thinking | openrouter | 131072 | 32768 | In: $0.20, Out: $1.00 |
+| qwen/qwen3-vl-8b-instruct | openrouter | 131072 | 32768 | In: $0.08, Out: $0.50 |
 | qwen/qwen3-vl-8b-thinking | openrouter | 256000 | 32768 | In: $0.18, Out: $2.10 |
 | undi95/remm-slerp-l2-13b | openrouter | 6144 | - | In: $0.45, Out: $0.65 |
 | relace/relace-apply-3 | openrouter | 256000 | 128000 | In: $0.85, Out: $1.25 |
@@ -2031,8 +2034,8 @@ redirect_from:
 | cognitivecomputations/dolphin-mistral-24b-venice-edition:free | openrouter | 32768 | - | - |
 | microsoft/wizardlm-2-8x22b | openrouter | 65536 | 16384 | In: $0.48, Out: $0.48 |
 | z-ai/glm-4-32b | openrouter | 128000 | - | In: $0.10, Out: $0.10 |
-| z-ai/glm-4.5 | openrouter | 131072 | 131072 | In: $0.35, Out: $1.55 |
-| z-ai/glm-4.5-air | openrouter | 131072 | 131072 | In: $0.14, Out: $0.86 |
+| z-ai/glm-4.5 | openrouter | 131072 | 131072 | In: $0.35, Out: $1.50 |
+| z-ai/glm-4.5-air | openrouter | 131072 | 98304 | In: $0.13, Out: $0.85 |
 | z-ai/glm-4.5-air:free | openrouter | 131072 | 131072 | - |
 | z-ai/glm-4.5v | openrouter | 65536 | 16384 | In: $0.60, Out: $1.80, Cache: $0.11 |
 | z-ai/glm-4.6 | openrouter | 202752 | 202752 | In: $0.50, Out: $1.75 |
@@ -2080,16 +2083,13 @@ redirect_from:
 | textembedding-gecko | vertexai | - | - | - |
 
 
-### Batch Processing (143)
+### Batch Processing (140)
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | us.anthropic.claude-3-7-sonnet-20250219-v1:0 | bedrock | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | embedding-001 | gemini | 2048 | 1 | - |
 | embedding-gecko-001 | gemini | 1024 | 1 | - |
@@ -2231,24 +2231,19 @@ redirect_from:
 
 ## Models by Modality
 
-### Vision Models (258)
+### Vision Models (252)
 
 Models that can process images:
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
 | claude-haiku-4-5 | anthropic | 200000 | 64000 | In: $1.00, Out: $5.00 |
 | claude-haiku-4-5-20251001 | anthropic | 200000 | 64000 | In: $1.00, Out: $5.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
-| claude-opus-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | claude-opus-4-1 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00 |
 | claude-opus-4-1-20250805 | anthropic | 200000 | 32000 | In: $15.00, Out: $75.00 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-sonnet-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | claude-sonnet-4-5 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
 | claude-sonnet-4-5-20250929 | anthropic | 200000 | 64000 | In: $3.00, Out: $15.00 |
 | anthropic.claude-v2:0:100k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
@@ -2356,7 +2351,7 @@ Models that can process images:
 | gpt-5-pro-2025-10-06 | openai | 400000 | 272000 | In: $15.00, Out: $120.00 |
 | gpt-5-codex | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
 | omni-moderation-2024-09-26 | openai | - | - | - |
-| sora-2 | openai | - | - | Out: $100000.00 |
+| sora-2 | openai | - | - | Out: $0.10 |
 | sora-2-pro | openai | - | - | - |
 | codex-mini-latest | openai | 200000 | 100000 | In: $1.50, Out: $6.00, Cache: $0.38 |
 | computer-use-preview | openai | 8192 | 1024 | In: $3.00, Out: $12.00 |
@@ -2381,14 +2376,14 @@ Models that can process images:
 | o4-mini-deep-research | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | o4-mini-deep-research-2025-06-26 | openai | 200000 | 100000 | In: $2.00, Out: $8.00, Cache: $0.50 |
 | omni-moderation-latest | openai | - | - | - |
-| allenai/molmo-7b-d | openrouter | 4096 | 4096 | In: $0.10, Out: $0.20 |
 | amazon/nova-lite-v1 | openrouter | 300000 | 5120 | In: $0.06, Out: $0.24 |
 | amazon/nova-pro-v1 | openrouter | 300000 | 5120 | In: $0.80, Out: $3.20 |
+| openrouter/andromeda-alpha | openrouter | 128000 | 128000 | - |
 | anthropic/claude-3-haiku | openrouter | 200000 | 4096 | In: $0.25, Out: $1.25, Cache: $0.03 |
 | anthropic/claude-3-opus | openrouter | 200000 | 4096 | In: $15.00, Out: $75.00, Cache: $1.50 |
 | anthropic/claude-3.5-haiku | openrouter | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $0.08 |
 | anthropic/claude-3.5-haiku-20241022 | openrouter | 200000 | 8192 | In: $0.80, Out: $4.00, Cache: $0.08 |
-| anthropic/claude-3.5-sonnet | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00, Cache: $0.30 |
+| anthropic/claude-3.5-sonnet | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | anthropic/claude-3.5-sonnet-20240620 | openrouter | 200000 | 8192 | In: $3.00, Out: $15.00, Cache: $0.30 |
 | anthropic/claude-3.7-sonnet | openrouter | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $0.30 |
 | anthropic/claude-3.7-sonnet:thinking | openrouter | 200000 | 64000 | In: $3.00, Out: $15.00, Cache: $0.30 |
@@ -2430,14 +2425,14 @@ Models that can process images:
 | meta-llama/llama-guard-4-12b | openrouter | 163840 | - | In: $0.18, Out: $0.18 |
 | microsoft/phi-4-multimodal-instruct | openrouter | 131072 | - | In: $0.05, Out: $0.10 |
 | minimax/minimax-01 | openrouter | 1000192 | 1000192 | In: $0.20, Out: $1.10 |
-| mistralai/mistral-medium-3 | openrouter | 32768 | - | In: $0.40, Out: $2.00 |
+| mistralai/mistral-medium-3 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/mistral-medium-3.1 | openrouter | 131072 | - | In: $0.40, Out: $2.00 |
 | mistralai/mistral-small-3.1-24b-instruct | openrouter | 128000 | - | In: $0.05, Out: $0.10 |
 | mistralai/mistral-small-3.1-24b-instruct:free | openrouter | 128000 | - | - |
 | mistralai/mistral-small-3.2-24b-instruct | openrouter | 131072 | 131072 | In: $0.06, Out: $0.18 |
 | mistralai/mistral-small-3.2-24b-instruct:free | openrouter | 131072 | - | - |
 | mistralai/pixtral-12b | openrouter | 32768 | - | In: $0.10, Out: $0.10 |
-| mistralai/pixtral-large-2411 | openrouter | 32768 | - | In: $2.00, Out: $6.00 |
+| mistralai/pixtral-large-2411 | openrouter | 131072 | - | In: $2.00, Out: $6.00 |
 | openai/chatgpt-4o-latest | openrouter | 128000 | 16384 | In: $5.00, Out: $15.00 |
 | openai/codex-mini | openrouter | 200000 | 100000 | In: $1.50, Out: $6.00, Cache: $0.38 |
 | openai/gpt-4-turbo | openrouter | 128000 | 4096 | In: $10.00, Out: $30.00 |
@@ -2476,13 +2471,12 @@ Models that can process images:
 | qwen/qwen2.5-vl-32b-instruct | openrouter | 16384 | 16384 | In: $0.05, Out: $0.22 |
 | qwen/qwen2.5-vl-32b-instruct:free | openrouter | 16384 | - | - |
 | qwen/qwen2.5-vl-72b-instruct | openrouter | 32768 | 32768 | In: $0.08, Out: $0.33 |
-| qwen/qwen2.5-vl-72b-instruct:free | openrouter | 131072 | 2048 | - |
 | qwen/qwen-2.5-vl-7b-instruct | openrouter | 32768 | - | In: $0.20, Out: $0.20 |
-| qwen/qwen3-vl-235b-a22b-instruct | openrouter | 131072 | - | In: $0.30, Out: $1.20 |
+| qwen/qwen3-vl-235b-a22b-instruct | openrouter | 262144 | 262144 | In: $0.30, Out: $1.20 |
 | qwen/qwen3-vl-235b-a22b-thinking | openrouter | 262144 | 262144 | In: $0.30, Out: $1.20 |
-| qwen/qwen3-vl-30b-a3b-instruct | openrouter | 262144 | - | In: $0.29, Out: $0.99 |
-| qwen/qwen3-vl-30b-a3b-thinking | openrouter | 262144 | 262144 | In: $0.29, Out: $1.00 |
-| qwen/qwen3-vl-8b-instruct | openrouter | 262144 | - | In: $0.18, Out: $0.69 |
+| qwen/qwen3-vl-30b-a3b-instruct | openrouter | 131072 | 32768 | In: $0.20, Out: $0.70 |
+| qwen/qwen3-vl-30b-a3b-thinking | openrouter | 131072 | 32768 | In: $0.20, Out: $1.00 |
+| qwen/qwen3-vl-8b-instruct | openrouter | 131072 | 32768 | In: $0.08, Out: $0.50 |
 | qwen/qwen3-vl-8b-thinking | openrouter | 256000 | 32768 | In: $0.18, Out: $2.10 |
 | stepfun-ai/step3 | openrouter | 65536 | 65536 | In: $0.57, Out: $1.42 |
 | thudm/glm-4.1v-9b-thinking | openrouter | 65536 | 8000 | In: $0.04, Out: $0.14 |
@@ -2553,20 +2547,15 @@ Models that can process audio:
 | gemini-2.5-pro | vertexai | 1048576 | 65536 | In: $1.25, Out: $10.00, Cache: $0.12 |
 
 
-### PDF Models (74)
+### PDF Models (69)
 
 Models that can process PDF documents:
 
 | Model | Provider | Context | Max Output | Standard Pricing (per 1M tokens) |
 | :-- | :-- | --: | --: | :-- |
-| claude-3-haiku-20240307 | anthropic | 200000 | 4096 | In: $0.25, Out: $1.25 |
-| claude-3-5-haiku-20241022 | anthropic | 200000 | 8192 | In: $0.80, Out: $4.00 |
 | claude-3-opus-20240229 | anthropic | 200000 | 4096 | In: $15.00, Out: $75.00 |
-| claude-opus-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20241022 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
 | claude-3-5-sonnet-20240620 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-3-7-sonnet-20250219 | anthropic | 200000 | 8192 | In: $3.00, Out: $15.00 |
-| claude-sonnet-4-20250514 | anthropic | 200000 | 4096 | In: $3.00, Out: $15.00 |
 | anthropic.claude-v2:0:100k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:0:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
 | anthropic.claude-v2:1:18k | bedrock | 200000 | 4096 | In: $8.00, Out: $24.00 |
@@ -2697,7 +2686,7 @@ Models that generate embeddings:
 | gpt-5-pro | openai | 400000 | 272000 | In: $15.00, Out: $120.00 |
 | gpt-5-pro-2025-10-06 | openai | 400000 | 272000 | In: $15.00, Out: $120.00 |
 | gpt-5-codex | openai | 400000 | 128000 | In: $1.25, Out: $10.00, Cache: $0.12 |
-| sora-2 | openai | - | - | Out: $100000.00 |
+| sora-2 | openai | - | - | Out: $0.10 |
 | sora-2-pro | openai | - | - | - |
 | tts-1 | openai | - | - | In: $15.00 |
 | tts-1-hd | openai | - | - | In: $30.00 |
