@@ -5,6 +5,7 @@ nav_order: 6
 description: Upgrade guides for changes in data formats
 redirect_from:
   - /upgrading-to-1-7
+  - /upgrading-to-1-7/
 ---
 
 # {{ page.title }}
