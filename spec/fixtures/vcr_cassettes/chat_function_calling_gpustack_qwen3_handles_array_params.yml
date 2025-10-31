@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<GPUSTACK_API_BASE>/chat/completions"
+    body:
+      encoding: UTF-8
+      string: '{"model":"qwen3","messages":[{"role":"user","content":"Call the array
+        params tool with tags [\"red\",\"blue\"] and tell me the combined tags."}],"stream":false,"tools":[{"type":"function","function":{"name":"array_params","description":"Uses
+        params DSL array support","parameters":{"type":"object","properties":{"tags":{"type":"array","description":"List
+        of tags to combine","items":{"type":"string"}}},"required":["tags"],"additionalProperties":false,"strict":true,"$defs":{}}}}],"enable_thinking":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 30 Oct 2025 16:54:43 GMT
+      - Thu, 30 Oct 2025 16:54:44 GMT
+      Server:
+      - uvicorn
+      - uvicorn
+      Keep-Alive:
+      - timeout=15, max=100
+      Content-Length:
+      - '814'
+      Content-Type:
+      - application/json
+      X-Request-Accepted-At:
+      - "<X_REQUEST_ID>"
+      X-Request-Id:
+      - "<X_REQUEST_ID>"
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"tags\":[\"red\",\"blue\"]}","name":"array_params"},"id":"call-CVoDMyzv6rACH2TYb921C3PhymuxSRBX","type":"function"}]}}],"created":1761843286,"id":"chatcmpl-U86pCNFRWqmmZ9gh2Q65DEyFxN7Ww6sv","model":"qwen3","object":"chat.completion","usage":{"completion_tokens":193,"completion_tokens_details":{"accepted_prediction_tokens":0,"reasoning_tokens":166,"rejected_prediction_tokens":0},"draft_tokens":0,"draft_tokens_acceptance":0.0,"prompt_tokens":242,"prompt_tokens_details":{"cached_tokens":0},"prompt_tokens_per_second":1155.4732188046105,"time_per_output_token_ms":9.245518134715025,"time_to_first_token_ms":209.438,"tokens_per_second":108.16051468713309,"total_tokens":435}}'
+  recorded_at: Thu, 30 Oct 2025 16:54:46 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"Call the any-of params
+        tool for task \"Review PR\" with status \"pending\" and report the result."}]}],"generationConfig":{},"tools":[{"functionDeclarations":[{"name":"any_of_params","description":"Uses
+        params DSL any_of support","parameters":{"type":"OBJECT","properties":{"task":{"type":"STRING","description":"Task
+        description"},"status":{"type":"STRING","description":"Optional task status","enum":["pending","done"],"nullable":true}},"required":["task","status"]}}]}]}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      X-Goog-Api-Key:
+      - "<GEMINI_API_KEY>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Thu, 30 Oct 2025 16:55:02 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=1734
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "functionCall": {
+                      "name": "any_of_params",
+                      "args": {
+                        "status": "pending",
+                        "task": "Review PR"
+                      }
+                    },
+                    "thoughtSignature": "Cv8CAdHtim/Ku+1BwmY9AyM6SVJrUCbQfqxW0dvUltOn//Vmwq6UDpHWbU0Epmny53X5OqoEcWLZHoA6i15q+bWBXbpgSu4X4bqdasnoOdzj79awci9u/r/wSRLKU7jSA/NeY8rqSz8fbJY+KROHTa1FHhNXtRS/TFKwOOcw6bqwtiLTCLxDfiMERfThyiTg+igJGDpcNNYm8dEnIUhUUgUSPBtX0zzvJ2wD1NOoIuhwQyo0z3+XXUqT4TKtBdPuK7tzqJE6ncqJEfFJmiCiHbCNE69W8nWFajQ791kI68S4ONuTsNmAJZ7hkDX3EQP0usYVFjP/Dug/75rGo5sLYGYVpFnn+kCXR1cwl7Qdo13L3jdG+uGYg2gIw64rj6uvA5/9RDhb41C+w0y6/yIQOgyqejyvQ7W0bbEAeJgordCae7lohtNfTE6Gkxj+B+WpG2GccxMaVlH2VSdfH4pK97SysFldle6PDSHIv7YD4zPzscNUs0+CfSPlDgkizdhsxyc="
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "index": 0,
+              "finishMessage": "Model generated function call(s)."
+            }
+          ],
+          "usageMetadata": {
+            "promptTokenCount": 84,
+            "candidatesTokenCount": 23,
+            "totalTokenCount": 211,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 84
+              }
+            ],
+            "thoughtsTokenCount": 104
+          },
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "ZpgDaZz8JN_UvdIPjdjV6AQ"
+        }
+  recorded_at: Thu, 30 Oct 2025 16:55:02 GMT
+recorded_with: VCR 6.3.1

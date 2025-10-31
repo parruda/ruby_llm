@@ -20,12 +20,12 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Pragma:
-      - no-cache
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
       Date:
-      - Mon, 20 Oct 2025 19:22:47 GMT
+      - Thu, 30 Oct 2025 13:40:18 GMT
       Expires:
       - Mon, 01 Jan 1990 00:00:00 GMT
       Content-Type:
@@ -52,11 +52,11 @@ http_interactions:
         {
           "access_token": "<GOOGLE_ACCESS_TOKEN>",
           "expires_in": 3599,
-          "scope": "https://www.googleapis.com/auth/sqlservice.login https://www.googleapis.com/auth/userinfo.email openid https://www.googleapis.com/auth/cloud-platform",
+          "scope": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.login https://www.googleapis.com/auth/userinfo.email openid",
           "token_type": "Bearer",
           "id_token": "<GOOGLE_ID_TOKEN>"
         }
-  recorded_at: Mon, 20 Oct 2025 19:22:47 GMT
+  recorded_at: Thu, 30 Oct 2025 13:40:18 GMT
 - request:
     method: post
     uri: https://<GOOGLE_CLOUD_LOCATION>-aiplatform.googleapis.com/v1beta1/projects/<GOOGLE_CLOUD_PROJECT>/locations/<GOOGLE_CLOUD_LOCATION>/publishers/google/models/gemini-2.5-flash:generateContent
@@ -90,7 +90,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 20 Oct 2025 19:22:48 GMT
+      - Thu, 30 Oct 2025 13:40:19 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -120,18 +120,18 @@ http_interactions:
                         "latitude": "52.5200"
                       }
                     },
-                    "thoughtSignature": "CpEEAePx/14SkgitPNiMP7Nbo2i9C5ZJha/Iyivm7p5g4MYuNN18yHqBc56XNXeih/D6JatQ//7sNQErHh+FttoDgndRAKAbZ3ramBywAfJWGZ8Xld9xEIe1nzP3m0sxIlgdg7wMZLnRylOM5cRR+oullPhekKRTa2iocrb0DJ7Eb0EQpaznLx33H3pl3fZt8uhqq738vcyDxngtNAZ+1cPEWRlOgh3EYKXAHOhmL6DGxN69xQB2bxFt0X/IdpMhGVI4sVJDVbEjxvuDCnGRbEzpkbza0p89pgnJdTreGIUopHBMBhB4OaM5eEEhFoBjcgL37BtGvqq8inIlaVcckIkH3MmTLbxed+eaf0SrhLbsfHE13bhz+nqJ8K4lUYylZgdztDcvgzsRe5sJGE4AljW4qARigqevbtloYyjGQElMqj3FMVFLf28IROk77pd+D1VGZW13sCBgVK15mFoIj4c0As7emIZ94QJPcIKvQMFtd5EUolxfnh3k3C3KmcvV9Y3g/LASe56PBFQo8nJJlSDSzg63fQjoI7JkMKiwCR6ufxe0fzbXCjDqPnQ0IVjHzj2c5+TvzR1zalulcemnErWxOKqAqzhVBYnZdjKcc8uHlhNtfxRV1/L+jY4ip1R8FGafIrb2xXf56BMG71BSAEIdpWtKZdaxI8CXIDowsBtOYKx+tQSfdh0+WWJ06QYjipenNw=="
+                    "thoughtSignature": "CogEAePx/152AVrfXdDHfNxMx3R1tndv7gvAcXqZW6hyNBz9dItKPNaWnAELEX0Y6x6caDcdCAgROFj0UaC2q/z0DT9TJoXyG9sG7bUJ+V3O+CJAmc/lZTCW886uuzvKfVPxQGb8GmjCioSTlFE/0j1CVfbIbam2Ux9nQHj9DXBc8pNBZXk+H51ZuL93nqQrDkzi7/UQMd4r+3AEA4wgx5vcHH6WxBBrHQGqx3duTp6ENkItuXiOVycFr5pTPV4vp2RkD+8cCYDMBGJsSlAF+5fn6faPmoE8L1jlfQk9Nsg9edeSuyLSZaeb7tHCSjfcl/0fGvYkd64JlDvDzz6SmpH++9HYK8gy0ABPiw3tPTiLHGtG1nkV/IZooX4ptDcjDN/dxY9r17RdE84fP8nnY1EcGkRd6XNJAnlYvXd/yH19zTRak3CS25YHhgGQQkMg6bq0p6ChBZy43p3UPQWXn8AuQIdLDO09G5+RmSN3hCKLO7w369jNLTbcOUnH7fIBSgWLNSVt1uZFHg12n1YAvpZRZd8MazuzZWXuCDf2Vp9DNLDMQ/fcgybzWobnnSQPRlHCmZHqWdeKd5arsp8FYRm1ZUk9YEocp5aQ+9pyCVUa6MQ85Q9gqtMfswpMUi0M7t5pv2K1K2RAzI2wRL5PslzdDrYHzwEVyy+OvuN40IxQY7kjcKK8HNlChA=="
                   }
                 ]
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.611748078290154
+              "avgLogprobs": -0.46429042255177216
             }
           ],
           "usageMetadata": {
             "promptTokenCount": 70,
             "candidatesTokenCount": 17,
-            "totalTokenCount": 188,
+            "totalTokenCount": 186,
             "trafficType": "ON_DEMAND",
             "promptTokensDetails": [
               {
@@ -145,13 +145,13 @@ http_interactions:
                 "tokenCount": 17
               }
             ],
-            "thoughtsTokenCount": 101
+            "thoughtsTokenCount": 99
           },
           "modelVersion": "gemini-2.5-flash",
-          "createTime": "2025-10-20T19:22:47.576119Z",
-          "responseId": "B4z2aPeUI9-ovdIP7aKYyAI"
+          "createTime": "2025-10-30T13:40:18.718724Z",
+          "responseId": "wmoDaYTvK_yut_gPgaLf6Qw"
         }
-  recorded_at: Mon, 20 Oct 2025 19:22:48 GMT
+  recorded_at: Thu, 30 Oct 2025 13:40:19 GMT
 - request:
     method: post
     uri: https://oauth2.googleapis.com/token
@@ -174,12 +174,12 @@ http_interactions:
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Expires:
-      - Mon, 01 Jan 1990 00:00:00 GMT
-      Date:
-      - Mon, 20 Oct 2025 19:22:48 GMT
       Pragma:
       - no-cache
+      Date:
+      - Thu, 30 Oct 2025 13:40:19 GMT
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
       Content-Type:
       - application/json; charset=utf-8
       Vary:
@@ -204,18 +204,18 @@ http_interactions:
         {
           "access_token": "<GOOGLE_ACCESS_TOKEN>",
           "expires_in": 3599,
-          "scope": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.login https://www.googleapis.com/auth/userinfo.email openid",
+          "scope": "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.login openid",
           "token_type": "Bearer",
           "id_token": "<GOOGLE_ID_TOKEN>"
         }
-  recorded_at: Mon, 20 Oct 2025 19:22:48 GMT
+  recorded_at: Thu, 30 Oct 2025 13:40:19 GMT
 - request:
     method: post
     uri: https://<GOOGLE_CLOUD_LOCATION>-aiplatform.googleapis.com/v1beta1/projects/<GOOGLE_CLOUD_PROJECT>/locations/<GOOGLE_CLOUD_LOCATION>/publishers/google/models/gemini-2.5-flash:generateContent
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"What''s the weather in
-        Berlin? (52.5200, 13.4050)"}]},{"role":"model","parts":[{"functionCall":{"name":"weather","args":{"longitude":"13.4050","latitude":"52.5200"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"7c11e672-1882-4dd2-bf3c-c2e463fb9f03","response":{"name":"7c11e672-1882-4dd2-bf3c-c2e463fb9f03","content":[{"text":"Current
+        Berlin? (52.5200, 13.4050)"}]},{"role":"model","parts":[{"functionCall":{"name":"weather","args":{"longitude":"13.4050","latitude":"52.5200"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"4a8cd77d-9335-4baa-b4df-3de824cba7e0","response":{"name":"4a8cd77d-9335-4baa-b4df-3de824cba7e0","content":[{"text":"Current
         weather at 52.5200, 13.4050: 15°C, Wind: 10 km/h"}]}}}]}],"generationConfig":{},"tools":[{"functionDeclarations":[{"name":"weather","description":"Gets
         current weather for a location","parameters":{"type":"OBJECT","properties":{"latitude":{"type":"STRING","description":"Latitude
         (e.g., 52.5200)"},"longitude":{"type":"STRING","description":"Longitude (e.g.,
@@ -243,7 +243,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 20 Oct 2025 19:22:49 GMT
+      - Thu, 30 Oct 2025 13:40:20 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -259,6 +259,6 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        ewogICJjYW5kaWRhdGVzIjogWwogICAgewogICAgICAiY29udGVudCI6IHsKICAgICAgICAicm9sZSI6ICJtb2RlbCIsCiAgICAgICAgInBhcnRzIjogWwogICAgICAgICAgewogICAgICAgICAgICAidGV4dCI6ICJDdXJyZW50IHdlYXRoZXIgYXQgNTIuNTIwMCwgMTMuNDA1MDogMTXCsEMsIFdpbmQ6IDEwIGttL2giLAogICAgICAgICAgICAidGhvdWdodFNpZ25hdHVyZSI6ICJDb0FFQWVQeC8xNDJXbUpHdDU4aFN5alBVdjRzRVdYRDN6NDlZU0c0V2c1QzN6T1gwVlBCK1FaV2dlQy8zRi94Ykx6aHpzS1Q0WDlQa25EWW1zVHdjK1lwREZtbHRyaTh3Tmd4SW9TRThDTFJBemNGbDZkS1JzbTE5VzNyNjAyTlVFcmNVTkxWRzBIMktqeWw3UG1lcUJ4MGlxL2JrMzRyMjRjT0hrR3c3bE4zVnRwb1hqelhxUXZxQW9Pcm9wd255aXh6MTJDbHRSL3FRdXlSeHRERmpvM1czQWhmWU93VDlDV3BRRGJya3dmL2J5Rm9yeFlRODhjTG5wZVRSSkxBZ0NaWkIzcnlGamltOCtMMWFRVWxxWStDZUVjeXlYcFRTUzVHSXRWbWUzWHEwOGNZNzlld3grY2RKQ3BNR2RlWlhvaWl3SzA4bkh0Q1daelJESmNPeUN1ajNpTmtQMFJrbUFPY0MrTWtZKzBLRHJUWmsrQnBCc2c3a3B2YnJVTnoxL2NnQzJaNGIyN2RmV2tCUjBqU2ZCVFRnNzUyOHpneThQOTJXZmVoYXVnUmplaGdaQ0pTYXVwM1RFNDdtOXNXRjkwMmZyY3JlOHJJNjhJaW5ReGpaOVpJYWxWNCtPMkduQXhoejJjSFd5NE9Eb2M5a1p4dVJzTlJXSk5zTnY0dDhiZnUyVDJTeUJEV2QxR2NjRG9vMll4RXcrTjBvZzVFS1pON1E1Ykt6M3lKK0ltNHA5TU5jempTY3A4SnhGeHA2VkZqWDJqQ01Sd1RYNFZoU1ZBT0lFVDkrNFg0UUg1VGo2a21Zc0c5TW1SVUJpM3RNQi96amJzQmxqL1RPclNHNkc1ZjhTR0M4eTd1ODlOeGoxZmV1eGtWZm1LQVhWM2ZtVHdpQzVBZHBzak9mbUU9IgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgImZpbmlzaFJlYXNvbiI6ICJTVE9QIiwKICAgICAgImF2Z0xvZ3Byb2JzIjogLTEuMTIwOTc5MzA5MDgyMDMxMgogICAgfQogIF0sCiAgInVzYWdlTWV0YWRhdGEiOiB7CiAgICAicHJvbXB0VG9rZW5Db3VudCI6IDE5MSwKICAgICJjYW5kaWRhdGVzVG9rZW5Db3VudCI6IDM1LAogICAgInRvdGFsVG9rZW5Db3VudCI6IDM1MiwKICAgICJ0cmFmZmljVHlwZSI6ICJPTl9ERU1BTkQiLAogICAgInByb21wdFRva2Vuc0RldGFpbHMiOiBbCiAgICAgIHsKICAgICAgICAibW9kYWxpdHkiOiAiVEVYVCIsCiAgICAgICAgInRva2VuQ291bnQiOiAxOTEKICAgICAgfQogICAgXSwKICAgICJjYW5kaWRhdGVzVG9rZW5zRGV0YWlscyI6IFsKICAgICAgewogICAgICAgICJtb2RhbGl0eSI6ICJURVhUIiwKICAgICAgICAidG9rZW5Db3VudCI6IDM1CiAgICAgIH0KICAgIF0sCiAgICAidGhvdWdodHNUb2tlbkNvdW50IjogMTI2CiAgfSwKICAibW9kZWxWZXJzaW9uIjogImdlbWluaS0yLjUtZmxhc2giLAogICJjcmVhdGVUaW1lIjogIjIwMjUtMTAtMjBUMTk6MjI6NDguNDk1MDMwWiIsCiAgInJlc3BvbnNlSWQiOiAiQ0l6MmFMYWJIdXlodmRJUG03ZXI4QXMiCn0K
-  recorded_at: Mon, 20 Oct 2025 19:22:49 GMT
+        ewogICJjYW5kaWRhdGVzIjogWwogICAgewogICAgICAiY29udGVudCI6IHsKICAgICAgICAicm9sZSI6ICJtb2RlbCIsCiAgICAgICAgInBhcnRzIjogWwogICAgICAgICAgewogICAgICAgICAgICAidGV4dCI6ICJUaGUgd2VhdGhlciBpbiBCZXJsaW4gaXMgMTXCsEMgd2l0aCB3aW5kIGF0IDEwIGttL2guIgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgImZpbmlzaFJlYXNvbiI6ICJTVE9QIiwKICAgICAgImF2Z0xvZ3Byb2JzIjogLTAuMTA4MzkwOTc0OTk4NDc0MTIKICAgIH0KICBdLAogICJ1c2FnZU1ldGFkYXRhIjogewogICAgInByb21wdFRva2VuQ291bnQiOiAxODMsCiAgICAiY2FuZGlkYXRlc1Rva2VuQ291bnQiOiAyMCwKICAgICJ0b3RhbFRva2VuQ291bnQiOiAyMDMsCiAgICAidHJhZmZpY1R5cGUiOiAiT05fREVNQU5EIiwKICAgICJwcm9tcHRUb2tlbnNEZXRhaWxzIjogWwogICAgICB7CiAgICAgICAgIm1vZGFsaXR5IjogIlRFWFQiLAogICAgICAgICJ0b2tlbkNvdW50IjogMTgzCiAgICAgIH0KICAgIF0sCiAgICAiY2FuZGlkYXRlc1Rva2Vuc0RldGFpbHMiOiBbCiAgICAgIHsKICAgICAgICAibW9kYWxpdHkiOiAiVEVYVCIsCiAgICAgICAgInRva2VuQ291bnQiOiAyMAogICAgICB9CiAgICBdCiAgfSwKICAibW9kZWxWZXJzaW9uIjogImdlbWluaS0yLjUtZmxhc2giLAogICJjcmVhdGVUaW1lIjogIjIwMjUtMTAtMzBUMTM6NDA6MTkuNzU4NzMyWiIsCiAgInJlc3BvbnNlSWQiOiAidzJvRGFjeW5Mb0cybVBVUDhKbmZpQXMiCn0K
+  recorded_at: Thu, 30 Oct 2025 13:40:20 GMT
 recorded_with: VCR 6.3.1

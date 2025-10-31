@@ -7,10 +7,10 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"qwen3","messages":[{"role":"user","content":"What''s the
         best language to learn?"}],"stream":false,"tools":[{"type":"function","function":{"name":"best_language_to_learn","description":"Gets
-        the best language to learn","parameters":{"type":"object","properties":{},"required":[]}}}],"enable_thinking":false}'
+        the best language to learn","parameters":{"type":"object","properties":{},"required":[],"additionalProperties":false,"strict":true}}}],"enable_thinking":false}'
     headers:
       User-Agent:
-      - Faraday v2.13.4
+      - Faraday v2.14.0
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -25,24 +25,24 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 24 Sep 2025 14:58:56 GMT
+      - Thu, 30 Oct 2025 13:41:48 GMT
       Content-Length:
-      - '1089'
+      - '1088'
     body:
       encoding: UTF-8
-      string: '{"id":"chatcmpl-898","object":"chat.completion","created":1758725936,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+      string: '{"id":"chatcmpl-975","object":"chat.completion","created":1761831708,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
         the user is asking, \"What''s the best language to learn?\" I need to figure
-        out which function to use here. Let me check the tools provided.\n\nLooking
-        at the tools section, there''s a function called best_language_to_learn. Its
-        description says it gets the best language to learn, and it doesn''t require
-        any parameters. Since the user is asking exactly for that information, I should
-        call this function. \n\nNo parameters are needed, so the arguments object
-        will be empty. I''ll structure the tool call with the function name and an
-        empty arguments object. That should retrieve the necessary data to answer
-        the user''s query.\n\u003c/think\u003e\n\n","tool_calls":[{"id":"call_a89nx25a","index":0,"type":"function","function":{"name":"best_language_to_learn","arguments":"{}"}}]},"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":138,"completion_tokens":150,"total_tokens":288}}
+        out which tool to use here. Looking at the provided functions, there''s one
+        called best_language_to_learn. The description says it gets the best language
+        to learn, and it doesn''t require any parameters. Since the user''s question
+        is straightforward and matches the function''s purpose, I should call that
+        function. No arguments are needed, so the tool call will just have the name
+        and an empty arguments object. Let me make sure there''s no other function
+        available, but the tools section only lists this one. Alright, time to generate
+        the tool call.\n\u003c/think\u003e\n\n","tool_calls":[{"id":"call_68f04pvu","index":0,"type":"function","function":{"name":"best_language_to_learn","arguments":"{}"}}]},"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":138,"completion_tokens":152,"total_tokens":290}}
 
         '
-  recorded_at: Wed, 24 Sep 2025 14:58:56 GMT
+  recorded_at: Thu, 30 Oct 2025 13:41:48 GMT
 - request:
     method: post
     uri: "<OLLAMA_API_BASE>/chat/completions"
@@ -51,18 +51,18 @@ http_interactions:
       string: '{"model":"qwen3","messages":[{"role":"user","content":"What''s the
         best language to learn?"},{"role":"assistant","content":"<think>\nOkay, the
         user is asking, \"What''s the best language to learn?\" I need to figure out
-        which function to use here. Let me check the tools provided.\n\nLooking at
-        the tools section, there''s a function called best_language_to_learn. Its
-        description says it gets the best language to learn, and it doesn''t require
-        any parameters. Since the user is asking exactly for that information, I should
-        call this function. \n\nNo parameters are needed, so the arguments object
-        will be empty. I''ll structure the tool call with the function name and an
-        empty arguments object. That should retrieve the necessary data to answer
-        the user''s query.\n</think>\n\n","tool_calls":[{"id":"call_a89nx25a","type":"function","function":{"name":"best_language_to_learn","arguments":"{}"}}]},{"role":"tool","content":"Ruby","tool_call_id":"call_a89nx25a"}],"stream":false,"tools":[{"type":"function","function":{"name":"best_language_to_learn","description":"Gets
-        the best language to learn","parameters":{"type":"object","properties":{},"required":[]}}}],"enable_thinking":false}'
+        which tool to use here. Looking at the provided functions, there''s one called
+        best_language_to_learn. The description says it gets the best language to
+        learn, and it doesn''t require any parameters. Since the user''s question
+        is straightforward and matches the function''s purpose, I should call that
+        function. No arguments are needed, so the tool call will just have the name
+        and an empty arguments object. Let me make sure there''s no other function
+        available, but the tools section only lists this one. Alright, time to generate
+        the tool call.\n</think>\n\n","tool_calls":[{"id":"call_68f04pvu","type":"function","function":{"name":"best_language_to_learn","arguments":"{}"}}]},{"role":"tool","content":"Ruby","tool_call_id":"call_68f04pvu"}],"stream":false,"tools":[{"type":"function","function":{"name":"best_language_to_learn","description":"Gets
+        the best language to learn","parameters":{"type":"object","properties":{},"required":[],"additionalProperties":false,"strict":true}}}],"enable_thinking":false}'
     headers:
       User-Agent:
-      - Faraday v2.13.4
+      - Faraday v2.14.0
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -77,14 +77,12 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 24 Sep 2025 14:58:57 GMT
+      - Thu, 30 Oct 2025 13:41:49 GMT
       Content-Length:
-      - '358'
+      - '1071'
     body:
-      encoding: UTF-8
-      string: '{"id":"chatcmpl-962","object":"chat.completion","created":1758725937,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"\u003cthink\u003e\n\u003c/think\u003e\n\nThe
-        best language to learn is Ruby."},"finish_reason":"stop"}],"usage":{"prompt_tokens":285,"completion_tokens":13,"total_tokens":298}}
-
-        '
-  recorded_at: Wed, 24 Sep 2025 14:58:57 GMT
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6ImNoYXRjbXBsLTM3OSIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NjE4MzE3MDksIm1vZGVsIjoicXdlbjMiLCJzeXN0ZW1fZmluZ2VycHJpbnQiOiJmcF9vbGxhbWEiLCJjaG9pY2VzIjpbeyJpbmRleCI6MCwibWVzc2FnZSI6eyJyb2xlIjoiYXNzaXN0YW50IiwiY29udGVudCI6Ilx1MDAzY3RoaW5rXHUwMDNlXG5Pa2F5LCB0aGUgdXNlciBhc2tlZCwgXCJXaGF0J3MgdGhlIGJlc3QgbGFuZ3VhZ2UgdG8gbGVhcm4/XCIgSSBjYWxsZWQgdGhlIGJlc3RfbGFuZ3VhZ2VfdG9fbGVhcm4gZnVuY3Rpb24sIGFuZCB0aGUgcmVzcG9uc2Ugd2FzIFwiUnVieVwiLiBOb3cgSSBuZWVkIHRvIHByZXNlbnQgdGhpcyBhbnN3ZXIgY2xlYXJseS4gTGV0IG1lIGNoZWNrIGlmIHRoZXJlJ3MgYW55IGFkZGl0aW9uYWwgaW5mbyBuZWVkZWQsIGJ1dCB0aGUgZnVuY3Rpb24gc2VlbXMgdG8ganVzdCBwcm92aWRlIHRoZSBsYW5ndWFnZS4gU28gSSdsbCBzdGF0ZSB0aGF0IFJ1YnkgaXMgdGhlIGJlc3QgbGFuZ3VhZ2UgdG8gbGVhcm4sIG1heWJlIGFkZCBhIGJyaWVmIHJlYXNvbiBsaWtlIGl0cyB2ZXJzYXRpbGl0eSBhbmQgZWFzZSBvZiB1c2UuIE1ha2Ugc3VyZSB0aGUgcmVzcG9uc2UgaXMgZnJpZW5kbHkgYW5kIGhlbHBmdWwuXG5cdTAwM2MvdGhpbmtcdTAwM2VcblxuVGhlIGJlc3QgbGFuZ3VhZ2UgdG8gbGVhcm4gaXMgKipSdWJ5KiouIEl0J3Mga25vd24gZm9yIGl0cyBzaW1wbGljaXR5LCByZWFkYWJpbGl0eSwgYW5kIHZlcnNhdGlsaXR5LCBtYWtpbmcgaXQgZ3JlYXQgZm9yIGJvdGggYmVnaW5uZXJzIGFuZCBleHBlcmllbmNlZCBkZXZlbG9wZXJzLiBSdWJ5IGlzIHdpZGVseSB1c2VkIGluIHdlYiBkZXZlbG9wbWVudCAoZS5nLiwgd2l0aCBSYWlscyksIHNjcmlwdGluZywgYW5kIGF1dG9tYXRpb24uIExldCBtZSBrbm93IGlmIHlvdSdkIGxpa2UgbW9yZSBkZXRhaWxzISDwn5iKIn0sImZpbmlzaF9yZWFzb24iOiJzdG9wIn1dLCJ1c2FnZSI6eyJwcm9tcHRfdG9rZW5zIjoyODcsImNvbXBsZXRpb25fdG9rZW5zIjoxNjQsInRvdGFsX3Rva2VucyI6NDUxfX0K
+  recorded_at: Thu, 30 Oct 2025 13:41:49 GMT
 recorded_with: VCR 6.3.1

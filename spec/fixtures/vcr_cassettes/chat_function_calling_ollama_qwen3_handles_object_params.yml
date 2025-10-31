@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<OLLAMA_API_BASE>/chat/completions"
+    body:
+      encoding: UTF-8
+      string: '{"model":"qwen3","messages":[{"role":"user","content":"Call the object
+        params tool with window start 2025-01-01 and end 2025-01-02 and include the
+        result."}],"stream":false,"tools":[{"type":"function","function":{"name":"object_params","description":"Uses
+        params DSL object support","parameters":{"type":"object","properties":{"window":{"type":"object","properties":{"start":{"type":"string","description":"ISO
+        start"},"end":{"type":"string","description":"ISO end"}},"required":["start","end"],"additionalProperties":false,"description":"Time
+        window to schedule"}},"required":["window"],"additionalProperties":false,"strict":true,"$defs":{}}}}],"enable_thinking":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 30 Oct 2025 16:55:27 GMT
+      Content-Length:
+      - '1255'
+    body:
+      encoding: UTF-8
+      string: '{"id":"chatcmpl-216","object":"chat.completion","created":1761843327,"model":"qwen3","system_fingerprint":"fp_ollama","choices":[{"index":0,"message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+        the user wants me to call the object_params tool with a specific window. Let
+        me check the function definition. The function requires a \"window\" object
+        with start and end dates. The parameters are start and end, both dates.\n\nThe
+        user provided start as 2025-01-01 and end as 2025-01-02. I need to structure
+        these into the window object. The function''s parameters expect a window with
+        those dates. So I''ll create the arguments as a JSON object with the window
+        containing start and end. \n\nWait, the function''s parameters are under the
+        \"window\" property. So the arguments should be {\"window\": {\"start\": \"2025-01-01\",
+        \"end\": \"2025-01-02\"}}. That should fit the required schema. I''ll make
+        sure to include that in the tool_call.\n\u003c/think\u003e\n\n","tool_calls":[{"id":"call_9y7yixth","index":0,"type":"function","function":{"name":"object_params","arguments":"{\"window\":{\"end\":\"2025-01-02\",\"start\":\"2025-01-01\"}}"}}]},"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":182,"completion_tokens":243,"total_tokens":425}}
+
+        '
+  recorded_at: Thu, 30 Oct 2025 16:55:27 GMT
+recorded_with: VCR 6.3.1

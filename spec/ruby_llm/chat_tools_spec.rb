@@ -78,6 +78,74 @@ RSpec.describe RubyLLM::Chat do
     end
   end
 
+  class ArrayParamsTool < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
+    description 'Uses params DSL array support'
+
+    params do
+      array :tags, of: :string, description: 'List of tags to combine'
+    end
+
+    def execute(tags:)
+      halt "Combined tags: #{tags.join(', ')}"
+    end
+  end
+
+  class AnyOfParamsTool < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
+    description 'Uses params DSL any_of support'
+
+    params do
+      string :task, description: 'Task description'
+      any_of :status, description: 'Optional task status' do
+        string enum: %w[pending done]
+        null
+      end
+    end
+
+    def execute(task:, status:)
+      halt "Task \"#{task}\" status #{status}"
+    end
+  end
+
+  class ObjectParamsTool < RubyLLM::Tool # rubocop:disable Lint/ConstantDefinitionInBlock,RSpec/LeakyConstantDeclaration
+    description 'Uses params DSL object support'
+
+    params do
+      object :window, description: 'Time window to schedule' do
+        string :start, description: 'ISO start'
+        string :end, description: 'ISO end'
+      end
+    end
+
+    def execute(window:)
+      halt "Window from #{window['start']} to #{window['end']}"
+    end
+  end
+
+  def assistant_tool_call_messages(chat)
+    chat.messages.select { |message| message.role == :assistant && message.tool_call? }
+  end
+
+  def last_tool_call(chat)
+    message = assistant_tool_call_messages(chat).last
+    return [nil, nil] unless message
+
+    [message, message.tool_calls.values.last]
+  end
+
+  def stringified_arguments(arguments)
+    return {} unless arguments
+
+    arguments.respond_to?(:transform_keys) ? arguments.transform_keys(&:to_s) : arguments
+  end
+
+  def tool_result_message_for(chat, tool_call)
+    return nil unless tool_call
+
+    chat.messages.reverse.find do |message|
+      message.role == :tool && message.tool_call_id == tool_call.id
+    end
+  end
+
   describe 'function calling' do
     CHAT_MODELS.each do |model_info|
       model = model_info[:model]
@@ -291,6 +359,94 @@ RSpec.describe RubyLLM::Chat do
                     end
 
         expect(extracted).to eq(type: 'ephemeral')
+      end
+    end
+
+    CHAT_MODELS.each do |model_info| # rubocop:disable Style/CombinableLoops
+      model = model_info[:model]
+      provider = model_info[:provider]
+      it "#{provider}/#{model} handles array params" do
+        unless RubyLLM::Provider.providers[provider]&.local?
+          model_info = RubyLLM.models.find(model)
+          skip "#{model} doesn't support function calling" unless model_info&.supports_functions?
+        end
+
+        chat = RubyLLM.chat(model: model, provider: provider)
+                      .with_tool(ArrayParamsTool)
+        chat = chat.with_params(enable_thinking: false) if model == 'qwen3'
+
+        response = chat.ask(
+          'Call the array params tool with tags ["red","blue"] and tell me the combined tags.'
+        )
+
+        expect(response).to be_a(RubyLLM::Tool::Halt)
+
+        _message, tool_call = last_tool_call(chat)
+        expect(tool_call).not_to be_nil
+        expect(tool_call.name).to eq('array_params')
+
+        arguments = stringified_arguments(tool_call.arguments)
+        expect(arguments['tags']).to match_array(%w[red blue])
+      end
+    end
+
+    CHAT_MODELS.each do |model_info| # rubocop:disable Style/CombinableLoops
+      model = model_info[:model]
+      provider = model_info[:provider]
+      it "#{provider}/#{model} handles anyOf params" do
+        unless RubyLLM::Provider.providers[provider]&.local?
+          model_info = RubyLLM.models.find(model)
+          skip "#{model} doesn't support function calling" unless model_info&.supports_functions?
+        end
+
+        chat = RubyLLM.chat(model: model, provider: provider)
+                      .with_tool(AnyOfParamsTool)
+        chat = chat.with_params(enable_thinking: false) if model == 'qwen3'
+
+        response = chat.ask(
+          'Call the any-of params tool for task "Review PR" with status "pending" and report the result.'
+        )
+
+        expect(response).to be_a(RubyLLM::Tool::Halt)
+
+        _message, tool_call = last_tool_call(chat)
+        expect(tool_call).not_to be_nil
+        expect(tool_call.name).to eq('any_of_params')
+
+        arguments = stringified_arguments(tool_call.arguments)
+        expect(arguments['task']).to eq('Review PR')
+        expect(arguments['status']).to eq('pending')
+      end
+    end
+
+    CHAT_MODELS.each do |model_info| # rubocop:disable Style/CombinableLoops
+      model = model_info[:model]
+      provider = model_info[:provider]
+      it "#{provider}/#{model} handles object params" do
+        unless RubyLLM::Provider.providers[provider]&.local?
+          model_info = RubyLLM.models.find(model)
+          skip "#{model} doesn't support function calling" unless model_info&.supports_functions?
+        end
+
+        chat = RubyLLM.chat(model: model, provider: provider)
+                      .with_tool(ObjectParamsTool)
+        chat = chat.with_params(enable_thinking: false) if model == 'qwen3'
+
+        response = chat.ask(
+          'Call the object params tool with window start 2025-01-01 and end 2025-01-02 and include the result.'
+        )
+
+        expect(response).to be_a(RubyLLM::Tool::Halt)
+
+        _message, tool_call = last_tool_call(chat)
+        expect(tool_call).not_to be_nil
+        expect(tool_call.name).to eq('object_params')
+
+        arguments = stringified_arguments(tool_call.arguments)
+        expect(arguments['window']).to include(
+          'start' => '2025-01-01',
+          'end' => '2025-01-02'
+        )
       end
     end
   end
