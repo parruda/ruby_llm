@@ -214,6 +214,52 @@ RSpec.describe RubyLLM::Providers::Gemini::Chat do
       expect(result).to be_nil
     end
 
+    it 'converts schemas provided with string keys' do
+      schema = {
+        'type' => 'object',
+        'properties' => {
+          'status' => {
+            'anyOf' => [
+              {
+                'type' => 'string',
+                'enum' => %w[pending done],
+                'description' => 'Current status value'
+              },
+              { 'type' => 'null' }
+            ]
+          },
+          'count' => {
+            'type' => 'integer',
+            'minimum' => 0
+          }
+        },
+        'required' => %w[status count],
+        'propertyOrdering' => %w[status count],
+        'nullable' => false
+      }
+
+      result = test_obj.send(:convert_schema_to_gemini, schema)
+
+      expect(result).to eq({
+                             type: 'OBJECT',
+                             properties: {
+                               status: {
+                                 type: 'STRING',
+                                 enum: %w[pending done],
+                                 nullable: true,
+                                 description: 'Current status value'
+                               },
+                               count: {
+                                 type: 'INTEGER',
+                                 minimum: 0
+                               }
+                             },
+                             required: %w[status count],
+                             propertyOrdering: %w[status count],
+                             nullable: false
+                           })
+    end
+
     it 'defaults unknown types to STRING' do
       schema = { type: 'unknown' }
       result = test_obj.send(:convert_schema_to_gemini, schema)
@@ -286,6 +332,45 @@ RSpec.describe RubyLLM::Providers::Gemini::Chat do
                                                   nullable: true
                                                 })
       expect(result[:properties][:name]).to eq({ type: 'STRING' })
+    end
+  end
+
+  describe '#render_payload' do
+    let(:messages) { [] }
+    let(:tools) { {} }
+    let(:schema) do
+      {
+        type: 'object',
+        properties: {
+          result: { type: 'string' }
+        },
+        strict: true
+      }
+    end
+
+    it 'uses responseJsonSchema for Gemini 2.5 models' do
+      model = instance_double(Model, id: 'gemini-2.5-flash')
+
+      payload = test_obj.send(:render_payload, messages, tools:, temperature: nil, model:, schema:)
+
+      expect(payload[:generationConfig][:responseJsonSchema]).to eq(
+        'type' => 'object',
+        'properties' => {
+          'result' => { 'type' => 'string' }
+        }
+      )
+      expect(payload[:generationConfig]).not_to have_key(:responseSchema)
+      expect(payload[:generationConfig]).not_to have_key('responseSchema')
+    end
+
+    it 'falls back to responseSchema for non-2.5 models' do
+      model = instance_double(Model, id: 'gemini-2.0-flash')
+
+      payload = test_obj.send(:render_payload, messages, tools:, temperature: nil, model:, schema:)
+
+      expect(payload[:generationConfig][:responseSchema]).to include(type: 'OBJECT')
+      expect(payload[:generationConfig]).not_to have_key(:responseJsonSchema)
+      expect(payload[:generationConfig]).not_to have_key('responseJsonSchema')
     end
   end
 

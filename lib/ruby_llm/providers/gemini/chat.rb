@@ -22,7 +22,12 @@ module RubyLLM
 
           if schema
             payload[:generationConfig][:responseMimeType] = 'application/json'
-            payload[:generationConfig][:responseSchema] = convert_schema_to_gemini(schema)
+
+            if response_json_schema_supported?(model)
+              payload[:generationConfig][:responseJsonSchema] = prepare_json_schema(schema)
+            else
+              payload[:generationConfig][:responseSchema] = convert_schema_to_gemini(schema)
+            end
           end
 
           payload[:tools] = format_tools(tools) if tools.any?
@@ -78,6 +83,7 @@ module RubyLLM
         def convert_schema_to_gemini(schema)
           return nil unless schema
 
+          schema = RubyLLM::Utils.deep_symbolize_keys(schema)
           schema = normalize_any_of(schema) if schema[:anyOf]
 
           build_base_schema(schema).tap do |result|
@@ -168,6 +174,18 @@ module RubyLLM
           end
         end
 
+        def response_json_schema_supported?(model)
+          model.id.to_s.include?('2.5')
+        end
+
+        def prepare_json_schema(schema)
+          normalized = RubyLLM::Utils.deep_dup(schema)
+          normalized.delete(:strict)
+          normalized.delete('strict')
+          RubyLLM::Utils.deep_stringify_keys(normalized)
+        end
+
+        # formats a message
         class MessageFormatter
           def initialize(messages, format_role:, format_parts:, format_tool_result:)
             @messages = messages
