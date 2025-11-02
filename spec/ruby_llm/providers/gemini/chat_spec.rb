@@ -260,6 +260,40 @@ RSpec.describe RubyLLM::Providers::Gemini::Chat do
                            })
     end
 
+    it 'expands $ref definitions in array items' do
+      schema = {
+        type: 'object',
+        properties: {
+          answers: {
+            type: 'array',
+            items: { '$ref' => '#/$defs/answer' }
+          }
+        },
+        required: %w[answers],
+        '$defs' => {
+          'answer' => {
+            type: 'object',
+            properties: {
+              score: { type: 'integer' }
+            },
+            required: %w[score]
+          }
+        }
+      }
+
+      result = test_obj.send(:convert_schema_to_gemini, schema)
+
+      answers_schema = result[:properties][:answers]
+      expect(answers_schema[:type]).to eq('ARRAY')
+      expect(answers_schema[:items]).to eq(
+        type: 'OBJECT',
+        properties: {
+          score: { type: 'INTEGER' }
+        },
+        required: %w[score]
+      )
+    end
+
     it 'defaults unknown types to STRING' do
       schema = { type: 'unknown' }
       result = test_obj.send(:convert_schema_to_gemini, schema)
@@ -349,7 +383,7 @@ RSpec.describe RubyLLM::Providers::Gemini::Chat do
     end
 
     it 'uses responseJsonSchema for Gemini 2.5 models' do
-      model = instance_double(Model, id: 'gemini-2.5-flash')
+      model = instance_double(RubyLLM::Model::Info, id: 'gemini-2.5-flash', metadata: {})
 
       payload = test_obj.send(:render_payload, messages, tools:, temperature: nil, model:, schema:)
 
@@ -364,13 +398,55 @@ RSpec.describe RubyLLM::Providers::Gemini::Chat do
     end
 
     it 'falls back to responseSchema for non-2.5 models' do
-      model = instance_double(Model, id: 'gemini-2.0-flash')
+      model = instance_double(RubyLLM::Model::Info, id: 'gemini-2.0-flash', metadata: {})
 
       payload = test_obj.send(:render_payload, messages, tools:, temperature: nil, model:, schema:)
 
       expect(payload[:generationConfig][:responseSchema]).to include(type: 'OBJECT')
       expect(payload[:generationConfig]).not_to have_key(:responseJsonSchema)
       expect(payload[:generationConfig]).not_to have_key('responseJsonSchema')
+    end
+
+    it 'treats newer Gemini versions as JSON schema capable' do
+      model = instance_double(RubyLLM::Model::Info, id: 'gemini-3.0-pro', metadata: {})
+
+      payload = test_obj.send(:render_payload, messages, tools:, temperature: nil, model:, schema:)
+
+      expect(payload[:generationConfig]).to include(:responseJsonSchema)
+      expect(payload[:generationConfig]).not_to have_key(:responseSchema)
+    end
+
+    it 'expands referenced definitions when using responseSchema' do
+      model = instance_double(RubyLLM::Model::Info, id: 'gemini-2.0-flash', metadata: {})
+      schema_with_defs = {
+        type: 'object',
+        properties: {
+          answers: {
+            type: 'array',
+            items: { '$ref' => '#/$defs/answer' }
+          }
+        },
+        '$defs' => {
+          'answer' => {
+            type: 'object',
+            properties: {
+              score: { type: 'integer' }
+            },
+            required: %w[score]
+          }
+        }
+      }
+
+      payload = test_obj.send(:render_payload, messages, tools:, temperature: nil, model:, schema: schema_with_defs)
+
+      items_schema = payload[:generationConfig][:responseSchema][:properties][:answers][:items]
+      expect(items_schema).to eq(
+        type: 'OBJECT',
+        properties: {
+          score: { type: 'INTEGER' }
+        },
+        required: %w[score]
+      )
     end
   end
 
