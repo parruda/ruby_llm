@@ -32,18 +32,20 @@ module RubyLLM
         private
 
         def format_messages(messages)
-          messages.map do |msg|
-            {
-              role: format_role(msg.role),
-              parts: format_parts(msg)
-            }
-          end
+          formatter = MessageFormatter.new(
+            messages,
+            format_role: method(:format_role),
+            format_parts: method(:format_parts),
+            format_tool_result: method(:format_tool_result)
+          )
+          formatter.format
         end
 
         def format_role(role)
           case role
           when :assistant then 'model'
-          when :system, :tool then 'user'
+          when :system then 'user'
+          when :tool then 'function'
           else role.to_s
           end
         end
@@ -163,6 +165,80 @@ module RubyLLM
         def copy_attributes(target, source, *attributes)
           attributes.each do |attr|
             target[attr] = source[attr] if attr == :nullable ? source.key?(attr) : source[attr]
+          end
+        end
+
+        class MessageFormatter
+          def initialize(messages, format_role:, format_parts:, format_tool_result:)
+            @messages = messages
+            @index = 0
+            @tool_call_names = {}
+            @format_role = format_role
+            @format_parts = format_parts
+            @format_tool_result = format_tool_result
+          end
+
+          def format
+            formatted = []
+
+            while current_message
+              if tool_message?(current_message)
+                tool_parts, next_index = collect_tool_parts
+                formatted << build_tool_response(tool_parts)
+                @index = next_index
+              else
+                remember_tool_calls if current_message.tool_call?
+                formatted << build_standard_message(current_message)
+                @index += 1
+              end
+            end
+
+            formatted
+          end
+
+          private
+
+          def current_message
+            @messages[@index]
+          end
+
+          def tool_message?(message)
+            message&.role == :tool
+          end
+
+          def collect_tool_parts
+            parts = []
+            index = @index
+
+            while tool_message?(@messages[index])
+              tool_message = @messages[index]
+              tool_name = @tool_call_names.delete(tool_message.tool_call_id)
+              parts.concat(format_tool_result(tool_message, tool_name))
+              index += 1
+            end
+
+            [parts, index]
+          end
+
+          def build_tool_response(parts)
+            { role: 'function', parts: parts }
+          end
+
+          def remember_tool_calls
+            current_message.tool_calls.each do |tool_call_id, tool_call|
+              @tool_call_names[tool_call_id] = tool_call.name
+            end
+          end
+
+          def build_standard_message(message)
+            {
+              role: @format_role.call(message.role),
+              parts: @format_parts.call(message)
+            }
+          end
+
+          def format_tool_result(message, tool_name)
+            @format_tool_result.call(message, tool_name)
           end
         end
       end

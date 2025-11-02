@@ -8,6 +8,8 @@ RSpec.describe RubyLLM::Providers::Gemini::Chat do
   # Create a test object that includes the module to access private methods
   let(:test_obj) do
     Object.new.tap do |obj|
+      obj.extend(RubyLLM::Providers::Gemini::Media)
+      obj.extend(RubyLLM::Providers::Gemini::Tools)
       obj.extend(described_class)
     end
   end
@@ -284,6 +286,33 @@ RSpec.describe RubyLLM::Providers::Gemini::Chat do
                                                   nullable: true
                                                 })
       expect(result[:properties][:name]).to eq({ type: 'STRING' })
+    end
+  end
+
+  describe '#format_messages' do
+    it 'groups consecutive tool responses into a single user message with multiple function responses' do
+      messages = [
+        RubyLLM::Message.new(role: :user, content: 'Question?'),
+        RubyLLM::Message.new(
+          role: :assistant,
+          content: '',
+          tool_calls: {
+            'call_1' => RubyLLM::ToolCall.new(id: 'call_1', name: 'weather', arguments: {}),
+            'call_2' => RubyLLM::ToolCall.new(id: 'call_2', name: 'best_language_to_learn', arguments: {})
+          }
+        ),
+        RubyLLM::Message.new(role: :tool, content: 'Sunny', tool_call_id: 'call_1'),
+        RubyLLM::Message.new(role: :tool, content: 'Ruby', tool_call_id: 'call_2')
+      ]
+
+      result = test_obj.send(:format_messages, messages)
+
+      expect(result.length).to eq(3)
+      tool_response = result.last
+      expect(tool_response[:role]).to eq('function')
+      expect(tool_response[:parts].length).to eq(2)
+      expect(tool_response[:parts][0][:functionResponse][:name]).to eq('weather')
+      expect(tool_response[:parts][1][:functionResponse][:name]).to eq('best_language_to_learn')
     end
   end
 
