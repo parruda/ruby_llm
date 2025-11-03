@@ -164,7 +164,7 @@ class Lookup < RubyLLM::Tool
     },
     required: %w[sku],
     additionalProperties: false,
-    strict: true 
+    strict: true
 
   def execute(sku:, locale: "US")
     # ...
