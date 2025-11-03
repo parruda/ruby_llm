@@ -157,16 +157,14 @@ Prefer to own the JSON Schema yourself? Pass a schema hash (or a class/object re
 class Lookup < RubyLLM::Tool
   description "Performs catalog lookups"
 
-  params schema: {
-    type: "object",
+  params type: "object",
     properties: {
       sku: { type: "string", description: "Product SKU" },
       locale: { type: "string", description: "Country code", default: "US" }
     },
     required: %w[sku],
     additionalProperties: false,
-    strict: true
-  }
+    strict: true 
 
   def execute(sku:, locale: "US")
     # ...
