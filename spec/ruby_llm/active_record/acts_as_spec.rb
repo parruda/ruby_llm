@@ -758,9 +758,9 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
     end
 
     it 'respects aliases' do
-      chat = Chat.create!(model: 'claude-3-5-sonnet', provider: 'bedrock')
+      chat = Chat.create!(model: 'claude-haiku-4-5', provider: 'bedrock')
 
-      expect(chat.model_id).to eq('anthropic.claude-3-5-sonnet-20240620-v1:0:200k')
+      expect(chat.model_id).to eq('us.anthropic.claude-haiku-4-5-20251001-v1:0')
       expect(chat.provider).to eq('bedrock')
     end
   end
