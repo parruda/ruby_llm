@@ -86,6 +86,34 @@ module RubyLLM
         level: config.log_level
       )
     end
+
+    # Registry for tool execution strategies.
+    # Executors receive an array of tool_calls and a block to execute each one.
+    # They must return a hash mapping tool_call.id to result.
+    #
+    # @return [Hash{Symbol => Proc}] Map of executor names to implementations
+    def tool_executors
+      @tool_executors ||= {}
+    end
+
+    # Registers a new tool executor for concurrent execution.
+    #
+    # @param name [Symbol] Executor name (e.g., :async, :threads)
+    # @yield [tool_calls, max_concurrency:, &execute] Block that executes tools concurrently
+    # @yieldparam tool_calls [Array<ToolCall>] Tools to execute
+    # @yieldparam max_concurrency [Integer, nil] Maximum concurrent executions
+    # @yieldparam execute [Proc] Block to call for each tool
+    # @yieldreturn [Hash{String => Object}] Map of tool_call.id to result
+    #
+    # @example
+    #   RubyLLM.register_tool_executor(:custom) do |tool_calls, max_concurrency:, &execute|
+    #     results = {}
+    #     tool_calls.each { |tc| results[tc.id] = execute.call(tc) }
+    #     results
+    #   end
+    def register_tool_executor(name, &block)
+      tool_executors[name] = block
+    end
   end
 end
 
@@ -100,6 +128,9 @@ RubyLLM::Provider.register :openai, RubyLLM::Providers::OpenAI
 RubyLLM::Provider.register :openrouter, RubyLLM::Providers::OpenRouter
 RubyLLM::Provider.register :perplexity, RubyLLM::Providers::Perplexity
 RubyLLM::Provider.register :vertexai, RubyLLM::Providers::VertexAI
+
+# Load built-in tool executors for concurrent execution
+require_relative 'ruby_llm/tool_executors'
 
 if defined?(Rails::Railtie)
   require 'ruby_llm/railtie'

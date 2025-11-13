@@ -489,11 +489,11 @@ RSpec.describe RubyLLM::Chat do
       call_order = []
 
       chat = RubyLLM.chat
-                    .with_tool(DiceRoll)
+                    .with_tool(Weather)
                     .on_tool_call { |_| call_order << :tool_call }
                     .on_tool_result { |_| call_order << :tool_result }
 
-      chat.ask('Roll a die for me')
+      chat.ask("What's the weather in Berlin? (52.5200, 13.4050)")
 
       expect(call_order).to eq(%i[tool_call tool_result])
     end
