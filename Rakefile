@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'bundler/gem_tasks'
+Bundler::GemHelper.install_tasks(name: 'ruby_llm_enhanced')
 require 'rake/clean'
 
 Dir.glob('lib/tasks/**/*.rake').each { |r| load r }
