@@ -39,5 +39,6 @@ group :development do # rubocop:disable Metrics/BlockLength
   gem 'webmock', '~> 3.18'
 
   # Optional dependency for Vertex AI
+  gem 'claude_swarm', require: false
   gem 'googleauth'
 end

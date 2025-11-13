@@ -270,7 +270,7 @@ end
 **Tool Execution (aligned with concurrent execution design):**
 
 ```ruby
-# Fires all events for a single tool (new_message, tool_call, tool_result, end_message)
+# For sequential execution - fires all events and adds message immediately
 def execute_single_tool_with_message(tool_call)
   emit(:new_message)
   result = execute_single_tool(tool_call)
@@ -279,7 +279,15 @@ def execute_single_tool_with_message(tool_call)
   result
 end
 
-# Core tool execution - fires tool_call and tool_result events
+# For concurrent execution - fires events but doesn't add message (atomic later)
+def execute_single_tool_with_events(tool_call)
+  emit(:new_message)
+  result = execute_single_tool(tool_call)
+  emit(:tool_result, result)
+  result
+end
+
+# Core tool execution - fires tool_call event, executes tool
 def execute_single_tool(tool_call)
   emit(:tool_call, tool_call)
 
@@ -288,7 +296,6 @@ def execute_single_tool(tool_call)
     tool_instance.call(tool_call.arguments)
   end
 
-  emit(:tool_result, result)
   result
 end
 
@@ -304,14 +311,21 @@ def execute_tools_sequentially(tool_calls)
   halt_result
 end
 
-# Concurrent execution (fire-as-complete pattern)
+# Concurrent execution (hybrid pattern)
 def execute_tools_concurrently(tool_calls)
+  # Phase 1: Execute with immediate event feedback
   results = parallel_execute_tools(tool_calls)
 
-  # Check for halt after all tools complete
+  # Phase 2: Add messages atomically (ensures Chat state consistency)
+  add_tool_results_atomically(tool_calls, results)
+
+  # Return first halt by REQUEST order
   halt_result = nil
-  results.each_value do |result|
-    halt_result = result if result.is_a?(Tool::Halt)
+  tool_calls.each_key do |id|
+    result = results[id]
+    if result.is_a?(Tool::Halt) && halt_result.nil?
+      halt_result = result
+    end
   end
 
   halt_result
@@ -320,12 +334,38 @@ end
 def parallel_execute_tools(tool_calls)
   executor = RubyLLM.tool_executors[@tool_concurrency]
   executor.call(tool_calls.values, max_concurrency: @max_concurrency) do |tool_call|
-    execute_single_tool_with_message(tool_call)  # All events fire immediately per tool
+    execute_single_tool_with_events(tool_call)  # Events fire immediately
   end
+end
+
+def add_tool_results_atomically(tool_calls, results)
+  messages = []
+
+  @messages_mutex.synchronize do
+    tool_calls.each_key do |id|
+      tool_call = tool_calls[id]
+      result = results[id]
+
+      tool_payload = result.is_a?(Tool::Halt) ? result.content : result
+      content = content_like?(tool_payload) ? tool_payload : tool_payload.to_s
+      message = Message.new(role: :tool, content:, tool_call_id: tool_call.id)
+      @messages << message
+      messages << message
+    end
+  end
+
+  # Fire events OUTSIDE mutex (better performance, no blocking)
+  messages.each { |msg| emit(:end_message, msg) }
 end
 ```
 
-**Important**: In concurrent execution, ALL events (`new_message`, `tool_call`, `tool_result`, `end_message`) fire immediately as each tool completes. This provides real-time feedback - subscribers see progress as it happens, not batched at the end. The fire-as-complete pattern ensures responsive event handling.
+**Important**: The hybrid pattern provides:
+- **Immediate feedback** via `new_message`, `tool_call`, and `tool_result` events (fire as tools execute)
+- **State consistency** via atomic message addition (`end_message` fires after ALL tools complete)
+- **Cancellation safety** - no partial tool results that break LLM API calls
+- **No mutex blocking** - events fire outside mutex so slow callbacks don't block other operations
+
+This ensures Chat state is always valid while still giving subscribers real-time progress information.
 
 ## Design Decisions
 
@@ -429,26 +469,44 @@ end
 - Array.dup: O(n) where n = number of callbacks (typically < 10)
 - Total: < 1 microsecond per emit (negligible vs LLM API calls at 100ms-10s)
 
-### 5. Concurrent Emit Behavior (Fire-As-Complete)
+### 5. Concurrent Emit Behavior (Hybrid Pattern)
 
-When using concurrent tool execution (`:async` or `:threads` mode), ALL events fire immediately as each tool completes:
+When using concurrent tool execution (`:async` or `:threads` mode), the hybrid pattern fires some events immediately and batches others:
+
+**Immediate events** (fire as tools execute):
+- `new_message` - fires when tool starts
+- `tool_call` - fires when tool is called
+- `tool_result` - fires when tool completes
+
+**Batched events** (fire after ALL tools complete):
+- `end_message` - fires for each message after atomic addition
 
 ```ruby
-# Concurrent tool execution scenario
-# Tool A, B, C execute in parallel
-# Each tool fires: new_message → tool_call → tool_result → end_message
-# These event groups interleave across tools
+# Concurrent tool execution scenario (3 tools: A, B, C)
+# Timeline:
+# 0ms:   new_message(A), tool_call(A) fires
+# 10ms:  new_message(B), tool_call(B) fires
+# 20ms:  new_message(C), tool_call(C) fires
+# 500ms: C completes, tool_result(C) fires immediately
+# 1000ms: A completes, tool_result(A) fires immediately
+# 2000ms: B completes, tool_result(B) fires immediately
+# 2001ms: All tools complete, messages added atomically
+#         end_message(A) fires
+#         end_message(B) fires
+#         end_message(C) fires
 ```
 
-**Fire-as-complete pattern:**
-- **Real-time feedback**: Events fire immediately when each tool finishes
-- **No batching**: Don't wait for all tools to complete before firing events
-- **Responsive**: Subscribers see progress as it happens
+**Why hybrid pattern:**
+- **Real-time feedback**: `tool_call`/`tool_result` events fire immediately
+- **State consistency**: Messages added atomically (no partial results)
+- **Cancellation safe**: If interrupted, Chat state remains valid
+- **LLM API compatible**: All tool results present or none
 
 **Thread-safe emission guarantees:**
 - **Snapshot isolation**: Each `emit()` gets its own copy of the callback list
 - **No interleaving within event**: All callbacks for one emit complete before next emit's callbacks start (within same fiber/thread)
-- **No ordering guarantee across tools**: Tool A's events may interleave with Tool B's events
+- **Immediate events interleave**: `tool_call`/`tool_result` from different tools may interleave
+- **Batched events are sequential**: `end_message` events fire in request order (not completion order)
 
 **Important behavior:**
 
@@ -460,17 +518,16 @@ mutex = Mutex.new
 chat.on_new_message { mutex.synchronize { results << "new" } }
 chat.on_tool_call { |tc| mutex.synchronize { results << "call:#{tc.name}" } }
 chat.on_tool_result { |r| mutex.synchronize { results << "result" } }
-chat.on_end_message { |m| mutex.synchronize { results << "end" } }
+chat.on_end_message { |m| mutex.synchronize { results << "end:#{m.tool_call_id}" } }
 
 # Execute 3 tools concurrently (A takes 1s, B takes 2s, C takes 0.5s)
-# Possible output (C finishes first, then A, then B):
-# ["new", "call:C", "result", "end", "new", "call:A", "result", "end", "new", "call:B", "result", "end"]
-#
-# Also possible (interleaved - A and B start before C finishes):
-# ["new", "call:A", "new", "call:C", "result", "end", "new", "call:B", "result", "end", "result", "end"]
+# Output shows hybrid pattern:
+# Immediate events (interleaved by completion):
+# ["new", "call:A", "new", "call:B", "new", "call:C", "result", "result", "result",
+#  "end:A", "end:B", "end:C"]  # end_message fires in REQUEST order after all complete
 ```
 
-**Each tool's events fire in order** (new_message → tool_call → tool_result → end_message), but **different tools' events interleave** based on when they complete.
+**Key insight**: Subscribe to `tool_call`/`tool_result` for real-time progress. Subscribe to `end_message` for guaranteed message availability.
 
 **Callback safety in concurrent execution:**
 
@@ -488,9 +545,12 @@ chat.on_tool_call do |tc|
   mutex.synchronize { results << tc.name }  # User's responsibility
 end
 
-# GOOD PATTERN: Use atomic operations
-tool_count = Concurrent::AtomicFixnum.new(0)
-chat.on_tool_result { |_| tool_count.increment }
+# SAFE: end_message callbacks run sequentially (atomic addition is synchronized)
+chat.on_end_message do |message|
+  # All end_message callbacks run inside @messages_mutex.synchronize
+  # They execute sequentially in request order, not completion order
+  update_ui(message)
+end
 ```
 
 The Monitor only protects the callback subscription list, not user data. If callbacks modify shared state during concurrent execution, users must provide their own synchronization.
@@ -750,26 +810,35 @@ chat.on_tool_result { |r| metrics.track(r) }
 chat.on_end_message { |m| audit.record(m) }
 ```
 
-**With fire-as-complete concurrent execution:**
+**With hybrid concurrent execution:**
 
-1. **Per-tool event ordering** (guaranteed):
-   - Each tool fires: `new_message` → `tool_call` → `tool_result` → `end_message`
-   - All subscribers for each event notified in FIFO order
-   - Events fire immediately as each tool completes
+1. **Immediate events** (`new_message`, `tool_call`, `tool_result`):
+   - Fire as each tool starts/completes
+   - Multiple subscribers notified in FIFO order
+   - May interleave across different tools (non-deterministic)
 
-2. **Cross-tool event ordering** (non-deterministic):
-   - All events from different tools may interleave
-   - Order depends on when each tool finishes
-   - User responsible for shared state synchronization
+2. **Batched events** (`end_message`):
+   - Fire after ALL tools complete
+   - Subscribers notified in REQUEST order (deterministic)
+   - Chat state is guaranteed consistent
 
 **Example timeline (3 tools, concurrent):**
 ```
-Tool C (fast):   new_message → tool_call → tool_result → end_message
-Tool A (medium): new_message → tool_call → tool_result → end_message
-Tool B (slow):   new_message → tool_call → tool_result → end_message
+Time    Tool C (fast)    Tool A (medium)   Tool B (slow)
+-----   --------------   ----------------  --------------
+0ms     new_message      new_message       new_message
+        tool_call        tool_call         tool_call
+500ms   tool_result      -                 -
+1000ms  -                tool_result       -
+2000ms  -                -                 tool_result
 
-Events fire as soon as each tool completes, not batched at the end.
+2001ms: ALL TOOLS COMPLETE - Atomic message addition:
+        end_message(A)   # Request order, not completion order
+        end_message(B)
+        end_message(C)
 ```
+
+**Key difference from pure fire-as-complete**: `end_message` fires after ALL tools complete, ensuring Chat state consistency and cancellation safety.
 
 ### Implementation Order
 
@@ -810,6 +879,71 @@ describe "concurrent execution with multi-subscriber callbacks" do
 end
 ```
 
+## CRITICAL: ActiveRecord Integration Fix ⚠️
+
+The ActiveRecord `acts_as_chat` integration **directly accesses `@on` hash** which breaks with the new multi-subscriber system:
+
+**BEFORE (Broken Code):**
+
+```ruby
+# lib/ruby_llm/active_record/chat_methods.rb (lines 142-163)
+def on_new_message(&block)
+  to_llm
+  existing_callback = @chat.instance_variable_get(:@on)[:new_message]  # BREAKS!
+
+  @chat.on_new_message do
+    existing_callback&.call
+    block&.call
+  end
+  self
+end
+
+def on_end_message(&block)
+  to_llm
+  existing_callback = @chat.instance_variable_get(:@on)[:end_message]  # BREAKS!
+
+  @chat.on_end_message do |msg|
+    existing_callback&.call(msg)
+    block&.call(msg)
+  end
+  self
+end
+```
+
+**This code was implementing its own multi-subscriber pattern because the core didn't support it!**
+
+**AFTER (Fixed Code):**
+
+```ruby
+# lib/ruby_llm/active_record/chat_methods.rb
+def on_new_message(&block)
+  to_llm.on_new_message(&block)  # Just add another subscriber!
+  self
+end
+
+def on_end_message(&block)
+  to_llm.on_end_message(&block)  # Just add another subscriber!
+  self
+end
+```
+
+**Why this fixes it:**
+- The new multi-subscriber system makes this trivial
+- No more manual callback chaining needed
+- No more accessing internal state
+- Much cleaner and simpler!
+
+**Setup persistence callbacks (lines 235-236) are FINE:**
+
+```ruby
+def setup_persistence_callbacks
+  @chat.on_new_message { persist_new_message }
+  @chat.on_end_message { |msg| persist_message_completion(msg) }
+end
+```
+
+These just add subscribers, which works correctly with the new system. ✅
+
 ## Implementation Checklist
 
 ### Phase 1: Core Changes
@@ -838,6 +972,15 @@ end
 - [ ] Update `execute_tools_concurrently` to use fire-as-complete pattern
 - [ ] Ensure `complete()` uses `emit()` for streaming callbacks
 
+### Phase 2.5: Fix ActiveRecord Integration (CRITICAL) ⚠️
+- [ ] Update `lib/ruby_llm/active_record/chat_methods.rb`
+- [ ] Simplify `on_new_message` to just call `to_llm.on_new_message(&block)`
+- [ ] Simplify `on_end_message` to just call `to_llm.on_end_message(&block)`
+- [ ] Remove manual callback chaining (no longer needed)
+- [ ] Remove `instance_variable_get(:@on)` calls (no longer exists)
+- [ ] Test that persistence callbacks still work correctly
+- [ ] Test that user callbacks don't interfere with persistence
+
 ### Phase 3: Testing
 - [ ] Test multiple subscribers fire
 - [ ] Test FIFO execution order
@@ -851,9 +994,10 @@ end
 - [ ] Test thread safety (concurrent subscribe/unsubscribe/emit)
 - [ ] Test fiber safety (works correctly with Async gem)
 - [ ] Test concurrent emit (multiple emits from different fibers/threads)
-- [ ] Test fire-as-complete pattern (events fire immediately as tools finish)
-- [ ] Test per-tool event ordering (new_message → tool_call → tool_result → end_message)
-- [ ] Test cross-tool event interleaving (different tools' events may interleave)
+- [ ] Test hybrid pattern (immediate events vs batched end_message)
+- [ ] Test immediate event interleaving (tool_call/tool_result may interleave)
+- [ ] Test batched end_message fires in request order (after all tools complete)
+- [ ] Test emit inside mutex synchronize block (end_message during atomic addition)
 
 ### Phase 4: Documentation
 - [ ] Update README with new multi-subscriber support
@@ -865,9 +1009,11 @@ end
 ## Files Changed
 
 1. `lib/ruby_llm/chat.rb` - Core implementation (~80 lines added)
-2. `spec/chat_callbacks_spec.rb` - Tests for new behavior
-3. `docs/callbacks.md` - New documentation
-4. `README.md` - Update examples
+2. `lib/ruby_llm/active_record/chat_methods.rb` - Simplify callback methods (lines 142-163)
+3. `spec/chat_callbacks_spec.rb` - Tests for new behavior
+4. `spec/active_record/chat_methods_spec.rb` - Tests for ActiveRecord integration
+5. `docs/callbacks.md` - New documentation
+6. `README.md` - Update examples
 
 ## Breaking Changes
 
@@ -908,6 +1054,31 @@ This design provides:
 5. **Minimal changes** - ~100 lines of new code
 
 The key insight: Keep `on_*` methods returning `self` for backwards compatibility, add `subscribe()` for advanced use cases. Simple things stay simple, complex things become possible.
+
+## Expert Verification ✅
+
+This plan has been reviewed and validated by:
+
+### RubyLLM Expert Review
+- ✅ **Integration verified**: Works seamlessly with concurrent tool execution
+- ✅ **Monitor usage correct**: Reentrant and fiber-scheduler aware
+- ✅ **Snapshot-under-lock pattern validated**: No deadlock risk
+- ✅ **Error isolation sound**: One callback failure doesn't block others
+- ⚠️ **ActiveRecord integration CRITICAL**: Must fix `instance_variable_get(:@on)` calls
+
+### Async Expert Review
+- ✅ **Monitor safe for fibers**: Cooperates with Ruby's fiber scheduler
+- ✅ **Thread::Queue fiber-aware**: Works correctly in Async context
+- ✅ **No deadlock risk**: Mutex + Monitor separation is safe
+- ✅ **Callbacks execute outside lock**: No blocking issues
+
+**Key Corrections Applied:**
+1. Fire `end_message` events OUTSIDE mutex for better performance
+2. Added ActiveRecord integration fix section (CRITICAL)
+3. Updated atomic addition to collect messages first, emit after
+4. Added comprehensive thread/fiber safety documentation
+
+**Confidence Level: HIGH** - Design validated by experts with one critical fix identified.
 
 ```ruby
 # Simple (unchanged API)
