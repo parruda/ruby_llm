@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **OpenAI Responses API Support**: Native support for OpenAI's new `v1/responses` endpoint. Enable with `chat.with_responses_api(stateful: true)` for efficient multi-turn conversations. Features include:
+  - Stateful conversations with automatic `previous_response_id` tracking for token efficiency
+  - Session persistence via `ResponsesSession` with TTL management and failure recovery
+  - Reasoning insights through `response.reasoning_summary` and `response.reasoning_tokens`
+  - Clean provider inheritance pattern with `OpenAIResponses < OpenAI`
+  - Automatic retry on response ID expiration with configurable failure limits
+  - Support for structured output, truncation, service tiers, and custom includes
 - **Multi-Subscriber Callback System**: Register multiple callbacks for the same event using `on_new_message`, `on_end_message`, `on_tool_call`, and `on_tool_result`. Callbacks fire in FIFO order with error isolation.
 - **Subscription Management**: New `subscribe(event, tag:)` method returns a `Subscription` object that can be unsubscribed later. Added `once(event)` for one-time callbacks.
 - **Thread-Safe Message Management**: Added `@messages_mutex` for thread-safe message operations. New methods: `message_history`, `set_messages`, `snapshot_messages`, `restore_messages`, `reset_messages!`.
@@ -17,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Message Transaction Support**: `with_message_transaction` block for atomic operations with rollback on failure.
 - **Extensibility Hook**: `around_tool_execution` hook for subclasses to add caching, rate limiting, instrumentation, etc.
 - **Utility Methods**: `callback_count`, `clear_callbacks`, `tool_results_complete?`, `repair_incomplete_tool_calls!`.
+- **Responses API Error Classes**: New error hierarchy including `ResponsesApiError`, `ResponseIdNotFoundError`, `ResponseFailedError`, `ResponseInProgressError`, `ResponseCancelledError`, and `ResponseIncompleteError`.
+- **Message Attributes**: Added `response_id`, `reasoning_summary`, and `reasoning_tokens` to `Message` class for Responses API metadata.
 
 ### Changed
 

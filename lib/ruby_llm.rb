@@ -16,6 +16,7 @@ loader.inflector.inflect(
   'ruby_llm' => 'RubyLLM',
   'llm' => 'LLM',
   'openai' => 'OpenAI',
+  'openai_responses' => 'OpenAIResponses',
   'api' => 'API',
   'deepseek' => 'DeepSeek',
   'perplexity' => 'Perplexity',

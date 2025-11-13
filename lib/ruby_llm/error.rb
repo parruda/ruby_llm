@@ -28,6 +28,14 @@ module RubyLLM
   class ServiceUnavailableError < Error; end
   class UnauthorizedError < Error; end
 
+  # Responses API specific errors
+  class ResponsesApiError < Error; end
+  class ResponseIdNotFoundError < ResponsesApiError; end
+  class ResponseFailedError < ResponsesApiError; end
+  class ResponseInProgressError < ResponsesApiError; end
+  class ResponseCancelledError < ResponsesApiError; end
+  class ResponseIncompleteError < ResponsesApiError; end
+
   # Faraday middleware that maps provider-specific API errors to RubyLLM errors.
   class ErrorMiddleware < Faraday::Middleware
     def initialize(app, options = {})
