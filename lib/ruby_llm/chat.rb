@@ -45,7 +45,8 @@ module RubyLLM
       end
     end
 
-    attr_reader :model, :messages, :tools, :params, :headers, :schema, :tool_concurrency, :max_concurrency
+    attr_reader :model, :messages, :tools, :params, :headers, :schema, :tool_concurrency, :max_concurrency,
+                :responses_session
 
     def initialize(model: nil, provider: nil, assume_model_exists: false, context: nil, # rubocop:disable Metrics/ParameterLists
                    tool_concurrency: nil, max_concurrency: nil)
@@ -68,6 +69,10 @@ module RubyLLM
       # Concurrent tool execution settings
       @tool_concurrency = tool_concurrency
       @max_concurrency = max_concurrency
+
+      # Responses API state
+      @responses_api_config = nil
+      @responses_session = nil
 
       # Multi-subscriber callback system
       @callbacks = {
@@ -160,6 +165,77 @@ module RubyLLM
       @tool_concurrency = mode unless mode.nil?
       @max_concurrency = max if max
       self
+    end
+
+    # Enables OpenAI Responses API for this chat.
+    # Switches from chat/completions to the v1/responses endpoint.
+    #
+    # @param stateful [Boolean] Use previous_response_id for efficient multi-turn (default: false)
+    # @param store [Boolean] Store responses on OpenAI server (default: true)
+    # @param truncation [Symbol] Truncation strategy (default: :disabled)
+    # @param include [Array<Symbol>] Additional data to include (e.g., [:reasoning_encrypted_content])
+    # @return [self] for chaining
+    #
+    # @example Basic usage
+    #   chat.with_responses_api.ask("Hello")
+    #
+    # @example Stateful mode for token efficiency
+    #   chat.with_responses_api(stateful: true).ask("Hello")
+    #
+    # @example With custom configuration
+    #   chat.with_responses_api(
+    #     stateful: true,
+    #     truncation: :auto,
+    #     include: [:reasoning_encrypted_content]
+    #   ).ask("Complex reasoning task")
+    def with_responses_api(stateful: false, store: true, truncation: :disabled, include: [], **options)
+      unless @provider.is_a?(Providers::OpenAI)
+        raise ArgumentError, 'with_responses_api is only supported for OpenAI providers'
+      end
+
+      @responses_api_config = {
+        stateful: stateful,
+        store: store,
+        truncation: truncation,
+        include: include,
+        service_tier: options[:service_tier],
+        max_tool_calls: options[:max_tool_calls]
+      }
+
+      # Initialize session if not already present
+      @responses_session ||= ResponsesSession.new
+
+      # Switch to OpenAIResponses provider if currently using standard OpenAI
+      unless @provider.is_a?(Providers::OpenAIResponses)
+        @provider = Providers::OpenAIResponses.new(@config, @responses_session, @responses_api_config)
+        @connection = @provider.connection
+      end
+
+      self
+    end
+
+    # Restores a Responses API session from previously saved state.
+    # Used for persisting sessions across requests (e.g., Rails).
+    #
+    # @param session_data [Hash] Session data from ResponsesSession#to_h
+    # @return [self] for chaining
+    def restore_responses_session(session_data)
+      @responses_session = ResponsesSession.from_h(session_data)
+
+      # Update provider session if already using Responses API
+      if @provider.is_a?(Providers::OpenAIResponses)
+        @provider = Providers::OpenAIResponses.new(@config, @responses_session, @responses_api_config || {})
+        @connection = @provider.connection
+      end
+
+      self
+    end
+
+    # Checks if the Responses API is currently enabled for this chat.
+    #
+    # @return [Boolean] true if using OpenAI Responses API
+    def responses_api_enabled?
+      @provider.is_a?(Providers::OpenAIResponses)
     end
 
     # Subscribes to an event with the given block.
@@ -290,14 +366,8 @@ module RubyLLM
       )
 
       emit(:new_message) unless block_given?
-
-      if @schema && response.content.is_a?(String)
-        begin
-          response.content = JSON.parse(response.content)
-        rescue JSON::ParserError
-          # If parsing fails, keep content as string
-        end
-      end
+      update_responses_session(response)
+      parse_schema_response(response)
 
       if response.tool_call?
         execute_tool_call_sequence(response, &)
@@ -540,6 +610,23 @@ module RubyLLM
       tool_payload = result.is_a?(Tool::Halt) ? result.content : result
       content = content_like?(tool_payload) ? tool_payload : tool_payload.to_s
       add_message role: :tool, content: content, tool_call_id: tool_call.id
+    end
+
+    # Updates the Responses API session with the response ID if applicable.
+    def update_responses_session(response)
+      return unless responses_api_enabled?
+      return unless response.respond_to?(:response_id) && response.response_id
+
+      @responses_session.update(response.response_id)
+    end
+
+    # Parses JSON schema response content if applicable.
+    def parse_schema_response(response)
+      return unless @schema && response.content.is_a?(String)
+
+      response.content = JSON.parse(response.content)
+    rescue JSON::ParserError
+      # If parsing fails, keep content as string
     end
 
     # Adds all tool result messages atomically to ensure Chat state consistency.
