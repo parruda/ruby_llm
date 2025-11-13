@@ -1,3 +1,5 @@
+require: 
+  - ./rubocop/cop/security/no_reflection_methods.rb
 plugins:
   - rubocop-performance
   - rubocop-rake

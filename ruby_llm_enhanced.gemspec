@@ -3,7 +3,7 @@
 require_relative 'lib/ruby_llm/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'ruby_llm'
+  spec.name          = 'ruby_llm_enhanced'
   spec.version       = RubyLLM::VERSION
   spec.authors       = ['Paulo Arruda']
   spec.email         = ['parrudaj@gmail.com ']
