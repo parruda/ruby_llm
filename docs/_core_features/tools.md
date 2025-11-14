@@ -28,6 +28,8 @@ After reading this guide, you will know:
 *   How to define parameters for your Tools (from quick helpers to full JSON Schema).
 *   How to use Tools within a `RubyLLM::Chat`.
 *   The execution flow when a model uses a Tool.
+*   How to execute tools concurrently for better performance.
+*   How to add custom hooks around tool execution.
 *   How to handle errors within Tools.
 *   Security considerations when using Tools.
 
@@ -349,6 +351,149 @@ chat.ask("Check weather for every major city...")
 
 > Raising an exception in `on_tool_call` breaks the conversation flow - the LLM expects a tool response after requesting a tool call. This can leave the chat in an inconsistent state. Consider using better models or clearer tool descriptions to prevent loops instead of hard limits.
 {: .warning }
+
+## Concurrent Tool Execution
+{: .d-inline-block }
+
+v2.0.0+
+{: .label .label-green }
+
+When the AI requests multiple tool calls at once, RubyLLM can execute them concurrently for better performance. This is especially useful when tools make external API calls or perform I/O operations.
+
+### Configuring Concurrency
+
+Use `with_tool_concurrency` to enable parallel tool execution:
+
+```ruby
+# Use async (fiber-based) executor with max 5 concurrent tools
+chat = RubyLLM.chat
+  .with_tool(WeatherTool)
+  .with_tool(SearchTool)
+  .with_tool(DatabaseTool)
+  .with_tool_concurrency(:async, max: 5)
+
+# Or use thread-based executor
+chat = RubyLLM.chat
+  .with_tool(WeatherTool)
+  .with_tool_concurrency(:threads, max: 10)
+```
+
+### Built-in Executors
+
+RubyLLM includes two executors:
+
+- **`:async`** - Fiber-based concurrency using the Async gem (recommended for I/O-bound operations)
+- **`:threads`** - Thread-based concurrency using Ruby's standard library
+
+```ruby
+# Async executor - lightweight, great for HTTP calls
+chat.with_tool_concurrency(:async, max: 10)
+
+# Thread executor - uses native threads
+chat.with_tool_concurrency(:threads, max: 5)
+```
+
+### Custom Executors
+
+Register your own executor for specialized needs:
+
+```ruby
+# Register a custom executor
+RubyLLM.register_tool_executor(:custom) do |tools_to_execute, max:|
+  # tools_to_execute is an array of [tool_call_id, tool, arguments] tuples
+  # Return array of [tool_call_id, result] pairs
+
+  tools_to_execute.map do |tool_call_id, tool, arguments|
+    result = tool.execute(**arguments)
+    [tool_call_id, result]
+  end
+end
+
+# Use your custom executor
+chat.with_tool_concurrency(:custom, max: 20)
+```
+
+### Example: Parallel API Calls
+
+```ruby
+class WeatherTool < RubyLLM::Tool
+  description "Gets weather for a city"
+  param :city, desc: "City name"
+
+  def execute(city:)
+    # Each call takes 500ms
+    Faraday.get("https://api.weather.com/#{city}").body
+  end
+end
+
+class StockTool < RubyLLM::Tool
+  description "Gets stock price"
+  param :symbol, desc: "Stock symbol"
+
+  def execute(symbol:)
+    # Each call takes 300ms
+    Faraday.get("https://api.stocks.com/#{symbol}").body
+  end
+end
+
+chat = RubyLLM.chat
+  .with_tool(WeatherTool)
+  .with_tool(StockTool)
+  .with_tool_concurrency(:async, max: 5)
+
+# If the AI calls 3 tools at once, they execute in parallel
+# Total time: max(500ms, 300ms, ...) instead of 500ms + 300ms + ...
+chat.ask("What's the weather in NYC and the current AAPL stock price?")
+```
+
+## Extensibility Hooks
+{: .d-inline-block }
+
+v2.0.0+
+{: .label .label-green }
+
+### Around Tool Execution
+
+Subclass `Chat` to add custom behavior around tool execution:
+
+```ruby
+class InstrumentedChat < RubyLLM::Chat
+  private
+
+  def around_tool_execution(tool_call_id, tool, arguments)
+    # Add caching
+    cache_key = [tool.name, arguments].hash
+    cached = Rails.cache.read(cache_key)
+    return cached if cached
+
+    # Add timing
+    start_time = Time.now
+
+    # Call the original execution
+    result = yield
+
+    # Log metrics
+    elapsed = Time.now - start_time
+    Rails.logger.info "Tool #{tool.name} took #{elapsed}s"
+
+    # Cache the result
+    Rails.cache.write(cache_key, result, expires_in: 1.hour)
+
+    result
+  end
+end
+
+# Use your custom chat
+chat = InstrumentedChat.new
+  .with_model('gpt-4o')
+  .with_tool(ExpensiveTool)
+```
+
+This hook is useful for:
+- **Caching**: Cache expensive tool results
+- **Rate limiting**: Control how often tools can be called
+- **Instrumentation**: Track performance metrics
+- **Validation**: Add extra security checks
 
 ## Advanced Tool Metadata
 

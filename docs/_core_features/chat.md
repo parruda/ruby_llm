@@ -31,6 +31,8 @@ After reading this guide, you will know:
 * How to get structured output with JSON schemas
 * How to track token usage and costs
 * How to handle streaming responses and events
+* How to use OpenAI's Responses API for efficient multi-turn conversations
+* How to register multiple event callbacks and manage subscriptions
 
 ## Starting a Conversation
 
@@ -649,6 +651,108 @@ end
 chat.ask "What is metaprogramming in Ruby?"
 ```
 
+### Multi-Subscriber Callbacks
+{: .d-inline-block }
+
+v2.0.0+
+{: .label .label-green }
+
+You can register multiple callbacks for the same event. Callbacks fire in FIFO order with error isolation (one failing callback won't affect others):
+
+```ruby
+chat = RubyLLM.chat
+
+# Register multiple callbacks for the same event
+chat.on_new_message do
+  puts "Callback 1: New message started"
+end
+
+chat.on_new_message do
+  puts "Callback 2: Also triggered"
+end
+
+chat.on_end_message do |message|
+  puts "Analytics: Logging message completion"
+end
+
+chat.on_end_message do |message|
+  puts "UI: Updating interface"
+end
+
+chat.ask "Hello"
+# Output:
+# Callback 1: New message started
+# Callback 2: Also triggered
+# Analytics: Logging message completion
+# UI: Updating interface
+```
+
+### Subscription Management
+{: .d-inline-block }
+
+v2.0.0+
+{: .label .label-green }
+
+For more control over callbacks, use `subscribe` to get a `Subscription` object that can be unsubscribed later:
+
+```ruby
+chat = RubyLLM.chat
+
+# Subscribe with a tag for identification
+subscription = chat.subscribe(:new_message, tag: "analytics") do
+  puts "New message event"
+end
+
+# Use once() for one-time callbacks that auto-unsubscribe after firing
+chat.once(:end_message) do |message|
+  puts "This only fires once!"
+end
+
+# Later, unsubscribe when done
+subscription.unsubscribe
+
+# Check callback counts
+puts chat.callback_count(:new_message)  # => 0
+puts chat.callback_count(:end_message)  # => 1 (the once callback)
+
+# Clear all callbacks for an event
+chat.clear_callbacks(:end_message)
+```
+
+### Thread-Safe Message Management
+{: .d-inline-block }
+
+v2.0.0+
+{: .label .label-green }
+
+Chat provides thread-safe methods for message manipulation, useful for concurrent operations:
+
+```ruby
+chat = RubyLLM.chat
+
+# Get a thread-safe copy of message history
+messages = chat.message_history
+
+# Snapshot and restore for transactional operations
+snapshot = chat.snapshot_messages
+
+# Do some operations...
+chat.ask("Something")
+
+# Restore to previous state if needed
+chat.restore_messages(snapshot)
+
+# Reset messages
+chat.reset_messages!
+
+# Atomic message operations with transaction support
+chat.with_message_transaction do
+  # Operations here are rolled back on failure
+  chat.add_message(role: :user, content: "Hello")
+  chat.ask("Continue...")
+end
+```
+
 ## Raw Responses
 
 You can access the raw response from the API provider with `response.raw`.
@@ -659,6 +763,136 @@ puts response.raw.body
 ```
 
 The raw response is a `Faraday::Response` object, which you can use to access the headers, body, and status code.
+
+## OpenAI Responses API
+{: .d-inline-block }
+
+v2.0.0+
+{: .label .label-green }
+
+RubyLLM provides native support for OpenAI's new `v1/responses` endpoint, which offers significant advantages for multi-turn conversations:
+
+- **Token efficiency**: Stateful mode uses `previous_response_id` to avoid resending entire conversation history
+- **Reasoning insights**: Access reasoning summaries and token usage from reasoning models
+- **Session management**: Automatic TTL management and failure recovery
+
+### Basic Usage
+
+Enable the Responses API on any OpenAI chat:
+
+```ruby
+chat = RubyLLM.chat(model: 'gpt-4o')
+  .with_responses_api
+
+response = chat.ask("Explain quantum computing")
+puts response.content
+
+# Access Responses API metadata
+puts response.response_id        # => "resp_abc123..."
+puts response.reasoning_summary  # => nil (for non-reasoning models)
+puts response.reasoning_tokens   # => nil (for non-reasoning models)
+```
+
+### Stateful Conversations
+
+For efficient multi-turn conversations, enable stateful mode:
+
+```ruby
+chat = RubyLLM.chat(model: 'gpt-4o')
+  .with_responses_api(stateful: true)
+
+# First message sends full input
+response1 = chat.ask("What is Ruby?")
+
+# Subsequent messages only send new input + previous_response_id
+# This saves tokens by not resending the entire conversation
+response2 = chat.ask("How does it compare to Python?")
+```
+
+### Configuration Options
+
+The Responses API supports several configuration options:
+
+```ruby
+chat = RubyLLM.chat(model: 'gpt-4o')
+  .with_responses_api(
+    stateful: true,                          # Enable stateful mode with previous_response_id
+    store: true,                             # Store responses on OpenAI's servers (default: true)
+    truncation: :auto,                       # Truncation strategy (:disabled, :auto)
+    include: [:reasoning_encrypted_content], # Additional response fields to include
+    service_tier: :flex,                     # Service tier (:auto, :default, :flex)
+    max_tool_calls: 10                       # Maximum number of tool calls per response
+  )
+```
+
+### Session Persistence
+
+Sessions can be saved and restored for long-running applications:
+
+```ruby
+# Save session state
+chat = RubyLLM.chat(model: 'gpt-4o')
+  .with_responses_api(stateful: true)
+
+chat.ask("First message")
+session_data = chat.responses_session.to_h
+# => {
+#   response_id: "resp_abc123",
+#   last_activity: "2024-01-15T10:30:00Z",
+#   failure_count: 0,
+#   disabled: false
+# }
+
+# Store in database, cache, etc.
+save_to_database(user_id, session_data)
+
+# Later, restore the session
+saved_data = load_from_database(user_id)
+chat = RubyLLM.chat(model: 'gpt-4o')
+  .with_responses_api(stateful: true)
+  .restore_responses_session(saved_data)
+
+# Continue the conversation efficiently
+chat.ask("Continue from where we left off")
+```
+
+### Failure Recovery
+
+The session automatically handles response ID expiration with configurable failure limits:
+
+```ruby
+chat = RubyLLM.chat(model: 'gpt-4o')
+  .with_responses_api(stateful: true)
+
+# If the response_id expires or becomes invalid:
+# 1. First failure: Retries with fresh state
+# 2. Second failure: Retries again
+# 3. Third failure: Disables stateful mode, falls back to full history
+
+# Check session state
+session = chat.responses_session
+puts session.valid?         # => true if response_id is valid and not expired
+puts session.failure_count  # => number of consecutive failures
+puts session.disabled?      # => true if stateful mode is disabled due to failures
+```
+
+### Checking API Status
+
+```ruby
+chat = RubyLLM.chat(model: 'gpt-4o')
+
+# Check if Responses API is enabled
+puts chat.responses_api_enabled?  # => false
+
+chat.with_responses_api
+puts chat.responses_api_enabled?  # => true
+
+# Access the session
+puts chat.responses_session.class  # => RubyLLM::ResponsesSession
+```
+
+> The Responses API is only available for OpenAI models. Attempting to enable it for other providers will raise an `ArgumentError`.
+{: .warning }
 
 ## Next Steps
 

@@ -28,6 +28,7 @@ After reading this guide, you will know:
 * How to perform concurrent LLM operations
 * How to use async-job for background processing
 * How to handle rate limits with semaphores
+* How to leverage RubyLLM's built-in async tool execution
 
 For a deeper dive into Async, Threads, and why Async Ruby is perfect for LLM applications, including benchmarks and architectural comparisons, check out my blog post: [Async Ruby is the Future of AI Apps (And It's Already Here)](https://paolino.me/async-ruby-is-the-future/)
 
@@ -335,6 +336,95 @@ results = processor.process_items(items)
 
 The semaphore ensures only 5 requests run concurrently, preventing rate limit errors while still maintaining high throughput.
 
+## Concurrent Tool Execution
+{: .d-inline-block }
+
+v2.0.0+
+{: .label .label-green }
+
+RubyLLM now has built-in support for executing tools concurrently using the async executor:
+
+```ruby
+require 'async'
+require 'ruby_llm'
+
+class WeatherTool < RubyLLM::Tool
+  description "Gets weather for a city"
+  param :city, desc: "City name"
+
+  def execute(city:)
+    # This HTTP call becomes non-blocking in async context
+    response = Faraday.get("https://api.weather.com/#{city}")
+    JSON.parse(response.body)
+  end
+end
+
+class StockTool < RubyLLM::Tool
+  description "Gets stock price"
+  param :symbol, desc: "Stock symbol"
+
+  def execute(symbol:)
+    response = Faraday.get("https://api.stocks.com/#{symbol}")
+    JSON.parse(response.body)
+  end
+end
+
+# Enable async tool execution
+chat = RubyLLM.chat
+  .with_tool(WeatherTool)
+  .with_tool(StockTool)
+  .with_tool_concurrency(:async, max: 10)
+
+# When the AI calls multiple tools at once, they execute concurrently
+response = chat.ask("Get the weather in NYC, London, and Tokyo, plus AAPL and GOOGL stock prices")
+```
+
+The `:async` executor uses Ruby's fiber scheduler to run tools concurrently without blocking. This is perfect for I/O-bound operations like API calls, database queries, or file operations.
+
+### Benefits
+
+- **Automatic non-blocking**: Tools using Faraday, Net::HTTP, or other async-compatible libraries become non-blocking
+- **Efficient resource use**: Fibers are lightweight, allowing many concurrent tool executions
+- **Simple configuration**: Just add `.with_tool_concurrency(:async, max: N)`
+
+### Custom Async Executors
+
+You can register custom executors that leverage async patterns:
+
+```ruby
+require 'async'
+require 'async/barrier'
+
+RubyLLM.register_tool_executor(:async_with_timeout) do |tools_to_execute, max:|
+  Async do
+    barrier = Async::Barrier.new
+    semaphore = Async::Semaphore.new(max)
+    results = []
+
+    tools_to_execute.each do |tool_call_id, tool, arguments|
+      barrier.async do
+        semaphore.acquire do
+          # Add timeout per tool
+          result = Async::Task.current.with_timeout(30) do
+            tool.execute(**arguments)
+          rescue Async::TimeoutError
+            { error: "Tool execution timed out after 30 seconds" }
+          end
+          results << [tool_call_id, result]
+        end
+      end
+    end
+
+    barrier.wait
+    results
+  end.wait
+end
+
+chat.with_tool_concurrency(:async_with_timeout, max: 5)
+```
+
+See the [Tools Guide]({% link _core_features/tools.md %}#concurrent-tool-execution) for more details on concurrent tool execution.
+
 ## Summary
 
 Key takeaways:
@@ -343,6 +433,7 @@ Key takeaways:
 - RubyLLM automatically works with async - no configuration needed
 - Use async-job for LLM background jobs without changing your job code
 - Use semaphores to manage rate limits
+- Leverage concurrent tool execution with `.with_tool_concurrency(:async, max: N)`
 - Keep thread-based processors for CPU-intensive work
 
 The combination of RubyLLM and async Ruby gives you the ability to handle thousands of concurrent AI conversations on modest hardware - something that would require massive infrastructure with traditional thread-based approaches.
