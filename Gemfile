@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 gemspec name: 'ruby_llm'
-gemspec name: 'ruby_llm_enhanced'
+gemspec name: 'ruby_llm_pro'
 
 group :development do # rubocop:disable Metrics/BlockLength
   gem 'appraisal'
