@@ -469,11 +469,12 @@ RSpec.describe RubyLLM::Chat do
     end
 
     it 'calls on_tool_result callback when tools return results' do
+      tool_calls_in_result = []
       tool_results_received = []
 
       chat = RubyLLM.chat
                     .with_tool(Weather)
-                    .on_tool_result { |result| tool_results_received << result }
+                    .on_tool_result { |tool_call, result| tool_calls_in_result << tool_call; tool_results_received << result }
 
       response = chat.ask("What's the weather in Berlin? (52.5200, 13.4050)")
 
@@ -483,6 +484,11 @@ RSpec.describe RubyLLM::Chat do
       expect(tool_results_received.first).to include('10 km/h')
       expect(response.content).to include('15')
       expect(response.content).to include('10')
+
+      # Also verify tool_call is passed
+      expect(tool_calls_in_result.first).to be_a(RubyLLM::ToolCall)
+      expect(tool_calls_in_result.first.name).to eq('weather')
+      expect(tool_calls_in_result.first.arguments).to include('latitude' => '52.5200', 'longitude' => '13.4050')
     end
 
     it 'calls both on_tool_call and on_tool_result callbacks in order' do
@@ -491,7 +497,7 @@ RSpec.describe RubyLLM::Chat do
       chat = RubyLLM.chat
                     .with_tool(Weather)
                     .on_tool_call { |_| call_order << :tool_call }
-                    .on_tool_result { |_| call_order << :tool_result }
+                    .on_tool_result { |_, _| call_order << :tool_result }
 
       chat.ask("What's the weather in Berlin? (52.5200, 13.4050)")
 

@@ -625,17 +625,19 @@ RSpec.describe RubyLLM::ActiveRecord::ActsAs do
     it 'calls on_tool_call and on_tool_result callbacks' do
       tool_call_received = nil
       tool_result_received = nil
+      tool_call_in_result = nil
 
       chat = Chat.create!(model: model)
                  .with_tool(Calculator)
                  .on_tool_call { |tc| tool_call_received = tc }
-                 .on_tool_result { |result| tool_result_received = result }
+                 .on_tool_result { |tc, result| tool_call_in_result = tc; tool_result_received = result }
 
       chat.ask('What is 2 + 2?')
 
       expect(tool_call_received).not_to be_nil
       expect(tool_call_received.name).to eq('calculator')
       expect(tool_result_received).to eq('4')
+      expect(tool_call_in_result).to eq(tool_call_received)
     end
   end
 

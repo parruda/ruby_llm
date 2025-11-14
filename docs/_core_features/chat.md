@@ -643,8 +643,8 @@ chat.on_tool_call do |tool_call|
 end
 
 # Called after a tool returns its result
-chat.on_tool_result do |result|
-  puts "Tool returned: #{result}"
+chat.on_tool_result do |tool_call, result|
+  puts "#{tool_call.name} returned: #{result}"
 end
 
 # These callbacks work for both streaming and non-streaming requests
