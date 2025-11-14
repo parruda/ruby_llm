@@ -430,12 +430,19 @@ module RubyLLM
       set_messages(snapshot)
     end
 
-    # Clears all messages from the conversation history.
+    # Clears messages from the conversation history.
     # Thread-safe: uses mutex to protect message array.
     #
+    # @param preserve_system_prompt [Boolean] if true (default), keeps system messages
     # @return [self] for chaining
-    def reset_messages!
-      @messages_mutex.synchronize { @messages.clear }
+    def reset_messages!(preserve_system_prompt: true)
+      @messages_mutex.synchronize do
+        if preserve_system_prompt
+          @messages.select! { |m| m.role == :system }
+        else
+          @messages.clear
+        end
+      end
       self
     end
 

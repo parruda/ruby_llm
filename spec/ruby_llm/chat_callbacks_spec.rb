@@ -295,9 +295,41 @@ RSpec.describe RubyLLM::Chat do
     end
 
     describe '#reset_messages!' do
-      it 'clears all messages' do
+      it 'clears non-system messages by default' do
         chat.add_message(role: :user, content: 'Hello')
         chat.reset_messages!
+        expect(chat.messages).to be_empty
+      end
+
+      it 'preserves system messages by default' do
+        chat.add_message(role: :system, content: 'You are helpful')
+        chat.add_message(role: :user, content: 'Hello')
+        chat.add_message(role: :assistant, content: 'Hi there')
+
+        chat.reset_messages!
+
+        expect(chat.messages.size).to eq(1)
+        expect(chat.messages.first.role).to eq(:system)
+        expect(chat.messages.first.content).to eq('You are helpful')
+      end
+
+      it 'preserves multiple system messages' do
+        chat.add_message(role: :system, content: 'First instruction')
+        chat.add_message(role: :system, content: 'Second instruction')
+        chat.add_message(role: :user, content: 'Hello')
+
+        chat.reset_messages!
+
+        expect(chat.messages.size).to eq(2)
+        expect(chat.messages.map(&:role)).to all(eq(:system))
+      end
+
+      it 'clears all messages including system when preserve_system_prompt is false' do
+        chat.add_message(role: :system, content: 'You are helpful')
+        chat.add_message(role: :user, content: 'Hello')
+
+        chat.reset_messages!(preserve_system_prompt: false)
+
         expect(chat.messages).to be_empty
       end
 

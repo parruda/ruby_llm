@@ -742,8 +742,15 @@ chat.ask("Something")
 # Restore to previous state if needed
 chat.restore_messages(snapshot)
 
-# Reset messages
-chat.reset_messages!
+# Reset messages (preserves system prompts by default)
+chat.with_instructions("You are helpful")
+chat.ask("Hello")
+chat.reset_messages!  # Keeps system prompt, clears conversation
+chat.messages.size    # => 1 (just the system message)
+
+# Clear everything including system prompts
+chat.reset_messages!(preserve_system_prompt: false)
+chat.messages.size    # => 0
 
 # Atomic message operations with transaction support
 chat.with_message_transaction do
