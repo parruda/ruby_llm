@@ -82,6 +82,9 @@ module RubyLLM
         tool_result: []
       }
       @callback_monitor = Monitor.new
+
+      # Extensibility hook for tool execution
+      @around_tool_execution_hook = nil
     end
 
     def ask(message = nil, with: nil, &)
@@ -317,6 +320,38 @@ module RubyLLM
     # @return [self] for chaining
     def on_tool_result(&)
       subscribe(:tool_result, &)
+      self
+    end
+
+    # Sets a hook to wrap tool execution with custom behavior.
+    # Unlike event callbacks, only one around hook can be active at a time.
+    #
+    # The block receives:
+    # - tool_call [ToolCall]: The tool call being executed (.name, .arguments, .id)
+    # - tool_instance [Tool]: The tool instance
+    # - execute [Proc]: Call this to execute the actual tool
+    #
+    # The block must return the result (can modify or replace it).
+    # If the block doesn't call execute.call, it can return an alternative result (for caching, mocking, etc.).
+    #
+    # @yield [ToolCall, Tool, Proc] Block called for each tool execution
+    # @return [self] for chaining
+    #
+    # @example Logging and timing
+    #   chat.around_tool_execution do |tool_call, tool_instance, execute|
+    #     start = Time.now
+    #     result = execute.call
+    #     puts "#{tool_call.name} took #{Time.now - start}s"
+    #     result
+    #   end
+    #
+    # @example Caching
+    #   chat.around_tool_execution do |tool_call, tool_instance, execute|
+    #     cache_key = [tool_call.name, tool_call.arguments].hash
+    #     Rails.cache.fetch(cache_key) { execute.call }
+    #   end
+    def around_tool_execution(&block)
+      @around_tool_execution_hook = block
       self
     end
 
@@ -607,8 +642,12 @@ module RubyLLM
       emit(:tool_call, tool_call)
 
       tool_instance = tools[tool_call.name.to_sym]
-      around_tool_execution(tool_call, tool_instance: tool_instance) do
-        tool_instance.call(tool_call.arguments)
+      execute_proc = -> { tool_instance.call(tool_call.arguments) }
+
+      if @around_tool_execution_hook
+        @around_tool_execution_hook.call(tool_call, tool_instance, execute_proc)
+      else
+        execute_proc.call
       end
     end
 
@@ -665,17 +704,6 @@ module RubyLLM
         return result if result.is_a?(Tool::Halt)
       end
       nil
-    end
-
-    # Extensibility hook for wrapping tool execution.
-    # Override in subclass to add resource management, caching, instrumentation, etc.
-    #
-    # @param tool_call [ToolCall] The tool call being executed
-    # @param tool_instance [Tool] The tool instance
-    # @yield Executes the actual tool
-    # @return [Object] Tool result (from yield or short-circuit)
-    def around_tool_execution(_tool_call, tool_instance:) # rubocop:disable Lint/UnusedMethodArgument
-      yield
     end
 
     def build_content(message, attachments)

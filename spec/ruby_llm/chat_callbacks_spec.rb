@@ -418,5 +418,147 @@ RSpec.describe RubyLLM::Chat do
       end
     end
   end
+
+  describe '#around_tool_execution' do
+    let(:chat) { described_class.new(model: 'gpt-4o-mini') }
+
+    let(:test_tool) do
+      Class.new(RubyLLM::Tool) do
+        description 'A test tool'
+
+        def name
+          'test_tool'
+        end
+
+        def execute
+          'original_result'
+        end
+      end
+    end
+
+    before do
+      chat.with_tool(test_tool)
+    end
+
+    it 'returns self for chaining' do
+      result = chat.around_tool_execution { |_tc, _ti, exec| exec.call }
+      expect(result).to eq(chat)
+    end
+
+    it 'wraps tool execution with custom logic' do
+      call_order = []
+
+      chat.around_tool_execution do |tool_call, _tool_instance, execute|
+        call_order << "before:#{tool_call.name}"
+        result = execute.call
+        call_order << "after:#{result}"
+        result
+      end
+
+      tool_call = RubyLLM::ToolCall.new(id: 'call_123', name: 'test_tool', arguments: {})
+      result = chat.send(:execute_single_tool, tool_call)
+
+      expect(call_order).to eq(%w[before:test_tool after:original_result])
+      expect(result).to eq('original_result')
+    end
+
+    it 'provides access to tool_call and tool_instance' do
+      received_tool_call = nil
+      received_tool_instance = nil
+
+      chat.around_tool_execution do |tool_call, tool_instance, execute|
+        received_tool_call = tool_call
+        received_tool_instance = tool_instance
+        execute.call
+      end
+
+      tool_call = RubyLLM::ToolCall.new(id: 'call_456', name: 'test_tool', arguments: {})
+      chat.send(:execute_single_tool, tool_call)
+
+      expect(received_tool_call).to eq(tool_call)
+      expect(received_tool_instance).to be_a(test_tool)
+      expect(received_tool_instance.name).to eq('test_tool')
+    end
+
+    it 'allows modifying the result' do
+      chat.around_tool_execution do |_tc, _ti, execute|
+        original = execute.call
+        "modified:#{original}"
+      end
+
+      tool_call = RubyLLM::ToolCall.new(id: 'call_789', name: 'test_tool', arguments: {})
+      result = chat.send(:execute_single_tool, tool_call)
+
+      expect(result).to eq('modified:original_result')
+    end
+
+    it 'allows skipping execution entirely' do
+      chat.around_tool_execution do |_tc, _ti, _execute|
+        'cached_result'
+      end
+
+      tool_call = RubyLLM::ToolCall.new(id: 'call_skip', name: 'test_tool', arguments: {})
+      result = chat.send(:execute_single_tool, tool_call)
+
+      expect(result).to eq('cached_result')
+    end
+
+    it 'replaces previous hook when called multiple times' do
+      chat.around_tool_execution { |_tc, _ti, _exec| 'first' }
+      chat.around_tool_execution { |_tc, _ti, _exec| 'second' }
+
+      tool_call = RubyLLM::ToolCall.new(id: 'call_multi', name: 'test_tool', arguments: {})
+      result = chat.send(:execute_single_tool, tool_call)
+
+      expect(result).to eq('second')
+    end
+
+    it 'works without any hook set' do
+      tool_call = RubyLLM::ToolCall.new(id: 'call_none', name: 'test_tool', arguments: {})
+      result = chat.send(:execute_single_tool, tool_call)
+
+      expect(result).to eq('original_result')
+    end
+
+    it 'can implement caching pattern' do
+      cache = {}
+
+      chat.around_tool_execution do |tool_call, _tool_instance, execute|
+        cache_key = [tool_call.name, tool_call.arguments].hash
+        cache[cache_key] ||= execute.call
+      end
+
+      tool_call = RubyLLM::ToolCall.new(id: 'call_cache1', name: 'test_tool', arguments: {})
+
+      # First call - executes the tool
+      result1 = chat.send(:execute_single_tool, tool_call)
+      expect(result1).to eq('original_result')
+
+      # Second call with same args - returns cached
+      tool_call2 = RubyLLM::ToolCall.new(id: 'call_cache2', name: 'test_tool', arguments: {})
+      result2 = chat.send(:execute_single_tool, tool_call2)
+      expect(result2).to eq('original_result')
+      expect(cache.size).to eq(1) # Same cache key
+    end
+
+    it 'can implement timing/instrumentation pattern' do
+      timings = []
+
+      chat.around_tool_execution do |tool_call, _tool_instance, execute|
+        start = Time.now
+        result = execute.call
+        elapsed = Time.now - start
+        timings << { tool: tool_call.name, time: elapsed }
+        result
+      end
+
+      tool_call = RubyLLM::ToolCall.new(id: 'call_time', name: 'test_tool', arguments: {})
+      chat.send(:execute_single_tool, tool_call)
+
+      expect(timings.size).to eq(1)
+      expect(timings.first[:tool]).to eq('test_tool')
+      expect(timings.first[:time]).to be_a(Float)
+    end
+  end
 end
 # rubocop:enable Security/NoReflectionMethods
