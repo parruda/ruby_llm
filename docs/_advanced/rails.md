@@ -978,6 +978,63 @@ class Chat < ApplicationRecord
 end
 ```
 
+## Advanced Features
+{: .d-inline-block }
+
+v2.0.0+
+{: .label .label-green }
+
+### Multi-Subscriber Callbacks
+
+Rails models with `acts_as_chat` support multiple callbacks for the same event:
+
+```ruby
+chat_record = Chat.create!(model: 'gpt-4o')
+
+# Register multiple callbacks
+chat_record.on_new_message do
+  puts "Analytics: New message started"
+end
+
+chat_record.on_new_message do
+  ActionCable.server.broadcast("chat_#{chat_record.id}", type: 'message_start')
+end
+
+chat_record.on_end_message do |message|
+  puts "Logging: Message complete"
+end
+
+chat_record.on_end_message do |message|
+  NotificationService.notify_user(chat_record.user_id, message)
+end
+
+chat_record.ask("Hello!")
+# All callbacks fire in order
+```
+
+### Concurrent Tool Execution
+
+Enable parallel tool execution in your Rails application:
+
+```ruby
+class ChatController < ApplicationController
+  def create_with_tools
+    @chat = Chat.create!(model: 'gpt-4o', user: current_user)
+
+    # Configure concurrent tool execution
+    @chat.to_llm
+         .with_tool(WeatherTool)
+         .with_tool(StockTool)
+         .with_tool_concurrency(:threads, max: 5)
+
+    @chat.ask("Get weather for NYC, London, Tokyo and stock prices for AAPL, GOOGL")
+  end
+end
+```
+
+> The `to_llm` method returns the underlying `RubyLLM::Chat` instance, which has access to all the advanced features like concurrent tool execution and subscription management.
+{: .note }
+
 ## Next Steps
 
 *   [Chatting with AI Models]({% link _core_features/chat.md %})
