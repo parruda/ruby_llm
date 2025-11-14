@@ -454,46 +454,94 @@ v2.0.0+
 
 ### Around Tool Execution
 
-Subclass `Chat` to add custom behavior around tool execution:
+Use `around_tool_execution` to wrap tool execution with custom behavior:
 
 ```ruby
-class InstrumentedChat < RubyLLM::Chat
-  private
+chat = RubyLLM.chat(model: '{{ site.models.openai_tools }}')
+  .with_tool(WeatherTool)
+  .around_tool_execution do |tool_call, tool_instance, execute|
+    # tool_call has .name, .arguments, .id
+    # tool_instance is the actual Tool object
+    # execute is a Proc - call it to run the tool
 
-  def around_tool_execution(tool_call_id, tool, arguments)
-    # Add caching
-    cache_key = [tool.name, arguments].hash
-    cached = Rails.cache.read(cache_key)
-    return cached if cached
-
-    # Add timing
+    # Pre-execution logic
+    Rails.logger.info "Calling #{tool_call.name} with #{tool_call.arguments}"
     start_time = Time.now
 
-    # Call the original execution
-    result = yield
+    # Execute the tool
+    result = execute.call
 
-    # Log metrics
+    # Post-execution logic
     elapsed = Time.now - start_time
-    Rails.logger.info "Tool #{tool.name} took #{elapsed}s"
+    Rails.logger.info "#{tool_call.name} took #{elapsed}s"
 
-    # Cache the result
-    Rails.cache.write(cache_key, result, expires_in: 1.hour)
-
+    # Return the result (can modify or replace)
     result
   end
-end
-
-# Use your custom chat
-chat = InstrumentedChat.new
-  .with_model('gpt-4o')
-  .with_tool(ExpensiveTool)
 ```
+
+### Caching Pattern
+
+Skip execution entirely by not calling `execute.call`:
+
+```ruby
+chat.around_tool_execution do |tool_call, _tool_instance, execute|
+  cache_key = [tool_call.name, tool_call.arguments].hash
+
+  # Return cached result if available
+  cached = Rails.cache.read(cache_key)
+  if cached
+    Rails.logger.info "Cache hit for #{tool_call.name}"
+    next cached  # Skip execution, return cached value
+  end
+
+  # Execute and cache
+  result = execute.call
+  Rails.cache.write(cache_key, result, expires_in: 1.hour)
+  result
+end
+```
+
+### Rate Limiting Pattern
+
+```ruby
+rate_limiter = RateLimiter.new(max_calls: 10, per: 1.minute)
+
+chat.around_tool_execution do |tool_call, _tool_instance, execute|
+  unless rate_limiter.allow?(tool_call.name)
+    next { error: "Rate limit exceeded for #{tool_call.name}" }
+  end
+
+  execute.call
+end
+```
+
+### Modifying Results
+
+Transform or validate results before they're returned:
+
+```ruby
+chat.around_tool_execution do |tool_call, _tool_instance, execute|
+  result = execute.call
+
+  # Add metadata
+  {
+    tool: tool_call.name,
+    timestamp: Time.now.iso8601,
+    result: result
+  }
+end
+```
+
+> Only one around hook can be active at a time. Calling `around_tool_execution` again replaces the previous hook. For multiple observers, use `on_tool_call` and `on_tool_result` callbacks instead.
+{: .note }
 
 This hook is useful for:
 - **Caching**: Cache expensive tool results
 - **Rate limiting**: Control how often tools can be called
 - **Instrumentation**: Track performance metrics
 - **Validation**: Add extra security checks
+- **Mocking**: Return test data without calling the actual tool
 
 ## Advanced Tool Metadata
 

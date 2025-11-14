@@ -22,14 +22,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Concurrent Tool Execution**: Configure parallel tool execution with `with_tool_concurrency(:async, max: 5)` or `with_tool_concurrency(:threads, max: 10)`.
 - **Tool Executor Registry**: New `RubyLLM.register_tool_executor(name)` API for custom executors. Built-in `:async` (fiber-based) and `:threads` (stdlib) executors.
 - **Message Transaction Support**: `with_message_transaction` block for atomic operations with rollback on failure.
-- **Extensibility Hook**: `around_tool_execution` hook for subclasses to add caching, rate limiting, instrumentation, etc.
 - **Utility Methods**: `callback_count`, `clear_callbacks`, `tool_results_complete?`, `repair_incomplete_tool_calls!`.
+- **Around Tool Execution Hook**: New `around_tool_execution` method for wrapping tool execution with custom behavior (caching, rate limiting, instrumentation). Uses composition pattern instead of subclassing.
 - **Responses API Error Classes**: New error hierarchy including `ResponsesApiError`, `ResponseIdNotFoundError`, `ResponseFailedError`, `ResponseInProgressError`, `ResponseCancelledError`, and `ResponseIncompleteError`.
 - **Message Attributes**: Added `response_id`, `reasoning_summary`, and `reasoning_tokens` to `Message` class for Responses API metadata.
 
 ### Changed
 
 - `on_new_message`, `on_end_message`, `on_tool_call`, `on_tool_result` now append callbacks instead of replacing them (backward compatible - single callback still works as before).
+- `on_tool_result` callback now receives both `tool_call` and `result` arguments instead of just `result`.
+- `reset_messages!` now preserves system prompts by default. Use `reset_messages!(preserve_system_prompt: false)` to clear everything.
+- `around_tool_execution` changed from subclass-override pattern to settable callback block. The hook now receives `(tool_call, tool_instance, execute_proc)` instead of `(tool_call, tool_instance:)` with yield.
 - Tool execution refactored into smaller, composable methods for better maintainability.
 - ActiveRecord integration simplified to delegate callbacks properly without accessing internal state.
 
