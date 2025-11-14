@@ -309,16 +309,16 @@ chat = RubyLLM.chat(model: '{{ site.models.openai_tools }}')
         puts "Calling tool: #{tool_call.name}"
         puts "Arguments: #{tool_call.arguments}"
       end
-      .on_tool_result do |result|
+      .on_tool_result do |tool_call, result|
         # Called after the tool returns its result
-        puts "Tool returned: #{result}"
+        puts "#{tool_call.name} returned: #{result}"
       end
 
 response = chat.ask "What's the weather in Paris?"
 # Output:
 # Calling tool: weather
 # Arguments: {"latitude": "48.8566", "longitude": "2.3522"}
-# Tool returned: {"temperature": 15, "conditions": "Partly cloudy"}
+# weather returned: {"temperature": 15, "conditions": "Partly cloudy"}
 ```
 
 These callbacks are useful for:

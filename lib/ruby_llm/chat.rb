@@ -313,7 +313,7 @@ module RubyLLM
     # Registers a callback for when a tool returns a result.
     # Multiple callbacks can be registered and all will fire in registration order.
     #
-    # @yield [Object] Block called with the tool result
+    # @yield [ToolCall, Object] Block called with the tool call and its result
     # @return [self] for chaining
     def on_tool_result(&)
       subscribe(:tool_result, &)
@@ -587,7 +587,7 @@ module RubyLLM
     def execute_single_tool_with_message(tool_call)
       emit(:new_message)
       result = execute_single_tool(tool_call)
-      emit(:tool_result, result)
+      emit(:tool_result, tool_call, result)
       message = add_tool_result_message(tool_call, result)
       emit(:end_message, message)
       result
@@ -598,7 +598,7 @@ module RubyLLM
     def execute_single_tool_with_events(tool_call)
       emit(:new_message)
       result = execute_single_tool(tool_call)
-      emit(:tool_result, result)
+      emit(:tool_result, tool_call, result)
       result
     end
 
