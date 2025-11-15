@@ -85,6 +85,9 @@ module RubyLLM
 
       # Extensibility hook for tool execution
       @around_tool_execution_hook = nil
+
+      # Extensibility hook for LLM requests
+      @around_llm_request_hook = nil
     end
 
     def ask(message = nil, with: nil, &)
@@ -355,6 +358,50 @@ module RubyLLM
       self
     end
 
+    # Sets a hook to wrap LLM API requests with custom behavior.
+    # Unlike event callbacks, only one around hook can be active at a time.
+    #
+    # The block receives:
+    # - messages [Array<Message>]: The current conversation messages
+    # - send_request [Proc]: A block that executes the actual provider call
+    #
+    # The block MUST call the block and return the response (can be modified).
+    # This allows intercepting, modifying messages, adding retry logic, etc.
+    #
+    # @yield [Array<Message>] Block called before each LLM request
+    # @yieldparam send_request [Proc] Block that sends request to provider
+    # @return [self] for chaining
+    #
+    # @example Inject ephemeral context (not stored in history)
+    #   chat.around_llm_request do |messages, &send_request|
+    #     prepared = messages + [ephemeral_message]
+    #     send_request.call(prepared)
+    #   end
+    #
+    # @example Add retry logic with backoff
+    #   chat.around_llm_request do |messages, &send_request|
+    #     retries = 0
+    #     begin
+    #       send_request.call(messages)
+    #     rescue RubyLLM::RateLimitError => e
+    #       sleep(2 ** retries)
+    #       retry if (retries += 1) < 3
+    #       raise
+    #     end
+    #   end
+    #
+    # @example Request logging
+    #   chat.around_llm_request do |messages, &send_request|
+    #     start = Time.now
+    #     response = send_request.call(messages)
+    #     puts "LLM request took #{Time.now - start}s"
+    #     response
+    #   end
+    def around_llm_request(&block)
+      @around_llm_request_hook = block
+      self
+    end
+
     # Clears all callbacks for the specified event, or all events if none specified.
     #
     # @param event [Symbol, nil] The event to clear callbacks for, or nil for all events
@@ -389,16 +436,7 @@ module RubyLLM
     end
 
     def complete(&)
-      response = @provider.complete(
-        messages,
-        tools: @tools,
-        temperature: @temperature,
-        model: @model,
-        params: @params,
-        headers: @headers,
-        schema: @schema,
-        &wrap_streaming_block(&)
-      )
+      response = execute_llm_request(&)
 
       emit(:new_message) unless block_given?
       update_responses_session(response)
@@ -545,6 +583,32 @@ module RubyLLM
     end
 
     private
+
+    # Executes the LLM request, wrapping with the around_llm_request hook if configured.
+    # The hook receives the messages and a proc to execute the actual provider call.
+    #
+    # @yield [Chunk] Optional streaming block
+    # @return [Message] The response from the provider
+    def execute_llm_request(&streaming_block)
+      provider_call = lambda do |msgs|
+        @provider.complete(
+          msgs,
+          tools: @tools,
+          temperature: @temperature,
+          model: @model,
+          params: @params,
+          headers: @headers,
+          schema: @schema,
+          &wrap_streaming_block(&streaming_block)
+        )
+      end
+
+      if @around_llm_request_hook
+        @around_llm_request_hook.call(messages, &provider_call)
+      else
+        provider_call.call(messages)
+      end
+    end
 
     def wrap_streaming_block(&block)
       return nil unless block_given?

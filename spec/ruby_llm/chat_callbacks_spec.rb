@@ -560,5 +560,270 @@ RSpec.describe RubyLLM::Chat do
       expect(timings.first[:time]).to be_a(Float)
     end
   end
+
+  describe '#around_llm_request' do
+    let(:chat) { described_class.new(model: 'gpt-4o-mini') }
+    let(:mock_response) do
+      RubyLLM::Message.new(role: :assistant, content: 'Hello from AI')
+    end
+    let(:mock_provider) { instance_double(RubyLLM::Providers::OpenAI) }
+
+    before do
+      allow(mock_provider).to receive(:complete).and_return(mock_response)
+      chat.instance_variable_set(:@provider, mock_provider)
+    end
+
+    it 'returns self for chaining' do
+      result = chat.around_llm_request { |msgs, &send| send.call(msgs) }
+      expect(result).to eq(chat)
+    end
+
+    it 'wraps LLM request with custom logic' do
+      call_order = []
+
+      chat.around_llm_request do |messages, &send_request|
+        call_order << 'before'
+        response = send_request.call(messages)
+        call_order << 'after'
+        response
+      end
+
+      chat.add_message(role: :user, content: 'Test')
+      chat.complete
+
+      expect(call_order).to eq(%w[before after])
+    end
+
+    it 'provides access to current messages' do
+      received_messages = nil
+
+      chat.around_llm_request do |messages, &send_request|
+        # Snapshot messages at hook time (before response is added)
+        received_messages = messages.map(&:dup)
+        send_request.call(messages)
+      end
+
+      chat.add_message(role: :user, content: 'Hello')
+      chat.add_message(role: :user, content: 'World')
+      chat.complete
+
+      expect(received_messages.size).to eq(2)
+      expect(received_messages.first.content).to eq('Hello')
+      expect(received_messages.last.content).to eq('World')
+    end
+
+    it 'allows modifying messages before sending' do
+      ephemeral_message = RubyLLM::Message.new(role: :system, content: 'Ephemeral context')
+
+      chat.around_llm_request do |messages, &send_request|
+        modified = messages + [ephemeral_message]
+        send_request.call(modified)
+      end
+
+      chat.add_message(role: :user, content: 'Original')
+      chat.complete
+
+      # Verify modified messages were sent to provider
+      expect(mock_provider).to have_received(:complete) do |msgs, **_opts|
+        expect(msgs.size).to eq(2)
+        expect(msgs.last.content).to eq('Ephemeral context')
+      end
+
+      # Original messages unchanged
+      expect(chat.messages.size).to eq(2) # user + assistant
+      expect(chat.messages.first.content).to eq('Original')
+    end
+
+    it 'must return the response' do
+      chat.around_llm_request do |messages, &send_request|
+        send_request.call(messages)
+        # Intentionally return a modified response
+        RubyLLM::Message.new(role: :assistant, content: 'Modified response')
+      end
+
+      chat.add_message(role: :user, content: 'Test')
+      response = chat.complete
+
+      expect(response.content).to eq('Modified response')
+    end
+
+    it 'can wrap errors for retry logic' do
+      attempt_count = 0
+
+      chat.around_llm_request do |messages, &send_request|
+        retries = 0
+        begin
+          attempt_count += 1
+          raise RubyLLM::RateLimitError.new(nil, 'Rate limited') if attempt_count < 3
+
+          send_request.call(messages)
+        rescue RubyLLM::RateLimitError
+          retry if (retries += 1) < 5
+          raise
+        end
+      end
+
+      chat.add_message(role: :user, content: 'Test')
+      response = chat.complete
+
+      expect(attempt_count).to eq(3)
+      expect(response).to eq(mock_response)
+    end
+
+    it 'propagates errors when not caught' do
+      chat.around_llm_request do |messages, &send_request|
+        send_request.call(messages)
+        raise StandardError, 'Custom error'
+      end
+
+      chat.add_message(role: :user, content: 'Test')
+
+      expect { chat.complete }.to raise_error(StandardError, 'Custom error')
+    end
+
+    it 'works with streaming blocks' do
+      chunks = []
+      streaming_mock = RubyLLM::Message.new(role: :assistant, content: 'Streamed')
+
+      allow(mock_provider).to receive(:complete) do |_msgs, **_opts, &block|
+        # Simulate streaming - Chunk is a subclass of Message
+        block&.call(RubyLLM::Chunk.new(role: :assistant, content: 'Hello '))
+        block&.call(RubyLLM::Chunk.new(role: :assistant, content: 'World'))
+        streaming_mock
+      end
+
+      hook_called = false
+      chat.around_llm_request do |messages, &send_request|
+        hook_called = true
+        send_request.call(messages)
+      end
+
+      chat.add_message(role: :user, content: 'Stream test')
+      chat.complete { |chunk| chunks << chunk.content }
+
+      expect(hook_called).to be true
+      expect(chunks).to eq(['Hello ', 'World'])
+    end
+
+    it 'works without any hook set (default behavior)' do
+      chat.add_message(role: :user, content: 'Test')
+      response = chat.complete
+
+      expect(response).to eq(mock_response)
+      expect(mock_provider).to have_received(:complete)
+    end
+
+    it 'replaces previous hook when called multiple times' do
+      first_hook_called = false
+      second_hook_called = false
+
+      chat.around_llm_request do |messages, &send_request|
+        first_hook_called = true
+        send_request.call(messages)
+      end
+
+      chat.around_llm_request do |messages, &send_request|
+        second_hook_called = true
+        send_request.call(messages)
+      end
+
+      chat.add_message(role: :user, content: 'Test')
+      chat.complete
+
+      expect(first_hook_called).to be false
+      expect(second_hook_called).to be true
+    end
+
+    it 'can implement request caching pattern' do
+      cache = {}
+
+      chat.around_llm_request do |messages, &send_request|
+        cache_key = messages.map { |m| [m.role, m.content] }.hash
+        cache[cache_key] ||= send_request.call(messages)
+      end
+
+      chat.add_message(role: :user, content: 'Cached request')
+
+      # First call - executes the request
+      response1 = chat.complete
+      expect(response1.content).to eq('Hello from AI')
+
+      # Reset for second request with same messages
+      chat.instance_variable_get(:@messages).pop # Remove assistant message
+
+      # Second call with same messages - returns cached
+      response2 = chat.complete
+      expect(response2.content).to eq('Hello from AI')
+
+      # Provider should only be called once
+      expect(mock_provider).to have_received(:complete).once
+    end
+
+    it 'can implement request timing/logging pattern' do
+      timings = []
+
+      chat.around_llm_request do |messages, &send_request|
+        start = Time.now
+        response = send_request.call(messages)
+        elapsed = Time.now - start
+        timings << { message_count: messages.size, time: elapsed }
+        response
+      end
+
+      chat.add_message(role: :user, content: 'Test')
+      chat.complete
+
+      expect(timings.size).to eq(1)
+      expect(timings.first[:message_count]).to eq(1)
+      expect(timings.first[:time]).to be_a(Float)
+    end
+
+    it 'can implement context window management pattern' do
+      chat.around_llm_request do |messages, &send_request|
+        # Keep only last N messages to fit context window
+        truncated = messages.last(2)
+        send_request.call(truncated)
+      end
+
+      # Add many messages
+      5.times { |i| chat.add_message(role: :user, content: "Message #{i}") }
+      chat.complete
+
+      # Verify only last 2 were sent
+      expect(mock_provider).to have_received(:complete) do |msgs, **_opts|
+        expect(msgs.size).to eq(2)
+        expect(msgs.first.content).to eq('Message 3')
+        expect(msgs.last.content).to eq('Message 4')
+      end
+    end
+
+    it 'is thread-safe (instance-level hook)' do
+      # Each chat instance has its own hook
+      chat1 = described_class.new(model: 'gpt-4o-mini')
+      chat2 = described_class.new(model: 'gpt-4o-mini')
+
+      chat1.instance_variable_set(:@provider, mock_provider)
+      chat2.instance_variable_set(:@provider, mock_provider)
+
+      chat1_hook_called = false
+      chat2_hook_called = false
+
+      chat1.around_llm_request do |messages, &send_request|
+        chat1_hook_called = true
+        send_request.call(messages)
+      end
+
+      chat2.around_llm_request do |messages, &send_request|
+        chat2_hook_called = true
+        send_request.call(messages)
+      end
+
+      chat1.add_message(role: :user, content: 'Test')
+      chat1.complete
+
+      expect(chat1_hook_called).to be true
+      expect(chat2_hook_called).to be false
+    end
+  end
 end
 # rubocop:enable Security/NoReflectionMethods
