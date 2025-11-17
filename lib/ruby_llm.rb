@@ -10,6 +10,7 @@ require 'logger'
 require 'marcel'
 require 'securerandom'
 require 'zeitwerk'
+require 'async/http/faraday/default'
 
 loader = Zeitwerk::Loader.for_gem
 loader.inflector.inflect(
