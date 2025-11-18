@@ -3,13 +3,14 @@
 require_relative 'lib/ruby_llm/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'ruby_llm_pro'
+  spec.name          = 'ruby_llm_swarm'
   spec.version       = RubyLLM::VERSION
   spec.authors       = ['Paulo Arruda']
   spec.email         = ['parrudaj@gmail.com ']
 
-  spec.summary       = 'One beautiful Ruby API for GPT, Claude, Gemini, and more.'
-  spec.description   = 'One beautiful Ruby API for GPT, Claude, Gemini, and more. Easily build chatbots, ' \
+  spec.summary       = 'Fork of RubyLLM with features to power Swarm, a multi-agent orchestration framework.'
+  spec.description   = 'Fork of RubyLLM with features to power Swarm, a multi-agent orchestration framework. ' \
+                       'One beautiful Ruby API for GPT, Claude, Gemini, and more. Easily build chatbots, ' \
                        'AI agents, RAG applications, and content generators. Features chat (text, images, audio, ' \
                        'PDFs), image generation, embeddings, tools (function calling), structured output, Rails ' \
                        'integration, and streaming. Works with OpenAI, Anthropic, Google Gemini, AWS Bedrock, ' \
@@ -32,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Runtime dependencies
+  spec.add_dependency 'async-http-faraday', '~> 0.22'
   spec.add_dependency 'base64'
   spec.add_dependency 'event_stream_parser', '~> 1'
   spec.add_dependency 'faraday', ENV['FARADAY_VERSION'] || '>= 1.10.0'

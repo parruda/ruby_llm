@@ -2,8 +2,8 @@
 
 source 'https://rubygems.org'
 
-gemspec name: 'ruby_llm'
-gemspec name: 'ruby_llm_pro'
+# gemspec name: 'ruby_llm'
+gemspec name: 'ruby_llm_swarm'
 
 group :development do # rubocop:disable Metrics/BlockLength
   gem 'appraisal'
