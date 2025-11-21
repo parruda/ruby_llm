@@ -12,6 +12,35 @@ require 'securerandom'
 require 'zeitwerk'
 require 'async/http/faraday/default'
 
+# Monkey-patch io-endpoint to handle EHOSTUNREACH (IPv6 unreachable)
+# This fixes an issue where the async adapter fails on IPv6 without trying IPv4
+# See: https://github.com/socketry/io-endpoint/issues/XXX
+module IO::Endpoint
+  class HostEndpoint < Generic
+    def connect(wrapper = self.wrapper, &block)
+      last_error = nil
+
+      Addrinfo.foreach(*@specification) do |address|
+        begin
+          socket = wrapper.connect(address, **@options)
+        rescue Errno::ECONNREFUSED, Errno::ENETUNREACH, Errno::EHOSTUNREACH, Errno::EAGAIN => last_error
+          # Try next address
+        else
+          return socket unless block_given?
+
+          begin
+            return yield(socket)
+          ensure
+            socket.close
+          end
+        end
+      end
+
+      raise last_error
+    end
+  end
+end
+
 loader = Zeitwerk::Loader.for_gem
 loader.inflector.inflect(
   'ruby_llm' => 'RubyLLM',

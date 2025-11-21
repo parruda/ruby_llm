@@ -16,6 +16,8 @@ module RubyLLM
                    log_level: :debug
         f.response :raise_error
         yield f if block_given?
+        # Use net_http for simple API calls to avoid async-http SSL/IPv6 issues
+        f.adapter :net_http
       end
     end
 
@@ -85,7 +87,6 @@ module RubyLLM
       faraday.request :multipart
       faraday.request :json
       faraday.response :json
-      faraday.adapter :net_http
       faraday.use :llm_errors, provider: @provider
     end
 

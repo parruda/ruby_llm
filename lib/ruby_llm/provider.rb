@@ -115,6 +115,8 @@ module RubyLLM
       else
         body
       end
+    rescue NoMethodError
+      response.body
     end
 
     def format_messages(messages)
