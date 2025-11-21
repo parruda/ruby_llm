@@ -115,7 +115,7 @@ module RubyLLM
       else
         body
       end
-    rescue NoMethodError
+    rescue NoMethodError, TypeError
       response.body
     end
 
